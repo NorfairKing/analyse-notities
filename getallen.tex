@@ -103,6 +103,33 @@
 \section{Axiomatische beschrijving van $\mathbb{R}$}
 \label{sec:axiom-beschr-van}
 
+\begin{st}
+  De \term{supremumeigenschap}\\
+  In $\mathbb{R}$ heeft elke niet-lege, naar boven begrensde deelverzameling een supremum.
+\end{st}
+
+\begin{st}
+  Er bestaat, op isomorfisme na, maar \'e\'en totaal geordend veld met de supremumeigenschap.
+\end{st}
+
+\begin{pr}
+  Er bestaat een unieke afbeelding $i:\ \mathbb{Q} \rightarrow \mathbb{R}$ met de volgende eigenschappen.
+  \begin{itemize}
+  \item $i(0_{\mathbb{Q}}) = 0_{\mathbb{R}}$
+  \item $i(1_{\mathbb{Q}}) = 1_{\mathbb{R}}$
+  \item $\forall p,q \in \mathbb{Q}: i(p+_{\mathbb{Q}}q) = i(p) +_{\mathbb{R}} i(q)$
+  \item $\forall p,q \in \mathbb{Q}: i(p\cdot_{\mathbb{Q}} q) = i(p) \cdot_{\mathbb{R}} i(q)$
+  \item $\forall p,q \in \mathbb{Q}: p \le_{\mathbb{Q}} q \Rightarrow i(p) \le_{\mathbb{R}} i(q)$
+  \end{itemize}
+  Bovendien is deze afbeelding injectief.
+\TODO{bewijs p 10}
+\end{pr}
+
+\begin{lem}
+  Het \term{lemma van Archimedes}\\
+  Voor elke $r\in \mathbb{R}$ bestaat er een $n\in \mathbb{N}$ zodat $x < n$ geldt.
+\TODO{bewijs p 11}
+\end{lem}
 
 
 \end{document}
