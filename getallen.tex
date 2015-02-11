@@ -4,10 +4,16 @@
 \chapter{Re\"ele en complexe getallen}
 \label{cha:reele-en-complexe-getallen}
 
+\section{De rationale getallen en hun structuur}
+\label{sec:de-rati-getall}
 
 \begin{de}
-  De natuurlijke getallen, genoteerd als $\mathbb{N}$.
-  \TODO{hoe definieren we dit precies? peano? bekijk B\&R nog eens!}
+  De natuurlijke getallen, genoteerd als $\mathbb{N}$ zijn inductief gedefini\"eerd als volgt.
+  \begin{itemize}
+  \item $\mathbb{N}$ bevat een neutraal element $0$.
+  \item $\mathbb{N}$ bevat een eenheidselement $1$.
+  \item Voor elk aantal $n$ bevat $\mathbb{N}$ ook $0+1n$.
+  \end{itemize}
 \end{de}
 
 \begin{de}
@@ -44,7 +50,7 @@
   We gaan daarom momenteel niet in op de meer rigoreuze benamingen en bewijzen ivm de definierende eigenschappen van velden.
 \end{opm}
 \extra{een veld goed uitwerken zonder andere algebra te gebruiken.}
-
+                                 mw
 \begin{de}
   Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we het een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
   \begin{itemize}
@@ -59,6 +65,43 @@
 
 \extra{bewijs}
 \end{pr}
+
+\begin{pr}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld, dan geldt voor alle $a,b,c,d \in \mathbb{F}$ het volgende:
+  \begin{itemize}
+  \item $a\le b \wedge c \le d \Rightarrow (a+c) \le (b+d)$
+  \item $a \le b \Rightarrow -b \le -a$
+  \item $0 \le c \Leftrightarrow -c \le 0$.
+  \item $0 \le a \wedge 0 \le b \Rightarrow 0 \le ab$
+  \item $0 \le 1$
+  \item $0 \le a \wedge a \neq 0 \Rightarrow a^{-1} \neq 0 \wedge 0 \le a^{-1}$.
+  \item $a \neq 0 \wedge 0 \le a \wedge a \le b \Rightarrow b^{-1} \le a^{-1}$.
+  \end{itemize}
+
+  \extra{splitsen in meerdere proposities?}
+\extra{bewijs p 5}
+\end{pr}
+
+\TODO{definieer naar boven en naar onder begrensde verzamelingen.}
+
+\begin{st}
+  $\sqrt{2}$ is geen element van $\mathbb{Q}$.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  $\mathbb{Q}$ heeft de supremumeigenschap niet.
+\end{st}
+
+\begin{st}
+  De stelling van rolle geldt niet in $\mathbb{Q}$.
+\extra{verwijzen naar een plaats met betere uitleg.}
+\end{st}
+
+\extra{nog een gebrek van $\mathbb{Q}$.}
+
+\section{Axiomatische beschrijving van $\mathbb{R}$}
+\label{sec:axiom-beschr-van}
 
 
 
