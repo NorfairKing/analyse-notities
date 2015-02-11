@@ -5,5 +5,61 @@
 \label{cha:reele-en-complexe-getallen}
 
 
+\begin{de}
+  De natuurlijke getallen, genoteerd als $\mathbb{N}$.
+  \TODO{hoe definieren we dit precies? peano? bekijk B\&R nog eens!}
+\end{de}
+
+\begin{de}
+  De \term{gehele getallen}, genoteerd als $\mathbb{Z}$.
+  \[ \mathbb{Z} = \mathbb{N} \cup \{ -n \mid n\in \mathbb{N} \}  \]
+\end{de}
+
+\begin{de}
+  De \term{rationale getallen}, genoteerd als $\mathbb{Q}$.
+  \[ \mathbb{Q} = \{ \nicefrac{n}{m} \mid n\in \mathbb{Z}, m\in \mathbb{Z}, m \neq 0 \} \]
+\end{de}
+
+\begin{opm}
+  In feite is $\mathbb{Q}$ het breukenveld van het integriteitsdomein $\mathbb{N}$, maar daar komen we later nog op terug.   
+\end{opm}
+
+\begin{de}
+  Een \term{veld} $\mathbb{F},+,\cdot$ is een verzameling $\mathbb{F}$ met twee bewerkingen $+$ en $\cdot$ met de volgende eigenschappen.
+  \begin{itemize}
+  \item $+$ is associatief.
+  \item Er bestaat een (uniek) neutraal element $0$ voor $+$.
+  \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$.
+  \item $+$ is commutatief.
+  \item $\cdot$ is associatief.
+  \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$.
+  \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$.
+  \item $\cdot$ is commutatief.
+  \item $\cdot$ is distributief ten opzichte van $+$.
+  \end{itemize}
+\end{de}
+
+\begin{opm}
+  Deze definitie van een veld is een samenraapsel van een hele boel concepten die pas later aan bod komen.
+  We gaan daarom momenteel niet in op de meer rigoreuze benamingen en bewijzen ivm de definierende eigenschappen van velden.
+\end{opm}
+\extra{een veld goed uitwerken zonder andere algebra te gebruiken.}
+
+\begin{de}
+  Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we het een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
+  \begin{itemize}
+  \item $\forall x,y,z \in \mathbb{F}:\ x \le y \Rightarrow (x+z) \le (y+z)$
+  \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
+  \end{itemize}
+\end{de}
+\extra{definieer een orderelatie en totale orderelatie.}
+
+\begin{pr}
+  $\mathbb{Q}$ is een totaal geordend veld.
+
+\extra{bewijs}
+\end{pr}
+
+
 
 \end{document}
