@@ -104,6 +104,7 @@
 \label{sec:axiom-beschr-van}
 
 \begin{st}
+  \label{st:supremumeigenschap-R}
   De \term{supremumeigenschap}\\
   In $\mathbb{R}$ heeft elke niet-lege, naar boven begrensde deelverzameling een supremum.
 \end{st}
@@ -131,5 +132,141 @@
 \TODO{bewijs p 11}
 \end{lem}
 
+\begin{gev}
+  $\forall a \in \mathbb{R}_{0}^{+},\ \forall b\in \mathbb{R}:\ \exists n\in N:\ na > b$
+\extra{bewijs}
+\end{gev}
+
+\begin{gev}
+  $\forall \epsilon \in \mathbb{R}_{0}^{+},\ \exists n\in N:\ \frac{1}{n} < \epsilon$
+\extra{bewijs}
+\end{gev}
+
+\begin{gev}
+  $\forall x\in \mathbb{R}:\ \exists m \in \mathbb{Z}:\ m-1 \le x < m$
+\TODO{bewijs p 12}
+\end{gev}
+
+\begin{pr}
+  $\forall x,y \in \mathbb{R}: (x<y \Rightarrow \exists q\in \mathbb{Q}:\ x<q<y$
+\TODO{bewijs p 12}
+\end{pr}
+
+\begin{opm}
+  We zeggen dat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.
+\end{opm}
+
+
+\begin{st}
+  $\forall x\in \mathbb{R}^{+},\ \forall n\in \mathbb{N}:\ (n\ge 2 \Rightarrow \exists!\ y\in \mathbb{R}^{+}:\ y^{n}=x)$
+\TODO{bewijs p 13} 
+\end{st}
+
+\section{Intervallen in $\mathbb{R}$}
+\label{sec:intervallen-in-R}
+
+\begin{de}
+  Een \term{interval} in een totaal geordende verzameling $F,\le$ is een niet-lege deelverzameling $I$ van $F$ waarvoor elk element van $\mathbb{R}$ dat tussen twee elementen in $I$ ligt, tot $I$ behoort.
+  \[ \forall x,y \in I,\ \forall z\in \mathbb{R}:\ x \le z \le y \Rightarrow z\in I \]
+\end{de}
+
+\subsection{Classificatie van intervallen}
+\label{sec:class-van-interv}
+
+\begin{st}
+  De \term{classificatie van intervallen in $\mathbb{R}$}.
+
+  Beschouw een willekeurig interval $I \subseteq \mathbb{R}$, dan zijn er een aantal mogelijkheden:
+  \begin{itemize}
+  \item $I$ is zowel naar boven als naar onder begrensd.\\
+    $I$ heeft dan zowel een supremum $b$ als een infimum $a$.\stref{st:supremumeigenschap-R}.
+    \begin{itemize}
+    \item $a=b$: $I=\{a\} = [a,a]$
+    \item $a<b$: 
+      \begin{itemize}
+      \item $a\in I \wedge b\in I$: $I = \{ x\in \mathbb{R} \mid a\le x \le b\} = [a,b]$ : ``het gesloten interval $a,b$''.
+      \item $a\in I \wedge b\not\in I$: $I = \{ x\in \mathbb{R} \mid a\le x < b\} = [a,b[$ : ``het halfopen interval $a,b$, open in $b$''.
+      \item $a\not\in I \wedge b\in I$: $I = \{ x\in \mathbb{R} \mid a< x \le b\} = ]a,b]$ : ``het halfopen interval $a,b$, open in $a$''.
+      \item $a\not\in I \wedge b\not\in I$: $I = \{ x\in \mathbb{R} \mid a< x < b\} = ]a,b[$ : ``het open interval $a,b$''.
+      \end{itemize}
+    \end{itemize}
+  \item $I$ is naar onder begrensd.
+    $I$ heeft dan een infimum $a$.
+    \begin{itemize}
+    \item $a\in I$: $I = \{ x\in \mathbb{R} \mid x \ge a\} = [a,+\infty[$ : ``het gesloten interval $a, +\infty$''.
+    \item $a\not\in I$: $I = \{ x\in \mathbb{R} \mid x > a\} = ]a,+\infty[$ : ``het open interval $a, +\infty$''.
+    \end{itemize}
+  \item $I$ is naar boven begrensd.
+    $I$ heeft dan een supremum $b$.
+    \begin{itemize}
+    \item $a\in I$: $I = \{ x\in \mathbb{R} \mid x \le b \} = ]-\infty,b]$ : ``het gesloten interval $-\infty, b$''.
+    \item $a\not\in I$: $I = \{ x\in \mathbb{R} \mid x < b \} = ]-\infty,b[$ : ``het open interval $-\infty,b$''. 
+    \end{itemize}
+  \item $I$ is niet begrensd. $I$ is dan gelijk aan $\mathbb{R}$.
+  \end{itemize}
+\zb
+\end{st}
+
+
+\section{Absolute waard}
+\label{sec:absolute-waarde}
+
+\begin{de}
+  De \term{absolute waarde} van een element $a$ van een totaal geordend veld $F,+,\cdot,\le$ defeni\"eren we als $|a|$:
+  \[ 
+  |a| = 
+  \left\{
+    \begin{array}{cl}
+      a &\text{ als } a\ge 0\\
+      a &\text{ als } a< 0\\
+    \end{array}
+  \right.
+  \]
+\end{de}
+
+\begin{pr}
+  $\forall a\in F: |a| \ge 0$
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: |a| = 0 \Leftrightarrow a = 0$
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: |a| = |-a|$
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: -|a| \le a \le |a|$
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  $\forall a,b\in F: |a| \le b \Leftrightarrow -b \le a \le b$.
+\extra{bewijs}
+\end{pr}
+
+\begin{de}
+  De \term{afstand} tussen twee elementen van een totaal geordend veld $F,+,\cdot,\le$ defini\"eren we als $|x-y|$.
+\end{de}
+
+\begin{pr}
+  De \term{driehoeksongelijkheid}\\
+  \begin{itemize}
+  \item $\forall a,b\in F:\ |a+b| \le |a| + |b|$
+  \item $\forall x,y,z\in F:\ |x-y| \le |x-z| + |z-y|$
+  \end{itemize}
+
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  De \term{tweede driehoeksongelijkheid}\\
+  $\forall a,b\in F: ||a|-|b|| \le |a-b|$
+\extra{bewijs}
+\end{pr}
 
 \end{document}
