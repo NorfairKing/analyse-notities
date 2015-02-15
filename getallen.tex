@@ -100,7 +100,7 @@
 
 \extra{nog een gebrek van $\mathbb{Q}$.}
 
-\section{Axiomatische beschrijving van $\mathbb{R}$}
+\subsection{Axiomatische beschrijving van $\mathbb{R}$}
 \label{sec:axiom-beschr-van}
 
 \begin{st}
@@ -162,7 +162,7 @@
 \TODO{bewijs p 13} 
 \end{st}
 
-\section{Intervallen in $\mathbb{R}$}
+\subsection{Intervallen in $\mathbb{R}$}
 \label{sec:intervallen-in-R}
 
 \begin{de}
@@ -170,7 +170,7 @@
   \[ \forall x,y \in I,\ \forall z\in \mathbb{R}:\ x \le z \le y \Rightarrow z\in I \]
 \end{de}
 
-\subsection{Classificatie van intervallen}
+\subsubsection{Classificatie van intervallen}
 \label{sec:class-van-interv}
 
 \begin{st}
@@ -208,7 +208,7 @@
 \end{st}
 
 
-\section{Absolute waard}
+\subsection{Absolute waard}
 \label{sec:absolute-waarde}
 
 \begin{de}
@@ -268,5 +268,322 @@
   $\forall a,b\in F: ||a|-|b|| \le |a-b|$
 \extra{bewijs}
 \end{pr}
+
+\section{Rijen in $\mathbb{R}$}
+\label{sec:rijen-mathbbr}
+
+\begin{de}
+  Een \term{rij} in een verzameling $V$ is een functie als volgt:
+  \[ x: \mathbb{N} \rightarrow V:\ n\mapsto x_{n} \]
+  De functiewaarden noemen we \term{termen} en de rij wordt genoteerd met $(x_{n})_{n}$.
+  Hierin noemen we de $n$ de \term{index} van de term.
+\end{de}
+
+\begin{de}
+  We zeggen dat een rij $(x_{n})_{n}$ in een totaal geordend veld $F,+,\cdot,\le$ \term{convergeert} naar $a\in F$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in F_{0}^{+},\ \exists n_{0}\in \mathbb{N},\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |x_{n}-a| < \epsilon \]
+  We noemen $a$ de \term{limiet} van de rij $(x_{n})_{n}$:
+  \[ a = \lim_{n\rightarrow \infty}x_{n} \]
+  Een rij die convergeert noemen we een \term{convergente rij}.
+  Een rij die niet convergeert noemen we een \term{divergente rij}.
+\end{de}
+
+\begin{de}
+  We zeggen dat een rij $(r_{n})_{n}$ in een totaal geordend veld $F,+,\cdot,\le$ divergeert naar plus oneindig als en slechts het volgende geldt:
+  \[ \forall M\in F,\ \exists n_{0}\in \mathbb{N},\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow x_{n} > M \]
+  \[ + \infty = \lim_{n\rightarrow \infty}x_{n}\]
+\end{de}
+
+\begin{de}
+  We zeggen dat een rij $(r_{n})_{n}$ in een totaal geordend veld $F,+,\cdot,\le$ divergeert naar min oneindig als en slechts het volgende geldt:
+  \[ \forall M\in F,\ \exists n_{0}\in \mathbb{N},\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow x_{n} < M \]
+  \[ - \infty = \lim_{n\rightarrow \infty}x_{n}\]
+\end{de}
+
+
+\begin{pr}
+  Zij $p\in \mathbb{Z}$, dan heeft de rij $(n^{p})_{n}$ een limiet:
+  \begin{itemize}
+  \item $p>0 \rightarrow \lim_{n\rightarrow \infty}n^{p} = + \infty$
+  \item $p=0 \rightarrow \lim_{n\rightarrow \infty}n^{p} = 1$
+  \item $p<0 \rightarrow \lim_{n\rightarrow \infty}n^{p} = 0$
+  \end{itemize}
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Als een rij een limiet heeft, dan is deze uniek.
+\TODO{bewijs p 31}
+\end{pr}
+
+\begin{pr}
+  Een convergente rij $(x_{n})_{n}$ is begrensd.
+  \[ \exists M \in F^{+}: \forall n\in \mathbb{N}: |x_{n}| \le M \]
+\TODO{bewijs p 32}
+\end{pr}
+
+\begin{opm}
+  Merk op dat het omgekeerde niet geldt.
+\extra{tegenvoorbeeld}
+\end{opm}
+
+\begin{pr}
+  Beschouw twee rijen $(x_{n})_{n}$ en $(y_{n})_{n}$.
+  Stel dat de staart van de rijen overeen komt, dus dat er een $k\in \mathbb{N}$ bestaat zodat $x_{n}$ gelijk is aan $y_{n}$ voor alle $n$ groter dan $k$.
+  De rijen vertonen dan hetzelfde asymptotisch gedrag.
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{pr}
+  Voor elk re\"eel getal $x\in \mathbb{R}$ bestaat er een rij $(q_{n})_{n}$ in $\mathbb{Q}$ die convergeert naar $x$.
+\TODO{bewijs p 33}
+\end{pr}
+
+\subsection{Limieten en orde}
+\label{sec:limieten-en-orde}
+
+
+\begin{de}
+  We noemen een rij $(x_{n})_{n}$ in $\mathbb{R}$ ...
+  \begin{itemize}
+  \item ... \term{stijgend} als en slechts als $x_{n+1} \ge x_{n}$ geldt voor alle $n\in \mathbb{N}$.  
+  \item ... \term{strikt stijgend} als en slechts als $x_{n+1} > x_{n}$ geldt voor alle $n\in \mathbb{N}$.  
+  \item ... \term{dalend} als en slechts als $x_{n+1} \le x_{n}$ geldt voor alle $n\in \mathbb{N}$.  
+  \item ... \term{strikt dalend} als en slechts als $x_{n+1} < x_{n}$ geldt voor alle $n\in \mathbb{N}$.  
+  \end{itemize}
+\end{de}
+
+\begin{st}
+  Een stijgende rij heeft atijd een limiet.
+  Deze limiet is bovendien eindig als en slechts als de rij naar boven begrensd is.
+  Die limiet is dan het supremum van de rij.
+\TODO{bewijs p 34}
+\end{st}
+\begin{st}
+  Een dalende rij heeft atijd een limiet.
+  Deze limiet is bovendien eindig als en slechts als de rij naar onder begrensd is.
+  Die limiet is dan het infimum van de rij.
+\TODO{bewijs: oefening}
+\end{st}
+
+\begin{pr}
+  Zij $r\in \mathbb{R}$, dan heeft de rij $(r^{n})_{n}$ ...
+  \begin{itemize}
+  \item ... limiet plus oneindig als $r>1$ geldt.
+  \item ... limiet $1$ als $r=1$ geldt.
+  \item ... limiet $0$ als $|r|<1$ geldt.
+  \item ... geen limiet als $r<-1$ geldt.
+  \end{itemize}
+\TODO{bewijs p 35}
+\end{pr}
+
+\begin{pr}
+  Zij $A$ een niet-leeg, naar boven begrensd deel van $\mathbb{R}$, dan bestaat er een stijgende rij in $A$ die convergeert naar het supremum van $A$.
+  
+\TODO{bewijs p 36}
+\end{pr}
+
+\begin{de}
+  De \term{uitgebreidde orde in een totaal geordend veld} $F,+,\cdot,\le$.\\
+  We moeten soms de orde van een totaal geordend veld uitbreiden over $F \cup \{ -\infty,+\infty\}$.
+  De notatie blijft dan hetzelfde maar we voegen het volgende toe.
+  \[ \forall a\in F: -\infty \le a \quad\text{ en }\quad \forall a \in F:\ a \le +\infty \]
+\end{de}
+\TODO{oneindigheden zelf ook eens definieren?}
+
+\begin{pr}
+  Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee rijen zodat voor alle $n\in \mathbb{N}$ $x_{n}\le y_{n}$ geldt, dan geldt het volgende:
+  \[ \lim_{n\rightarrow \infty}x_{n} \le \lim_{n\rightarrow \infty}y_{n} \]
+\TODO{bewijs p 37}
+\end{pr}
+
+\begin{st}
+  De \term{insluitstelling}\\
+  Beschouw drie rijen $(x_{n})_{n}$, $(y_{n})_{n}$ en $(z_{n})_{n}$ zodat het volgende geldt:
+  \[ \forall n\in \mathbb{N}: x_{n}\le y_{n}\le z_{n} \]
+  Als $(x_{n})_{n}$ en $(z_{n})_{n}$ elk een limiet hebben, en die limiet hetzelfde is, dan is dit ook de limiet van $(y_{n})_{n}$.
+  \[ \lim_{n\rightarrow \infty}x_{n} = \lim_{n\rightarrow \infty}y_{n} = \lim_{n\rightarrow \infty}z_{n} \]
+\TODO{bewijs p 38}
+\end{st}
+
+\subsection{Limieten en bewerkingen}
+\label{sec:limi-en-bewerk}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ een convergente rij en $\lambda\in \mathbb{R}$ een re\"eel getal.
+  \[ \lim_{n \rightarrow \infty}(\lambda x_{n}) = \lambda \lim_{n\rightarrow \infty}x_{n} \]
+\TODO{bewijs: oefening}
+\end{st}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee convergente rijen.
+  \[ \lim_{n \rightarrow \infty}(x_{n}+y_{n}) = \lim_{n\rightarrow \infty}x_{n} + \lim_{n\rightarrow \infty}y_{n} \]
+\TODO{bewijs: oefening}
+\end{st}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee convergente rijen.
+  \[ \lim_{n \rightarrow \infty}(x_{n}y_{n}) = \lim_{n\rightarrow \infty}x_{n} \cdot \lim_{n\rightarrow \infty}y_{n} \]
+\TODO{bewijs: p 40}
+\end{st}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee convergente rijen zodat $\forall n\in \mathbb{N}:\ y_{n}\neq 0$ geldt
+  \[ \lim_{n \rightarrow \infty}\left(\frac{x_{n}}{y_{n}}\right) = \frac{\lim_{n\rightarrow \infty}x_{n}}{\lim_{n\rightarrow \infty}y_{n}} \]
+\TODO{bewijs: p 40}
+\end{st}
+
+\begin{st}
+  We kunnen bovenstaande stellingen uitbreiden om te gelden over $F\cup\{ -\infty,+\infty\}$ als we de volgende rekenregels toevoegen.
+  \[
+  \begin{array}{rccccl}
+                             & (+\infty) &+    & (+\infty) &= +\infty\\
+                             & (-\infty) &+    & (-\infty) &= -\infty\\
+                             & (+\infty) &+    & (-\infty) & & \text{ is onbepaald.} \\
+                             & (-\infty) &+    & (+\infty) & & \text{ is onbepaald.} \\\\
+
+    \forall a \in F:\        & a         &+    & (+\infty) &= + \infty \\
+    \forall a \in F:\        & (+\infty) &+    & a         &= + \infty \\
+    \forall a \in F:\        & a         &+    & (-\infty) &= - \infty \\
+    \forall a \in F:\        & (-\infty) &+    & a         &= - \infty \\\\
+
+                             & (+\infty) &\cdot& (+\infty) &= +\infty\\
+                             & (-\infty) &\cdot& (-\infty) &= +\infty\\
+                             & (+\infty) &\cdot& (-\infty) &= -\infty\\
+                             & (-\infty) &\cdot& (+\infty) &= -\infty\\\\
+
+                             & 0         &\cdot& (+\infty) & & \text{ is onbepaald.} \\
+                             & 0         &\cdot& (-\infty) & & \text{ is onbepaald.} \\
+                             & (+\infty) &\cdot& 0         & & \text{ is onbepaald.} \\
+                             & (-\infty) &\cdot& 0         & & \text{ is onbepaald.} \\
+    \forall a \in F_{0}^{+}:\ & a         &\cdot& (+\infty) &= + \infty \\
+    \forall a \in F_{0}^{+}:\ & (+\infty) &\cdot& a         &= + \infty \\
+    \forall a \in F_{0}^{+}:\ & a         &\cdot& (-\infty) &= - \infty \\
+    \forall a \in F_{0}^{+}:\ & (-\infty) &\cdot& a         &= - \infty \\\\
+
+    \forall a \in F_{0}^{-}:\ & a         &\cdot& (+\infty) &= + \infty \\
+    \forall a \in F_{0}^{-}:\ & (+\infty) &\cdot& a         &= + \infty \\
+    \forall a \in F_{0}^{-}:\ & a         &\cdot& (-\infty) &= - \infty \\
+    \forall a \in F_{0}^{-}:\ & (-\infty) &\cdot& a         &= - \infty \\\\
+
+    \forall a \in F:\        & \frac{a}{+\infty}      &= 0 \\
+    \forall a \in F:\        & \frac{a}{-\infty}      &= 0 \\
+    \forall a \in F_{0}^{+}:\ & \frac{+\infty}{a}      &= +\infty \\
+    \forall a \in F_{0}^{+}:\ & \frac{-\infty}{a}      &= -\infty \\
+    \forall a \in F_{0}^{-}:\ & \frac{+\infty}{a}      &= -\infty \\
+    \forall a \in F_{0}^{-}:\ & \frac{-\infty}{a}      &= +\infty \\
+                             & \frac{+\infty}{-\infty} &&&& \text{ is onbepaald.}\\
+                             & \frac{+\infty}{+\infty} &&&& \text{ is onbepaald.}\\
+                             & \frac{-\infty}{+\infty} &&&& \text{ is onbepaald.}\\
+                             & \frac{-\infty}{-\infty} &&&& \text{ is onbepaald.}\\\\
+                             & \frac{0}{0}             &&&& \text{ is onbepaald.}\\
+  \end{array}
+  \]
+\extra{dit kan mooier?}
+\TODO{bewiqs p 42}
+\end{st}
+
+\subsection{Deelrijen}
+\label{sec:deelrijen}
+
+\begin{de}
+  Zij $(x_{n})_{n}$ een rij over een verzameling $V$ en $(n_{k})_{k}$ een strikt stijgende rij over $\mathbb{N}$, dan is de rij $(x_{n_{k}})_{k}$ een \term{deelrij} van $(x_{n})_{n}$.
+\end{de}
+
+\begin{pr}
+  Zij $(x_{n})_{n}$ een rij in $F$ met een limiet in $F\cup\{+\infty,-\infty\}$., dan heeft elke deelrij ervan dezelfde limiet.
+\TODO{bewijs p 50}
+\end{pr}
+
+\begin{st}
+  De \term{stelling van Bolzano-Weierstra\ss}\\
+  Elke begrensde rij heeft een convergente deelrij.
+\TODO{bewijs p 51}
+\end{st}
+\begin{opm}
+  Deze stelling gaat niet op in $\mathbb{Q}$.
+\extra{bewijs}
+\end{opm}
+
+\begin{de}
+  Zij $(x_{n})_{n}$ een begrensde rij.
+  We defini\"eren de \term{limes superior} of \term{lim sup} en de \term{limes inferior} of \term{lim inf} van de rij $(x_{n})_{n}$ als volgt:
+  \[ \limsup_{n\rightarrow \infty} x_{n} = \lim_{n\rightarrow \infty} sup\{x_{k}\mid k\ge n\} \quad\text{ en }\quad \liminf_{n\rightarrow \infty} x_{n} = \lim_{n\rightarrow \infty} inf\{ x_{k}\mid k\ge n\} \]
+\end{de}
+
+\TODO{de volgende 4 stellingen werken ook voor onbegrensde rijen, pas de bewijzen aan.}
+\begin{pr}
+  Zij $(x_{n})_{n}$ een begrensde rij.
+  \[ \liminf_{n\rightarrow \infty} x_{n} \le \limsup_{n\rightarrow \infty} x_{n} \]
+\TODO{bewijs p 53}
+\end{pr}
+
+\begin{pr}
+  Zij $(x_{n})_{n}$ een begrensde rij.
+  Als en slechts als $(x_{n})_{n}$ convergeert geldt hetvolgende.
+  \[ \limsup_{n\rightarrow \infty} x_{n} = \liminf_{n\rightarrow \infty} x_{n} \]
+  De limiet van $(x_{n})_{n}$ is dan ook de gemeenschappelijke woorde van limsup en liminf.
+\TODO{bewijs p 53}
+\end{pr}
+
+\begin{pr}
+  Zij $(x_{n})_{n}$ een begrensde rij, dan bestaat er een deelrij van $(x_{n})_{n}$ die convergeert naar $\limsup_{n\rightarrow \infty} x_{n}$ en een deelrij die convergeert naar $\liminf_{n\rightarrow \infty} x_{n}$.
+
+\TODO{bewijs p 53}
+\end{pr}
+
+\begin{pr}
+  Zij $(x_{k})_{k}$ een convergente deelrij van een begrensde rij $(x_{n})_{n}$.
+  \[ \liminf_{n\rightarrow \infty} x_{n} \le \lim_{n\rightarrow \infty} x_{n} \le \limsup_{n\rightarrow \infty} x_{n} \]
+
+\TODO{bewijs p 53}
+\end{pr}
+
+\subsection{Cauchyrijen en de volledigheid van $\mathbb{R}$}
+\label{sec:cauchyrijen-en-de}
+
+\begin{de}
+  We noemen een rij $(x_{n})_{n}$ over een totaal georden veld $F,+,\cdot,\le$ een \term{Cauchyrij} als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in F_{0}^{+},\ \exists n\in \mathbb{N},\ forall n,m \in \mathbb{N}_{0}:\ n,m \ge n_{0} \Rightarrow |x_{n}-x_{m}| < \epsilon \]
+\end{de}
+
+\begin{pr}
+  Elke convergente rij is een Cauchyrij.
+\TODO{bewijs p 56}
+\end{pr}
+
+\begin{pr}
+  In $\mathbb{Q}$ bestaan er Cauchyren die niet convergeren (in $\mathbb{Q}$).
+\TODO{bewijs p 57}
+\end{pr}
+
+\begin{pr}
+  Elke Cauchyrij over een totaal geordend veld $F,+,\cdot,\le$ is begrensd.
+\TODO{bewijs p 58}
+\end{pr} 
+
+\begin{pr}
+  Een Cauchyrij over een totaal geordend veld $F,+,\cdot,\le$ met een convergente deelrij convergeert naar dezelfde limiet als die deelrij.
+\TODO{bewijs p 59}
+\end{pr}
+
+\begin{pr}
+  Elke Cauchyrij over een totaal geordend veld $F,+,\cdot,\le$ convergeert.
+\end{pr}
+
+\begin{de}
+  We noemen een totaal geordend veld $F,+,\cdot,\le$ \term{volledig} als elke Cauchyrij in $F$ een limiet heeft in $F$.
+\end{de}
+
+\begin{st}
+  $\mathbb{R}$ is volledig.
+\extra{bewijs}
+\end{st}
+
+\extra{tekstje op blz 60 toch nog eens bekijken}
+
+\section{Topologie in $\mathbb{R}$}
+\label{sec:topologie-mathbbr}
+
 
 \end{document}
