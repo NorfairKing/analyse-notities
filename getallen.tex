@@ -585,5 +585,127 @@
 \section{Topologie in $\mathbb{R}$}
 \label{sec:topologie-mathbbr}
 
+\begin{de}
+  We noemen een deelzverzameling $A$ van $\mathbb{R}$ \term{open} als het volgende geldt:
+  \[ \forall x\in A: \exists \delta \in \mathbb{R}_{0}^{+}, \forall y\in \mathbb{R}:\ |y-x| \le \delta \Rightarrow y\in A \]
+\end{de}
+
+\begin{st}
+  Een $A$ van $\mathbb{R}$ is open als en slechts als het volgende geldt:
+  \[ \forall x\in A:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \subseteq A \]
+\extra{bewijs}
+\end{st}
+
+\begin{de}
+  Een deelverzameling $B$ van $\mathbb{R}$ noemen we \term{gesloten} als het complement ervan (in $\mathbb{R}$) open is.
+\end{de}
+
+\begin{opm}
+  ``open'' en ``gesloten'' zijn geen complementaire begrippen.
+\end{opm}
+
+\begin{st}
+  Open intervallen zijn inderdaad open deelverzamelingen.
+\extra{bewijs p 67}
+\end{st}
+\begin{st}
+  Gesloten intervallen zijn inderdaad gesloten deelverzamelingen.
+\extra{bewijs p 67}
+\end{st}
+
+\begin{st}
+  Halfopen intervallen zijn noch open, noch gesloten.
+\extra{bewijs p 67}
+\end{st}
+
+\begin{st}
+  $\mathbb{R}$ is open \'en gesloten.
+\extra{bewijs p 67}
+\end{st}
+
+\begin{st}
+  $\mathbb{Q}$ is niet gesloten.
+\extra{bewijs p 67}
+\end{st}
+
+\begin{pr}
+  De unie van open verzamelingen is open.
+\TODO{bewijs p 69}
+\end{pr}
+
+\begin{pr}
+  De doorsnede van \textbf{een eindig aantal} open verzamelingen is open.
+\TODO{bewijs p 69}
+\end{pr}
+\TODO{tegenvoorbeeld voor oneindig aantal verzamelingen}
+
+\begin{pr}
+  Een doorsnede van gesloten verzamelingen is gesloten.
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{pr}
+  De unie van \textbf{een eindig aantal} gesloten verzamelingen is gesloten.
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{pr}
+  Zij $A$ een niet-leeg deel van $\mathbb{R}$, dan is $A$ gesloten als en slechts als elke convergente rij $(x_{n})_{n}$ in $A$ een limiet heeft in $A$.
+\TODO{bewijs p 70}
+\end{pr}
+
+\begin{pr}
+  Zij $A$ een niet-leeg deel van $\mathbb{R}$, dan is $A$ gesloten en begrensd als en slechs als elke rij in $A$ een convergente deelrij heeft met limiet in $A$.
+\TODO{bewijs p 71}
+\end{pr}
+
+\subsection{Sluiting en inwendige}
+\label{sec:sluit-en-inwend}
+
+\begin{de}
+  Zij $A$ een deelverzameling van $\mathbb{R}$.
+  De grootste open deelverzameling $\mathring{A}$ van $A$ noemen we het \term{inwendige} van $A$.
+\end{de}
+
+\begin{de}
+  Zij $A$ een deelverzameling van $\mathbb{R}$.
+  De kleinste gesloten oververzameling $\bar{A}$ van $A$ noemen we de \term{sluiting} van $A$.
+\end{de}
+
+\TODO{definieer oververzameling?}
+
+\TODO{bewijs dat deze definities nuttig zijn p 72}
+ 
+\begin{pr}
+  Zij $A$ een deelverzameling van $\mathbb{R}$, dan ziet $\mathring{A}$ er als volgt uit:
+  \[ \mathring{A} = \{ x\in A\mid \exists \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \subseteq A \} \]
+\TODO{bewijs p 72}
+\end{pr}
+
+\begin{pr}
+  Zij $A$ een deelverzameling van $\mathbb{R}$, dan ziet $\bar{A}$ er als volgt uit:
+  \[ \mathring{A} = \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta, x+\delta[ \cap A \neq \emptyset \} \]
+\TODO{bewijs p 72}
+\end{pr}
+
+\begin{de}
+  We noemen een punt $x$ van niet-lege deelverzameling $A$ van $\mathbb{R}$ een \term{inwendig punt} van $A$ als het tot $\mathring{A}$ behoort.
+  \[ \exists \delta \in \mathbb{R}_{0}^{+} \]
+\end{de}
+
+\begin{de}
+  We noemen een punt $x$ van niet-lege deelverzameling $A$ van $\mathbb{R}$ een \term{adherent punt} aan $A$ als het tot $\bar{A}$ behoort.
+  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta, x+\delta[ \cap A \neq \emptyset \]
+\end{de}
+
+\begin{pr}
+  Zij $A$ een deel van $\mathbb{R}$ en $x\in \mathbb{R}$, dan behoort $x$ tot $\bar{A}$ als en slechs als er een rij $(x_{n})_{n}$ bestaat met $x$ als limiet.
+\TODO{bewijs p 74}
+\end{pr}
+
+\subsection{Randpunten, ge\"isoleerde punten en ophopingspunten.}
+\label{sec:randp-geis-punt}
+
+
 
 \end{document}
