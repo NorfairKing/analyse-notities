@@ -706,6 +706,79 @@
 \subsection{Randpunten, ge\"isoleerde punten en ophopingspunten.}
 \label{sec:randp-geis-punt}
 
+\begin{de}
+  De \term{rand} $\partial A$ van een deelverzameling $A$ van $\mathbb{R}$ definieren we als volgt:
+  \[ \partial A = \bar{A} \setminus \mathring{A} \]
+\end{de}
 
+\begin{de}
+  Een \term{randpunt} van een deelverzameling $A$ van $\mathbb{R}$ is een element van de rand $\partial A$ van $A$.
+\end{de}
+
+\begin{st}
+  Een punt $x\in \mathbb{R}$ is een randpunt van een deelverzameling $A$ van $\mathbb{R}$ als en slechts het volgende geldt:
+  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \cap A \neq \emptyset\ \wedge\  ]x-\delta,x+\delta[ \cap A^{c} \neq \emptyset \]
+\TODO{bewijs: oefening}
+\end{st}
+
+\begin{de}
+  Zij $A$ een niet-lege deelverzameling van $\mathbb{R}$, dan noemen we een punt $x\in A$ een \term{ge\"isoleerd punt} van $A$ als het volgende geldt:
+  \[ \exists \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \cap A = \{ x \} \]
+\end{de}
+
+\begin{de}
+  Zij $A$ een niet-lege deelverzameling van $\mathbb{R}$, dan noemen we een punt $x\in A$ een \term{ophopingspunt} of \term{accumulatiepunt} van $A$ als het volgende geldt:
+  \[ ]x-\delta,x+\delta[ \cap (A \setminus \{x\}) \neq \emptyset \]
+\end{de}
+
+\begin{st}
+  Een punt $x$ in een niet-lege deelverzameling $A$ van $\mathbb{R}$, dan is $x$ ofwel een ge\"isoleerd punt, ofwel een ophopingspunt.
+\TODO{verifieer}
+\extra{bewijs}
+\end{st}
+
+\begin{pr}
+  Zij $A$ een niet een niet-lege deelverzameling van $\mathbb{R}$, dan zijn volgende uitspraken equivalent.
+  \begin{enumerate}
+  \item $x$ is een ophopingspunt van $A$.
+  \item Voor alle $\delta > 0$ bevat $]x-\delta,x+\delta[ \cap A$ oneindig veel punten.
+  \item Er bestaat een rij $(x_{n})_{n}$ in $A\setminus \{x\}$ die naar $x$ convergeert.  
+  \end{enumerate}
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{st}
+  De \term{stelling van Bolzano-Weierstra\ss} (ophopingspuntversie).
+  Elk oneindig begrensd deel van $\mathbb{R}$ heeft minstens \'e\'en ophopingspunt.
+\TODO{bewijs p 76}
+\end{st}
+
+\subsection{Relatieve topologie}
+\label{sec:relatieve-topologie}
+
+\begin{de}
+  We noemen een deelverzameling $A$ van $X\subseteq \mathbb{R}$ \term{relatief open} in $X$ als het volgende geldt:
+  \[ \forall x\in A:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall y\in X:\ |y-x| < \delta \Rightarrow y \in A \]
+\end{de}
+
+\begin{de}
+  We noemen een deelverzameling $A$ van $X\subseteq \mathbb{R}$ \term{relatief gesloten} in $X$ als het relatief complement $X\setminus B$ van $B$ relatief open is in $X$.
+\end{de}
+
+\begin{st}
+  Een  deelverzameling $A$ van $X\subseteq \mathbb{R}$  is relatief open in $X$ als en slechts als het volgende geldt:
+  \[ \forall x\in A:\ \exists \delta\in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \subseteq X \]
+\TODO{bewijs}
+\end{st}
+
+\begin{pr}
+  Zij $X$ een niet-leeg deel van $\mathbb{R}$ en $A \subseteq X$.
+  \begin{itemize}
+  \item $A$ is relatief open in $X$ als en slechts als er een open $V\subseteq \mathbb{R}$ bestaat zodat $A=V \cap X$ geldt.
+  \item $A$ is relatief gesloten in $X$ als en slechs als er een gesloten $F \subseteq \mathbb{R}$ bestaat zodat $A=F \cap X$ geldt.
+  \end{itemize}
+
+\TODO{bewijs p 77}
+\end{pr}
 
 \end{document}
