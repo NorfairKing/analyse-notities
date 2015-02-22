@@ -781,4 +781,246 @@
 \TODO{bewijs p 77}
 \end{pr}
 
+\section{De complexe getallen}
+\label{sec:de-complexe-getallen}
+
+\subsection{Het veld van de complexe getallen}
+\label{sec:het-veld-van}
+
+
+
+\begin{de}
+  De verzameling $\mathbb{C}$ van \term{complexe getallen} defini\"eren we als volgt, samen met de optelling $(+)$ en vermenigvuldiging $(\cdot)$.
+  \[ \mathbb{C} = \mathbb{R}^{2} = \{ (a,b) \mid a,b\in \mathbb{R} \} \]
+  \[ (+):\ \mathbb{C}^{2} \rightarrow \mathbb{C}:\ (a,b) + (c,d) = (a+c,b+d) \]
+  \[ (\cdot):\ \mathbb{C}^{2} \rightarrow \mathbb{C}:\ (a,b) \cdot (c,d) = (ac-bd, ad+bc) \]
+\end{de}
+
+\begin{st}
+  $\mathbb{C},+,\cdot$ is een veld.
+\TODO{bewijs p 81}
+\end{st}
+
+\begin{pr}
+  We kunnen $\mathbb{R}$ inbedden in $\mathbb{C}$ met de volgende injectieve afbeelding:
+  \[ \phi:\ \mathbb{R} \rightarrow \mathbb{C}:\ a \mapsto (a,0) \]
+  Deze afbeelding is bovendien een ringmorfisme:
+  \[ \forall a,b \in \mathbb{R}:\ \phi(a+b) = \phi(a) + \phi(b) \]
+  \[ \forall a,b \in \mathbb{R}:\ \phi(ab) = \phi(a)\phi(b) \] 
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{de}
+  We noteren een element $(a,b)$ van $\mathbb{C}$ vaak als $a+bi$.
+  We noemen dit de \term{carthesiaanse vorm van een complex getal}.
+\end{de}
+
+\begin{opm}
+  Deze notatie komt van pas om rekenregels binnen $\mathbb{C}$ eenvoudig te houden als we $i^{2}=1$ als regel in het achterhoofd houden. 
+\extra{bewijs!}
+\end{opm}
+
+\begin{de}
+  We noemen in een element $a+bi$ van $\mathbb{C}$ $a$ het \term{re\"eel} deel en $b$ het \term{imaginair} deel.
+  We voeren daarom twee afbeeldingen in:
+  \[ Re:\ \mathbb{C} \rightarrow \mathbb{R}:\ (a+bi) \mapsto a \]
+  \[ Im:\ \mathbb{C} \rightarrow \mathbb{R}:\ (a+bi) \mapsto b \]
+\end{de}
+
+\begin{st}
+  De \term{hoofdstelling van de algebra}\\
+  $\mathbb{C}$ is algebra\"isch gesloten: Een $n$-de graadsveelterm over $\mathbb{C}$ heeft precies $n$ wortels in $\mathbb{C}$.
+\zb
+\end{st}
+
+\begin{pr}
+  Er bestaat geen orde op $\mathbb{C}$ die van $\mathbb{C},+,\cdot$ een totaal geordend veld maakt.
+\TODO{bewijs p 84}
+\end{pr}
+
+\begin{de}
+  Het \term{complex toegevoegde} $\overline{a+bi}$ van een complex getal $a+bi$ definieren we als volgt:
+  \[ \overline{a+bi} = a-bi \]
+  \[ \overline{\, \cdot\ }:\ \mathbb{C} \rightarrow \mathbb{C}:\ a+bi \mapsto \overline{a+bi} = a-bi \]
+\end{de}
+
+\begin{de}
+  De \term{modulus} $|a+bi|$ van een complex getal $a+bi$ definieren we als volgt:
+  \[ |a+bi| = \sqrt{a^{2}+b^{2}} \]
+  \[ |\cdot|:\ \mathbb{C} \rightarrow \mathbb{R}:\ a+bi \mapsto |a+bi| = \sqrt{a^{2}+b^{2}} \]
+\end{de}
+
+\begin{ei}
+  De modulus van een complex getal is de tegenhanger van de absolute waarde van een re\"eel getal.
+  \[ \forall a \in \mathbb{R}:\ |a| = |\phi(a)| \]
+\extra{bewijs}
+\end{ei}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ \bar{\bar{z}} = z \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ \overline{z_{1}+z_{2}} = \overline{z_{1}} + \overline{z_{2}} \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ \overline{z_{1}z_{2}} = \overline{z_{1}}  \overline{z_{2}} \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ Re(z) = \frac{z+\bar{z}}{2} \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ Im(z) = \frac{z-\bar{z}}{2i} \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ |\bar{z}| = |z| \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ |Re(z)| \le |z| \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ |Im(z)| \le |z|\]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ \bar{z}z\in \mathbb{R} \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ |z| = \sqrt{\bar{z}z} \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ \forall z \in \mathbb{C}_{0}: \frac{1}{z} = \frac{\bar{z}}{|z|^{2}} \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ |z_{1}z_{2}| = |z_{1}||z_{2}| \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ |z_{1}+z_{2}| \le |z_{1}|+|z_{2}| \]
+\TODO{bewijs p 85}
+\end{pr}
+
+\begin{pr}
+  \[ \forall x,y,z\in \mathbb{C}:\ |x-z| \le |x-y| + |y-z| \]
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ ||z_{1}|-|z_{2}|| \le |z_{1}-z_{2}| \]
+\extra{bewijs}
+\end{pr}
+
+\begin{de}
+  Zij $z = a+bi$ de carthesiaanse co\"ordinaten van een complex getal, dan definieren we de \term{poolcoordinaten} van dat getal als $(r,\theta)$:
+  \[ a = r \cos \theta \text{ en } b = r\sin \theta \]
+  \[ z = r(\cos \theta + i \sin \theta)  \]
+\end{de}
+
+\begin{st}
+  De \term{formule van de Moivre}\\
+  \[ \forall z = r(\cos \theta + i \sin \theta) \in \mathbb{C}, n\in \mathbb{Z}:\ (r(\cos \theta + i \sin \theta))^{n} = r^{n}(\cos n\theta + i \sin n\theta)\]
+\TODO{bewijs p 88}
+\end{st}
+
+\TODO{eenheidswortels definieren?}
+
+
+\subsection{Rijen in $\mathbb{C}$}
+\label{sec:rijen-mathbbc}
+
+\begin{de}
+  We zeggen dat een rij $(x_{n})_{n}$ in $\mathbb{C}$ \term{convergeert} naar een element $c\in \mathbb{C}$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |z_{n}-c| < \epsilon \]
+  We noemen $c$ de \term{limiet} van de rij $(x_{n})_{n}$.
+  \[ \lim_{n\rightarrow +\infty}z_{n} = c \]
+\end{de}
+
+\begin{de}
+  Een rij die convergeert noemen we een \term{convergente}.
+\end{de}
+
+\begin{pr}
+  Zij $(z_{n})_{n}$ een rij in $\mathbb{C}$.
+  Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
+  Noem bovendien $a=Re(c)$ en $b=Im(c)$.
+  $(z_{n})_{n}$ convergeert naar $c$ als en slechts als $(x_{n})_{n}$ naar $a$ en $(y_{n})_{n}$ naar $b$ convergeert.
+\TODO{bewijs p 91}
+\end{pr}
+
+\begin{st}
+  De \term{stelling van Bolzano-Weierstra\ss} voor complexe rijen\\
+  Elke begrensde rij in $\mathbb{C}$ heeft een convergente deelrij.
+  \TODO{bewijs p 92}
+\end{st}
+
+\begin{de}
+  We noemen een rij $(z_{n})_{n}$ in $\mathbb{C}$ een \term{Cauchyrij} als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n,m\in \mathbb{N}_{0}: n,m\ge n_{0} \Rightarrow |z_{n}-z_{m}| < \epsilon \]
+\end{de}
+
+\begin{pr}
+  Zij $(z_{n})_{n}$ een rij in $\mathbb{C}$.
+  Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
+  $(z_{n})_{n}$ is een Cauchyrij als en slechts als $(x_{n})_{n}$ en $(y_{n})_{n}$ Cauchyrijen zijn.
+  \TODO{bewijs: oefening p 93}
+\end{pr}
+
+\begin{st}
+  Een rij $(z_{n})_{n}$ in $\mathbb{C}$ is convergent als en slechts als het een Cauchyrij is.
+  \TODO{bewijs p 93}
+\end{st}
+
+\subsection{Topologie in $\mathbb{C}$}
+\label{sec:topologie-mathbbc}
+
+\begin{de}
+  We noemen een deelverzameling $A$ van $\mathbb{C}$ \term{open} als en slechts als het volgende geldt:
+  \[ \forall x\in A:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall y\in \mathbb{C}:\ |y-x| < \delta \Rightarrow y \in A \]
+\end{de}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
