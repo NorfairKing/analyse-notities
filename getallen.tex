@@ -26,31 +26,34 @@
   \[ \mathbb{Q} = \{ \nicefrac{n}{m} \mid n\in \mathbb{Z}, m\in \mathbb{Z}, m \neq 0 \} \]
 \end{de}
 
-\begin{opm}
-  In feite is $\mathbb{Q}$ het breukenveld van het integriteitsdomein $\mathbb{N}$, maar daar komen we later nog op terug.   
-\end{opm}
+%\begin{opm}
+%  In feite is $\mathbb{Q}$ het breukenveld van het integriteitsdomein $\mathbb{N}$, maar daar komen we later nog op terug.   
+%\end{opm}
 
 \begin{de}
   Een \term{veld} $\mathbb{F},+,\cdot$ is een verzameling $\mathbb{F}$ met twee bewerkingen $+$ en $\cdot$ met de volgende eigenschappen.
   \begin{itemize}
-  \item $+$ is associatief.
-  \item Er bestaat een (uniek) neutraal element $0$ voor $+$.
-  \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$.
-  \item $+$ is commutatief.
-  \item $\cdot$ is associatief.
-  \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$.
-  \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$.
-  \item $\cdot$ is commutatief.
-  \item $\cdot$ is distributief ten opzichte van $+$.
+  \item $+$ is associatief:
+    \[ \forall f,g,h \in \mathbb{F}:\ (f+g)+h = f+(g+h) \]
+  \item Er bestaat een (uniek) neutraal element $0$ voor $+$:
+    \[ \forall f\in \mathbb{F}:\ f + 0 = f = 0 + f \]
+  \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$:
+    \[ \forall f\in \mathbb{F}: \exists (-f) \in \mathbb{F}: \ f + (-f) = 0 = (-f) + f \]
+  \item $+$ is commutatief:
+    \[ \forall f,g \in \mathbb{F}:\ f+g = g+f \]
+  \item $\cdot$ is associatief:
+    \[ \forall f,g,h \in \mathbb{F}:\ (f\cdot g) \cdot h = f\cdot (g\cdot h) \]
+  \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$:
+    \[ \forall f\in \mathbb{F}:\ f \cdot 1 = f = 1 \cdot f \]
+  \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$:
+    \[ \forall f\in \mathbb{F}: \exists f^{-1} \in \mathbb{F}: \ f \cdot f^{-1} = 0 = f^{-1} \cdot f \]
+  \item $\cdot$ is commutatief:
+    \[ \forall f,g \in \mathbb{F}:\ f\cdot g = g \cdot f \]
+  \item $\cdot$ is distributief ten opzichte van $+$:
+    \[ \forall f,g,h \in \mathbb{F}:\ f \cdot (g+h) = (f \cdot g) + (f \cdot h) \]
   \end{itemize}
 \end{de}
 
-\begin{opm}
-  Deze definitie van een veld is een samenraapsel van een hele boel concepten die pas later aan bod komen.
-  We gaan daarom momenteel niet in op de meer rigoreuze benamingen en bewijzen ivm de definierende eigenschappen van velden.
-\end{opm}
-\extra{een veld goed uitwerken zonder andere algebra te gebruiken.}
-                                 mw
 \begin{de}
   Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we het een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
   \begin{itemize}
@@ -58,12 +61,125 @@
   \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
   \end{itemize}
 \end{de}
-\extra{definieer een orderelatie en totale orderelatie.}
 
 \begin{pr}
   $\mathbb{Q}$ is een totaal geordend veld.
 
-\extra{bewijs}
+  \begin{proof}
+    We bewijzen elk deel appart.
+    \begin{itemize}
+    \item $\mathbb{Q}$ is een veld.
+      \begin{itemize}
+      \item $+$ is associatief:
+        \[ 
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\
+          &\left(\frac{f_{t}}{f_{n}} + \frac{g_{t}}{g_{n}}\right) + \frac{h_{t}}{h_{n}}
+          &= \frac{f_{t}g_{n} + g_{t}f_{n}}{f_{n}g_{n}} + \frac{h_{t}}{h_{n}}\\
+          &&= \frac{f_{t}g_{n}h_{n} + g_{t}f_{n}h_{n} + h_{t}f_{n}g_{n}}{f_{n}g_{n}h_{n}}\\
+          &&=  \frac{f_{t}}{f_{n}} + \frac{g_{t}h_{n} + h_{t}g_{n}}{g_{n}h_{n}}\\
+          &&= \frac{f_{t}}{f_{n}} + \left(\frac{g_{t}}{g_{n}} + \frac{h_{t}}{h_{n}}\right)\\
+        \end{array}
+        \]
+        We gebruiken hier dat $+$ en $\cdot$ associatief en commutatief zijn in $\mathbb{Z}$
+      \item Er bestaat een (uniek) neutraal element $0$ voor $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}:\
+          &\frac{f_{t}}{f_{n}} + \frac{0}{1}
+          &= \frac{f_{t} + 0}{1}\\
+          &&= \frac{f_{t}}{f_{n}}\\
+          &&= \frac{0 + f_{t}}{1}\\
+          &&= 0 +  \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $0$ het neutraal element is voor $+$ in $\mathbb{Z}$.
+      \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}: \exists (-f) = \frac{-f_{t}}{f_{n}} \in \mathbb{F}: \ 
+          &\frac{f_{t}}{f_{n}} + \frac{-f_{t}}{f_{n}}
+          &= \frac{f_{t}f_{n} + (-f_{t}f_{n})}{f_{n}^{2}}\\
+          &&= \frac{0}{f_{n}^{2}}\\
+          &&= 0 \\
+          &&= \frac{0}{f_{n}^{2}}\\
+          &&= \frac{-f_{t}f_{n} + f_{t}f_{n}}{f_{n}^{2}}\\
+          &&= \frac{-f_{t}}{f_{n}} + \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $-x$ het invers element is van $x$ voor $+$ in $\mathbb{Z}$. 
+      \item $+$ is commutatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}} \in \mathbb{Q}:\
+        \frac{f_{t}}{f_{n}} + \frac{g_{t}}{g_{n}}
+        = \frac{f_{t}g_{n}+g_{t}f_{n}}{f_{n}g_{n}}\\ 
+        = \frac{g_{t}}{g_{n}} + \frac{f_{t}}{f_{n}}\\
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is en $+$ associatief in $\mathbb{Z}$.
+      \item $\cdot$ is associatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\
+        \left(\frac{f_{t}}{f_{n}} \cdot \frac{g_{t}}{g_{n}}\right) \cdot \frac{h_{t}}{h_{n}}
+        =\frac{f_{t}g_{t}}{f_{n}g_{n}} \cdot \frac{h_{t}}{h_{n}}
+        =\frac{f_{t}g_{t}h_{t}}{f_{n}g_{n}h_{n}}
+        =\frac{f_{t}}{f_{n}} \cdot \frac{g_{t}h_{t}}{g_{n}h_{n}}
+        \]
+       We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}:\
+          &\frac{f_{t}}{f_{n}} \cdot \frac{1}{1}
+          &= \frac{f_{t}\cdot 1}{1 \cdot 1}\\
+          &&= \frac{f_{t}}{f_{n}}\\
+          &&= \frac{1\cdot f_{t}}{1 \cdot 1}\\
+          &&= 1 \cdot \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $1$ het neutraal element is voor $\cdot$ in $\mathbb{Z}$.
+      \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$:
+        \[
+        \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}: \exists \frac{f_{t}}{f_{n}}^{-1} = \frac{f_{n}}{f_{t}} \in \mathbb{F}: \
+        = \frac{f_{t}}{f_{n}}\frac{f_{n}}{f_{t}}
+        = \frac{f_{t}f_{n}}{f_{t}f_{n}}
+        = 1
+        = \frac{f_{n}f_{t}}{f_{t}f_{n}}
+        = \frac{f_{n}}{f_{t}}\frac{f_{t}}{f_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item $\cdot$ is commutatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}} \in \mathbb{Q}:\
+        \frac{f_{t}}{f_{n}} \cdot \frac{g_{t}}{g_{n}}
+        = \frac{f_{t}g_{t}}{f_{n}g_{n}}
+        = \frac{g_{t}}{g_{n}} \cdot \frac{f_{t}}{f_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item $\cdot$ is distributief ten opzichte van $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\ 
+          &\frac{f_{t}}{f_{n}} \cdot \left(\frac{g_{t}}{g_{n}} + \frac{h_{t}}{h_{n}} \right)
+          &= \frac{f_{t}}{f_{n}} \cdot \frac{g_{t}h_{n}+h_{t}g_{n}}{g_{n}h_{n}}\\
+          &&= \frac{f_{t}\cdot (g_{t}h_{n}+h_{t}g_{n})}{f_{n}g_{n}h_{n}}\\
+          &&= \frac{(f_{t} \cdot g_{t}h_{n}) + (f_{t}\cdot h_{t}g_{n})}{f_{n}g_{n}h_{n}}\\
+          &&= \frac{f_{t}g_{t}}{f_{n}g_{n}} + \frac{f_{t}h_{t}}{f_{n}h_{n}}\\
+        \end{array}
+        \]
+      \end{itemize}
+    \item $\mathbb{Q}$ is totaal geordend veld.
+      \begin{itemize}
+      \item
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\ 
+        \frac{f_{t}}{f_{n}} \le \frac{g_{t}}{g_{n}}
+        \Rightarrow
+        \frac{f_{t}}{f_{n}}+\frac{h_{t}}{h_{n}} \le \frac{g_{t}}{g_{n}}+\frac{h_{t}}{h_{n}}
+        \]
+      \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
@@ -81,8 +197,6 @@
   \extra{splitsen in meerdere proposities?}
 \extra{bewijs p 5}
 \end{pr}
-
-\TODO{definieer naar boven en naar onder begrensde verzamelingen.}
 
 \begin{st}
   $\sqrt{2}$ is geen element van $\mathbb{Q}$.
@@ -123,13 +237,29 @@
   \item $\forall p,q \in \mathbb{Q}: p \le_{\mathbb{Q}} q \Rightarrow i(p) \le_{\mathbb{R}} i(q)$
   \end{itemize}
   Bovendien is deze afbeelding injectief.
-\TODO{bewijs p 10}
+
+  \TODO{bewijs p 10}
+  %\begin{proof}
+   % \begin{itemize}
+   % \item Uniciteit
+   % \item Bestaan
+      
+   % \end{itemize}
+  %\end{proof}
 \end{pr}
 
 \begin{lem}
   Het \term{lemma van Archimedes}\\
   Voor elke $r\in \mathbb{R}$ bestaat er een $n\in \mathbb{N}$ zodat $x < n$ geldt.
-\TODO{bewijs p 11}
+
+  \begin{proof}
+    Bewijs uit het ongerijmde\\
+    Stel dat er een $x\in \mathbb{R}$ zou bestaan zodat $\forall n \in \mathbb{N}:\ x \ge n$ geldt, dan zou $\mathbb{N}$ naar boven begrensd zijn door die $x$.
+    Noem $s$ dan het supremum van $\mathbb{N}$, dat bestaat immers zeker.\needed
+    Omdat $s$ de kleinste bovengrens is van $\mathbb{N}$ is $s-1$ zeker geen bovengrens.
+    We kunnen dus een $k\in \mathbb{N}$ vinden zodat $s-1$ kleiner is dan $k$.
+    $s$ is dan echter kleiner dan $k+1$ en dus geen bovengrens.
+  \end{proof}
 \end{lem}
 
 \begin{gev}
