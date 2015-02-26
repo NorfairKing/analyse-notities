@@ -176,25 +176,59 @@
         \Rightarrow
         \frac{f_{t}}{f_{n}}+\frac{h_{t}}{h_{n}} \le \frac{g_{t}}{g_{n}}+\frac{h_{t}}{h_{n}}
         \]
+\extra{vanuit welke axioma's bewijzen we dit?}
       \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
+\extra{vanuit welke axioma's bewijzen we dit?}
       \end{itemize}
     \end{itemize}
   \end{proof}
 \end{pr}
 
 \begin{pr}
-  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld, dan geldt voor alle $a,b,c,d \in \mathbb{F}$ het volgende:
-  \begin{itemize}
-  \item $a\le b \wedge c \le d \Rightarrow (a+c) \le (b+d)$
-  \item $a \le b \Rightarrow -b \le -a$
-  \item $0 \le c \Leftrightarrow -c \le 0$.
-  \item $0 \le a \wedge 0 \le b \Rightarrow 0 \le ab$
-  \item $0 \le 1$
-  \item $0 \le a \wedge a \neq 0 \Rightarrow a^{-1} \neq 0 \wedge 0 \le a^{-1}$.
-  \item $a \neq 0 \wedge 0 \le a \wedge a \le b \Rightarrow b^{-1} \le a^{-1}$.
-  \end{itemize}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b,c,d \in \mathbb{F}:\ a\le b \wedge c \le d \Rightarrow (a+c) \le (b+d) \]
 
-  \extra{splitsen in meerdere proposities?}
+  \begin{proof}
+    Omdat $a\le b$ geldt geldt ook $a + c \le b+c$.
+    Bovendien geldt $c+b \le d+b$ omdat $c\le d$ geldt.
+    Omdat $+$ commutatief is in $\mathbb{F}$, geldt dan ook het volgende:
+    \[ a+c \le b+c \le b+d\]
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b\in \mathbb{F}:\ a \le b \Rightarrow -b \le -a \]
+  \extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a \in \mathbb{F}:\ 0 \le a \Leftrightarrow -a \le 0 \]
+  \extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b \in \mathbb{F}:\ 0 \le a \wedge 0 \le b \Rightarrow 0 \le ab \]
+  \extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ 0 \le 1\]
+  \extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a \in \mathbb{F}_{0}:\ 0 \le a \Rightarrow 0 \le a^{-1}\]
+  \extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a \in \mathbb{F}_{0}^{+}:\  a \le b \Rightarrow b^{-1} \le a^{-1}\]
 \extra{bewijs p 5}
 \end{pr}
 
