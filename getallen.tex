@@ -185,10 +185,12 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:geordend-veld-optelling-ongelijkheden}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b,c,d \in \mathbb{F}:\ a\le b \wedge c \le d \Rightarrow (a+c) \le (b+d) \]
 
   \begin{proof}
+    We gebruiken enkel de eerste eigenschap in de definitie van een totaal geordend veld.
     Omdat $a\le b$ geldt geldt ook $a + c \le b+c$.
     Bovendien geldt $c+b \le d+b$ omdat $c\le d$ geldt.
     Omdat $+$ commutatief is in $\mathbb{F}$, geldt dan ook het volgende:
@@ -199,7 +201,15 @@
 \begin{pr}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b\in \mathbb{F}:\ a \le b \Rightarrow -b \le -a \]
-  \extra{bewijs}
+
+  \begin{proof}
+    Bewijs uit het ongerijmbde:
+    Stel $a \le b$ en $-b > -a$ (dus $-a \le b$).
+    Omdat $\mathbb{F}$ een totaal geordend veld is, volgt uit $-a \le -b$ zowel $a \le -b+2a$ en $-a+2b \le -b$.
+    Tel deze ongelijkheden op\prref{pr:geordend-veld-optelling-ongelijkheden} om $2b \le 2a$ te bekomen.
+    Uit $a\le b$ volgt echter dat $2a \le 2b$ geldt (tel immers $a\le b$ bij zichzelf op).
+    Contradictie.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
