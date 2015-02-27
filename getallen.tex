@@ -350,8 +350,9 @@
 
 
 \begin{lem}
+  \label{lem:lemma-van-archimedes}
   Het \term{lemma van Archimedes}\\
-  Voor elke $r\in \mathbb{R}$ bestaat er een $n\in \mathbb{N}$ zodat $x < n$ geldt.
+  Voor elke $x\in \mathbb{R}$ bestaat er een $n\in \mathbb{N}$ zodat $x < n$ geldt.
 
   \begin{proof}
     Bewijs uit het ongerijmde\\
@@ -365,7 +366,14 @@
 
 \begin{gev}
   $\forall a \in \mathbb{R}_{0}^{+},\ \forall b\in \mathbb{R}:\ \exists n\in N:\ na > b$
-\extra{bewijs}
+
+  \begin{proof}
+    Als $b$ kleiner is dan $a$ is de stelling evident met $n=1$.
+    Als $b$ groter is dan of gelijk aan $a$, ga dan als volgt te werk:
+    $a^{-1}$ is positief (want $a$ is positief)\prref{pr:geordend-veld-inverse-zelfde-teken}, uit $a \le b$ volgt dus $1 \le \frac{b}{a}$.
+    Kies dan een $n\in \mathbb{N}$ groter dan $\frac{b}{a}$, dit kan immers altijd.\lemref{lem:lemma-van-archimedes}
+    Vermenigvuldig tenslotte $\frac{b}{a} < n$ met $a$ om de stelling te bekomen.
+  \end{proof}
 \end{gev}
 
 \begin{gev}
@@ -439,7 +447,7 @@
 \end{st}
 
 
-\subsection{Absolute waard}
+\subsection{Absolute waarde}
 \label{sec:absolute-waarde}
 
 \begin{de}
