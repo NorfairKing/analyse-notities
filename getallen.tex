@@ -199,11 +199,12 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:geordend-veld-ongelijkheid-maal-min-een}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b\in \mathbb{F}:\ a \le b \Rightarrow -b \le -a \]
 
   \begin{proof}
-    Bewijs uit het ongerijmbde:
+    Bewijs uit het ongerijmbde\\
     Stel $a \le b$ en $-b > -a$ (dus $-a \le b$).
     Omdat $\mathbb{F}$ een totaal geordend veld is, volgt uit $-a \le -b$ zowel $a \le -b+2a$ en $-a+2b \le -b$.
     Tel deze ongelijkheden op\prref{pr:geordend-veld-optelling-ongelijkheden} om $2b \le 2a$ te bekomen.
@@ -214,32 +215,56 @@
 
 \begin{pr}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
-  \[ \forall a \in \mathbb{F}:\ 0 \le a \Leftrightarrow -a \le 0 \]
-  \extra{bewijs}
+  \[ \forall b \in \mathbb{F}:\ 0 \le b \Leftrightarrow -a \le 0 \]
+
+  \begin{proof}
+    Gebruik in propositie \ref{pr:geordend-veld-ongelijkheid-maal-min-een} $a=0$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b \in \mathbb{F}:\ 0 \le a \wedge 0 \le b \Rightarrow 0 \le ab \]
-  \extra{bewijs}
+
+  \begin{proof}
+    Omdat $\mathbb{F}$ een geordend veld is, volgt uit $0\le a$ dat $0b \le ab$ geldt vanwege $0 \le b$.
+    Omdat $0$ het nulelement is van $\mathbb{F}$ geldt $0b = 0$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
+  \label{pr:nul-kleiner-dan-een}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
-  \[ 0 \le 1\]
-  \extra{bewijs}
+  \[ 0 < 1 \]
+
+  \begin{proof}
+    Bewijs uit het ongerijmde\\
+    Stel dat $1 \le 0$ geldt, dan moet $1<0$ gelden omdat in een veld $1$ verschilt van $0$.
+    Tel hierbij $-1$ op, dan bekomen we $0 \le -1$.
+    Vanwege de tweede definierende eigenschap van een totaal geordend veld moet dan uit $1 \le 0$ ook $-1 \le 0$ volgen, maar dat is in strijd met $0 \le -1$ omdat $0$ verschilt van $1$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
+  \label{pr:geordend-veld-inverse-zelfde-teken}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a \in \mathbb{F}_{0}:\ 0 \le a \Rightarrow 0 \le a^{-1}\]
-  \extra{bewijs}
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel $0 \le a$ maar ook $a^{-1} < 0$ geldt.
+    We mogen die tweede ongelijkheid dan vermenigvuldigen met $a$ om $aa^{-1}< 0$ te bekomen.
+    Dit zou $1<0$ betekenen en dat is in contradictie met propositie \ref{pr:nul-kleiner-dan-een}.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
-  \[ \forall a \in \mathbb{F}_{0}^{+}:\  a \le b \Rightarrow b^{-1} \le a^{-1}\]
-\extra{bewijs p 5}
+  \[ \forall a,b \in \mathbb{F}_{0}^{+}:\  a \le b \Rightarrow b^{-1} \le a^{-1}\]
+
+  \begin{proof}
+    Omdat zowel $0 \le a$ en $0 \le b$ geld, mogen we $a\le b$ vermenigvuldigen met $a^{-1}$ en $b^{-1}$\prref{pr:geordend-veld-inverse-zelfde-teken} om $b^{-1} \le a^{-1}$ te bekomen.
+  \end{proof}
 \end{pr}
 
 \begin{st}
@@ -265,10 +290,12 @@
   \label{st:supremumeigenschap-R}
   De \term{supremumeigenschap}\\
   In $\mathbb{R}$ heeft elke niet-lege, naar boven begrensde deelverzameling een supremum.
+  \extra{bewijs verder rigoreuzer}
 \end{st}
 
 \begin{st}
   Er bestaat, op isomorfisme na, maar \'e\'en totaal geordend veld met de supremumeigenschap.
+  \extra{bewijs later}
 \end{st}
 
 \begin{pr}
@@ -282,15 +309,45 @@
   \end{itemize}
   Bovendien is deze afbeelding injectief.
 
-  \TODO{bewijs p 10}
-  %\begin{proof}
-   % \begin{itemize}
-   % \item Uniciteit
-   % \item Bestaan
-      
-   % \end{itemize}
-  %\end{proof}
+  \begin{proof}
+    \begin{itemize}
+    \item Uniciteit\\
+      We bewijzen dat er slechts \'e\'en $i$ kan bestaan, eerst over $\mathbb{N}$, dan over $\mathbb{Z}$ en tenslotte over $\mathbb{Q}$.
+      \begin{itemize}
+      \item Beschouw een $n\in \mathbb{N}$.
+        Er zijn dan twee gevallen:
+        \begin{itemize}
+        \item $n = 0_{\mathbb{O}}$:
+          Dan moet $i(n)$ $0_{\mathbb{R}}$ zijn vanwege de eerste eigenschap.
+        \item $n \neq 0$:
+          $n$ is dan als de som van $n$ $1_{\mathbb{Q}}$-tjes te schrijven:\needed
+          \[ n = n 1_{\mathbb{Q}} \]
+          Vanwege de derde eigenschap is $i(n)$ dan de som van $n$ $1_{\mathbb{R}}$-jes te schrijven.
+        \end{itemize}
+        Hierdoor ligt $i$ al vast op $\mathbb{N}$. \waarom
+      \item Beschouw vervolgens een getal $z\in \mathbb{Z}\setminus \mathbb{N}$.
+        Er bestaat dan een getal $n \in \mathbb{N}$ zodat $z$ het tegengestelde is van $n$: $z = -n$.\needed
+        De vierde eigenschap zegt ons dan het volgende:
+        \[ i(-n) = -i(n) \]
+        Hierdoor ligt $i$ al vast op $\mathbb{Z}$. \waarom
+      \item Beschouw tenslotte een $q\in \mathbb{Q}$, dan valt $q$ te schrijven als $\nicefrac{n}{m}$ met $n\in \mathbb{Z}$ en $m\in \mathbb{N}_{0}$.
+        Uit de derde eigenschap volgt dan dat het volgende moet gelden:
+        \[ i(q) = i(n)i(m)^{-1} \]
+        Dit vervolledigt de uniciteit van $i$.
+      \end{itemize}
+    \item Bestaan\\
+      Verdergaand op het bewijs van de uniciteit construeren we $i$ achtereenvolgens op $\mathbb{N}$, dan op $\mathbb{Z}$ en dan op $\mathbb{Q}$.
+      \extra{bewijzen dat $i$ door $+$ en $\cdot$ gaat}
+      \extra{bewijzen dat $i$ goed gedefinieerd is voor $\mathbb{Q}$ (onafhankelijk van de gekozen $m$ en $n$).}
+      \extra{bewijzen dat $i$ injectief en stijgend is}
+    \end{itemize}
+  \end{proof}
 \end{pr}
+
+\begin{opm}
+  Onder dit morfisme beschouwen we $\mathbb{Q}$ als een deelverzameling van $\mathbb{R}$.
+\end{opm}
+
 
 \begin{lem}
   Het \term{lemma van Archimedes}\\
