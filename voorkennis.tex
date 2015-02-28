@@ -107,7 +107,7 @@
 \section{Getallen}
 \label{sec:getallen}
 
-\TODO{definieer N,Z en Q}
+\TODO{Z en Q}
 
 \begin{de}
   De \term{natuurlijke getallen} zijn inductief gedefinieerd met de volgende axioma's.
@@ -118,5 +118,37 @@
   \item Als een verzameling $V$ $0$ bevat alsook de successor van elk getal in $V$, dan geldt $V=\mathbb{N}$.
   \end{itemize}
 \end{de}
+
+\begin{de}
+  De \term{optellling} is gedefinieerd als volgt:
+  \[ a + S(b) = s(a+b) \]
+\end{de}
+
+\begin{de}
+  De \term{vermenigvuldiging} is gedefinieerd als volgt:
+  \[ a \cdot S(b) = a+ s(a\cdot b) \]
+\end{de}
+
+\begin{de}
+  De \term{orde} in $\mathbb{N}$ is gedefinieerd als volgt:
+  \[ n \le S(m) \Leftrightarrow n = S(m) \vee n \le m \]
+\end{de}
+
+\begin{de}
+  De \term{natuurlijke getallen} kunnen ook concreet gedefineerd worden:
+  \[
+  \left\{
+  \begin{array}{rl}
+    0 &= \emptyset\\
+    s(n) &= n \cup \{ n \}\\
+  \end{array}
+  \right.
+  \]
+\end{de}
+
+\begin{st}
+  In deze concrete definitie kan de orde eenvoudiger beschreven worden:
+  \[ n \le m  \Leftrightarrow n \in m \]
+\end{st}
 
 \end{document}

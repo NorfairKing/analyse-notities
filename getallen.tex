@@ -8,15 +8,6 @@
 \label{sec:de-rati-getall}
 
 \begin{de}
-  De natuurlijke getallen, genoteerd als $\mathbb{N}$ zijn inductief gedefini\"eerd als volgt.
-  \begin{itemize}
-  \item $\mathbb{N}$ bevat een neutraal element $0$.
-  \item $\mathbb{N}$ bevat een eenheidselement $1$.
-  \item Voor elk aantal $n$ bevat $\mathbb{N}$ ook $0+1n$.
-  \end{itemize}
-\end{de}
-
-\begin{de}
   De \term{gehele getallen}, genoteerd als $\mathbb{Z}$.
   \[ \mathbb{Z} = \mathbb{N} \cup \{ -n \mid n\in \mathbb{N} \}  \]
 \end{de}
@@ -26,9 +17,6 @@
   \[ \mathbb{Q} = \{ \nicefrac{n}{m} \mid n\in \mathbb{Z}, m\in \mathbb{Z}, m \neq 0 \} \]
 \end{de}
 
-%\begin{opm}
-%  In feite is $\mathbb{Q}$ het breukenveld van het integriteitsdomein $\mathbb{N}$, maar daar komen we later nog op terug.   
-%\end{opm}
 
 \begin{de}
   Een \term{veld} $\mathbb{F},+,\cdot$ is een verzameling $\mathbb{F}$ met twee bewerkingen $+$ en $\cdot$ met de volgende eigenschappen.
@@ -55,6 +43,7 @@
 \end{de}
 
 \begin{de}
+  \label{de:totaal-geordend-veld}
   Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we het een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
   \begin{itemize}
   \item $\forall x,y,z \in \mathbb{F}:\ x \le y \Rightarrow (x+z) \le (y+z)$
@@ -223,6 +212,7 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:geordend-veld-ongelijkheid-vermenigvuldiging}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b \in \mathbb{F}:\ 0 \le a \wedge 0 \le b \Rightarrow 0 \le ab \]
 
@@ -259,6 +249,7 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b \in \mathbb{F}_{0}^{+}:\  a \le b \Rightarrow b^{-1} \le a^{-1}\]
 
@@ -372,33 +363,105 @@
     Als $b$ groter is dan of gelijk aan $a$, ga dan als volgt te werk:
     $a^{-1}$ is positief (want $a$ is positief)\prref{pr:geordend-veld-inverse-zelfde-teken}, uit $a \le b$ volgt dus $1 \le \frac{b}{a}$.
     Kies dan een $n\in \mathbb{N}$ groter dan $\frac{b}{a}$, dit kan immers altijd.\lemref{lem:lemma-van-archimedes}
-    Vermenigvuldig tenslotte $\frac{b}{a} < n$ met $a$ om de stelling te bekomen.
+    Vermenigvuldig tenslotte $\frac{b}{a} < n$ met $a$ om de stelling te bekomen.\deref{de:geordend-veld}
   \end{proof}
 \end{gev}
 
 \begin{gev}
-  $\forall \epsilon \in \mathbb{R}_{0}^{+},\ \exists n\in N:\ \frac{1}{n} < \epsilon$
-\extra{bewijs}
+  \label{gev:er-bestaat-alijd-iets-rationaal-kleiner}
+  $\forall \epsilon \in \mathbb{R}_{0}^{+},\ \exists n\in \mathbb{N}_{0}:\ \frac{1}{n} < \epsilon$
+
+  \begin{proof}
+    Gegeven een $\epsilon \in \mathbb{R}_{0}^{+}$, bestaat er een $n \in \mathbb{N}$ groter dan $\frac{1}{\epsilon}$. \lemref{lem:lemma-van-archimedes}
+    Voor deze $n$ geldt $\frac{1}{n} < \epsilon$. \prref{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
+  \end{proof}
 \end{gev}
 
 \begin{gev}
+  \label{gev:z-omsluit-elk-r}
   $\forall x\in \mathbb{R}:\ \exists m \in \mathbb{Z}:\ m-1 \le x < m$
-\TODO{bewijs p 12}
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $x = 0$: triviaal, kies $m=1$.
+    \item $x > 0$\\
+      Noem $X$ de verzameling van natuurlijke getallen groter dan $x$.
+      $X$ is zeker niet leeg.\lemref{lem:lemma-van-archimedes}
+      Kies nu voor $m$ het minimum van $X$.(Dat bestaat zeker.) \waarom
+      Omdat $m$ het kleinste element is van $X$ is $(m-1)$ geen element van $X$.
+    \item $x < 0$\\
+      Vindt zoals hierboven beschreven de $m$ zodat $m-1 \le -x < m$ geldt.
+      Voor $x$ $-m+1$ dan het gezochte getal.\waarom
+    \end{itemize}
+  \end{proof}
 \end{gev}
 
 \begin{pr}
   $\forall x,y \in \mathbb{R}: (x<y \Rightarrow \exists q\in \mathbb{Q}:\ x<q<y$
-\TODO{bewijs p 12}
+
+  \begin{proof}
+    Kies twee elementen $x$ en $y$ in $\mathbb{R}$ met $x<y$, dan kunnen we een $n\in \mathbb{N}_{0}$ nemen zodat $\frac{1}{n}< (y-x)$ geldt.\gevref{gev:er-bestaat-alijd-iets-rationaal-kleiner}
+    Tel bij beide kanten van de ongelijkheid $x$ op om $x<\left(x+\frac{1}{n}\right)<y$ te krijgen.\deref{de:totaal-geordend-veld}
+    Neem nu een $m\in \mathbb{Z}$ zodat $m-1<nx<m$ geldt.\gevref{gev:z-omsluit-elk-r}
+    Vermenigvuldig de rechtse ongelijkheid met $n^{-1}$ om $x< \frac{m}{n}$ te bekomen.\prref{pr:geordend-veld-ongelijkheid-vermenigvuldiging}\prref{pr:geordend-veld-inverse-zelfde-teken}
+    Tel bovendien bij de linkse ongelijkheid $1$ op om $m \le nx+1$ te bekomen.\deref{de:totaal-geordend-veld}
+    Zet de laatste twee resultaten om $x < \frac{m}{n} < y$ te bekomen.
+    Deze $\frac{m}{n}$ is dan de gezochte $q$.
+  \end{proof}
 \end{pr}
 
 \begin{opm}
   We zeggen dat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.
 \end{opm}
 
-
 \begin{st}
-  $\forall x\in \mathbb{R}^{+},\ \forall n\in \mathbb{N}:\ (n\ge 2 \Rightarrow \exists!\ y\in \mathbb{R}^{+}:\ y^{n}=x)$
-\TODO{bewijs p 13} 
+  \[ \forall x\in \mathbb{R}^{+},\ \forall n\in \mathbb{N}:\ (n\ge 2 \Rightarrow \exists!\ y\in \mathbb{R}^{+}:\ y^{n}=x) \]
+  
+  \begin{proof}
+    Voor $x=0$ is de stelling triviaal met $y=0$.
+    Beschouw daarom $x>0$.
+    \begin{itemize}
+    \item Bestaan\\
+      Beschouw de verzameling $A$:
+      \[ A = \{ a\in \mathbb{R}^{+}\mid a^{n}<x \} \]
+      \begin{itemize}
+      \item $A$ is niet leeg:\\
+        Beschouw $a=\frac{x}{x+1}$, dan geldt $a^{n} < a$ omdat $a \le 1$ geldt (want $x+1$ is groter dan $x$).
+        $a$ is bovendien kleiner dan $x$ (want $x+1$ is groter dan $1$, $x$ is immers positief).
+        $a$ behoort dus tot $A$.
+      \item $A$ is naar boven begrensd:\\
+        We beweren dat $x+1$ een bovengrens is voor $A$.
+        Neem daartoe een $a\in A$.
+        Als $x+1$ immers kleiner zijn dan $A$, zou $x$ kleiner zijn dan $a^{n}$, en dat is een tegenspraak.
+        \[ 
+        \begin{array}{c}
+          x+1 < a\\
+          (x+1)^{n} < a^{n}\\
+          x < x+1 \le (x+1)^{n} < a^{n}\\
+        \end{array}
+        \]
+      \item $y = sup A$ zodat $y^{n}=x$:\\
+        We maken een gevalsonderscheid om de tegenstelling tegen te spreken:
+        \begin{itemize}
+        \item $y^{n}<n$\\
+          Moest dit gelden, dan zou er een $h\in \mathbb{R}_{0}^{+}$ bestaan zodat $(y+h)^{n}<x$ geldt (zie hierna), maar dat zou betekenen dat $y+h$ ook in $A$ zou zitten en dat kan niet omdat $y$ een bovengrens is.
+          \[ (y+h)^{n}-y^{n} = h\left( \sum^{n-1}_{i=0}(y+h)^{n-1-i}y^{i}\right) \]
+          Als $h$ kleiner is dan $1$ is het rechterlid kleiner dan $nh(y+1)^{n-1}$.\waarom
+          Als $h$ kleiner is dan $\min\left\{ 1,\frac{x-y}{h(y+1)^{n-1}}\right\}$ is dit kleiner dan $x-y^{n}$\waarom.
+          Hieruit volgt tenslotte $(y+h)^{n}<x$.
+        \item $y^{n}>k$\\
+          Analoog vinden we een $h\in \mathbb{R}_{0}^{+}$ zodat $y-h>0$ en $(y-h)^{n}>x$ gelden.\question{hoe precies?}
+          Omdat $y-h$ hierdoor geen bovengrens is voor $A$\waarom, bestaat er dan een $a\in A$ groter dan $y-h$.
+          Daaruit volgt dan dat $x<a^{n}$ geldt en dat is opnieuw een tegenspraak.
+        \end{itemize}
+      \end{itemize}
+    \item Uniciteit\\
+      Uit het ongerijmde:
+      Stel dat er twee verschillende getallen $y$ en $y'$ bestonden met $y^{n}=x$ en $y'^{n}=x$, stel met $y<y'$, dan zou $y^{n}$ kleiner zijn dan $y'^{n}$ en dat is in tegenspraak met $y^{n}=x$:\waarom
+      \[ y^{n}-y'^{n} = (y-y')\left( \sum^{n-1}_{i=0}y^{n-1-i}y'^{i}\right) \]
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 \subsection{Intervallen in $\mathbb{R}$}
