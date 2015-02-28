@@ -203,6 +203,7 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:geordend-veld-tegengestelde-wisselt-teken}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall b \in \mathbb{F}:\ 0 \le b \Leftrightarrow -a \le 0 \]
 
@@ -468,8 +469,8 @@
 \label{sec:intervallen-in-R}
 
 \begin{de}
-  Een \term{interval} in een totaal geordende verzameling $F,\le$ is een niet-lege deelverzameling $I$ van $F$ waarvoor elk element van $\mathbb{R}$ dat tussen twee elementen in $I$ ligt, tot $I$ behoort.
-  \[ \forall x,y \in I,\ \forall z\in \mathbb{R}:\ x \le z \le y \Rightarrow z\in I \]
+  Een \term{interval} in een totaal geordende verzameling $F,\le$ is een niet-lege deelverzameling $I$ van $F$ waarvoor elk element van $F$ dat tussen twee elementen in $I$ ligt, tot $I$ behoort.
+  \[ \forall x,y \in I,\ \forall z\in F:\ x \le z \le y \Rightarrow z\in I \]
 \end{de}
 
 \subsubsection{Classificatie van intervallen}
@@ -520,35 +521,60 @@
   \left\{
     \begin{array}{cl}
       a &\text{ als } a\ge 0\\
-      a &\text{ als } a< 0\\
+      -a &\text{ als } a < 0\\
     \end{array}
   \right.
   \]
 \end{de}
 
 \begin{pr}
+  \label{pr:absolute-waarde-positief}
   $\forall a\in F: |a| \ge 0$
-\extra{bewijs}
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $a \ge 0$: $|a| = a \ge 0$
+    \item $a < 0$: $|a| = -a \ge 0$\prref{pr:geordend-veld-tegengestelde-wisselt-teken}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   $\forall a\in F: |a| = 0 \Leftrightarrow a = 0$
-\extra{bewijs}
+\question{hoe bewijzen we dit?}
 \end{pr}
 
 \begin{pr}
   $\forall a\in F: |a| = |-a|$
-\extra{bewijs}
+
+  \begin{proof}
+    Ofwel $a$, ofwel $-a$ is negatief\needed, de absolute waarde daarvan is het tegengestelde, dus de andere en die blijft gelijk.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   $\forall a\in F: -|a| \le a \le |a|$
-\extra{bewijs}
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a \ge 0$: $a = |a|$ en zeker $a \ge -a = -|a| \le 0$\prref{pr:absolute-waarde-positief}\prref{pr:geordend-veld-tegengestelde-wisselt-teken}
+    \item $a <0$: $a=-|a|$ en zeker $a \le |a| \ge 0$\prref{pr:absolute-waarde-positief}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   $\forall a,b\in F: |a| \le b \Leftrightarrow -b \le a \le b$.
-\extra{bewijs}
+
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a \ge 0$: $a \le b \Leftrightarrow -b \le -a \le a \le b$
+    \item $a <0$: $-a \le b \Leftrightarrow -b \le a \le -a \le b$
+      \extra{meer uitwerken?}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{de}
@@ -561,7 +587,6 @@
   \item $\forall a,b\in F:\ |a+b| \le |a| + |b|$
   \item $\forall x,y,z\in F:\ |x-y| \le |x-z| + |z-y|$
   \end{itemize}
-
 \extra{bewijs}
 \end{pr}
 
