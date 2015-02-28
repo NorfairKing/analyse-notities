@@ -616,13 +616,13 @@
 \end{de}
 
 \begin{de}
-  We zeggen dat een rij $(r_{n})_{n}$ in een totaal geordend veld $F,+,\cdot,\le$ divergeert naar plus oneindig als en slechts het volgende geldt:
+  We zeggen dat een rij $(r_{n})_{n}$ in een totaal geordend veld $F,+,\cdot,\le$ \term{divergeert naar plus oneindig} als en slechts het volgende geldt:
   \[ \forall M\in F,\ \exists n_{0}\in \mathbb{N},\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow x_{n} > M \]
   \[ + \infty = \lim_{n\rightarrow \infty}x_{n}\]
 \end{de}
 
 \begin{de}
-  We zeggen dat een rij $(r_{n})_{n}$ in een totaal geordend veld $F,+,\cdot,\le$ divergeert naar min oneindig als en slechts het volgende geldt:
+  We zeggen dat een rij $(r_{n})_{n}$ in een totaal geordend veld $F,+,\cdot,\le$ \term{divergeert naar min oneindig} als en slechts het volgende geldt:
   \[ \forall M\in F,\ \exists n_{0}\in \mathbb{N},\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow x_{n} < M \]
   \[ - \infty = \lim_{n\rightarrow \infty}x_{n}\]
 \end{de}
@@ -640,7 +640,31 @@
 
 \begin{pr}
   Als een rij een limiet heeft, dan is deze uniek.
-\TODO{bewijs p 31}
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een rij met twee limieten: $a,b \in \mathbb{F}\cup \{-\infty,+\infty\}$, dan tonen we aan dat deze gelijk zijn.
+    Veronderstel dat deze verschillend zijn: $a \neq b$.
+    Hernoem ze dan zo dat $a > b$ geldt.
+    Er zijn nu vier gevallen:
+    \begin{itemize}
+    \item $a = +\infty, b \in F$\\
+\extra{bewijs}
+    \item $a,b\in F$\\
+      Noem $\delta = (a-b)/2$.
+      Omdat $a$ groter is dan $b$ is $\delta$ positief.
+      Omdat $a$ de limiet is van $(x_{n})_{n}$ is is $|x_{n}-a|<\delta$ vanaf een bepaalde $n\in \mathbb{N}$.
+      Voor al de volgende $n$ geldt dan ook het volgende:
+      \[ x_{n}>a-\delta = \frac{a+b}{2} \]
+      Analoog vinden we een $m$ waar vanaf het volgende geldt:
+      \[ x_{m}<b+\delta=\frac{a+b}{2} \]
+      Kies nu een $p\in \mathbb{N}$ groter dan zowel $m$ als $n$, dan moet $x_{p}$ zowel strikt groter als strikt kleiner zijn dan $\frac{a+b}{2}$.
+      Contradictie.
+    \item $a\in F, b = -\infty$\\
+\extra{bewijs}
+    \item $a= +\infty, b=-\infty$\\
+\extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
