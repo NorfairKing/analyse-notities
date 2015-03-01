@@ -399,6 +399,7 @@
 \end{gev}
 
 \begin{pr}
+  \label{pr:q-dicht-in-r}
   $\forall x,y \in \mathbb{R}: (x<y \Rightarrow \exists q\in \mathbb{Q}:\ x<q<y$
 
   \begin{proof}
@@ -668,9 +669,19 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:convergente-rij-begrensd}
   Een convergente rij $(x_{n})_{n}$ is begrensd.
   \[ \exists M \in F^{+}: \forall n\in \mathbb{N}: |x_{n}| \le M \]
-\TODO{bewijs p 32}
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een convergente rij met limiet $a$.
+    Vanaf een bepaalde $n\in \mathbb{N}$ komt de rij dichter dan $1$ bij $a$:
+    \[ \exists n\in \mathbb{N}:\ \forall n'\in \mathbb{N}: n'>n\Rightarrow |x_{n}-a|<1 \]
+    Vanaf die $n$ zijn alle $x_{n}$ in absolute waarde kleiner dan $1+|a|$.
+    \[ |x_{n}| = |x_{n}-a+a| \le |x_{n}-a|+|a| <1+|a| \]
+    De gezochte $M$ is nu het maximum van de absolute waarden van de termen met index kleiner dan $n$ en $1+|a|$.
+    Per constructie is $(x_{n})_{n}$ dan begrensd door $M$.
+  \end{proof}
 \end{pr}
 
 \begin{opm}
@@ -682,12 +693,36 @@
   Beschouw twee rijen $(x_{n})_{n}$ en $(y_{n})_{n}$.
   Stel dat de staart van de rijen overeen komt, dus dat er een $k\in \mathbb{N}$ bestaat zodat $x_{n}$ gelijk is aan $y_{n}$ voor alle $n$ groter dan $k$.
   De rijen vertonen dan hetzelfde asymptotisch gedrag.
-\TODO{bewijs: oefening}
+  \begin{proof}
+    Er zijn drie mogelijkheden voor het asymptotisch gedrag van $(x_{n})_{n}$, voor elk van die mogelijkheden gaan we na dat $(y_{n})_{n}$ hetzelfde gedrag vertoont.
+    \begin{itemize}
+    \item $\lim_{n \rightarrow \infty}x_{n} = a\in F$\\
+      Voor een willekeurige $\delta$ komt $x_{n}$ dichter dan $\delta$ bij $a$ vanaf een bepaalde $n\in \mathbb{N}$.
+      Vanaf $\max\{n,k\}$ komt $y_{n}$ dan ook dichter dan $\delta$ bij $a$.
+    \item $\lim_{n \rightarrow \infty}x_{n} = \pm \infty$\\
+      Voor een willekeurige $M$ wordt $x_{n}$ groter/kleiner dan $M$/$m$ vanaf een bepaalde $n\in \mathbb{N}$.
+      Vanaf $\max\{n,k\}$ wordt $y_{n}$ dan ook groter/kleiner dan $M$/$m$.
+    \item $(x_{n})_{n}$ heeft geen limiet\\
+      Uit het ongerijmde:
+      Stel dat $(y_{n})_{n}$ een limiet $a$ heeft, dan volgt uit bovenstaande redenering dat $(x_{n})_{n}$ dezelfde limiet heeft.
+      Contradictie.
+    \end{itemize}
+  \end{proof}
+\feed
 \end{pr}
 
 \begin{pr}
   Voor elk re\"eel getal $x\in \mathbb{R}$ bestaat er een rij $(q_{n})_{n}$ in $\mathbb{Q}$ die convergeert naar $x$.
-\TODO{bewijs p 33}
+
+  \begin{proof}
+    We zullen een rij construeren met $x$ als limiet.
+    Beschouw voor elke $n\in \mathbb{N}$ de getallen $x\pm \frac{1}{n+1}$.
+    We kunnen tussen deze getallen een $q\in \mathbb{Q}$ vinden.\prref{pr:q-dicht-in-r}
+    Op die manier bekomen we een rij $(q_{n})_{n}$.
+    Deze rij convergeert naar $x$.
+    Neem immers een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$, dan geldt voor alle $n'\in\mathbb{N}$ vanaf een $n \ge \frac{1}{\epsilon}$ het volgende:
+    \[ |q_{n}-x| < \frac{1}{n'+1} \le \frac{1}{n+1} < \epsilon \]
+  \end{proof}
 \end{pr}
 
 \subsection{Limieten en orde}
@@ -705,16 +740,37 @@
 \end{de}
 
 \begin{st}
-  Een stijgende rij heeft atijd een limiet.
+  \label{st:stijgend-dan-limiet}
+  Een stijgende rij in $\mathbb{R}$ heeft atijd een limiet.
   Deze limiet is bovendien eindig als en slechts als de rij naar boven begrensd is.
   Die limiet is dan het supremum van de rij.
-\TODO{bewijs p 34}
+
+  \begin{proof}
+    Gevalsonderscheid voor een willekeurige rij $(x_{n})_{n}$
+    \begin{itemize}
+    \item $(x_{n})_{n}$ is niet naar boven begrensd\\
+      We tonen aan dat $(x_{n})_{n})$ $+\infty$ als limiet heeft.
+      Kies daartoe een willekeurige $M\in\mathbb{R}$.
+      Omdat de rij niet naar boven begrensd is is er minstens \'e\'en $n\in \mathbb{N}$ zodat $x_{n}$ groter is dan $M$.
+      Omdat de rij stijgend is zullen voor alle volgende $n'$ de $x_{n'}$ ook groter zijn dan $M$.
+    \item $(x_{n})_{n}$ is naar boven begrensd\\
+      De verzameling $V = \{x_{n}\mid n\in \mathbb{N}\}$ is dan een niet-lege naar boven begrensde deelverzameling van $\mathbb{R}$ en heeft dus een supremum $s$.\stref{st:supremumeigenschap-R}
+      Kies nu een willekeurige $\epsilon > 0$, dan is $s-\epsilon$ geen bovengrens meer voor $V$.
+      Er moet daarom een $n\in \mathbb{N}$ bestaan zodat $x_{n}$ groter is dan $s-\epsilon$.
+      Omdat de rij stijgend is zal voor elke grotere $n'\in \mathbb{N}$ $x_{n'}$ zowel groter als $s-\epsilon$ als kleiner dan $s$ zijn.
+      \[ \forall n' \ge n:\ |x_{n'}-s| = s-x_{n'} \le x_{n}-s < \epsilon \]
+      $s$ is dus de (eindige) limiet van $(x_{n})_{n}$
+    \item Omgekeerd is de rij naar boven begrensd als ze een eindige limiet heeft.\prref{pr:convergente-rij-begrensd}
+    \end{itemize}
+  \end{proof}
 \end{st}
+
 \begin{st}
+  \label{st:dalend-dan-limiet}
   Een dalende rij heeft atijd een limiet.
   Deze limiet is bovendien eindig als en slechts als de rij naar onder begrensd is.
   Die limiet is dan het infimum van de rij.
-\TODO{bewijs: oefening}
+\extra{bewijs: oefening}
 \end{st}
 
 \begin{pr}
@@ -723,9 +779,55 @@
   \item ... limiet plus oneindig als $r>1$ geldt.
   \item ... limiet $1$ als $r=1$ geldt.
   \item ... limiet $0$ als $|r|<1$ geldt.
-  \item ... geen limiet als $r<-1$ geldt.
+  \item ... geen limiet als $r\le-1$ geldt.
   \end{itemize}
-\TODO{bewijs p 35}
+
+  \begin{proof}
+    \begin{itemize}
+    \item $r>1$\\
+      De rij $(r_{n})_{n}$ is dan stijgend.
+      We argumenteren dat de rij niet naar boven begrensd is om aan te tonen dat ze limiet $+\infty$ heeft.\stref{st:stijgend-dan-limiet}
+      Stel daarom dat de rij wel naar boven begrensd zou zijn, dan zou de verzameling $V=\{ r^{n}\mid n\in \mathbb{N}\}$ een supremum $a$ hebben:\stref{st:supremumeigenschap-R}
+      \[
+      \begin{array}{c}
+        \forall n\in \mathbb{N}: r^{n} \le a\\
+        \forall n\in \mathbb{N}: r^{n-1} \le \frac{a}{r}\\
+        \forall n\in \mathbb{N}: r^{n} \le \frac{a}{r}\\
+      \end{array}
+      \]
+      Uit de bovenstaande argumentatie volgt dat $\frac{a}{r}$ ook een bovengrens is voor $V$, maar omdat $r$ groter is dan $1$ is dit een kleinere bovengrens dan $a$, wat in tegenspraak is met het supremum-zijn van $a$.
+    \item $r=1$: $\lim_{n \rightarrow \infty}r^{n}=\lim_{n \rightarrow \infty}1=1$.
+    \item $|r|<1$:
+      \begin{itemize}
+      \item $0<r<1$:
+        De rij is in dit geval dalend \needed en naar onder begrensd (want alle termen zijn positief), dus de limiet is gelijk aan het infimum.\stref{st:dalend-dan-limiet}
+        We bewijzen nog dat dit infimum $0$ is.
+        Stel immers dat het groter zou zijn dan $0$:
+        \[
+        \begin{array}{c}
+          \forall n\in \mathbb{n}: r^{n} \ge a\\
+          \forall n\in \mathbb{n}: r^{n-1} \ge \frac{a}{r}\\
+          \forall n\in \mathbb{n}: r^{n} \ge \frac{a}{r}\\
+        \end{array}
+        \]
+        We vinden dat $\frac{a}{r}$ ook een ondergrens zou zijn van de $r^{n}$, maar kleiner dan $a$ (want $r$ is kleiner dan $1$) en dat is in tegenspraak met het infimum-zijn van $a$.
+      \item $r=0$: $\lim_{n \rightarrow \infty}0^{n}=\lim_{n \rightarrow \infty}0=0$.
+      \item $-1<r<0$:
+\extra{bewijs}
+      \end{itemize}
+    \item $r \le -1$
+      \begin{itemize}
+      \item $r=-1$
+\question{in het boek staat 'triviaal', maar ik ben niet overtuigd.}
+      \item $r<-1$
+        Omdat $|r|>1$ geldt weten we al dat $|r|>1$ naar $+\infty$ gaat.
+        De rij $(|r|^{n})_{n}$ is dus zeker niet begrensd \needed en kan bijgevolg zeker geen eindige limiet hebben. \stref{st:stijgend-dan-limiet}
+        Anderzijds kan de rij ook zeker niet $+\infty$ als limiet hebben want dan zouden vanaf een bepaalde $n$ alle $r^{n'}$ groter moeten zijn dan $r^{n}$.
+        Dit kan niet het geval zijn want $r^{n}$ is negatief voor alle oneven $n$.
+        Analoog kan de rij ook niet $-\infty$ als limiet hebben.
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
