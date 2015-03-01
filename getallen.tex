@@ -833,7 +833,30 @@
 \begin{pr}
   Zij $A$ een niet-leeg, naar boven begrensd deel van $\mathbb{R}$, dan bestaat er een stijgende rij in $A$ die convergeert naar het supremum van $A$.
   
-\TODO{bewijs p 36}
+  \begin{proof}
+    Noem $s$ het supremum van $A$ (dit bestaat immers altijd\stref{st:supremumeigenschap-R})
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $s\in A$: de rij $(s)_{n}$ voldoet.
+    \item $s\not \in A$:\\
+      \begin{itemize}
+      \item Noem $\epsilon_{1} = 1$.  Omdat $s$ de kleinste bovengrens
+        is van $A$ is $s-\epsilon_{1}$ geen bovengrens meer.  We
+        kunnen dus een $x_{1}\in A$ nemen zodat $s-\epsilon_{1} \le
+        x_{1}$ geldt.  Omdat $s$ een bovengrens is van $A$, maar niet
+        in $A$ zit, geldt ook $x_{1}< s$.
+      \item Noem $\epsilon\_{i} = min\{ \nicefrac{1}{i}, s-x_{i-1} \}$,
+        $\epsilon$ is dan zeker positief (want $s$ is groter dan $x_{i-1}$ en $\nicefrac{1}{i}$ is positief).
+        Omdat $s$ de kleinste bovengres is van $A$ is $s-\epsilon_{i}$ geen bovengrens meer.
+        We kunnen dus een $x_{i}$ nemen tussen $s-\epsilon_{i}$ en $s$.
+        Die $x_{i}$ is dan groter dan $x_{i-1}$.\waarom
+
+      \item We hebben nu een stijgende rij $(x_{n})_{n}$ geconstrueert zodat het volgende geldt:
+        \[ \forall n\in \mathbb{N}_{0}:\ |x_{n}-s| \le \frac{1}{n} \]
+        Hieruit volgt meteen dat $s$ de limiet is van $(x_{n})_{n}$.\waarom
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{de}
@@ -847,16 +870,65 @@
 \begin{pr}
   Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee rijen zodat voor alle $n\in \mathbb{N}$ $x_{n}\le y_{n}$ geldt, dan geldt het volgende:
   \[ \lim_{n\rightarrow \infty}x_{n} \le \lim_{n\rightarrow \infty}y_{n} \]
-\TODO{bewijs p 37}
+
+  \begin{proof}
+    Noem $a$ en $b$ respectievelijk de limieten van $(x_{n})_{n}$ en $(y_{n})_{n}$.
+    We bewijzen nu uit het ongerijmde dat $a \le b$ geldt.
+    Stel daarom dat $a$ groter is dan $b$.
+    Er zijn nu vier gevallen:
+    \begin{itemize}
+    \item $a = +\infty, b \in F$\\
+      \extra{bewijs}
+    \item $a,b\in F$\\
+      Noem $\delta = \frac{a-b}{2}$.
+      $\delta$ is dan positief omdat $a$ groter is dan $b$.
+      Omdat $(x_{n})_{n}$ naar $a$ gaat kunnen we een $n\in \mathbb{N}$ zodat voor alle grotere $n'$ het volgende geldt:
+      \[ |x_{n'}-a|<\delta \]
+      \[ x_{n'} > a - \delta = \frac{a+b}{2} \]
+      Analoog vinden we het volgende voor de andere rij:
+      \[ y_{m'} < b+\delta = \frac{a+b}{2} \]
+      Neem nu een getal $p\in \mathbb{N}$ groter dan $n$ en $m$, dan geldt het volgende, maar dat is in strijd met $x_{p} \le y_{p}$(gegeven).
+      \[ y_{p} < \frac{a+b}{2} < x_{p} \]
+    \item $a\in F, b = -\infty$\\
+      \extra{bewijs}
+    \item $a= +\infty, b=-\infty$\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{st}
   De \term{insluitstelling}\\
   Beschouw drie rijen $(x_{n})_{n}$, $(y_{n})_{n}$ en $(z_{n})_{n}$ zodat het volgende geldt:
   \[ \forall n\in \mathbb{N}: x_{n}\le y_{n}\le z_{n} \]
-  Als $(x_{n})_{n}$ en $(z_{n})_{n}$ elk een limiet hebben, en die limiet hetzelfde is, dan is dit ook de limiet van $(y_{n})_{n}$.
+  Als $(x_{n})_{n}$ en $(z_{n})_{n}$ elk een limiet van $(y_{n})_{n}$.
   \[ \lim_{n\rightarrow \infty}x_{n} = \lim_{n\rightarrow \infty}y_{n} = \lim_{n\rightarrow \infty}z_{n} \]
-\TODO{bewijs p 38}
+  \begin{proof}
+    Noem $a$, $b$ en $c$ de respectievelijke limieten van $(x_{n})_{n}$, $(y_{n})_{n}$ en $(z_{n})_{n}$.
+    We bewijzen nu uit het ongerijmde dat $b$ gelijk is aan $c$ en $a$ door te stellen dat $b$ groter is dan $a$ en $c$.
+    Er zijn nu vier gevallen:
+    \begin{itemize}
+    \item $b = +\infty, a,c \in F$\\
+      \extra{bewijs}
+    \item $a,b,c\in F$\\
+      Noem $\delta = \frac{b-c}{2}$.
+      $\delta$ is dan positief omdat $b$ groter is dan $c$.
+      Omdat $(y_{n})_{n}$ naar $b$ gaat kunnen we een $n\in \mathbb{N}$ zodat voor alle grotere $n'$ het volgende geldt:
+      \[ |y_{n'}-b|<\delta \]
+      \[ y_{n'} > b - \delta = \frac{b+c}{2} \]
+      Analoog vinden we het volgende voor $(z_{n})_{n}$:
+      \[ z_{m'} < c+\delta = \frac{b+c}{2} \]
+      Neem nu een getal $p\in \mathbb{N}$ groter dan $n$ en $m$, dan geldt het volgende, maar dat is in strijd met $y_{p} \le z_{p}$(gegeven).
+      \[ z_{p} < \frac{b+c}{2} < y_{p} \]
+      Zeer analoog vinden we ook dat $b$ niet kleiner kan zijn dan $a$.
+      $b$ zit dus tussen $a$ en $c$ en is er bijgevolg gelijk aan.
+    \item $b\in F, a=c = -\infty$\\
+      \extra{bewijs}
+    \item $b= +\infty, a=c=-\infty$\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\feed
 \end{st}
 
 \subsection{Limieten en bewerkingen}
