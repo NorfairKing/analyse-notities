@@ -937,13 +937,25 @@
 \begin{st}
   Zij $(x_{n})_{n}$ een convergente rij en $\lambda\in \mathbb{R}$ een re\"eel getal.
   \[ \lim_{n \rightarrow \infty}(\lambda x_{n}) = \lambda \lim_{n\rightarrow \infty}x_{n} \]
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Noem $a$ de limiet van $(x_{n})_{n}$.
+    We bewijzen nu dat $\lambda a$ de limiet is van $(\lambda x_{n})_{n}$.
+    Kies daartoe een willekeurige $\epsilon \in F_{0}^{+}$.
+    Omdat $a$ de limiet is van $(x_{n})_{n}$ bestaat er een $n'\in \mathbb{N}$ zodat voor alle volgende $n$ de afstand van $x_{n}$ tot kleiner is dan $\frac{\epsilon}{\lambda}.$
+    \[ |x_{n}-a| < \frac{\epsilon}{\lambda} \Leftrightarrow |\lambda x_{n}-\lambda a| < \epsilon \]
+  \end{proof}
 \end{st}
 
 \begin{st}
   Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee convergente rijen.
   \[ \lim_{n \rightarrow \infty}(x_{n}+y_{n}) = \lim_{n\rightarrow \infty}x_{n} + \lim_{n\rightarrow \infty}y_{n} \]
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Noem $a$ en $b$ de respectievelijke limieten van $(x_{n})_{n}$ en $(y_{n})_{n}$.
+    Voor een willekeurige $\epsilon \in F_{0}^{+}$ bestaan er $n'_{x}$ en $n'_{y}$ zodat $x_{n}$ en $y_{n}$ dichter dan $\frac{\epsilon}{2}$ bij $a$ en $b$ komen voor alle volgende $n_{x}$, $n_{y}$.
+    \[ \left( |x_{n}-a| < \frac{\epsilon}{2} \wedge |y_{n}-a| < \frac{\epsilon}{2} \right) \Rightarrow |x_{n}+y_{n} - a-b| < \epsilon \]
+  \end{proof}
 \end{st}
 
 \begin{st}
