@@ -1176,6 +1176,7 @@
 \end{pr}
 
 \begin{st}
+  \label{st:bolzano-rijen}
   De \term{stelling van Bolzano-Weierstra\ss (rijen-versie)}\\
   Elke begrensde rij in $F$ heeft een convergente deelrij.
 
@@ -1273,42 +1274,111 @@
 \label{sec:cauchyrijen-en-de}
 
 \begin{de}
-  We noemen een rij $(x_{n})_{n}$ over een totaal georden veld $F,+,\cdot,\le$ een \term{Cauchyrij} als en slechts als het volgende geldt:
-  \[ \forall \epsilon \in F_{0}^{+},\ \exists n\in \mathbb{N},\ forall n,m \in \mathbb{N}_{0}:\ n,m \ge n_{0} \Rightarrow |x_{n}-x_{m}| < \epsilon \]
+  We noemen een rij $(x_{n})_{n}$ over een totaal geordenb veld $F,+,\cdot,\le$ een \term{Cauchyrij} als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in F_{0}^{+},\ \exists n_{0}\in \mathbb{N},\ \forall n,m \in \mathbb{N}_{0}:\ n,m \ge n_{0} \Rightarrow |x_{n}-x_{m}| < \epsilon \]
 \end{de}
 
 \begin{pr}
   Elke convergente rij is een Cauchyrij.
-\TODO{bewijs p 56}
+  
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een convergente rij met limiet $a$.
+    Kies een willekeurige $\epsilon\in F_{0}^{+}$.
+    We kunnen dus een $n_{0}\in \mathbb{N}$ kiezen zodat voor alle volgende $n\in\mathbb{N}$ het de afstand tot $a$ kleiner is dan $\frac{\epsilon}{2}$.
+    \[ |x_{n}-x_{m}| = |x_{n}-a+a-x_{m}| \le |x_{n}-a|+|a-x_{m}| \le \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon \]
+  \end{proof}
 \end{pr}
 
 \begin{pr}
-  In $\mathbb{Q}$ bestaan er Cauchyren die niet convergeren (in $\mathbb{Q}$).
-\TODO{bewijs p 57}
+  In $\mathbb{Q}$ bestaan er Cauchyrijen die niet convergeren (in $\mathbb{Q}$).
+
+  \begin{proof}
+    Constructief bewijs van existentie.\\
+    Benoem $A$ als volgt:
+    \[ A = \{ q \in \mathbb{Q} \mid 1 \le q \le 2 \]
+    Definieer dan recursief een rij $(p_{n})_{n}$ in $\mathbb{Q}$ als volgt waarbij $p_{0}\in\mathbb{Q}$ een willekeurig getal in $A$ genomen wordt.
+    \[ p_{n+1} = \frac{1}{2}\left( p_{n} + \frac{2}{p_{n}} \right) \]
+    Merk eerst al op dat $p_{n}$ steeds positief is.
+    We bewijzen dat $(p_{n})_{n}$ een Cauchyrij is in $\mathbb{Q}$ met een niet-rationale limiet: $\sqrt{2}$.
+    \begin{itemize}
+    \item $(p_{n})_{n}$ is een Cauchyrij.\\
+      Merk daartoe eerst op dat de afbeelding $f$ $A$ op een deel van zichzelf afstuurt.
+      \[ f:\ \mathbb{Q}_{0} \rightarrow \mathbb{Q}:\ x \mapsto \frac{1}{2}\left(x+\frac{2}{x}\right) \]
+      Daaruit volgt al dat alle punten $p_{n}$ tot $A$ behoren.
+      Bovendien kunnen we de afstand tussen twee beelden herschrijven:
+      \[
+      \begin{array}{rl}
+        |f(x) - f(y)| &=
+        \left| \frac{1}{2}\left(x+\frac{2}{x}\right) - \frac{1}{2}\left(y+\frac{2}{y}\right) \right|\\
+        &= \frac{1}{2} \left| x-y + \frac{2(y-x)}{xy} \right|\\
+        &= \frac{1}{2} \left| 1 - \frac{2}{xy}\right| |x-y|
+      \end{array}
+      \]
+      Omdat $x$ en $y$ beide in $A$ zitten, geldt het volgende:
+      \[ \frac{1}{2} \left| 1 - \frac{2}{xy}\right| \le \frac{1}{2} \]
+      Voor de rij $(p_{n})_{n}$ betekent dat het volgende:
+      \[ |p_{n+1} - p_{m+1}| \le \frac{1}{2}|p_{n}-p_{m}| \]
+      Wanneer we deze ongelijkheid een gepast aantal keer \clarify{hoeveel keer?} toepassen, krijgen we een afschatting voor $|p_{n}-p_{m}|$:
+      \[ |p_{n}-p_{m}| \le \frac{1}{2^{m}}|p_{n-m}-p_{0}| \le \frac{1}{2^{m}} \]
+      Door $m$ voldoende groot te kiezen kunnen we de afstand tussen $m$ en $n$ dus willekeurig klein krijgen.
+      Dit betekent precies dat $(p_{n})_{n}$ een Cauchyrij is.
+    \item $(p_{n})_{n}$ convergeert naar een element buiten $\mathbb{Q}$.
+      Stel nu dat deze rij een limiet $p \in \mathbb{Q}$ zou hebben.
+      Uit de definitie van $p_{n}$ volgt de volgende gelijkheid:
+      \[ p_{n+1}p_{n} = 1 + \frac{1}{2}p_{n}^{2} \]
+      In de limiet vinden we dan het volgende:
+      \[ pp = 1 + \frac{1}{2}p^{2} \Leftrightarrow p^{2} = 2 \]
+      We weten dat er geen $p\in\mathbb{Q}$ bestaat waarvan het kwadraat $2$ is.\needed
+    \end{itemize}
+  \end{proof}
+\extra{bewijs is niet evident, misschien nog meer uitleg over waarom we bepaalde dingen inzien}
 \end{pr}
 
 \begin{pr}
+  \label{pr:cauchyrij-begrensd}
   Elke Cauchyrij over een totaal geordend veld $F,+,\cdot,\le$ is begrensd.
-\TODO{bewijs p 58}
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een Cauchyrij.
+    Vanaf een bepaalde $n'\in \mathbb{N}$ geldt het volgende:
+    \[ \forall m,n \in \mathbb{N}: |x_{n}-x_{m}| < 1 \]
+    Vanaf die $n'$ zijn alle $x_{n}$ in absolute waarde kleiner dan $1+|x_{n'}|$.
+    Per constructie is $(x_{n})_{n}$ nu begrensd door $\{ |x_{0}|, |x_{1}| \dotsc, |x_{n'-1}|, 1+|x_{n}| \}$.
+  \end{proof}
 \end{pr} 
 
 \begin{pr}
+  \label{pr-cauchyrij-met-convergente-deelrij-convergeert}
   Een Cauchyrij over een totaal geordend veld $F,+,\cdot,\le$ met een convergente deelrij convergeert naar dezelfde limiet als die deelrij.
-\TODO{bewijs p 59}
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een Cauchyrij in $F$ met convergente deelrij $(x_{n_{k}})_{k}$ en noem $a$ de limiet van de convergente deelrij.\\
+    Kies een willekeurige $\epsilon \in F_{0}^{+}$.
+    Kies een $n_{1} \in \mathbb{N}$ zodat voor alle volgende $n,m\in\mathbb{N}$ $|x_{n}-x_{m}| < \frac{\epsilon}{2}$ geldt.
+    Kies ook een $n_{2} \in \mathbb{N}$ zodat voor alle volgende $k\in\mathbb{N}$ $|x_{n_{k}}| < \frac{\epsilon}{2} \frac{\epsilon}{2}$ geldt.
+    Noem nu $n' = max\{n_{1},n_{2}\}$.
+    Kies nu willekeurig een grotere $j\in \mathbb{N}$, dan geldt $n_{j} \ge j$ en ook het volgende:
+    \[ |x_{j} - a| = |x_{j}-x_{n_{j}}+x_{n_{j}}-a| \le |x_{j}-x_{n_{j}}|+|x_{n_{j}}-a| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+  \end{proof}
 \end{pr}
 
 \begin{pr}
-  Elke Cauchyrij over een totaal geordend veld $F,+,\cdot,\le$ convergeert.
+  Elke Cauchyrij over $\mathbb{R}$ convergeert.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$.
+    De rij is dan begrensd\prref{pr:cauchyrij-begrensd} en heeft een convergente deelrij\stref{st:bolzano-rijen}.
+    Dit betekent dat de rij convergeert.\prref{pr-cauchyrij-met-convergente-deelrij-convergeert}
+  \end{proof}
 \end{pr}
 
 \begin{de}
   We noemen een totaal geordend veld $F,+,\cdot,\le$ \term{volledig} als elke Cauchyrij in $F$ een limiet heeft in $F$.
 \end{de}
 
-\begin{st}
+\begin{opm}
   $\mathbb{R}$ is volledig.
-\extra{bewijs}
-\end{st}
+\end{opm}
 
 \extra{tekstje op blz 60 toch nog eens bekijken}
 
