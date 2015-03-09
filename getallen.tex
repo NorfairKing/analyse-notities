@@ -868,6 +868,7 @@
 \TODO{oneindigheden zelf ook eens definieren?}
 
 \begin{pr}
+  \label{pr:limiet-behoudt-orde}
   Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee rijen zodat voor alle $n\in \mathbb{N}$ $x_{n}\le y_{n}$ geldt, dan geldt het volgende:
   \[ \lim_{n\rightarrow \infty}x_{n} \le \lim_{n\rightarrow \infty}y_{n} \]
 
@@ -898,10 +899,11 @@
 \end{pr}
 
 \begin{st}
+  \label{st:insluitstelling}
   De \term{insluitstelling}\\
   Beschouw drie rijen $(x_{n})_{n}$, $(y_{n})_{n}$ en $(z_{n})_{n}$ zodat het volgende geldt:
   \[ \forall n\in \mathbb{N}: x_{n}\le y_{n}\le z_{n} \]
-  Als $(x_{n})_{n}$ en $(z_{n})_{n}$ elk een limiet van $(y_{n})_{n}$.
+  Als $(x_{n})_{n}$ en $(z_{n})_{n}$ dezelfde limiet hebben, dan geldt het volgende:
   \[ \lim_{n\rightarrow \infty}x_{n} = \lim_{n\rightarrow \infty}y_{n} = \lim_{n\rightarrow \infty}z_{n} \]
   \begin{proof}
     Noem $a$, $b$ en $c$ de respectievelijke limieten van $(x_{n})_{n}$, $(y_{n})_{n}$ en $(z_{n})_{n}$.
@@ -1148,15 +1150,53 @@
 \end{de}
 
 \begin{pr}
-  Zij $(x_{n})_{n}$ een rij in $F$ met een limiet in $F\cup\{+\infty,-\infty\}$., dan heeft elke deelrij ervan dezelfde limiet.
-\TODO{bewijs p 50}
+  Zij $(x_{n})_{n}$ een rij in $F$ met een limiet in $F\cup\{+\infty,-\infty\}$, dan heeft elke deelrij ervan dezelfde limiet.
+
+  \begin{proof}
+   Zij $(x_{n})_{n}$ een rij in $F$ met een limiet $a$ in $F\cup\{+\infty,-\infty\}$, en zij $(x_{n_{k}})_{k}$ een deelrij hiervan, dan tonen we het volgende aan:
+   \[ \lim_{k\rightarrow \infty}x_{n_{k}} = a \]
+   Er volgt een gevalsonderscheid:
+   \begin{itemize}
+   \item $a\in F$\\
+     Kies een willekeurige $\epsilon \in F_{0}^{+}$.
+     Neem $m$ zodat $|x_{n}-a| < \epsilon$ geldt voor alle grotere $n\in \mathbb{N}$.
+     Omdat $(n_{k})_{k}$ strikit stijgend is in $\mathbb{N}$ geldt $n_{k} \ge k$ voor alle $k\in \mathbb{N}$.
+     Voor alle $k \ge m$ geldt dus ook $n_{k} \ge m$ en daarom $|x_{n_{k}}-a| < \epsilon$.
+   \item $a = +\infty$
+     \extra{bewijs}
+   \item $a = -\infty$
+     \extra{bewijs}
+   \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  Zij $(x_{n})_{n}$ een rij in $F$ en $(x_{n_{k}})_{k}$ de deelrij gedefinieerd met $n_{k} = m+k$ (voor een bepaalde 'startwaarde' $m\in\mathbb{N}$) dan heeft deze deelrij $(x_{m+k})_{k}$ een limiet als en slechts als $(x_{n})_{n}$ een limiet heeft en zijn deze limieten bovendien gelijk.
+  \extra{bewijs}
 \end{pr}
 
 \begin{st}
-  De \term{stelling van Bolzano-Weierstra\ss}\\
-  Elke begrensde rij heeft een convergente deelrij.
-\TODO{bewijs p 51}
+  De \term{stelling van Bolzano-Weierstra\ss (rijen-versie)}\\
+  Elke begrensde rij in $F$ heeft een convergente deelrij.
+
+  \begin{proof}
+    Zij $(x_{n})_{n\in\mathbb{N}_{0}}$ een begrensde rij in $F$.
+    Definieer de volgende waarden:
+    \begin{itemize}
+    \item $t_{1} = sup\{ x_{n} \mid n \ge 1 \}$
+    \item $n_{1}$ zodat $t_1-1 < x_{n_{1}} \le t_{1}$ geldt.
+    \item $t_{i} = sup\{ x_{n} \mid n > n_{i-1} \}$
+    \item $n_{i}$ zodat $t_{i}-\frac{1}{i} < x_{n_{k}} \le t_{k}$ geldt.
+    \end{itemize}
+    De rij $(t_{k})_{k\in \mathbb{N}_{0}}$ is nu een deelrij van $(x_{n})_{n\in\mathbb{N}_{0}}$ vanwege de supremumeigenschap van $F$.\needed
+    De rij $(t_{k})_{k\in \mathbb{N}_{0}}$ is dalend omdat voor grotere waarden van $k$ het $t_{k}$ het supremum is van een telkens kleinere verzameling.\stref{st:deelverzameling-kleiner-supremum}
+    $(t_{k})_{k\in \mathbb{N}_{0}}$ is bovendien naar onder begrensd.\waarom
+    $(t_{k})_{k\in \mathbb{N}_{0}}$ is daarom een convergente rij\stref{st:dalend-dan-limiet}, zeg met limiet $t$.
+    Voor alle $k$ geldt nu $|x_{n_{k}} -t_{k}| < \frac{1}{k}$ en hieruit volgt de stelling.
+\clarify{waarom nemen we de $t_{i}$ precies zo?}
+  \end{proof}
 \end{st}
+
 \begin{opm}
   Deze stelling gaat niet op in $\mathbb{Q}$.
 \extra{bewijs}
@@ -1168,32 +1208,65 @@
   \[ \limsup_{n\rightarrow \infty} x_{n} = \lim_{n\rightarrow \infty} sup\{x_{k}\mid k\ge n\} \quad\text{ en }\quad \liminf_{n\rightarrow \infty} x_{n} = \lim_{n\rightarrow \infty} inf\{ x_{k}\mid k\ge n\} \]
 \end{de}
 
-\TODO{de volgende 4 stellingen werken ook voor onbegrensde rijen, pas de bewijzen aan.}
 \begin{pr}
   Zij $(x_{n})_{n}$ een begrensde rij.
   \[ \liminf_{n\rightarrow \infty} x_{n} \le \limsup_{n\rightarrow \infty} x_{n} \]
-\TODO{bewijs p 53}
+  \begin{proof}
+    Deze propositie geldt omdat een infimum altijd kleiner is dan, of gelijk aan, het supremum van dezelfde verzameling\needed, en de limiet de orde bewaart.\prref{pr:limiet-behoudt-orde}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $(x_{n})_{n}$ een begrensde rij.
-  Als en slechts als $(x_{n})_{n}$ convergeert geldt hetvolgende.
+  Als en slechts als $(x_{n})_{n}$ een limiet heeft geldt hetvolgende.
   \[ \limsup_{n\rightarrow \infty} x_{n} = \liminf_{n\rightarrow \infty} x_{n} \]
-  De limiet van $(x_{n})_{n}$ is dan ook de gemeenschappelijke woorde van limsup en liminf.
-\TODO{bewijs p 53}
+  De limiet van $(x_{n})_{n}$ is dan ook de gemeenschappelijke waarde van limsup en liminf.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Gevalsonderscheid, noem $\lim_{n\rightarrow \infty}x_{n} = a$.
+      \begin{itemize}
+      \item $a\in F$\\
+        Kies een willekeurige $\epsilon \in F_{0}^{+}$.
+        Kies dan $n_{0}\inf \mathbb{N}$ zodat voor alle volgende $n\in \mathbb{N}$ het volgende geldt:
+        \[ |a - x_{n}| < \frac{\epsilon}{2} \Leftrightarrow a-frac{\epsilon}{2} < x_{n} < a + \frac{\epsilon}{2} \]
+        Er geldt dan ook het volgende.
+        \[ a-\frac{\epsilon}{2} \le \inf\{x_{k}\mid k>n\}\le \sup\{x_{k}\mid k>n\} \le a + \frac{\epsilon}{2} \]
+        In het bijzonder geldt dan het volgende voor liminf en limsup:
+        \[ a-\frac{\epsilon}{2} \le \liminf x_{n}\le \limsup x_{n} \le a + \frac{\epsilon}{2} \]
+        \[ 0  \le \liminf x_{n} - \limsup x_{n} < \epsilon \]
+        Hierut volgt meteen dat liminf en limsup gelijk zijn.
+      \item $a=+\infty$
+        \extra{bewijs}
+      \item $a=-\infty$
+        \extra{bewijs}
+      \end{itemize}
+    \item $\Leftarrow$\\
+      Stel dat $\liminf_{n\rightarrow \infty} x_{n}$ gelijk is aan $\limsup_{n\rightarrow \infty} x_{n}$.
+      Omdat $x_{n}$ steeds tussen het infimum en het supremum ligt, volgt uit de insluitstelling dat de limiet van $x_{n}$ gelijk is aan de gemeenschappelijke waarde van limsup en liminf.\stref{st:insluitstelling}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
-  Zij $(x_{n})_{n}$ een begrensde rij, dan bestaat er een deelrij van $(x_{n})_{n}$ die convergeert naar $\limsup_{n\rightarrow \infty} x_{n}$ en een deelrij die convergeert naar $\liminf_{n\rightarrow \infty} x_{n}$.
-
-\TODO{bewijs p 53}
+  Zij $(x_{n})_{n}$ een begrensde rij, dan bestaat er een deelrij van $(x_{n})_{n}$ die $\limsup_{n\rightarrow \infty} x_{n}$ als limiet heeft en een deelrij die $\liminf_{n\rightarrow \infty} x_{n}$ als limiet heeft.
+\extra{zie het bewijs van de stelling van Bolzano!}
 \end{pr}
 
 \begin{pr}
-  Zij $(x_{k})_{k}$ een convergente deelrij van een begrensde rij $(x_{n})_{n}$.
+  Zij $(x_{k})_{k}$ deelrij met een limiet in $\bar{F}$ van een begrensde rij $(x_{n})_{n}$.
   \[ \liminf_{n\rightarrow \infty} x_{n} \le \lim_{n\rightarrow \infty} x_{n} \le \limsup_{n\rightarrow \infty} x_{n} \]
 
-\TODO{bewijs p 53}
+  \begin{proof}
+    Zij $(x_{n_{k}})_{k}$ een willekeurige convergente deelij van $(x_{n})_{n}$.
+    Merk dan op dat voor alle $k\in \mathbb{N}$ het volgende geldt:
+    \[ \inf\{x_{i}\mid i>n_{k}\} \le x_{n_{k}} \le \sup\{x_{i}\mid i>n_{k}\}\]
+    Nu zijn $(\inf\{x_{i}\mid i>n_{k}\})_{k}$ en $(\sup\{x_{i}\mid i>n_{k}\})_{k}$ ook deelrijen van de convergente rijen $(\inf\{x_{k}\mid k>n\})_{n}$ en $(\sup\{x_{k}\mid k>n\})_{n}$.
+    Ze hebben dus respectievelijk dezelfde limiet.
+    Hieruit volgt dan samen met het behouden van de orde\prref{pr:limiet-behoudt-orde} de stelling.
+  \end{proof}
 \end{pr}
 
 \subsection{Cauchyrijen en de volledigheid van $\mathbb{R}$}
