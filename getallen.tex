@@ -1813,24 +1813,45 @@ sluiting is doorsnede van alle gesloten oververzamelingen.
   \[ \forall x\in A:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall y\in X:\ |y-x| < \delta \Rightarrow y \in A \]
 \end{de}
 
+\begin{st}
+  Een  deelverzameling $A$ van $X\subseteq \mathbb{R}$  is relatief open in $X$ als en slechts als het volgende geldt:
+  \[ \forall x\in A:\ \exists \delta\in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap X \subseteq A \]
+\extra{bewijs}
+\end{st}
+
 \begin{de}
   We noemen een deelverzameling $A$ van $X\subseteq \mathbb{R}$ \term{relatief gesloten} in $X$ als het relatief complement $X\setminus B$ van $B$ relatief open is in $X$.
 \end{de}
 
-\begin{st}
-  Een  deelverzameling $A$ van $X\subseteq \mathbb{R}$  is relatief open in $X$ als en slechts als het volgende geldt:
-  \[ \forall x\in A:\ \exists \delta\in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \subseteq X \]
-\TODO{bewijs}
-\end{st}
+\begin{pr}
+  Zij $X$ een niet-leeg deel van $\mathbb{R}$ en $A \subseteq X$.
+  $A$ is relatief open in $X$ als en slechts als er een open $V\subseteq \mathbb{R}$ bestaat zodat $A=V \cap X$ geldt.
+
+  \begin{proof}
+    Bewijs van een equivalentie\\
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Als $A$ leeg is kunnen we voor $V$ $\emptyset$ nemen.
+      Als $A$ niet leeg is, dan bestaat er een $x\in A$.
+      We kunnen dan een $\delta_{x}$ kiezen zodat $\interval[open]{x-\delta}{x+\delta} \cap X$ een deel is van $A$.
+      Benoem nu $V$ als volgt:
+      \[ \bigcup_{x\in A}\interval[open]{x-\delta_{x}}{x+\delta_{x}} \]
+      $V$ is dan een open deel van $\mathbb{R}$ want het is een unie van open verzamelingen.\prref{pr:unie-open-verzamelingen-open}
+      Bovendien is $A$ per constructie de doorsnede van $V$ en $X$.
+    \item $\Leftarrow$\\
+      Zij $X$ een niet-leeg deel van $\mathbb{R}$ en $V$ een open deel van $\mathbb{R}$.
+      We bewijzen dan dat $A$ relatief open is in $V\cap X$.
+      Kies daartoe een $x\in A$. Er bestaat dan een $\delta\in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{x-\delta}{x+\delta}$ in $V$ zit.
+      De doorsnede van dit interval en $X$ is dan een deel van $V \cap X$.
+      $V\cap X$ is dus een open deel van $X$.
+    \end{itemize}
+  \end{proof}
+\end{pr}
 
 \begin{pr}
   Zij $X$ een niet-leeg deel van $\mathbb{R}$ en $A \subseteq X$.
-  \begin{itemize}
-  \item $A$ is relatief open in $X$ als en slechts als er een open $V\subseteq \mathbb{R}$ bestaat zodat $A=V \cap X$ geldt.
-  \item $A$ is relatief gesloten in $X$ als en slechs als er een gesloten $F \subseteq \mathbb{R}$ bestaat zodat $A=F \cap X$ geldt.
-  \end{itemize}
-
-\TODO{bewijs p 77}
+  $A$ is relatief gesloten in $X$ als en slechs als er een gesloten $F \subseteq \mathbb{R}$ bestaat zodat $A=F \cap X$ geldt.
+\TODO{oefening}
 \end{pr}
 
 \section{De complexe getallen}
