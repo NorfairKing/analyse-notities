@@ -1452,6 +1452,7 @@
 \end{st}
 
 \begin{st}
+  \label{st:r-open-en-gesloten}
   $\mathbb{R}$ is open \'en gesloten.
 
   \begin{proof}
@@ -1599,23 +1600,88 @@
 
 \begin{de}
   Zij $A$ een deelverzameling van $\mathbb{R}$.
-  De kleinste gesloten oververzameling $\bar{A}$ van $A$ noemen we de \term{sluiting} van $A$.
+  De kleinste verzameling $\bar{A}$ die $A$ bevat noemen we de \term{sluiting} van $A$.
 \end{de}
 
-\TODO{definieer oververzameling?}
-
-\TODO{bewijs dat deze definities nuttig zijn p 72}
+\begin{st}
+  Het inwendige en de sluiting van een deelverzameling $A$ van $\mathbb{R}$ bestaan steeds.
+\extra{bewijs}
+\question{hoe??}
+idee: inwendige is unie van open deelverzamelingen.
+sluiting is doorsnede van alle gesloten oververzamelingen.
+\end{st}
  
 \begin{pr}
   Zij $A$ een deelverzameling van $\mathbb{R}$, dan ziet $\mathring{A}$ er als volgt uit:
-  \[ \mathring{A} = \{ x\in A\mid \exists \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \subseteq A \} \]
-\TODO{bewijs p 72}
+  \[ \mathring{A} = \{ x\in A\mid \exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \subseteq A \} \]
+
+  \begin{proof}
+    Noem het rechterlid $V$.
+    \begin{itemize}
+    \item $V$ is een open deelverzameling van $A$.
+      Als $V$ leeg is, is $V$ triviaal open.
+      Als $V$ niet leeg is, dan bestaat er een $x\in V$.
+      Er bestaat dan ook een $\delta \in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{x-\delta}{x+\delta}$ tot $A$ behoort.
+      $\interval[open]{x-\delta}{x+\delta}$ behoort nu ook tot $V$:
+      Kies immers een $y\in \interval[open]{x-\delta}{x+\delta}$ en neem $\epsilon = \min\{y-(x-\delta),(x+\delta)-y\}$
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=2.]
+          \draw[latex-latex] (-3.5,0) -- (3.5,0) ;
+          \draw[shift={(1,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$x$};
+          \draw[shift={(-1,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$x-\delta$};
+          \draw[shift={(3,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$x+\delta$};
+          \draw[very thick] (-1,0) -- (3,0);
+          \path [draw=black, fill=white, thick] (-1,0) circle (2pt);
+          \path [draw=black, fill=white, thick] (3,0) circle (2pt);
+
+          \draw[shift={(1.6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$y$};
+          \draw[very thick,color=blue] (0.2,0) -- (3,0);
+          \path [draw=blue, fill=white, thick] (0.2,0) circle (2pt);
+          \path [draw=blue, fill=white, thick] (3,0) circle (2pt);
+          
+          \draw [decorate,decoration={brace,amplitude=10pt},yshift=2pt] (0.2,0) -- (3,0) node [black,midway,yshift=20pt] {$\interval[open]{y-\epsilon}{y+\epsilon}$};
+        \end{tikzpicture}
+      \end{figure}
+      $\interval[open]{y-\epsilon}{y+\epsilon}$ is dan een deel van $\interval[open]{x-\delta}{x+\delta}$ en van $A$ bijgevolg zit $y$ in $V$.
+      $V$ is dus een open deelverzameling van $A$ en daarom een deel van $\mathring{A}$.
+    \item Elke open deelverzameling $W$ van $A$ is een deel van $V$: $V$ is dus het grootst.
+      Als $W$ leeg is, is dit evident.
+      Als $W$ niet leeg is, bestaat er een $x\in W$.
+      Omdat $W$ open is bestaat er dan een $\delta\in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{x-\delta}{x+\delta}$ een deel is van $W$ en dus van $A$.
+      Dit betekent dat $x$ tot $V$ behoort.
+      $W$ is een willekeurige open deelverzameling van $A$, dus ook $\mathring{A}$ is een deel van $V$.
+    \end{itemize}
+    We concluderen dat $\mathring{A}$ inderdaad gelijk is aan $V$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $A$ een deelverzameling van $\mathbb{R}$, dan ziet $\bar{A}$ er als volgt uit:
-  \[ \mathring{A} = \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta, x+\delta[ \cap A \neq \emptyset \} \]
-\TODO{bewijs p 72}
+  \[ \bar{A} = \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap A \neq \emptyset \} \]
+
+  \begin{proof}
+    Noem het rechterlid $F$.
+    \begin{itemize}
+    \item $F$ is een gesloten oververzameling van $A$.\\
+      $A$ is duidelijk een deelverzameling van $F$.
+      We beweren dus nog dat $F$ gesloten is, of dus dat $F^{c}$ open is.
+      Als $F^{c}$ leeg is, is $F$ zeker gesloten.\stref{st:r-open-en-gesloten}
+      Als $F^{c}$ niet leeg is, bestaat er een $\delta$ zodat $\interval[open]{x-\delta}{x+\delta} \cap A$ leeg is.
+      $\interval[open]{x-\delta}{x+\delta}$ zit dus in $A^{c}$ en bijgevolg in $F^{c}$.\waarom
+      $F$ is dus een gesloten oververzameling van $A$: $\bar{A} \subseteq F$.
+    \item Elke gesloten oververzameling $G$ van $A$ is een oververzameling van $F$.\\
+      $G^{c}$ is dan een deel van $A^{c}$.
+      We beweren dat $G^{c}$ een deel is van $F^{c}$.
+      Als $G^{c}$ leeg is, is dit triviaal waar.
+      Als $G^{c}$ niet leeg is, dan bestaat er een $x\in G^{c}$.
+      Omdat $G$ gesloten is, is $G^{c}$ open en dus kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden zodat $\interval[open]{x-\delta}{x+\delta}$ een deel is van $G^{c}$ en dus van $A^{c}$.
+      De doorsnede van $\interval[open]{x-\delta}{x+\delta}$ en $A$ is dus leeg en daarom is $x$ een element van $F^{c}$.
+      We vinden $G^{c}\subseteq F^{c}$ en daarom $F \subseteq G$.
+      Omdat dit geldt voor elke gesloten oververzameling $G$, geldt het ook voor $F$: $F \subseteq \bar{A}$.
+    \end{itemize}
+    We concluderen dat $\bar{A}$ inderdaad gelijk is aan $F$.
+  \end{proof}
 \end{pr}
 
 \begin{de}
@@ -1625,12 +1691,30 @@
 
 \begin{de}
   We noemen een punt $x$ van niet-lege deelverzameling $A$ van $\mathbb{R}$ een \term{adherent punt} aan $A$ als het tot $\bar{A}$ behoort.
-  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta, x+\delta[ \cap A \neq \emptyset \]
+  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap A \neq \emptyset \]
 \end{de}
 
 \begin{pr}
-  Zij $A$ een deel van $\mathbb{R}$ en $x\in \mathbb{R}$, dan behoort $x$ tot $\bar{A}$ als en slechs als er een rij $(x_{n})_{n}$ bestaat met $x$ als limiet.
-\TODO{bewijs p 74}
+  Zij $A$ een deel van $\mathbb{R}$ en $x\in \mathbb{R}$, dan behoort $x$ tot $\bar{A}$ als en slechts als er een rij $(x_{n})_{n}$ in $A$ bestaat met $x$ als limiet.
+
+  \begin{proof}
+    Bewijs van een equivalentie:
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Zij $x$ een adherent punt.
+      Als $x$ tot $A$ behoort heeft de constante rij $(x)_{n}$ $x$ als limiet.
+      Stel daarom dat $x$ tot $\bar{A}\setminus A$ behoort.
+      Voor elke $n\in \mathbb{N}$ is $\interval[open]{x-\frac{1}{n}}{x+\frac{1}{n}} \cap A$ niet leeg (omdat $x$ een adherent punt is).
+      Kies dus voor elke $n$ een $x_{n} \in \interval[open]{x-\frac{1}{n}}{x+\frac{1}{n}}$ om een rij $(x_{n})_{n}$ te bekomen met $x$ als limiet.
+    \item $\Leftarrow$\\
+      Zij $(x_{n})_{n}$ een rij met limiet $x\in A$. We bewijzen dat $x$ een adherent punt is aan $A$.
+      Kies daartoe een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+      Er bestaat dan een $n_{0}\in \mathbb{N}$ zodat voor alle volgende $n\in\mathbb{N}$ $x_{n}$ in $\interval[open]{x-\delta}{x+\delta}$ zit.
+      Omdat $(x_{n})_{n}$ een rij is in $A$ behoort $x_{n}$ ook tot $A$.
+      De doorsnede van $A$ en $\interval[open]{x-\delta}{x+\delta}$ bevat dus al zeker $x_{n}$ en is bijgevolg niet leeg.
+    \end{itemize}
+  \end{proof}
+\feed
 \end{pr}
 
 \subsection{Randpunten, ge\"isoleerde punten en ophopingspunten.}
