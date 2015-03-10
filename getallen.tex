@@ -1686,7 +1686,7 @@ sluiting is doorsnede van alle gesloten oververzamelingen.
 
 \begin{de}
   We noemen een punt $x$ van niet-lege deelverzameling $A$ van $\mathbb{R}$ een \term{inwendig punt} van $A$ als het tot $\mathring{A}$ behoort.
-  \[ \exists \delta \in \mathbb{R}_{0}^{+} \]
+  \[ \exists \delta \in \mathbb{R}_{0}^{+}: \interval[open]{x-\delta}{x+\delta} \subseteq A \]
 \end{de}
 
 \begin{de}
@@ -1732,33 +1732,58 @@ sluiting is doorsnede van alle gesloten oververzamelingen.
 \begin{st}
   Een punt $x\in \mathbb{R}$ is een randpunt van een deelverzameling $A$ van $\mathbb{R}$ als en slechts het volgende geldt:
   \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \cap A \neq \emptyset\ \wedge\  ]x-\delta,x+\delta[ \cap A^{c} \neq \emptyset \]
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Een randpunt $x$ van een deelverzameling $A$ van $\mathbb{R}$ is een adherent punt dat geen inwendig punt is.
+    Het eerste deel van de conjunctie is waar omdat $A$ een adherent punt is.
+    Omdat $A$ geen inwendig punt is geldt het volgende:
+    \[ \forall \delta \in \mathbb{R}_{0}^{+}: \interval[open]{x-\delta}{x+\delta} \not\subseteq A \]
+    Dit betekent dat er voor elke $\delta \in \mathbb{R}_{0}^{+}$ een element in $\interval[open]{x-\delta}{x+\delta}$ niet tot $A$ behoort (maar dus wel tot $A^{c}$).
+    De doorsnede van $\interval[open]{x-\delta}{x+\delta}$ en $A^{c}$ is dus niet leeg.
+  \end{proof}
+\feed
 \end{st}
 
 \begin{de}
   Zij $A$ een niet-lege deelverzameling van $\mathbb{R}$, dan noemen we een punt $x\in A$ een \term{ge\"isoleerd punt} van $A$ als het volgende geldt:
-  \[ \exists \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \cap A = \{ x \} \]
+  \[ \exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap A = \{ x \} \]
 \end{de}
 
 \begin{de}
   Zij $A$ een niet-lege deelverzameling van $\mathbb{R}$, dan noemen we een punt $x\in A$ een \term{ophopingspunt} of \term{accumulatiepunt} van $A$ als het volgende geldt:
-  \[ ]x-\delta,x+\delta[ \cap (A \setminus \{x\}) \neq \emptyset \]
+  \[ \forall \delta \in \mathbb{R}_{0}^{+} \interval[open]{x-\delta}{x+\delta} \cap (A \setminus \{x\}) \neq \emptyset \]
 \end{de}
 
-\begin{st}
+\begin{opm}
   Een punt $x$ in een niet-lege deelverzameling $A$ van $\mathbb{R}$, dan is $x$ ofwel een ge\"isoleerd punt, ofwel een ophopingspunt.
-\TODO{verifieer}
-\extra{bewijs}
-\end{st}
+\end{opm}
 
 \begin{pr}
   Zij $A$ een niet een niet-lege deelverzameling van $\mathbb{R}$, dan zijn volgende uitspraken equivalent.
   \begin{enumerate}
   \item $x$ is een ophopingspunt van $A$.
-  \item Voor alle $\delta > 0$ bevat $]x-\delta,x+\delta[ \cap A$ oneindig veel punten.
+  \item Voor alle $\delta > 0$ bevat $\interval[open]{x-\delta}{x+\delta} \cap A$ oneindig veel punten.
   \item Er bestaat een rij $(x_{n})_{n}$ in $A\setminus \{x\}$ die naar $x$ convergeert.  
   \end{enumerate}
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Equivalentie vanuit circulaire implicaties
+    \begin{itemize}
+    \item $(1) \Rightarrow (3)$\\
+      Uit de definite van een ophopingspunt volgt dat voor elke $n\in \mathbb{N}$ de verzameling $\interval[open]{x-\frac{1}{n}}{x+\frac{1}{n}}\cap (A \setminus \{x\})$ niet leeg is.
+      Voor elke $n$ kunnen we er dus een $x_{n}$ in kiezen om een rij $(x_{n})_{n}$ te construeren die $x$ als limiet heeft.
+    \item $(3) \Rightarrow (2)$\\
+      Stel dat er een $\delta \in \mathbb{R}_{0}^{+}$ bestaat zodat $\interval[open]{x-\delta}{x+\delta} \cap A$ eindig is, dan bestaat er in die verzameling een punt dat het dichtst bij $x$ ligt.
+      Noem dit punt $y$ en noem de afstand tot $x$ $\epsilon = |y-x|$.
+      Dit houdt in dat de verzameling $\interval[open]{x-\epsilon}{x+\epsilon} \cap A$ leeg is.
+      Omdat de rij $(x_{n})_{n}$ in $A\setminus \{x\}$ naar $x$ convergeert, moet er echter een $n_{0}\in\mathbb{N}$ bestaan zodat alle voor volgende $n\in \mathbb{N}$ $x_{n}$ in $\interval[open]{x-\epsilon}{x+\epsilon}$ moet liggen.
+      Omdat de rij in  $A\setminus \{x\}$ ligt moeten die $x_{n}$ dus ook in $\interval[open]{x-\epsilon}{x+\epsilon} \cap A$ liggen, maar dit is in tegenspraak met het feit dat deze verzameling leeg is.
+    \item $(2) \Rightarrow (1)$\\
+      Voor elke $\delta \in \mathbb{R}_{0}^{+}$ bevat $\interval[open]{x-\delta}{x+\delta} \cap A$ oneindig veel punten.
+      $\interval[open]{x-\delta}{x+\delta} \cap (A \setminus \{x\})$ bevat dan nog steeds oneindig veel punten en is dus niet leeg.
+    \end{itemize}
+  \end{proof}
+\feed
 \end{pr}
 
 \begin{st}
