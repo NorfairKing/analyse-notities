@@ -1150,6 +1150,7 @@
 \end{de}
 
 \begin{pr}
+  \label{pr:deelrij-zelfde-limiet-als-limiet-bestaat}
   Zij $(x_{n})_{n}$ een rij in $F$ met een limiet in $F\cup\{+\infty,-\infty\}$, dan heeft elke deelrij ervan dezelfde limiet.
 
   \begin{proof}
@@ -1393,6 +1394,7 @@
 \begin{st}
   Een $A$ van $\mathbb{R}$ is open als en slechts als het volgende geldt:
   \[ \forall x\in A:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \subseteq A \]
+
 \extra{bewijs}
 \end{st}
 
@@ -1406,57 +1408,185 @@
 
 \begin{st}
   Open intervallen zijn inderdaad open deelverzamelingen.
-\extra{bewijs p 67}
+
+  \begin{proof}
+    Voor een willekeurige $x$ in een open interval $]a,b[$, vinden we $\delta = min\{x-a,b-x\}$.
+    Er geldt dan $]x-\delta,x+\delta[ \subseteq ]a,b[$:
+    \[ \forall y\in ]x-\delta,x+\delta[:\ y > x-\delta \ge x-(x-a) = a \ \wedge\ y < x+\delta \le x+(b-x) = b \]
+  \end{proof}
 \end{st}
+
+\begin{st}
+  Open intervallen zijn niet gesloten
+\extra{bewijs}
+\end{st}
+
 \begin{st}
   Gesloten intervallen zijn inderdaad gesloten deelverzamelingen.
-\extra{bewijs p 67}
+
+  \begin{proof}
+    Zij $[a,b]$ een gesloten interval.
+    We bewijzen dat $X = \mathbb{R} \setminus [a,b] = ]-\infty,a[ \cup]b,+\infty[$ open is.
+    Kies daartoe een willekeurige $x\in X$.
+    We onderscheiden twee gevallen:
+    \begin{itemize}
+    \item $x \in ]-\infty,a[$: $0 < \delta \le a-x$
+    \item $x \in  ]b,+\infty[$: $0 < \delta \le x-b$
+    \end{itemize}
+    In beide gevallen geldt $]x-\delta, x+\delta[ \subseteq X$. $X$ is dus open en $[a,b]$ daarom gesloten.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Gesloten intervallen zijn niet open.
+\extra{bewijs}
 \end{st}
 
 \begin{st}
   Halfopen intervallen zijn noch open, noch gesloten.
-\extra{bewijs p 67}
+
+  \begin{proof}
+    Zij $[a,b[$ een halfopen interval, dan kunnen we geen open interval vinden rond $a$ dat helemaal in $[a,b[$ ligt.
+    Eveneens kunnen we rond $b$ geen open interval vinden dat volledig buiten $[a,b[$ ligt.
+  \end{proof}
 \end{st}
 
 \begin{st}
   $\mathbb{R}$ is open \'en gesloten.
-\extra{bewijs p 67}
+
+  \begin{proof}
+    $\mathbb{R}$ is open want rond elk punt van $\mathbb{R}$ kunnen we een open interval vinden dat volledig in $\mathbb{R}$ ligt.
+    Sterker nog, elk interval rond elk punt van $\mathbb{R}$ ligt volledig in $\mathbb{R}$.
+    $\mathbb{R}$ is gesloten want $\emptyset$ is open.
+  \end{proof}
 \end{st}
 
 \begin{st}
-  $\mathbb{Q}$ is niet gesloten.
-\extra{bewijs p 67}
+  $\mathbb{Q}$ is niet gesloten en niet gesloten.
+
+  \begin{proof}
+    We bewijzen dat $X=\mathbb{R}\setminus \mathbb{Q}$ niet open is.
+    Neem immers een $x\in X$.
+    We tonen aan dat elk open interval rond $x$ punten zal bevatten die niet in $X$ liggen.
+    Kies daartoe een willekeurige $\delta > 0$.
+    Tussen $x-\delta$ en $x+\delta$ bestaat er een $q\in \mathbb{Q}$\prref{pr:q-dicht-in-r}
+    Die $q$ zit niet in $X$ en bijgevolg kan $X$ niet open zijn.
+\extra{bewijs deel 2}
+  \end{proof}
 \end{st}
 
 \begin{pr}
+  \label{pr:unie-open-verzamelingen-open}
   De unie van open verzamelingen is open.
-\TODO{bewijs p 69}
+
+  \begin{proof}
+    Zij $U$ de unie van open verzamelingen $A\in \mathcal{O}$.
+    Als $U$ leeg is, dan is $U$ triviaal open.
+    Als $U$ niet leeg is, dan bestaat er een $x\in U$ die tot een $A \in \mathcal{O}$ behoort.
+    Omdat $A$ open is, kunnen we een open interval rond $x$ vinden dat tot $A$, en dus tot $U$, behoort.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
+  \label{pr:eindige-doorsnede-open-verzamelingen-open}
   De doorsnede van \textbf{een eindig aantal} open verzamelingen is open.
-\TODO{bewijs p 69}
+
+  \begin{proof}
+    Beschouw een eindig aantal $n$ open delen $A_{i}$ van $\mathbb{R}$.
+    Noem nu $D$ de doorsnede van de $A_{i}$
+    Als $D$ leeg is is $D$ triviaal open.
+    Als $D$ niet leeg is, bestaat er minstens \'e\'en $x\in D$.
+    $x$ behoort dan tot alle $A_{i}$.
+    Omdat elke $A_{i}$ open is, kunnen we voor elke $A_{i}$ een $\delta_{i}$ vinden zodat $]x-\delta,x+\delta[ \subseteq A_{i}$ geldt.
+    Neem nu $d = \min\{ d_{1}, d_{2},\dotsc, d_{n}\}$.
+    Nu behoort $]x-\delta,x+\delta[$ tot alle $]x-\delta_{i},x+\delta_{i}[$ en dus tot $D$.
+    Bijgevolg is $D$ open.
+  \end{proof}
 \end{pr}
-\TODO{tegenvoorbeeld voor oneindig aantal verzamelingen}
+
+\begin{tvb}
+  De doorsnede van een oneindig aantal open intervallen is niet noodzakelijk open.
+
+  \begin{proof}
+    Beschouw de verzameling $D$:
+    \[ D = \bigcap_{i}^{\infty}]-\frac{1}{n},\frac{1}{n}[ = \{ 0 \} \]
+    $\{ 0 \}$ is $[0,0]$ is een gesloten interval en dus niet open.\needed
+  \end{proof}
+\end{tvb}
 
 \begin{pr}
   Een doorsnede van gesloten verzamelingen is gesloten.
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Zij $D$ de doorsnede van open verzamelingen $A_{i}$.
+    Het complement van $D$ is de unie van de complementen van $A_{i}$\needed en daarom open.\prref{pr:unie-open-verzamelingen-open}
+    Bijgevolg is $D$ gesloten.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   De unie van \textbf{een eindig aantal} gesloten verzamelingen is gesloten.
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    De unie $U$ van een eindig aantal gesloten verzamelingen $A_{i}$.
+    Het complement van $U$ is de doorsnede van de (open) complementen van (een eindig aantal) $A_{i}$ en bijgevolg open.\prref{pr:eindige-doorsnede-open-verzamelingen-open}
+    Bijgevolg is $U$ gesloten.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
+  \label{pr:gesloten-asa-elke-convergente-rij-in-A-limiet-in-A}
   Zij $A$ een niet-leeg deel van $\mathbb{R}$, dan is $A$ gesloten als en slechts als elke convergente rij $(x_{n})_{n}$ in $A$ een limiet heeft in $A$.
-\TODO{bewijs p 70}
+
+  \begin{proof}
+    Bewijs van een equivalentie\\
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Zij $A$ gesloten en $(x_{n})_{n}$ een willekeurige convergente rij in $A$ met limiet $a$.
+      Stel nu dat $a$ niet tot $A$ behoort, dan behoort $a$ tot $A^{c}$.
+      Omdat $A^{c}$ open is, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ zodat $]a-\delta,a+\delta[$ een deel is van $A^{c}$.
+      Omdat $a$ de limiet is van $(x_{n})_{n}$ kunnen we een $n_{0}$ vinden zodat $x_{n}$ voor alle volgende $n$ tot $]a-\delta,a+\delta[$ behoort, maar dat is in tegenspraak met het feit dat $x_{n}$ tot $A$ behoort.
+      $a$ moet dus in $A$ zitten.
+    \item $\Leftarrow$\\
+      Contrapositie: stel dat $A$ niet gesloten is, dan tonen we aan dat er een rij $(x_{n})_{n}$ in $A$ bestaat met een limiet buiten $A$.
+      Als $A$ niet gesloten is, dan is $A^{c}$ niet open.
+      Er bestaat dus een $a\in A^{c}$ zodat elk interval rond $a$ niet geheel tot $A^{c}$ behoort.
+      Voor elke $n \in \mathbb{N}$ geldt dus ook het volgende:
+      \[ \interval[open]{a-\frac{1}{n}}{a+\frac{1}{n}} \not \subseteq A^{c} \]
+      Bijgevolg geldt ook het volgende:
+      \[ \interval[open]{a-\frac{1}{n}}{a+\frac{1}{n}} \cap A \neq \emptyset \]
+      We kunnen dus voor elke $n\in \mathbb{N}_{0}$ een element $x_{n}$ nemen in $\interval[open]{a-\frac{1}{n}}{a+\frac{1}{n}} \cap A$.
+      We verkrijgen zo een rij $(x_{n})_{n}$ in $A$ waarvoor voor elke $n\in \mathbb{N}_{0}$ $x_{n}$ dichter dan $\frac{1}{n}$ bij $a$ ligt.
+      De limiet van $(x_{n})_{n}$ is dus $a$.
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
-  Zij $A$ een niet-leeg deel van $\mathbb{R}$, dan is $A$ gesloten en begrensd als en slechs als elke rij in $A$ een convergente deelrij heeft met limiet in $A$.
-\TODO{bewijs p 71}
+  Zij $A$ een niet-leeg deel van $\mathbb{R}$, dan is $A$ gesloten en begrensd als en slechts als elke rij in $A$ een convergente deelrij heeft met limiet in $A$.
+
+  \begin{proof}
+    Bewijs van een equivalentie\\
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Omdat $A$ begrensd is, is elke rij $(x_{n})_{n}$ in $A$ begrensd.
+      Volgens de stelling van Bolzano-Weierstra\ss bestaat er van elke $(x_{n})_{n}$ een convergente deelrij $(x_{n_{k}})_{k}$ met $a \in \mathbb{R}$ als limiet.
+      Omdat deze deelrij convergent is, en $A$ gesloten, zit $a$ in $A$.\prref{pr:gesloten-asa-elke-convergente-rij-in-A-limiet-in-A}
+      
+    \item $\Leftarrow$\\
+      Contrapositie: stel dat $A$ niet gesloten of niet begrensd is, dan bestaat er een rij in $A$ zonder convergente deelrij met een limiet is $A$.
+      \begin{itemize}
+      \item $A$ is niet gesloten:
+        Er bestaat dan een convergente rij $(x_{n})_{n}$ met een limiet $a$ buiten $A$. {pr:gesloten-asa-elke-convergente-rij-in-A-limiet-in-A}
+        Elke deelrij van $(x_{n})_{n}$ convergeert dan ook naar $a\not\in A$.\prref{pr:deelrij-zelfde-limiet-als-limiet-bestaat}
+      \item $A$ is niet begrensd:
+        We kunnen dan voor elke $n\in \mathbb{N}$ een $x_{n}\in A$ vinden die, in absolute waarde, groter is dan $n$.
+        We verkrijgen zo een rij $(x_{n})_{n}$ in $A$.
+        Voor elke deelrij geldt dan ook $|x_{n_{k}}| > n_{k}|$.
+        Elke deelrij is dus onbegrensd, en kan bijgevolg niet convergeren.\prref{pr:convergente-rij-begrensd}
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \subsection{Sluiting en inwendige}
