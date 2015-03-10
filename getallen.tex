@@ -1751,7 +1751,7 @@ sluiting is doorsnede van alle gesloten oververzamelingen.
 
 \begin{de}
   Zij $A$ een niet-lege deelverzameling van $\mathbb{R}$, dan noemen we een punt $x\in A$ een \term{ophopingspunt} of \term{accumulatiepunt} van $A$ als het volgende geldt:
-  \[ \forall \delta \in \mathbb{R}_{0}^{+} \interval[open]{x-\delta}{x+\delta} \cap (A \setminus \{x\}) \neq \emptyset \]
+  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap (A \setminus \{x\}) \neq \emptyset \]
 \end{de}
 
 \begin{opm}
@@ -1759,6 +1759,7 @@ sluiting is doorsnede van alle gesloten oververzamelingen.
 \end{opm}
 
 \begin{pr}
+  \label{pr:equivalenties-ophopingspunt}
   Zij $A$ een niet een niet-lege deelverzameling van $\mathbb{R}$, dan zijn volgende uitspraken equivalent.
   \begin{enumerate}
   \item $x$ is een ophopingspunt van $A$.
@@ -1789,7 +1790,19 @@ sluiting is doorsnede van alle gesloten oververzamelingen.
 \begin{st}
   De \term{stelling van Bolzano-Weierstra\ss} (ophopingspuntversie).
   Elk oneindig begrensd deel van $\mathbb{R}$ heeft minstens \'e\'en ophopingspunt.
-\TODO{bewijs p 76}
+
+  \begin{proof}
+    Zij $A$ een oneindige begrensde deelverzameling van $\mathbb{R}$.
+    Kies nu een aftelbaar oneindige deelverzameling $B$ van $A$ en nummer de elementen van $B$ om een rij $(x_{n})_{n}$ te bekomen.
+    Merk op dat die rij in $A$ ligt en dus begrensd is.
+    Er bestaat dus een convergente deelrij $(x_{n_{k}})_{k}$\stref{st:bolzano-rijen}.
+    Noem de limiet van deze deelrij $x$.
+    We beweren dat $x$ een ophopingspunt is van $A$.
+    Kies nu een $\delta \in \mathbb{R}_{0}^{+}$.
+    Er bestaat dan een $k_{0}\in\mathbb{N}$ zodat voor alle volgende $k\in \mathbb{N}$ $x_{n_{k}}$ dichter dan $\delta$ bij $x$ ligt.
+    Het interval $\interval[open]{x-\delta}{x+\delta}$ bevat dan oneindig veel punten (tenminste alle $x_{n_{k}}$ met $k>k_{0}$).
+    Bijgevolg is $x$ een ophopingspunt van $A$.\prref{pr:equivalenties-ophopingspunt}
+  \end{proof}
 \end{st}
 
 \subsection{Relatieve topologie}
