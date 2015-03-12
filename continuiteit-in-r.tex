@@ -1,0 +1,94 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\chapter{Continu\"iteit voor functies van $\mathbb{R}$ naar $\mathbb{R}$}
+\label{cha:cont-in-r}
+
+\section{Het continu\"iteitsbegrip}
+\label{sec:het-cont}
+
+
+\begin{de}
+  Zij $f$ een functie en $a\in A$:
+  \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+  We noemen $f$ \term{continu} in $a$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ |x-a| < \delta \Rightarrow |f(x) -f(a)| < \epsilon \]
+  We noemen $f$ \term{continu} op $A$ als $f$ continu is in elke $a\in A$.
+\end{de}
+
+\begin{st}
+  Equivalente definitie van \term{continu\"iteit}:\\
+  $f$ is continu in $a$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ f(\interval[open]{a-\delta}{a+\delta} \cap A) \subseteq \interval[open]{f(a)-\epsilon}{f(a)+\epsilon} \]
+\extra{bewijs}
+\end{st}
+
+\begin{pr}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
+  $f$ is continu in $a$ als en slechts als er voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
+\TODO{bewijs p 6}
+\end{pr}
+
+\begin{pr}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
+  $f$ is continu op $A$ als er voor elk open deel $V$ van $\mathbb{R}$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
+\TODO{bewijs p 7}
+\end{pr}
+
+\begin{de}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
+  We noemen $f$ ...
+  \begin{itemize}
+  \item ...\term{linkscontinu} in $a$ als en slechts als de beperking van $f$ tot $\interval[open left]{-\infty}{a} \cap A$ continu is in $a$.
+  \item ...\term{rechtscontinu} in $a$ als en slechts als de beperking van $f$ tot $\interval[open right]{a}{+\infty} \cap A$ continu is in $a$.
+  \end{itemize}
+\end{de}
+
+\section{Operaties met continue functies}
+\label{sec:oper-met-cont}
+
+\begin{pr}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie die continu is in $a\in A$.
+  \[ \lambda f:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x) \text{ is continu in } A \]
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{pr}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  \[ f+g:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x)+g(x) \text{ is continu in } A \]
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{pr}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  \[ fg:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x)g(x) \text{ is continu in } A \]
+\TODO{bewijs p 10}
+\end{pr}
+
+\begin{pr}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  Noteer bovendien $A_{0} = \{ x \in A \mid g(x) \neq 0 \}$
+  \[ \frac{f}{g}:\ A_{0} \rightarrow \mathbb{R}: x \mapsto \lambda \frac{f(x)}{g(x)} \text{ is continu in } A \]
+\TODO{bewijs p 10}
+\end{pr}
+
+\begin{pr}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \rightarrow \mathbb{R}$ functies en zij $a\in A$.
+  Als $f$ continu is in $a$ en $g$ continu in $f(a)$, dan is $g\circ f$ continu in $a$.
+\TODO{bewijs p 11}
+\end{pr}
+
+\begin{pr}
+  Zij $A$ een gesloten begrensd deel van $\mathbb{R}$.
+  Zij $f: \ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue injectieve functie, dan is $f^{-1}: f(A) \rightarrow A$ ook continu.
+\TODO{bewijs p 12}
+\end{pr}
+
+\section{Continue functies op intervallen}
+\label{sec:continue-functies-op}
+
+
+
+
+
+\end{document}
