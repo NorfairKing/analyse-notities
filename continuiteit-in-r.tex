@@ -87,6 +87,119 @@
 \section{Continue functies op intervallen}
 \label{sec:continue-functies-op}
 
+\begin{st}
+  Beschouw een continue functie $f: \interval[open]{a}{b} \rightarrow \mathbb{R}$ gedefinieerd op een gesloten begrensd interval $\interval[open]{a}{b}$.
+  $f$ is begrensd en bereikt op $\interval[open]{a}{b}$ haar minimale en maximale waarde.
+  Er bestaan dus waarden $c,d \in \interval[open]{a}{b}$ als volgt:
+  \[ f(c) = \sup\left\{ f(x) \mid x \in \interval[open]{a}{b} \right\} \quad\text{ en }\quad f(d) = \sup\left\{ f(x) \mid x \in \interval[open]{a}{b} \right\} \]
+\TODO{bewijs p 14}
+\question{waar wordt de supremumeigenschap gebruikt?}
+\end{st}
+
+\begin{st}
+  \label{st:tussenwaardestelling}
+  De \term{tussenwaardestelling}\\
+  Zij $f: I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie op een interval $I$.
+  Zij $x_{1},x_{2}\in I$ en noem $y_{i}=f(x_{i})$.
+  \[ \forall y \in \interval[open]{y_{1}}{y_{2}}:\ \exists x \in I:\ f(x) = y \]
+\TODO{bewijs p 15}
+\end{st}
+
+\TODO{bissectiemethode?}
+
+\section{Uniforme continuiteit}
+\label{sec:unif-cont}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een continue functie en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
+\extra{bewijs}
+\end{st}
+
+\begin{de}
+  We noemen een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ \term{uniform continu} of \term{gelijkmatig continu} op $A$ als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta in \mathbb{R}_{0}^{+}:\ \forall x,y \in A:\ |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon \]
+\end{de}
+
+\begin{st}
+  Als een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ uniform continu is, is hij ook continu.
+\extra{bewijs}       
+\end{st}
+
+\begin{tvb}
+  Een continue functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ is niet noodzakelijk uniform continu
+\extra{tegenvoorbeeld}
+\end{tvb}
+
+\begin{pr}
+  Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een uniform continue functie en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{pr}
+  Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een uniform continue functie.
+  Als $B$ een begrensd deel is van $A$, dan is $f(B)$ ook begrensd.
+\TODO{bewijs p 23}
+\end{pr}
+
+\begin{st}
+  Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie, gedefinieerd op een gesloten en begrensd deel $A$ van $\mathbb{R}$, dan is $f$ uniform continu.
+\TODO{bewijs p 23}
+\end{st}
+
+\section{Rijen van functies}
+\label{sec:rijen-van-functies}
+
+\begin{de}
+  Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $A$ met waarden in $\mathbb{R}$ (of $\mathbb{C}$).
+  We zeggen dat $(f_{n})_{n}$ \term{puntsgewijs convergeert} op $A$ naar een functie $f: A \rightarrow \mathbb{R}$ als het volgende geldt:
+  \[ \forall x\in A:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{n}:\ n \ge n \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
+\end{de}
+
+\begin{de}
+  Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $A$ met waarden in $\mathbb{R}$ (of $\mathbb{C}$).
+  We zeggen dat $(f_{n})_{n}$ \term{uniform convergeert} of \term{gelijkmatig convergeert} naar een functie $f: A \rightarrow \mathbb{R}$ als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0} \in \mathbb{N}:\ \forall x \in A:\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
+\end{de}
+
+\begin{st}
+  Een rij functies $(f_{n})_{n}$ die uniform convergeert, convergeert puntsgewijs.
+\extra{bewijs}
+\end{st}
+
+\begin{tvb}
+  Een rij functies $(f_{n})_{n}$ die puntsgewijs convergeert, convergeert niet noodzakelijk uniform.
+\extra{tegenvoorbeeld}
+\end{tvb}
+
+\begin{st}
+  Beschouw een rij $(f_{n})_{n}$ van functies $f_{n}: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ die op $A$ uniform convergeert naar een functie $f:\ A \rightarrow \mathbb{R}$.
+  \begin{itemize}
+  \item Als $f_{n}$ continu is in een $a\in A$ voor elke $n$, dan is ook $f$ continu in $a$.
+  \item Als $f_{n}$ uniform continu is op $A$ voor elke $n$, dan is ook $f$ uniform continu op $A$. 
+  \end{itemize}
+
+\TODO{bewijs p 33}  
+\end{st}
+
+\section{Limieten van functies}
+\label{sec:limi-van-funct}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
