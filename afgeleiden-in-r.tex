@@ -4,11 +4,263 @@
 \chapter{Afgeleiden van functies van $\mathbb{R}$ naar $\mathbb{R}$}
 \label{cha:afgel-van-funct}
 
+\section{Basisbegrippen}
+\label{sec:basisbegrippen}
+
+\begin{de}
+  Beschouw een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat ook een ophopingspunt is van $A$.
+  We zeggen dat $f$ \term{afleidbaar} is in $a$ als de volgende limiet bestaat en eindig is:
+  \[ L = \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} \]
+  We noemen $L$ de \term{afgeleide} van $f$ in $a$ en noteren $L$ als $f'(a)$.
+  Als alle punten van $A$ ophopingspunten zijn van $A$ noemen we $f$ \term{afleidbaar} over $A$ als $f$ afleidbaar is in elke $x\in A$.
+  In dit geval definieren we de \term{afgeleide functie} $f$ als volgt:
+  \[ f':\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f'(x) \]
+\end{de}
+
+\begin{st}
+  De afgeleide van een functie in een punt is uniek (omdat dat punt een ophopingspunt is).
+\extra{bewijs}
+\end{st}
+
+\subsection{Meetkundige betekenis}
+\label{sec:meetk-betek}
+
+\begin{de}
+  Een \term{koorde} is een rechte tussen twee punten $(a,f(a))$ en $(a+h,f(a+h))$ op de grafiek van een functie.
+  \[ y = \frac{f(a+h) -f(a)}{h} (x-a) + f(a) \]
+\end{de}
+
+\begin{de}
+  De \term{raaklijn} aan een grafiek in een punt is de limiet van de koorde in dat punt van $h$ gaande naar nul.
+  \[ y = \lim_{h\rightarrow 0}\frac{f(a+h) -f(a)}{h} (x-a) + f(a) \]
+  We noemen de raaklijn de \term{eerste orde benadering} of de \term{standaard eerstegraadsbenadering} van $f$ rond $a$.
+\end{de}
+
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a \in A$.
+  \begin{itemize}
+  \item Als $a$ een ophopingspunt is van $A \cap \interval[open left]{-\infty}{a}$ en de beperking van $f$ tot $A \cap \interval[open left]{-\infty}{a}$ afleidbaar is in $a$, dan noemen we $f$ \term{linksafleidbaar} in $a$.
+    We noemen de afgeleide van de beperkte functie in $a$ de \term{linkerafgeleide} $f'(a^{-})$ van $f$ in $a$.
+  \item Als $a$ een ophopingspunt is van $A \cap \interval[open right]{a}{+\infty}$en de beperking van $f$ tot $A \cap \interval[open left]{a}{+\infty}$ afleidbaar is in $a$, dan noemen we $f$ \term{rechtsafleidbaar} in $a$.
+    We noemen de afgeleide van de beperkte functie in $a$ de \term{rechterafgeleide} $f'(a^{+})$ van $f$ in $a$.
+  \end{itemize}
+\end{de}
+
+\begin{st}
+  $f$ is links- , respectievelijk rechtsafleidbaar in $a$ als en slechts de volgende limiet bestaat en eindig is.
+  \[ \lim_{h\overset{<}{\rightarrow} 0}\frac{f(a+h)-f(a)}{h} \quad\text{en}\quad \lim_{h\overset{>}{\rightarrow} 0}\frac{f(a+h)-f(a)}{h} \]
+\extra{bewijs}
+\end{st}
+ 
+
+\section{Elementaire eigenschappen en rekenregels}
+\label{sec:elem-eigensch-en}
+
+\begin{pr}
+  Beschouw een functe $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $a\in A$.
+  Stel dat $a$ een ophopingspunt is van zowel $\interval[open left]{-\infty}{a} \cap A$ als $\interval[open right]{a}{+\infty} \cap A$.
+  $f$ is dan afleidbaar in $a$ als en slechts $f$ zowel links- als rechtsafleidbaar is in $a$ en $f'(a^{-})=f'(a^{+})$.
+  \[ f'(a) = f'(a^{-})=f'(a^{+}) \]
+\TODO{bewijs: oefening}
+\end{pr}
+
+\begin{pr}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $a\in A$ een ophopingspunt van $A$.
+  Als $f$ afleidbaar is in $a$, dan is $f$ continu is $a$.
+\TODO{bewijs p 9}
+\end{pr}
+
+\begin{tvb}
+  Het omgekeerde geldt niet.
+\extra{tegenvoorbeeld}
+\end{tvb}
+
+\begin{st}
+  Er bestaan functies van $\mathbb{R}$ naar $\mathbb{R}$ die overal continu maar nergens afleidbaar zijn.
+\extra{bewijs p 10}
+\end{st}
+
+\begin{pr}
+  Beschouw een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
+  Stel dat $f$ afleidbaar is en zij $\lambda \in \mathbb{R}$.
+  \[ \lambda f \text{ is afleidbaar in } a \text{ en } (\lambda f)'(a) = \lambda f'(a) \]
+\extra{bewijs}
+\end{pr}
 
 
+\begin{pr}
+  Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
+  Stel dat $f$ en $g$ afleidbaar zijn.
+  \[ f+g \text{ is afleidbaar in } a \text{ en } (f+g)'(a) = f'(a) + g'(a) \]
+\extra{bewijs}
+\end{pr}
 
+\begin{pr}
+  Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
+  Stel dat $f$ en $g$ afleidbaar zijn.
+  \[ fg \text{ is afleidbaar in } a \text{ en } (fg)'(a) = f(a) g'(a) + f'(a)g(a) \]
+\extra{bewijs}
+\end{pr}
 
+\begin{pr}
+  Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
+  Stel dat $g$ afleidbaar is, en $g(a) \neq 0$.
+  \[ \frac{1}{g}:\ \{ x \in A \mid g(x) \neq 0\} \rightarrow \mathbb{R}: x \mapsto \frac{1}{g(x)} \]
+  \[ \left(\frac{1}{g}\right)' \text{ is afleidbaar in } a \text{ en } \left(\frac{1}{g}\right)'(a) = -\frac{g'(a)}{g(a)^{2}} \]
+\TODO{bewijs p 12  }
+\end{pr}
 
+\begin{st}
+  \label{st:kettingregel}
+  De \term{kettingregel}\\
+  Beschouw functies $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
+  Veronderstel dat $a\in A$ een ophopingspunt is van $A$ en dat $f$ afleidbaar is in $a$.
+  Stel bovendien dat $f(a)$ een ophopingspunt is van $B$ en dat $g$ afleidbaar is in $f(a)$.
+  $g\circ f$ is dan afleidbaar in $a$:
+  \[ (g \circ f)'(a) = g'(f(a))f'(a) \]
+\TODO{bewijs p 13} 
+\end{st}
+
+\begin{st}
+  Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een bijectie.
+  Noteer de inverse bijectie met $g$.
+  Zij $a \in A$ een ophopingspunt van $A$.
+  Veronderstel dat $f$ afleidbaar is in $a$ en dat de afgeleide er niet nul is.
+  Stel bovendien dat $g$ continu is in $f(a)$, dan is $f(a)$ een ophopingspunt van $B$ en is $g$ afleidbaar in $f(a)$:
+  \[ g'(f(a)) = \frac{1}{f'(a)} \]
+\TODO{bewijs p 15}
+\end{st}
+
+\section{Middelwaardestelling van Rolle en Lagrange}
+\label{sec:midd-van-rolle}
+
+\subsection{Extrema}
+\label{sec:extrema}
+
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
+  We zeggen dat $f$ een \term{globaal maximum}, respectievelijk \term{globaal minimum} bereikt (over $A$) in een $a\in A$ als het volgende geldt:
+  \[ \forall x\in A:\ f(a) \ge f(x) \quad\text{respectievelijk}\quad \forall x\in A:\ f(a) \le f(x)\]
+\end{de}
+
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
+  We zeggen dat $f$ een \term{lokaal maximum}, respectievelijk \term{lokaal minimum} bereikt (over $A$) in een $a\in A$ als het volgende geldt:
+  \[ \exists \delta \in \mathbb{R}_{0}^{+}\forall x\in A:\ |x-a| < \delta \Rightarrow f(a) \ge f(x)\]
+  respectievelijk
+  \[ \exists \delta \in \mathbb{R}_{0}^{+}\forall x\in A:\ |x-a| < \delta \Rightarrow f(a) \le f(x)\]
+\end{de}
+
+\begin{de}
+  Een \term{globaal extremum}, respectievelijk \term{lokaal extremum} is ofwel een globaal maximum ofwel een globaal minimum, respectievelijk ofwel een lokaal maximum ofwel een lokaal minimum.
+\end{de}
+
+\begin{de}
+  Een inwendig punt van een deel $A$ van $\mathbb{R}$ waarvoor $f'(a)=0$ geldt, noemt men een \term{kritiek punt} van $f$.
+\end{de}
+
+\begin{pr}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een inwendig punt $a$ van $A$.
+  Stel dat $f$ een lokaal extremum bereikt in een $a$ en dat $f$ afleidbaar is in $a$, dan geldt $f'(a) = 0$.
+\TODO{bewijs p 19}
+\end{pr}
+
+\subsection{Stijgen of dalen}
+\label{sec:stijgen-dalen}
+
+\begin{de}
+  Beschouw een functie $f: J \subseteq \mathbb{R} \rightarrow \mathbb{R}$ gedefinieerd op een interval $J$.
+  Zij $I$ een deelinterval van $J$.
+  \begin{itemize}
+  \item We zeggen dat $f$ \term{stijgt} als het volgende geldt.
+    \[ \forall x,y \in I:\ x \le y \Rightarrow f(x) \le f(y) \]
+  \item We zeggen dat $f$ \term{daalt} als het volgende geldt.
+    \[ \forall x,y \in I:\ x \le y \Rightarrow f(x) \ge f(y) \]
+  \item We zeggen dat $f$ strikt \term{stijgt} als het volgende geldt.
+    \[ \forall x,y \in I:\ x < y \Rightarrow f(x) < f(y) \]
+  \item We zeggen dat $f$ strikt \term{daalt} als het volgende geldt.
+    \[ \forall x,y \in I:\ x < y \Rightarrow f(x) > f(y) \]
+  \end{itemize}
+\end{de}
+
+\begin{pr}
+  Stel dat een functie $f: I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een afleidbare functie is op een open interval $I$.
+  \begin{itemize}
+  \item Als $f$ stijgt over $I$, dan geldt $\forall x\in I:\ f'(x) \ge 0$.
+  \item Als $f$ daalt over $I$, dan geldt $\forall x\in I:\ f'(x) \ge 0$.
+  \end{itemize}
+\TODO{bewijs: oefening}
+\end{pr}
+
+\extra{het omgekeerde geldt ook} 
+
+\subsection{Klassiekers}
+\label{sec:twee-klassiekers}
+
+\subsubsection{Rolle}
+\label{sec:rolle}
+
+\begin{st}
+  De \term{middelwaardestelling van Rolle}\\
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$.
+  Veronderstel dat $f$ afleidbaar is in $\interval[open]{a}{b}$ en dat $f(a)$ gelijk is aan $f(b)$.
+  Er bestaat dan een $c\in \interval[open]{a}{b}$ zodat $f'(c)=0$ geldt.
+  T.t.z. er bestaat dan een kritiek punt $c\in \interval[open]{a}{b}$.
+\TODO{bewijs p 22}
+\end{st}
+
+\subsubsection{Lagrange}
+\label{sec:lagrange}
+
+\begin{st}
+  De \term{middelwaardestelling van Lagrange}\\
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$.
+  Veronderstel dat $f$ afleidbaar is in $\interval[open]{a}{b}$, dan bestaat er een $c\in \interval[open]{a}{b}$ als volgt.
+  \[ f'(c) = \frac{f(b)-f(a)}{b-a} \]
+\TODO{bewijs p 23}
+\end{st}
+
+\extra{waar wordt de supremumeigenschap gebruikt?}
+
+\subsubsection{Cauchy}
+\label{sec:cauchy}
+
+\begin{st}
+  De \term{middelwaardestelling van Cauchy}\\
+  Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ continue functes op een begrensd gesloten interval $\interval{a}{b}$.
+  Veronderstel dat $f$ en $g$ afleidbaar zijn in $\interval[open]{a}{b}$, dan bestaat er een $c\in \interval[open]{a}{b}$ als volgt.
+  \[ \left( f(b) - f(a) \right) g'(c) = f'(c) \left( g(b) - g(a) \right) \]
+  \TODO{bewijs p 24}
+\end{st}
+
+\subsection{Stijgen, dalen of constant zijn}
+
+\begin{pr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$ die afleidbaar is in $\interval[open]{a}{b}$.
+  \begin{itemize}
+  \item Als $f'(c) \ge 0$ geldt voor alle $c \in \interval[open]{a}{b}$, dan is $f$ stijgend in $\interval{a}{b}$
+    \[ \forall x,y \in \interval{a}{b}:\ x \le y \Rightarrow f(x) \le f(y) \]
+  \item Als $f'(c) \le 0$ geldt voor alle $c \in \interval[open]{a}{b}$, dan is $f$ dalend in $\interval{a}{b}$
+    \[ \forall x,y \in \interval{a}{b}:\ x \le y \Rightarrow f(x) \ge f(y) \]
+  \end{itemize}
+\TODO{bewijs p 24}
+\end{pr}
+
+\begin{pr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$ die afleidbaar is in $\interval[open]{a}{b}$.
+  Als $\forall c\in \interval[open]{a}{b}: f'(c) = 0$ geldt, dan is $f$ constant.
+\TODO{bewijs p 25}
+\end{pr}
+
+\subsection{Limieten van rijen van afleidbare functies}
+\label{sec:limieten-van-rijen}
+
+\begin{st}
+  Beschouw een rij $(f_{n})_{n}$ van afleidbare functies gedefinieerd op een interval $I \subseteq \mathbb{R}$ met waarden in $\mathbb{R}$.
+  Stel dat $(f_{n})_{n}$ puntsgewijs convergeert naar een functie $f:\ I \rightarrow \mathbb{R}$ en dat $(f'_{n})_{n}$ uniform op $I$ convergeert, dan is $f$ afleidbaar:
+  \[ \forall a\in I:\ f'(a) = \lim_{n\rightarrow +\infty}f_{n}'(a) \]
+\TODO{bewijs p 28}
+\end{st}
 
 
 
