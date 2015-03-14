@@ -367,7 +367,7 @@
 \begin{de}
   Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $A$ met waarden in $\mathbb{R}$ (of $\mathbb{C}$).
   We zeggen dat $(f_{n})_{n}$ \term{puntsgewijs convergeert} op $A$ naar een functie $f: A \rightarrow \mathbb{R}$ als het volgende geldt:
-  \[ \forall x\in A:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{n}:\ n \ge n \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
+  \[ \forall x\in A:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ n \ge n \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
 \end{de}
 
 \begin{de}
@@ -377,6 +377,7 @@
 \end{de}
 
 \begin{st}
+  \label{str:uniform-dan-puntsgewijs}
   Een rij functies $(f_{n})_{n}$ die uniform convergeert, convergeert puntsgewijs.
 \extra{bewijs}
 \end{st}
@@ -393,7 +394,28 @@
   \item Als $f_{n}$ uniform continu is op $A$ voor elke $n$, dan is ook $f$ uniform continu op $A$. 
   \end{itemize}
 
-\TODO{bewijs p 33}  
+  \begin{proof}
+    \begin{itemize}
+    \item 
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat $(f_{n})_{n}$ uniform convergeert naar $f$, kunnen we een $n_{0}\in \mathbb{N}$ vinden zodat voor alle $y\in A$ en voor alle volgende $n\in \mathbb{N}$ het volgende geldt:
+      \[ |f_{n}(y)-f(y)|<\frac{\epsilon}{3} \]
+      Omdat $f_{n}$ continu is in $a$ kunnen we een $\delta$ vinden
+      zodat voor alle $x\in A$ uit $|x-a|<\delta$ het volgende geldt:
+      \[ |f_{n}(x) - f_{n}(a) < \frac{\epsilon}{3} \]
+      Voor elke $x\in A$ met $|x-a|<\delta$ geldt nu het volgende:
+      \[
+      \begin{array}{rl}
+        |f(x)-f(a)| &= |f(x) - f_{n}(x) + f_{n}(x) - f_{n}(a) + f_{n}(a) - f(a)|\\
+                    &\le |f(x) - f_{n}(x)| + |f_{n}(x) - f_{n}(a)| + |f_{n}(a) - f(a)|\\
+                    &\le \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\
+                    &= \epsilon
+      \end{array}
+      \]
+      $f$ is dus continu in $a$.
+    \item \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 \section{Limieten van functies}
