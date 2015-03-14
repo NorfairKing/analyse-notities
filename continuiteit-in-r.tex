@@ -12,27 +12,71 @@
   Zij $f$ een functie en $a\in A$:
   \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
   We noemen $f$ \term{continu} in $a$ als en slechts als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ |x-a| < \delta \Rightarrow |f(x) -f(a)| < \epsilon \]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ |x-a| < \delta \Rightarrow |f(x) -f(a)| < \epsilon \]
   We noemen $f$ \term{continu} op $A$ als $f$ continu is in elke $a\in A$.
 \end{de}
 
 \begin{st}
   Equivalente definitie van \term{continu\"iteit}:\\
   $f$ is continu in $a$ als en slechts als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ f(\interval[open]{a-\delta}{a+\delta} \cap A) \subseteq \interval[open]{f(a)-\epsilon}{f(a)+\epsilon} \]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ f(\interval[open]{a-\delta}{a+\delta} \cap A) \subseteq \interval[open]{f(a)-\epsilon}{f(a)+\epsilon} \]
 \extra{bewijs}
 \end{st}
 
+
 \begin{pr}
+  \label{pr:continu-asa-behoudt-convergentie}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
-  $f$ is continu in $a$ als en slechts als er voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
-\TODO{bewijs p 6}
+  $f$ is continu in $a$ als en slechts als er voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert geldt dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert.
+      We moeten bewijzen dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
+      Kies daartoe een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat $f$ continu is in $a$ kunnen we een $\delta\in \mathbb{R}_{0}^{+}$ vinden zodat $|f(x)-f(a)| < \epsilon$ geldt voor alle $x\in A$ met $|x-a| < \delta$.
+      Omdat $(x_{n})_{n}$ naar $a$ convergeert, kunnen we een $n_{0}\in \mathbb{N}$ vinden zodat voor alle volgende $n\in\mathbb{N}$ de afstandvan $x_{n}$ tot $a$ kleiner is dan $\delta$.
+      Voor elke $n\ge n_{0}$ zal dan $|f(x_{n})-f(a)| < \epsilon$ gelden.
+      De rij $(f(x_{n}))_{n}$ convergeert dus naar $f(a)$.
+    \item $\Leftarrow$\\
+      Contrapositie: Als $f$ niet continu is in $a$ zal er een rij in $A$ bestaan die naar een $a$ convergeert waarvoor $(f(x_{n}))_{n}$ niet naar $f(a)$ convergeert.
+      Omdat $f$ niet continu is bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat er voor elke $\delta\in \mathbb{R}_{0}^{+}$ een $x$ kan genomen worden zodat het volgende geldt:
+      \[ |x-a| < \delta \quad\wedge\quad |f(x)-f(a)| \ge \epsilon \]
+      We kunnen dan een rij $(x_{n})_{n}$ in $A$ construeren zodat voor alle $n\in\mathbb{N}_{0}$ $x_{n}$ als volgt gekozen is:
+      \[ |x_{n}-a| < \frac{1}{n} \quad\wedge\quad |f(x_{n})-f(a)| \ge \epsilon \]
+      Uit de eerste ongelijkheid volgt dat $x_{n}$ naar $a$ convergeert terwijl uit de tweede ongelijkheid volgt dat $(f(x_{n}))_{n}$ niet kan convergeren naar $f(a)$.
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
-  $f$ is continu op $A$ als er voor elk open deel $V$ van $\mathbb{R}$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
-\TODO{bewijs p 7}
+  $f$ is continu op $A$ als en slechts als er voor elk open deel $V$ van $\mathbb{R}$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een willekeurig open deel $V$ van $\mathbb{R}$.
+      Als $f^{-1}(V)$ leeg is, is $f^{-1}(V)$ triviaal open.
+      Als $f^{-1}(V)$ niet leeg is, dan bestaat er een $a\in f^{-1}(V)$.
+      $f(a)$ zit dan in $V$ en omdat $V$ open is kunnen we een $\epsilon$ vinden zodat $\interval[open]{f(a)-\epsilon}{f(a)+\epsilon}$ een deel is van $V$.
+      Omdat $f$ continu is in $a$ kunnen we een $\delta\in \mathbb{R}_{0}^{+}$ vinden zodat uit $x\in A$ en $|x-a| < \delta$ volgt dat $f(x) \in \interval[open]{f(a)-\epsilon}{f(a)+\epsilon}$
+      Dit betekent dat $\interval[open]{a-\delta}{a+\delta} \cap A \subseteq f^{-1}(V)$ geldt en dus dat $f^{-1}(V)$ relatief open is in $A$.
+    \item $\Leftarrow$\\
+      Stel dat er voor elk open deel $V$ van $\mathbb{R}$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
+      Kies nu een willekeurige $a\in A$.
+      We bewijzen dat $f$ continu is in $a$.
+      Beschouw daarvoor de verzameling $U$ voor een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$:
+      \[ U = f^{-1}(\interval[open]{f(a)-\epsilon}{f(a)+\epsilon}) \]
+      $U$ bevat zeker $a$ en is bovendien relatief open in $A$.
+      Er bestaat dus een $\delta \in \mathbb{R}_{0}^{+}$ zodat uit $x\in A$ en $|x-a|< \delta$ volgt dat $x$ tot $U$ behoort.
+      Kies dan een willekeurige $x\in A$ met $|x-a|< \delta$, opdat $x$ tot $U$ behoort.
+      $f(x)$ behoort dan ook tot $f(U) = \interval[open]{f(a)-\epsilon}{f(a)+\epsilon}$.
+      Er geldt met andere woorden $|f(x)-f(a)|<\epsilon$, dus $f$ is continu in $a$.
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{de}
@@ -50,49 +94,172 @@
 \begin{pr}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie die continu is in $a\in A$.
   \[ \lambda f:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x) \text{ is continu in } A \]
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ continu is in $a$ bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat uit $|x-a|<\delta$  $|f(x)-f(a)|<\frac{\epsilon}{|\lambda|}$ volgt.
+    Hieruit volgt het volgende:
+    \[ |x-a| < \delta \Rightarrow |\lambda||f(x)-f(a)| = |\lambda f(x)-\lambda f(a)| < \epsilon \]
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
-  \[ f+g:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x)+g(x) \text{ is continu in } A \]
-\TODO{bewijs: oefening}
+  \[ f+g:\ A \rightarrow \mathbb{R}: x \mapsto f(x)+g(x) \text{ is continu in } A \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ en $g$ elk continu zijn in $a$ bestaan er $\delta_{x}, \delta_{y} \in \mathbb{R}_{0}^{+}$ zodat de volgende implicaties gelden:
+    \[ \forall x\in A:\ |x-a|<\delta_{x} \Rightarrow |f(x)-f(a)|<\frac{\epsilon}{2} \quad\wedge\quad \forall x\in A:\ |x-a|<\delta_{y}  \Rightarrow |g(x)-g(a)|<\frac{\epsilon}{2} \]
+    Hieruit volgt dan het volgende:
+    \[ \forall x\in A:\ |x-a|<\min\{\delta_{x},\delta_{y}\}  \Rightarrow |(f+g)(x) - (f+g)(a)| \le |f(x)-f(a)| + |g(x)-g(a)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+    Bijgevolg is $(f+g)$ continu in $a$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
+  \label{pr:product-continu}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
   \[ fg:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x)g(x) \text{ is continu in } A \]
-\TODO{bewijs p 10}
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Merk eerst het volgende op voor elke $x\in A$:
+    \[
+    \begin{array}{rl}
+    |(fg)(x) - (fg)(a)| &= |f(x)g(x) - f(a)g(a)|\\
+                        &= |f(x)g(x) - f(x)g(a) + f(x)g(a) - f(a)g(a)|\\
+                        &\le |f(x)g(x) - f(x)g(a)| + |f(x)g(a) - f(a)g(a)|\\
+                        &\le |f(x)||g(x)-g(a)| + |g(a)||f(x)-f(a)|\\
+    \end{array}
+    \]
+    Omdat $f$ continu is in $A$ bestaat er een $\delta_{1} \in \mathbb{R}_{0}^{+}$ zodat voor alle $x\in A$ met $|x-a|<\delta_{1}$ geldt dat $f(x)$ dichter dan $1$ bij $f(a)$ ligt.
+    Er geldt dan het volgende:
+    \[
+    \begin{array}{c}
+      |f(x)-f(a)|<1\\
+      |f(x)|-|f(a)|<1\\
+      |f(x)|<1+|f(a)|\\
+    \end{array}
+    \]
+    Combineren we deze ongelijkheden, dan krijgen we de volgende:
+    \[ |(fg)(x) - (fg)(a)| \le (1+|f(a)|)|g(x)-g(a)| + |g(a)||f(x)-f(a)| \]
+    We zullen nu de juiste $\delta$'s kiezen zodat het rechterlid kleiner dan $\epsilon$ wordt.
+    Kies daarom een $\delta_{2}$ en $\delta_{3}$ zodat de volgende ongelijkheden gelden voor elk $x\in A$ dicht genoeg bij $a$.
+    Dit kan omdat zowel $f$ als $g$ continu is in $a$.
+    \[ 
+    |f(x)-f(a)| < \frac{\epsilon}{2(1+|g(a)|)} \quad\wedge\quad |g(x)-g(a)| < \frac{\epsilon}{2(1+|f(a)|)}
+    \]
+    Kies nu $\delta = \min\{\delta_{1},\delta_{2},\delta_{3}\}$ zodat het volgende geldt.
+    \[ 
+    \begin{array}{rl}
+    \forall x\in A: |x-a|<\delta \Rightarrow \\
+    |f(x)||g(x)-g(a)| + |g(a)||f(x)-f(a)| &\le (1+|f(a)|)|g(x)-g(a)| + |g(a)||f(x)-f(a)|\\
+                                          &\le \frac{(1+|f(a)|)\epsilon}{2(1+|f(a)|)} + \frac{|g(a)|\epsilon}{2(1+|g(a)|)}\\
+                                          &\le \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+                                          &= \epsilon
+    \end{array}
+    \]
+    Dit bewijs dat $fg$ continu is in $a$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
-  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$ met $g(a)\neq 0$.
   Noteer bovendien $A_{0} = \{ x \in A \mid g(x) \neq 0 \}$
   \[ \frac{f}{g}:\ A_{0} \rightarrow \mathbb{R}: x \mapsto \lambda \frac{f(x)}{g(x)} \text{ is continu in } A \]
-\TODO{bewijs p 10}
+
+  \begin{proof}
+    Het volstaat om aan te tonen dat $\frac{1}{g}$ continu is in $a$.\prref{pr:product-continu}
+    \[ \frac{1}{g}:\ A_{0}\rightarrow \mathbb{R}:\ x \mapsto \frac{1}{g(x)} \]
+    Merk eerst het volgende op voor alle $x\in A_{0}$.
+    \[ \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| = \frac{|g(x)-g(a)|}{|g(x)||g(a)|} \]
+    We proberen het rechterlid nu kleiner te krijgen dan een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ door de juiste $\delta$ te kiezen.
+    Omdat $g$ continu is in $a$ en $g(a)$ niet nul is, kunnen we een $\delta_{1} \in \mathbb{R}_{0}^{+}$ kiezen zodat voor alle $x\in A_{0}$ dicht genoeg bij $a$ het volgende geldt:
+    \[ 
+    \begin{array}{c}
+      |g(x)-g(a)| < \frac{|g(a)|}{2}\\
+      |g(x)| \in \interval[open]{|g(a)|-\frac{|g(a)|}{2}}{|g(a)|+\frac{|g(a)|}{2}}\\
+    \end{array}
+    \]
+    We zetten deze ongelijkheid samen met de eerste gelijkheid om de volgende ongelijkheid te bekomen.
+    \[ \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| \le \frac{2|g(x)-g(a)|}{|g(a)|^{2}} \]
+    We zetten nu de tweede stap om het rechterlid kleiner dan $\epsilon$ te krijgen.
+    Daartoe kiezen we een $\delta_{2}$ zodat het volgende geldt voor alle $x\in A_{0}$ dicht genoeg bij $a$.
+    \[ |g(x)-g(a)| < \frac{|g(a)|^{2}\epsilon}{2} \]
+    Voor $x\in A$, dichter dan $\min\{\delta_{1},\delta_{2}\}$ bij $a$ geldt dan de het volgende:
+    \[ 
+    \begin{array}{c}
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| = \frac{|g(x)-g(a)|}{|g(x)||g(a)|}\\
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| < \frac{2|g(x)-g(a)|}{|g(a)|^{2}}\\
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| < \frac{2|g(a)|^{2}\epsilon}{2|g(a)|^{2}}\\
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| < \epsilon \\
+    \end{array}
+    \]
+    Dit bewijst dat $\frac{1}{g}$ continu is in $a$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \rightarrow \mathbb{R}$ functies en zij $a\in A$.
   Als $f$ continu is in $a$ en $g$ continu in $f(a)$, dan is $g\circ f$ continu in $a$.
-\TODO{bewijs p 11}
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $g$ continu is in $f(a)$ kunnen we een $\eta\in\mathbb{R}_{0}^{+}$ vinden zodat $|g(y)-g(f(a))|<\epsilon$ geldt voor alle $y\in B$ met $|y-f(a)|<\eta$.
+    Omdat $f$ continu is in $a$ kunnen we een $\delta\in \mathbb{R}_{0}^{+}$ vinden zodat $|f(x)-f(a)| < \eta$ geldt voor alle $x\in A$ met $|x-a|<\delta$ geldt.
+    Voor elke $x\in A$ met $|x-a|<\delta$ zal $|f(x)-f(a)| < \eta$ gelden en bijgevolg ook $|g(f(x))-g(f(a))|<\epsilon$.
+    $g\circ f$ is dus continu in $a$.
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $A$ een gesloten begrensd deel van $\mathbb{R}$.
   Zij $f: \ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue injectieve functie, dan is $f^{-1}: f(A) \rightarrow A$ ook continu.
-\TODO{bewijs p 12}
+
+  \begin{proof}
+    Merk op dat $f$ injectief moet zijn opdat $f^{-1}$ een functie zou zijn.
+    We zullen bewijzen dat voor elke rij $(y_{n})_{n}$ in $f(A)$ die convergeert naar een $y\in f(x) \in f(A)$ geldt dat $(f^{-1}(y_{n}))_{n}$ convergeert naar $x\in A$.
+    Daaruit volgt dan de stelling.\prref{pr:continu-asa-behoudt-convergentie}
+    Noem het invers beeld van $y_{n}$ onder $f$ $x_{n}$.
+    We moeten argumenteren dat $(x_{n})_{n}$ naar $x$ convergeert.
+    Stel immers dat $(x_{n})_{n}$ niet convergeert naar $x$, dan bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat $|x_{n}-x|> \epsilon$ geldt (dit geldt dan ook voor elke deelrij van $(x_{n})_{n}$.
+    Omdat $A$ gesloten en begrensd is bestaat er een deelrij $(x_{n_{k}})_{k}$ die convergeert naar een andere $x'\neq x$.
+    Omdat $f$ continu is, zal $(y_{n})_{n}$ naar $f(x')$ convergeren, maar omdat $f$ injectief is, zal $f(x')$ verschillend zijn van $f(x)$.
+    We vinden dus dat de convergente rij $(y_{n_{k}})_{k}$ een convergente deelrij zou hebben met een andere limiet, wat niet kan.
+  \end{proof}
 \end{pr}
 
 \section{Continue functies op intervallen}
 \label{sec:continue-functies-op}
 
 \begin{st}
-  Beschouw een continue functie $f: \interval[open]{a}{b} \rightarrow \mathbb{R}$ gedefinieerd op een gesloten begrensd interval $\interval[open]{a}{b}$.
-  $f$ is begrensd en bereikt op $\interval[open]{a}{b}$ haar minimale en maximale waarde.
-  Er bestaan dus waarden $c,d \in \interval[open]{a}{b}$ als volgt:
-  \[ f(c) = \sup\left\{ f(x) \mid x \in \interval[open]{a}{b} \right\} \quad\text{ en }\quad f(d) = \sup\left\{ f(x) \mid x \in \interval[open]{a}{b} \right\} \]
-\TODO{bewijs p 14}
+  Beschouw een continue functie $f: \interval{a}{b} \rightarrow \mathbb{R}$ gedefinieerd op een gesloten begrensd interval $\interval{a}{b}$.
+  $f$ is begrensd en bereikt op $\interval{a}{b}$ haar minimale en maximale waarde.
+  Er bestaan dus waarden $c,d \in \interval{a}{b}$ als volgt:
+  \[ f(c) = \sup\left\{ f(x) \mid x \in \interval{a}{b} \right\} \quad\text{ en }\quad f(d) = \sup\left\{ f(x) \mid x \in \interval{a}{b} \right\} \]
+
+  \begin{proof}
+    \begin{itemize}
+    \item $f$ is begrensd.\\
+      Stel immers dat $f$ niet begrensd is, dan kunnen we een rij $(x_{n})_{n}$ construeren zodat $|f(x_{n})|$ telkens groter is dan $n$.
+      We verkrijgen zo een rij in $\interval{a}{b}$.
+      Omdat $\interval{a}{b}$ gesloten en begrensd is, kunnen we een deelrij nemen die convergeert naar een $x\in\interval{a}{b}$.
+      Omdat $f$ continu is moet $f(x_{n_{k}})_{k}$ dan convergeren naar $f(x)$.\prref{pr:continu-asa-behoudt-convergentie}
+      Sterker nog, $(f(x_{n_{k}}))_{k}$ moet begrensd zijn.\prref{pr:convergente-rij-begrensd}
+      Dit is echter strijdig met het feit dat voor alle $k$, $|f(x_{n_{k}})|$ groter is dan $k$.
+    \item $f$ bereikt een maximale waarde op $\interval{a}{b}$.\\
+      We weten al dat $f$ begrensd is, dus we kunnen $M$ het supremum van $f(\interval{a}{b})$ noemen.
+      We kunnen nu voor alle $\mathbb{N}_{0}$ een $x_{n} \in \interval{a}{b}$ kiezen zodat het volgende geldt:\waarom
+      \[ M- \frac{1}{n} < f(x_{n}) \le M \]
+      We verkrijgen zo een rij $(x_{n})_{n}$ in $\interval{a}{b}$.
+      Omdat $\interval{a}{b}$ gesloten en begrensd is, kunnen we een deelrij $(x_{n_{k}})_{k}$ vinden die convergeert naar een $c\in \interval{a}{b}$.
+      Omdat $f$ continu is zal $(f(x_{n_{k}}))_{k}$ naar $f(c)$ convergeren.
+      Omdat $f_{n_{k}}$ willekeurig dicht bij $M$ komt vanaf een geschikte $n_{0}\in\mathbb{N}_{0}$ zal $c$ gelijk zijn aan $M$.
+    \item $f$ bereikt een minimale waarde op $\interval{a}{b}$.\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \question{waar wordt de supremumeigenschap gebruikt?}
 \end{st}
 
@@ -101,28 +268,52 @@
   De \term{tussenwaardestelling}\\
   Zij $f: I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie op een interval $I$.
   Zij $x_{1},x_{2}\in I$ en noem $y_{i}=f(x_{i})$.
-  \[ \forall y \in \interval[open]{y_{1}}{y_{2}}:\ \exists x \in I:\ f(x) = y \]
-\TODO{bewijs p 15}
-\end{st}
+  \[ \forall y \in \interval{y_{1}}{y_{2}}:\ \exists x \in I:\ f(x) = y \]
 
-\TODO{bissectiemethode?}
+  \begin{proof}
+    We beschouwen het geval waarin $x_{1}<x_{2}$ en $y_{1}<y_{2}$ gelden, de andere gevallen gaan analoog.\extra{uitwerken?}
+    Kies vervolgens een willekeurige $y\in \interval{y_{1}}{y_{2}}$.
+    \begin{itemize}
+    \item Als $y$ gelijk is aan $y_{1}$ of $y_{2}$ kiezen we voor $x$ gewoon $x_{1}$,respectievelijk $x_{2}$.
+    \item Als $y$ verschillend is van zowel $y_{1}$ als $y_{2}$ zoeken we in het interval $\interval{y_{1}}{y_{2}}$ binair naar een waarde $x$ met als functiewaarde $y$.
+      \begin{itemize}
+      \item Als het zoeken eindigt met een interval waarin $y$ een randpunt is, dan hebben we $x$ gevonden als het overeenkomstig randpunt van het interval van de $x$-en.
+      \item Als het zoeken nooit eindigd, krijgen we een rij intervallen $(I_{n})_{n}$.
+        De rij van linkereindpunten $(l_{n})_{n}$ is een stijgende, naar boven begrensde rij in $\mathbb{R}$ en convergeert bijgevolg.\stref{st:stijgend-dan-limiet}
+        De rij van rechtereindpunten $(r_{n})_{n}$ is een dalende, naar onder begrensde rij in $\mathbb{R}$ en convergeert bijgevolg.\stref{st:dalend-dan-limiet}
+        Omdat de lengte van de intervallen $I_{n}$ naar nulconvergeert is de limiet $l$ van $(l_{n})_{n}$ gelijk aan de limiet $r$ van $(r_{n})_{n}$.
+        Noem deze limiet $x$.
+        Omdat $f$ continu is, is $f(x)$ ook de limiet van $(f(l_{n}))_{n}$ en $(r(l_{n}))_{n}$.
+        Omdat $f(x)$, per constructie, zowel kleiner of gelijk aan, als groter of gelijk aan $y$ moet zijn,\waarom moeten $f(x)$ en $y$ gelijk zijn.
+        We hebben dan de gezochte $x$ gevonden.
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{st}
 
 \section{Uniforme continuiteit}
 \label{sec:unif-cont}
 
 \begin{st}
+  \label{st:continue-functie-behoudt-cauchy}
   Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een continue functie en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
-\extra{bewijs}
+
+  \begin{proof}
+    $(x_{n})_{n}$ is een Cauchyrij en daarom convergent.\prref{pr:cauchyrij-in-R-convergeert}
+    Noem $x$ de limiet van $(x_{n})_{n}$.\prref{pr:cauchyrij-in-R-convergeert}
+    Omdat $f$ continu is, zal $f(x)$ de limiet zijn van $(f(x_{n}))_{n}$.
+    $(f(x_{n}))_{n}$ convergeert dus ook en is bijgevolg een Cauchyrij.\prref{pr:convergent-dan-cauchy}
+  \end{proof}
 \end{st}
 
 \begin{de}
   We noemen een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ \term{uniform continu} of \term{gelijkmatig continu} op $A$ als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta in \mathbb{R}_{0}^{+}:\ \forall x,y \in A:\ |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon \]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x,y \in A:\ |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon \]
 \end{de}
 
 \begin{st}
+  \label{st:uniform-continu-dan-ook-gewoon-continu}
   Als een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ uniform continu is, is hij ook continu.
-\extra{bewijs}       
 \end{st}
 
 \begin{tvb}
@@ -131,19 +322,43 @@
 \end{tvb}
 
 \begin{pr}
+  \label{pr:uniform-continue-functie-behoudt-cauchy}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een uniform continue functie en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    $f$ is uniform continu en dus ook gewoon continu.\stref{st:uniform-continu-dan-ook-gewoon-continu}.
+    $(f(x_{n}))_{n}$ is dan ook een Cauchyrij.\stref{st:continue-functie-behoudt-cauchy}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een uniform continue functie.
   Als $B$ een begrensd deel is van $A$, dan is $f(B)$ ook begrensd.
-\TODO{bewijs p 23}
+
+  \begin{proof}
+    Stel dat $f(B)$ niet begrensd zou zijn, dan kunnen we voor elke $n\in \mathbb{N}_{0}$ een $x_{n}\in B$ vinden zodat $|f(x_{n})|$ groter is dan $n$.
+    We vinden zo een rij $(x_{n})_{n}$ in $B$.
+    Omdat $B$ begrensd is, bestaat er een convergente deelrij $(x_{n_{k}})_{k}$.\stref{st:bolzano-rijen}
+    Deze deelrij is een Cauchyrij.\prref{pr:convergent-dan-cauchy}
+    De rij $(f(x_{n_{k}}))_{k}$ is dan ook een Cauchyrij.\prref{pr:uniform-continue-functie-behoudt-cauchy}
+    Cauchyrijen zijn echter begrends.\prref{pr:cauchyrij-begrensd} Contradictie.
+  \end{proof}
 \end{pr}
 
 \begin{st}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie, gedefinieerd op een gesloten en begrensd deel $A$ van $\mathbb{R}$, dan is $f$ uniform continu.
-\TODO{bewijs p 23}
+
+  \begin{proof}
+    Stel immers dat $f$ niet uniform continu zou zijn, dan bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat we voor elke $\delta = \frac{1}{n}$ punten $x_{n}$, $y_{n}$ kunen vinden zodat het volgende geldt.
+    \[ |x_{n}-y_{n}| < \frac{1}{n} \quad\wedge\quad |f(x_{n})-f(y_{n})| \ge \epsilon \]
+    Omdat $(x_{n})_{n}$ een rij is in een gesloten, begrensd deel van $\mathbb{R}$.
+    Er bestaat daarom een deelrij $(x_{n_{k}})_{k}$ die convergeert naar een $x\in A$.
+    Omdat $f$ continu is, zal $(f(x_{n_{k}}))_{k}$ naar $x$ convergeren.
+    Analoog vinden we een deelrij $(y_{n_{k}})_{k}$ van $(y_{n})_{n}$ die convergeert naar een $y\in A$.
+    Omdat de afstand tussen $x_{n}$ en $y_{n}$ willekeurig klein wordt zal $y$ gelijk zijn aan $x$ en $f(x)$ dus ook aan $f(y)$.
+    We vinden dus dat de afstand tussen $f(x_{n_{k}})$ en $f(y_{n_{k}})$ willekeurig klein wordt, wat strijdig is met $|f(x_{n})-f(y_{n})| \ge \epsilon$.
+    Contradictie.
+  \end{proof}
 \end{st}
 
 \section{Rijen van functies}
@@ -382,3 +597,8 @@
 
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
