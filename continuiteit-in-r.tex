@@ -501,10 +501,51 @@
 \end{de}
 
 \begin{pr}
+  \label{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $L \in \mathbb{R} \cup \{-\infty,+\infty\}$.
   Zij $a \in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
   De limiet van $f(x)$ in $a$ is $L$ als en slechts als $L$ ook de limiet is van het beeld van elke rij $(x_{n})_{n}$ in $A\setminus\{a\}$ die $a$ als limiet heeft.
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a = -\infty$
+      \begin{itemize}
+      \item $L = -\infty$
+\extra{bewijs}
+      \item $L \in \mathbb{R}$
+\extra{bewijs}
+      \item $L = +\infty$
+\extra{bewijs}
+      \end{itemize}
+    \item $a\in\mathbb{R}$
+      \begin{itemize}
+      \item $L = -\infty$
+\extra{bewijs}
+      \item $L \in \mathbb{R}$
+        \begin{itemize}
+        \item $\Rightarrow$
+          Zij $(x_{n})_{n}$ een rij in $A\setminus \{a\}$ met $a$ als limiet.
+          Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+          Omdat de limiet van $f$ in $a$ $L$ is, bestaat er dan een $\delta \in \mathbb{R}_{0}^{+}$ zodat uit voor alle $x\in A$ uit $|x-a|<\delta$ volgt dat $|f(x)-L|<\epsilon$ geldt.
+          Omdat de rij convergeert naar $a$, bestaat er een $n_{0}\in \mathbb{N}$ zodat voor alle volgende $n\in\mathbb{N}$ geldt dat $|x_{n}-a|$ kleiner is dan $\delta$.
+          Vanaf die $n_{0}$ is $|f(x_{n})-L|$ dus kleiner dan $\epsilon$.
+        \item $\Leftarrow$
+        \end{itemize}
+      \item $L = +\infty$
+\extra{bewijs}
+      \end{itemize}
+    \item $a = +\infty$
+      \begin{itemize}
+      \item $L = -\infty$
+\extra{bewijs}
+      \item $L \in \mathbb{R}$
+\extra{bewijs}
+      \item $L = +\infty$
+\extra{bewijs}
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{de}
@@ -517,26 +558,50 @@
   \end{itemize}
 \end{de}
 
+\begin{st}
+  Een equivalente definities voor een linker- en rechterlimiet.\\
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in\mathbb{R}$ een ophopingspunt van $A$.
+  \begin{itemize}
+  \item De linker limiet van $f$ in $A$ noemen we $L$ als het volgende geldt:
+    \[ \forall \epsilon\in\mathbb{R}_{0}^{+},\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ a-\delta<x\le a \Rightarrow |f(x)-L|<\epsilon \]
+  \item De rechter limiet van $f$ in $A$ noemen we $L$ als het volgende geldt:
+    \[ \forall \epsilon\in\mathbb{R}_{0}^{+},\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ a\le x < a+\delta \Rightarrow |f(x)-L|<\epsilon\]
+  \end{itemize}
+  \extra{bewijs}
+\end{st}
+
 \subsection{Classificatie van discontinuiteiten}
 
 \begin{pr}
+  \label{pr:functie-continu-asa-limiet-is-beeld}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
   Stel dat $a$ zowel een element van $A$ als een ophopingspunt van $A$ is.
-  $f$ is continu in $a$ als en slechts als de limiet van $f(x)$ in $a$ $f(a)$ is.
-\TODO{bewijs: oefening}
+  $f$ is continu in $a$ als de limiet van $f$ in $a$ $f(a)$ is.
+
+  \begin{proof}
+    $f$ is continu in $a$, dus voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert geldt dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.\prref{pr:continu-asa-behoudt-convergentie}
+    Dit is equivalent met de stelling dat $f(a)$ de limiet is van $f$ in $a$.\prref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en $a\in \mathbb{R}$.
   Stel dat $a$ een ophopingspunt is van zowel $\interval[open right]{a}{+\infty} \cap A$ als $\interval[open left]{-\infty}{a} \cap A$.
   $f$ heeft in $a$ een limiet $L\in \mathbb{R}\cup \{ -\infty,+\infty\}$ als en slechts als de linker- en rechterlimiet van $f$ in $a$ bestaan en gelijk zijn aan $L$.
-\TODO{bewijs: oefening}
-\end{pr}
 
-\begin{pr}
-  \TODO{relocate this?}
-  Als een functie $f\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ niet continu is in $a\in A$, dan is $a$ een ophopingspunt van $A$.
-\TODO{bewijs}
+  \begin{itemize}
+  \item $\Rightarrow$\\
+    \extra{bewijs}
+  \item $\Leftarrow$\\
+    Stel dat $f$ zowel een linker- als een rechterlimiet heeft in $a$ en ze beide gelijk zijn aan $L$.
+    Kies dan een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$.
+    Er bestaat dan een $\delta_{l}$ en een $\delta_{r}$ als volgt.
+    \[ \forall x\in A:\ a-\delta_{l}<x\le a \Rightarrow |f(x)-L|<\epsilon \]
+    \[ \forall x\in A:\ a\le x < a+\delta_{r} \Rightarrow |f(x)-L|<\epsilon \]
+    Noem nu $\delta = \min\{\delta_{1},\delta_{2}\}$ zodat het volgende geldt.
+    \[ \forall x\in A:\ a\le |x-a|<\delta \Rightarrow |f(x)-L|<\epsilon \]
+    $f$ heeft dus $L$ als limiet in $a$.
+  \end{itemize}
 \end{pr}
 
 \begin{de}
@@ -552,7 +617,49 @@
 \begin{pr}
   Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een monotone functie op een (niet-leeg) open interval $I$, dan kan $f$ enkel discontinu\"iteiten van de eerste soort vertonen.
   Bovendien is het aantal discontinu\"iteiten van $f$ aftelbaar.
-\TODO{bewijs p 38}
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $f$ is monotoon stijgend.
+      \begin{itemize}
+      \item De linkerlimiet van $f$ in elk punt $a\in I$ bestaat en is eindig
+        Die linkerlimiet wordt in het bijzonder gegeven als volgt:
+        \[ \lim_{x \overset{<}{\rightarrow} a}f(x) = \sup\{ f(x)\mid x\in I \wedge x < a \} \]
+        De verzameling $\{ f(x)\mid x\in I \wedge x < a \}$ is immers een niet-lege, naar boven begrensde verzameling.
+        Noem $s$ het supremum van die verzameling.
+        Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$, dan
+        bestaat er een $y\in I$ groter dan $a$ zodat $f(y)$ tussen
+        $s-\epsilon$ en $s$ ligt.  Omdat $f$ stijgt, zal voor alle
+        $x\in F$ tussen $y$ en $a$ gelden dat $f(x)$ tussen $f(y)$ en
+        $s$ ligt.  Noem nu $\delta = a-y > 0$.  Voor alle
+        $x\in I\cap\interval[open left]{-\infty}{a}$ met
+        $0<|x-a|<\delta$ geldt dan dat $|f(x)-s|<\epsilon$ geldt.
+      \item De rechterlimiet van $f$ in elk punt $a\in I$ bestaat en is eindig.
+        Die rechterlimiet wordt in het bijzonder gegeven als volgt:
+        \[ \lim_{x \overset{>}{\rightarrow} a}f(x) = \inf\{ f(x)\mid x\in I \wedge x > a \} \]
+      \item Vermits de linker- en rechterlimiet van $f$ in elk punt van $I$ bestaan, kunnen we al besluiten dat $f$ enkel discontinu\"iteiten van de eerste soort kan hebben.
+      \item Merk op dat de linkerlimiet kleiner of gelijk aan de rechterlimiet is in elk punt $a\in I$.
+        Als en slechts als de limieten verschillend zijn is $f$ niet continu in $a$.
+        (Omdat $f$ monotoon stijgt kan er geen ophefbare discontinu\"iteit zijn.)
+        De verzameling $D$ van de discontinu\"iteiten van $f$ ziet er dus als volgt uit:
+        \[ D = \left\{ a \in I \mid \lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x) > 0 \right\} \]
+        We tonen aan dat $D$ afterlbaar is.\\
+        Merk eerst op dat voor $k$ elementen $a_{i}$ uit $D$ tussen $c$ en $d$ in $I$ het volgende geldt:
+        \[ \sum_{i=1}^{k}\left(\lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x)\right) \le f(d) - f(c) \]
+        Omdat $I$ open is, kunnen we een strikt dalende rij $(c_{n})_{n}$ en een strikt stijgende rij $(d_{n})_{n}$ in $I$ nemen zodat $I$ de unie is van alle intervallen $\interval[open]{c}{d}$.
+        Beschouw nu voor elk $n$ de deelverzameling $D_{n}$ van $D$.
+        \[ D_{n} = \left\{ a \in \interval[open]{c_{n}}{d_{n}} \mid \left(\lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x)\right) > \frac{1}{n} \right\} \]
+        Elke afstand $\left(\lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x)\right)$ is groter dan $\frac{1}{n}$, de som is dus groter dan $\frac{\#D_{n}}{n}$.
+        De som is echter ook kleiner dan $f(d_{n})-f(c_{n})$, om tot de volgende ongelijkheid te komen.
+        \[ \#D_{n} \le n(f(d_{n})-f(c_{n})) \]
+        $\#D_{n}$ is dus eindig.
+        $D$ is een aftelbare unie van eindige verzamelingen $D_{n}$ en daarom aftelbaar.
+      \end{itemize}
+    \item $f$ is monotoon dalend.\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 
@@ -560,7 +667,7 @@
 \label{sec:eigensch-en-rekenr}
 
 \begin{pr}
-  Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
+  Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
   Stel dat $\forall a\in A: f(x) \le g(x)$ geldt, en dat de limiet van zowel $f$ als $g$ in $a$ bestaat, dan is de limiet van $f$ in $a$ kleiner dan of gelijk aan de limiet van $g$ in $a$.\
 \extra{bewijs}
 \end{pr}
@@ -596,7 +703,22 @@
   \item Als $b$ niet tot $B$ behoort, dan is $b$ een ophopingspunt van $B$ en de limiet van $g$ in $b$ bestaat, dan bestaat de limiet van $g\circ f$ in $a$:
     \[ \lim_{a}g\circ f = \lim_{a}g \]
   \end{itemize}
-\TODO{bewijs p 42}
+
+  \begin{proof}
+    Gevalsonderscheid
+    \begin{itemize}
+    \item
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A\setminus\{a\}$ die naar $a$ convergeert.
+      We bewijzen dat $((g\circ f)(x_{n}))_{n}$ naar $(g\circ f)(a)$ convergeert.
+      Hieruit volgt dan de stelling.\prref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
+      Omdat $b$ de limiet is van $f$ in $a$ weten we dat $(f(x_{n})_{n}$ een rij is die naar $b$ convergeert.
+      Omdat $g$ continu is in $b$ geldt dan het volgende:
+      \[ \lim_{n\rightarrow \infty}(g\circ f)(x_{n}) = \lim_{n\rightarrow \infty}g(f(x_{n})) = g(b) \]
+      Hiermee is het volgende aangetoond:
+      \[ \lim_{a}(g\circ f)=g(b) \]
+    \item \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{st}
