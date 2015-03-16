@@ -345,7 +345,28 @@
 \begin{pr}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een inwendig punt $a$ van $A$.
   Stel dat $f$ een lokaal extremum bereikt in een $a$ en dat $f$ afleidbaar is in $a$, dan geldt $f'(a) = 0$.
-\TODO{bewijs p 19}
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $f$ bereikt een lokaal maximum in $x$.
+      Omdat $a$ een inwendig punt is van $A$ en een lokaal maximum bereikt in $a$ kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ nemen als volgt:
+      \[ \forall x\in \mathbb{R}: |x-a| < \delta \Rightarrow (x\in A \wedge f(a) \ge f(x)) \]
+      Voor elke $h\in \mathbb{R}$ met $|h| < \delta$ zal $a+h$ dus tot $A$ behoren en ook het volgende gelden:
+      \[ f(a+h) -f(a) \le 0 \]
+      Beschouw nu de rij $(h_{n})_{n}$ gedefinieerd als volgt:
+      \[ h_{n} = \frac{\delta}{2n} \]
+      $(h_{n})_{n}$ convergeert dan naar $0$ maar geen enkele $h_{n}$ is nul.
+      Bovendien geldt het volgende voor elke $n\in \mathbb{N}$:
+      \[ \frac{f(a+h_{n}) -f(a)}{h_{n}} \le 0 \]
+      Omdat de limiet de orde bewaart zal het volgende gelden:
+      \[ f'(a) = \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} = \lim_{n \rightarrow \infty}\frac{f(a+h_{n})-f(a)}{h_{n}} \le 0 \]
+      Analoog vinden we dat $f'(a)$ ook groter dan of gelijk aan $0$ moet zijn.
+      $f'(a)$ moet dus gelijk zijn aan $0$.
+    \item $f$ bereikt een lokaal minimum in $x$.
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \subsection{Stijgen of dalen}
@@ -372,7 +393,21 @@
   \item Als $f$ stijgt over $I$, dan geldt $\forall x\in I:\ f'(x) \ge 0$.
   \item Als $f$ daalt over $I$, dan geldt $\forall x\in I:\ f'(x) \ge 0$.
   \end{itemize}
-\TODO{bewijs: oefening}
+
+  \begin{proof}
+    Bewijs in delen.
+    \begin{itemize}
+    \item Zij $f$ een functie die stijgt over $I$.
+      Kies nu een element $a$ van $I$.
+      Omdat $I$ open is bestaat er een $\delta\in \mathbb{R}_{0}^{+}$ zodat voor alle $h<\delta$ $a+h$ tot $I$ behoort.
+      Voor alle $h\in \mathbb{R}_{0}^{+}$ kleiner dan $\delta$ geldt nu het volgende:
+      \[ \frac{f(a+h)-f(a)}{h} \ge 0 \]
+      $a+h$ is immers groter dan, of gelijk aan, $a$ en $f$ is stijgend over $I$.
+      De stelling volgt nu uit het feit dat limieten ongelijkheden behouden.\needed
+    \item 
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \extra{het omgekeerde geldt ook} 
@@ -389,7 +424,25 @@
   Veronderstel dat $f$ afleidbaar is in $\interval[open]{a}{b}$ en dat $f(a)$ gelijk is aan $f(b)$.
   Er bestaat dan een $c\in \interval[open]{a}{b}$ zodat $f'(c)=0$ geldt.
   T.t.z. er bestaat dan een kritiek punt $c\in \interval[open]{a}{b}$.
-\TODO{bewijs p 22}
+
+  \begin{proof}
+    Omdat $f$ een continue functie is, gedefinieerd op een gesloten begrensd interval, is $f$ begrensd.\needed
+    De supremumeigenschap van $\mathbb{R}$ geeft ons dan dat er een supremum $M$ en een infimum $m$.
+    \[ M = \sup\{f(x) \mid x \in \interval{a}{b} \} \]
+    \[ m = \inf\{f(x) \mid x \in \interval{a}{b} \} \]
+    Als $m$ gelijk is aan $M$, dan geldt $f(x)=f(a)$ voor alle $x \in \interval{a}{b}$ en is $f$ dus constant.
+    In elke $c \in \interval{a}{b}$ is de afgeleide van $f$ dan nul.
+    Beschouw nu het geval dat $m< M$ geldt.
+    Er treedt dan minstens \'e\'en van de volgende gevallen op:
+    \begin{itemize}
+    \item $f(a) < M$\\
+      Er bestaat dan een $c$ zodat $f(c)$ gelijk is aan $M$.\needed
+      Omdat $f(a)$ gelijk is aan $f(b)$ en kleiner dan $M=f(c)$, kan $c$ niet gelijk zijn aan $a$ of aan $b$ en moet $c$ dus in het interval $\interval[open]{a}{b}$ liggen.
+      $c$ is dan een kritiek punt, en dus moet de afgeleide van $f$ in $c$ nul zijn.\needed
+    \item $f(a) > m$\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 \subsubsection{Lagrange}
