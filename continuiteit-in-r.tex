@@ -725,8 +725,37 @@
   Zij $(f_{n})_{n}$ een rij van functies van $A \subseteq \mathbb{R}$ naar $\mathbb{R}$ die uniform op $A$ convergeert naar een functie $f: A \rightarrow \mathbb{R}$.
   Zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
   Stel dat voor alle $n$ de limiet $L_{n}$ van $f_{n}$ in $a$ bestaat en eindig is.
-  \[ \lim_{a}f = \lim_{n \rightarrow +\infty} L_{n} \]
-\TODO{bewijs p 43}
+  \[ \lim_{a}f = \lim_{n \rightarrow +\infty} L_{n} = \lim_{n\ \rightarrow +\infty} \lim_{x \rightarrow a} f_{n}(x) \]
+
+  \begin{proof}
+    Bewijs in delen.
+    \begin{itemize}
+    \item $(L_{n})_{n}$ is een Cauchyrij.
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat $(f_{n})_{n}$ uniform op $A$ convergeert kunnen we een $n_{0}\in \mathbb{N}$ vinden zodat het volgende geldt:
+      \clarify{mag dit zomaar? extra bewijs maken: cauchyrij van functies!}
+      \[ \forall x\in A:\ \forall n,m \ge m_{0}:\ |f_{n}(x) -f_{m}(x)| < \epsilon \]
+      Door van deze ongelijkheid de limiet te nemen voor $x$ gaande naar $x$ vinden we de volgende ongelijkheid:
+      \clarify{mag dit zomaar?}
+      \[ \forall n,m \ge m_{0}:\ |L_{n}-L_{m}| \le \epsilon \]
+      Dit toont dat $(L_{n})_{n}$ een Cauchyrij is.
+      Omdat $\mathbb{R}$ volledig is zal dan $(L_{n})_{n}$ convergeren.
+      We noteren de limiet met $L$.
+    \item 
+      Kies nu een willekeurige rij $(x_{k})_{k} \in A\setminus \{a\}$ die naar $a$ convergeert.
+      We zullen bewijzen dat, in de limiet naar $a$, het beeld van $x_{k}$ naar $L$ gaat.
+      Merk eerst op dat het volgende geldt:
+      \[ \forall k\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ |f(x_{n})-L| \le |f(x_{k}) -f_{n}(x_{k})| + |f_{k}(x_{k})-L_{n}| + |L_{n}-L| \]
+      Omdat $(L_{n})_{n}$ naar $L$ convergeert kunnen we een $n_{0}\in\mathbb{N}$ nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
+      \[ |L_{n}-L| < \frac{\epsilon}{3} \]
+      Omdat $(f_{n})_{n}$ uniform convergeert op $A$ naar $f$, kunnen we een $n_{1}\in \mathbb{N}$ nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
+      \[ \forall x\in A:\ |f_{n}-f(x)| < \frac{\epsilon}{3} \]
+      Omdat $(f_{n}(x_{k}))_{k}$ voor alle $n$ naar $L_{n}$ convergeert (omdat $f$ continu is), kunnen we een $k_{0} \in \mathbb{N}$ vinden zodat ook het volgende geldt voor alle volgende $k \in \mathbb{N}$:
+      \[ |f_{n}(x_{k}) - L_{n}| < \frac{\epsilon}{3} \]
+      Noem nu $n' = \max\{n_{0},n_{1},k_{1}\}$, dan geldt voor alle volgende $n\in \mathbb{N}$ de bewering die de stelling bewijst:
+      \[ |f(x_{n})-L| \le |f(x_{k}) -f_{n}(x_{k})| + |f_{k}(x_{k})-L_{n}| + |L_{n}-L| < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon \]
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 
