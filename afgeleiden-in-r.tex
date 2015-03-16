@@ -22,6 +22,8 @@
 \extra{bewijs}
 \end{st}
 
+\TODO{equivalente definite voor afgeleide zonder $h$}
+
 \subsection{Meetkundige betekenis}
 \label{sec:meetk-betek}
 
@@ -65,9 +67,21 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:afleidbaar-dan-continu}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $a\in A$ een ophopingspunt van $A$.
   Als $f$ afleidbaar is in $a$, dan is $f$ continu is $a$.
-\TODO{bewijs p 9}
+
+  \begin{proof}
+    Zij $f$ een afleidbare functie.
+    Om te bewijzen dat de limiet van $f$ in $a$ $f(a)$ is\prref{pr:functie-continu-asa-limiet-is-beeld} bewijzen we het volgende:
+    \[ \lim_{x \rightarrow a}\left(f(x)-f(a)\right)\]
+    Deze limiet is eveneens gelijk aan de volgende:
+    \[ = \lim_{x \rightarrow a}\left(f(x)-f(a)\right)\frac{x-a}{x-a} \]
+    Vanwege de rekenregels voor limieten mogen we deze limiet splitsen.\prref{pr:rekenregels-limieten}
+    \[ = \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a}\lim_{x \rightarrow a}(x-a) \]
+    Omdat $f$ afleidbaar is geldt dan het volgende:
+    \[ = f'(a)\cdot 0 = 0 \]
+  \end{proof}
 \end{pr}
 
 \begin{tvb}
@@ -84,7 +98,17 @@
   Beschouw een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $f$ afleidbaar is en zij $\lambda \in \mathbb{R}$.
   \[ \lambda f \text{ is afleidbaar in } a \text{ en } (\lambda f)'(a) = \lambda f'(a) \]
+
+  \begin{proof}
+    We bewijzen dit in twee delen.
+    \begin{itemize}
+    \item $\lambda f$ is afleidbaar in $a$.
 \extra{bewijs}
+    \item $(\lambda f)'(a) = \lambda f'(a)$\\
+      Zie hiervoor de rekenregels voor limieten.\prref{pr:rekenregels-limieten}
+      \[ \lim_{x \rightarrow a}\frac{\lambda f(x)-\lambda f(a)}{x-a} \lim_{x \rightarrow a}\lambda \frac{\lambda f(x)-\lambda f(a)}{x-a} = \lambda \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a} \]
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 
@@ -92,22 +116,95 @@
   Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $f$ en $g$ afleidbaar zijn.
   \[ f+g \text{ is afleidbaar in } a \text{ en } (f+g)'(a) = f'(a) + g'(a) \]
-\extra{bewijs}
+
+  \begin{proof}
+    We bewijzen dit in twee delen.
+    \begin{itemize}
+    \item $f+g$ is afleidbaar in $a$.
+      \extra{bewijs}
+    \item $(f+g)'(a) = f'(a) + g'(a)$\\
+      Zie hiervoor de rekenregels voor limieten.\prref{pr:rekenregels-limieten}
+      \[
+      \begin{array}{rl}
+        \lim_{x \rightarrow a}\frac{(f+g)(x)-(f+g)(a)}{x-a}
+        &= \lim_{x \rightarrow a}\frac{f(x)+g(x)-f(a)-g(a)}{x-a}\\
+        &= \lim_{x \rightarrow a}\frac{f(x)-f(a)+g(x)-g(a)}{x-a}\\
+        &= \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a}+\frac{g(x)-g(a)}{x-a}\\
+        &= \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a}+\lim_{x \rightarrow a}\frac{g(x)-g(a)}{x-a}\\
+        &= f'(a) + g'(a)
+      \end{array}
+      \]
+    \end{itemize}
+
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $f$ en $g$ afleidbaar zijn.
   \[ fg \text{ is afleidbaar in } a \text{ en } (fg)'(a) = f(a) g'(a) + f'(a)g(a) \]
-\extra{bewijs}
+
+  \begin{proof}
+    We bewijzen dit in twee delen.
+    \begin{itemize}
+    \item $fg$ is afleidbaar in $a$.
+      \extra{bewijs}
+    \item $(fg)'(a) = f(a) g'(a) + f'(a)g(a)$\\
+      Zie hiervoor de rekenregels voor limieten.\prref{pr:rekenregels-limieten}
+      \[
+      \begin{array}{rl}
+        \lim_{x \rightarrow a}\frac{(fg)(x)-(fg)(a)}{x-a}
+        &= \lim_{x \rightarrow a}\frac{f(x)g(x)-f(a)g(a)}{x-a}\\
+        &= \lim_{x \rightarrow a}\frac{f(x)g(x)-f(a)g(x)+f(a)g(x) -f(a)g(a)}{x-a}\\
+        &= \lim_{x \rightarrow a}g(x)\frac{f(x)-f(a)}{x-a} + f(a)\frac{g(x) -g(a)}{x-a}\\
+        &= \lim_{x \rightarrow a}g(x)\lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a} + f(a)\lim_{x \rightarrow a}\frac{g(x) -g(a)}{x-a}\\
+        &= g(a)f'(a) + f(a)g'(a)
+      \end{array}
+      \]
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
-  Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
+  Beschouw functie $g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $g$ afleidbaar is, en $g(a) \neq 0$.
   \[ \frac{1}{g}:\ \{ x \in A \mid g(x) \neq 0\} \rightarrow \mathbb{R}: x \mapsto \frac{1}{g(x)} \]
   \[ \left(\frac{1}{g}\right)' \text{ is afleidbaar in } a \text{ en } \left(\frac{1}{g}\right)'(a) = -\frac{g'(a)}{g(a)^{2}} \]
-\TODO{bewijs p 12  }
+
+  \begin{proof}
+    We bewijzen dit in twee delen.
+    \begin{itemize}
+    \item $\frac{1}{g}$ is afleidbaar.\\
+      Omdat $g$ afleidbaar is in $a$ is $g$ continu in $a$.\prref{pr:afleidbaar-dan-continu}
+      Omdat $g(a)$ verschillend is van $0$ bestaat er dus een $\delta > 0$ zodat $g(x) \neq 0$ voor alle $x\in A$, dichter dan $\delta$ bij $a$.\waarom
+      We vinden dus dat $A \cap \interval[open]{a-\delta}{a+\delta}$ een deel is van $A_{0} = \{ x \in A \mid g(x) \neq 0\}$.
+      Omdat $a$ een ophopingspunt is volgt hier uit dat $a$ ook een ophopingspunt is van $A_{0}$.\waarom
+      $0$ is dus een ophopingspunt van $(A_{0}-a) \setminus \{0\}= \{ x-a \mid x \in A, g(x) \neq 0\} \setminus \{0\}$.
+      We beschouwen de limiet in $0$ van de functie $\Delta$:
+      \[ \Delta:\ (A_{0}-a) \setminus \{0\} \rightarrow \mathbb{R}:\ h \mapsto \frac{1}{h}\left(\frac{1}{g(a+h)}-\frac{1}{g(a)} \right) \]
+      Met behulp van de rekenregels voor limieten vinden we dan het volgende:
+      \[
+      \begin{array}{rl}
+        \lim_{h \rightarrow 0}\Delta(h)
+        &= \lim_{h \rightarrow 0}\frac{1}{h} \frac{g(a)-g(a+h)}{g(a+h)g(a)}\\
+        &= -\lim_{h \rightarrow 0}\frac{g(a+h)-g(a)}{h} \cdot \lim_{h\rightarrow 0}\frac{1}{g(a+h)g(a)}\\
+        &= -\frac{g'(a)}{g(a)^{2}}
+      \end{array}
+      \]
+      \extra{bewijs meer uitleggen}
+    \item $\left(\frac{1}{g}\right)'(a) = -\frac{g'(a)}{g(a)^{2}}$\\
+      \[
+      \begin{array}{rl}
+        \lim_{x \rightarrow a}\frac{\left(\frac{1}{g}\right)(x)-\left(\frac{1}{g}\right)(a)}{x-a}
+        &= \lim_{x \rightarrow a}\frac{\frac{1}{g(x)}-\frac{1}{g(a)} }{x-a}\\
+        &= \lim_{x \rightarrow a}\frac{1}{(x-a)g(x)}-\frac{1}{(x-a)g(a)}\\
+        &= \lim_{x \rightarrow a}\frac{g(a)-g(x)}{(x-a)g(a)g(x)}\\
+        &= \lim_{x \rightarrow a}\frac{g(a)-g(x)}{(x-a)}\lim_{x\rightarrow a}\frac{1}{g(a)g(x)}\\
+        &= -\frac{g'(a)}{g(a)^{2}}\\
+      \end{array}
+      \]
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{st}
@@ -118,7 +215,44 @@
   Stel bovendien dat $f(a)$ een ophopingspunt is van $B$ en dat $g$ afleidbaar is in $f(a)$.
   $g\circ f$ is dan afleidbaar in $a$:
   \[ (g \circ f)'(a) = g'(f(a))f'(a) \]
-\TODO{bewijs p 13} 
+
+  \begin{proof}
+    Noem $h=g\circ f$.
+    We moeten aantonen dat de volgende limiet bestaat en gelijk is aan $g'(f(a))f'(a)$.
+    \[ \lim_{x\rightarrow a}\frac{h(x)-h(a)}{x-a} \]
+    Noem $b=f(a)$ en beschouw de functie $phi: B \rightarrow \mathbb{R}$:
+    \[
+    \phi(y) =
+    \left\{
+      \begin{array}{cl}
+        \frac{g(y)-g(b)}{y-b} & \text{ als } y\in B, y \neq b\\
+        g'(x) &\text{ als } y=b\\
+      \end{array}
+    \right\}
+    \]
+    \clarify{waarom deze functie nodig?}
+    Omdat $g$ afleidbaar is in $b$ is de limiet van $\phi$ in $b$ gelijk aan de afgeleide van $g$ in $b$, wat het beeld is van $\phi$ in $b$:
+    \[ \lim_{y\rightarrow b}\phi(y) = g'(b) = \phi(b) \]
+    $\phi$ is dus continu in $b$.
+    Omdat $f$ afleidbaar is in $a$, is $f$ continu in $a$.\prref{pr:afleidbaar-dan-continu}
+    De functie $\phi \circ f: A \rightarrow \mathbb{R}$ is dus continu in $a$.
+    Er geldt dan het volgende:
+    \[ \lim_{x\rightarrow a}\phi(f(x)) = \phi(f(a)) = \phi(b) = g'(b) \]
+    Voor elke $x\in a$ met een beeld verschillend van $f(a)$ geldt dan het volgende:
+    \[ \phi(f(x)) = \frac{g(f(x)) - g(f(a))}{f(x)-f(a)} \]
+    Omgevormd:
+    \[ g(f(x)) - g(f(a)) = \phi(f(x))(f(x)-f(a)) \]
+    Merk nu op dat de bovenstaande vergelijking ook geldt voor de $x\in A$ met $f(x)=f(a)$.
+    Bijgevolg geldt ze voor alle $x\in A$.
+    Voor alle $x\in A$, verschillend van $a$, geldt nu het volgende:
+    \[ 
+    \frac{h(x)-h(a)}{x-a} = \frac{g(f(x))-g(f(a))}{x-a} = \frac{g(f(x))-g(f(a))}{f(x)-f(a)}\frac{f(x)-f(a)}{x-a} = \phi(f(x))\left(\frac{f(x)-f(a)}{x-a}\right)
+    \]
+    We weten nu dat de limieten voor $x$ gaande naar $a$ voor beide factoren bestaan en eindig zijn.\waarom
+    De rekenregels van limieten leren ons dat de limiet voor $x$ gaande naar $a$ ook bestaat en er als volgt uitziet:
+    \[ \lim_{x\rightarrow a}\frac{h(x)-h(a)}{x-a} = \lim_{x\rightarrow a}\phi(f(x))\lim_{x\rightarrow a}\left(\frac{f(x)-f(a)}{x-a}\right) = g'(f(a))f'(a) \]
+    \extra{bewijs extra uitleggen}
+  \end{proof}
 \end{st}
 
 \begin{st}
@@ -128,7 +262,56 @@
   Veronderstel dat $f$ afleidbaar is in $a$ en dat de afgeleide er niet nul is.
   Stel bovendien dat $g$ continu is in $f(a)$, dan is $f(a)$ een ophopingspunt van $B$ en is $g$ afleidbaar in $f(a)$:
   \[ g'(f(a)) = \frac{1}{f'(a)} \]
-\TODO{bewijs p 15}
+
+  \begin{proof}
+    Bewijs in delen
+    \begin{itemize}
+    \item $f(a)$ is een ophopingspunt is van $B$.\\
+      Kies een willekeurige $\eta \in \mathbb{R}_{0}^{+}$.
+      Omdat $f$ afleidbaar is in $a$, is $f$ zeker continu in $a$.\prref{pr:afleidbaar-dan-continu}
+      We kunnen dus een $\xi\in \mathbb{R}_{0}^{+}$ vinden zodat $f(x) \in \interval[open]{f(a)-\eta}{f(a)+\eta}$ geldt voor alle $x\in A$ die dichter dan $\xi$ bij $a$ liggen.
+      Omdat $a$ een ophopingspunt is van $A$, kunnen we een $x_{0}\in A$ vinden, verschillend van $a$, die dichter dan $\xi$ bij $a$ ligt.
+      Het beeld van $x_{0}$ onder $f$ zal dan in $\interval[open]{f(a)-\eta}{f(a)+\eta}\cap B$ liggen.
+      Omdat $f$ injectief is zal $f(x_{0})$ verschillend zijn van $f(a)$.
+      De volgende verzameling is dus niet leeg, wat bewijst dat $f(a)$ een ophopingspunt is van $B$.
+      \[ \interval[open]{f(a)-\eta}{f(a)+\eta}\cap (B \setminus \{f(a)\}) \]
+    \item $g$ is afleidbaar in $f(a)$.\\
+      Kies een $x\in A\setminus \{a\}$ en noteer $y=f(x)$ en $b=f(a)$.
+      \[ 
+      \begin{array}{rl}
+        \left| \frac{g(y)-g(b)}{y-b} - \frac{1}{f'(a)} \right|
+        &= \left| \frac{x-a}{f(x)-f(a)} - \frac{1}{f'(a)} \right|\\
+        &= \left| \frac{f'(a)(x-a)-(f(x)-f(a))}{(f(x)-f(a))f'(a)} \right|\\
+        &= \left| \frac{1}{f'(a)}\right|\left| \frac{f'(a)(x-a)-(f(x)-f(a))}{f(x)-f(a)} \right|\\
+        &= \left| \frac{1}{f'(a)}\right|\left|\frac{f'(a)(x-a)}{f(x)-f(a)} -1 \right|\\
+        &= \left| \frac{1}{f'(a)} \right| \left| \frac{x-a}{f(x)-f(a)} \right| \left| f'(a)-\frac{(f(x)-f(a))}{x-a} \right|\\
+      \end{array}
+      \]
+      Omdat $f$ afleidbaar is, kunnen we een $eta_{1}\in \mathbb{R}$ nemen zodat uit $0<|x-a|<\eta_{1}$ en $x\in A$ het volgende volgt: ($f'(a)$ is de limiet van de functie $\frac{f(x)-f(a)}{x-a}$.)
+      \[ \left| \frac{f(x)-f(a)}{x-a} -f'(a)\right| < \frac{1}{2}|f'(a)| \]
+      En dus:
+      \[ \left| \frac{f(x)-f(a)}{x-a} \right| > \frac{1}{2}|f'(a)| \]
+      Keren we dit om, dan krijgen we de volgende ongelijkheid:
+      \[ \left| \frac{x-a}{f(x)-f(a)} \right| < \frac{2}{|f'(a)|} \]
+      Kies nu een $\epsilon \in \mathbb{R}_{0}^{+}$. We gaan nu op zoek naar een $\delta\in\mathbb{R}_{0}^{+}$ zodat uit $0 <|y-b|< \delta$ en $y\in B$ het volgende volgt:
+      \[ \left|\frac{g(y)-g(b)}{y-b} -\frac{1}{f'(a)} \right| < \epsilon\]
+      Hieruit volgt dan de stelling.\waarom
+      Kies nu een $\eta_{2}$ zodat uit $0<|x-a|< \eta_{2}$ en $x\in A$ het volgende volgt:
+      \[ \left| \frac{f(x)-f(a)}{x-a} -f'(a) \right| < \epsilon\frac{|f'(a)|^{2}}{2} \]
+      Omdat $g$ continu is in $b$, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden zodat $|y-b| < \delta$ en $y\in B$ impliceert dat $|x-a|$ kleiner is dan $\min\{\eta_{1},\eta_{2}\}$.
+      Er volgt nu uit $0<|x-a| <\min\{\eta_{1},\eta_{2}\}$ en $x\in A$ het volgende:
+      \[
+      \begin{array}{rl}
+        \left| \frac{g(y)-g(b)}{y-b} - \frac{1}{f'(a)} \right|
+        &= \left| \frac{1}{f'(a)} \right| \left| \frac{x-a}{f(x)-f(a)} \right| \left| f'(a)-\frac{(f(x)-f(a))}{x-a} \right|\\
+        &< \left| \frac{1}{f'(a)} \right|\frac{2}{|f'(a)|}\epsilon\frac{|f'(a)|^{2}}{2}\\
+        &= \epsilon
+      \end{array}
+      \]
+\extra{bewijs verbeteren!!}
+    \item $g'(f(a)) = \frac{1}{f'(a)}$\\
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 \section{Middelwaardestelling van Rolle en Lagrange}
