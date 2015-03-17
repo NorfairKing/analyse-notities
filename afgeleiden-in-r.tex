@@ -419,6 +419,7 @@
 \label{sec:rolle}
 
 \begin{st}
+  \label{st:rolle}
   De \term{middelwaardestelling van Rolle}\\
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$.
   Veronderstel dat $f$ afleidbaar is in $\interval[open]{a}{b}$ en dat $f(a)$ gelijk is aan $f(b)$.
@@ -446,27 +447,90 @@
 \end{st}
 
 \subsubsection{Lagrange}
-\label{sec:lagrange}
+\label{sec:middelwaardestelling-lagrange}
 
 \begin{st}
+  \label{st:middelwaardestelling-lagrange}
   De \term{middelwaardestelling van Lagrange}\\
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$.
   Veronderstel dat $f$ afleidbaar is in $\interval[open]{a}{b}$, dan bestaat er een $c\in \interval[open]{a}{b}$ als volgt.
   \[ f'(c) = \frac{f(b)-f(a)}{b-a} \]
-\TODO{bewijs p 23}
+
+  \begin{proof}
+   Beschouw de hulpfunctie $g$:
+   \[ g: \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto g(x) = f(x)-\frac{f(b)-f(a)}{b-a}(x-a) \]
+   \begin{itemize}
+   \item Er geldt $g(a) = g(b)$:
+     \[ g(a) = f(a)-\frac{f(b)-f(a)}{b-a}(a-a) = f(a) \]
+     \[ g(b) = f(b)-\frac{f(b)-f(a)}{b-a}(b-a) = f(a) \]
+     Er bestaat dus een $c\in \interval[open]{a}{b}$ zodat $g'(c)$ nul is.\stref{st:rolle}
+   \item $g'$ ziet er bovendien als volgt uit:
+     \[
+     \begin{array}{rl}
+       \lim_{x \rightarrow x}\frac{g(x)-g(a)}{x-a}
+       &= \lim_{x \rightarrow a}\frac{f(x)-\frac{f(b)-f(a)}{b-a}(x-a) - f(a)}{x-a}\\
+       &= \lim_{x \rightarrow a} \frac{f(x)-f(a)}{x-a} - \frac{f(b)-f(a)}{b-a}\\
+       &= f'(x)-\frac{f(b)-f(a)}{b-a}\\
+     \end{array}
+     \]
+   \item In $c$ volgt uit $g'(c)$ de stelling:
+     \[
+     f'(c)-\frac{f(b)-f(a)}{b-a} = 0 
+     \]
+     \[
+     f'(c) = \frac{f(b)-f(a)}{b-a} 
+     \]
+   \end{itemize}
+  \end{proof}
+\feed
 \end{st}
 
-\extra{waar wordt de supremumeigenschap gebruikt?}
 
 \subsubsection{Cauchy}
 \label{sec:cauchy}
 
 \begin{st}
+  \label{st:middelwaardestelling-cauchy}
   De \term{middelwaardestelling van Cauchy}\\
   Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ continue functes op een begrensd gesloten interval $\interval{a}{b}$.
   Veronderstel dat $f$ en $g$ afleidbaar zijn in $\interval[open]{a}{b}$, dan bestaat er een $c\in \interval[open]{a}{b}$ als volgt.
   \[ \left( f(b) - f(a) \right) g'(c) = f'(c) \left( g(b) - g(a) \right) \]
-  \TODO{bewijs p 24}
+
+  \begin{proof}
+    Beschouw de hulpfunctie $h$:
+    \[ h:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto h(x) = (f(b)-f(a))g(x) -f(x)(g(b)-g(a)) \]
+    \begin{itemize}
+    \item Er geldt $h(a)=h(b)$:
+      \[
+      \begin{array}{rl}
+        h(a) &= (f(b)-f(a))g(a) -f(a)(g(b)-g(a))\\
+             &= f(b)g(a)-f(a)g(a)-f(a)g(b)+f(a)g(a)\\
+             &= f(b)g(a)-f(a)g(b)
+      \end{array}
+      \]
+      \[
+      \begin{array}{rl}
+        h(b) &= (f(b)-f(a))g(b) -f(b)(g(b)-g(a))\\
+             &= f(b)g(b)-f(a)g(b) -f(b)g(b)+f(b)g(a)\\
+             &= f(b)g(a)-f(a)g(b)
+      \end{array}
+      \]
+     Er bestaat dus een $c\in \interval[open]{a}{b}$ zodat $h'(c)$ nul is.\stref{st:rolle}
+    \item $h'$ ziet er bovendien als volgt uit:
+      \[
+      h'(x) = (f(b)-f(a))g'(x)-f'(x)(g(b)-g(a))
+      \]
+      \question{hoe moet ik dit verder uitwerken?}
+   \item In $c$ volgt uit $h'(c)$ de stelling:
+     \[
+     (f(b)-f(a))g'(c)-f'(c)(g(b)-g(a)) = 0
+     \]
+     \[
+     (f(b)-f(a))g'(c) = f'(c)(g(b)-g(a))
+     \]
+    \end{itemize}
+  \end{proof}
+  \feed
 \end{st}
 
 \subsection{Stijgen, dalen of constant zijn}
@@ -479,13 +543,32 @@
   \item Als $f'(c) \le 0$ geldt voor alle $c \in \interval[open]{a}{b}$, dan is $f$ dalend in $\interval{a}{b}$
     \[ \forall x,y \in \interval{a}{b}:\ x \le y \Rightarrow f(x) \ge f(y) \]
   \end{itemize}
-\TODO{bewijs p 24}
+
+  \begin{proof}
+    Elk deel appart.
+    \begin{itemize}
+    \item Kies willekeurig $x$ en $y \in \interval{a}{b}$ met $x\le y$.
+      We passen de middelwaardestelling van lagrange toe op de functie $f$, beperkt tot het interval $\interval{x}{y}$.\stref{st:middelwaardestelling-lagrange}
+      Dit levert een $c\in \interval[open]{x}{y}$ als volgt:
+      \[ f(y)-f(x) = f'(c)(y-x) \]
+      Omdat $f'(c)$ positief is, alsook $(y-x)$, geldt $f(y)-f(x) \ge 0 \Leftrightarrow f(y) \ge f(x)$.
+    \item \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{pr}
 
 \begin{pr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$ die afleidbaar is in $\interval[open]{a}{b}$.
   Als $\forall c\in \interval[open]{a}{b}: f'(c) = 0$ geldt, dan is $f$ constant.
-\TODO{bewijs p 25}
+
+  \begin{proof}
+    Kies willekeurig een $x\in \interval[open left]{a}{b}$.\clarify{waarom halfopen?}
+    We passsen de middelwaardestelling van Lagrange toe op de functie $f$, beperkt tot het interval $\interval{a}{x}$.\stref{st:middelwaardestelling-lagrange}
+    Dit levert een $c\in \interval[open]{a}{x}$ als volgt:
+    \[ f(x)-f(a) = f'(c)(x-a) \]
+    Omdat $f'(c)$ nul is, moet $f(x)$ gelijk zijn aan $f(a)$.
+  \end{proof}
+\extra{rechtstreeks bewijzen vanuit de definitie van een afgeleide}
 \end{pr}
 
 \subsection{Limieten van rijen van afleidbare functies}
@@ -495,7 +578,44 @@
   Beschouw een rij $(f_{n})_{n}$ van afleidbare functies gedefinieerd op een interval $I \subseteq \mathbb{R}$ met waarden in $\mathbb{R}$.
   Stel dat $(f_{n})_{n}$ puntsgewijs convergeert naar een functie $f:\ I \rightarrow \mathbb{R}$ en dat $(f'_{n})_{n}$ uniform op $I$ convergeert, dan is $f$ afleidbaar:
   \[ \forall a\in I:\ f'(a) = \lim_{n\rightarrow +\infty}f_{n}'(a) \]
-\TODO{bewijs p 28}
+
+  \begin{proof}
+    Kies een willekeurige $a\in $ en noteer de limiet van $f_{n}'(a)$ als $L$.
+    We tonen het volgende aan, en dan volgt daaruit de stelling:
+    \[ \lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a} = L \]
+    \begin{itemize}
+    \item Merk eerst op dat voor alle $x\in I$, verschillend van $a$, en alle $m\in \mathbb{N}$ het volgende geldt:
+      \[
+      \begin{array}{rl}
+        \left| \frac{f(x)-f(a)}{x-a} - L \right| 
+        &\le \left| \frac{f(x)-f(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a} \right|\\
+        &+ \left| \frac{f_{m}(x)-f_{m}(a)}{x-a} - f_{m}'(a) \right|\\
+        &+ \left| f'_{m}(a) - L \right|
+      \end{array}
+      \]
+    \item Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      \begin{itemize}
+      \item 
+        Omdat $(f_{n}')_{n}$ uniform convergeert kunnen we een $n_{0}\in \mathbb{N}$ vinden als volgt:
+        \[ \forall m,n \ge n_{0},\forall y\in I:\ |f'_{n}(y)-f'_{m}(y)| < \frac{\epsilon}{3} \]
+        Vanwege de middelwaardestelling van lagrange bestaat er voor elke $x\in I$, verschillend van $a$, en voor elke $n,m\in \mathbb{N}$ een $c$ tusen $a$ en $x$ als volgt:\stref{st:middelwaardestelling-lagrange}
+        \[ \left| \frac{f_{n}(x)-f_{n}(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right| = \left| f'_{n}(c) -f'_{m}(c) \right| \]
+        We vinden dus het volgende:
+        \[ \forall m,n \ge n_{0},\forall y\in I:\ \left| \frac{f_{n}(x)-f_{n}(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right| < \frac{\epsilon}{3} \]
+        Nemen we hiervan de limiet voor $n$ gaande naar $+\infty$, dan vinden we de volgende ongelijkheid.
+        \[ \forall m \ge n_{0},\forall y\in I:\ \left| \frac{f(x)-f(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right| \le \frac{\epsilon}{3} \]
+        \clarify{waarom plots $\le$?}
+      \item 
+        Omdat $f'_{n}(a)$ naar $L$ convergeert, kunnen we een $m_{0} \in \mathbb{N}$ vinden zodat het volgende geldt:
+        \[ \forall m\in \mathbb{N}: m \ge m_{0} \Rightarrow \left| f'_{m}(a) - L \right| < \frac{\epsilon}{3}\]
+      \item 
+        Omdat $f_{m}$ afleidbaar is in $a$, kunnnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden  als volgt:
+        \[ \forall x\in I: 0 < |x-a| < \delta:\ \left| \frac{f_{m}(x)-f_{m}(a)}{x-a} - f_{m}'(a) \right| < \frac{\epsilon}{3} \]
+      \end{itemize}
+    \item Uit het eerste puntje volgt nu de stelling:
+      \[ \forall x\in I:\ 0 < |x-a| < \delta:\ \left| \frac{f(x)-f(a)}{x-a} - L \right|  < \frac{\epsilon}{3}+\frac{\epsilon}{3} +\frac{\epsilon}{3} = \epsilon \]
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 
