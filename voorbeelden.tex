@@ -25,5 +25,40 @@
   $\mathbb{R}_{0}$ is geen interval.
 \end{vb}
 
+\section{Continu\"iteit in $\mathbb{R}$}
+\label{sec:continuiteit-mathbbr}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2} \]
+
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Voor elke $x\in \mathbb{R}$ geldt het volgende:
+    \[ |f(x)-f(a)| = |x^{2}-a^{2}| = |x-a||x+a| \le |x-a|(|x|+|a|) \]
+    Voor $|x-a|$ kleiner dan $1$ zal $|x| \le |a|+1$ gelden.
+    \[ |f(x)-f(a)| \le (2|a|+1)|x-a| \]
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ 1, \frac{\epsilon}{2|a|+1} \right\}$.
+    Uit $|x-a|< \delta$ volgt nu dat $f$ continu is in $a$.
+    \[ |f(x)-f(a)| < (2|a|+1)\delta \le (2|a|+1)\frac{\epsilon}{2|a|+1} = \epsilon \]
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+  
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Voor elke $x \in \mathbb{R}$ geldt het volgende:
+    \[ |f(x)-f(a)| = \left|\frac{1}{x}-\frac{1}{a}\right| = \frac{|x-a|}{|x||a|} \]
+    Voor $|x-a|$ kleiner dan $\frac{1}{2}|a|$ zal $|x| > \frac{1}{2}|a|$ gelden.
+    \[ |f(x)-f(a)| \le \frac{2}{|a|^{2}}|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ \frac{1}{2}|a|, \frac{\epsilon|a|^{2}}{2} \right\}$.
+    Uit $|x-a| < \delta$ volgt nu dat $f$ continu is in $a$.
+    \[ |f(x)-f(a)| < \frac{2}{|a|^{2}}\delta \le \frac{2}{|a|^{2}}\frac{\epsilon|a|^{2}}{2} = \epsilon \]
+  \end{proof}
+\end{vb}
+
 
 \end{document}

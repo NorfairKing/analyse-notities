@@ -1,0 +1,58 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\chapter{Algoritmes}
+\label{cha:algoritmes}
+
+\section{Continu\"iteit in $\mathbb{R}$}
+\label{sec:continuiteit-mathbbr}
+
+\subsection{Bewijzen dat een functie continu is}
+\label{sec:bewijzen-dat-een}
+
+\subsubsection{Abstract}
+\label{sec:abstract}
+
+Zij $f$ een functie:
+\[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+Bewijs dat $f$ continu is over $A$.
+
+\begin{itemize}
+\item Kies een willekeurige $a \in A$ om de continu\"iteit over heel $A$ te bewijzen.\needed
+\item Maak een afschatting voor $|f(x)-f(a)|$ voor een willekeurige $x \in A$ op basis van het voorschrift van $f$.
+\item Optioneel: Maak gepaste afschattingen (naar onder) voor de overblijvende voorkomens van $x$ buiten de uitdrukking $|x-a|$, in het achterhoofd houdende dat $|x-a|$ willekeurig klein mag gekozen worden.
+\item Kies een willekeurige $\epsilon$ (uit de definitie van continu\"iteit).
+\item Kies dan $\delta$ zodat door $|x-a|$ te vervangen in de afschatting van $|f(x)-f(a)|$ er enkel nog $\epsilon$ overblijft. Zorg dat in de uitdrukking voor $\delta$ geen $x$ meer voorkomt.
+$\delta$ is dus een uitdrukking in $a$ en $\epsilon$.
+\item Besluit dat voor de gekozen $\delta$ uit $|x-a|$ volgt dat $|f(x)-f(a)|$ kleiner is dan $\epsilon$.
+\end{itemize}
+
+\subsubsection{Voorbeeld}
+\label{sec:voorbeeld}
+
+Beschouw de functie $f_{b}$:
+\[ f:\ \mathbb{R}\setminus \{ b \} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x-b} \]
+Bewijs dat $f_{b}$ continu is.
+
+\begin{proof}
+  We overlopen simpelweg de beschreven stappen.
+  \begin{itemize}
+  \item Kies een wilekeurige $a \in \mathbb{R}\setminus \{ b \}$.
+  \item Beschouw $|f(x)-f(a)|$ voor een willekeurige $x \in \mathbb{R}\setminus \{ b \}$:
+    \[ |f(x)-f(a)| = \left|\frac{1}{x-b} - \frac{1}{a-b}\right| = \frac{|(a-b) - (x-b)|}{|x-b||a-b|} = \frac{|a-x|}{|x-b||a-b|} \]
+  \item Voor $|x-a|$ kleiner dan $|a-b|$ geldt nu het volgende:
+    \[ |x-b| = |x-a+a-b| \le |x-a|+|a-b| \le 2|a-b| \]
+  \item Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+  \item Kies voor $\delta$ nu het minimum van $|a-b|$ en $3|a-b|\epsilon$.
+  \item Uit $|x-a| < \delta$ geldt nu het volgende:
+    \[ |f(x)-f(a)| = \frac{|a-x|}{|x-b||a-b|} \le \frac{|a-x|}{3|a-b|} < \frac{\delta}{3|a-b|} \le \frac{3|a-b|\epsilon}{3|a-b|} = \epsilon \]
+  \end{itemize}
+\end{proof}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
