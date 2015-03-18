@@ -128,4 +128,51 @@
   \end{proof}
 \end{vb}
 
+\subsection{Operaties met continue functies}
+\label{sec:oper-met-cont}
+
+\extra{voorbeelden}
+
+
+\subsection{Continue functies op intervallen}
+\label{sec:continue-functies-op}
+
+\extra{voorbeelden}
+
+\subsection{Uniforme continu\"iteit}
+\label{sec:unif-cont}
+
+\extra{voorbeeld 4.3.1}
+
+\begin{vb}
+  De functie $f$ is uniform continu:
+  \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x} \]
+
+  \begin{proof}
+    Merk allereerst de volgende ongelijkheid op:
+    \[ |\sqrt{x} - \sqrt{y}| \le \sqrt{|x-y|} \]
+    Kies een willekeurige $\epsilon$ en definieer $\delta = \epsilon^{2}$.
+    Kies nu twee willekeurige elementen $x$ en $y$ uit $\mathbb{R}^{+}$ zodat $|x-y|< \delta$ geldt.
+    \[ |f(x) - f(y)| \le  \sqrt{|x-y|} < \sqrt{\delta} = \sqrt{\epsilon^{2}} = \epsilon \]
+    $f$ is dus uniform continu over $\mathbb{R}^{+}$.
+  \end{proof}
+\end{vb}
+
+\begin{tvb}
+  De functie $f$ is niet uniform continu:
+  \[ f:\ \mathbb{R}_{0}^{+} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+
+  \begin{proof}
+    Kies $\epsilon = 1$ en kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+    Stel bovendien $y = x + \frac{\delta}{2}$, dan is $|x-y|$ altijd kleiner dan $\delta$.
+    Merk bovendien de volgende gelijkheid op:
+    \[ |f(x)-f(y)| = \left| \frac{1}{x} - \frac{1}{y} \right| \le \left| \frac{1}{x} - \frac{1}{x + \frac{\delta}{2}} \right| = \left| \frac{x+\frac{\delta}{2}-x}{x(x+\frac{\delta}{2})}\right| = \left| \frac{\delta}{x(2x+\delta)} \right| = \frac{\delta}{x(2x+\delta)} \]
+    Kies bijvoorbeeld $x = \frac{\delta}{4}\left(\sqrt{1+\frac{\delta}{4}}-1\right)$ (de oplossing van $\frac{1}{2}(2x^{2}+\delta x) = \delta$).
+    $x$ is dan positief en $|f(x)-f(y)| = 2 > \epsilon$.
+    $f$ is dus niet uniform continu op $\mathbb{R}_{0}^{+}$.
+  \end{proof}
+\end{tvb}
+
+\extra{tvb 4.3.4}
+
 \end{document}
