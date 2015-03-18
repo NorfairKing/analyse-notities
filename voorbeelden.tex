@@ -28,6 +28,9 @@
 \section{Continu\"iteit in $\mathbb{R}$}
 \label{sec:continuiteit-mathbbr}
 
+\subsection{Het continu\"iteitsbegrip}
+\label{sec:het-cont}
+
 \begin{vb}
   De functie $f$ is continu:
   \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2} \]
@@ -39,8 +42,9 @@
     Voor $|x-a|$ kleiner dan $1$ zal $|x| \le |a|+1$ gelden.
     \[ |f(x)-f(a)| \le (2|a|+1)|x-a| \]
     Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ 1, \frac{\epsilon}{2|a|+1} \right\}$.
-    Uit $|x-a|< \delta$ volgt nu dat $f$ continu is in $a$.
+    Uit $|x-a|< \delta$ volgt nu het volgende.
     \[ |f(x)-f(a)| < (2|a|+1)\delta \le (2|a|+1)\frac{\epsilon}{2|a|+1} = \epsilon \]
+    $f$ is dus continu in $a$.
   \end{proof}
 \end{vb}
 
@@ -55,8 +59,9 @@
     Voor $|x-a|$ kleiner dan $\frac{1}{2}|a|$ zal $|x| > \frac{1}{2}|a|$ gelden.
     \[ |f(x)-f(a)| \le \frac{2}{|a|^{2}}|x-a| \]
     Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ \frac{1}{2}|a|, \frac{\epsilon|a|^{2}}{2} \right\}$.
-    Uit $|x-a| < \delta$ volgt nu dat $f$ continu is in $a$.
+    Uit $|x-a|< \delta$ volgt nu het volgende.
     \[ |f(x)-f(a)| < \frac{2}{|a|^{2}}\delta \le \frac{2}{|a|^{2}}\frac{\epsilon|a|^{2}}{2} = \epsilon \]
+    $f$ is dus continu in $a$.
   \end{proof}
 \end{vb}
 
@@ -67,9 +72,60 @@
   \begin{proof}
     Kies een willekeurige $a \in \mathbb{R}$.
     Voor elke $x \in \mathbb{R}$ geldt het volgende:
-    \[ |f(x)-f(a)| = |\sqrt{x}-\sqrt{a}| \]
+    \[ |f(x)-f(a)| = |\sqrt{x}-\sqrt{a}| = \left|\sqrt{x}-\sqrt{a}\right|\frac{\sqrt{x}+\sqrt{a}}{\sqrt{x}+\sqrt{a}} = \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \]
+    \begin{itemize}
+    \item Voor $a>0$ kunnen we als volgt verder gaan :
+      \[ \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \le \frac{|x-a|}{\sqrt{a}} \]
+      Voor een willekeurige $\epsilon$ kunnen we nu voor $\delta$ $\epsilon\sqrt{a}$ kiezen.
+      Uit $|x-a|< \delta$ volgt dan het volgende:
+      \[ |f(x)-f(a)| = \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \le \frac{|x-a|}{\sqrt{a}} < \frac{\delta}{\sqrt{a}} = \frac{\epsilon\sqrt{a}}{\sqrt{a}} = \epsilon \]
+    \item Voor $a=0$ is het eenvoudiger:
+      \[ |f(x)-f(a)| =  \frac{|x-a|}{\sqrt{x}+\sqrt{a}} = \frac{|x|}{\sqrt{x}} \]
+      Voor een willekeurige $\epsilon$ kunnen we nu voor $\delta$ $\epsilon^{2}$ kiezen. 
+      Uit $|x-a|=|x|< \delta$ volgt dan het volgende:
+      \[ \frac{|x|}{\sqrt{x}} < \frac{\delta}{\sqrt{\delta}} = \frac{\epsilon^{2}}{\epsilon} = \epsilon \]
+    \end{itemize}
+    $f$ is dus continu in $a$.
   \end{proof}
 \end{vb}
 
+\extra{vb p 4 onderaan}
+
+\begin{tvb}
+  De functie $f$ is niet continu in $0$:
+  \[
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x\mapsto 
+  \left\{
+    \begin{array}{cl}
+      1 & \text{ als } x \ge 0\\
+      0 & \text{ als } x < 0
+    \end{array}
+  \right.
+  \]
+
+  \begin{proof}
+    Kies $\epsilon = 1$, dan bestaat er voor elke $\delta$ een $x\in \mathbb{R}$ zodat $|x-0|<\delta$ en $|f(x)-f(0)|\ge \epsilon$ beide gelden.
+    Voor een willekeurige $\delta$ kiezen we $x = -\frac{\delta}{2}$:
+    \[ |x-0| = \frac{\delta}{2} \text{ en } |f(x)-f(0)| = 1 \ge \epsilon \]
+    $f$ is dus niet continu in $0$.
+  \end{proof}
+\end{tvb}
+
+\extra{tvb p 5 onderaan}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x| \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}$:
+    Beschouw eerst $|f(x)-f(a)|$:
+    \[ |f(x)-f(a)| = \left||x|-|a|\right| \le |x-a| \]
+    Kies nu een willekeurige $\epsilon$ en kies $\delta = \epsilon$.
+    Uit $|x-a| <\delta$ volgt nu het volgende:
+    \[ |f(x)-f(a)| \le |x-a| < \delta = \epsilon \]
+    $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
 
 \end{document}

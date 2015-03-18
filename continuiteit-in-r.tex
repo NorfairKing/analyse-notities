@@ -120,7 +120,7 @@
 \begin{pr}
   \label{pr:product-continu}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
-  \[ fg:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x)g(x) \text{ is continu in } A \]
+  \[ fg:\ A \rightarrow \mathbb{R}: x \mapsto f(x)g(x) \text{ is continu in } A \]
 
   \begin{proof}
     Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
@@ -167,7 +167,7 @@
 \begin{pr}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$ met $g(a)\neq 0$.
   Noteer bovendien $A_{0} = \{ x \in A \mid g(x) \neq 0 \}$
-  \[ \frac{f}{g}:\ A_{0} \rightarrow \mathbb{R}: x \mapsto \lambda \frac{f(x)}{g(x)} \text{ is continu in } A \]
+  \[ \frac{f}{g}:\ A_{0} \rightarrow \mathbb{R}: x \mapsto \frac{f(x)}{g(x)} \text{ is continu in } A \]
 
   \begin{proof}
     Het volstaat om aan te tonen dat $\frac{1}{g}$ continu is in $a$.\prref{pr:product-continu}
@@ -229,6 +229,28 @@
     We vinden dus dat de convergente rij $(y_{n_{k}})_{k}$ een convergente deelrij zou hebben met een andere limiet, wat niet kan.
   \end{proof}
 \end{pr}
+
+\begin{st}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  \[ f \vee g:\ A \rightarrow \mathbb{R}: x \mapsto \max\{f(x),g(x)\} \text{ is continu in } A \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ en $g$ beide continu zijn kunnen we voor elk respectievelijk een $\delta_{f}$ en $\delta_{g}$ vinden zodat uit $|x-a| < \delta_{f}$ $|f(x)-f(a)|< \epsilon$ volgt, alsook uit $|x-a|<\delta_{g}$ $|g(x)-g(a)|<\epsilon$.
+    Kies $\delta = \min\{ \delta_{f},\delta_{g} \}$, dan volgt uit $|x-a|< \delta$ het volgende:
+    \[ |f(x)-f(a)| < \epsilon \text{ en } |g(x)-g(a)| < \epsilon \]
+    Nu geldt voor $f\vee g$ het volgende vanuit $|x-a|< \delta$:
+    \[
+    \begin{array}{rl}
+      |(f\vee g)(x)-(f\vee g)(a)| &=
+      |\max\{f(x),g(x)\}- \max\{f(a),g(a)\}|\\
+      &\le |\max\{f(x)-f(a),g(x)-g(a)\}|\\
+      &< |\max\{\epsilon,\epsilon\}|\\
+      &= \epsilon
+    \end{array}
+    \]
+  \end{proof}
+\end{st}
 
 \section{Continue functies op intervallen}
 \label{sec:continue-functies-op}
