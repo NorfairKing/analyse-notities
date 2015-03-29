@@ -1000,6 +1000,7 @@
 \end{tvb}
 
 \begin{pr}
+  \label{pr:doorsnede-gesloten-verzamelingen-gesloten}
   Een doorsnede van gesloten verzamelingen is gesloten.
 
   \begin{proof}
@@ -1010,6 +1011,7 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:eindige-unie-gesloten-verzamelingen-gesloten}
   De unie van \textbf{een eindig aantal} gesloten verzamelingen is gesloten.
 
   \begin{proof}
@@ -1130,6 +1132,85 @@
   \end{proof}
 \end{tvb}
 
+\begin{st}
+  Elke niet lege open deelverzameling $O \subseteq \mathbb{R}$ valt te schrijven als een aftelbare unie van open intervallen.
+
+  \begin{proof}
+    Definieer een equivalentierelatie $\sim$ op de elementen van $O$ als volgt:
+    \[ x \sim y \Leftrightarrow \interval{\min\{x,y\}}{\max\{x,y\}} \subseteq U \]
+    De partitie $O_{\sim}$ van equivalentieklassen van $\sim$ is nu een verzameling open intervallen die samen $O$ vormt.
+    Er rest ons dus nog te bewijzen dat de partitie een aftelbaar aantal equivalentieklassen bevat.
+    Kies voor elk interval $I\in O$ een $q_{o}\in \mathbb{Q}$ zodat $q\in I$ geldt.
+    (Dit kan omdat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.\prref{pr:q-dicht-in-r}
+    Definieer nu de functie $\phi$ als volgt:
+    \[ \phi:\ O_{\sim} \rightarrow \mathbb{R}:\ I \mapsto q \]
+    $\phi$ is nu injectief omdat de elementen van $O_{\sim}$ disjunct zijn (partitie), dus $O_{\sim}$ is aftelbaar omdat $q$ aftelbaar is.
+  \end{proof}
+\feed
+\end{st}
+
+
+\begin{de}
+  Zij $A$ een deelverzameling van $\mathbb{R}$ en $t\in \mathbb{R}$.
+  We definieren $A+t$ als volgt:
+  \[ A + t = \{ a + t \mid a \in A \} \]
+\end{de}
+
+\begin{st}
+  Zij $A \subseteq \mathbb{R}$ een deelverzameling van $\mathbb{R}$ en $t\in \mathbb{R}$.
+  Als $A$ open is, is $A+t$ open.
+
+  \begin{proof}
+    Kies een willekeurige open deelverzameling $A$ van $\mathbb{R}$ en een willekeurige $t\in \mathbb{R}$.
+    Kies nu een willekeurige $a+t\in A+t$.
+    Omdat $A$ open is bestaat er dan een $\delta \in \mathbb{R}_{0}^{+}$ als volgt:
+    \[ \forall b \in A:\ |a-b| < \delta \Rightarrow b\in A \]
+    $b+t$ zit bijgevolg ook in $A+t$.
+  \end{proof}
+\feed
+\end{st}
+
+\begin{st}
+  Zij $A \subseteq \mathbb{R}$ een deelverzameling van $\mathbb{R}$ en $t\in \mathbb{R}$.
+  Als $A$ gesloten is, is $A+t$ gesloten
+
+  \begin{proof} 
+    Omdat $A^{c}$ open is, moet $(A+t)^{c}$ open zijn en $ A+t$ dus gesloten.
+  \end{proof}
+\feed
+\end{st}
+\extra{geldt deze stelling als we open vervangen door gesloten?}
+
+\begin{de}
+  Zij $A$ en $B$ deelverzamelingen van $\mathbb{R}$.
+  We definieren $A+B$ als volgt:
+  \[ A+B = \{ a+b \mid a\in A, b\in B \} \]
+\end{de}
+
+\begin{st}
+  Zij $A$ en $B$ deelverzamelingen van $\mathbb{R}$ en $A$ open, dan is $A+B$ is open.
+  
+  \begin{proof}
+    Kies een willekeurige $a+b \in A+B$.
+    Omdat $A$ open is in $\mathbb{R}$ bestaat er een $\delta\in \mathbb{R}_{0}^{+}$ als volgt:
+    \[ \forall r \in \mathbb{R}: |a+b-r| < \delta \Rightarrow r \in A+b \]
+    Omdat $A+b$ een deel is van $A+B$ volgt hieruit meteen de stelling.
+  \end{proof}
+\feed
+\end{st}
+
+\begin{tvb}
+  De omgekeerde stelling is niet waar.
+  Het is niet waar dat $A$ of $B$ open is als $A+B$ open is.
+
+  \begin{proof}
+    Kies $A$ = $\mathbb{Q}$ en $B= \mathbb{R}\setminus \mathbb{Q} \cup \{0\}$.
+    $A+B$ is $\mathbb{R}$ en dus open, maar noch $A$, noch $B$ is open. \needed
+  \end{proof}
+\feed
+\end{tvb}
+
+
 \subsection{Sluiting en inwendige}
 \label{sec:sluit-en-inwend}
 
@@ -1140,15 +1221,27 @@
 
 \begin{de}
   Zij $A$ een deelverzameling van $\mathbb{R}$.
-  De kleinste verzameling $\bar{A}$ die $A$ bevat noemen we de \term{sluiting} van $A$.
+  De kleinste gesloten verzameling $\bar{A}$ die $A$ bevat noemen we de \term{sluiting} van $A$.
 \end{de}
 
 \begin{st}
   Het inwendige en de sluiting van een deelverzameling $A$ van $\mathbb{R}$ bestaan steeds.
-  \extra{bewijs}
-  \question{hoe??}
-  idee: inwendige is unie van open deelverzamelingen.
-  sluiting is doorsnede van alle gesloten oververzamelingen.
+
+  \begin{proof}
+    We bewijzen van de vier mogelijkheden hun eventueel bestaan.
+    \begin{itemize}
+    \item De grootste open deelverzameling van een verzameling bestaat steeds.
+      De grootste open deelverzameling van een verzameling is de unie van alle open deelverzamelingen ervan en dus open.\prref{pr:unie-open-verzamelingen-open}
+    \item De grootste gesloten deelverzameling van een verzameling bestaat niet noodzakelijk altijd.
+      De grootste gesloten deelverzameling is de unie van alle gesloten deelverzamelingen ervan
+      Deze unie hoeft niet eindig te zijn en is bijgevolg niet noodzakelijk gesloten.\prref{pr:eindige-unie-gesloten-verzamelingen-gesloten}
+    \item De kleinste open oververzameling van een verzameling bestaat niet noodzakelijk altijd.
+      De kleinste open oververzameling van een verzameling is de doorsnede van alle open oververzameling ervan.
+      Deze doorsnede hoeft niet eindig te zijn en is bijgevalg niet noodzakelijk open\prref{pr:eindige-doorsnede-open-verzamelingen-open}
+    \item De kleinste gesloten oververzameling van een verzameling bestaat steeds.
+      De kleinste gesloten oververzameling van een verzameling is de doorsnede van alle gesloten oververzamelingen en dus gesloten.\prref{pr:doorsnede-gesloten-verzamelingen-gesloten}
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 \begin{pr}
@@ -1158,7 +1251,7 @@
   \begin{proof}
     Noem het rechterlid $V$.
     \begin{itemize}
-    \item $V$ is een open deelverzameling van $A$.
+    \item $V$ is een open deelverzameling van $A$.\\
       Als $V$ leeg is, is $V$ triviaal open.
       Als $V$ niet leeg is, dan bestaat er een $x\in V$.
       Er bestaat dan ook een $\delta \in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{x-\delta}{x+\delta}$ tot $A$ behoort.
@@ -1185,7 +1278,7 @@
       \end{figure}
       $\interval[open]{y-\epsilon}{y+\epsilon}$ is dan een deel van $\interval[open]{x-\delta}{x+\delta}$ en van $A$ bijgevolg zit $y$ in $V$.
       $V$ is dus een open deelverzameling van $A$ en daarom een deel van $\mathring{A}$.
-    \item Elke open deelverzameling $W$ van $A$ is een deel van $V$: $V$ is dus het grootst.
+    \item Elke open deelverzameling $W$ van $A$ is een deel van $V$: $V$ is dus het grootst.\\
       Als $W$ leeg is, is dit evident.
       Als $W$ niet leeg is, bestaat er een $x\in W$.
       Omdat $W$ open is bestaat er dan een $\delta\in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{x-\delta}{x+\delta}$ een deel is van $W$ en dus van $A$.
@@ -1256,6 +1349,116 @@
   \end{proof}
 \end{pr}
 
+\begin{pr}
+  \[ \mathring{\mathbb{Q}} = \emptyset \quad\text{ en }\quad \overline{\mathbb{Q}} = \mathbb{R} \]
+
+  \begin{proof}
+    Elk deel appart.
+    \begin{itemize}
+    \item Kies een willekeurige $q\in \mathbb{Q}$ en een willekeurige $\delta \in \mathbb{R}_{0}^{+}$, dan bevat $\interval[open]{q-\delta}{q+\delta}$ zeker irrationale getallen.\waarom
+      Er bestaat dus geen enkel inwendig punt van $\mathbb{Q}$.
+    \item Kies een willekeurig punt $r \in \mathbb{R}$, dan bestaat er in elke omgeving van $r$ een rationaal punt\prref{pr:q-dicht-in-r}, dus elk punt $r\in \mathbb{R}$ is adherent aan $\mathbb{R}$.
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+
+\begin{st}
+  Zij $A$ een deelverzameling van $\mathbb{R}$.
+  \[ \left(\mathring{A}\right)^{c} = \overline{A^{c}} \]
+  
+  \begin{proof}
+    \[
+    \begin{array}{rll}
+      \left(\mathring{A}\right)^{c}
+      &= \{ x\in A\mid \exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \subseteq A \}^{c}\\
+      &= \{ x\in \mathbb{R}\mid (x\in A) \wedge (\exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \subseteq A) \}^{c}\\
+      &= \{ x\in \mathbb{R}\mid \neg((x\in A) \wedge (\exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \subseteq A)) \}\\
+      &= \{ x\in \mathbb{R}\mid \neg(x\in A) \vee \neg(\exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \subseteq A)) \}\\
+      &= A^{c} \cup \{ x\in \mathbb{R} \mid \neg(\exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \subseteq A)) \}\\
+      &= A^{c} \cup \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap A^{c} \neq \emptyset \} \\
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap A^{c} \neq \emptyset \}
+      &= \overline{A^{c}}\\
+    \end{array}
+    \]
+  \end{proof}
+\feed
+\end{st}
+\extra{geldt dit in $\mathbb{C}$?}
+
+\begin{st}
+  Zij $A$ een deelverzameling van $\mathbb{R}$.
+  \[ \left(\overline{A}\right)^{c} = \mathring{\left(A^{c}\right)} \]
+
+  \begin{proof}
+    \[
+    \begin{array}{rll}
+      \left(\overline{A}\right)^{c}
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap A \neq \emptyset \}^{c}\\
+      &= \left\{ x\in \mathbb{R} \mid \neg\left(\forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap A \neq \emptyset \right) \right\}\\
+      &= \{ x\in \mathbb{R} \mid \exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap A = \emptyset \}\\
+      &= \{ x\in \mathbb{R} \mid \exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \subseteq A^{c} \}
+      &= \mathring{\left(A^{c}\right)}\\
+    \end{array}
+    \]
+  \end{proof}
+\feed
+\extra{geldt dit in $\mathbb{C}$?}
+\end{st}
+
+\begin{st}
+  Zij $A$ en $B$ deelverzamelingen van $\mathbb{R}$.
+  \[ \overline{A \cap B} = \overline{A} \cap \overline{B} \]
+
+  \begin{proof}
+    \[
+    \begin{array}{rll}
+      \overline{A \cap B} 
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap (A \cap B) \neq \emptyset \}\\
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ ((\interval[open]{x-\delta}{ x+\delta} \cap A) \cap (\interval[open]{x-\delta}{ x+\delta} \cap B)) \neq \emptyset \}\\
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ ((\interval[open]{x-\delta}{ x+\delta} \cap A) \neq 0 \wedge (\interval[open]{x-\delta}{ x+\delta} \cap B) \neq \emptyset \}
+      &= \overline{A} \cap \overline{B} \\
+    \end{array}
+    \]
+  \end{proof}
+\feed
+\extra{geldt dit in $\mathbb{C}$?}
+\end{st}
+
+\begin{st}
+  Zij $A$ en $B$ deelverzamelingen van $\mathbb{R}$.
+  \[ \overline{A \cup B} = \overline{A} \cup \overline{B} \]
+
+  \begin{proof}
+    \[
+    \begin{array}{rll}
+      \overline{A \cap B} 
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap (A \cup B) \neq \emptyset \}\\
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ ((\interval[open]{x-\delta}{ x+\delta} \cap A) \cup (\interval[open]{x-\delta}{ x+\delta} \cap B)) \neq \emptyset \}\\
+      &= \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ ((\interval[open]{x-\delta}{ x+\delta} \cap A) \neq 0 \vee (\interval[open]{x-\delta}{ x+\delta} \cap B) \neq \emptyset \}
+      &= \overline{A} \cup \overline{B} \\
+    \end{array}
+    \]
+  \end{proof}
+\feed
+\extra{geldt dit in $\mathbb{C}$?}
+\end{st}
+
+
+\begin{st}
+  Zij $A$ en $B$ deelverzamelingen van $\mathbb{R}$.
+  \[ \mathring{\left(A \cap B\right)} = \mathring{A} \cap \mathring{B} \]
+
+  \begin{proof}
+    \[
+    \begin{array}{rll}
+    \end{array}
+    \]
+  \end{proof}
+\feed
+\extra{geldt dit in $\mathbb{C}$?}
+\end{st}
+
 \subsection{Randpunten, ge\"isoleerde punten en ophopingspunten.}
 \label{sec:randp-geis-punt}
 
@@ -1268,9 +1471,14 @@
   Een \term{randpunt} van een deelverzameling $A$ van $\mathbb{R}$ is een element van de rand $\partial A$ van $A$.
 \end{de}
 
+\begin{opm}
+  Eer randpunt van $A$ hoeft niet tot $A$ te behoren.
+\extra{voorbeeld}
+\end{opm}
+
 \begin{st}
   Een punt $x\in \mathbb{R}$ is een randpunt van een deelverzameling $A$ van $\mathbb{R}$ als en slechts het volgende geldt:
-  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ ]x-\delta,x+\delta[ \cap A \neq \emptyset\ \wedge\  ]x-\delta,x+\delta[ \cap A^{c} \neq \emptyset \]
+  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap A \neq \emptyset\ \wedge\  \interval[open]{x-\delta}{x+\delta} \cap A^{c} \neq \emptyset \]
 
   \begin{proof}
     Een randpunt $x$ van een deelverzameling $A$ van $\mathbb{R}$ is een adherent punt dat geen inwendig punt is.
@@ -1293,7 +1501,13 @@
 \end{de}
 
 \begin{opm}
+  Eer ophopingspunt van $A$ hoeft niet tot $A$ te behoren.
+\extra{voorbeeld}
+\end{opm}
+
+\begin{opm}
   Een punt $x$ in een niet-lege deelverzameling $A$ van $\mathbb{R}$, dan is $x$ ofwel een ge\"isoleerd punt, ofwel een ophopingspunt.
+  De definities zijn immers de negatie van elkaar.
 \end{opm}
 
 \begin{pr}
@@ -1341,6 +1555,149 @@
     Bijgevolg is $x$ een ophopingspunt van $A$.\prref{pr:equivalenties-ophopingspunt}
   \end{proof}
 \end{st}
+
+\begin{st}
+  Elke overaftelbare deelverzameling van $\mathbb{R}$ heeft minstens \'e\'en ophopingspunt.
+
+  \begin{proof}
+    Contrapositie: Elke deelverzameling van $\mathbb{R}$ zonder ophopingspunten is aftelbaar.\\
+    Zij $V$ een deelverzameling van $\mathbb{R}$ zonder ophopingspunten.
+    Als $V$ leeg is is $V$ zeker aftelbaar.
+    Als $V$ eindig is, is $V$ ook zeker aftelbaar.
+    Stel daarom dat $V$ oneindig is.
+    Omdat $V$ geen ophopingspunten bevat kunnen we een willekeurig punt $x$ kiezen van $V$ opdat dat punt geen ophopingspunt is: ($x$ is dan een ge\"isoleerd punt.)
+    \[ \exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap A = \{x\} \]
+    Noem $x$ punt $1$: $p_{0} = x$.
+    Noem $p_{1} = \max( V \cap \interval[open left]{-\infty}{p_{0}})$ als het bestaat. Sta deze stap over als dat maximum niet bestaat.
+    Noem $p_{2} = \min(V \cap \interval[open right]{p_{1}}{+\infty})$ als het bestaat.
+    Sta deze stap over als dat minimum niet bestaat.
+    Merk op dat minstens \'e\'en van de punten $p_{1}$ en $p_{2}$ moet bestaan.
+    We beweren nu dat we, door afwisselend links en rechts punten te kiezen van de huidige $p_{i}$, alle punten van $V$ kunnen opsommen.
+    Stel immers dat we $V$ niet zouden kunnen opsommen op deze manier.
+    T.t.z dat er een punt $y\in V$ bestaat dat niet tussen de $p_{i}$ zit.
+    Dat punt is ofwel groter, ofwel kleiner dan $x$.
+    Stel dat $y$ kleiner is dan $x$, de andere redenering gaat analoog.
+    Omdat $V$ geen ophopingspunten bevat, bestaat er dan een punt $y_{1}\in V$ dat het dichtst bij $y=y_{0}$ ligt aan de rechterkant.
+    Da punt $y_{1}$ kan ook niet in de lijst $p_{i}$ zitten, want anders zou $y$ per constructie in de lijst hebben gezeten.
+    We kunnen opnieuw een punt $y_{2}$, rechts van $y_{1}$ kiezen en zo verder gaan om een oneindige lijst $y_{i}$ op te bouwen van punten, kleiner dan $x$ en niet in de lijst $p_{i}$.
+    Omdat de rij $(y_{i})_{i}$ stijgend en begrensd is, moet hij convergeren, maar de limiet zou dan een ophopingspunt van $V$ zijn en dat is in tegenspraak met de keuze van $V$.
+  \end{proof}
+\feed
+\end{st}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=.75]
+    \draw (-6,0) node {$A$};
+    \draw (-5,0) -- (9,0) ;
+
+    \path [draw=black, fill=black, thick] (-4,0) circle (2pt);
+
+    \draw[very thick] (-3,0) -- (-1,0);
+    \path [draw=black, fill=white, thick] (-3,0) circle (2pt);
+    \path [draw=black, fill=white, thick] (-1,0) circle (2pt);
+
+    \draw[very thick] (0,0) -- (2,0);
+    \path [draw=black, fill=black, thick] (0,0) circle (2pt);
+    \path [draw=black, fill=white, thick] (2,0) circle (2pt);
+
+    \draw[very thick] (3,0) -- (5,0);
+    \path [draw=black, fill=white, thick] (3,0) circle (2pt);
+    \path [draw=black, fill=black, thick] (5,0) circle (2pt);
+
+    \draw[very thick] (6,0) -- (8,0);
+    \path [draw=black, fill=black, thick] (6,0) circle (2pt);
+    \path [draw=black, fill=black, thick] (8,0) circle (2pt);
+
+
+    \draw (-6,-2) node {$\mathring{A}$};
+    \draw (-5,-2) -- (9,-2) ;
+
+    \draw[very thick] (-3,-2) -- (-1,-2);
+    \path [draw=black, fill=white, thick] (-3,-2) circle (2pt);
+    \path [draw=black, fill=white, thick] (-1,-2) circle (2pt);
+
+    \draw[very thick] (0,-2) -- (2,-2);
+    \path [draw=black, fill=white, thick] (0,-2) circle (2pt);
+    \path [draw=black, fill=white, thick] (2,-2) circle (2pt);
+
+    \draw[very thick] (3,-2) -- (5,-2);
+    \path [draw=black, fill=white, thick] (3,-2) circle (2pt);
+    \path [draw=black, fill=white, thick] (5,-2) circle (2pt);
+
+    \draw[very thick] (6,-2) -- (8,-2);
+    \path [draw=black, fill=white, thick] (6,-2) circle (2pt);
+    \path [draw=black, fill=white, thick] (8,-2) circle (2pt);
+
+
+    \draw (-6,-3) node {$\overline{A}$};
+    \draw (-5,-3) -- (9,-3) ;
+
+    \path [draw=black, fill=black, thick] (-4,-3) circle (2pt);
+
+    \draw[very thick] (-3,-3) -- (-1,-3);
+    \path [draw=black, fill=black, thick] (-3,-3) circle (2pt);
+    \path [draw=black, fill=black, thick] (-1,-3) circle (2pt);
+
+    \draw[very thick] (0,-3) -- (2,-3);
+    \path [draw=black, fill=black, thick] (0,-3) circle (2pt);
+    \path [draw=black, fill=black, thick] (2,-3) circle (2pt);
+
+    \draw[very thick] (3,-3) -- (5,-3);
+    \path [draw=black, fill=black, thick] (3,-3) circle (2pt);
+    \path [draw=black, fill=black, thick] (5,-3) circle (2pt);
+
+    \draw[very thick] (6,-3) -- (8,-3);
+    \path [draw=black, fill=black, thick] (6,-3) circle (2pt);
+    \path [draw=black, fill=black, thick] (8,-3) circle (2pt);
+
+
+    \draw (-6,-4) node {$\partial{A}$};
+    \draw (-5,-4) -- (9,-4) ;
+
+    \path [draw=black, fill=black, thick] (-4,-4) circle (2pt);
+
+    \path [draw=black, fill=black, thick] (-3,-4) circle (2pt);
+    \path [draw=black, fill=black, thick] (-1,-4) circle (2pt);
+
+    \path [draw=black, fill=black, thick] (0,-4) circle (2pt);
+    \path [draw=black, fill=black, thick] (2,-4) circle (2pt);
+
+    \path [draw=black, fill=black, thick] (3,-4) circle (2pt);
+    \path [draw=black, fill=black, thick] (5,-4) circle (2pt);
+
+    \path [draw=black, fill=black, thick] (6,-4) circle (2pt);
+    \path [draw=black, fill=black, thick] (8,-4) circle (2pt);
+
+
+    \draw (-7.5,-5) node {ge\"isoleerde punten};
+    \draw (-5,-5) -- (9,-5) ;
+
+    \path [draw=black, fill=black, thick] (-4,-5) circle (2pt);
+
+    \draw (-7.5,-6) node {ophopings punten};
+    \draw (-5,-6) -- (9,-6) ;
+
+    \draw[very thick] (-3,-6) -- (-1,-6);
+    \path [draw=black, fill=black, thick] (-3,-6) circle (2pt);
+    \path [draw=black, fill=black, thick] (-1,-6) circle (2pt);
+
+    \draw[very thick] (0,-6) -- (2,-6);
+    \path [draw=black, fill=black, thick] (0,-6) circle (2pt);
+    \path [draw=black, fill=black, thick] (2,-6) circle (2pt);
+
+    \draw[very thick] (3,-6) -- (5,-6);
+    \path [draw=black, fill=black, thick] (3,-6) circle (2pt);
+    \path [draw=black, fill=black, thick] (5,-6) circle (2pt);
+
+    \draw[very thick] (6,-6) -- (8,-6);
+    \path [draw=black, fill=black, thick] (6,-6) circle (2pt);
+    \path [draw=black, fill=black, thick] (8,-6) circle (2pt);
+
+
+  \end{tikzpicture}
+\caption{Illustratie van sluiting, inwendige, randpunten, ophopingspunten en ge\"isoleerde punten}
+\end{figure}
 
 \subsection{Relatieve topologie}
 \label{sec:relatieve-topologie}
@@ -1390,6 +1747,13 @@
   $A$ is relatief gesloten in $X$ als en slechs als er een gesloten $F \subseteq \mathbb{R}$ bestaat zodat $A=F \cap X$ geldt.
   \TODO{oefening}
 \end{pr}
+
+\extra{mogelijke stelling: unie van relatief open verzamelingen is open}
+\extra{mogelijke stelling: eindige doorsnede van relatief open verzamelingen is open}
+\extra{mogelijke stelling: doorsnede van relatief gesloten verzamelingen is gesloten}
+\extra{mogelijke stelling: eindige unie van relatief gesloten verzamelingen is gesloten}
+\extra{mogelijke stelling: relatief gesloten asa limiet van elke convergente rij erin}
+\extra{mogelijke stelling: relatief gesloten en begrensd als elke rij erin een convergente deelrij heeft met limiet erin}
 
 \section{De complexe getallen}
 \label{sec:de-complexe-getallen}
@@ -1737,9 +2101,10 @@
     Zij $(z_{n})_{n}$ een begrensde rij in $\mathbb{C}$
     Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
     De rijen $(x_{n})_{n}$ en $(y_{n})_{n}$ zijn dan begrensde rijen in $\mathbb{R}$\prref{pr:tweede-driehoeksongelijkheid-C}
-    We kunnen dus twee convergente deelrijen $(x_{n_{k}})_{k}$ en $(y_{n_{k}})_{k}$ vinden.\stref{st:bolzano-rijen}
+    We kunnen van $(x_{n})_{n}$ een convergente deelrij $(x_{n_{k}})_{k}$ met limiet $a$ nemen\stref{st:bolzano-rijen}.
+    We kunnen dan van $(y_{n_{k}})_{k}$ een convergente deelrij $(y_{n_{k_{l}}})_{l}$ nemen met limiet $b$
     Noem de limieten respectievelijk $a$ en $b$.
-    De deelrij $(z_{n_{k}})_{k}$ van $(z_{n})_{n}$ convergeert dan naar $a+bi$.\prref{pr:complexe-limiet-splitsen}
+    De deelrij $(z_{n_{k_{l}}})_{l}$ van $(z_{n})_{n}$ convergeert dan naar $a+bi$.\prref{pr:complexe-limiet-splitsen}
   \end{proof}
 \end{st}
 
@@ -1796,10 +2161,30 @@
   \[ \forall x\in A:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall y\in \mathbb{C}:\ |y-x| < \delta \Rightarrow y \in A \]
 \end{de}
 
+\begin{de}
+  We noemen een deelverzameling $A$ van $\mathbb{C}$ \term{gesloten} als en slechts als $\mathbb{C} \setminus A$ open is in $\mathbb{C}$.
+\end{de}
+
+\begin{de}
+  Een (open) \term{cirkelschijf} in $\mathbb{C}$ met middelpunt $m\in \mathbb{C}$ en straal $r\in \mathbb{R}_{0}^{+}$ is de verzameling $C$:
+  \[ C = \{ z \mid |z-m| < r \} \]
+\end{de}
+
+\begin{st}
+  Een open cirkelschijf in $\mathbb{C}$ is een open deelverzameling van $\mathbb{C}$.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  Equivalente definite van open in $\mathbb{C}$:\\
+  Een deelverzameling $A$ van $\mathbb{C}$ noemen we open als en slechts als we rond elk punt van $A$ een open cirkelschijf kunnen vinden die in $A$ ligt.
+\extra{bewijs}
+\end{st}
 
 
 
 
+\TODO{welke stellingen over rijen in $\mathbb{R}$ gelden zeker niet in $\mathbb{C}$?}
 
 
 

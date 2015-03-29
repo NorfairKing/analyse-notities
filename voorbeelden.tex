@@ -26,7 +26,7 @@
 \end{vb}
 
 \section{Rijen}
-\label{sec:rijen}
+
 
 \begin{vb}
   Zij $x_{0}=1$ en $x_{n+1} = \frac{1}{1+x_{n}}$.
@@ -54,12 +54,40 @@
 \feed
 \end{vb}
 
+\subsection{Topologie in $\mathbb{R}$}
+
+\begin{vb}
+  Zij $A= \interval[open left]{0}{1}$.
+  \begin{itemize}
+  \item $\mathring{A} = \interval[open]{0}{1}$.
+  \item $\overline{A} = \interval{0}{1} \cup \{2\}$
+  \item $\partial{A} = \{0\} \cup \{1\} \cup \{2\}$
+  \item De ge\"isoleerde punten van $A$ zijn $\{2\}$.
+  \item De ophopingspunten van $A$ zijn $\interval{0}{1}$.
+  \end{itemize}
+\end{vb}
+\extra{zelfde voorbeeld voor $\{\frac{1}{n} \mid n \in \mathbb{N}_{0} \}$}
+\extra{zelfde voorbeeld voor $\{\frac{1}{n} \mid n \in \mathbb{N}_{0} \} \cup 0$}
+\extra{zelfde voorbeeld voor $\mathbb{N}$}
+\extra{zelfde voorbeeld voor $\mathbb{Q}$}
+
+\subsection{Relatieve topologie in $\mathbb{R}$}
+
+\begin{vb}
+  Beschouw $\interval[open right]{0}{1}$ als deelverzameling van $\interval[open right]{0}{2}$.
+  \begin{itemize}
+  \item $\interval[open right]{0}{1}$ is relatief open in $\interval[open right]{0}{2}$.
+    $\interval[open right]{0}{1}$ is niet open in $\mathbb{R}$ omdat er geen punten links van $0$ in liggen, maar in $\interval[open right]{0}{2}$ liggen ook geen punten links van $0$, dus dat is geen probleem.
+  \item $\interval[open right]{1}{2}$ is dan relatief gesloten.
+  \end{itemize}
+\end{vb}
+
+
+
 
 \section{Continu\"iteit in $\mathbb{R}$}
-\label{sec:continuiteit-mathbbr}
 
 \subsection{Het continu\"iteitsbegrip}
-\label{sec:het-cont}
 
 \begin{vb}
   De functie $f$ is continu:
