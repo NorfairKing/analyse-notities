@@ -132,6 +132,23 @@
   \end{proof}
 \end{pr}
 
+\begin{st}
+  Zij $(y_{n})_{n}$ een rij in $\mathbb{R}$ die convergeert naar een $y\in \mathbb{R}$.
+  Stel dat $y_{n}$ verschillend is van $y$ voor alle $n\in \mathbb{N}$, dan bevat de verzameling $Y = \{y_{n}\mid n\in \mathbb{N}\}$ oneindig veel elementen.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat $Y$ een eindig aantal elementen bevat.\\
+    Omdat $Y$ een eindig aantal elementen bevat, bestaat er een $m\in \mathbb{N}$ zodat voor alle volgende $n$, de $y_{n}$ gelijk blijven:
+    \[ \forall n_{1},n_{2}\in \mathbb{N}:\ n_{1},n_{2} \ge m \Rightarrow y_{m} = y_{n_{1}} = y_{n_{2}} \]
+    Kies nu $\delta_{y} = |y_{m}-y|$, dan geldt het volgende:
+    \[ \forall n\in \mathbb{N}:\ n \ge m \Rightarrow |y_{n}-y| = |y_{m}-y| = \delta_{y} \]
+    Opdat $(y_{n})_{n}$ convergeert naar $y$ moet er voor $\delta_{y}$ ook het volgende gelden:
+    \[ \exists n_{0} \in \mathbb{N}: \forall n \in \mathbb{N}:\ n \ge n_{0} \Rightarrow |y_{n}-y| < \delta_{y} \]
+    Contradictie.
+\feed
+  \end{proof}
+\end{st}
+
 \subsection{Limieten en orde}
 \label{sec:limieten-en-orde}
 
@@ -1209,6 +1226,36 @@
   \end{proof}
 \feed
 \end{tvb}
+ 
+\begin{pr}
+  Zij $V$ een niet-lege gesloten deelverzameling van $\mathbb{R}$, dan bestaat er voor elke $x\in \mathbb{R} \setminus V$ minstens \'e\'en element uit $V$ dat het dichtst bij $x$ ligt:
+  \[ \forall x \in \mathbb{R}\setminus V,\ \exists v \in V,\ \forall w\in V:\ |v-x| \le |w-x| \]
+
+  \begin{proof}
+    Kies een niet-lege, gesloten deelverzameling $V$ van $\mathbb{R}$.
+    Per definite is $\mathbb{R} \setminus V$ dan open:
+    \[ \forall x\in \mathbb{R} \setminus V: \exists \delta \in \mathbb{R}_{0}^{+}, \forall y\in \mathbb{R}:\ |x-y| < \delta \Rightarrow y \in \mathbb{R}\setminus V \]
+    Kies nu willekeurig een $x\in \mathbb{R}\setminus V$.
+    Er is dan een $\delta_{x}\in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{x-\delta_{x}}{x+\delta_{x}}$ een deel is van $\mathbb{R}\setminus V$.
+    Definieer nu de verzameling $D$ als volgt:
+    \[ D = \{ |v-x| \mid v \in V \} \]
+    $D$ is nu naar onder begrensd door $\delta_{x}$ en niet leeg.
+    $D$ heeft dus een infimum $d$. \stref{st:supremumeigenschap-R}
+    We bewijzen nog dat $d$ een element is van $D$, hieruit volgt dan de stelling.
+    Stel immers dat $d$ niet tot $D$ behoort, dan volgt daaruit dat $x+d$ niet tot $V$ behoort, maar tot $\mathbb{R} \setminus V$.
+    Omdat $\mathbb{R} \setminus V$ open is, bestaat er dan een $\epsilon \in \mathbb{R}_{0}^{+}$ bestaan als volgt:
+    \[ \interval[open]{x+d-\epsilon}{x+d+\epsilon} \subseteq \mathbb{R}\setminus V \]
+    Eveneens kan $x-d$ niet tot $V$ behoren.
+    Analoog vinden we dan een $\gamma\in \mathbb{R}_{0}^{+}$ als volgt:
+    \[ \interval[open]{x-d-\gamma}{x-d+\gamma} \subseteq \mathbb{R}\setminus V \]
+    Kies nu $a=\min\{\epsilon,\gamma\}$.
+    Omdat $d$ een ondegrens is van $D$ en $a$ positief, is $d+a$ geen ondergrens meer voor $D$.
+    Er bestaat dus een $v\in V$ als volgt:
+    \[ |v-x| < d+a \]
+    Dit is in tegenspraak met het feit dat $\interval[open]{x-d-a}{x+d+a}$ een deel is van $\mathbb{R}\setminus V$.
+  \end{proof}
+\feed
+\end{pr}
 
 
 \subsection{Sluiting en inwendige}
