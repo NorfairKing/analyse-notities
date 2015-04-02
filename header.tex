@@ -3,9 +3,11 @@
 \theoremstyle{definition}
 \newmdtheoremenv{de}[thm]{Definitie} % Definitie met frame
 \newtheorem{ei}[thm]{Eigenschap}
+\newmdtheoremenv{bst}[thm]{Stelling}
 \newtheorem{st}[thm]{Stelling}
 \newtheorem{gev}[thm]{Gevolg}
 \newtheorem{pr}[thm]{Propositie}
+\newmdtheoremenv{bpr}[thm]{Propositie}
 \newtheorem{opm}[thm]{Opmerking}
 \newtheorem{vb}[thm]{Voorbeeld}
 \newtheorem{tvb}[thm]{Tegenvoorbeeld}
@@ -41,7 +43,9 @@
 \newcommand{\feed}[0]{\todo[color=pink,inline,size=\small]{GET FEEDBACK}}
 
 % badges
+\newcommand{\bx}[1]{ \framebox[1.1\width]{#1} }
 \newcommand{\examen}[0]{\bx{{\bf Examenvraag!}}\\}
+\newcommand{\examenvraag}[1]{\bx{{\bf Examenvraag: #1 !}}\\}
 
 % Voor meer plaats tussen wiskunde
 \renewcommand{\arraystretch}{1.25}%  

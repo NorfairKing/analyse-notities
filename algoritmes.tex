@@ -7,7 +7,7 @@
 \section{Continu\"iteit in $\mathbb{R}$}
 \label{sec:continuiteit-mathbbr}
 
-\subsection{Bewijzen dat een functie continu is}
+\subsection{Bewijzen dat een functie continu is aan de hand van de definitie}
 \label{sec:bewijzen-dat-een}
 
 \subsubsection{Abstract}
@@ -30,7 +30,7 @@ $\delta$ is dus een uitdrukking in $a$ en $\epsilon$.
 \subsubsection{Voorbeeld}
 
 Beschouw de functie $f_{b}$:
-\[ f:\ \mathbb{R}\setminus \{ b \} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x-b} \]
+\[ f_{b}:\ \mathbb{R}\setminus \{ b \} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x-b} \]
 Bewijs dat $f_{b}$ continu is.
 
 \begin{proof}
@@ -48,6 +48,38 @@ Bewijs dat $f_{b}$ continu is.
   \end{itemize}
 \end{proof}
 \feed
+
+\subsection{Bewijzen dat een functie continu is aan de hand van rijen}
+\TODO{uitschrijven}
+\subsubsection{Abstract}
+\subsubsection{Voorbeeld}
+
+\subsection{Bewijzen dat een functie continu is aan de hand van open delen}
+\TODO{uitschrijven, heel belangrijk!!}
+\subsubsection{Abstract}
+\subsubsection{Voorbeeld}
+
+% Beschouw de functie $f$:
+% \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x} \]
+% Bewijs dat $f$ continu is aan de hand van open delen van $\mathbb{R}$
+
+% \begin{proof}
+%   Merk eerst op dat $a \in f^{-1}(V)$ het volgende inhoudt:
+%   \[ a \in f^{-1}(V) \Leftrightarrow \exists v \in V: \sqrt{v}=a \]
+%   We moeten het volgende bewijzen:
+%   \[ \forall a \in f^{-1}(V):\ \exists \epsilon \in \mathbb{R}_{0}^{+}:\ \forall b \in \mathbb{R}^{+}:\ |a-b| < \epsilon \Rightarrow b \in f^{-1}(V) \Leftrightarrow \exists w \in \mathbb{R}: \sqrt{w} = b \]
+%   Kies nu een willekeurig open deel $V$ van $\mathbb{R}$:
+%   \[ \forall v\in V:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall w\in V:\ |v-w| < \delta \Rightarrow w \in V \]
+%   Als $f^{-1}(V)$ leeg is, is $f^{-1}(V)$ trivialerwijze open.
+%   Als $f^{-1}(V)$ niet leeg is, is $V$ een deel van $\mathbb{R}^{+}$ (want $\sqrt{\mathbb{R}^{+}} = \mathbb{R}^{+}$).
+%   Kies een willekeurige $a\in f^{-1}(V)$.
+%   Kies willekeurig $v$ en $w$ uit $V$ en beschouw de $\delta$, gegeven door de definitie van openheid hierboven.
+%   Vanuit de $\delta$ voor $v$ construeren we de gevraagde $\epsilon$ voor $a$.
+%   \[ |v-w| < \delta \Rightarrow \sqrt{|v-w|} < \sqrt{\delta} \Rightarrow |\sqrt{v}-\sqrt{w}| < \sqrt{\delta} \]
+%   Kies nu $\epsilon = \sqrt{\delta}$ en een willekeurige $b\in \mathbb{R}^{+}$.
+%   \[ |a-b| = |\sqrt{v}-b| < \sqrt{\delta} \]
+% \end{proof}
+
 
 \subsection{Bewijzen dat een functie niet continu is}
 \subsubsection{Abstract}

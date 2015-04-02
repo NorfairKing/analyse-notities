@@ -108,18 +108,36 @@
 
 \begin{vb}
   De functie $f$ is continu:
-  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+  \[ f:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
   
   \begin{proof}
-    Kies een willekeurige $a \in \mathbb{R}$.
-    Voor elke $x \in \mathbb{R}$ geldt het volgende:
+    Kies een willekeurige $a \in \mathbb{R}_{0}$.
+    Voor elke $x \in \mathbb{R}_{0}$ geldt het volgende:
     \[ |f(x)-f(a)| = \left|\frac{1}{x}-\frac{1}{a}\right| = \frac{|x-a|}{|x||a|} \]
     Voor $|x-a|$ kleiner dan $\frac{1}{2}|a|$ zal $|x| > \frac{1}{2}|a|$ gelden.
     \[ |f(x)-f(a)| \le \frac{2}{|a|^{2}}|x-a| \]
     Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ \frac{1}{2}|a|, \frac{\epsilon|a|^{2}}{2} \right\}$.
     Uit $|x-a|< \delta$ volgt nu het volgende.
     \[ |f(x)-f(a)| < \frac{2}{|a|^{2}}\delta \le \frac{2}{|a|^{2}}\frac{\epsilon|a|^{2}}{2} = \epsilon \]
-    $f$ is dus continu in $a$.
+    $f$ is dus continu in elke $a\in \mathbb{R}_{0}$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \setminus \{-1\} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{1+x} \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}\setminus \{-1\}$.
+    Voor elke $x\in \mathbb{R}\setminus \{-1\}$ geldt het volgende:
+    \[ |f(x)-f(a)| = \left| \frac{1}{1+x}-\frac{1}{1+a} \right| = \left| \frac{(1+a)-(1+x)}{(1+x)(1+a)} \right|  = \frac{|x-a|}{|1+x||1+a|} \]
+    Voor $|x-a|$ kleiner dan $|1+a|$ geldt nu het volgende:
+    \[ |1+x| = |1+a-a+x| = |1+a+x-a| \le |1+a|+|x-a| \le 2|1+a| \]
+    \[ |f(x)-f(a)| \le  \frac{1}{3|1+a|^{2}}|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ |1+a|,3\epsilon|1+a|^{2}\right\}$
+    Voor $|x-a| < \delta$ geldt dan het volgende:
+    \[ \frac{1}{3|1+a|^{2}}|x-a| < \frac{1}{3|1+a|^{2}}\delta \le \frac{3\epsilon|1+a|^{2}}{3|1+a|^{2}} = \epsilon\]
+    $f$ is dus continu in elke $a \in \mathbb{R}\setminus \{-1\}$
   \end{proof}
 \end{vb}
 
@@ -145,6 +163,43 @@
     \end{itemize}
     $f$ is dus continu in $a$.
   \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{(1+x^{2})} \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}$.
+    Er geldt dan voor alle $x \in \mathbb{R}$ het volgende:
+    \[
+    |f(x)-f(a)|
+    = \left| \frac{1}{1+x^{2}} - \frac{1}{1+a^{2}}\right|
+    = \left| \frac{(1+a^{2})-(1+x^{2})}{(1+x^{2})(1+a^{2})}\right|
+    = \frac{|a^{2}-x^{2}|}{|1+x^{2}||1+a^{2}|}
+    = \frac{|a+x||a-x|}{|1+x^{2}||1+a^{2}|}
+    \]
+    Voor $|x-a| \le \frac{1}{2}|a|$ geldt $x \le \frac{3}{2}|a|$, $x \ge \frac{1}{2}|a|$ en dus het volgende:
+    \[ |x+a| \ge ||x|-|a|| \ge |\frac{1}{2}|a| - |a|| = |-\frac{1}{2}|a|| = \frac{1}{2}|a| \]
+    ,
+    \[ |x+a| \le |x|+|a| \le \frac{3}{2}|a| + |a| = \frac{5}{2}|a| \]
+    ... en bovendien het volgende:
+    \[ |1+x^{2}| = 1 + |x^{2}| \le 1 + \left(\frac{3}{2}|a|\right)^{2} = 1 + \frac{9}{4}|a|^{2} \]
+    \[
+    |f(x)-f(a)|
+    = \frac{|a+x||a-x|}{|1+x^{2}||1+a^{2}|}
+    \le \frac{|a||a-x|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}
+    \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\{\frac{1}{2}|a|,\epsilon\frac{|1+a^{2}|2\left(1 + \frac{9}{4}|a|^{2}\right)}{|a|} \}$.
+    Uit $|x-a| < \delta$ volgt dan het volgende:
+    \[ 
+    |f(x)-f(a)|
+    \le \frac{|a||a-x|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}
+    < \frac{|a|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}\delta
+    \le \frac{\epsilon|a||1+a^{2}|2\left(1 + \frac{9}{4}|a|^{2}\right)}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}||a|} = \epsilon
+    \]
+  \end{proof}
+\feed
 \end{vb}
 
 \extra{vb p 4 onderaan}
@@ -183,6 +238,60 @@
     Uit $|x-a| <\delta$ volgt nu het volgende:
     \[ |f(x)-f(a)| \le |x-a| < \delta = \epsilon \]
     $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $(\in \mathbb{Q})$ is nergens continu:
+  \[
+  (\in \mathbb{Q}):\ \mathbb{R} \rightarrow \mathbb{R}:\ 
+  \left\{
+    \begin{array}{rl}
+      1 &\text{ als } x\in \mathbb{Q}\\
+      0 &\text{ als } x\in \mathbb{R}\setminus \mathbb{Q}
+    \end{array}
+  \right.
+  \]
+  
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $a\in \mathbb{Q}$
+      Kies $\epsilon = \frac{1}{2}$, dan bestaat er voor elke $\delta \in \mathbb{R}_{0}^{+}$ een $x\in \mathbb{R}$ zodat uit $|x-a| < \delta$ $|((x \in \mathbb{Q})-(a\in \mathbb{Q})| \ge \epsilon$ volgt:
+      Kies immers een willekeurige $\delta \in \mathbb{R}_{0}^{+}$, dan bestaat er een $x\in \mathbb{R}\setminus \mathbb{Q}$ met $|x-a| < \delta$. \needed
+      Hiervoor geldt dan $|((x \in \mathbb{Q})-(a\in \mathbb{Q})| = 1 \ge \frac{1}{2} = \epsilon$.
+    \item $a\in \mathbb{R}\setminus \mathbb{Q}$
+      \extra{bewijs analoog}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  (Bewijs via karakterisatie van continu\"iteit in termen van rijen.)
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x^{2} \]
+  
+  \begin{proof}
+    We moeten bewijzen dat voor een willekeurige rij $(x_{n})_{n}$ die naar $x$ convergeert, $(f(x_{n}))_{n}$ naar $f(x)$ convergeert.
+    Kies daartoe een willekeurige $(x_{n})_{n}$ die naar $x$ convergeert.
+    Voor een willekeurige $x_{n}$ uit de rij geldt het volgende:
+    \[ |f(x_{n})-f(x)| = |x_{n}^{2}-x^{2}| = |x_{n}+x||x_{n}-x| \]
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\epsilon}{|x_{n}+x|}$
+    Omdat $(x_{n})_{n}$ naar $x$ convergeert, bestaat er dan een $m\in \mathbb{N}$ zodat het volgende geldt:
+    \[ \forall n\in \mathbb{N}: n \ge m:\ |x_{n}-x| < \frac{\epsilon}{|x_{n}+x|} \]
+    Voor $n \ge m$ geldt dus het volgende:
+    \[ |f(x_{n})-f(x)| = |x_{n}+x||x_{n}-x| < |x_{n}+x|\frac{\epsilon}{|x_{n}+x|} = \epsilon \]
+    De rij $(f(x_{n}))_{n}$ convergeert dus naar $f(x)$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie die continu is in een punt $a\in A$ met $f(a) > 0$.
+  Er bestaat dan een $\delta \in \mathbb{R}_{0}^{+}$ zodat $f(x)>0$ geldt voor alle $x\in A$ met $|x-a| < \delta$.
+
+  \begin{proof}
+    Kies $\epsilon = \f(a)$, dan bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat de stelling geldt omdat $f$ continu is in $A$.
   \end{proof}
 \end{vb}
 

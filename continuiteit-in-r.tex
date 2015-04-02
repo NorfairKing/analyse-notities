@@ -24,7 +24,8 @@
 \end{st}
 
 
-\begin{pr}
+\begin{bpr}
+  De \term{karakterisering van continu\"iteit in termen van rijen}.\\
   \label{pr:continu-asa-behoudt-convergentie}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
   $f$ is continu in $a$ als en slechts als er voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert geldt dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
@@ -49,10 +50,11 @@
       Uit de eerste ongelijkheid volgt dat $x_{n}$ naar $a$ convergeert terwijl uit de tweede ongelijkheid volgt dat $(f(x_{n}))_{n}$ niet kan convergeren naar $f(a)$.
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
-  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
+\begin{bpr}
+  De \term{karakterisering van continu\"iteit in termen van opens}\\
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie.
   $f$ is continu op $A$ als en slechts als er voor elk open deel $V$ van $\mathbb{R}$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
   \begin{proof}
     Bewijs van een equivalentie.
@@ -77,7 +79,19 @@
       Er geldt met andere woorden $|f(x)-f(a)|<\epsilon$, dus $f$ is continu in $a$.
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
+\extra{zelfde stelling voor gesloten: tegenvoorbeeld!}
+\extra{I gesloten dan F(I) gesloten?}
+
+\begin{tvb}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie en $V$ een open deel van $\mathbb{R}$, dan hoeft $f(V)$ niet open te zijn.
+  
+  \begin{proof}
+    Zij $f$ de absolute-waardefunctie:
+    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}: x \mapsto |x| \]
+    Kies $V = \interval[open]{-1}{1}$, dan is $f(V)$ het halfopen interval $\interval[open right]{0}{1}$ en dus niet open.
+  \end{proof}
+\end{tvb}
 
 \begin{de}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
@@ -88,10 +102,38 @@
   \end{itemize}
 \end{de}
 
+\begin{st}
+  \examenvraag{TTT 1 2015}
+  Zij $f,g:\ \mathbb{R} \rightarrow \mathbb{R}$ twee continue functies zodat $\forall q\in \mathbb{Q}: f(q) = g(q)$ geldt, dan zijn $f$ en $g$ gelijk.
+
+  \begin{proof}
+    Voor elk getal $c \in \mathbb{R}$ bestaat er een Cauchyrij $(x_{n})_{n}$ van rationale getallen met $c$ als limiet.\waarom
+    \[ \lim_{n\rightarrow \infty}x_{n} = c\]
+    Omdat $f$ en $g$ continu zijn moet ook het volgende gelden:
+    \[ \lim_{n\rightarrow \infty}f(x_{n}) = f(c) \text{ en } \lim_{n\rightarrow \infty}g(x_{n}) = g(c) \]
+    Omdat $x_{n}$ rationaal is, geldt voor elke $n\in \mathbb{N}$ $f(x_{n})=g(x_{n})$.
+    De limieten moeten dan gelijk zijn\waarom, en dus moet $f(c)$ gelijk zijn aan $g(c)$ voor alle $c\in \mathbb{R}$.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ functie.
+  $f$ is continu als en slechts het volgende geldt:
+  \[ \forall X \subseteq \mathbb{R}:\ f^{-1}(\mathring{X}) \subseteq \mathring{\left(f^{-1}(X)\right)} \]
+\extra{oefening}
+\end{st}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ functie.
+  $f$ is continu als en slechts het volgende geldt:
+  \[ \forall X \subseteq \mathbb{R}:\ \overline{f^{-1}(X)} \subseteq f^{-1}(\overline{X}) \]
+\extra{oefening}
+\end{st}
+
 \section{Operaties met continue functies}
 \label{sec:oper-met-cont}
 
-\begin{pr}
+\begin{bpr}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie die continu is in $a\in A$.
   \[ \lambda f:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x) \text{ is continu in } A \]
 
@@ -101,9 +143,9 @@
     Hieruit volgt het volgende:
     \[ |x-a| < \delta \Rightarrow |\lambda||f(x)-f(a)| = |\lambda f(x)-\lambda f(a)| < \epsilon \]
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
   \[ f+g:\ A \rightarrow \mathbb{R}: x \mapsto f(x)+g(x) \text{ is continu in } A \]
 
@@ -115,9 +157,9 @@
     \[ \forall x\in A:\ |x-a|<\min\{\delta_{x},\delta_{y}\}  \Rightarrow |(f+g)(x) - (f+g)(a)| \le |f(x)-f(a)| + |g(x)-g(a)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
     Bijgevolg is $(f+g)$ continu in $a$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:product-continu}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
   \[ fg:\ A \rightarrow \mathbb{R}: x \mapsto f(x)g(x) \text{ is continu in } A \]
@@ -162,9 +204,9 @@
     \]
     Dit bewijs dat $fg$ continu is in $a$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$ met $g(a)\neq 0$.
   Noteer bovendien $A_{0} = \{ x \in A \mid g(x) \neq 0 \}$
   \[ \frac{f}{g}:\ A_{0} \rightarrow \mathbb{R}: x \mapsto \frac{f(x)}{g(x)} \text{ is continu in } A \]
@@ -198,9 +240,9 @@
     \]
     Dit bewijst dat $\frac{1}{g}$ continu is in $a$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \rightarrow \mathbb{R}$ functies en zij $a\in A$.
   Als $f$ continu is in $a$ en $g$ continu in $f(a)$, dan is $g\circ f$ continu in $a$.
 
@@ -211,9 +253,9 @@
     Voor elke $x\in A$ met $|x-a|<\delta$ zal $|f(x)-f(a)| < \eta$ gelden en bijgevolg ook $|g(f(x))-g(f(a))|<\epsilon$.
     $g\circ f$ is dus continu in $a$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $A$ een gesloten begrensd deel van $\mathbb{R}$.
   Zij $f: \ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue injectieve functie, dan is $f^{-1}: f(A) \rightarrow A$ ook continu.
 
@@ -226,9 +268,60 @@
     Stel immers dat $(x_{n})_{n}$ niet convergeert naar $x$, dan bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat $|x_{n}-x|> \epsilon$ geldt (dit geldt dan ook voor elke deelrij van $(x_{n})_{n}$.
     Omdat $A$ gesloten en begrensd is bestaat er een deelrij $(x_{n_{k}})_{k}$ die convergeert naar een andere $x'\neq x$.
     Omdat $f$ continu is, zal $(y_{n})_{n}$ naar $f(x')$ convergeren, maar omdat $f$ injectief is, zal $f(x')$ verschillend zijn van $f(x)$.
-    We vinden dus dat de convergente rij $(y_{n_{k}})_{k}$ een convergente deelrij zou hebben met een andere limiet, wat niet kan.
+    We vinden dus dat de convergente rij $(y_{n_{k}})_{k}$ een convergente deelrij zou hebben met een andere limiet, wat niet kan.\needed
   \end{proof}
-\end{pr}
+\end{bpr}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als $A$ niet gesloten is.
+
+  \begin{proof}
+    Kies $f$ als volgt:
+    \[
+    f:\ \interval{0}{2} \setminus \{1\} \rightarrow \interval[open right]{0}{2}:\
+    x \mapsto
+    \left\{
+      \begin{array}{rl}
+        x & \text{ als } x \in \interval[open right]{0}{1}\\
+        3-x & \text{ als } x \in \interval[open left]{1}{2}\\
+      \end{array}
+    \right.
+    \]
+    De inverse $f^{-1}$ van $f$ is duidelijk niet continu in $1$.
+    \begin{figure}[H]
+      \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:2] {-x+3};
+            \addplot[holdot] coordinates{(1,1)(1,2)};
+            \addplot[soldot] coordinates{(2,1)};
+          \end{axis}
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:2] {-x+3};
+            \addplot[holdot] coordinates{(1,1)(2,1)};
+            \addplot[soldot] coordinates{(1,2)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+    \end{figure}
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als $A$ niet begrensd is.
+
+  \begin{proof}
+    Beschouw de volgende functie $f$:
+    \[ f:\ \interval[open right]{1}{\infty} \rightarrow \mathbb{R}:\ x \mapsto -\frac{1}{x} \]
+    De inverse hiervan:
+    \[ f^{-1}:\ \interval[open right]{-1}{0} \rightarrow \mathbb{R}:\ x \mapsto -\frac{1}{x} \]
+  \end{proof}
+\TODO{dit is fout, vindt iets beter!}
+\end{tvb}
 
 \begin{st}
   Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
@@ -255,7 +348,7 @@
 \section{Continue functies op intervallen}
 \label{sec:continue-functies-op}
 
-\begin{st}
+\begin{bst}
   Beschouw een continue functie $f: \interval{a}{b} \rightarrow \mathbb{R}$ gedefinieerd op een gesloten begrensd interval $\interval{a}{b}$.
   $f$ is begrensd en bereikt op $\interval{a}{b}$ haar minimale en maximale waarde.
   Er bestaan dus waarden $c,d \in \interval{a}{b}$ als volgt:
@@ -283,9 +376,106 @@
     \end{itemize}
   \end{proof}
 \question{waar wordt de supremumeigenschap gebruikt?}
-\end{st}
+\question{kunnen we het gesloten interval vervangen door een gesloten verzameling?}
+\end{bst}
 
-\begin{st}
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een niet-continu\"e functie.
+  $f$ is wel begrensd, maar de extreme waarden hoeven niet bereikt te worden.
+
+  \begin{proof}
+    $f$ is begrensd: \extra{bewijs}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}
+          \addplot[domain=0:1] {-x};
+          \addplot[domain=1:2] {x-1};
+          \addplot[domain=2:3] {0};
+          \addplot[holdot] coordinates{(1,-1)(2,1)};
+          \addplot[soldot] coordinates{(0,0)(1,0)(2,0)(3,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    Kies $f$ als volgt:
+    \[
+    f:\ \interval{0}{3} \rightarrow \mathbb{R}:\ x \mapsto
+    \left\{
+      \begin{array}{rl}
+        -x & \text{ als } x \in \interval[open right]{0}{1}\\
+        x-1 & \text{ als } x \in \interval[open right]{1}{2}\\
+        0 & \text{ als } x \in \interval{2}{3}\\
+      \end{array}
+    \right.
+    \]
+    $f$ is niet continu, maar wel gedefinieerd op een gesloten en begrensd interval $\interval{0}{3}$ en bereikt haar infimum en supremum niet.
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een niet-gesloten interval.
+  
+  \begin{proof}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}
+          \addplot[domain=0:1] {1/x};
+          \addplot[holdot] coordinates{(0,0)};
+          \addplot[soldot] coordinates{(1,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    Beschouw $f$ als volgt:
+    \[ f:\ \interval[open left]{0}{1} \rightarrow \mathbb{R}: \ x \mapsto \frac{1}{x} \]
+    $f$ is niet begrensd.
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een niet-begrensd interval.
+
+  \begin{proof}
+    Beschouw $f:\ \interval[open right]{0}{+\infty}:\ x \mapsto x$.
+    $f$ is een continue functie, gedefinieerd op een niet-begrensd gesloten interval.
+    $f$ is niet begrensd.
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet in $\mathbb{Q}$.
+  Nauwkeuriger: Kies $a,b \in \mathbb{Q}$, dan bestaan er continue functies $f: \{ x \in \mathbb{Q} \mid a \le x \le b \} \rightarrow \mathbb{Q} $ die ...
+  \begin{itemize}
+  \item ... niet begrensd zijn.
+  \item ... wel begrensd zijn, maar hun maximale en/of minimale waarde niet bereiken.
+  \end{itemize}
+
+  \begin{proof}
+    We vinden twee voorbeelden door een niet-rationaal getal te vinden tussen $a$ en $b$.
+    Kies bijvoorbeeld $\left( \frac{\sqrt{2}}{2}(b-a) \right)$.
+    \begin{itemize}
+    \item Kies $f$ als volgt: 
+      \[
+      f:\ \{ x \in \mathbb{Q} \mid a \le x \le b \} \rightarrow \mathbb{Q}:\ 
+      \frac{1}{4x-2(b-a)^{2}}
+      \]
+      $f$ is continu maar niet begrensd.
+    \item Kies $f$ als volgt:
+      \[
+      f:\ \{ x \in \mathbb{Q} \mid a \le x \le b \} \rightarrow \mathbb{Q}:\ 
+      \left\{
+        \begin{array}{rl}
+          -x & \text{ als } x \le  4x-2(b-a)^{2}\\
+          x & \text{ als } x \ge  4x-2(b-a)^{2}\\
+        \end{array}
+      \right.
+      \]
+      $f$ is continu en begrensd, maar bereikt zijn minimale waarde niet.
+    \end{itemize}
+  \end{proof}
+\end{tvb}
+
+\begin{bst}
   \label{st:tussenwaardestelling}
   De \term{tussenwaardestelling}\\
   Zij $f: I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie op een interval $I$.
@@ -311,7 +501,8 @@
       \end{itemize}
     \end{itemize}
   \end{proof}
-\end{st}
+\end{bst}
+
 
 \section{Uniforme continuiteit}
 \label{sec:unif-cont}
@@ -343,7 +534,7 @@
 \extra{tegenvoorbeeld}
 \end{tvb}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:uniform-continue-functie-behoudt-cauchy}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een uniform continue functie en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
 
@@ -351,9 +542,9 @@
     $f$ is uniform continu en dus ook gewoon continu.\stref{st:uniform-continu-dan-ook-gewoon-continu}.
     $(f(x_{n}))_{n}$ is dan ook een Cauchyrij.\stref{st:continue-functie-behoudt-cauchy}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een uniform continue functie.
   Als $B$ een begrensd deel is van $A$, dan is $f(B)$ ook begrensd.
 
@@ -365,9 +556,9 @@
     De rij $(f(x_{n_{k}}))_{k}$ is dan ook een Cauchyrij.\prref{pr:uniform-continue-functie-behoudt-cauchy}
     Cauchyrijen zijn echter begrends.\prref{pr:cauchyrij-begrensd} Contradictie.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{st}
+\begin{bst}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie, gedefinieerd op een gesloten en begrensd deel $A$ van $\mathbb{R}$, dan is $f$ uniform continu.
 
   \begin{proof}
@@ -381,7 +572,7 @@
     We vinden dus dat de afstand tussen $f(x_{n_{k}})$ en $f(y_{n_{k}})$ willekeurig klein wordt, wat strijdig is met $|f(x_{n})-f(y_{n})| \ge \epsilon$.
     Contradictie.
   \end{proof}
-\end{st}
+\end{bst}
 
 \section{Rijen van functies}
 \label{sec:rijen-van-functies}
@@ -409,7 +600,7 @@
 \extra{tegenvoorbeeld}
 \end{tvb}
 
-\begin{st}
+\begin{bst}
   Beschouw een rij $(f_{n})_{n}$ van functies $f_{n}: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ die op $A$ uniform convergeert naar een functie $f:\ A \rightarrow \mathbb{R}$.
   \begin{itemize}
   \item Als $f_{n}$ continu is in een $a\in A$ voor elke $n$, dan is ook $f$ continu in $a$.
@@ -438,7 +629,7 @@
     \item \extra{bewijs}
     \end{itemize}
   \end{proof}
-\end{st}
+\end{bst}
 
 \section{Limieten van functies}
 \label{sec:limi-van-funct}
@@ -522,7 +713,7 @@
   \end{itemize}
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $L \in \mathbb{R} \cup \{-\infty,+\infty\}$.
   Zij $a \in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
@@ -568,7 +759,7 @@
       \end{itemize}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{de}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in \mathbb{R}$.
@@ -594,7 +785,7 @@
 
 \subsection{Classificatie van discontinuiteiten}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:functie-continu-asa-limiet-is-beeld}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
   Stel dat $a$ zowel een element van $A$ als een ophopingspunt van $A$ is.
@@ -604,9 +795,9 @@
     $f$ is continu in $a$, dus voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert geldt dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.\prref{pr:continu-asa-behoudt-convergentie}
     Dit is equivalent met de stelling dat $f(a)$ de limiet is van $f$ in $a$.\prref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en $a\in \mathbb{R}$.
   Stel dat $a$ een ophopingspunt is van zowel $\interval[open right]{a}{+\infty} \cap A$ als $\interval[open left]{-\infty}{a} \cap A$.
   $f$ heeft in $a$ een limiet $L\in \mathbb{R}\cup \{ -\infty,+\infty\}$ als en slechts als de linker- en rechterlimiet van $f$ in $a$ bestaan en gelijk zijn aan $L$.
@@ -624,7 +815,7 @@
     \[ \forall x\in A:\ a\le |x-a|<\delta \Rightarrow |f(x)-L|<\epsilon \]
     $f$ heeft dus $L$ als limiet in $a$.
   \end{itemize}
-\end{pr}
+\end{bpr}
 
 \begin{de}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en $a\in A$.
@@ -636,7 +827,7 @@
   \end{itemize}
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een monotone functie op een (niet-leeg) open interval $I$, dan kan $f$ enkel discontinu\"iteiten van de eerste soort vertonen.
   Bovendien is het aantal discontinu\"iteiten van $f$ aftelbaar.
 
@@ -682,26 +873,26 @@
       \extra{bewijs}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 
 \subsection{Eigenschappen en rekenregels voor limieten}
 \label{sec:eigensch-en-rekenr}
 
-\begin{pr}
+\begin{bpr}
   Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
   Stel dat $\forall a\in A: f(x) \le g(x)$ geldt, en dat de limiet van zowel $f$ als $g$ in $a$ bestaat, dan is de limiet van $f$ in $a$ kleiner dan of gelijk aan de limiet van $g$ in $a$.\
 \extra{bewijs}
-\end{pr}
+\end{bpr}
 
-\begin{st}
+\begin{bst}
   De \term{insluitstelling voor functies}\\
   Beschouw functies $f,g,h:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
   Stel dat $\forall a\in A: f(x) \le g(x) \le h(x)$ geldt, en dat de limiet van zowel $f$ als $h$ in $a$ bestaat en deze gelijk zijn, dan bestaat de limiet van $g$ in $x$ en zijn de drie limieten gelijk.
 \extra{bewijs}
-\end{st}
+\end{bst}
 
-\begin{pr}
+\begin{bpr}
   Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
   Zij $\lambda \in \mathbb{R}$ en stel dat de limieten van $f$ en $g$ in $a$ bestaan en eindig zijn.
   \begin{itemize}
@@ -711,11 +902,11 @@
   \item $\lim_{a}\frac{f}{g} = \frac{\lim_{a}f}{\lim_{a}g}$ als $\lim_{a}g \neq 0$ met $\frac{f}{g}:\ \{x\in A\mid g(x) \neq 0\} \rightarrow \mathbb{R}:\ x \mapsto \frac{f(x)}{g(x)}$
   \end{itemize}
 \extra{bewijs}
-\end{pr}
+\end{bpr}
 
 \extra{zelfde extra rekenregels voor oneindigheden etc (veel werk)}
 
-\begin{pr}
+\begin{bpr}
   Beschouw functies $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \rightarrow \mathbb{R}$.
   Zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
   Stel dat de limiet $b$ van $f$ in $a$ bestaat.
@@ -741,9 +932,9 @@
     \item \extra{bewijs}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{st}
+\begin{bst}
   Zij $(f_{n})_{n}$ een rij van functies van $A \subseteq \mathbb{R}$ naar $\mathbb{R}$ die uniform op $A$ convergeert naar een functie $f: A \rightarrow \mathbb{R}$.
   Zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
   Stel dat voor alle $n$ de limiet $L_{n}$ van $f_{n}$ in $a$ bestaat en eindig is.
@@ -778,7 +969,7 @@
       \[ |f(x_{n})-L| \le |f(x_{k}) -f_{n}(x_{k})| + |f_{k}(x_{k})-L_{n}| + |L_{n}-L| < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon \]
     \end{itemize}
   \end{proof}
-\end{st}
+\end{bst}
 
 
 
