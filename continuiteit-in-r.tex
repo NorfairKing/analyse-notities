@@ -307,6 +307,7 @@
           \end{axis}
         \end{tikzpicture}
       \end{center}
+      \caption{ $f$ (links) en $f^{-1}$ (rechts)}
     \end{figure}
   \end{proof}
 \end{tvb}
@@ -316,9 +317,46 @@
 
   \begin{proof}
     Beschouw de volgende functie $f$:
-    \[ f:\ \interval[open right]{1}{\infty} \rightarrow \mathbb{R}:\ x \mapsto -\frac{1}{x} \]
+    \[
+    f:\ \interval{0}{1} \cup \interval[open right]{1}{\infty} \rightarrow \mathbb{R}:\ x \mapsto 
+    \left\{
+      \begin{array}{rl}
+        x & \text{ als } x \in \interval{0}{1}\\
+        1+\frac{2}{x} & \text{ als } x \in \interval[open]{1}{+\infty}\\
+      \end{array}
+    \right.
+    \]
     De inverse hiervan:
-    \[ f^{-1}:\ \interval[open right]{-1}{0} \rightarrow \mathbb{R}:\ x \mapsto -\frac{1}{x} \]
+    \[
+    f^{-1}:\ \interval[open right]{0}{3} \rightarrow \mathbb{R}:\ x \mapsto
+    \left\{
+      \begin{array}{rl}
+        x & \text{ als } x \in \interval{0}{1}\\
+        \frac{2}{x-1} & \text{ als } x \in \interval[open]{1}{3}\\
+      \end{array}
+    \right.
+    \]
+    \begin{figure}[H]
+      \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}[ymax=5, ymin=0, xmax=5, xmin=0]
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:10] {1+2/x};
+            \addplot[holdot] coordinates{(1,3)};
+            \addplot[soldot] coordinates{(1,1)};
+          \end{axis}
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}[ymax=5, ymin=0, xmax=5, xmin=0]
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:3] {2/(x-1)};
+            \addplot[holdot] coordinates{(3,1)};
+            \addplot[soldot] coordinates{(1,1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+      \caption{ $f$ (links) en $f^{-1}$ (rechts)}
+    \end{figure}
   \end{proof}
 \TODO{dit is fout, vindt iets beter!}
 \end{tvb}
@@ -502,6 +540,42 @@
     \end{itemize}
   \end{proof}
 \end{bst}
+
+\begin{st}
+  Zij $f: \mathbb{R} \rightarrow \mathbb{R}$ een continue functie zodat $f(\mathbb{R}) \subseteq \mathbb{Q}$ geldt, dan is $f$ constant.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:\\
+    Stel dat $f$ niet constant is, dan bestaan er getallen $x,y \in \mathbb{R}$ zodat $f(x)$ en $f(y)$ verschillend zijn.
+    Omdat $f$ continu is op het interval $\interval{x}{y}$ bestaat er voor elke $z \in \interval{f(x)}{f(y)}$ een $u\in \mathbb{R}$ zodat $z$ het beeld is van $u$.\stref{st:tussenwaardestelling}
+    Omdat er minstens \'e\'en element van $\mathbb{R} \setminus \mathbb{Q}$ in $\interval{f(x)}{f(y)}$ zit\needed, kan het beeld van $f$ geen deel zijn van $\mathbb{Q}$.
+    contridictie.
+  \end{proof}
+\feed
+\end{st}
+
+\begin{tvb}
+  Er bestaat geen continue functie met de volgende eigenschap:
+  \[
+  f:\ \mathbb{R} \rightarrow \mathbb{R} \quad\text{met}\quad f(\mathbb{Q}) \subseteq \mathbb{R} \setminus \mathbb{Q} \text{ en } f(\mathbb{R} \setminus \mathbb{Q}) \subseteq \mathbb{Q}
+  \]
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel dat er wel zo'n functie $f$ bestaat, dan moet $f(0)$ en $f(\sqrt{2})$ verschillend zijn.
+    Noem $m=\min\{f(0),f(\sqrt{2})\}$ en $M= \max\{f(0),f(\sqrt{2})\}$
+    Voor elke $z \in \interval{m}{M}$ bestaat er een $u \in \interval{0}{\sqrt{2}}$ zodat $f(u) = z$ geldt.\stref{st:tussenwaardestelling}
+    Er liggen overaftelbaar veel re\"eele getallen tussen $m$ en $M$, maar die mogen enkel bereikt worden (vanuit de eigenschap van de functie) vanuit de aftelbare verzameling van rationale getallen tussen $0$ en $sqrt{2}$.
+    Contradictie.
+  \end{proof}
+\feed
+\end{tvb}
+
+\begin{st}
+  Toepassinkje:\\
+  Stel dat temperatuur een continue functie is van plaats op de aarde, dan bestaan er op elk ogenblik twee plaatsen op de aarde die diametraal over elkaar staan waar de temperatuur gelijk is.
+  \extra{bewijs: hoe?!}
+\end{st}
 
 
 \section{Uniforme continuiteit}
