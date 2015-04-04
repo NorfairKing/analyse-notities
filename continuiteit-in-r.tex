@@ -577,21 +577,68 @@
   \extra{bewijs: hoe?!}
 \end{st}
 
-
 \section{Uniforme continuiteit}
 \label{sec:unif-cont}
 
+\begin{tvb}
+  Zij een continue functie $f: \interval[open left]{0}{1} \rightarrow \mathbb{R}$, dan bestaat er niet steeds een continue uitbreiding $g$ van $f$ naar $\interval{0}{1}$.
+
+  \begin{proof}
+    Beschouw de functie $f$ als volgt, dan bestaat er geen continue uitbreiding $g$ van $f$ naar $\interval{0}{1}$.
+    \[ f:\ \interval[open left]{0}{1} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}[ymax=10, ymin=0, xmax=1.125, xmin=0]
+          \addplot[domain=0:1] {1/x};
+          \addplot[soldot] coordinates{(1,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    Zij immers $g$ een continue uitbreiding van $f$ met $g(0)=c \in \mathbb{R}$.
+    Kies nu $\epsilon$, dan geldt voor alle $\delta\in \mathbb{R}_{0}^{+}$ dat er een $x\in \interval[open left]{0}{1}$ bestaat die verder dan $\epsilon$ van $c$ ligt.
+  \end{proof}
+\end{tvb}
+
 \begin{st}
-  \label{st:continue-functie-behoudt-cauchy}
-  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een continue functie en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
+  Zij een continue functie $f: \interval[open left]{0}{1} \rightarrow \mathbb{R}$, en $g$ een continue uitbreiding van $f$ naar $\interval{0}{1}$, dan is die uitbreiding uniek.
+  
+  \begin{proof}
+    Opdat $g$ continu zou in $\interval{0}{1}$ moet voor elke rij $(x_{n})_{n}$ die naar nul convergeert $(f(x_{n}))_{n}$ naar $g(0)$ convergeren.\needed
+    Er is dus maar \'e\'en mogelijkheid voor $g(0)$.
+    \extra{dit kan beter!}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij een continue begrensde functie $f: \interval[open left]{0}{1} \rightarrow \mathbb{R}$, dan bestaat er een continue uitbreiding $g$ van $f$ naar $\interval{0}{1}$
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  \label{st:continue-functie-over-gesloten-deel-behoudt-cauchy}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie met $A$ gesloten en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
 
   \begin{proof}
     $(x_{n})_{n}$ is een Cauchyrij en daarom convergent.\prref{pr:cauchyrij-in-R-convergeert}
     Noem $x$ de limiet van $(x_{n})_{n}$.\prref{pr:cauchyrij-in-R-convergeert}
-    Omdat $f$ continu is, zal $f(x)$ de limiet zijn van $(f(x_{n}))_{n}$.
+    Omdat $A$ gesloten is, zal $x$ tot $A$ behoren.\prref{pr:gesloten-asa-elke-convergente-rij-in-A-limiet-in-A}
+    Omdat $f$ continu is, zal $f(x)$ de limiet zijn van $(f(x_{n}))_{n}$.\prref{pr:continu-asa-behoudt-convergentie}
     $(f(x_{n}))_{n}$ convergeert dus ook en is bijgevolg een Cauchyrij.\prref{pr:convergent-dan-cauchy}
   \end{proof}
 \end{st}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een niet-gesloten interval $A$.
+
+  \begin{proof}
+    Zij $f$ de volgende continu\"e functie:
+    \[ f: \interval[open left]{0}{1} \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+    Zij $(x_{n})_{n}$ bovendien de volgende Cauchyrij:
+    \[ x_{n} = \frac{1}{n} \]
+    $(f(x_{n}))_{n}$ is dan geen cauchyrij want $(f(x_{n}))_{n} = (n)_{n}$ is niet convergent.\prref{pr:cauchyrij-in-R-convergeert}
+  \end{proof}
+\end{tvb}
 
 \begin{de}
   We noemen een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ \term{uniform continu} of \term{gelijkmatig continu} op $A$ als het volgende geldt:
@@ -601,6 +648,7 @@
 \begin{st}
   \label{st:uniform-continu-dan-ook-gewoon-continu}
   Als een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ uniform continu is, is hij ook continu.
+  \extra{bewijs}
 \end{st}
 
 \begin{tvb}
@@ -613,8 +661,14 @@
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een uniform continue functie en $(x_{n})_{n}$ een Cauchyrij in $\mathbb{R}$, dan is $(f(x_{n}))_{n}$ ook een Cauchyrij.
 
   \begin{proof}
-    $f$ is uniform continu en dus ook gewoon continu.\stref{st:uniform-continu-dan-ook-gewoon-continu}.
-    $(f(x_{n}))_{n}$ is dan ook een Cauchyrij.\stref{st:continue-functie-behoudt-cauchy}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ uniform continu is, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ als volgt:
+    \[ \forall x,y \in A: |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon \]
+    Omdat $(x_{n})_{n}$ een Cauchyrij is, bestaat er een $n_{0}\in \mathbb{N}$ als volgt:
+    \[ \forall n,m \in \mathbb{N}: n,m \ge n_{0} \Rightarrow |x_{n}-x_{m}| < \delta \]
+    Nemen we deze beweringen samen, dan bekomen we het volgende:
+    \[ \forall n,m \in \mathbb{N}: n,m \ge n_{0} \Rightarrow |f(x_{n})-f(x_{m})| < \epsilon \]
+    Dit betekent precies dat $(f(x_{n}))_{n}$ een Cauchyrij is.
   \end{proof}
 \end{bpr}
 
@@ -638,13 +692,14 @@
   \begin{proof}
     Stel immers dat $f$ niet uniform continu zou zijn, dan bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat we voor elke $\delta = \frac{1}{n}$ punten $x_{n}$, $y_{n}$ kunen vinden zodat het volgende geldt.
     \[ |x_{n}-y_{n}| < \frac{1}{n} \quad\wedge\quad |f(x_{n})-f(y_{n})| \ge \epsilon \]
-    Omdat $(x_{n})_{n}$ een rij is in een gesloten, begrensd deel van $\mathbb{R}$.
-    Er bestaat daarom een deelrij $(x_{n_{k}})_{k}$ die convergeert naar een $x\in A$.
-    Omdat $f$ continu is, zal $(f(x_{n_{k}}))_{k}$ naar $x$ convergeren.
+    Omdat $(x_{n})_{n}$ een rij is in een gesloten, begrensd deel van $\mathbb{R}$ moet $(x_{n})_{n}$ begrensd zijn.
+    Er bestaat daarom een deelrij $(x_{n_{k}})_{k}$ die convergeert naar een $x\in A$.\stref{st:bolzano-rijen}
+    Omdat $f$ continu is, zal $(f(x_{n_{k}}))_{k}$ naar $x$ convergeren.\stref{st:continue-functie-over-gesloten-deel-behoudt-cauchy}
     Analoog vinden we een deelrij $(y_{n_{k}})_{k}$ van $(y_{n})_{n}$ die convergeert naar een $y\in A$.
-    Omdat de afstand tussen $x_{n}$ en $y_{n}$ willekeurig klein wordt zal $y$ gelijk zijn aan $x$ en $f(x)$ dus ook aan $f(y)$.
+    Omdat de afstand tussen $x_{n}$ en $y_{n}$ willekeurig klein wordt zal $y$ gelijk zijn aan $x$ en $f(x)$ dus ook aan $f(y)$.\stref{st:geneste-intervallen}
     We vinden dus dat de afstand tussen $f(x_{n_{k}})$ en $f(y_{n_{k}})$ willekeurig klein wordt, wat strijdig is met $|f(x_{n})-f(y_{n})| \ge \epsilon$.
     Contradictie.
+\extra{dit kan beter!}
   \end{proof}
 \end{bst}
 

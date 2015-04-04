@@ -291,7 +291,7 @@
   Er bestaat dan een $\delta \in \mathbb{R}_{0}^{+}$ zodat $f(x)>0$ geldt voor alle $x\in A$ met $|x-a| < \delta$.
 
   \begin{proof}
-    Kies $\epsilon = \f(a)$, dan bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat de stelling geldt omdat $f$ continu is in $A$.
+    Kies $\epsilon = f(a)$, dan bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat de stelling geldt omdat $f$ continu is in $A$.
   \end{proof}
 \end{vb}
 
@@ -309,7 +309,12 @@
 \subsection{Uniforme continu\"iteit}
 \label{sec:unif-cont}
 
-\extra{voorbeeld 4.3.1}
+
+\begin{vb}
+  De functie $f$ is uniform continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{1+x^{2}} \]
+  \extra{bewijs p 21}
+\end{vb}
 
 \begin{vb}
   De functie $f$ is uniform continu:
@@ -325,8 +330,8 @@
   \end{proof}
 \end{vb}
 
-\begin{tvb}
-  De functie $f$ is niet uniform continu:
+\begin{vb}
+  De functie $f$ is \textbf{niet} uniform continu:
   \[ f:\ \mathbb{R}_{0}^{+} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
 
   \begin{proof}
@@ -338,8 +343,95 @@
     $x$ is dan positief en $|f(x)-f(y)| = 2 > \epsilon$.
     $f$ is dus niet uniform continu op $\mathbb{R}_{0}^{+}$.
   \end{proof}
-\end{tvb}
+\end{vb}
 
-\extra{tvb 4.3.4}
+
+\begin{vb}
+  De functie $f$ is \textbf{niet} uniform continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2}\]
+  \extra{bewijs p 22}
+\end{vb}
+
+
+\subsection{Rijen van functies}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0$.
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{n} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1$.
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1- \frac{3}{n}\left(x-1+\frac{1}{n}\right) + \frac{x}{n} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin(x)$.
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin\left(\left(1+\frac{1}{n}\right)x\right) \]
+\extra{bewijs zodra de sinusfunctie gedefinieerd is.}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      -1 & \text{ als } x \in \interval[open left ]{-\infty}{-\frac{1}{n}}\\
+      nx & \text{ als } x \in \interval[open      ]{-\frac{1}{n}}{\frac{1}{n}}\\
+      1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
+    \end{array}
+  \right.
+  \]
+  \[
+  f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
+      0  & \text{ als } x = 0\\
+      1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
+    \end{array}
+  \right.
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{n^{2}x^{2}}{1 + n^{2}x^{2}}
+  \]
+  \[
+  f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      0  & \text{ als } x = 0\\
+      1  & \text{ als } x \neq 0\\
+    \end{array}
+  \right.
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      2nx   & \text{ als } x \in \interval[open right]{0}{\frac{1}{2n}}\\
+      2-2nx & \text{ als } x \in \interval{\frac{1}{2n}}{\frac{1}{n}}\\
+      0     & \text{ als } x \in \interval[open left ]{\frac{1}{n}}{1}\\
+    \end{array}
+  \right.
+  \]
+  \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+\extra{bewijs}
+\end{vb}
+
+
+
 
 \end{document}
