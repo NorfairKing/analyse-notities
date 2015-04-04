@@ -1,0 +1,259 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+\section{Operaties met continue functies}
+\label{sec:oper-met-cont}
+
+\begin{bpr}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie die continu is in $a\in A$.
+  \[ \lambda f:\ A \rightarrow \mathbb{R}: x \mapsto \lambda f(x) \text{ is continu in } A \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ continu is in $a$ bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat uit $|x-a|<\delta$  $|f(x)-f(a)|<\frac{\epsilon}{|\lambda|}$ volgt.
+    Hieruit volgt het volgende:
+    \[ |x-a| < \delta \Rightarrow |\lambda||f(x)-f(a)| = |\lambda f(x)-\lambda f(a)| < \epsilon \]
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  \[ f+g:\ A \rightarrow \mathbb{R}: x \mapsto f(x)+g(x) \text{ is continu in } A \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ en $g$ elk continu zijn in $a$ bestaan er $\delta_{x}, \delta_{y} \in \mathbb{R}_{0}^{+}$ zodat de volgende implicaties gelden:
+    \[ \forall x\in A:\ |x-a|<\delta_{x} \Rightarrow |f(x)-f(a)|<\frac{\epsilon}{2} \quad\wedge\quad \forall x\in A:\ |x-a|<\delta_{y}  \Rightarrow |g(x)-g(a)|<\frac{\epsilon}{2} \]
+    Hieruit volgt dan het volgende:
+    \[ \forall x\in A:\ |x-a|<\min\{\delta_{x},\delta_{y}\}  \Rightarrow |(f+g)(x) - (f+g)(a)| \le |f(x)-f(a)| + |g(x)-g(a)| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+    Bijgevolg is $(f+g)$ continu in $a$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:product-continu}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  \[ fg:\ A \rightarrow \mathbb{R}: x \mapsto f(x)g(x) \text{ is continu in } A \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Merk eerst het volgende op voor elke $x\in A$:
+    \[
+    \begin{array}{rl}
+    |(fg)(x) - (fg)(a)| &= |f(x)g(x) - f(a)g(a)|\\
+                        &= |f(x)g(x) - f(x)g(a) + f(x)g(a) - f(a)g(a)|\\
+                        &\le |f(x)g(x) - f(x)g(a)| + |f(x)g(a) - f(a)g(a)|\\
+                        &\le |f(x)||g(x)-g(a)| + |g(a)||f(x)-f(a)|\\
+    \end{array}
+    \]
+    Omdat $f$ continu is in $A$ bestaat er een $\delta_{1} \in \mathbb{R}_{0}^{+}$ zodat voor alle $x\in A$ met $|x-a|<\delta_{1}$ geldt dat $f(x)$ dichter dan $1$ bij $f(a)$ ligt.
+    Er geldt dan het volgende:
+    \[
+    \begin{array}{c}
+      |f(x)-f(a)|<1\\
+      |f(x)|-|f(a)|<1\\
+      |f(x)|<1+|f(a)|\\
+    \end{array}
+    \]
+    Combineren we deze ongelijkheden, dan krijgen we de volgende:
+    \[ |(fg)(x) - (fg)(a)| \le (1+|f(a)|)|g(x)-g(a)| + |g(a)||f(x)-f(a)| \]
+    We zullen nu de juiste $\delta$'s kiezen zodat het rechterlid kleiner dan $\epsilon$ wordt.
+    Kies daarom een $\delta_{2}$ en $\delta_{3}$ zodat de volgende ongelijkheden gelden voor elk $x\in A$ dicht genoeg bij $a$.
+    Dit kan omdat zowel $f$ als $g$ continu is in $a$.
+    \[ 
+    |f(x)-f(a)| < \frac{\epsilon}{2(1+|g(a)|)} \quad\wedge\quad |g(x)-g(a)| < \frac{\epsilon}{2(1+|f(a)|)}
+    \]
+    Kies nu $\delta = \min\{\delta_{1},\delta_{2},\delta_{3}\}$ zodat het volgende geldt.
+    \[ 
+    \begin{array}{rl}
+    \forall x\in A: |x-a|<\delta \Rightarrow \\
+    |f(x)||g(x)-g(a)| + |g(a)||f(x)-f(a)| &\le (1+|f(a)|)|g(x)-g(a)| + |g(a)||f(x)-f(a)|\\
+                                          &\le \frac{(1+|f(a)|)\epsilon}{2(1+|f(a)|)} + \frac{|g(a)|\epsilon}{2(1+|g(a)|)}\\
+                                          &\le \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+                                          &= \epsilon
+    \end{array}
+    \]
+    Dit bewijs dat $fg$ continu is in $a$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$ met $g(a)\neq 0$.
+  Noteer bovendien $A_{0} = \{ x \in A \mid g(x) \neq 0 \}$
+  \[ \frac{f}{g}:\ A_{0} \rightarrow \mathbb{R}: x \mapsto \frac{f(x)}{g(x)} \text{ is continu in } A \]
+
+  \begin{proof}
+    Het volstaat om aan te tonen dat $\frac{1}{g}$ continu is in $a$.\prref{pr:product-continu}
+    \[ \frac{1}{g}:\ A_{0}\rightarrow \mathbb{R}:\ x \mapsto \frac{1}{g(x)} \]
+    Merk eerst het volgende op voor alle $x\in A_{0}$.
+    \[ \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| = \frac{|g(x)-g(a)|}{|g(x)||g(a)|} \]
+    We proberen het rechterlid nu kleiner te krijgen dan een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ door de juiste $\delta$ te kiezen.
+    Omdat $g$ continu is in $a$ en $g(a)$ niet nul is, kunnen we een $\delta_{1} \in \mathbb{R}_{0}^{+}$ kiezen zodat voor alle $x\in A_{0}$ dicht genoeg bij $a$ het volgende geldt:
+    \[ 
+    \begin{array}{c}
+      |g(x)-g(a)| < \frac{|g(a)|}{2}\\
+      |g(x)| \in \interval[open]{|g(a)|-\frac{|g(a)|}{2}}{|g(a)|+\frac{|g(a)|}{2}}\\
+    \end{array}
+    \]
+    We zetten deze ongelijkheid samen met de eerste gelijkheid om de volgende ongelijkheid te bekomen.
+    \[ \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| \le \frac{2|g(x)-g(a)|}{|g(a)|^{2}} \]
+    We zetten nu de tweede stap om het rechterlid kleiner dan $\epsilon$ te krijgen.
+    Daartoe kiezen we een $\delta_{2}$ zodat het volgende geldt voor alle $x\in A_{0}$ dicht genoeg bij $a$.
+    \[ |g(x)-g(a)| < \frac{|g(a)|^{2}\epsilon}{2} \]
+    Voor $x\in A$, dichter dan $\min\{\delta_{1},\delta_{2}\}$ bij $a$ geldt dan de het volgende:
+    \[ 
+    \begin{array}{c}
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| = \frac{|g(x)-g(a)|}{|g(x)||g(a)|}\\
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| < \frac{2|g(x)-g(a)|}{|g(a)|^{2}}\\
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| < \frac{2|g(a)|^{2}\epsilon}{2|g(a)|^{2}}\\
+      \left| \frac{1}{g(x)} - \frac{1}{g(a)} \right| < \epsilon \\
+    \end{array}
+    \]
+    Dit bewijst dat $\frac{1}{g}$ continu is in $a$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \rightarrow \mathbb{R}$ functies en zij $a\in A$.
+  Als $f$ continu is in $a$ en $g$ continu in $f(a)$, dan is $g\circ f$ continu in $a$.
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $g$ continu is in $f(a)$ kunnen we een $\eta\in\mathbb{R}_{0}^{+}$ vinden zodat $|g(y)-g(f(a))|<\epsilon$ geldt voor alle $y\in B$ met $|y-f(a)|<\eta$.
+    Omdat $f$ continu is in $a$ kunnen we een $\delta\in \mathbb{R}_{0}^{+}$ vinden zodat $|f(x)-f(a)| < \eta$ geldt voor alle $x\in A$ met $|x-a|<\delta$ geldt.
+    Voor elke $x\in A$ met $|x-a|<\delta$ zal $|f(x)-f(a)| < \eta$ gelden en bijgevolg ook $|g(f(x))-g(f(a))|<\epsilon$.
+    $g\circ f$ is dus continu in $a$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Zij $A$ een gesloten begrensd deel van $\mathbb{R}$.
+  Zij $f: \ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue injectieve functie, dan is $f^{-1}: f(A) \rightarrow A$ ook continu.
+
+  \begin{proof}
+    Merk op dat $f$ injectief moet zijn opdat $f^{-1}$ een functie zou zijn.
+    We zullen bewijzen dat voor elke rij $(y_{n})_{n}$ in $f(A)$ die convergeert naar een $y\in f(x) \in f(A)$ geldt dat $(f^{-1}(y_{n}))_{n}$ convergeert naar $x\in A$.
+    Daaruit volgt dan de stelling.\prref{pr:continu-asa-behoudt-convergentie}
+    Noem het invers beeld van $y_{n}$ onder $f$ $x_{n}$.
+    We moeten argumenteren dat $(x_{n})_{n}$ naar $x$ convergeert.
+    Stel immers dat $(x_{n})_{n}$ niet convergeert naar $x$, dan bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat $|x_{n}-x|> \epsilon$ geldt (dit geldt dan ook voor elke deelrij van $(x_{n})_{n}$.
+    Omdat $A$ gesloten en begrensd is bestaat er een deelrij $(x_{n_{k}})_{k}$ die convergeert naar een andere $x'\neq x$.
+    Omdat $f$ continu is, zal $(y_{n})_{n}$ naar $f(x')$ convergeren, maar omdat $f$ injectief is, zal $f(x')$ verschillend zijn van $f(x)$.
+    We vinden dus dat de convergente rij $(y_{n_{k}})_{k}$ een convergente deelrij zou hebben met een andere limiet, wat niet kan.\needed
+  \end{proof}
+\end{bpr}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als $A$ niet gesloten is.
+
+  \begin{proof}
+    Kies $f$ als volgt:
+    \[
+    f:\ \interval{0}{2} \setminus \{1\} \rightarrow \interval[open right]{0}{2}:\
+    x \mapsto
+    \left\{
+      \begin{array}{rl}
+        x & \text{ als } x \in \interval[open right]{0}{1}\\
+        3-x & \text{ als } x \in \interval[open left]{1}{2}\\
+      \end{array}
+    \right.
+    \]
+    De inverse $f^{-1}$ van $f$ is duidelijk niet continu in $1$.
+    \begin{figure}[H]
+      \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:2] {-x+3};
+            \addplot[holdot] coordinates{(1,1)(1,2)};
+            \addplot[soldot] coordinates{(2,1)};
+          \end{axis}
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:2] {-x+3};
+            \addplot[holdot] coordinates{(1,1)(2,1)};
+            \addplot[soldot] coordinates{(1,2)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+      \caption{ $f$ (links) en $f^{-1}$ (rechts)}
+    \end{figure}
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als $A$ niet begrensd is.
+
+  \begin{proof}
+    Beschouw de volgende functie $f$:
+    \[
+    f:\ \interval{0}{1} \cup \interval[open right]{1}{\infty} \rightarrow \mathbb{R}:\ x \mapsto 
+    \left\{
+      \begin{array}{rl}
+        x & \text{ als } x \in \interval{0}{1}\\
+        1+\frac{2}{x} & \text{ als } x \in \interval[open]{1}{+\infty}\\
+      \end{array}
+    \right.
+    \]
+    De inverse hiervan:
+    \[
+    f^{-1}:\ \interval[open right]{0}{3} \rightarrow \mathbb{R}:\ x \mapsto
+    \left\{
+      \begin{array}{rl}
+        x & \text{ als } x \in \interval{0}{1}\\
+        \frac{2}{x-1} & \text{ als } x \in \interval[open]{1}{3}\\
+      \end{array}
+    \right.
+    \]
+    \begin{figure}[H]
+      \begin{center}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}[ymax=5, ymin=0, xmax=5, xmin=0]
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:10] {1+2/x};
+            \addplot[holdot] coordinates{(1,3)};
+            \addplot[soldot] coordinates{(1,1)};
+          \end{axis}
+        \end{tikzpicture}
+        \begin{tikzpicture}[scale=0.5]
+          \begin{axis}[ymax=5, ymin=0, xmax=5, xmin=0]
+            \addplot[domain=0:1] {x};
+            \addplot[domain=1:3] {2/(x-1)};
+            \addplot[holdot] coordinates{(3,1)};
+            \addplot[soldot] coordinates{(1,1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+      \caption{ $f$ (links) en $f^{-1}$ (rechts)}
+    \end{figure}
+  \end{proof}
+\TODO{dit is fout, vindt iets beter!}
+\end{tvb}
+
+\begin{st}
+  Zij $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ functies die continu zijn in $a\in A$.
+  \[ f \vee g:\ A \rightarrow \mathbb{R}: x \mapsto \max\{f(x),g(x)\} \text{ is continu in } A \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ en $g$ beide continu zijn kunnen we voor elk respectievelijk een $\delta_{f}$ en $\delta_{g}$ vinden zodat uit $|x-a| < \delta_{f}$ $|f(x)-f(a)|< \epsilon$ volgt, alsook uit $|x-a|<\delta_{g}$ $|g(x)-g(a)|<\epsilon$.
+    Kies $\delta = \min\{ \delta_{f},\delta_{g} \}$, dan volgt uit $|x-a|< \delta$ het volgende:
+    \[ |f(x)-f(a)| < \epsilon \text{ en } |g(x)-g(a)| < \epsilon \]
+    Nu geldt voor $f\vee g$ het volgende vanuit $|x-a|< \delta$:
+    \[
+    \begin{array}{rl}
+      |(f\vee g)(x)-(f\vee g)(a)| &=
+      |\max\{f(x),g(x)\}- \max\{f(a),g(a)\}|\\
+      &\le |\max\{f(x)-f(a),g(x)-g(a)\}|\\
+      &< |\max\{\epsilon,\epsilon\}|\\
+      &= \epsilon
+    \end{array}
+    \]
+  \end{proof}
+\end{st}
+
+
+\end{document}
