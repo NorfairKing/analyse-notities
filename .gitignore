@@ -1,6 +1,7 @@
 _region_.tex
 auto/
 .fmt
+*.auxlock
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
