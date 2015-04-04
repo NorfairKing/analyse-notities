@@ -16,6 +16,213 @@
   We noemen $f$ \term{continu} op $A$ als $f$ continu is in elke $a\in A$.
 \end{de}
 
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2} \]
+
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Voor elke $x\in \mathbb{R}$ geldt het volgende:
+    \[ |f(x)-f(a)| = |x^{2}-a^{2}| = |x-a||x+a| \le |x-a|(|x|+|a|) \]
+    Voor $|x-a|$ kleiner dan $1$ zal $|x| \le |a|+1$ gelden.
+    \[ |f(x)-f(a)| \le (2|a|+1)|x-a| \]
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ 1, \frac{\epsilon}{2|a|+1} \right\}$.
+    Uit $|x-a|< \delta$ volgt nu het volgende.
+    \[ |f(x)-f(a)| < (2|a|+1)\delta \le (2|a|+1)\frac{\epsilon}{2|a|+1} = \epsilon \]
+    $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+  
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}_{0}$.
+    Voor elke $x \in \mathbb{R}_{0}$ geldt het volgende:
+    \[ |f(x)-f(a)| = \left|\frac{1}{x}-\frac{1}{a}\right| = \frac{|x-a|}{|x||a|} \]
+    Voor $|x-a|$ kleiner dan $\frac{1}{2}|a|$ zal $|x| > \frac{1}{2}|a|$ gelden.
+    \[ |f(x)-f(a)| \le \frac{2}{|a|^{2}}|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ \frac{1}{2}|a|, \frac{\epsilon|a|^{2}}{2} \right\}$.
+    Uit $|x-a|< \delta$ volgt nu het volgende.
+    \[ |f(x)-f(a)| < \frac{2}{|a|^{2}}\delta \le \frac{2}{|a|^{2}}\frac{\epsilon|a|^{2}}{2} = \epsilon \]
+    $f$ is dus continu in elke $a\in \mathbb{R}_{0}$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \setminus \{-1\} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{1+x} \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}\setminus \{-1\}$.
+    Voor elke $x\in \mathbb{R}\setminus \{-1\}$ geldt het volgende:
+    \[ |f(x)-f(a)| = \left| \frac{1}{1+x}-\frac{1}{1+a} \right| = \left| \frac{(1+a)-(1+x)}{(1+x)(1+a)} \right|  = \frac{|x-a|}{|1+x||1+a|} \]
+    Voor $|x-a|$ kleiner dan $|1+a|$ geldt nu het volgende:
+    \[ |1+x| = |1+a-a+x| = |1+a+x-a| \le |1+a|+|x-a| \le 2|1+a| \]
+    \[ |f(x)-f(a)| \le  \frac{1}{3|1+a|^{2}}|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ |1+a|,3\epsilon|1+a|^{2}\right\}$
+    Voor $|x-a| < \delta$ geldt dan het volgende:
+    \[ \frac{1}{3|1+a|^{2}}|x-a| < \frac{1}{3|1+a|^{2}}\delta \le \frac{3\epsilon|1+a|^{2}}{3|1+a|^{2}} = \epsilon\]
+    $f$ is dus continu in elke $a \in \mathbb{R}\setminus \{-1\}$
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x} \]
+
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Voor elke $x \in \mathbb{R}$ geldt het volgende:
+    \[ |f(x)-f(a)| = |\sqrt{x}-\sqrt{a}| = \left|\sqrt{x}-\sqrt{a}\right|\frac{\sqrt{x}+\sqrt{a}}{\sqrt{x}+\sqrt{a}} = \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \]
+    \begin{itemize}
+    \item Voor $a>0$ kunnen we als volgt verder gaan :
+      \[ \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \le \frac{|x-a|}{\sqrt{a}} \]
+      Voor een willekeurige $\epsilon$ kunnen we nu voor $\delta$ $\epsilon\sqrt{a}$ kiezen.
+      Uit $|x-a|< \delta$ volgt dan het volgende:
+      \[ |f(x)-f(a)| = \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \le \frac{|x-a|}{\sqrt{a}} < \frac{\delta}{\sqrt{a}} = \frac{\epsilon\sqrt{a}}{\sqrt{a}} = \epsilon \]
+    \item Voor $a=0$ is het eenvoudiger:
+      \[ |f(x)-f(a)| =  \frac{|x-a|}{\sqrt{x}+\sqrt{a}} = \frac{|x|}{\sqrt{x}} \]
+      Voor een willekeurige $\epsilon$ kunnen we nu voor $\delta$ $\epsilon^{2}$ kiezen. 
+      Uit $|x-a|=|x|< \delta$ volgt dan het volgende:
+      \[ \frac{|x|}{\sqrt{x}} < \frac{\delta}{\sqrt{\delta}} = \frac{\epsilon^{2}}{\epsilon} = \epsilon \]
+    \end{itemize}
+    $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{(1+x^{2})} \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}$.
+    Er geldt dan voor alle $x \in \mathbb{R}$ het volgende:
+    \[
+    |f(x)-f(a)|
+    = \left| \frac{1}{1+x^{2}} - \frac{1}{1+a^{2}}\right|
+    = \left| \frac{(1+a^{2})-(1+x^{2})}{(1+x^{2})(1+a^{2})}\right|
+    = \frac{|a^{2}-x^{2}|}{|1+x^{2}||1+a^{2}|}
+    = \frac{|a+x||a-x|}{|1+x^{2}||1+a^{2}|}
+    \]
+    Voor $|x-a| \le \frac{1}{2}|a|$ geldt $x \le \frac{3}{2}|a|$, $x \ge \frac{1}{2}|a|$ en dus het volgende:
+    \[ |x+a| \ge ||x|-|a|| \ge |\frac{1}{2}|a| - |a|| = |-\frac{1}{2}|a|| = \frac{1}{2}|a| \]
+    ,
+    \[ |x+a| \le |x|+|a| \le \frac{3}{2}|a| + |a| = \frac{5}{2}|a| \]
+    ... en bovendien het volgende:
+    \[ |1+x^{2}| = 1 + |x^{2}| \le 1 + \left(\frac{3}{2}|a|\right)^{2} = 1 + \frac{9}{4}|a|^{2} \]
+    \[
+    |f(x)-f(a)|
+    = \frac{|a+x||a-x|}{|1+x^{2}||1+a^{2}|}
+    \le \frac{|a||a-x|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}
+    \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\{\frac{1}{2}|a|,\epsilon\frac{|1+a^{2}|2\left(1 + \frac{9}{4}|a|^{2}\right)}{|a|} \}$.
+    Uit $|x-a| < \delta$ volgt dan het volgende:
+    \[ 
+    |f(x)-f(a)|
+    \le \frac{|a||a-x|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}
+    < \frac{|a|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}\delta
+    \le \frac{\epsilon|a||1+a^{2}|2\left(1 + \frac{9}{4}|a|^{2}\right)}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}||a|} = \epsilon
+    \]
+  \end{proof}
+\feed
+\end{vb}
+
+\extra{vb p 4 onderaan}
+
+\begin{tvb}
+  De functie $f$ is niet continu in $0$:
+  \[
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x\mapsto 
+  \left\{
+    \begin{array}{cl}
+      1 & \text{ als } x \ge 0\\
+      0 & \text{ als } x < 0
+    \end{array}
+  \right.
+  \]
+
+  \begin{proof}
+    Kies $\epsilon = 1$, dan bestaat er voor elke $\delta$ een $x\in \mathbb{R}$ zodat $|x-0|<\delta$ en $|f(x)-f(0)|\ge \epsilon$ beide gelden.
+    Voor een willekeurige $\delta$ kiezen we $x = -\frac{\delta}{2}$:
+    \[ |x-0| = \frac{\delta}{2} \text{ en } |f(x)-f(0)| = 1 \ge \epsilon \]
+    $f$ is dus niet continu in $0$.
+  \end{proof}
+\end{tvb}
+
+\extra{tvb p 5 onderaan}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x| \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}$:
+    Beschouw eerst $|f(x)-f(a)|$:
+    \[ |f(x)-f(a)| = \left||x|-|a|\right| \le |x-a| \]
+    Kies nu een willekeurige $\epsilon$ en kies $\delta = \epsilon$.
+    Uit $|x-a| <\delta$ volgt nu het volgende:
+    \[ |f(x)-f(a)| \le |x-a| < \delta = \epsilon \]
+    $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $(\in \mathbb{Q})$ is nergens continu:
+  \[
+  (\in \mathbb{Q}):\ \mathbb{R} \rightarrow \mathbb{R}:\ 
+  \left\{
+    \begin{array}{rl}
+      1 &\text{ als } x\in \mathbb{Q}\\
+      0 &\text{ als } x\in \mathbb{R}\setminus \mathbb{Q}
+    \end{array}
+  \right.
+  \]
+  
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $a\in \mathbb{Q}$
+      Kies $\epsilon = \frac{1}{2}$, dan bestaat er voor elke $\delta \in \mathbb{R}_{0}^{+}$ een $x\in \mathbb{R}$ zodat uit $|x-a| < \delta$ $|((x \in \mathbb{Q})-(a\in \mathbb{Q})| \ge \epsilon$ volgt:
+      Kies immers een willekeurige $\delta \in \mathbb{R}_{0}^{+}$, dan bestaat er een $x\in \mathbb{R}\setminus \mathbb{Q}$ met $|x-a| < \delta$. \needed
+      Hiervoor geldt dan $|((x \in \mathbb{Q})-(a\in \mathbb{Q})| = 1 \ge \frac{1}{2} = \epsilon$.
+    \item $a\in \mathbb{R}\setminus \mathbb{Q}$
+      \extra{bewijs analoog}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  (Bewijs via karakterisatie van continu\"iteit in termen van rijen.)
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x^{2} \]
+  
+  \begin{proof}
+    We moeten bewijzen dat voor een willekeurige rij $(x_{n})_{n}$ die naar $x$ convergeert, $(f(x_{n}))_{n}$ naar $f(x)$ convergeert.
+    Kies daartoe een willekeurige $(x_{n})_{n}$ die naar $x$ convergeert.
+    Voor een willekeurige $x_{n}$ uit de rij geldt het volgende:
+    \[ |f(x_{n})-f(x)| = |x_{n}^{2}-x^{2}| = |x_{n}+x||x_{n}-x| \]
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\epsilon}{|x_{n}+x|}$
+    Omdat $(x_{n})_{n}$ naar $x$ convergeert, bestaat er dan een $m\in \mathbb{N}$ zodat het volgende geldt:
+    \[ \forall n\in \mathbb{N}: n \ge m:\ |x_{n}-x| < \frac{\epsilon}{|x_{n}+x|} \]
+    Voor $n \ge m$ geldt dus het volgende:
+    \[ |f(x_{n})-f(x)| = |x_{n}+x||x_{n}-x| < |x_{n}+x|\frac{\epsilon}{|x_{n}+x|} = \epsilon \]
+    De rij $(f(x_{n}))_{n}$ convergeert dus naar $f(x)$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie die continu is in een punt $a\in A$ met $f(a) > 0$.
+  Er bestaat dan een $\delta \in \mathbb{R}_{0}^{+}$ zodat $f(x)>0$ geldt voor alle $x\in A$ met $|x-a| < \delta$.
+
+  \begin{proof}
+    Kies $\epsilon = f(a)$, dan bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat de stelling geldt omdat $f$ continu is in $A$.
+  \end{proof}
+\end{vb}
+
 \begin{st}
   Equivalente definitie van \term{continu\"iteit}:\\
   $f$ is continu in $a$ als en slechts als het volgende geldt:
@@ -645,6 +852,50 @@
   \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x,y \in A:\ |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon \]
 \end{de}
 
+
+
+\begin{vb}
+  De functie $f$ is uniform continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{1+x^{2}} \]
+  \extra{bewijs p 21}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is uniform continu:
+  \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x} \]
+
+  \begin{proof}
+    Merk allereerst de volgende ongelijkheid op:
+    \[ |\sqrt{x} - \sqrt{y}| \le \sqrt{|x-y|} \]
+    Kies een willekeurige $\epsilon$ en definieer $\delta = \epsilon^{2}$.
+    Kies nu twee willekeurige elementen $x$ en $y$ uit $\mathbb{R}^{+}$ zodat $|x-y|< \delta$ geldt.
+    \[ |f(x) - f(y)| \le  \sqrt{|x-y|} < \sqrt{\delta} = \sqrt{\epsilon^{2}} = \epsilon \]
+    $f$ is dus uniform continu over $\mathbb{R}^{+}$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is \textbf{niet} uniform continu:
+  \[ f:\ \mathbb{R}_{0}^{+} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+
+  \begin{proof}
+    Kies $\epsilon = 1$ en kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+    Stel bovendien $y = x + \frac{\delta}{2}$, dan is $|x-y|$ altijd kleiner dan $\delta$.
+    Merk bovendien de volgende gelijkheid op:
+    \[ |f(x)-f(y)| = \left| \frac{1}{x} - \frac{1}{y} \right| \le \left| \frac{1}{x} - \frac{1}{x + \frac{\delta}{2}} \right| = \left| \frac{x+\frac{\delta}{2}-x}{x(x+\frac{\delta}{2})}\right| = \left| \frac{\delta}{x(2x+\delta)} \right| = \frac{\delta}{x(2x+\delta)} \]
+    Kies bijvoorbeeld $x = \frac{\delta}{4}\left(\sqrt{1+\frac{\delta}{4}}-1\right)$ (de oplossing van $\frac{1}{2}(2x^{2}+\delta x) = \delta$).
+    $x$ is dan positief en $|f(x)-f(y)| = 2 > \epsilon$.
+    $f$ is dus niet uniform continu op $\mathbb{R}_{0}^{+}$.
+  \end{proof}
+\end{vb}
+
+
+\begin{vb}
+  De functie $f$ is \textbf{niet} uniform continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2}\]
+  \extra{bewijs p 22}
+\end{vb}
+
 \begin{st}
   \label{st:uniform-continu-dan-ook-gewoon-continu}
   Als een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ uniform continu is, is hij ook continu.
@@ -712,11 +963,125 @@
   \[ \forall x\in A:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ n \ge n \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
 \end{de}
 
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0$.
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{n} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1$.
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1- \frac{3}{n}\left(x-1+\frac{1}{n}\right) + \frac{x}{n} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin(x)$.
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin\left(\left(1+\frac{1}{n}\right)x\right) \]
+\extra{bewijs zodra de sinusfunctie gedefinieerd is.}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      -1 & \text{ als } x \in \interval[open left ]{-\infty}{-\frac{1}{n}}\\
+      nx & \text{ als } x \in \interval[open      ]{-\frac{1}{n}}{\frac{1}{n}}\\
+      1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
+    \end{array}
+  \right.
+  \]
+  \[
+  f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
+      0  & \text{ als } x = 0\\
+      1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
+    \end{array}
+  \right.
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{n^{2}x^{2}}{1 + n^{2}x^{2}}
+  \]
+  \[
+  f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      0  & \text{ als } x = 0\\
+      1  & \text{ als } x \neq 0\\
+    \end{array}
+  \right.
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      2nx   & \text{ als } x \in \interval[open right]{0}{\frac{1}{2n}}\\
+      2-2nx & \text{ als } x \in \interval{\frac{1}{2n}}{\frac{1}{n}}\\
+      0     & \text{ als } x \in \interval[open left ]{\frac{1}{n}}{1}\\
+    \end{array}
+  \right.
+  \]
+  \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+\extra{bewijs}
+\end{vb}
+
 \begin{de}
   Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $A$ met waarden in $\mathbb{R}$ (of $\mathbb{C}$).
   We zeggen dat $(f_{n})_{n}$ \term{uniform convergeert} of \term{gelijkmatig convergeert} naar een functie $f: A \rightarrow \mathbb{R}$ als het volgende geldt:
   \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0} \in \mathbb{N}:\ \forall x \in A:\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
 \end{de}
+
+\begin{vb}
+  Zij $f:\ A \rightarrow \mathbb{R}$ een willekeurige functie en $g:\ A \rightarrow \mathbb{R}$ een begrensde functie, dan convergeert de rij $(f_{n})_{n}$ uniforum op $A$ naar $f$:
+  \[ f_{n}:\ f + \frac{1}{n}g \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $g$ begrensd is, bestaat er een $M \in \mathbb{R}^{+}$ als volgt:
+    \[ \forall x \in A:\ |g(x)| \le M \]
+    Kies $n_{0}\in \mathbb{N}$ nu zodat $n_{0} > \frac{M}{\epsilon}$ geldt.\lemref{lem:lemma-van-archimedes}
+    Kies vervolgens een willekeurige $x\in A$ en $n \ge n_{0}$, dan geldt het volgende en volgt daaruit de uniforme convergentie:
+    \[ |f_{n}(x) - f(x)| = \frac{1}{n}|g(x)| \le \frac{1}{n_{0}}M < \frac{\epsilon}{M}M = \epsilon \]
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Beschouw de rij functies $(f_{n})_{n}$ als volgt:
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{n}x^{2} \]
+  $(f_{n})_{n}$ convergeert puntsgewijs naar de nulfunctie maar niet uniform.
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+      \begin{axis}[ymin=-0.5, ymax=2, xmin=-2, xmax=2]
+        \foreach \i in {1,...,25}
+        {\addplot[smooth,domain=-5:5]{x^2/\i};}
+        \addplot[domain=-5:5,color=blue,thick]{0};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{ $f_{1}$ tot $f_{25}$ en de nulfunctie }
+  \end{figure}
+  \extra{bewijs puntsgewijze convergentie}
+
+  \begin{proof}
+    Kies $\epsilon = 1$ en een willekeurige $n_{0} \in \mathbb{N}$.
+    Kies een $x \ge \sqrt{n_{0}}$ en $n = n_{0}$, dan geldt het volgende:
+    \[ \frac{1}{n}x^{2} \ge \frac{1}{n_{0}}\left(\sqrt{n_{0}}\right)^{2} = 1 \ge \epsilon \]
+  \end{proof}
+\end{vb}
 
 \begin{st}
   \label{str:uniform-dan-puntsgewijs}
@@ -737,6 +1102,7 @@
   \end{itemize}
 
   \begin{proof}
+    Rechtstreeks vanuit de definitie.
     \begin{itemize}
     \item 
       Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
@@ -750,12 +1116,31 @@
       \begin{array}{rl}
         |f(x)-f(a)| &= |f(x) - f_{n}(x) + f_{n}(x) - f_{n}(a) + f_{n}(a) - f(a)|\\
                     &\le |f(x) - f_{n}(x)| + |f_{n}(x) - f_{n}(a)| + |f_{n}(a) - f(a)|\\
-                    &\le \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\
+                    &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\
                     &= \epsilon
       \end{array}
       \]
       $f$ is dus continu in $a$.
-    \item \extra{bewijs}
+\extra{hermaken}
+    \item
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      \begin{itemize}
+      \item Omdat $(f_{n})_{n}$ uniform convergeert naar $f$ kunnen we een $n_{0} \in \mathbb{N}$ vinden zodat het volgende geldt voor alle $x \in A$ en alle $m \ge n_{0}$:
+        \[ \forall x\in A, \forall m\ \in \mathbb{N}: m \ge n_{0} \Rightarrow |f(x)-f_{m}(x)| < \frac{\epsilon}{3} \]
+      \item 
+        Omdat $f_{n}$ uniforum continu is op $A$, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
+        \[ \forall x,y \in A:\  |x-y| < \delta \Rightarrow |f(x)-f(y)| < \frac{\epsilon}{3} \]
+      \end{itemize}
+      Voor elke $x,y \in A$ met $|x-y| < \delta$ vinden we nu het volgende:
+      \[
+      \begin{array}{rl}
+        |f(x)-f(y)| &= |f(x)-f_{n}(x) + f_{n}(x) - f_{n}(y) + f_{n}(y) - f(y)|\\
+                    &\le |f(x)-f_{n}(x)| + |f_{n}(x) - f_{n}(y)| + |f_{n}(ay) - f(y)|\\
+                    &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\
+                    &= \epsilon
+      \end{array}
+      \]
+      $f_{n}$ is dus uniforum continu op $A$.
     \end{itemize}
   \end{proof}
 \end{bst}
