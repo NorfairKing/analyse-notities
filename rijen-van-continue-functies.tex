@@ -13,24 +13,94 @@
 
 \begin{vb}
   De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0$.
-  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{n} \]
-\extra{bewijs}
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1, ymax=1, xmin=-1, xmax=1]
+          \foreach \i in {1,...,10}
+          {\addplot[smooth,domain=-5:5]{x/\i};}
+          \addplot[domain=-5:5,color=blue,thick]{0};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{n} \]
+  \end{minipage}
+  \extra{bewijs}
 \end{vb}
 
 \begin{vb}
-  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1$.
+  de rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1$.
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-4, ymax=6, xmin=-4, xmax=6]
+          \foreach \i in {1,...,10}
+          {\addplot[smooth,domain=-5:5]{1- (3/\i)*(x-1+(1/\i)) + (x/\i)};}
+          \addplot[domain=-5:5,color=blue,thick]{1};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
   \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1- \frac{3}{n}\left(x-1+\frac{1}{n}\right) + \frac{x}{n} \]
+  \end{minipage}
 \extra{bewijs}
 \end{vb}
 
 \begin{vb}
   De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin(x)$.
   \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin\left(\left(1+\frac{1}{n}\right)x\right) \]
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1, ymax=1, xmin=-pi, xmax=pi]
+          \foreach \i in {1,...,5}
+          {\addplot[smooth,domain=-pi:pi]{sin((1+(1/\i))*x*(360/pi))};}
+          \addplot[smooth,domain=-pi:pi,color=blue,thick]{sin(x*(360/pi))};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin\left(\left(1+\frac{1}{n}\right)x\right) \]
+  \end{minipage}
 \extra{bewijs zodra de sinusfunctie gedefinieerd is.}
 \end{vb}
 
 \begin{vb}
   De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=-3:(-1/\i)]{-1};
+            \addplot[smooth,domain=(-1/\i):(1/\i)]{\i*x};
+            \addplot[smooth,domain=(1/\i):3]{1};
+          }
+          \addplot[smooth,color=blue,thick,domain=-3:0]{-1};
+          \addplot[smooth,color=blue,thick,domain=0:3]{1};
+          \addplot[soldot,color=blue] coordinates{(0,0)};
+          \addplot[holdot,color=blue,fill=white] coordinates{(0,1)(0,-1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
   \[
   f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
   \left\{
@@ -51,28 +121,70 @@
     \end{array}
   \right.
   \]
+  \end{minipage}
 \extra{bewijs}
 \end{vb}
 
 \begin{vb}
   De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
-  \[
-  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{n^{2}x^{2}}{1 + n^{2}x^{2}}
-  \]
-  \[
-  f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
-  \left\{
-    \begin{array}{rl}
-      0  & \text{ als } x = 0\\
-      1  & \text{ als } x \neq 0\\
-    \end{array}
-  \right.
-  \]
-\extra{bewijs}
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-3, xmax=3]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=-3:3]{(\i^2*x^2)/(1+\i^2*x^2)};
+          }
+          \addplot[smooth,domain=-3:0,color=blue,thick]{1};
+          \addplot[smooth,domain=0:3,color=blue,thick]{1};
+          \addplot[soldot,color=blue] coordinates{(0,0)};
+          \addplot[holdot,color=blue,fill=white] coordinates{(0,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \[
+    f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{n^{2}x^{2}}{1 + n^{2}x^{2}}
+    \]
+    \[
+    f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+    \left\{
+      \begin{array}{rl}
+        0  & \text{ als } x = 0\\
+        1  & \text{ als } x \neq 0\\
+      \end{array}
+    \right.
+    \]
+  \end{minipage}
+  \extra{bewijs}
 \end{vb}
 
 \begin{vb}
   De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=0:(1/(2*\i))]{2*\i*x};
+            \addplot[smooth,domain=(1/(2*\i)):(1/\i)]{2-2*\i*x};
+            \addplot[smooth,domain=(1/(\i)):1.1]{0};
+          }
+          \addplot[smooth,color=blue,thick,domain=-3:3]{0};
+          \addplot[soldot,color=blue] coordinates{(0,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
   \[
   f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
   \left\{
@@ -84,7 +196,132 @@
   \right.
   \]
   \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+  \end{minipage}
 \extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-0.1, ymax=3, xmin=-3, xmax=3]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=-3:3]{(x+(1/\i))^2};
+          }
+          \addplot[smooth,color=blue,thick,domain=-3:3]{x^2};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \left(x+\frac{1}{n}\right)^{2}
+  \]
+  \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2} \]
+  \end{minipage}
+\extra{bewijs}
+\extra{convergeert ook uniform?}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-3, ymax=3, xmin=-3, xmax=3]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=-3:3]{(\i*x)/(\i^2+x^2)};
+          }
+          \addplot[smooth,color=blue,thick,domain=0:1]{0};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+  \[
+  f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{nx}{n^{2}+x^{2}}
+  \]
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+  \end{minipage}
+\extra{bewijs}
+\extra{convergeert ook uniform?}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=0:1]{x^\i};
+          }
+          \addplot[smooth,color=blue,thick,domain=0:1]{0};
+          \addplot[soldot,color=blue] coordinates{(0,0)};
+          \addplot[holdot,color=blue,fill=white] coordinates{(1,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+  \[ f_{n}:\ \interval[open right]{0}{1} \rightarrow \mathbb{R}:\ x \mapsto x^{n} \]
+  \[ f:\ \interval[open right]{0}{1} \rightarrow \mathbb{R}:\ x \mapsto 0  \]
+  \end{minipage}
+\extra{bewijs}
+\extra{convergeert ook uniform?}
+\end{vb}
+
+\begin{vb}
+  De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-3, xmax=3]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=-3:3]{(x*\i)/(sqrt(1+(x*\i)^2))};
+          }
+          \addplot[smooth,color=blue,thick,domain=-3:0]{-1};
+          \addplot[smooth,color=blue,thick,domain=0:3]{1};
+          \addplot[soldot,color=blue] coordinates{(0,0)};
+          \addplot[holdot,color=blue,fill=white] coordinates{(0,1)(0,-1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+  \[
+  f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{nx}{\sqrt{1+(nx)^{2}}}
+  \]
+  \[
+  f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
+      0  & \text{ als } x = 0\\
+      1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
+    \end{array}
+  \right.
+  \]
+  \end{minipage}
+\extra{bewijs}
+\extra{convergeert ook uniform?}
 \end{vb}
 
 \begin{de}
@@ -109,19 +346,25 @@
 
 \begin{vb}
   Beschouw de rij functies $(f_{n})_{n}$ als volgt:
-  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{n}x^{2} \]
   $(f_{n})_{n}$ convergeert puntsgewijs naar de nulfunctie maar niet uniform.
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}[scale=1]
-      \begin{axis}[ymin=-0.5, ymax=2, xmin=-2, xmax=2]
-        \foreach \i in {1,...,25}
-        {\addplot[smooth,domain=-5:5]{x^2/\i};}
-        \addplot[domain=-5:5,color=blue,thick]{0};
-      \end{axis}
-    \end{tikzpicture}
-    \caption{ $f_{1}$ tot $f_{25}$ en de nulfunctie }
-  \end{figure}
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-0.1, ymax=1, xmin=-2, xmax=2]
+          \foreach \i in {1,...,25}
+          {\addplot[smooth,domain=-5:5]{x^2/\i};}
+          \addplot[domain=-5:5,color=blue,thick]{0};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{n}x^{2} \]
+    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+  \end{minipage}
   \extra{bewijs puntsgewijze convergentie}
 
   \begin{proof}

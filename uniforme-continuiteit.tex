@@ -92,7 +92,7 @@
   \end{proof}
 \end{vb}
 
-\begin{vb}
+\begin{tvb}
   De functie $f$ is \textbf{niet} uniform continu:
   \[ f:\ \mathbb{R}_{0}^{+} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
 
@@ -105,13 +105,121 @@
     $x$ is dan positief en $|f(x)-f(y)| = 2 > \epsilon$.
     $f$ is dus niet uniform continu op $\mathbb{R}_{0}^{+}$.
   \end{proof}
+\end{tvb}
+
+\begin{vb}
+  De functie $f$ is uniforum continu:
+  \[ f:\ \interval[open]{1}{+\infty} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}[xmin=0.9, xmax=5, ymin=0, ymax=2]
+          \addplot[domain=1:10,smooth] {1/x};
+          \addplot[soldot] coordinates{(1,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+
+    \begin{proof}
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en merk het volgende op:
+      \[ \forall x,y \in \interval[open]{1}{+\infty}:\ |f(x)-f(y)| = \left|\frac{1}{x}- \frac{1}{y}\right| = \frac{|x-y|}{|x||y|} \le |x-y| \]
+      Kies nu $\delta = \epsilon$.
+      \[ |f(x)-f(y)| \le |x-y| < \delta = \epsilon \]
+      $f$ is dus uniform continu op $\interval[open]{1}{+\infty}$.
+    \end{proof}
 \end{vb}
 
 
-\begin{vb}
-  De functie $f$ is \textbf{niet} uniform continu:
+\begin{tvb}
+  De functie $f$ is \textbf{niet} uniform continu op $\mathbb{R}$:
   \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2}\]
   \extra{bewijs p 22}
+\end{tvb}
+
+\begin{vb}
+  De functie $f$ is uniforum continu op:
+  \[ f:\ \interval[open]{-1}{1} \rightarrow \mathbb{R}:\ x \mapsto x^{2}\]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}[xmin=-1.1, xmax=1.1, ymin=0, ymax=2]
+          \addplot[domain=-1:1,smooth] {x^2};
+          \addplot[holdot] coordinates{(-1,1)(1,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+
+  \begin{proof}
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en merk het volgende op:
+      \[ \forall x,y \in \interval[open]{-1}{1}:\ |f(x)-f(y)| = \left|x^{2}- y^{2}\right| = |x-y||x+y| < 2|x-y| \]
+      Kies nu $\delta = \frac{1}{2}\epsilon$
+      \[ |f(x)-f(y)| \le 2|x-y| < 2\delta = \frac{1}{2}2\epsilon = \epsilon\]
+      $f$ is dus uniforum continu op $\interval[open]{-1}{1}$
+  \end{proof}
+\end{vb}
+
+\begin{tvb}
+  De functie $f$ is \textbf{niet} uniforum continu op $\mathbb{R}$:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{3} \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}[xmin=-2, xmax=2, ymin=-3, ymax=3]
+          \addplot[domain=-3:3,smooth] {x^3};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \begin{proof}
+      Kies $\epsilon = 1$ en een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+      Kies $x, y \in \mathbb{R}$ met $y=x + \frac{\delta}{2}$.
+      \[
+      |f(x)-f(y)|
+      = \left| x^{3}-y^{3}\right|
+      \]
+\extra{bewijs}
+    \end{proof}
+\end{tvb}
+
+\begin{vb}
+  De functie $f$ is uniforum continu:
+  \[ f:\ \interval[open]{-1}{1} \rightarrow \mathbb{R}:\ x \mapsto x^{3} \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}[xmin=-1.5, xmax=1.5, ymin=-1.5, ymax=1.5]
+          \addplot[domain=-1:1,smooth] {x^3};
+          \addplot[holdot] coordinates{(-1,-1)(1,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is uniforum continu:
+  \[ f:\ \interval[open]{-1}{1} \rightarrow \mathbb{R}:\ x \mapsto \sin\left(\frac{1}{x}\right) \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}[xmin=-pi/2, xmax=pi/2, ymin=-.15, ymax=.15]
+          \addplot[domain=-pi/2:pi/2,smooth] {sin(1/x)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \extra{bewijs (zodra de sinus gedefineerd is?)}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is uniforum continu:
+  \[ f:\ \interval[open]{-1}{1} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{1+x} \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}[xmin=-5, xmax=5, ymin=-5, ymax=7]
+          \addplot[domain=-5:5,smooth] {1/(1+x)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \extra{bewijs}
 \end{vb}
 
 \begin{st}
