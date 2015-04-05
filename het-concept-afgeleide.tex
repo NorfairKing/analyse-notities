@@ -26,6 +26,128 @@
   We schrijven $f'$ soms als $Df$ en $f'(x)$ soms als $\frac{df(x)}{dx}$
 \end{de}
 
+\begin{vb}
+  De constante functie $f$ is afleidbaar en de afgeleide is overal $0$.
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto c \]
+
+  \begin{proof}
+    Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+    \[ \frac{f(x+h)-f(x)}{h} = \frac{c-c}{h} = 0 \]
+    Nemen we de limiet van deze gelijkheid voor $h$ gaande naar $0$, dan bekomen we de stelling.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{n}$ voor een bepaalde $n \in \mathbb{N}_{0}$ is afleidbaar en heeft $f': \mathbb{R} \rightarrow \mathbb{R}:\ nx^{n-1}$ als afgeleide functie.
+  \begin{figure}[H]
+    \centering
+    \foreach \n in {1,...,4}{
+      \begin{tikzpicture}[scale=.5]
+        \begin{axis}[xmin=-2, xmax=2, ymin=-2, ymax=2]
+          \addplot[domain=-2:2,smooth]{x^\n};
+        \end{axis}
+      \end{tikzpicture}
+    }
+  \end{figure}
+
+  \begin{proof}
+    Bewijs door volledige inductie op $\mathbb{N}_{0}$.
+    \begin{itemize}
+    \item De bewering geldt voor $k=1$:\\
+      Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+      \[ \frac{f(x+h)-f(x)}{h} = \frac{x+h-x}{h}=1 = 1x^{0} \]
+      We nemen van beide kanten de limiet voor $h$ gaande naar $0$ om de stelling te bekomen.
+    \item Uit de bewering voor $k=n$ volgt de bewering voor $k+1$:\\
+      \extra{bewijs wanneer de kettingregel gezien is}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x}$ is afleidbaar met $f': \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto -\frac{1}{x^{2}}$.
+
+  \begin{proof}
+    Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+    \[
+    f'(x)
+    = \lim_{h \rightarrow 0}\frac{f(x+h)-f(x)}{h}
+    = \lim_{h \rightarrow 0}\frac{\frac{1}{x+h}-\frac{1}{x}}{h}
+    = \lim_{h \rightarrow 0}\frac{x-x-h}{hx^{2}+h^{2}x} = \frac{-h}{hx^{2}+h^{2}x}
+    = \lim_{h \rightarrow 0}-\frac{1}{x^{2}+hx}
+    = -\frac{1}{x^{2}}
+    \]
+    We nemen van beide kanten de limiet voor $h$ gaande naar $0$ om de stelling te bekomen.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x}$ is afleidbaar met $f': \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{2\sqrt{x}}$.
+
+  \begin{proof}
+    Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+    \[ 
+    \begin{array}{rl}
+    f'(x)
+    &= \lim_{h \rightarrow 0}\frac{f(x+h)-f(x)}{h}\\
+    &= \lim_{h \rightarrow 0}\frac{\sqrt{x+h}-\sqrt{x}}{h}\\
+    &= \lim_{h \rightarrow 0}\frac{\left(\sqrt{x+h}-\sqrt{x}\right)\left(\sqrt{x+h}+\sqrt{x}\right)}{h\left(\sqrt{x+h}+\sqrt{x}\right)}\\
+    &= \lim_{h \rightarrow 0}\frac{x+h-x}{h\left(\sqrt{x+h}+\sqrt{x}\right)}\\
+    &= \lim_{h \rightarrow 0}\frac{1}{\sqrt{x+h}+\sqrt{x}}\\
+    &= \frac{1}{2\sqrt{x}}\\
+  \end{array}
+    \]
+  \end{proof}
+\end{vb}
+
+\begin{tvb}
+  De functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x|$ is links-, en rechtsafleidbaar in $0$, maar de linker en rechter afgeleide zijn niet gelijk. $f$ is dus niet afleidbaar in $0$.
+  
+  \begin{proof}
+    \[ \lim_{h \underset{<}{\rightarrow} 0}\frac{|h|}{h} = -1 \quad\text{ en }\quad \lim_{h \underset{>}{\rightarrow} 0}\frac{|h|}{h} = 1 \]
+  \end{proof}
+\end{tvb}
+
+\begin{vb}
+  De volgende functie is enkel afleidbaar in $0$:
+  \[
+  f:\ \mathbb{R}\rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      x^{2} & \text{ als } x\in \mathbb{Q}\\
+      -x^{2} & \text{ als } x \not \in \mathbb{Q}
+    \end{array}
+  \right.
+  \]
+
+  \begin{proof}
+    In delen.
+    \begin{itemize}
+    \item $f$ is afleidbaar in $0$:\\
+      \[ \lim_{h \rightarrow 0}\frac{f(h) - f(0)}{h} = \lim_{h \rightarrow 0}h = 0 \]
+    \item $f$ is niet afleidbaar in elk ander punt:\\
+        \[
+        \frac{f(x+h)-f(x)}{h}
+        = \frac{\pm(x+h)^{2}\pm x^{2}}{h}
+        \]
+        Aangezien $x+h$ afgebeeldt wordt op een tegengesteld punt, afhankelijk van of het in $\mathbb{Q}$ of $\mathbb{R} \setminus \mathbb{Q}$ zit. 
+        De limiet voor $h$ gaande naar $0$ bestaat dus nooit wanneer $x^{2}$ verschillend is van $-x^{2}$.
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\mst{continu dan afleidbaar}
+\mst{afleidbaar dan continu}
+\mst{f afleidbaar in $a$ dan $\exists$ open interval rond $a$ waarop $f$ continu is}
+\mst{f afleidbaar dan $f'$ continu}
+\mst{er bestaat geen afleidbare functie met $f'(x)=0$ voor $x<0$ en $f'(x)=1$ met $x \ge 0$}
+\mst{$f$ constant op $I$ dan $f'(x)=0$ op $I$}
+\mst{hetzelfde omgekeerd}
+\mst{stijgt op $I$ dan afgeleide positief op $I$}
+\mst{strikt stijgt op $I$ dan afgeleide strikt positief op $I$}
+\mst{als $f'(x)> 0$ dan bestaat er een open interval rond $x$ waarop $f$ stijgt}
+\mst{$f$ onbeperkt afleidbaar dan geldt $f=0$ als $0=f(x)=f'(x)=f''(x)...$}
+\mst{gelden alle bovenstaande stellingen in $\mathbb{Q}$?}
+
 \subsection{Meetkundige betekenis}
 \label{sec:meetk-betek}
 
