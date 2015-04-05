@@ -164,7 +164,7 @@
   \label{pr:functie-continu-asa-limiet-is-beeld}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
   Stel dat $a$ zowel een element van $A$ als een ophopingspunt van $A$ is.
-  $f$ is continu in $a$ als de limiet van $f$ in $a$ $f(a)$ is.
+  $f$ is continu in $a$ als en slechts als de limiet van $f$ in $a$ $f(a)$ is.
 
   \begin{proof}
     $f$ is continu in $a$, dus voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert geldt dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.\prref{pr:continu-asa-behoudt-convergentie}
@@ -179,7 +179,7 @@
 
   \begin{itemize}
   \item $\Rightarrow$\\
-    \extra{bewijs}
+    Zij $L$ de limiet van $f$ in $a$, dan is dit ook de limiet van $f|_{\mathbb{A} \cap \interval[open]{-\infty}{a}}$ in $a$ en ook de limiet van $f|_{\mathbb{A} \cap \interval[open]{a}{+\infty}}$ in $a$.
   \item $\Leftarrow$\\
     Stel dat $f$ zowel een linker- als een rechterlimiet heeft in $a$ en ze beide gelijk zijn aan $L$.
     Kies dan een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$.

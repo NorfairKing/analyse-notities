@@ -21,7 +21,7 @@
   \begin{proof}
     Zij $f$ een afleidbare functie.
     Om te bewijzen dat de limiet van $f$ in $a$ $f(a)$ is\prref{pr:functie-continu-asa-limiet-is-beeld} bewijzen we het volgende:
-    \[ \lim_{x \rightarrow a}\left(f(x)-f(a)\right)\]
+    \[  \lim_{x \rightarrow a}f(x)=\lim_{x \rightarrow a}f(a) \Leftrightarrow \lim_{x \rightarrow a}f(x)-\lim_{x \rightarrow a}f(a) = 0 \Leftrightarrow  \lim_{x \rightarrow a}\left(f(x)-f(a)\right) = 0 \]
     Deze limiet is eveneens gelijk aan de volgende:
     \[ = \lim_{x \rightarrow a}\left(f(x)-f(a)\right)\frac{x-a}{x-a} \]
     Vanwege de rekenregels voor limieten mogen we deze limiet splitsen.\prref{pr:rekenregels-limieten}
@@ -32,8 +32,12 @@
 \end{pr}
 
 \begin{tvb}
-  Het omgekeerde geldt niet.
-\extra{tegenvoorbeeld}
+  Als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ continu is in een punt $a$, betekent dit nog *niet* dat $f$ afleidbaar is in $a$.
+
+  \begin{proof}
+    Beschouw de functie $f:| \mathbb{R} \rightarrow \mathbb{R}^{+}: x \mapsto |x|$.
+    $f$ is continu in $0$\vbref{vb:absolute-waardefunctie-continu}, maar niet afleidbaar in $0$.\tvbref{tvb:absolute-waarde-niet-afleidbaar-in-0}
+  \end{proof}
 \end{tvb}
 
 \begin{st}
@@ -175,7 +179,7 @@
         \frac{g(y)-g(b)}{y-b} & \text{ als } y\in B, y \neq b\\
         g'(x) &\text{ als } y=b\\
       \end{array}
-    \right\}
+    \right.
     \]
     \clarify{waarom deze functie nodig?}
     Omdat $g$ afleidbaar is in $b$ is de limiet van $\phi$ in $b$ gelijk aan de afgeleide van $g$ in $b$, wat het beeld is van $\phi$ in $b$:
@@ -190,10 +194,11 @@
     Omgevormd:
     \[ g(f(x)) - g(f(a)) = \phi(f(x))(f(x)-f(a)) \]
     Merk nu op dat de bovenstaande vergelijking ook geldt voor de $x\in A$ met $f(x)=f(a)$.
+    \clarify{waarom?? is dit niet net het nut van de $\phi$ functie?}
     Bijgevolg geldt ze voor alle $x\in A$.
     Voor alle $x\in A$, verschillend van $a$, geldt nu het volgende:
     \[ 
-    \frac{h(x)-h(a)}{x-a} = \frac{g(f(x))-g(f(a))}{x-a} = \frac{g(f(x))-g(f(a))}{f(x)-f(a)}\frac{f(x)-f(a)}{x-a} = \phi(f(x))\left(\frac{f(x)-f(a)}{x-a}\right)
+    \frac{h(x)-h(a)}{x-a} = \frac{g(f(x))-g(f(a))}{x-a}  = \phi(f(x))\left(\frac{f(x)-f(a)}{x-a}\right)
     \]
     We weten nu dat de limieten voor $x$ gaande naar $a$ voor beide factoren bestaan en eindig zijn.\waarom
     De rekenregels van limieten leren ons dat de limiet voor $x$ gaande naar $a$ ook bestaat en er als volgt uitziet:
@@ -259,6 +264,7 @@
     \item $g'(f(a)) = \frac{1}{f'(a)}$\\
     \end{itemize}
   \end{proof}
+\extra{opnieuw proberen bewijzen met propositie \ref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}}
 \end{st}
 
 

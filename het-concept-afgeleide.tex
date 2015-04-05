@@ -16,12 +16,15 @@
 \end{de}
 
 \begin{st}
-  De afgeleide van een functie in een punt is uniek (omdat dat punt een ophopingspunt is).
+  Equivalente definitie
+  \[ f'(a) = \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a} \]
 \extra{bewijs}
 \end{st}
 
-\TODO{equivalente definite voor afgeleide zonder $h$}
-
+\begin{st}
+  De afgeleide van een functie in een punt is uniek (omdat dat punt een ophopingspunt is).
+\extra{bewijs}
+\end{st}
 \begin{de}
   We schrijven $f'$ soms als $Df$ en $f'(x)$ soms als $\frac{df(x)}{dx}$
 \end{de}
@@ -100,10 +103,13 @@
 \end{vb}
 
 \begin{tvb}
+  \label{tvb:absolute-waarde-niet-afleidbaar-in-0}
   De functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x|$ is links-, en rechtsafleidbaar in $0$, maar de linker en rechter afgeleide zijn niet gelijk. $f$ is dus niet afleidbaar in $0$.
+  Elders is $f$ wel afleidbaar.
   
   \begin{proof}
     \[ \lim_{h \underset{<}{\rightarrow} 0}\frac{|h|}{h} = -1 \quad\text{ en }\quad \lim_{h \underset{>}{\rightarrow} 0}\frac{|h|}{h} = 1 \]
+    \extra{elders wel afleidbaar}
   \end{proof}
 \end{tvb}
 
@@ -134,6 +140,19 @@
     \end{itemize}
   \end{proof}
 \end{vb}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een functie die afleidbaar is in een punt $a$, dan is $f$ continu in $a$.
+\end{st}
+
+\begin{tvb}
+  Als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ continu is in een punt $a$, betekent dit nog *niet* dat $f$ afleidbaar is in $a$.
+
+  \begin{proof}
+    Beschouw de functie $f:| \mathbb{R} \rightarrow \mathbb{R}^{+}: x \mapsto |x|$.
+    $f$ is continu in $0$\vbref{vb:absolute-waardefunctie-continu}, maar niet afleidbaar in $0$.\tvbref{tvb:absolute-waarde-niet-afleidbaar-in-0}
+  \end{proof}
+\end{tvb}
 
 \mst{continu dan afleidbaar}
 \mst{afleidbaar dan continu}

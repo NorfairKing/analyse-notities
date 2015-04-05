@@ -27,12 +27,13 @@
 \end{de}
 
 \begin{de}
+  \label{de:kritiek-punt}
   Een inwendig punt van een deel $A$ van $\mathbb{R}$ waarvoor $f'(a)=0$ geldt, noemt men een \term{kritiek punt} van $f$.
 \end{de}
 
 \begin{pr}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een inwendig punt $a$ van $A$.
-  Stel dat $f$ een lokaal extremum bereikt in een $a$ en dat $f$ afleidbaar is in $a$, dan geldt $f'(a) = 0$.
+  Stel dat $f$ een lokaal extremum bereikt in een $a$ en dat $f$ afleidbaar is in $a$, dan geldt $f'(a) = 0$, t.t.z dan is $a$ een kritiek punt van $f$.
 
   \begin{proof}
     Gevalsonderscheid:
@@ -49,13 +50,35 @@
       \[ \frac{f(a+h_{n}) -f(a)}{h_{n}} \le 0 \]
       Omdat de limiet de orde bewaart zal het volgende gelden:
       \[ f'(a) = \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} = \lim_{n \rightarrow \infty}\frac{f(a+h_{n})-f(a)}{h_{n}} \le 0 \]
-      Analoog vinden we dat $f'(a)$ ook groter dan of gelijk aan $0$ moet zijn.
+      Analoog vinden we dat $f'(a)$ ook groter dan of gelijk aan $0$ moet zijn:
+      \[ \forall n\in \mathbb{N}:\ \frac{f(a-h_{n}) -f(a)}{h_{n}} \le 0 \]
+      \[ f'(a) = \lim_{h\rightarrow 0}\frac{f(a-h)-f(a)}{h} = \lim_{n \rightarrow \infty}\frac{f(a-h_{n})-f(a)}{h_{n}} \ge 0 \]
       $f'(a)$ moet dus gelijk zijn aan $0$.
     \item $f$ bereikt een lokaal minimum in $x$.
       \extra{bewijs}
     \end{itemize}
   \end{proof}
 \end{pr}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet:
+  Het beeld van een kritiek punt $a$ van een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ is niet steeds een lokaal extremum.
+
+  \begin{proof}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-2, ymax=2, xmin=-2, xmax=2]
+          \addplot[smooth,domain=-2:2]{x^3};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    Beschouw de functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{3}$.
+    De afgeleide functie $f'$ van $f$ ziet er als volgt uit:\vbref{vb:afgeleide-polynomiaal}
+    \[ f':\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 3x^{2} \]
+    Het is duidelijk dat $f'$ nul is in $0$, maar ook dat $f(0)$ geen lokaal extremum is van $f$.
+  \end{proof}
+\end{tvb}
 
 \subsection{Stijgen of dalen}
 \label{sec:stijgen-dalen}
@@ -68,9 +91,9 @@
     \[ \forall x,y \in I:\ x \le y \Rightarrow f(x) \le f(y) \]
   \item We zeggen dat $f$ \term{daalt} als het volgende geldt.
     \[ \forall x,y \in I:\ x \le y \Rightarrow f(x) \ge f(y) \]
-  \item We zeggen dat $f$ strikt \term{stijgt} als het volgende geldt.
+  \item We zeggen dat $f$ \term{strikt stijgt} als het volgende geldt.
     \[ \forall x,y \in I:\ x < y \Rightarrow f(x) < f(y) \]
-  \item We zeggen dat $f$ strikt \term{daalt} als het volgende geldt.
+  \item We zeggen dat $f$ \term{strikt daalt} als het volgende geldt.
     \[ \forall x,y \in I:\ x < y \Rightarrow f(x) > f(y) \]
   \end{itemize}
 \end{de}
@@ -91,7 +114,7 @@
       Voor alle $h\in \mathbb{R}_{0}^{+}$ kleiner dan $\delta$ geldt nu het volgende:
       \[ \frac{f(a+h)-f(a)}{h} \ge 0 \]
       $a+h$ is immers groter dan, of gelijk aan, $a$ en $f$ is stijgend over $I$.
-      De stelling volgt nu uit het feit dat limieten ongelijkheden behouden.\needed
+      De stelling volgt nu uit het feit dat limieten ongelijkheden behouden.\prref{pr:limiet behoudt ongelijkheid}
     \item 
       \extra{bewijs}
     \end{itemize}
@@ -119,20 +142,29 @@
     De supremumeigenschap van $\mathbb{R}$ geeft ons dan dat er een supremum $M$ en een infimum $m$.
     \[ M = \sup\{f(x) \mid x \in \interval{a}{b} \} \]
     \[ m = \inf\{f(x) \mid x \in \interval{a}{b} \} \]
-    Als $m$ gelijk is aan $M$, dan geldt $f(x)=f(a)$ voor alle $x \in \interval{a}{b}$ en is $f$ dus constant.
-    In elke $c \in \interval{a}{b}$ is de afgeleide van $f$ dan nul.
-    Beschouw nu het geval dat $m< M$ geldt.
-    Er treedt dan minstens \'e\'en van de volgende gevallen op:
     \begin{itemize}
-    \item $f(a) < M$\\
-      Er bestaat dan een $c$ zodat $f(c)$ gelijk is aan $M$.\needed
-      Omdat $f(a)$ gelijk is aan $f(b)$ en kleiner dan $M=f(c)$, kan $c$ niet gelijk zijn aan $a$ of aan $b$ en moet $c$ dus in het interval $\interval[open]{a}{b}$ liggen.
-      $c$ is dan een kritiek punt, en dus moet de afgeleide van $f$ in $c$ nul zijn.\needed
-    \item $f(a) > m$\\
-      \extra{bewijs}
+    \item
+      Als $m$ gelijk is aan $M$, dan geldt $f(x)=f(a)$ voor alle $x \in \interval{a}{b}$ en is $f$ dus constant.
+      In elke $c \in \interval{a}{b}$ is de afgeleide van $f$ dan nul.
+    \item 
+      Beschouw nu het geval dat $m< M$ geldt.
+      Er treedt dan minstens \'e\'en van de volgende gevallen op:
+      \begin{itemize}
+      \item $f(a) < M$\\
+        Er bestaat dan een $c$ zodat $f(c)$ gelijk is aan $M$.\stref{st:continue-functie-op-gesloten-begrensd-interval-bereikt-extrema}
+        Omdat $f(a)$ gelijk is aan $f(b)$ en kleiner dan $M=f(c)$, kan $c$ niet gelijk zijn aan $a$ of aan $b$ en moet $c$ dus in het interval $\interval[open]{a}{b}$ liggen.
+        $c$ is dan een kritiek punt, en dus is de afgeleide van $f$ in $c$ nul.\deref{kritiek-punt}
+      \item $f(a) > m$\\
+        \extra{bewijs}
+      \end{itemize}
     \end{itemize}
   \end{proof}
 \end{st}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet in $\mathbb{Q}$.
+\extra{bewijs}
+\end{tvb}
 
 \subsubsection{Lagrange}
 \label{sec:middelwaardestelling-lagrange}
@@ -172,6 +204,11 @@
   \end{proof}
 \feed
 \end{st}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet in $\mathbb{Q}$.
+\extra{bewijs}
+\end{tvb}
 
 
 \subsubsection{Cauchy}
