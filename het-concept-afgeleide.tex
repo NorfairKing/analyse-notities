@@ -1,0 +1,65 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+\section{Basisbegrippen}
+\label{sec:basisbegrippen}
+
+\begin{de}
+  Beschouw een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat ook een ophopingspunt is van $A$.
+  We zeggen dat $f$ \term{afleidbaar} is in $a$ als de volgende limiet bestaat en eindig is:
+  \[ L = \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} \]
+  We noemen $L$ de \term{afgeleide} van $f$ in $a$ en noteren $L$ als $f'(a)$.
+  Als alle punten van $A$ ophopingspunten zijn van $A$ noemen we $f$ \term{afleidbaar} over $A$ als $f$ afleidbaar is in elke $x\in A$.
+  In dit geval definieren we de \term{afgeleide functie} $f$ als volgt:
+  \[ f':\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f'(x) \]
+\end{de}
+
+\begin{st}
+  De afgeleide van een functie in een punt is uniek (omdat dat punt een ophopingspunt is).
+\extra{bewijs}
+\end{st}
+
+\TODO{equivalente definite voor afgeleide zonder $h$}
+
+\begin{de}
+  We schrijven $f'$ soms als $Df$ en $f'(x)$ soms als $\frac{df(x)}{dx}$
+\end{de}
+
+\subsection{Meetkundige betekenis}
+\label{sec:meetk-betek}
+
+\begin{de}
+  Een \term{koorde} is een rechte tussen twee punten $(a,f(a))$ en $(a+h,f(a+h))$ op de grafiek van een functie.
+  \[ y = \frac{f(a+h) -f(a)}{h} (x-a) + f(a) \]
+\end{de}
+
+\begin{de}
+  De \term{raaklijn} aan een grafiek in een punt is de limiet van de koorde in dat punt van $h$ gaande naar nul.
+  \[ y = \lim_{h\rightarrow 0}\frac{f(a+h) -f(a)}{h} (x-a) + f(a) \]
+  We noemen de raaklijn de \term{eerste orde benadering} of de \term{standaard eerstegraadsbenadering} van $f$ rond $a$.
+\end{de}
+
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a \in A$.
+  \begin{itemize}
+  \item Als $a$ een ophopingspunt is van $A \cap \interval[open left]{-\infty}{a}$ en de beperking van $f$ tot $A \cap \interval[open left]{-\infty}{a}$ afleidbaar is in $a$, dan noemen we $f$ \term{linksafleidbaar} in $a$.
+    We noemen de afgeleide van de beperkte functie in $a$ de \term{linkerafgeleide} $f'(a^{-})$ van $f$ in $a$.
+  \item Als $a$ een ophopingspunt is van $A \cap \interval[open right]{a}{+\infty}$en de beperking van $f$ tot $A \cap \interval[open left]{a}{+\infty}$ afleidbaar is in $a$, dan noemen we $f$ \term{rechtsafleidbaar} in $a$.
+    We noemen de afgeleide van de beperkte functie in $a$ de \term{rechterafgeleide} $f'(a^{+})$ van $f$ in $a$.
+  \end{itemize}
+\end{de}
+
+\begin{st}
+  $f$ is links-, respectievelijk rechtsafleidbaar in $a$ als en slechts de volgende limiet bestaat en eindig is.
+  \[ \lim_{h\overset{<}{\rightarrow} 0}\frac{f(a+h)-f(a)}{h} \quad\text{en}\quad \lim_{h\overset{>}{\rightarrow} 0}\frac{f(a+h)-f(a)}{h} \]
+\extra{bewijs}
+\end{st}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
