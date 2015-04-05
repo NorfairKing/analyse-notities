@@ -318,33 +318,155 @@
   \begin{proof}
     Bewijs in delen.
     \begin{itemize}
-    \item $(L_{n})_{n}$ is een Cauchyrij.
+    \item $(L_{n})_{n}$ is een Cauchyrij:\\
       Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
       Omdat $(f_{n})_{n}$ uniform op $A$ convergeert kunnen we een $n_{0}\in \mathbb{N}$ vinden zodat het volgende geldt:
-      \clarify{mag dit zomaar? extra bewijs maken: cauchyrij van functies!}
       \[ \forall x\in A:\ \forall n,m \ge m_{0}:\ |f_{n}(x) -f_{m}(x)| < \epsilon \]
-      Door van deze ongelijkheid de limiet te nemen voor $x$ gaande naar $x$ vinden we de volgende ongelijkheid:
+      Door van deze ongelijkheid de limiet te nemen voor $x$ gaande naar $a$ vinden we de volgende ongelijkheid:
       \clarify{mag dit zomaar?}
+      \[ \forall n,m \ge m_{0}:\ \lim_{x \rightarrow a}|f_{n}(x) -f_{m}(x)| < \lim_{x \rightarrow a}\epsilon\]
+      \[ \forall n,m \ge m_{0}:\ |\lim_{x \rightarrow a}\left(f_{n}(x) -f_{m}(x)\right)| < \epsilon\]
+      \[ \forall n,m \ge m_{0}:\ |\lim_{x \rightarrow a}f_{n}(x) -\lim_{x \rightarrow a}f_{m}(x)| < \epsilon\]
       \[ \forall n,m \ge m_{0}:\ |L_{n}-L_{m}| \le \epsilon \]
       Dit toont dat $(L_{n})_{n}$ een Cauchyrij is.
       Omdat $\mathbb{R}$ volledig is zal dan $(L_{n})_{n}$ convergeren.
       We noteren de limiet met $L$.
-    \item 
+    \item $\lim_{a}f =  \lim_{n\ \rightarrow +\infty} \lim_{x \rightarrow a} f_{n}(x)$:\\
       Kies nu een willekeurige rij $(x_{k})_{k} \in A\setminus \{a\}$ die naar $a$ convergeert.
       We zullen bewijzen dat, in de limiet naar $a$, het beeld van $x_{k}$ naar $L$ gaat.
       Merk eerst op dat het volgende geldt:
       \[ \forall k\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ |f(x_{n})-L| \le |f(x_{k}) -f_{n}(x_{k})| + |f_{k}(x_{k})-L_{n}| + |L_{n}-L| \]
-      Omdat $(L_{n})_{n}$ naar $L$ convergeert kunnen we een $n_{0}\in\mathbb{N}$ nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
-      \[ |L_{n}-L| < \frac{\epsilon}{3} \]
-      Omdat $(f_{n})_{n}$ uniform convergeert op $A$ naar $f$, kunnen we een $n_{1}\in \mathbb{N}$ nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
-      \[ \forall x\in A:\ |f_{n}-f(x)| < \frac{\epsilon}{3} \]
-      Omdat $(f_{n}(x_{k}))_{k}$ voor alle $n$ naar $L_{n}$ convergeert (omdat $f$ continu is), kunnen we een $k_{0} \in \mathbb{N}$ vinden zodat ook het volgende geldt voor alle volgende $k \in \mathbb{N}$:
-      \[ |f_{n}(x_{k}) - L_{n}| < \frac{\epsilon}{3} \]
+      \begin{itemize}
+      \item 
+        Omdat $(L_{n})_{n}$ naar $L$ convergeert kunnen we een $n_{0}\in\mathbb{N}$ nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
+        \[ |L_{n}-L| < \frac{\epsilon}{3} \]
+      \item Omdat $(f_{n})_{n}$ uniform convergeert op $A$ naar $f$, kunnen we een $n_{1}\in \mathbb{N}$  nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
+        \[ \forall x\in A:\ |f_{n}-f(x)| < \frac{\epsilon}{3} \]
+      \item Omdat
+        $(f_{n}(x_{k}))_{k}$ voor alle $n$ naar $L_{n}$ convergeert (omdat $f$ continu is)\needed, kunnen we een $k_{0} \in \mathbb{N}$ vinden zodat ook het volgende geldt voor alle volgende $k \in \mathbb{N}$:
+        \[ |f_{n}(x_{k}) - L_{n}| < \frac{\epsilon}{3} \]
+      \end{itemize}
+
       Noem nu $n' = \max\{n_{0},n_{1},k_{1}\}$, dan geldt voor alle volgende $n\in \mathbb{N}$ de bewering die de stelling bewijst:
       \[ |f(x_{n})-L| \le |f(x_{k}) -f_{n}(x_{k})| + |f_{k}(x_{k})-L_{n}| + |L_{n}-L| < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon \]
     \end{itemize}
   \end{proof}
+  \extra{bewijs zelf: Cauchyrij van functies convergeert (met nodige voorwaarden)}
 \end{bst}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als $(f_{n})_{n}$ slechts puntsgewijs convergeert naar $f$.
+
+  \begin{proof}
+    Beschouw $f_{n}$ als volgt. $(f_{n})_{n}$ convergeert puntsgewijs naar $f$.\needed
+    
+    \noindent
+    \begin{minipage}{.45\textwidth}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+            \foreach \i in {1,...,10}
+            {
+              \addplot[smooth,domain=-3:(-1/\i)]{-1};
+              \addplot[smooth,domain=(-1/\i):(1/\i)]{\i*x};
+              \addplot[smooth,domain=(1/\i):3]{1};
+            }
+            \addplot[smooth,color=blue,thick,domain=-3:0]{-1};
+            \addplot[smooth,color=blue,thick,domain=0:3]{1};
+            \addplot[soldot,color=blue] coordinates{(0,0)};
+            \addplot[holdot,color=blue,fill=white] coordinates{(0,1)(0,-1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[
+      f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          -1 & \text{ als } x \in \interval[open left ]{-\infty}{-\frac{1}{n}}\\
+          nx & \text{ als } x \in \interval[open      ]{-\frac{1}{n}}{\frac{1}{n}}\\
+          1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+      \[
+      f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
+          0  & \text{ als } x = 0\\
+          1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+    \end{minipage}
+    De limiet van $f$ in $0$ bestaat niet terwijl de limiet van elke $f_{n}$ in $0$, $0$ is.\\
+
+    Beschouw omgekeerd $g_{n}$ als volgt. $(g_{n})_{n}$ convergeert puntsgewijs naar de nulfunctie.
+    
+    \begin{figure}[H]
+      \begin{center}
+        \foreach \n in {1,...,8} {
+          \ifthenelse{\isodd{\n}} {
+            \begin{tikzpicture}[scale=.4]
+              \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+                \addplot[smooth,domain=-3:-(1/\n)]{0};
+                \addplot[smooth,domain=-(1/\n):0]{\n*x+1};
+                \addplot[smooth,domain=0:(1/\n)]{-\n*x+1};
+                \addplot[smooth,domain=(1/\n):3]{0};
+              \end{axis}
+            \end{tikzpicture}
+          }{
+            \begin{tikzpicture}[scale=.4]
+              \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+                \addplot[smooth,domain=-3:-(1/\n)]{0};
+                \addplot[smooth,domain=-(1/\n):0]{-\n*x-1};
+                \addplot[smooth,domain=0:(1/\n)]{\n*x-1};
+                \addplot[smooth,domain=(1/\n):3]{0};
+              \end{axis}
+            \end{tikzpicture}
+          }}
+      \end{center}
+    \end{figure}
+    \begin{figure}[H]
+      \begin{center}
+        \begin{tikzpicture}[scale=1.0]
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+            \addplot[smooth,color=blue,thick,domain=-3:3]{0};
+            \addplot[holdot,color=blue,fill=white] coordinates{(0,0)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+    \end{figure}
+    \[
+    g_{n}: \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto
+    \left\{
+      \begin{array}{cl}
+        \left\{
+          \begin{array}{rl}
+            nx+1 & \text{ als } x \in \interval[open]{-\frac{1}{n}}{0}\\
+            -nx+1 & \text{ als } x \in \interval[open]{0}{\frac{1}{n}}\\ 
+            0 & \text{ elders}\\
+          \end{array}
+        \right. & \text{ als } n \text{ even }\\
+        \left\{
+          \begin{array}{rl}
+            -nx-1 & \text{ als } x \in \interval[open]{-\frac{1}{n}}{0}\\
+            nx-1 & \text{ als } x \in \interval[open]{0}{\frac{1}{n}}\\ 
+            0 & \text{ elders}\\
+          \end{array}
+        \right. & \text{ als } n \text{ oneven }\\
+      \end{array}
+    \right.
+    \]
+    \[
+    g: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0
+    \]
+    De limiet $\lim_{n \rightarrow +\infty}\lim_{x \rightarrow a}g_{n}(x)$ bestaat niet, want $\lim_{x \rightarrow a}g_{n}(x)$ is afwisselend $1$ en $-1$, maar de limiet van $g$ in $0$ is $0$.
+  \end{proof}
+\end{tvb}
 
 
 
