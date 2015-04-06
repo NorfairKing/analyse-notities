@@ -2,7 +2,104 @@
 \begin{document}
 
 
+\section{Hogere orde afgeleiden}
+\label{sec:hogere-orde-afgel}
 
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
+  Stel dat $A$ enkel ophopingspunten bevat.
+  Noteer de verzamelingen van punten van $A$ waarin $f$ afleidbaar is als $A_{1}$.
+  Noteer bovendien met $f':\ A_{1} \rightarrow \mathbb{R}:\ x \mapsto f'(x)$ de afgeleide functie van $f$.
+
+  Zij $a$ een element van $A$, dan noemen we $f$ \term{twee maal afleidbaar} in $a$ als en slechts als $a$ tot $A_{1}$ behoort, een ophopingspunt is van $A_{1}$ en de afgeleide functie $f'$ afleidbaar is in $a$.
+  We noteren de \term{tweede orde afgeleide} functie $(f')'$ van $f$ als $f''$.
+  We noemen $f$ \term{twee maal afleidbaar} op $A$ als $f$ twee maal afleidbaar is in elke $a\in A$.
+\end{de}
+
+\begin{de}
+  Zij $I$ een interval in $\mathbb{R}$ dan noemen we $C(I)$ de verzameling van continue functies van $I$ naar $\mathbb{R}$.
+  Voor $n\in \mathbb{N}$ noemen we $C^{n}(I)$ de verzameling van continue functies die $n$ keer afleidbaar zijn op $I$ en waarvoor $f^{(n)}$ continu is op $I$.
+  Met $C^{\infty}(I)$ noteren we de verzameling van functies $I$ die onbeperkt afleidbaar zijn op $I$.
+\end{de}
+
+\begin{st}
+  Zij $I$ een interval in $\mathbb{R}$, voor elke $n\in \mathbb{N}$ is $C^{n}(I)$ een vectorruimte.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  Zij $I$ een interval in $\mathbb{R}$, voor elke $n\in \mathbb{N}$ is $C^{n}(I)$ gesloten onder het product:
+  \[ \forall f,g \in C^{n}(I):\ fg \in C^{n}(I) \]
+\extra{bewijs}
+\end{st}
+
+\begin{de}
+  Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie gedefinieerd op een interval $I$, dan noemen we $f$ \term{convex} over een deelinterval $I_{0}$ van $I$ als en slechts als het volgende geldt:
+  \[ \forall x,y \in I_{0}, \forall \lambda \in \interval{0}{1}:\ f((1-\lambda)x+\lambda y) \le (1-\lambda)f(x) + \lambda f(y)\]
+  We noemen $f$ \term{concaaf} over $I_{0}$ als en slechts als $-f$ convex is.
+\end{de}
+
+\begin{bpr}
+  Beschouw een functie $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een open interval $I$ die twee keer afleidbaar is.
+  $f$ is convex over $I$ als en slechts als $f''$ positief is over heel $I$.
+\TODO{bewijs p 40}
+\end{bpr}
+
+\section{Middelwaardestelling van Taylor}
+\label{sec:midd-van-tayl}
+
+\begin{bst}
+  Beschouw een functie $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een interval $I$, die $n$ maal afleidbaar is op $I$ en $(n+1)$ maal op het inwendige $\mathring{I}$ van $I$.
+  Stel dat $f^{(n)}$ continu is op $I$ en zij $a,x\in I$ met $a \neq x$, dan bestaat er een $c$, strikt tussen $a$ en $x$, als volgt:
+  \[ 
+  f(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} + \sum_{n = 0}^{n}\frac{f^{(n)}(a)}{n!}(x-a)^{n} 
+  \]
+\TODO{bewijs p 43}
+\end{bst}
+
+\begin{de}
+  Beschouw een functie $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een interval $I$, die $n$ maal afleidbaar is op $I$ en $(n+1)$ maal op het inwendige $\mathring{I}$ van $I$.
+  Stel dat $f^{(n)}$ continu is op $I$ en zij $a,x\in I$ met $a \neq x$, dan noemen we $P_{n}$ als volgt de \term{$n$-de orde benadering} van $f$ rond $a$.
+  \[ 
+  P_{n}(x) = \sum_{n = 0}^{n}\frac{f^{(n)}(a)}{n!}(x-a)^{n} 
+  \]
+  We noemen deze veelterm soms de \term{Taylorveelterm} van graad $n$ van $f$ rond $a$.
+  In bovenstaande stelling noemen we de eerste term de \term{restterm} van graad $n$ en we noteren deze als $R_{n}(x)$.
+  \[ 
+  R_{n}(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} 
+  \]
+\end{de}
+
+\begin{de}
+  We noemen het rechterlid als volgt de \term{Taylor(reeks)ontwikkeling} van $f$ rond $a$ in $x$.
+  \[
+  f(x) = \lim_{n \rightarrow \infty}\sum_{n = 0}^{n}\frac{f^{(n)}(a)}{n!}(x-a)^{n} 
+  \]
+\end{de}
+
+
+\begin{de}
+  We noemen een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een open deel $A$ van $\mathbb{R}$, \term{analytisch} op $A$ als er voor elke $a\in A$ een $\delta \in \mathbb{R}_{0}^{+}$ bestaat als volgt:
+  \begin{itemize}
+  \item $\interval[open]{a-\delta}{a+\delta} \subseteq A$
+  \item Er bestaat een rij $(c_{n})_{n}$ in $\mathbb{R}$ zodat voor alle $\interval[open]{a-\delta}{a+\delta}$ het volgende geldt:
+    \[ f(x) = \lim_{n\rightarrow +\infty}\sum_{k=0}^{n}c_{k}(x-a)^{k} \]
+  \end{itemize}
+\end{de}
+
+\begin{bpr}
+  Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een twee maal afleidbare functie op een open interval $I$ zodat de tweede afgeleide $f''$ continu is.
+  Stel dat er een nulpunt $a\in I$ van $f'$ bestaat, dan geldt het volgende:
+  \begin{itemize}
+  \item Als $f''$ strikt positief is in $a$, dan bereikt $f$ in $a$ een lokaal minimum.
+  \item Als $f''$ strikt negatief is in $a$, dan bereikt $f$ in $a$ een lokaal maximum.
+  \end{itemize}
+\TODO{bewijs p 48}
+\end{bpr}
+
+\begin{opm}
+  Bovenstaande propositie zegt ons niets in het geval dat $f''$ nul is in $a$.
+\end{opm}
 
 \end{document}
 
