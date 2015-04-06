@@ -236,12 +236,12 @@
     \begin{figure}[H]
       \centering
       \begin{tikzpicture}[scale=.75]
-        \begin{axis}[ymin=-3, ymax=3, xmin=-3, xmax=3]
+        \begin{axis}[ymin=-1, ymax=1, xmin=-3, xmax=3]
           \foreach \i in {1,...,10}
           {
             \addplot[smooth,domain=-3:3]{(\i*x)/(\i^2+x^2)};
           }
-          \addplot[smooth,color=blue,thick,domain=0:1]{0};
+          \addplot[smooth,color=blue,thick,domain=-3:3]{0};
         \end{axis}
       \end{tikzpicture}
     \end{figure}

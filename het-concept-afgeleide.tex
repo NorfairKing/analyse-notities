@@ -114,6 +114,7 @@
 \end{tvb}
 
 \begin{vb}
+  \label{vb:erge-functie-afleidbaar-in-0}
   De volgende functie is enkel afleidbaar in $0$:
   \[
   f:\ \mathbb{R}\rightarrow \mathbb{R}:\ x \mapsto
@@ -141,31 +142,92 @@
   \end{proof}
 \end{vb}
 
-\begin{st}
-  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een functie die afleidbaar is in een punt $a$, dan is $f$ continu in $a$.
-\end{st}
-
 \begin{tvb}
-  Als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ continu is in een punt $a$, betekent dit nog *niet* dat $f$ afleidbaar is in $a$.
+  Als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ continu is in een punt $a$, betekent dit nog \textbf{niet} dat $f$ afleidbaar is in $a$.
 
   \begin{proof}
-    Beschouw de functie $f:| \mathbb{R} \rightarrow \mathbb{R}^{+}: x \mapsto |x|$.
+    Beschouw de functie $f:\ \mathbb{R} \rightarrow \mathbb{R}^{+}: x \mapsto |x|$.
     $f$ is continu in $0$\vbref{vb:absolute-waardefunctie-continu}, maar niet afleidbaar in $0$.\tvbref{tvb:absolute-waarde-niet-afleidbaar-in-0}
   \end{proof}
 \end{tvb}
 
-\mst{continu dan afleidbaar}
-\mst{afleidbaar dan continu}
-\mst{f afleidbaar in $a$ dan $\exists$ open interval rond $a$ waarop $f$ continu is}
-\mst{f afleidbaar dan $f'$ continu}
-\mst{er bestaat geen afleidbare functie met $f'(x)=0$ voor $x<0$ en $f'(x)=1$ met $x \ge 0$}
-\mst{$f$ constant op $I$ dan $f'(x)=0$ op $I$}
-\mst{hetzelfde omgekeerd}
-\mst{stijgt op $I$ dan afgeleide positief op $I$}
-\mst{strikt stijgt op $I$ dan afgeleide strikt positief op $I$}
-\mst{als $f'(x)> 0$ dan bestaat er een open interval rond $x$ waarop $f$ stijgt}
-\mst{$f$ onbeperkt afleidbaar dan geldt $f=0$ als $0=f(x)=f'(x)=f''(x)...$}
-\mst{gelden alle bovenstaande stellingen in $\mathbb{Q}$?}
+\TODO{mogelijke stellingen: $f$ onbeperkt afleidbaar dan geldt $f=0$ als $0=f(x)=f'(x)=f''(x)...$}
+\TODO{Bewijs of geef een tegenvoorbeeld voor al deze stellingen in $\mathbb{Q}$.}
+
+\begin{tvb}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ afleidbaar in een $a\in \mathbb{R}$, dan bestaat er \textbf{niet} noodzakelijk een open interval rond $a$ waarin $f$ continu is.
+
+  \begin{proof}
+    De volgende functie is enkel afleidbaar in $0$\vbref{vb:erge-functie-afleidbaar-in-0}, maar is in geen enkel open interval rond $0$ continu.\waarom
+  \end{proof}
+\feed
+\end{tvb}
+
+\begin{tvb}
+  Zelfs als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ overal afleidbaar is, hoeft de afgeleide functie nog \textbf{niet} continu te zijn.
+  \extra{tegenvoorbeeld}
+\end{tvb}
+
+\begin{tvb}
+   Er bestaat geen afleidbare functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ waarvoor $f'(x)=0$ voor $x<0$ en $f'(x)=1$ met $x \ge 0$ gelden.
+
+\extra{bewijs: hopelijk}
+\end{tvb}
+
+\begin{st}
+  Zij een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en $a$ een inwendig punt van $A$.
+  $f$ is afleidbaar in $a$ als en slechts er een $\lambda \in \mathbb{R}$, een $\delta \in \mathbb{R}_{0}^{+}$ en een functie $\phi:\ \interval[open]{-\delta}{\delta} \rightarrow \mathbb{R}$ als volgt:
+  \begin{itemize}
+  \item $\interval[open]{a-\delta}{a+\delta}\subseteq A$
+  \item $\phi(0) = 0$
+  \item $\forall h \in \interval[open]{-\delta}{\delta}:\ f(a+h) = f(a) + \lambda h + h\phi(h)$ 
+  \item $\phi$ is continu in $0$.
+  \end{itemize}
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Omdat $a$ een inwendig punt is van $A$, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{a-\delta}{a+\delta}\subseteq A$ geldt.
+      Kies $\lambda = f'(a)$ en definieer $\phi$ als volgt:
+      \[ \phi(h):\ \interval[open]{-\delta}{\delta} \rightarrow \mathbb{R}:\ h \mapsto 
+      \left\{
+      \begin{array}{cl}
+        \frac{f(a+h)-f(a)}{h}-f'(a) & \text{ als } h \neq 0\\
+        0 & \text{ als } h = 0\\
+      \end{array}
+      \right.
+      \]
+      Nu gelden per constructie al de eerste drie voorwaarden.
+      De continu\"iteit van $\phi$ in $0$ volgt nu meteen uit de afleidbaarheid van $f$ in $a$.\extra{hoe dan?}
+    \item $\Leftarrow$\\
+      We moeten bewijzen dat de volgende limiet bestaat.
+      \[ \lim_{h \rightarrow 0}\frac{f(a+h)-f(a)}{h} \]
+      Merk op dat het volgende geldt voor alle $h$ verschillend van $0$ die dicht genoeg (dichter dan $\delta$) bij $0$ liggen. 
+      \[ \frac{f(a+h)-f(a)}{h} = \frac{f(a) + \lambda h + h\phi(h)-f(a)}{h} = \lambda + \phi(h)\]
+      Bekijken we nu opnieuw die limiet, dan gebruiken we dat $\phi$ continu is in $0$\prref{pr:functie-continu-asa-limiet-is-beeld}:
+      \[ \lim_{h \rightarrow 0}\frac{f(a+h)-f(a)}{h} =\lambda + \lim_{h \rightarrow 0}\phi(h) = \lambda \]
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een afleidbare functie zofat $f'$ begrensd is, dan is $f$ uniforum continu.
+
+  \begin{proof}
+    $f'$ is begrensd, dus er bestaat een $M\in \mathbb{R}$ als volgt voor elke $a \in \mathbb{R}$:
+    \[ \left|\lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a}\right| \le M\]
+    Omdat de limiet begrensd is, moet ook het volgende gelden voor elke $x\in \mathbb{R}$ verschillend van $a$: \clarify{mag dit zomaar?!}
+    \[ \left|\frac{f(x)-f(a)}{x-a}\right| = \frac{|f(x)-f(a)|}{|x-a|} \le M \]
+    Dit betekent dat $|f(x)-f(a)|$ hoogstens een constante factor van $|x-a|$ verschilt:
+    \[ |f(x)-f(a)| \le M|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\epsilon}{M}$.
+    Voor willekeurige $x,y \in \mathbb{R}$ volgt dan uit $|x-y|< \delta$ het volgende:
+    \[ |f(x)-f(y)| \le M|x-y| < M\delta = M\frac{\epsilon}{M} = \epsilon \]
+    $f$ is dus uniform continu.
+\feed
+  \end{proof}
+\end{st}
 
 \subsection{Meetkundige betekenis}
 \label{sec:meetk-betek}

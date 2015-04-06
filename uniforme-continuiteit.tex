@@ -264,6 +264,7 @@
 \end{bpr}
 
 \begin{bst}
+  \label{st:gesloten-en-begrensd-interval-continu-dan-uniform-continu}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie, gedefinieerd op een gesloten en begrensd deel $A$ van $\mathbb{R}$, dan is $f$ uniform continu.
 
   \begin{proof}
@@ -279,6 +280,21 @@
 \extra{dit kan beter!}
   \end{proof}
 \end{bst}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een continue functie zodat het volgende geldt, dan is $f$ uniform continu op $\mathbb{R}$.
+  \[ \lim_{x \rightarrow -\infty}f(x) = 0 \quad\text{ en }\quad \lim_{x \rightarrow +\infty}f(x) = 0 \]
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$
+    Omdat de limiet van $f$ naar min oneindig $0$ is, moet er een $m_{-}\in \mathbb{R}$ bestaan zodat voor alle $x\in \mathbb{R}$ uit $x < m_{-}$ volgt dat $|f(x)| < \epsilon$ geldt.
+    Analoog vinden we een $m_{+} \in \mathbb{R}$ zodat voor alle $x\in \mathbb{R}$ uit $x > m_{+}$ volgt dat $|f(x)| < \epsilon$ geldt.
+    Kies nu $M = \max\{|m_{-}|,|m_{+}|\}$, dan volgt dat voor alle $x\in \mathbb{R}$ buiten $\interval{-M}{M}$, $|f(x)| < \epsilon$ geldt.\waarom
+    Op het gesloten en begrensd interval $\interval{-M}{M}$ is $f$ continu en dus ook uniform continu.\stref{st:gesloten-en-begrensd-interval-continu-dan-uniform-continu}
+\feed
+\question{is dit voldoende? Het klinkt nogal vaag.}
+  \end{proof}
+\end{st}
 
 
 \end{document}

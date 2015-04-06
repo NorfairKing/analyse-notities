@@ -5,15 +5,15 @@
 \section{Elementaire eigenschappen en rekenregels}
 \label{sec:elem-eigensch-en}
 
-\begin{pr}
+\begin{bpr}
   Beschouw een functe $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $a\in A$.
   Stel dat $a$ een ophopingspunt is van zowel $\interval[open left]{-\infty}{a} \cap A$ als $\interval[open right]{a}{+\infty} \cap A$.
   $f$ is dan afleidbaar in $a$ als en slechts $f$ zowel links- als rechtsafleidbaar is in $a$ en $f'(a^{-})=f'(a^{+})$.
   \[ f'(a) = f'(a^{-})=f'(a^{+}) \]
 \TODO{bewijs: oefening}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:afleidbaar-dan-continu}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $a\in A$ een ophopingspunt van $A$.
   Als $f$ afleidbaar is in $a$, dan is $f$ continu is $a$.
@@ -29,7 +29,7 @@
     Omdat $f$ afleidbaar is geldt dan het volgende:
     \[ = f'(a)\cdot 0 = 0 \]
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{tvb}
   Als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ continu is in een punt $a$, betekent dit nog *niet* dat $f$ afleidbaar is in $a$.
@@ -40,12 +40,12 @@
   \end{proof}
 \end{tvb}
 
-\begin{st}
+\begin{bst}
   Er bestaan functies van $\mathbb{R}$ naar $\mathbb{R}$ die overal continu maar nergens afleidbaar zijn.
 \extra{bewijs p 10}
-\end{st}
+\end{bst}
 
-\begin{pr}
+\begin{bpr}
   Beschouw een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $f$ afleidbaar is en zij $\lambda \in \mathbb{R}$.
   \[ \lambda f \text{ is afleidbaar in } a \text{ en } (\lambda f)'(a) = \lambda f'(a) \]
@@ -60,10 +60,10 @@
       \[ \lim_{x \rightarrow a}\frac{\lambda f(x)-\lambda f(a)}{x-a} \lim_{x \rightarrow a}\lambda \frac{\lambda f(x)-\lambda f(a)}{x-a} = \lambda \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a} \]
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 
-\begin{pr}
+\begin{bpr}
   Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $f$ en $g$ afleidbaar zijn.
   \[ f+g \text{ is afleidbaar in } a \text{ en } (f+g)'(a) = f'(a) + g'(a) \]
@@ -88,9 +88,9 @@
     \end{itemize}
 
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Beschouw functie $f,g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $f$ en $g$ afleidbaar zijn.
   \[ fg \text{ is afleidbaar in } a \text{ en } (fg)'(a) = f(a) g'(a) + f'(a)g(a) \]
@@ -114,9 +114,9 @@
       \]
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Beschouw functie $g: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat een ophopingspunt is van $A$.
   Stel dat $g$ afleidbaar is, en $g(a) \neq 0$.
   \[ \frac{1}{g}:\ \{ x \in A \mid g(x) \neq 0\} \rightarrow \mathbb{R}: x \mapsto \frac{1}{g(x)} \]
@@ -156,9 +156,9 @@
       \]
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{st}
+\begin{bst}
   \label{st:kettingregel}
   De \term{kettingregel}\\
   Beschouw functies $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
@@ -205,9 +205,9 @@
     \[ \lim_{x\rightarrow a}\frac{h(x)-h(a)}{x-a} = \lim_{x\rightarrow a}\phi(f(x))\lim_{x\rightarrow a}\left(\frac{f(x)-f(a)}{x-a}\right) = g'(f(a))f'(a) \]
     \extra{bewijs extra uitleggen}
   \end{proof}
-\end{st}
+\end{bst}
 
-\begin{st}
+\begin{bst}
   Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een bijectie.
   Noteer de inverse bijectie met $g$.
   Zij $a \in A$ een ophopingspunt van $A$.
@@ -265,7 +265,7 @@
     \end{itemize}
   \end{proof}
 \extra{opnieuw proberen bewijzen met propositie \ref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}}
-\end{st}
+\end{bst}
 
 
 \end{document}

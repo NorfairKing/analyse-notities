@@ -312,7 +312,7 @@
 \begin{bst}
   Zij $(f_{n})_{n}$ een rij van functies van $A \subseteq \mathbb{R}$ naar $\mathbb{R}$ die uniform op $A$ convergeert naar een functie $f: A \rightarrow \mathbb{R}$.
   Zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
-  Stel dat voor alle $n$ de limiet $L_{n}$ van $f_{n}$ in $a$ bestaat en eindig is.
+  Stel dat voor alle $n$ de limiet $L_{n}$ van $f_{n}$ in $a$ bestaat en eindig is, dan convergeert $(L_{n})_{n}$ en geldt bovendien het volgende:
   \[ \lim_{a}f = \lim_{n \rightarrow +\infty} L_{n} = \lim_{n\ \rightarrow +\infty} \lim_{x \rightarrow a} f_{n}(x) \]
 
   \begin{proof}
@@ -469,6 +469,39 @@
 \end{tvb}
 
 
+\subsection{Escapade: dubbelrijen}
+\label{sec:escap-dubb}
+
+\begin{de}
+  Een \term{dubbelrij} $(x_{n,m})_{n,m}$ is een functie $x$ als volgt:
+  \[ x:\ \mathbb{N}^{2} \rightarrow \mathbb{R}:\ (n,m) \mapsto x(n,m) = x_{n,m} \]
+\end{de}
+
+\begin{st}
+  Zij $(x_{n,m})_{n,m}$ een dubbelrij zodat $(x_{n,m})_{n,m}$ in $m$ uniform convergeert naar $(y_{n})_{n}$,
+  dan convergeert voor elke $n\in \mathbb{N}$ de $(x_{n,m})_{n,m}$ (naar $z_{n}$) en (bestaan en) zijn volgende limieten gelijk.
+  \[ \lim_{m \rightarrow +\infty}\lim_{n \rightarrow +\infty}x_{n,m} = \lim_{n \rightarrow +\infty}\lim_{m \rightarrow +\infty}x_{n,m} \]
+\extra{bewijs:katelijne}
+\end{st}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een dubbelrij in het algemeen.
+
+  \begin{proof}
+    Beschouw de dubbelrij $(x_{n,m})_{n,m}$ als volgt:
+    \[
+    x_{n,m} = 
+    \left\{
+      \begin{array}{rl}
+        0 & \text{ als } n \le m \\
+        m & \text{ als } n > m \\
+      \end{array}
+    \right.
+    \] 
+    \[ \lim_{m \rightarrow +\infty}\lim_{n \rightarrow +\infty}x_{n,m} = \lim_{m\rightarrow +\infty}m = +\infty \]
+    \[ \lim_{n \rightarrow +\infty}\lim_{m \rightarrow +\infty}x_{n,m} = \lim_{n \rightarrow +\infty}0 = 0 \]
+  \end{proof}
+\end{tvb}
 
 
 

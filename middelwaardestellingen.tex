@@ -31,7 +31,7 @@
   Een inwendig punt van een deel $A$ van $\mathbb{R}$ waarvoor $f'(a)=0$ geldt, noemt men een \term{kritiek punt} van $f$.
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een inwendig punt $a$ van $A$.
   Stel dat $f$ een lokaal extremum bereikt in een $a$ en dat $f$ afleidbaar is in $a$, dan geldt $f'(a) = 0$, t.t.z dan is $a$ een kritiek punt van $f$.
 
@@ -58,7 +58,7 @@
       \extra{bewijs}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{tvb}
   Het omgekeerde van bovenstaande stelling geldt niet:
@@ -98,7 +98,7 @@
   \end{itemize}
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   Stel dat een functie $f: I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een afleidbare functie is op een open interval $I$.
   \begin{itemize}
   \item Als $f$ stijgt over $I$, dan geldt $\forall x\in I:\ f'(x) \ge 0$.
@@ -119,7 +119,7 @@
       \extra{bewijs}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \extra{het omgekeerde geldt ook} 
 
@@ -129,7 +129,7 @@
 \subsubsection{Rolle}
 \label{sec:rolle}
 
-\begin{st}
+\begin{bst}
   \label{st:rolle}
   De \term{middelwaardestelling van Rolle}\\
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$.
@@ -159,17 +159,63 @@
       \end{itemize}
     \end{itemize}
   \end{proof}
-\end{st}
+\end{bst}
 
 \begin{tvb}
   Bovenstaande stelling geldt niet in $\mathbb{Q}$.
-\extra{bewijs}
+
+  \begin{proof}
+    Kies $f:\ \interval{0}{\sqrt{6}} \rightarrow \mathbb{Q}:\ x \mapsto \frac{x^{3}}{3}-2x$ zodat $f'(x) = x^{2}-2$.
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-2, ymax=2, xmin=-0.1, xmax=2.5]
+          \addplot[smooth,domain=0:2.4494]{((x^3)/3)-2*x};
+          \addplot[soldot] coordinates{(0,0)(2.4494,0)};
+          \addplot[holdot] coordinates{(1.4142,-1.8856)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    $f(0)$ is gelijk aan $f(\sqrt{6})$ maar $f'$ heeft geen nulpunten in $\mathbb{Q}$.
+\feed
+  \end{proof}
 \end{tvb}
+
+
+\begin{st}
+  Toepassinkje:\\
+  Twee auto's rijden op een snelweg, in dezelde richting (en zin).
+  Als de auto's op geen enkel tijdstip dezelfde snelheid hebben, dan kunnen de auto's elkaar hoogstens \'e\'en keer passeren.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat de auto's elkaar twee keer passeren.\\
+    Noem de afstandsfunctie tussen de twee auto's $f$.
+    Omdat de auto's elkaar twee keer passeren is geldt $f(a)=f(b)=0$ voor verschillende $a$ en $b$.
+    Volgens de stelling van Rolle bestaat er dan een $c$ tussen $a$ en $b$ zodat $f'(c)$ nul is.
+    Dit betekent dat de auto's op moment $c$ aan dezelfde snelheid reden.
+    Contradictie.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Toepassingkje:\\
+  De vergelijking $x^{3}+ax+b =0$ heeft precies \'e\'en oplossing.
+  \begin{proof}
+    In delen:
+    \begin{itemize}
+    \item Het aantal oplossingen is hoogstens \'e\'en:\\
+      Uit het ongerijmde: stel dat er twee verschillende nulpunten bestaan van $x^{3}+ax+b$, dan bestaat er een $z$ tussen die nulpunten zodat $3z^{2} = -\frac{a}{3}$ geldt.
+      Contradictie.
+    \item Het aantal oplossingen is minstens \'e\'en:\\
+\extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\end{st}
 
 \subsubsection{Lagrange}
 \label{sec:middelwaardestelling-lagrange}
 
-\begin{st}
+\begin{bst}
   \label{st:middelwaardestelling-lagrange}
   De \term{middelwaardestelling van Lagrange}\\
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$.
@@ -179,12 +225,14 @@
   \begin{proof}
    Beschouw de hulpfunctie $g$:
    \[ g: \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto g(x) = f(x)-\frac{f(b)-f(a)}{b-a}(x-a) \]
+   In mensentaal uitgelegd is $g$ de functie die we bekomen als we de grafiek van $f$ draaien zodat de lijn tussen $(a,f(a))$ en $(b,f(b))$ horizontaal komt te liggen. (Dit is ook waarom het belangrijk is dat we $f$ op $\interval{a}{b}$ beschouwen, anders zou $g$ wel eens geen functie kunnen zijn.)
    \begin{itemize}
+   \item $g$ is continu op $\interval{a}{b}$ want $g$ is opgebouwd uit continue functies.\vbref{vb:constante-functies-continu}\prref{pr:optelling-continu}\prref{pr:product-continu}\prref{pr:quotient-continu}
    \item Er geldt $g(a) = g(b)$:
      \[ g(a) = f(a)-\frac{f(b)-f(a)}{b-a}(a-a) = f(a) \]
      \[ g(b) = f(b)-\frac{f(b)-f(a)}{b-a}(b-a) = f(a) \]
      Er bestaat dus een $c\in \interval[open]{a}{b}$ zodat $g'(c)$ nul is.\stref{st:rolle}
-   \item $g'$ ziet er bovendien als volgt uit:
+   \item $g'$ ziet er bovendien als volgt uit: ($g$ is dus afleidbaar op $\interval[open]{a}{b}$.
      \[
      \begin{array}{rl}
        \lim_{x \rightarrow x}\frac{g(x)-g(a)}{x-a}
@@ -193,7 +241,7 @@
        &= f'(x)-\frac{f(b)-f(a)}{b-a}\\
      \end{array}
      \]
-   \item In $c$ volgt uit $g'(c)$ de stelling:
+   \item  In $c$ volgt uit $h'(c)$ de stelling:
      \[
      f'(c)-\frac{f(b)-f(a)}{b-a} = 0 
      \]
@@ -203,18 +251,51 @@
    \end{itemize}
   \end{proof}
 \feed
-\end{st}
+\end{bst}
+
 
 \begin{tvb}
   Bovenstaande stelling geldt niet in $\mathbb{Q}$.
-\extra{bewijs}
+  \begin{proof}
+    Zie het tegenvoorbeeld voor de stelling van rolle.
+  \end{proof}
 \end{tvb}
+
+
+\begin{de}
+  Zij $f:\mathbb{R} \rightarrow \mathbb{R}$ een afleidbare functie.
+  Een vast punt $x \in \mathbb{R}$ is een punt waarvoor $f(x) = x$ geldt.
+\end{de}
+
+\begin{st}
+  \label{st:vast-punt-uniek-voor-specifieke-functie}
+  Zij $f:\mathbb{R} \rightarrow \mathbb{R}$ een afleidbare functie met de volgende eigenschap, dan heeft $f$ hoogstens \'e\'en vast punt.
+  \[ \forall t\in \mathbb{R}: f'(t) \neq 1 \]
+  
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat $f$ minstens twee vaste punten heeft.\\
+    Noem $v$ en $w$ de vaste punten van $f$.
+    De middelwaardestelling van Lagrange geeft ons dan een $c$ zodat $f'(c)$ gelijk is aan $\frac{v-w}{v-w} = 1$. contradictie.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $f:\mathbb{R} \rightarrow \mathbb{R}$ een afleidbare functie met de volgende eigenschap, dan heeft $f$ precies \'e\'en vast punt.
+  \[ \exists A \in \interval[open right]{0}{1}:\ \forall t \in \mathbb{R}:\ |f'(t)| \le A \]
+  Het vast punt wordt bovendien gegeven als de volgende limiet:
+  \[ \lim_{n \rightarrow +\infty}x_{n} \text{ met } x_{n+1} = f(x_{n}) \text{ en } x_{0} \text{ willekeurig.} \]
+
+  \begin{proof}
+    We weten al dat als $f$ een vast punt heeft dat dat vast punt dan uniek is.\stref{st:vast-punt-uniek-voor-specifieke-functie}
+    \extra{bewijs daat die limiet een vast punt is.}
+  \end{proof}
+\end{st}
 
 
 \subsubsection{Cauchy}
 \label{sec:cauchy}
 
-\begin{st}
+\begin{bst}
   \label{st:middelwaardestelling-cauchy}
   De \term{middelwaardestelling van Cauchy}\\
   Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ continue functes op een begrensd gesloten interval $\interval{a}{b}$.
@@ -225,6 +306,7 @@
     Beschouw de hulpfunctie $h$:
     \[ h:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto h(x) = (f(b)-f(a))g(x) -f(x)(g(b)-g(a)) \]
     \begin{itemize}
+    \item $h$ is continu op $\interval{a}{b}$ want zowel $f$ als $g$ is continu op $\interval{a}{b}$.
     \item Er geldt $h(a)=h(b)$:
       \[
       \begin{array}{rl}
@@ -245,7 +327,6 @@
       \[
       h'(x) = (f(b)-f(a))g'(x)-f'(x)(g(b)-g(a))
       \]
-      \question{hoe moet ik dit verder uitwerken?}
    \item In $c$ volgt uit $h'(c)$ de stelling:
      \[
      (f(b)-f(a))g'(c)-f'(c)(g(b)-g(a)) = 0
@@ -256,11 +337,16 @@
     \end{itemize}
   \end{proof}
   \feed
+\end{bst}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een functie die afleidbaar over $\mathbb{R} \setminus \{c\}$ zodat $\lim_{x\rightarrow c}f'(x)$ bestaat en eindig is, dan is $f$ afleidbaar in $c$.
+\extra{bewijs}
 \end{st}
 
 \subsection{Stijgen, dalen of constant zijn}
 
-\begin{pr}
+\begin{bpr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$ die afleidbaar is in $\interval[open]{a}{b}$.
   \begin{itemize}
   \item Als $f'(c) \ge 0$ geldt voor alle $c \in \interval[open]{a}{b}$, dan is $f$ stijgend in $\interval{a}{b}$
@@ -280,10 +366,10 @@
     \item \extra{bewijs}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
-  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd gesloten interval $\interval{a}{b}$ die afleidbaar is in $\interval[open]{a}{b}$.
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functe op een begrensd, gesloten interval $\interval{a}{b}$ die afleidbaar is in $\interval[open]{a}{b}$.
   Als $\forall c\in \interval[open]{a}{b}: f'(c) = 0$ geldt, dan is $f$ constant.
 
   \begin{proof}
@@ -294,20 +380,53 @@
     Omdat $f'(c)$ nul is, moet $f(x)$ gelijk zijn aan $f(a)$.
   \end{proof}
 \extra{rechtstreeks bewijzen vanuit de definitie van een afgeleide}
-\end{pr}
+\end{bpr}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet wanneer we het interval $\interval{a}{b}$ vervangen door een willekeurig deel $A$ en $\interval[open]{a}{b}$ door $\mathring{A}$.
+  \begin{proof}
+    Beschouw de functie $f$ als volgt. $f$ is overal afleidbaar op zijn domein en de afgeleide is overal $0$, maar $f$ is niet constant.
+    \[
+    f:\ \interval[open]{0}{1}\cup \interval[open]{2}{3}:\ x \mapsto
+    \left\{
+      \begin{array}{rl}
+        0 & \text{ als } x \in \interval[open]{0}{1}\\
+        1 & \text{ als } x \in \interval[open]{2}{3}
+      \end{array}
+    \right.
+    \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1.1, ymax=2.1, xmin=-0.3, xmax=3.3]
+          \addplot[smooth,domain=0:1]{0};
+          \addplot[smooth,domain=2:3]{1}; \addplot[holdot]
+          coordinates{(0,0)(1,0)(2,1)(3,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{proof}
+\end{tvb}
+\extra{tegenvoorbeelden voor de interval-heid voorwaarde op $A$?}
+
+\begin{gst}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een functie die afleidbaar is in een punt $a\in \mathbb{R}$ met $f'(a) \ge 0$.
+  Het is niet waar dat er een open interval rond $a$ bestaat zodat $f$ stijgt over dat interval.
+\extra{vind een tegenvoorbeeld hint: rare sinus!}
+\end{gst}
 
 \subsection{Limieten van rijen van afleidbare functies}
 \label{sec:limieten-van-rijen}
 
-\begin{st}
+\begin{bst}
   Beschouw een rij $(f_{n})_{n}$ van afleidbare functies gedefinieerd op een interval $I \subseteq \mathbb{R}$ met waarden in $\mathbb{R}$.
   Stel dat $(f_{n})_{n}$ puntsgewijs convergeert naar een functie $f:\ I \rightarrow \mathbb{R}$ en dat $(f'_{n})_{n}$ uniform op $I$ convergeert, dan is $f$ afleidbaar:
   \[ \forall a\in I:\ f'(a) = \lim_{n\rightarrow +\infty}f_{n}'(a) \]
 
   \begin{proof}
-    Kies een willekeurige $a\in $ en noteer de limiet van $f_{n}'(a)$ als $L$.
-    We tonen het volgende aan, en dan volgt daaruit de stelling:
-    \[ \lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a} = L \]
+    We tonen het volgende aan:
+    \[ \forall a\in I:\ \lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a} = \lim_{n\rightarrow +\infty}f_{n}'(a) \]
+    Noem het rechterlid $L$.
     \begin{itemize}
     \item Merk eerst op dat voor alle $x\in I$, verschillend van $a$, en alle $m\in \mathbb{N}$ het volgende geldt:
       \[
@@ -321,7 +440,7 @@
     \item Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
       \begin{itemize}
       \item 
-        Omdat $(f_{n}')_{n}$ uniform convergeert kunnen we een $n_{0}\in \mathbb{N}$ vinden als volgt:
+        Omdat $(f_{n}')_{n}$ uniform convergeert naar $f'(x)$ (moet het een Cauchyrij zijn \waarom en ) kunnen we een $n_{0}\in \mathbb{N}$ vinden als volgt:
         \[ \forall m,n \ge n_{0},\forall y\in I:\ |f'_{n}(y)-f'_{m}(y)| < \frac{\epsilon}{3} \]
         Vanwege de middelwaardestelling van lagrange bestaat er voor elke $x\in I$, verschillend van $a$, en voor elke $n,m\in \mathbb{N}$ een $c$ tusen $a$ en $x$ als volgt:\stref{st:middelwaardestelling-lagrange}
         \[ \left| \frac{f_{n}(x)-f_{n}(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right| = \left| f'_{n}(c) -f'_{m}(c) \right| \]
@@ -331,7 +450,7 @@
         \[ \forall m \ge n_{0},\forall y\in I:\ \left| \frac{f(x)-f(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right| \le \frac{\epsilon}{3} \]
         \clarify{waarom plots $\le$?}
       \item 
-        Omdat $f'_{n}(a)$ naar $L$ convergeert, kunnen we een $m_{0} \in \mathbb{N}$ vinden zodat het volgende geldt:
+        Omdat $f'_{n}(a)$ uniform naar $L$ convergeert, kunnen we een $m_{0} \in \mathbb{N}$ vinden zodat het volgende geldt:
         \[ \forall m\in \mathbb{N}: m \ge m_{0} \Rightarrow \left| f'_{m}(a) - L \right| < \frac{\epsilon}{3}\]
       \item 
         Omdat $f_{m}$ afleidbaar is in $a$, kunnnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden  als volgt:
@@ -341,7 +460,13 @@
       \[ \forall x\in I:\ 0 < |x-a| < \delta:\ \left| \frac{f(x)-f(a)}{x-a} - L \right|  < \frac{\epsilon}{3}+\frac{\epsilon}{3} +\frac{\epsilon}{3} = \epsilon \]
     \end{itemize}
   \end{proof}
-\end{st}
+\end{bst}
+
+
+\extra{tegenvoorbeelden p III.26}
+
+\section{Een tussenwaardestelling voor afgeleide}
+\label{sec:een-tuss-voor}
 
 
 
