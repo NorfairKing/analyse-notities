@@ -1,7 +1,155 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{Afgeleiden voor functies van $\mathbb{C}$ naar $\mathbb{C}$}
+\label{sec:afgel-voor-funct}
 
+\TODO{definieer ophopingspunt in $\mathbb{C}$}
+\begin{de}
+  Zij $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ een complexe functie en $a \in \mathbb{C}$ een ophopingspunt van $A$.
+  We noemen $L\in \mathbb{C}$ de \term{limiet} van $f$ in $a$, en noteren dit als volgt:
+  \[ \lim_{z \rightarrow a}f(z) = L \]
+  ... als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall z\in A:\ 0 < |z-a| < \delta \Rightarrow |f(z) - L| < \epsilon \]
+\end{de}
+
+\begin{pr}
+  \label{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij-in-c}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ en een $L \in \mathbb{C}$.
+  Zij $a \in \mathbb{C}$ een ophopingspunt van $A$.
+  De limiet van $f(x)$ in $a$ is $L$ als en slechts als $L$ ook de limiet is van het beeld van elke rij $(z_{n})_{n}$ in $A\setminus\{a\}$ die $a$ als limiet heeft.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$
+      Zij $(z_{n})_{n}$ een rij in $A\setminus \{a\}$ met $a$ als limiet.
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat de limiet van $f$ in $a$ $L$ is, bestaat er dan een $\delta \in \mathbb{C}_{0}^{+}$ zodat uit voor alle $z\in A$ uit $|z-a|<\delta$ volgt dat $|f(z)-L|<\epsilon$ geldt.
+      Omdat de rij convergeert naar $a$, bestaat er een $n_{0}\in \mathbb{N}$ zodat voor alle volgende $n\in\mathbb{N}$ geldt dat $|z_{n}-a|$ kleiner is dan $\delta$.
+      Vanaf die $n_{0}$ is $|f(z_{n})-L|$ dus kleiner dan $\epsilon$.
+    \item $\Leftarrow$
+\extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\TODO{rekenregels voor limieten in $\mathbb{C}$}
+
+\begin{de}
+  Zij $f$ een functie en $a\in A$:
+  \[ f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}:\ x \mapsto f(x) \]
+  We noemen $f$ \term{continu} in $a$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall z\in A:\ |z-a| < \delta \Rightarrow |f(z) -f(a)| < \epsilon \]
+  We noemen $f$ \term{continu} op $A$ als $f$ continu is in elke $a\in A$.
+\end{de}
+
+\TODO{verband tussen limieten en continu\"iteit}
+
+\begin{bpr}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ met $A \cap \mathbb{R} \neq \emptyset$.
+  Zij $a \in \mathbb{R}$ een ophopingspunt van $A \cap \mathbb{R}$ en noteer $g=f|_{A \cap \mathbb{R}}$.
+  Als $\lim_{z\rightarrow a}f(z)$ bestaat, dan bestaat ook $\lim_{x \rightarrow a}g(x)$ en dan geldt $\lim_{x \rightarrow a}g(x) = \lim_{z \rightarrow a}f(z)$.
+\TODO{bewijs p 52}
+\end{bpr}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+
+\TODO{tegenvoorbeeld p 52}
+\end{tvb}
+
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ en een ophopingspunt $a\in A$ van $A$.
+  We noemen $f$ \term{afleidbaar} in $a$ als en slechts als de volgende limiet bestaat in $\mathbb{C}$
+  \[ \lim_{z \rightarrow a}\frac{f(z)-f(a)}{z-a} \]
+  We noemen deze limiet de \term{afgeleide} van $f$ in $a$ en noteren hem met $f'(a)$.
+  Als alle punten van $A$ ophopingspunten zijn van $A$, noemen we $f$ \term{afleidbaar op} $A$ als afleidbaar is in elke $z \in A$.
+  We definieren dan de \term{afgeleide functie} $f'$ als volgt:
+  \[ f':\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto f'(z) \]
+\end{de}
+
+\TODO{rekenregels voor afgeleiden in $\mathbb{C}$}
+
+\begin{vb}
+  Voor alle $n \in \mathbb{N}_{0}$ is de afgeleide functie $f'$ van $f:\ \mathbb{C} \rightarrow \mathbb{C}: z \mapsto z^{n}$ gegeven door $f':\ \mathbb{C} \rightarrow \mathbb{C}: z \mapsto nz^{n-1}$.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De afgeleide functie $f'$ van $f:\ \mathbb{C}_{0} \rightarrow \mathbb{C}: z \mapsto \frac{1}{z}$ is gegeven door $f':\ \mathbb{C}_{0} \rightarrow \mathbb{C}: z \mapsto -\frac{1}{z^{2}}$.
+\extra{bewijs}
+\end{vb}
+
+\begin{bpr}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ met $A \cap \mathbb{R} \neq \emptyset$ en $f(A \cap \mathbb{R})\subseteq \mathbb{R}$.
+  Zij $a \in \mathbb{R}$ een ophopingspunt van $A \cap \mathbb{R}$ en noteer $g=f|_{A \cap \mathbb{R}}$.
+  Als $f$ afleidbaar is in $a$, dan is ook $g$ afleidbaar in $a$ en geldt $g'(a)=f'(a)$.
+\TODO{bewijs p 53}
+\end{bpr}
+
+\begin{tvb}
+  Het omgekeerde van deze stelling geldt niet.
+\TODO{tegenvoorbeeld p 53}
+\end{tvb}
+
+\mst{complexe afleidbaarheid is sterker dan re\"ele afleidbaarheid}
+
+\begin{bst}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, gedefinieerd op een open deel $A$ van $\mathbb{C}$.
+  Stel dat $f$ \'e\'en maal afleidbaar is op $A$, dan geldt:
+  \begin{itemize}
+  \item $f$ is oneindig keer afleidbaar op $A$.
+  \item Zij $a\in A$, $r\in \mathbb{R}_{0}^{+}$ zodat uit $|z-a|< r$ volgt dat $z\in A$ geldt, dana geldt:
+    \[ \forall z\in \mathbb{C}:\ |z-a|< r \Rightarrow f(z) = \lim_{n \rightarrow \infty}\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(z-a)^{k} \]
+  \end{itemize}
+\zb
+\end{bst}
+
+\begin{st}
+  Als een functie $f:\ \mathbb{C} \rightarrow \mathbb{C}$ afleidbaar is op $\mathbb{C}$ en begrensd, dan is $f$ constant.
+\zb
+\end{st}
+
+\begin{st}
+  Als $f: A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ afleidbaar is op een open deel $A$ van $\mathbb{C}$ en als $\gamma$ een gesloten kromme is die samen met haar binnenste in $A$ ligt, dan is de waarde vnan $f$ in alle punten binnen de kromme $\gamma$ bepaald door de waarde die $f$ aanneemt in punten op de kromme $\gamma$.
+\zb
+\end{st}
+
+\begin{st}
+  Als $f: A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ afleidbaar is op een open deel $A$ van $\mathbb{C}$, dan kan $|f|$ geen lokaal maximum bereiken in $A$.
+\zb
+\end{st}
+
+\begin{gst}
+  De stelling van Rolle geldt niet in $\mathbb{C}$.
+  \extra{tegenvoorbeeld p 55}
+  De stelling van Lagrange geldt dus ook niet meer in $\mathbb{C}$
+\end{gst}
+
+\begin{de}
+  Een verzameling $A \subseteq \mathbb{C}$ noemen we \term{convex} als ze de volgende eigenschap heeft.
+  \[ \forall a,b \in A:\ \forall \lambda \in \interval{0}{1}:\ ((1-\lambda)a+\lambda b) \in A \]
+\end{de}
+\extra{voorbeelden van convexe deelverzamelingen van $\mathbb{C}$.}
+
+\begin{bpr}
+  Beschouw een afleidbare functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, gedefinieerd op een open, convex deel $A$ van $\mathbb{C}$.
+  \[ \forall a,b \in A:\ a \neq b \Rightarrow \left|\frac{f(b)-f(a)}{b-a}\right| \le \sup\left\{ \left|f'((1-\lambda)a+\lambda b)\right| \mid \lambda \in \interval{0}{1} \right\} \]
+\TODO{bewijs p 56}
+\end{bpr}
+
+\TODO{definieer convergentie van functies in $\mathbb{C}$?}
+
+\begin{st}
+  Beschouw een rij $(f_{n})_{n}$ van afleidbare functies, gedefineerd op een convex, open deel $A$ van $\mathbb{C}$ met waarden in $\mathbb{C}$, die puntsgewijs convergeert naar een functie $f:\ A \rightarrow \mathbb{C}$.
+  Stel bovendien dat $(f'_{n})_{n}$ uniform convergeert op $A$, dan geldt:
+  \begin{itemize}
+  \item $f$ is afleidbaar.
+  \item $\forall a\in A:\ f'(a) = \lim_{n \rightarrow \infty}f'_{n}(a)$
+  \end{itemize}
+  \TODO{bewijs p 56}
+\end{st}
 
 
 \end{document}
