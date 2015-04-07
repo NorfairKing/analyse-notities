@@ -42,16 +42,16 @@
 \usepackage{pgfplots}
 \pgfplotsset{soldot/.style={only marks,mark=*}}                                         
 \pgfplotsset{holdot/.style={fill=white,only marks,mark=*}}
-% \usetikzlibrary{external}
-% \tikzexternalize[prefix=figures/]
+\usetikzlibrary{external}
+\tikzexternalize[prefix=figures/]
 
-% \makeatletter
-% \renewcommand{\todo}[2][]{
-%     \tikzexternaldisable
-%     \@todo[#1]{#2}
-%     \tikzexternalenable
-% }
-% \makeatother
+\makeatletter
+\renewcommand{\todo}[2][]{
+    \tikzexternaldisable
+    \@todo[#1]{#2}
+    \tikzexternalenable
+}
+\makeatother
 
 % Headers
 \usepackage{fancyhdr}
@@ -63,6 +63,8 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
+% Voor commit in titelpagina
+\immediate\write18{git rev-parse --short HEAD > commit.tex}
 
 % indices
 \usepackage{makeidx}

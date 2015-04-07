@@ -1,0 +1,168 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Reeksen in $\mathbb{C}$}
+\label{sec:reeksen-mathbbc}
+
+\begin{de}
+  Zij $(x_{n})_{n}$ een rij in $\mathbb{C}$.
+  Hiermee construeren we een nieuwe rij $(s_{n})_{n}$ als volgt:
+  \[  s_{n} = \sum_{k=0}^{n}x_{k}  \]
+  Men noemt het stel $((x_{n})_{n}, (s_{n})_{n})$ de \term{reeks} van de rij $(x_{n})_{n}$ .
+  Men noemt $s_{n}$ de $n$-de \term{partieelsom} van de reeks en $x_{n}$ de $n$-de \term{term} van de reeks.
+\end{de}
+
+\begin{de}
+  Men koort het tupel $((x_{n})_{n}, (s_{n})_{n})$ vaak af met $\sum_{k}x_{k}$.
+\end{de}
+
+\begin{opm}
+  Het maakt natuurlijk niet uit met welk getal we de reeks/rij beginnen te nummeren.
+  De volgorde maakt wel uit. \needed
+\end{opm}
+
+\begin{de}
+  We zekken dat een reeks $((x_{n})_{n}, (s_{n})_{n})$ convergeert in $\mathbb{C}$ als de rij $(s_{n})_{n}$ een limiet heeft in $\mathbb{C}$.
+  Men noteert die limiet dan als $\sum_{k=0}^{\infty}x_{k}$.
+\end{de}
+
+\begin{vb}
+  De volgende reeks convergeert als en slechts als $p \in \mathbb{R}$ groter is dan $1$.
+  \[ \sum_{n}\frac{1}{n^{p}} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{bpr}
+  Stel dat een reeks $\sum_{k}x_{k}$ convergeert, dan geldt $\lim_{n \rightarrow \infty}x_{n} = 0$.
+\TODO{bewijs: oefening p 3}
+\end{bpr}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+  Zie hieronder voor een tegenvoorbeeld.
+\end{tvb}
+
+\begin{de}
+  De \term{harmonische reeks} is de volgende reeks in $\mathbb{C}$.
+  \[ \sum_{n}\frac{1}{n} \]
+\end{de}
+
+\begin{st}
+  De termen van de harmonische reeks gaan naar nul.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  De harmonische reeks convergeert niet.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  Het \term{Criterium van Leibniz}\\
+  Beschouw een dalende rij $(x_{n})_{n}$ van positieve getallen die naar nul gaat, dan convergeert $\sum_{n}(-1)^{n}x_{n}$.
+\TODO{bewijs p 3}
+\end{st}
+
+\begin{de}
+  De \term{alternerende harmonische reeks} is de volgende reeks in $\mathbb{C}$.
+  \[ \sum_{n}(-1)^{n}\frac{1}{n} \]
+\end{de}
+
+\begin{st}
+  De alternerende harmonische reeks convergeert.
+\extra{bewijs}
+\end{st}
+
+\extra{voorbeeld van volgorde van termen maakt uit p 4}
+
+\begin{de}
+  Men noemt een reeks $\sum_{n}x_{n}$ in $\mathbb{C}$ \term{absoluut convergent} als de reeks $\sum_{n}|x_{n}|$ convergent is (in $\mathbb{R}$).
+\end{de}
+
+\begin{vb}
+  De volgende reeks (met $z\in \mathbb{C}$) convergeert absoluut als $|z|$ kleiner is dan $1$ en anders helemaal niet
+  \[ \sum_{n}z^{n} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{bpr}
+  Een absoluut convergente reeks is convergent.
+\TODO{bewijs p 6}
+\end{bpr}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+\extra{tegenvoorbeeld}
+\end{tvb}
+
+\begin{bst}
+  Zij $\sum_{n}x_{n}$ een absoluut convergente reeks in $\mathbb{C}$.
+  Zij $\pi:\ \mathbb{N} \rightarrow \mathbb{N}$ een bijectie, dan convergeert de reeks $\sum_{n}x_{\pi(n)}$ en de limiet ervan is dezelfde als die van de reeks $\sum_{n}x_{n}$.
+\TODO{bewijs p 7}
+\end{bst}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ een rij in $\mathbb{C}$ zodat voor alle bijecties $\pi:\ \mathbb{N} \rightarrow \mathbb{N}$, de reeks $\sum_{n}x_{\pi(n)}$ convergeert, dan moet de reeks $\sum_{n}x_{n}$ absoluut convergeren.
+\extra{bewijs}
+\end{st}
+
+\begin{bst}
+  De \term{vergelijkingstest}\\
+  Zij $(x_{n})_{n}$ een rij in $\mathbb{C}$ en $(y_{n})_{n}$ een rij in $\mathbb{R}^{+}$.
+  Stel dat er een $n\in \mathbb{N}$ bestaat zodat voor alle volgende $n\in \mathbb{N}$ $|x_{n}| < y_{n}$ geldt, dan convergeert $\sum_{n}x_{n}$ absoluut als $\sum_{n}y_{n}$ convergeert.
+\TODO{bewijs p 7}
+\end{bst}
+
+\begin{st}
+  Beschouw een reeks $\sum_{n}x_{n}$ in $\mathbb{C}$ met (alle?) termen verschillend van nul.
+  \begin{itemize}
+  \item Als $\limsup_{n\rightarrow \infty}\left| \frac{x_{n+1}}{x_{n}}\right|$ kleiner is dan $1$, dan convergeert de reeks asoluut.
+  \item Als er een $n_{0}$ bestaat zodat $\left| \frac{x_{n+1}}{x_{n}}\right|$ groter wordt dan $1$ voor alle volgende $n\in \mathbb{N}$, dan convergeert de reeks niet.
+  \end{itemize}
+\TODO{bewijs p 9}
+\end{st}
+
+\begin{opm}
+  Als $\lim_{n\rightarrow \infty}\left|\frac{x_{n+1}}{x_{n}}\right| = 1$ geldt, doet de verhoudingstest geen uitspraak.
+\extra{waarom?} voorbeelden.
+\end{opm}
+
+\begin{vb}
+  Beschouw de volgende reeks in $\mathbb{C}$ voor een willekeurige $z\in \mathbb{C}$.
+  \[ \sum_{n}\frac{z^{n}}{n!} \]
+  We toesten met de verhoudingstest of deze reeks convergeert.
+\extra{doen p 9}
+\end{vb}
+
+\begin{st}
+  De \term{Worteltest van Cauchy}\\
+  Beschouw een reeks $\sum_{n}x_{n}$ in $\mathbb{C}$ en noem $L= \limsup_{n\rightarrow \infty}\sqrt[n]{|x_{n}|}$.
+  \begin{itemize}
+  \item Als $L<1$ geldt, dan convergeert de reeks absoluut.
+  \item Als $L>1$ geldt, dan convergeert de reeks niet.
+  \end{itemize}
+\TODO{bewijs p 10}
+\end{st}
+
+\begin{opm}
+  Als $\limsup_{n\rightarrow \infty}\sqrt[n]{|x_{n}|}= 1$ geldt, doet de wortel geen uitspraak.
+\extra{waarom?} voorbeelden.
+\end{opm}
+
+\extra{voorbeelden p 10}
+
+\begin{st}
+  De worteltest is fijner dan de verhoudingstest.
+\extra{formuleer p 11 en bewijs}
+\end{st}
+
+
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
