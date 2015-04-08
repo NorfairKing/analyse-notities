@@ -462,10 +462,131 @@
   \end{proof}
 \end{bst}
 
+\begin{tvb}
+  Bovenstaande functie geldt niet als $(f'_{n})_{n}$ niet uniforum convergeert naar $f'_{n}$.
+  \begin{proof}
+    Beschouw de volgende rij afleidbare functies $f_{n}$.
 
-\extra{tegenvoorbeelden p III.26}
+    \noindent
+    \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[xmin=-2, xmax=2,ymin=-0.1, ymax=3.9]
+          \foreach \n in {1,...,10}{
+            \addplot[smooth,domain=-2:2]{sqrt(x^2+(1/\n^2))};
+          }
+          \addplot[smooth,color=blue,thick,domain=-2:0]{-x};
+          \addplot[smooth,color=blue,thick,domain=0:2]{x};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+    \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x^{2}+ \frac{1}{n^{2}}} \]
+    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ |x| \]
+    \end{minipage}
+    Voor elke $x\in \mathbb{R}$ geldt $\lim_{n\rightarrow \infty}f_{n}(x) = \sqrt{x^{2}} = |x|$, dus de rij functies convergeert al zeker puntsgewijs naar $f$.
+    De convergentie is bovendien uniforum op $\mathbb{R}$ vanwege de volgende afschatting:
+    \[
+    \left| \sqrt{x^{2}+\frac{1}{n^{2}}} - |x| \right|
+    = \frac{\frac{1}{n^{2}}}{\sqrt{x^{2}+\frac{1}{n^{2}}} + |x|}
+    \le \frac{1}{n^{2}}
+    = \frac{1}{n}
+    \]
+\extra{uitwerken?}
+    We hebben nu een rij afleidbare functies $(f_{n})_{n}$ die uniforum convergeert op $\mathbb{R}$ naar een functie $f$ die niet afleidbaar is in $0$.
+    $(f_{n}')_{n}$ convergeert dus niet naar $f'$.
+  \end{proof}
+\end{tvb}
 
-\section{Een tussenwaardestelling voor afgeleide}
+\subsection{De regel van de l'H\^opital}
+\label{sec:de-regel-van}
+
+\begin{bpr}
+  Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $a\in A$ die een ophopingspunt is van $A$.
+  Stel dat $f(a)=g(a)=0$ geldt, dan $f$ en $g$ afleidbaar zijn in $a$ en dat $g'(a)$ niet nul is, dan bestaat $\lim_{x \rightarrow a}\frac{f(x)}{g(x)}$ en geldt:
+  \[ \lim_{x\rightarrow a}\frac{f}{g}= \frac{f'(a)}{g'(a)} \]
+
+  \begin{proof}
+    \[
+    \begin{array}{rl}
+      \frac{f'(a)}{g'(a)}
+      &= \frac{\lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a}}{\lim_{x\rightarrow a}\frac{g(x)-g(a)}{x-a}}\\
+      &= \lim_{x\rightarrow a}\frac{\frac{f(x)-f(a)}{x-a}}{\frac{g(x)-g(a)}{x-a}}\\
+      &= \lim_{x\rightarrow a}\frac{f(x)-f(a)}{g(x)-g(a)}\\
+      &= \lim_{x\rightarrow a}\frac{f}{g}
+    \end{array}
+    \]
+    We gebruiken in de tweede gelijkheid dat $g'(a)$ niet nul is.\prref{pr:limiet-door-quotient}
+  \end{proof}
+\end{bpr}
+
+\begin{st}
+  De \term{regel van de l'H\^opital}\\
+  Beschouw functies $f,g:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een interval $I$.
+  Zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $I$.
+  Stel dat $f$ en $g$ afleidbaar zijn in $I \setminus \{a\}$ en dat $g(x)$ en $g'(x)$ beide niet nul zijn voor alle $I \setminus \{a\}$.
+  Stel dat $\lim_{x\rightarrow a}f(x)$ en $\lim_{x\rightarrow a}g(x)$ beide nul zijn of dat $\lim_{x\rightarrow a}g(x) = \pm\infty$ geldt.
+  \begin{center}
+    Als $\lim_{x\rightarrow a}\frac{f'(x)}{f'(a)}$ bestaat, dan bestaat ook $\lim_{x\rightarrow a}\frac{f(x)}{f(a)}$ en zijn ze gelijk.
+  \end{center}
+
+  \begin{proof}
+    Groot gevalsonderscheid:
+    We onderscheiden alle (27) gevallen in
+    \[
+    \left\{ a \in \mathbb{R}, a = +\infty, a = -\infty \right\}
+    \]\[\times\]\[
+    \left\{ \lim_{x\rightarrow a}f(x) = \lim_{x\rightarrow a}g(x) = 0, \lim_{x\rightarrow a}g(x) =-\infty ,\lim_{x\rightarrow a}g(x) =+\infty  \right\}
+    \]\[\times\]\[
+    \left\{ \lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = L \in \mathbb{R}, \lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = +\infty, \lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = -\infty \right\}
+    \]
+
+    \begin{itemize}
+    \item $a\in \mathbb{R}$, $\lim_{x\rightarrow a}f(x) = \lim_{x\rightarrow a}g(x) = 0$ en $\lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = L \in \mathbb{R}$.\\
+      We zullen bewijzen dat $\lim_{x\rightarrow a}\frac{f(x)}{f(a)}$ gelijk is aan $L$.
+      Kies daartoe een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat $\lim_{x \rightarrow a}\frac{f'(x)}{f'(a)} = L$ geldt, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
+      \[ \forall c\in I:\ 0<|c-a|<\delta \Rightarrow \left|\frac{f'(c)}{g'(c)}-L\right| < \epsilon \]
+      Kies nu een willekeurige $x\in I$ met $0<|x-a|< \delta$, groter dan $a$ (het andere geval is analoog).
+      Merk op dat $\interval[open]{a}{x}$ nu een deel is van $I$ en dat $\forall y \in \interval[open]{a}{x}: g(x)\neq g(y)$ geldt.
+      (Er zou anders immers een punt $c$ tussen $x$ en $y$ liggen met $g'(c) =0$\stref{st:rolle} en we namen aan van niet.)
+      Kies een willekeurige $y \in \interval[open]{a}{x}$, en merk nu eerst nog het volgende op:
+      \[ \frac{f(x)}{g(x)} = \frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)} + \frac{f(y)}{g(y)} \]
+      Omdat $\lim_{y \rightarrow a}g(y)$ nul is, geldt het volgende
+      \[ \lim_{y \rightarrow a}\frac{g(x)-g(y)}{g(x)} = \frac{g(x)}{g(x)} = 1 \]
+      Omdat $\lim_{y\rightarrow a}(y)$ en $\lim_{y \rightarrow a}g(y)$ beide nul zijn geldt ook het volgende:
+      \[ \lim_{y \rightarrow a}\frac{f(y)}{g(x)} = \frac{0}{g(x)} = 0 \]
+      We kunnen nu de limiet nemen voor $y$ gaande naar $a$ van de opmerking:
+      \[
+      \begin{array}{rl}
+        \frac{f(x)}{g(x)}
+        &= \lim_{y \rightarrow a}\left(\frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)} + \frac{f(y)}{g(y)}\right)\\
+        &= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)}\lim_{y \rightarrow a}\frac{g(x)-g(y)}{g(x)} + \lim_{y \rightarrow a}\frac{f(y)}{g(y)}\\
+        &= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)} \cdot 1 + 0\\
+        &= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)}\\
+      \end{array}
+      \]
+      Er bestaat een $c\in \interval[open]{x}{y}$ als volgt:\stref{st:middelwaardestelling-cauchy}
+      \question{de stelling van Cauchy geldt voor continue functies op een gesloten en begrensd interval, dit is open?!}
+      \[ \left( f(b) - f(a) \right) g'(c) = f'(c) \left( g(b) - g(a) \right) \]
+      Voor die $c$ geldt dan het volgende:
+      \[ \frac{f(x)-f(y)}{f(x)-g(y)} = \frac{f'(c)}{g'(c)} \]
+      Omdat $c$ tussen $x$ en $y$ lag, $y$ tussen $a$ en $x$, en $x$ tussen $a$ en $a+\delta$, ligt $c$ ook tussen $a$ en $a+\delta$.
+      Er geldt dus het volgende voor $c$:
+      \[ \left|\frac{f(x)-f(y)}{g(x)-g(y)} - L\right| = \left| \frac{f'(c)}{g'(c)} - L \right| < \epsilon \]
+      We vinden zo dat $L$ de limiet is van $\frac{f(x)}{f(a)}$ voor $x$ gaande naar $a$:
+      \[ \left|\frac{f(x)}{f(a)}-L\right| = \left|\lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)} - L \right| = \left| \lim_{y\rightarrow a}\frac{f'(c)}{g'(c)} - L \right| < \epsilon \]
+\extra{uitleg uitschrijven voor het bewijs want ik snap er precies nog niets van.}
+    \end{itemize}
+\extra{al de rest}
+  \end{proof}
+\end{st}
+
+
+
+\subsection{Een tussenwaardestelling voor afgeleide}
 \label{sec:een-tuss-voor}
 
 

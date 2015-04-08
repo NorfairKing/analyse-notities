@@ -42,16 +42,16 @@
 \usepackage{pgfplots}
 \pgfplotsset{soldot/.style={only marks,mark=*}}                                         
 \pgfplotsset{holdot/.style={fill=white,only marks,mark=*}}
-\usetikzlibrary{external}
-\tikzexternalize[prefix=figures/]
+% \usetikzlibrary{external}
+% \tikzexternalize[prefix=figures/]
 
-\makeatletter
-\renewcommand{\todo}[2][]{
-    \tikzexternaldisable
-    \@todo[#1]{#2}
-    \tikzexternalenable
-}
-\makeatother
+% \makeatletter
+% \renewcommand{\todo}[2][]{
+%     \tikzexternaldisable
+%     \@todo[#1]{#2}
+%     \tikzexternalenable
+% }
+% \makeatother
 
 % Headers
 \usepackage{fancyhdr}
@@ -66,6 +66,8 @@
 % Voor commit in titelpagina
 \immediate\write18{git rev-parse --short HEAD > commit.tex}
 
+% Voor samengenomen cellen in tabel
+\usepackage{multirow}%
 % indices
 \usepackage{makeidx}
 \makeindex
