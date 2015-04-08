@@ -1,6 +1,247 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{$\exp$, $\sin$ en $\cos$}
+\label{sec:exp-sin-en}
+
+\subsection{$\exp$}
+\label{sec:exp}
+
+\begin{de}
+  De \term{exponentie\"ele functie} op $\mathbb{C}$ is de functie $\exp$.
+  \[ \exp:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \exp(z) = \sum_{n=0}^{\infty}\frac{z^{n}}{n!} \]
+\end{de}
+
+\extra{de bovenstaande machtreeks heeft convergentiestraal $+\infty$}
+
+\begin{bst}
+  De exponentiele functie is afleidbaar op $\mathbb{C}$ en is zijn eigen afgeleide.
+\TODO{bewijs p 27}
+\end{bst}
+
+\begin{bpr}
+  \[ exp(0) = 1 \]
+\TODO{bewijs p 28}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}:\ \overline{\exp(z)} = \exp(\overline{z}) \]
+\TODO{bewijs p 28}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall x,y \in \mathbb{C}:\ \exp(x+y) = \exp(x)\exp(y) \]
+\TODO{bewijs p 28}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}:\ \exp(z) \neq 0 \]
+\TODO{bewijs p 28}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}:\ \exp(-z) = \frac{1}{\exp(z)} \]
+\TODO{bewijs p 28}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall t \in \mathbb{R}:\ |\exp(it)| = 1 \]
+\TODO{bewijs p 28}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}:\ |\exp(z)| = \exp(Re(z)) \]
+\TODO{bewijs p 28}
+\end{bpr}
+
+\begin{pr}
+  $\exp(\mathbb{R}) \subseteq \mathbb{R}$
+\extra{bewijs}
+\end{pr}
+
+\begin{bpr}
+  \[ \forall t \in \mathbb{R}:\ \exp(t) > 0 \]
+\TODO{bewijs p 29}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall t \in \mathbb{R}_{0}^{+}:\ \exp(t) > 1 \]
+\TODO{bewijs p 29}
+\end{bpr}
+
+\begin{bpr}
+  De functie $\exp: \mathbb{R} \rightarrow \mathbb{R}_{0}^{+}:\ t \rightarrow \exp(t)$ is strikt stijgend.
+\TODO{bewijs p 29}
+\end{bpr}
+
+\begin{bpr}
+  \[ \lim_{t \rightarrow +\infty}\exp(t) = +\infty \]
+\TODO{bewijs p 29}
+\end{bpr}
+
+\begin{bpr}
+  \[ \lim_{t \rightarrow -\infty}\exp(t) = 0 \]
+\TODO{bewijs p 29}
+\end{bpr}
+
+\begin{bpr}
+  De functie $\exp: \mathbb{R} \rightarrow \mathbb{R}_{0}^{+}:\ t \rightarrow \exp(t)$ is een bijectie.
+\TODO{bewijs p 29}
+\end{bpr}
+
+\extra{logaritmische functie}
+\extra{eigenschappen onderaan p 29}
+
+\begin{de}
+  We definieren $e = \exp(1)$.
+\end{de}
+
+\begin{bpr}
+  \[ \forall q \in \mathbb{Q}:\ \exp(q) = e^{q} \]
+\TODO{bewijs p 30}
+\end{bpr}
+
+\begin{bpr}
+  Zij $x\in \mathbb{R}$ en $(q_{n})_{n}$ een rij in $\mathbb{Q}$ die naar $x$ convergeert.
+  \[ \exp(x) = \lim_{n\rightarrow +\infty}e^{q_{n}} \]
+\end{bpr}
+
+\begin{de}
+  We noteren $\exp(z) = e^{z}$.
+\end{de}
+
+\subsection{$\sin$ en $\cos$}
+\label{sec:sin-en-cos}
+
+\begin{de}
+  We definie\"eren de \term{cosinusfunctie} $\cos$ als volgt:
+  \[ \cos:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \cos(z) = \frac{e^{iz} + e^{-iz}}{2} \]
+\end{de}
+
+\begin{de}
+  We definie\"eren de \term{sinusfunctie} $\cos$ als volgt:
+  \[ \sin:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \cos(z) = \frac{e^{iz} - e^{-iz}}{2i} \]
+\end{de}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}:\ cos(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n}}{(2n)!} \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}:\ sin(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!} \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}: \cos(-z) = \cos(z) \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z \in \mathbb{C}: \sin(-z) = -\sin(z) \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \cos(0) = 1 \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \sin(0) = 0 \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  $\cos$ is afleidbaar op $\mathbb{C}$ met $\cos'$ als afgeleide:
+  \[ \cos' = -\sin \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  $\sin$ is afleidbaar op $\mathbb{C}$ met $\sin'$ als afgeleide:
+  \[ \sin' = -cos \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \cos(\mathbb{R}) \subseteq \mathbb{R} \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \sin(\mathbb{R}) \subseteq \mathbb{R} \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall t\in \mathbb{R}:\ e^{it} = \cos(t) + i\sin(t) \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall t\in \mathbb{R}:\ \cos^{2}(t) + \sin^{2}(t) = 1 \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall x,y\in \mathbb{R}:\ \cos(x+y) = \cos(x)\cos(y) - \sin(x)\sin(y) \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall x,y\in \mathbb{R}:\ \sin(x+y) = \sin(x)\cos(y) + \cos(x)\sin(y) \]
+\TODO{bewijs: oef p 31}
+\end{bpr}
+
+\begin{bpr}
+  Er bestaat een unieke $t_{0} \in \interval[open]{0}{2}$ zodat het volgende geldt:
+  \begin{itemize}
+  \item $\cos(t_{0}) = 0$
+  \item $\forall t\in \interval[open right]{0}{t_{0}}:\ \cos(t) > 0$
+  \item $\sin(t_{0})=1$
+  \item $\forall t\in \interval[open left]{0}{t_{0}}:\ \sin(t)> 0$ 
+  \end{itemize}
+\TODO{bewijs p 31}
+\end{bpr}
+
+\begin{bpr}
+  De sinusfuncie is periodiek op $\mathbb{R}$ met periode $2\pi$.
+\TODO{ bewijs p 32}
+\end{bpr}
+
+\begin{bpr}
+  De cosinusfuncie is periodiek op $\mathbb{R}$ met periode $2\pi$.
+\TODO{ bewijs p 32}
+\end{bpr}
+
+\begin{bpr}
+  Neem $t\in \interval[open]{0}{2\pi}$ en beschouw het punt $(\cos(t),\sin(t))$ op de cirkel in $\mathbb{R}^{2}$ mett middelpunt $(0,0)$ en straal $1$.
+  $t$ is dan de booglengte van de boog op de cirkel die in $(1,0)$ beging en eindigt in $(\cos(t),\sin(t))$.
+  De cirkel wordt hierbij doorlopen in tegenzin.
+\TODO{ bewijs p 33 }
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z\in \mathbb{C}:\ \exp(z+2\pi i) = \exp(z) \quad\text{ en }\quad \exp(z) = 1 \Leftrightarrow \exists k\in \mathbb{Z}:\ z = 2k\pi i \]
+\TODO{ bewijs p 34 }
+\end{bpr}
+
+\begin{bpr}
+  Zij een $z\in \mathbb{C}$, dan bestaat er een unieke $\theta \in \interval[open right]{0}{2\pi}$ zodat $z=e^{i\pi}|z|$ geldt.
+\TODO{ bewijs p 34 }
+\end{bpr}
+
+\begin{bst}
+  Zij $P:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto P(z) = \sum_{k=0}^{n}a_{k}z^{k}$ een veeltermfunctie van graad $n\in \mathbb{N}_{0}$ met co\"efficienten $a_{k}\in \mathbb{C}$, dan bestaat er een $z_{0}\in \mathbb{C}$ waarvoor $P(z_{0})=0$ geldt.
+\TODO{ bewijs p 35 }
+\end{bst}
+
+
+
+
+
 
 
 

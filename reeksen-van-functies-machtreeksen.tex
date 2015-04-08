@@ -1,6 +1,159 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{Reeksen van functies - Machtreeksen}
+\label{sec:reeksen-van-functies}
+
+\begin{de}
+  Zij $(f_{n})_{n}$ een rij van functies $f_{n}:\ W  \rightarrow \mathbb{C}$.
+  We construeren hiermee een nieuwe rij $(s_{n})_{n}$ van functies $s_{n}:\ W \rightarrow \mathbb{C}$ als volgt:
+  \[ s_{n}:\ A \rightarrow \mathbb{C}:\ x \mapsto s_{n}(x) = \sum_{k=0}^{n}f_{k}(x) \]
+  We noemen het tupel $((f_{n})_{n},(s_{n})_{n})$ de \term{reeks} van de rij $(f_{n})_{n}$.
+  We noemen $s_{n}$ de $n$-de \term{parteelsomfunctie} van de reeks.
+\end{de}
+
+\begin{de}
+  We korten de reeks $((f_{n})_{n},(s_{n})_{n})$ vaak af als $\sum_{n}f_{n}$.
+\end{de}
+
+\begin{de}
+  We zeggen dat een reeks $((f_{n})_{n},(s_{n})_{n})$ van functies $f_{n}:\ W \rightarrow \mathbb{C}$ \term{puntsgewijs convergeert} als en slechts als de rij $(s_{n}(x))_{n}$ voor elke $x\in W$ een limiet heeft in $\mathbb{C}$.
+  Als de reeks puntsgewijs convergeert, dan definieert men de \term{puntsgewijze limietfunctie} $\sum_{k=0}^{\infty}f_{k}$ (notatie) als volgt:
+  \[ \sum_{k=0}^{\infty}f_{k}:\ W \rightarrow \mathbb{C}:\ x \mapsto \lim_{n \rightarrow \infty}\sum_{k=0}^{n}f_{k}(x) \]
+\end{de}
+
+\begin{de}
+  We zeggen dat een reeks $((f_{n})_{n},(s_{n})_{n})$ van functies $f_{n}:\ W \rightarrow \mathbb{C}$ \term{uniforum convergeert} als de rij $(s_{n})_{n}$ uniforum convergeert op $W$.
+\end{de}
+
+\extra{uniforume convergentie impliceert puntsgewijze convergentie, maar niet omgekeerd}.
+
+\begin{de}
+  We zeggen dat een reeks $((f_{n})_{n},(s_{n})_{n})$ van functies $f_{n}:\ W \rightarrow \mathbb{C}$ \term{absoluut convergeert} als de rij $(s_{n})_{n}$ absoluut convergeert voor elke $x \in W$
+\end{de}
+
+\begin{bst}
+  De \term{M-test van Weierstra\ss}
+  Zij $\sum_{n}f_{n}$ een reeks van functies $f_{n}:\ W \rightarrow \mathbb{C}$.
+  Stel dat er een rij $(M_{k})_{k}$ in $\mathbb{R}^{+}$ bestaat zodat $\sum_{k}M_{k}$ convergeert als volgt:
+  \[ \forall k\in \mathbb{N}, \forall x \in W:\ |f_{k}(x)| < M_{k} \]
+  Dan convergeert $\sum_{n}f_{n}$ absoluut en uniforum op $W$.
+\TODO{bewijs p 14}
+\end{bst}
+
+\begin{bpr}
+  Zij $sum_{n}f_{n}$ een reeks van continue functies $f_{n}:\ W \rightarrow \mathbb{C}$, die uniforum convergeert op $W$, dan is de limietfunctie $\sum_{k=0}^{\infty}f_{k}$ ook continu.
+\TODO{bewijs p 15}
+\end{bpr}
+
+\begin{bpr}
+  Zij $\sum_{n}f_{n}$ een reeks van afleidbare functies, gedefineerd op een open, convex, deel $A$ van $\mathbb{C}$ met waarden in $\mathbb{C}$.
+  Stel dat $\sum_{n}f_{n}$ puntsgewijs convergeert naar een functie $f:\ A\subseteq \mathbb{C} \rightarrow \mathbb{C}$ en dat de reeks $\sum_{n}f'_{n}$ uniforum convergeert op $A$, dan geldt:
+  \begin{itemize}
+  \item $f$ is afleidbaar
+  \item $\forall x\in A:\ f'(x) = \sum_{k=0}^{\infty}f'_{k}(x)$
+  \end{itemize}
+\TODO{bewijs p 15 onderaan}
+\end{bpr}
+
+\begin{de}
+  Zij $a \in \mathbb{C}$.
+  Een \term{machtreeks (in $z$) rond $a$} is een reeks van de volgende vorm waarbij $z\in\mathbb{C}$ en waarbij $c_{n}$ gegeven elementen in $\mathbb{C}$ zijn.
+  \[ \sum_{n}c_{n}(z-a)^{n} \]
+  Men noemt de $c_{n}$ de \term{co\"effici\"entien} van de machtreeks.
+\end{de}
+
+\begin{opm}
+  We zien $z \in \mathbb{C}$ hier als een variabele.
+  Een machtreeks is dus eigenlijk een functiereeks $\sum_{n}f_{n}$ met $f_{n}$ als volgt:
+  \[ f_{n}:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto f_{n}(z) = c_{n}(z-a)^{n} \]
+\end{opm}
+
+\begin{bst}
+  Beschouw een machtreeks $\sum_{n}c_{n}(z-a)^{n}$ rond een $a\in \mathbb{C}$.
+  Benoem als volgt:
+  \[ \gamma = \limsup_{n \rightarrow \infty}\sqrt[n]{|c_{n}|} \quad\text{ en }\quad R = \frac{1}{\gamma} \]
+  We noteren ook $\frac{1}{+\infty}=0$ en $\frac{1}{0} = +\infty$.
+  \begin{itemize}
+  \item Als $|z-a| < R$ geldt, dan convergeert de machtreeks absoluut.
+  \item Als $|z-a| > R$ geldt, dan convergeert de machtreeks niet.
+  \end{itemize}
+\TODO{bewijs p 17}
+\end{bst}
+
+\extra{wat gebeurt er bij $|z-a| = R$?}
+
+\begin{de}
+  We noemen de $R$ in de stelling hierboven de \term{convergentiestraal} van de machtreeks.
+\end{de}
+
+\extra{voorbeelden onderaan p 17}
+
+\begin{bpr}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$.
+  Stel dat $c_{n}$ vanaf een bepaalde $n_{0}$ nooit $0$ is en dat de limiet $\lim_{n \rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|}$ bestaat, dan is diee limiet gelijk aan de convergentiestraal van de machtreeks.
+\TODO{bewijs p 18}
+\end{bpr}
+
+\extra{voorbeelden p 19}
+
+\begin{bst}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
+  \[ \forall \rho \in \interval[open]{0}{R} \subseteq \mathbb{R}:\ \text{ de reeks convergeert uniforum op } \left\{ z \in \mathbb{C} \mid |z-a| \le \rho \right\} \]
+\TODO{bewijs p 19}
+\end{bst}
+
+\begin{bgev}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
+  De volgende functie is continu:
+  \[ f:\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=0}^{\infty}c_{n}(z-a)^{n}  \]
+\TODO{bewijs: oefening p 20}
+\end{bgev}
+
+\begin{blem}
+  Voor elke rij $(c_{n})_{n}$ in $\mathbb{C}$ geldt $\limsup_{n\rightarrow +\infty}\sqrt[n]{n|c_{n}|} = \limsup_{n\rightarrow +\infty}\sqrt[n]{|c_{n}|}$.
+\TODO{bewijs p 20}
+\end{blem}
+
+\begin{bst}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
+  De volgende functie is afleidbaar.
+  \[ f:\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=0}^{\infty}c_{n}(z-a)^{n}  \]
+  Bovendien vinden we de afgeleide functie als volgt:
+  \[ f':\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=1}^{\infty}nc_{n}(z-a)^{n-1}  \]
+\TODO{bewijs sp 21}
+\end{bst}
+
+\begin{bgev}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
+  De volgende functie is oneindig keer afleidbaar.
+  \[ f:\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=0}^{\infty}c_{n}(z-a)^{n}  \]
+  Bovendien vinden we de $k$-de afgeleide functie als volgt voor elke $k\in \mathbb{N}$:
+  \[ f^{(k)}:\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=k}^{\infty}\binom{n}{k}c_{n}(z-a)^{n-k}  \]
+  In het bijzonder geldt $f^{(k)}(a) = k!c_{k}$
+\TODO{bewijs}
+\end{bgev}
+
+\begin{de}
+  Gegeven twee reeksen $\sum_{n}x_{n}$, $\sum_{m}c_{n}y_{m}$ in $\mathbb{C}$, dan defini\"eren we de \term{productreeks} $\sum_{k}z_{k}$ als volgt:
+  \[ z_{k} = \sum_{n=0}^{k}x_{n}y_{k-n} \]
+\end{de}
+
+\extra{geen stelling p 23 bovenaan}
+
+\begin{bst}
+  Beschouw twee reeksen $\sum_{n}x_{n}$, $\sum_{m}c_{n}y_{m}$ in $\mathbb{C}$.
+  Als $\sum_{n}x_{n}$ absoluut convergeert en $\sum_{m}y_{m}$ (gewoon) convergeert, dan convergeert de productreeks $\sum_{k}z_{k}$ en ziet de limiet er als volgt uit:
+  \[ \sum_{k=0}^{\infty}z_{k} = \left(\sum_{n=0}^{\infty}x_{n}\right) \cdot \left(\sum_{m=0}^{\infty}y_{m}\right) \]
+\TODO{bewijs p 23}
+\end{bst}
+
+\begin{bpr}
+  Gegeven twee reeksen $\sum_{n}x_{n}$, $\sum_{m}c_{n}y_{m}$ in $\mathbb{C}$ met respectievelijke convergentiestraal $R_{x}$ en $R_{y}$.
+  Beschouw de machtreeks $\sum_{n}c_{n}(z-a)^{n}$ waarbij $c_{n} = \sum_{k=0}^{n}a_{k}b_{n-k}$, dan heeft deze machtreeks een convergentiestraal $R \ge \min\{R_{1},R_{2}\}$ en geldt het volgende:
+  \[ \sum_{n}c_{n}(z-a)^{n} = \left( \sum_{n}a_{n}(z-a)^{n}\right)\cdot \left( \sum_{n}b_{n}(z-a)^{n}\right) \]
+\TODO{bewijs p 24}
+\end{bpr}
 
 
 
