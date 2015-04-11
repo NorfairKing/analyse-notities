@@ -45,6 +45,7 @@
 \end{de}
 
 \begin{de}
+  \label{de:limiet-van-functie-in-plus-oneindig}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $A \subseteq \mathbb{R}$ zodat $+\infty$ een ophopinspunt is van $A$.
   We noemen de \term{limiet} van $f$ in $+\infty$ ...
   \begin{itemize}
@@ -67,6 +68,7 @@
 \end{de}
 
 \begin{de}
+  \label{de:limiet-van-functie-in-min-oneindig}
   Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $A \subseteq \mathbb{R}$ zodat $-\infty$ een ophopinspunt is van $A$.
   We noemen de \term{limiet} van $f$ in $-\infty$ ...
   \begin{itemize}
@@ -198,7 +200,7 @@
   \begin{itemize}
   \item Als de limiet van $f$ naar $a$ bestaat en eindig is, noemen we $a$ een \term{ophefbare discontinu\"iteit}.
   \item Als $a$ een ophopingspunt is van zowel $\interval[open right]{a}{+\infty} \cap A$ als $\interval[open left]{-\infty}{a} \cap A$ en als zowel de linker als de rechterlimiet van $f$ in $a$ bestaan, maar ze zijn niet gelijk, dan noem men $a$ een \term{discontinu\"iteit van de eerste soort} of \term{sprongdiscontinu\"iteit}.
-  \item Als $a$ een ophopingspunt is van $\interval[open left]{-\infty}{a} \cap A$, maar de limiet van $f$ in $a$ niet bestaat, of als $a$ een ophopingspunt is van $\interval[open right]{a}{+\infty}$, maar de limiet van $f$ in $a$ niet bestaat, dan noemt men $a$ een \term{discontinu\"iteit van de tweede soort} of \term{essentie\"ele discontinu\"iteit}.
+  \item Als $a$ een ophopingspunt is van $\interval[open left]{-\infty}{a} \cap A$, maar de linkerlimiet van $f$ in $a$ niet bestaat, of als $a$ een ophopingspunt is van $\interval[open right]{a}{+\infty}\cap A$, maar de rechterlimiet van $f$ in $a$ niet bestaat, dan noemt men $a$ een \term{discontinu\"iteit van de tweede soort} of \term{essentie\"ele discontinu\"iteit}.
   \end{itemize}
 \end{de}
 
@@ -268,6 +270,7 @@
 \end{bst}
 
 \begin{bpr}
+  \label{pr:rekenregels-limieten-van-functies}
   Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
   Zij $\lambda \in \mathbb{R}$ en stel dat de limieten van $f$ en $g$ in $a$ bestaan en eindig zijn.
   \begin{itemize}

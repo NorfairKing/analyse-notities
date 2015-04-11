@@ -32,6 +32,7 @@
 \end{de}
 
 \begin{bpr}
+  \label{pr:lokaal-extremum-is-kritiek-punt}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een inwendig punt $a$ van $A$.
   Stel dat $f$ een lokaal extremum bereikt in een $a$ en dat $f$ afleidbaar is in $a$, dan geldt $f'(a) = 0$, t.t.z dan is $a$ een kritiek punt van $f$.
 
@@ -208,6 +209,57 @@
       Contradictie.
     \item Het aantal oplossingen is minstens \'e\'en:\\
 \extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{lem}
+  \label{lem:aantal-nulpunten-van-afgeleide}
+  Als een afleidbare functie $f: \mathbb{R} \rightarrow \mathbb{R}$ $n$ nulpunten heeft, dan heeft $f'$ minstens $n-1$ nulpunten.
+  
+  \begin{proof}
+    Beschouw een afleidbare functie $f$ met $n$ nulpunten.
+    Voor elk paar opeenvolgende nulpunten $x$ en $y$, bestaat er een $c\in \interval[open]{x}{y}$ zodat $f'(c)$ nul is.\stref{st:rolle}
+    Omdat $f$ $n$ nulpunten heeft, zijn er $n-1$ paar opeenvolgende paren van nulpunten en dus $n-1$ nulpunten van $f'$.
+    De nulpunten van $f'$ kunnen bovendien niet gedeeld worden omdat de opeenvolgende paren van nulpunten enkel de uiterste nulpunten gemeen kunnen hebben.
+  \end{proof}
+\end{lem}
+
+\begin{st}
+  Toepassinkje:\\
+  De vergelijking $x^{n} +px + q$ met $p,q \in \mathbb{R}$ en $n\in \mathbb{N} \setminus \{0,1\}$ heeft hoogstens twee oplossingen als $n$ even is en hoogstens drie oplossingen als $n$ oneven is.
+
+  \begin{proof}
+    Merk eerst op dat een eerstegraads(veelterm)functie precies \'e\'en nulpunt heeft.
+    Bewijs door volledige inductie:
+    \begin{itemize}
+    \item De bewering geldt voor $n=2$:\\
+      Beschouw een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x^{2}+px+q$.
+      $f$ is afleidbaar met als afgeleide $f'$:
+      \[ f':\ \mathbb{R} \rightarrow \mathbb{R}:\ 2x + p \]
+      Dit is een eerstegraads(veelterm)functie en heeft dus precies \'e\'en nulpunt.
+      Stel dat $f$ meer dan twee oplossingen zou hebben, dan zou $f'$ twee of meer nulpunten hebben.\lemref{lem:aantal-nulpunten-van-afgeleide}
+      Contradictie.
+    \item De bewering geldt voor $n=3$:\\
+      Beschouw een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x^{3}+px+q$.
+      $f$ is afleidbaar met als afgeleide $f'$:
+      \[ f':\ \mathbb{R} \rightarrow \mathbb{R}:\ 3x+p \]
+      Dit is een tweedegraads(veelterm)functie en heeft dus hoogstens twee nulpunten. (zie hierboven)
+      Stel dat $f$ meer dan drie oplossingen zou hebben, dan zou $f'$ drie of meer nulpunten hebben.\lemref{lem:aantal-nulpunten-van-afgeleide}
+      Contradictie.
+    \item Uit de bewering voor $n=k$ volgt de bewering voor $n=k+1$.
+      Beschouw een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x^{k+1}+px+q$.
+      $f$ is afleidbaar met als afgeleide $f'$:\vbref{vb:polynoom-afgeleide}\prref{pr:optelling-afgeleide}
+      \[ f':\ \mathbb{R} \rightarrow \mathbb{R}:\ (k+1)x^{k}+p \]
+      $f'$ is een $k$-stegraads(veelterm)functie.\\
+      Gevalsonderscheid:
+      \begin{itemize}
+      \item $k$ is even\\
+        Uit de inductiehypothese volgt dat $f'$ hoogstens $2$ nulpunten heeft, dit betekent dat $f$ hoogstens $3$ nulpunten kan hebben.
+      \item $k$ is oneven\\
+        Uit de inductiehyposthese volgt dat $f'$ hoogstens $3$ nulpunten heeft, dit betekent dat $f$ hoogstens $4$ nulpunten kan hebben.
+        \question{ en nu? }
+      \end{itemize}
     \end{itemize}
   \end{proof}
 \end{st}
@@ -529,7 +581,7 @@
   Stel dat $f$ en $g$ afleidbaar zijn in $I \setminus \{a\}$ en dat $g(x)$ en $g'(x)$ beide niet nul zijn voor alle $I \setminus \{a\}$.
   Stel dat $\lim_{x\rightarrow a}f(x)$ en $\lim_{x\rightarrow a}g(x)$ beide nul zijn of dat $\lim_{x\rightarrow a}g(x) = \pm\infty$ geldt.
   \begin{center}
-    Als $\lim_{x\rightarrow a}\frac{f'(x)}{f'(a)}$ bestaat, dan bestaat ook $\lim_{x\rightarrow a}\frac{f(x)}{f(a)}$ en zijn ze gelijk.
+    Als $\lim_{x\rightarrow a}\frac{f'(x)}{g'(x)}$ bestaat, dan bestaat ook $\lim_{x\rightarrow a}\frac{f(x)}{g(x)}$ en zijn ze gelijk.
   \end{center}
 
   \begin{proof}
@@ -540,68 +592,261 @@
     \]\[\times\]\[
     \left\{ \lim_{x\rightarrow a}f(x) = \lim_{x\rightarrow a}g(x) = 0, \lim_{x\rightarrow a}g(x) =-\infty ,\lim_{x\rightarrow a}g(x) =+\infty  \right\}
     \]\[\times\]\[
-    \left\{ \lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = L \in \mathbb{R}, \lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = +\infty, \lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = -\infty \right\}
+    \left\{ \lim_{x\rightarrow a}\frac{f'(x)}{g'(x)} = L \in \mathbb{R}, \lim_{x\rightarrow a}\frac{f'(x)}{g'(x)} = +\infty, \lim_{x\rightarrow a}\frac{f'(x)}{g'(x)} = -\infty \right\}
     \]
 
     \begin{itemize}
-    \item $a\in \mathbb{R}$, $\lim_{x\rightarrow a}f(x) = \lim_{x\rightarrow a}g(x) = 0$ en $\lim_{x\rightarrow a}\frac{f'(x)}{f'(a)} = L \in \mathbb{R}$.\\
-      We zullen bewijzen dat $\lim_{x\rightarrow a}\frac{f(x)}{f(a)}$ gelijk is aan $L$.
+    \item $a\in \mathbb{R}$, $\lim_{x\rightarrow a}f(x) = \lim_{x\rightarrow a}g(x) = 0$ en $\lim_{x\rightarrow a}\frac{f'(x)}{g'(x)} = L \in \mathbb{R}$.\\
+      We zullen bewijzen dat $\lim_{x\rightarrow a}\frac{f(x)}{g(x)}$ gelijk is aan $L$.
       Kies daartoe een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
-      Omdat $\lim_{x \rightarrow a}\frac{f'(x)}{f'(a)} = L$ geldt, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
-      \[ \forall c\in I:\ 0<|c-a|<\delta \Rightarrow \left|\frac{f'(c)}{g'(c)}-L\right| < \epsilon \]
-      Kies nu een willekeurige $x\in I$ met $0<|x-a|< \delta$, groter dan $a$ (het andere geval is analoog).
-      Merk op dat $\interval[open]{a}{x}$ nu een deel is van $I$ en dat $\forall y \in \interval[open]{a}{x}: g(x)\neq g(y)$ geldt.
-      (Er zou anders immers een punt $c$ tussen $x$ en $y$ liggen met $g'(c) =0$\stref{st:rolle} en we namen aan van niet.)
-      Kies een willekeurige $y \in \interval[open]{a}{x}$, en merk nu eerst nog het volgende op:
-      \[ \frac{f(x)}{g(x)} = \frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)} + \frac{f(y)}{g(y)} \]
-      Omdat $\lim_{y \rightarrow a}g(y)$ nul is, geldt het volgende
-      \[ \lim_{y \rightarrow a}\frac{g(x)-g(y)}{g(x)} = \frac{g(x)}{g(x)} = 1 \]
-      Omdat $\lim_{y\rightarrow a}(y)$ en $\lim_{y \rightarrow a}g(y)$ beide nul zijn geldt ook het volgende:
-      \[ \lim_{y \rightarrow a}\frac{f(y)}{g(x)} = \frac{0}{g(x)} = 0 \]
-      We kunnen nu de limiet nemen voor $y$ gaande naar $a$ van de opmerking:
-      \[
-      \begin{array}{rl}
-        \frac{f(x)}{g(x)}
-        &= \lim_{y \rightarrow a}\left(\frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)} + \frac{f(y)}{g(y)}\right)\\
-        &= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)}\lim_{y \rightarrow a}\frac{g(x)-g(y)}{g(x)} + \lim_{y \rightarrow a}\frac{f(y)}{g(y)}\\
-        &= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)} \cdot 1 + 0\\
-        &= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)}\\
-      \end{array}
-      \]
-      Er bestaat een $c\in \interval[open]{x}{y}$ als volgt:\stref{st:middelwaardestelling-cauchy}
-      \question{de stelling van Cauchy geldt voor continue functies op een gesloten en begrensd interval, dit is open?!}
-      \[ \left( f(b) - f(a) \right) g'(c) = f'(c) \left( g(b) - g(a) \right) \]
-      Voor die $c$ geldt dan het volgende:
-      \[ \frac{f(x)-f(y)}{f(x)-g(y)} = \frac{f'(c)}{g'(c)} \]
-      Omdat $c$ tussen $x$ en $y$ lag, $y$ tussen $a$ en $x$, en $x$ tussen $a$ en $a+\delta$, ligt $c$ ook tussen $a$ en $a+\delta$.
-      Er geldt dus het volgende voor $c$:
-      \[ \left|\frac{f(x)-f(y)}{g(x)-g(y)} - L\right| = \left| \frac{f'(c)}{g'(c)} - L \right| < \epsilon \]
-      We vinden zo dat $L$ de limiet is van $\frac{f(x)}{f(a)}$ voor $x$ gaande naar $a$:
-      \[ \left|\frac{f(x)}{f(a)}-L\right| = \left|\lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)} - L \right| = \left| \lim_{y\rightarrow a}\frac{f'(c)}{g'(c)} - L \right| < \epsilon \]
-\extra{uitleg uitschrijven voor het bewijs want ik snap er precies nog niets van.}
+      We zoeken een $\delta$ zodat uit $|x-a|< \delta$ volgt dat $|\frac{f(x)}{g(x)}-L|<\epsilon$ geldt:
+
+      \begin{itemize}
+      \item 
+        Omdat $\lim_{x \rightarrow a}\frac{f'(x)}{g'(x)} = L$ geldt, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
+        \[ \forall c\in I:\ 0<|c-a|<\delta \Rightarrow \left|\frac{f'(c)}{g'(c)}-L\right| < \epsilon \]
+        Kies nu een willekeurige $x\in I$ met $0<|x-a|< \delta$.
+        We tonen aan dat $|\frac{f(x)}{g(x)}-L|<\epsilon$ geldt.
+        Stel dat $x$ groter is dan $a$ (het andere geval is analoog).
+        Merk op dat $\interval[open]{a}{x}$ nu een deel is van $I$ en dat $\forall y \in \interval[open]{a}{x}: g(x)\neq g(y)$ geldt.
+        (Er zou anders immers een punt $c$ tussen $x$ en $y$ liggen met $g'(c) =0$\stref{st:rolle} en we namen aan van niet.)
+        Kies een willekeurige $y \in \interval[open]{a}{x}$.
+        \begin{figure}[H]
+          \centering
+          \begin{tikzpicture}[scale=1.5]
+            \draw[latex-latex] (-1.5,0) -- (3.5,0) ;
+            \draw[shift={(1,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$a$};
+            \draw[shift={(-1,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$a-\delta$};
+            \draw[shift={(3,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$a+\delta$};
+            \draw[shift={(2.0,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$x$};
+            \draw[shift={(1.6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$y$};
+          \end{tikzpicture}
+        \end{figure}
+      \item 
+        Merk eerst nog het volgende op:
+        \[ \frac{f(x)}{g(x)} = \frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)} + \frac{f(y)}{g(x)} \]
+        Omdat $\lim_{y \rightarrow a}g(y)$ nul is, maar $g(x)$ nergens nul, geldt het volgende:\prref{pr:rekenregels-limieten-van-functies}
+        \[ \lim_{y \rightarrow a}\frac{g(x)-g(y)}{g(x)} = \frac{\lim_{y \rightarrow a}g(x)-\lim_{y \rightarrow a}g(y)}{\lim_{y \rightarrow a}g(x)} = \frac{g(x)}{g(x)} = 1 \]
+        Omdat $\lim_{y\rightarrow a}(y)$ en $\lim_{y \rightarrow a}g(y)$ beide nul zijn, maar $g(x)$ nergens nul is, geldt ook het volgende:\prref{pr:rekenregels-limieten-van-functies}
+        \[ \lim_{y \rightarrow a}\frac{f(y)}{g(x)} = \frac{\lim_{y \rightarrow a}f(y)}{\lim_{y \rightarrow a}g(x)} = \frac{0}{g(x)} = 0 \]
+        We kunnen nu de limiet nemen voor $y$ gaande naar $a$ van de opmerking:
+        \[
+        \begin{array}{rcl}
+          \frac{f(x)}{g(x)}
+          &= \lim_{y \rightarrow a}\frac{f(x)}{g(x)}
+          &= \lim_{y \rightarrow a}\left(\frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)} + \frac{f(y)}{g(y)}\right)\\
+          &&= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)}\lim_{y \rightarrow a}\frac{g(x)-g(y)}{g(x)} + \lim_{y \rightarrow a}\frac{f(y)}{g(y)}\\
+          &&= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)} \cdot 1 + 0\\
+          &&= \lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)}\\
+        \end{array}
+        \]
+      \item 
+        Volgens de middelwaardestelling van Cauchy bestaat er een $c\in \interval[open]{x}{y}$ als volgt:\stref{st:middelwaardestelling-cauchy}
+        \question{de stelling van Cauchy geldt voor continue functies op een gesloten en begrensd interval, dit is open?!}
+        \[ \left( f(x) - f(y) \right) g'(c) = f'(c) \left( g(x) - g(y) \right) \]
+        Voor die $c$ geldt dan het volgende:
+        \[ \frac{f(x)-f(y)}{f(x)-g(y)} = \frac{f'(c)}{g'(c)} \]
+        Omdat $c$ tussen $x$ en $y$ lag, $y$ tussen $a$ en $x$, en $x$ tussen $a$ en $a+\delta$, ligt $c$ ook tussen $a$ en $a+\delta$.
+      \item 
+        We vinden zo dat $L$ de limiet is van $\frac{f(x)}{f(a)}$ voor $x$ gaande naar $a$:
+        \[ \left|\frac{f(x)}{g(x)}-L\right|
+        = \left|\lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)} - L \right|
+        = \left| \lim_{y\rightarrow a}\frac{f'(c)}{g'(c)} - L \right|
+        = \left| \frac{f'(c)}{g'(c)} - L \right|< \epsilon
+        \]
+        \question{hoe zit het met die voorlaatste gelijkheid?!}
+      \end{itemize}
+    \item $a=+\infty$, $\lim_{x \rightarrow a}g(x) = +\infty$, $\lim_{x \rightarrow a}\frac{f'(x)}{g'(x)} = -\infty$
+      Omdat $+\infty$ een ophopingspunt is van $I$, en omdat $I$ een interval is, bestaat er een $b\in \mathbb{R}$ zodat $\interval[open]{b}{+\infty}$ een deel is van $I$.
+      We zullen aantonen dat $\lim_{x \rightarrow +\infty}\frac{f(x)}{g(x)} = -\infty$ geldt.
+      Kies daartoe een $M \in \mathbb{R}$.
+      We zoeken een $N\in \mathbb{R}$ zodat uit $x>N$ volgt dat $\frac{f(x)}{g(x)}<M$ geldt:\deref{de:limiet-van-functie-in-plus-oneindig}
+      \begin{itemize}
+      \item Omdat $\lim_{x \rightarrow +\infty}\frac{f'(x)}{g'(x)} = -\infty$ geldt, kunnen we een $N_{0} \in \mathbb{R}$, groter dan $b$ vinden zodat het volgende volgt.
+        \[ \forall c\in \mathbb{R}:\ c > N_{0} \Rightarrow \frac{f'(c)}{g'(c)} < 2M-2 \]
+        Kies nu een willekeurige $x > N_{0}$.
+        \begin{figure}[H]
+          \centering
+          \begin{tikzpicture}[scale=1.5]
+            \draw[latex-latex] (-1.5,0) -- (3.5,0) ;
+            \draw[shift={(4,0)},color=black] (0pt,1pt) -- (0pt,-1pt) node[below] {$a = +\infty$};
+            \draw[shift={(-1,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$b$};
+            \draw[shift={(2.0,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$x$};
+            \draw[shift={(0.0,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$N_{0}$};
+          \end{tikzpicture}
+        \end{figure}
+      \item 
+        Merk eerst het volgende op:
+        \[ \frac{f(x)}{g(x)} = \frac{f(x)-f(N_{0})}{g(x)-g(N_{0})}  \frac{g(x)-g(N_{0})}{g(x)} + \frac{f(N_{0})}{g(x)} \]
+        Dit natuurlijk enkel omdat $g$ een nulpunten heeft en omdat $g(x)$ en $g(N_{0})$ nooit gelijk kunnen zijn voor $x \neq N_{0}$.
+        (Er zou anders immers een punt $c$ tussen $x$ en $N_{0}$ liggen met $g'(c) =0$\stref{st:rolle} en we namen aan van niet.)
+        Omdat $\lim_{x\rightarrow +\infty}g(x) = +\infty$ geldt, vinden we het volgende:
+        \[ \lim_{x\rightarrow +\infty}\frac{g(x)-g(N_{0})}{g(x)} = 1\]
+        Om dezelfde reden vinden we ook het volgende (zie het eerste puntje):
+        \[ \lim_{x\rightarrow +\infty}\frac{f(N_{0})}{g(x)} = 0 \]
+        We kunnen dus een $N_{1}\in \mathbb{R}$, groter dan $b$, vinden zodat het volgende geldt voor alle $x>N_{1}$.
+        \[ \left| \frac{g(x)-g(N_{0})}{g(x)} -1 \right| < \frac{1}{2}  \Rightarrow \frac{g(x)-g(N_{0})}{g(x)} > \frac{1}{2} \]
+        We kunnen ook een $N_{2}\in \mathbb{R}$, groter dan $b$, vinden zodat het volgende geldt voor alle $x>N_{2}$.
+        \[ \left| \frac{f(N_{0})}{g(x)} -0 \right| < 1 \Rightarrow \frac{f(N_{0})}{g(x)} < 1 \]
+        \question{wat? dit klopt niet echt he...}
+      \item 
+        Er bestaat, volgens de middelwaardestelling van Cauchy, een $c$ strikt tussen $N_{0}$ en $x$ als volgt:\stref{st:middelwaardestelling-cauchy}
+        \[ \left( f(x) - f(N_{0}) \right) g'(c) = f'(c) \left( g(x) - g(N_{0}) \right) \]
+        Voor die $c$ geldt dan het volgende:
+        \[ \frac{f(x)-f(N_{0})}{g(x)-g(N_{0})} = \frac{f'(c)}{g'(c)} \]
+        Omdat $c$ groter is dan $N_{0}$, geldt het volgende:
+        \[ \frac{f(x)-f(N_{0})}{g(x)-g(N_{0})} = \frac{f'(c)}{g'(c)} < 2M-2 \]
+      \item 
+        Kies nu $N = \max\{N_{0},N_{1},N_{2}\}$, dan geldt het volgende voor alle $x>N$:
+        \[ \frac{f(x)}{g(x)} = \frac{f(x)-f(y)}{f(x)-g(y)}  \frac{g(x)-g(N_{0})}{g(x)} + \frac{f(N_{0})}{g(x)} < (2M-2)\frac{1}{2} + 1 = M \]
+        \question{wat? geldt die ongelijkheid wel?}
+      \end{itemize}
     \end{itemize}
-\extra{al de rest}
+    \TODO{nog minstens twee gevallen!}
+    \extra{al de rest}
   \end{proof}
 \end{st}
 
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+  
+  \begin{proof}
+    Kies bijvoorbeeld $\frac{f}{g} = \frac{x+\sin(x)}{x}$.
+    Kies $a=+\infty$.
+    $a$ is inderdaad een ophopingspunt van $I$.
+    $f$ en $g$ zijn beide overal afleidbaar.
+    \question{$g'(x)$ is soms wel nul, waarom is dat een probleem?}
+    $\lim_{x \rightarrow a}g(x) = +\infty$
+    We kunnen niet beweren dat de limiet $\lim_{x\rightarrow +\infty}\frac{x+\sin(x)}{x}$ niet bestaat omdat $\lim_{x \rightarrow +\infty}(1+\cos(x))$ niet bestaat.
+
+    \noindent
+    \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[xmin=-50, xmax=50, ymin=0.5, ymax=2.1, trig format plots=rad]
+          \addplot[smooth,domain=-50:50]{(x+sin(x))/x};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[ \frac{f}{g}:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \frac{x+\sin(x)}{x} \]
+    \end{minipage}
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als $g$ of $g'$ nulpunten heeft.
+  \extra{dit zijn twee gevallen, splitsen?}
+  
+  \begin{proof}
+    Beschouw de functies $f$ en $g$ als volgt.
+    $f$ en $g$ zijn beide overal afleidbaar:
+    \[ f'(x) = -5e^{-2x}\sin(x) \quad\text{ en }\quad g'(x) = -2e^{-x}\sin(x) \]
+    $g'(x)$ heeft (oneindig veel) nulpunten.
+    Voor zowel $f$ als $g$ geldt dat de limiet op oneindig nul is.   
+    De limiet van $\frac{f(x)}{g(x)}$ bestaat echter niet, terwijl de limiet van $\frac{f'(x)}{g'(x)}$ nul is.
+ 
+    \extra{voorwaarden afwerken}
+    \noindent
+    \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[xmin=-5, xmax=5, ymin=-2, ymax=2, trig format plots=rad, restrict y to domain=-10:10]
+          \addplot[smooth,domain=-5:5]{exp(-2*x)*(cos(x) + 2*sin(x))};
+          \addplot[smooth,domain=-5:5]{exp(-x)*(cos(x) + sin(x))};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto e^{-2x}(\cos(x) + 2\sin(x)) \]
+      \[ g:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto e^{-2}(\cos(x) + \sin(x)) \]
+    \end{minipage}
+  \end{proof}
+\end{tvb}
 
 
 \subsection{Een tussenwaardestelling voor afgeleide}
 \label{sec:een-tuss-voor}
 
+\begin{lem}
+  \label{lem:dalend-in-punt-dan-lager-punt-erachter}
+  Zij $f$ een afleidbare functie op opn een interval $\interval{x}{y}$:
+  \[ f:\ \interval{x}{y} \rightarrow \mathbb{R} \]
+  Stel dat $f'(x) > 0$ geldt, dan bestaat er een punt $a\in \interval{x}{y}$, zodat $f(a)$ groter is dan $f(x)$.
+  
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat er geen punt $a\in \interval{x}{y}$ bestaat met $f(a)>f(x)$, dan geldt het volgende:
+    \[ \forall a \in \interval{x}{y}: f(a) < f(x) \]
+    Beschouwen we nu de rechterafgeleide in $x$:
+    \[ \lim_{a \underset{>}{\rightarrow} x}\frac{f(a)-f(x)}{a-x} \]
+    Omdat $x$ kleiner is dan $a$ en $f(a) < f(x)$ moet de rechterafgeleide negatief zijn in $x$.
+    Contradictie.
+  \end{proof}
+\end{lem}
+
+\begin{opm}
+  \label{opm:opmerking-bij-lemma-dalend-in-punt-dan-lager-punt-erachter}
+  Uiteraard geldt de analoge stelling met $f'(x) < 0$.
+\end{opm}
 
 \begin{bst}
   Beschouw een afleidbare functie $f:\ I \rightarrow \mathbb{R}$, gedefinieerd op een interval $I \subseteq \mathbb{R}$.
   Noem $x_{1},x_{2} \in I$ met $x_{1}< x_{2}$ waarvoor $f'(x_{1}) \neq f'(x_{2})$ en $y\in \mathbb{R}$ zodat $y$ tussen $f'(x_{1})$ en $f'(x_{2})$ ligt.
   Er bestaat dan een $x \in \interval[open]{x_{1}}{x_{2}}$ waarvoor $f'(x) = y$ geldt.
-\TODO{bewijs p 34}
+
+  \begin{proof}
+    Zonder beperking van de algemeenheid mogen we veronderstellen dat $f'(x_{1})<f'(x_{2})$ geldt.
+    \begin{itemize}
+    \item
+      Beschouw de functie $g$:
+      \[ g:\ I \rightarrow \mathbb{R}:\ x \mapsto f(x) -yx \]
+      $g$ is afleidbaar (en dus continu\prref{pr:afleidbaar-dan-continu}) op $I$.
+      \[ \forall x\in I:\ g'(x) = f'(x) -y \]
+      Het volstaat dus aan te tonen dat er een nulpunt $x\in I$ van $g'$ bestaat.
+    \item
+      Omdat $y$ in $\interval[open]{f'(x_{1})}{f'(x_{2})}$ zit, geldt het volgende:
+      \[ g'(x_{1}) = f'(x_{1})-y < 0 \]
+      Er bestaat daarom een $t_{1} \in \interval[open]{x_{1}}{x_{2}}$ zodat $g(t_{1})<g(x_{1})$ geldt.\opmref{opm:opmerking-bij-lemma-dalend-in-punt-dan-lager-punt-erachter}
+      Analoog geldt het volgende.
+      \[ g'(x_{2}) = f'(x_{2})-y > 0 \]
+      Er bestaat daarom een $t_{2} \in \interval[open]{x_{1}}{x_{2}}$ zodat $g(t_{2})>g(x_{2})$ geldt.\lemref{lem:dalend-in-punt-dan-lager-punt-erachter}
+      $g$ bereikt dan een minimum in een $x\in \interval{x_{1}}{x_{2}}$.\stref{st:continue-functie-op-gesloten-begrensd-interval-bereikt-extreme-waarden}
+      We weten al dat $x$ verschillend zal zijn van zowel $x_{1}$ als $x_{2}$ (omdat $x$ tussen $t_{1}$ en $t_{2}$ moet liggen).
+      Omdat $g$ een (lokaal) extremum bereikt in $x$ moet $g'(x)$ nul zijn\prref{pr:lokaal-extremum-is-kritiek-punt} en dus $f'(x)=y$ gelden.
+    \end{itemize}
+  \end{proof}
 \end{bst}
 
 \begin{gev}
   De afgeleide functie van een afleidbare functie $f:\ I \rightarrow \mathbb{R}$, gedefinieerd op een interval $I \subseteq \mathbb{R}$ kan geen discontinu\"iteiten van de eerste soort bevaten.
-\TODO{bewijs p 34}
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat $f'$ een discontinu\"iteit van de eerste soort heeft\deref{de:classificatie-van-discontinuiteiten}\\
+    De linker- en rechterlimiet van $f'$ in $a$ zijn dan verschillend.
+    Zonder verlies van algemeenheid kunnen we veronderstellen dat de linkerlimiet kleiner is dan de rechter.\waarom
+    \[ A = \lim_{x \overset{<}{\rightarrow} a}f'(x) < \lim_{x \overset{>}{\rightarrow} a}f'(x) = B \]
+    Noem nu $\epsilon = B-A$.
+    Omdat $A$ de linkerlimiet is van $f'$ in $a$, bestaat er een $\delta_{A} \in \mathbb{R}_{0}^{+}$ als volgt:
+    \[ \forall x\in \interval{a-\delta_{A}}{a}:\ |f'(x)-A| < \frac{\epsilon}{2} \]
+    Analoog vinden we een $\delta_{B} \in \mathbb{R}_{0}^{+}$ als volgt:
+    \[ \forall x\in \interval{a}{a+\delta_{B}}:\ |f'(x)-B| < \frac{\epsilon}{2} \]
+    Benoem nu $x_{A} = a-\frac{\delta_{A}}{2}$ en $x_{B} = a+\frac{\delta_{B}}{2}$.
+    Er geldt dan het volgende:
+    \[ |f'(x_{A})-A| < \frac{\epsilon}{2} \quad\text{ en }\quad |f'(x_{B})-B| < \frac{\epsilon}{2} \]
+    \[ f'(x_{A}) < A + \frac{\epsilon}{2} \quad\text{ en }\quad f'(x_{B}) > B- \frac{\epsilon}{2} = A + \frac{\epsilon}{2} \]
+    Er bestaat nu een $x \in \interval[open]{x_{A}}{x_{B}}$ zodat $f'(x) = A + \frac{\epsilon}{2}$ geldt.
+    Contradictie.
+  \end{proof}
 \end{gev}
 
+\begin{opm}
+  Een afleidbare functie kan wel discontinuiteiten van de tweede soort hebben.
+\extra{voorbeeld hiervan}
+\end{opm}
 
 
 

@@ -16,6 +16,27 @@
   We noemen $f$ \term{twee maal afleidbaar} op $A$ als $f$ twee maal afleidbaar is in elke $a\in A$.
 \end{de}
 
+\begin{st}
+  \label{st:berekening-tweede-afgeleide}
+  Als de tweede afgeleide van een functie $f$ in een punt $a$ bestaat, dan kunnen we ze als volgt berekenen:
+  \[ f''(x) = \lim_{h \rightarrow 0}\frac{f(x+h)+f(x-h)-2f(x)}{h^{2}} \]
+
+  \begin{proof}
+    \[ 
+    \begin{array}{rl}
+      f''(x)
+      &= \lim_{h \rightarrow 0}\frac{f'(x+h)-f'(x)}{h}\\
+      &= \lim_{h \rightarrow 0}\frac{\lim_{h \rightarrow 0}\frac{f(x+h)-f(x+h-h)}{h}-\lim_{h \rightarrow 0}\frac{f(x)-f(x-h)}{h}}{h}\\
+      &= \lim_{h \rightarrow 0}\frac{\lim_{h \rightarrow 0}\frac{f(x+h)-f(x+h-h)-f(x)+f(x-h)}{h}}{h}\\
+      &= \lim_{h \rightarrow 0}\frac{\lim_{h \rightarrow 0}\frac{f(x+h)-2f(x)+f(x-h)}{h}}{h}\\
+      &= \lim_{h \rightarrow 0}\frac{f(x+h)+f(x-h)-2f(x)}{h^{2}} \\
+    \end{array}
+    \]
+    \question{waarom mogen we zomaar dezelfde $h$ gebruiken?}
+    \question{Mogen we zomaar de andere definitie van een afgeleide gebruiken?}
+  \end{proof}
+\end{st}
+
 \begin{de}
   Zij $I$ een interval in $\mathbb{R}$ dan noemen we $C(I)$ de verzameling van continue functies van $I$ naar $\mathbb{R}$.
   Voor $n\in \mathbb{N}$ noemen we $C^{n}(I)$ de verzameling van continue functies die $n$ keer afleidbaar zijn op $I$ en waarvoor $f^{(n)}$ continu is op $I$.
@@ -34,15 +55,72 @@
 \end{st}
 
 \begin{de}
+  \label{de:convexe-functie}
   Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie gedefinieerd op een interval $I$, dan noemen we $f$ \term{convex} over een deelinterval $I_{0}$ van $I$ als en slechts als het volgende geldt:
   \[ \forall x,y \in I_{0}, \forall \lambda \in \interval{0}{1}:\ f((1-\lambda)x+\lambda y) \le (1-\lambda)f(x) + \lambda f(y)\]
+\end{de}
+\begin{de}
   We noemen $f$ \term{concaaf} over $I_{0}$ als en slechts als $-f$ convex is.
 \end{de}
+
+\begin{opm}
+  Een functie kan zowel convex als concaaf zijn.
+  $f: x \mapsto 0$ bijvoorbeeld.
+\end{opm}
 
 \begin{bpr}
   Beschouw een functie $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een open interval $I$ die twee keer afleidbaar is.
   $f$ is convex over $I$ als en slechts als $f''$ positief is over heel $I$.
-\TODO{bewijs p 40}
+
+  \begin{proof}
+    Bewijs van een equivalentie
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Zij $f$ een convexe functie.
+      Kies een willekeurige $x\in I$.
+      Omdat $I$ open is, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{x-\delta}{x+\delta}$ een deel is van $I$.
+      Omdat $f$ convex is, gelden de volgende twee ongelijkheden voor alle $h \in \interval[open]{-\delta}{\delta}$:
+      (Kies $\lambda = \frac{1}{2}$ in de definitie van convexiteit\deref{de:convexe-functie})
+      \[ f\left(\frac{1}{2}(x-h) + \frac{1}{2}(x+h)\right) \le \frac{1}{2}f(x-h) + \frac{1}{2}f(x+h) \]
+      \[ f(x) \le \frac{1}{2}f(x-h) + \frac{1}{2}f(x+h) \]
+      \[ 2f(x) \le f(x-h) + f(x+h) \]
+      \[ f(x-h) + f(x+h) -2f(x) \ge 0 \]
+      \[ \frac{f(x+h)+f(x-h)-2f(x)}{h^{2}} \ge 0 \]
+      Nemen we nu de limiet van deze ongelijkheid voor $h$ gaande naar nul, dan krijgen we het volgende\prref{pr:limiet-behoudt-orde}:
+      \[ \lim_{h \rightarrow 0}\frac{f(x+h)+f(x-h)-2f(x)}{h^{2}} \ge \lim_{h \rightarrow 0}0 \]
+      \[ f''(x) \ge 0 \]
+      $f''$ is positief in een willekeurige $x$\stref{st:berekening-tweede-afgeleide} en dus over heel $I$.
+    \item $\Leftarrow$\\
+      Zij $f$ een functie zodat $f''$ positief is over een open interval $I$
+      Kies willekeurig $x,y \in I$   met $x < y$ en $\lambda \in \interval{0}{1}$.
+      Voor $\lambda = 0$ of $\lambda = 1$ is dit deel triviaal.
+      Stel daarom dat $\lambda \in \interval[open]{0}{1}$ geldt en noteer $z = (1-\lambda)x + \lambda y$.
+      Volgens de middelwaardestelling van Lagrange bestaan er dan $c_{x}\in \interval[open]{x}{z}$ en $c_{y}\in \interval[open]{z}{y}$ als volgt\stref{st:middelwaardestelling-lagrange}:
+      \[ f'(c_{x}) = \frac{f(z)-f(x)}{z-x} \quad\text{ en }\quad f'(c_{y}) = \frac{f(y)-f(z)}{y-z} \]
+      We kunnen nu $f(z)$ uitwerken:
+      \[
+      \begin{array}{rl}
+        f(z) 
+        &= (1-\lambda)f(z) + \lambda f(z)\\
+        &= (1-\lambda)\left((z-x)f'(c_{x}) + f(x)\right) - \lambda\left( f'(c_{y})(y-z)-f(y)\right)\\
+        &= (1-\lambda)f(x) + \lambda f(y) + (1-\lambda)(z-x)f'(c_{x}) + \lambda(z-y)f'(c_{y})\\
+        &= (1-\lambda)f(x) + \lambda f(y) + \lambda(1-\lambda)(y-x)(f'(c_{x})-f'(c_{y}))\\
+      \end{array}
+      \]
+      \question{hoe gebeurt die laatste stap?}
+      Gebruiken we nu de middelwaardestelling van Lagrange, dan vinden we een $c \in \interval{c_{x}}{c_{y}}$ als volgt:\stref{st:middelwaardestelling-lagrange}
+      \[ f''(c) = \frac{f'(c_{y})-f'(c_{x})}{c_{y}-c_{x}} \]
+      Gaan we nu verder met de vorige gelijkheid, dan vinden we de volgende ongelijkheid, waar uit volgt dat $f$ convex is over $I$.
+      \[ 
+      \begin{array}{rl}
+        f(z) &= (1-\lambda)f(x) + \lambda f(y) + \lambda(1-\lambda)(y-x)(f'(c_{x})-f'(c_{y}))\\
+             &= (1-\lambda)f(x) + \lambda f(y) + \lambda(1-\lambda)(y-x)f''(c)(c_{y}-c_{x})\\
+             &\le (1-\lambda)f(x) + \lambda f(y) 
+      \end{array}
+      \]
+      In de laatste ongelijkheid gebruiken we $f''(c) \ge 0$, $y > x$, $c_{y}> c_{x}$ en $\lambda(1-\lambda) \ge 0$.
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \section{Middelwaardestelling van Taylor}
