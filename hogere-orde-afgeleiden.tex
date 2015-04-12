@@ -54,6 +54,12 @@
 \extra{bewijs}
 \end{st}
 
+
+\begin{vb}
+  Beschouw de functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x|x^{4}$.
+  \extra{hoeveel keer is $f$ afleidbaar?}
+\end{vb}
+
 \begin{de}
   \label{de:convexe-functie}
   Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie gedefinieerd op een interval $I$, dan noemen we $f$ \term{convex} over een deelinterval $I_{0}$ van $I$ als en slechts als het volgende geldt:
@@ -127,13 +133,45 @@
 \label{sec:midd-van-tayl}
 
 \begin{bst}
+  \label{st:middelwaardestelling-taylor}
   Beschouw een functie $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een interval $I$, die $n$ maal afleidbaar is op $I$ en $(n+1)$ maal op het inwendige $\mathring{I}$ van $I$.
   Stel dat $f^{(n)}$ continu is op $I$ en zij $a,x\in I$ met $a \neq x$, dan bestaat er een $c$, strikt tussen $a$ en $x$, als volgt:
   \[ 
   f(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} + \sum_{n = 0}^{n}\frac{f^{(n)}(a)}{n!}(x-a)^{n} 
   \]
-\TODO{bewijs p 43}
+  \TODO{bewijs p 43}
+
+  \begin{proof}
+    Definieer $R$ als volgt:
+    \[ R = f(x) -  \sum_{n = 0}^{n}\frac{f^{(n)}(a)}{n!}(x-a)^{n}  \]
+    We tonen aan dat er een $c\in \interval[open]{a}{x}$ bestaat als volgt:
+    \[ R = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} \]
+    Definieer bovendien een funcie $F:\ I \rightarrow \mathbb{R}$ als volgt:
+    \[ F(t) = \sum_{n = 0}^{n}\frac{f^{(n)}(t)}{n!}(x-t)^{n} + R\frac{(x-t)^{n+1}}{(x-a)^{n+1}} \]
+    Merk op dat $F(x)$ gelijk is aan $f(x)$ en bovendien $F(a) = f(x)$ geldt.
+    $F$ is continu op $I$ en afleidbaar op $\mathring{I}$ \waarom
+    Bovendien geldt ziet $F'$ er als volgt uit:
+    \[
+    \begin{array}{rl}
+      F'(t)
+      &= \sum_{n = 0}^{n}\frac{f^{(n)}(t)}{n!}(x-t)^{n} + R\frac{(x-t)^{n+1}}{(x-a)^{n+1}} \\
+      &= \sum_{n = 0}^{n}\left(\frac{f^{(n+1)}(t)}{n!}(x-t)^{n} - \frac{f^{(n)}(t)}{n!}n(x-t)^{n}\right)+  R(n+1)\frac{(x-t)^{n}}{(x-a)^{n+1}}\\
+      &= \frac{f^{(n+1)}(t)}{n!}(x-t)^{n} - R(n+1)\frac{(x-t)^{n}}{(x-a)^{n+1}}\\
+    \end{array}
+    \]
+    We kunnen nu op $F$ en $\interval[open]{a}{x}$ de middelwaardestelling van Rolle toepassen.\stref{st:rolle}
+    Er bestaat dus een $c$, strikt tussen $a$ en $x$ zodat $c$ een nulpunt is van $F'(c)$:
+    \[ 0 = F'(c) = \frac{f^{(n+1)}(c)}{n!}(x-c)^{n} - R(n+1)\frac{(x-c)^{n}}{(x-a)^{n+1}} \]
+    Omdat $c$ verschillend is van $x$ vinden we $R$ als volgt:
+    \[ R = \frac{(x-a)^{n+1}}{n+1}\frac{f^{(n+1)}(c)}{n!} = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} \]
+    \extra{wat betekent dit bewijs...}
+  \end{proof}
 \end{bst}
+
+\begin{opm}
+  Merk op dat de middelwaardestelling van Lagrange hier eigenlijk een speciaal geval van is.
+  Namelijk wanneer $n$ $1$ is.
+\end{opm}
 
 \begin{de}
   Beschouw een functie $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een interval $I$, die $n$ maal afleidbaar is op $I$ en $(n+1)$ maal op het inwendige $\mathring{I}$ van $I$.
@@ -155,13 +193,76 @@
   \]
 \end{de}
 
+\begin{st}
+  Beschouw een $n$-degraads veeltermfunctie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ en $a\in \mathbb{R}$.
+  Voor elke $x\in A$ kan $f(x)$ uitgedrukt worden in termen van de afgeleiden van $f$ in $a$ als volgt:
+  \[ 
+  f(x) = \sum_{n = 0}^{n+1}\frac{f^{(n)}(a)}{n!}(x-a)^{n} 
+  \]
+  \begin{proof}
+    Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een $n$-degraads veeltermfunctie een $a\in \mathbb{R}$, $f$ is onbeperkt afleidbaar.\needed
+    Vanaf de $n+2$-e afgeleide is $f^{(n)}$ overal nul voor alle $n\in \mathbb{N}$.
+    Volgens de stelling van Taylor bestaat er een $c\in\interval[open]{x}{a}$ als volgt:\stref{st:middelwaardestelling-taylor}
+    \[ f(x) = \frac{f^{(n+2)}(c)}{(n+2)!}(x-a)^{n+2} + \sum_{n = 0}^{n+1}\frac{f^{(n)}(a)}{n!}(x-a)^{n} \]
+    We weten echter dat $f^{(n+2)}(c)$ nul moet zijn, en bekomen zo de stelling:
+    \[ f(x) = 0 + \sum_{n = 0}^{n+1}\frac{f^{(n)}(a)}{n!}(x-a)^{n} \]
+  \end{proof}
+\end{st}
+
+\begin{vb}
+  Beschouw de functie $f$:
+  \[ f:\ \mathbb{R} \setminus \{1\} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{1-x} \]
+  Kies $a=0$.
+  Beschouw nu de afgeleiden van $f$:
+  \[ \forall k\in \mathbb{N}, \forall x\in \mathbb{R}\setminus\{1\}:\ f^{(k)}(x) = \frac{k!}{(1-x)^{k+1}} \]
+  Er geldt steeds $f^{(k)}(a) = f^{(k)}(0) = k!$.
+  Passen we nu de stelling van Taylor toe, dan krijgen we het volgende:\stref{st:middelwaardestelling-taylor} 
+  \[ \forall x\in \interval[open]{-\infty}{1},\ \exists c:\ \frac{1}{1-x} = \sum_{k=0}^{n}x^{k} + \frac{x^{n+1}}{(1-c)^{n+2}} \]
+  We bekijken nu de restterm $R_{n}$:
+  \[ R_{n} = \frac{x^{n+1}}{(1-c)^{n+2}} = \frac{1}{1-x}-\sum_{k=0}^{n}x^{k} = \frac{1-x^{n+1}}{1-x} = \frac{x^{n+1}}{1-x} \]
+  We zien dat de limiet van $R_{n}$ voor $n$ gaande naar $+\infty$ inderdaad nul is voor $|x|<1$.
+  We vinden dus de volgende reeksontwikkeling voor $f$ rond $0$ voor alle $x\in \interval[open]{-1}{1}$:
+  \[ \frac{1}{1-x} = \lim_{n \rightarrow +\infty}\sum_{k=0}^{n}x^{k} \]
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=.75]
+      \begin{axis}[xmin=-1.5, xmax=1.5, ymin=-3,ymax=3, restrict y to domain=-5:5]
+        \foreach \n in {2,...,10}{
+          \addplot[smooth,domain=-2:4]{1/(1-x)-(x^(\n+1))/(1-x)};
+        }
+        \addplot[smooth,domain=-2:4,color=red,ultra thick]{1/(1-x)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{figure}
+\end{vb}
+
+\begin{vb}
+  Beschouw de functie $f$:
+  \[ 
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 
+  \left\{
+    \begin{array}{rl}
+      e^{-\frac{1}{x^{2}}} & \text{ als } x \neq 0\\
+      0 & \text{ als } x = 0\\
+    \end{array}
+  \right.
+  \]
+  Kies $a=0$.
+  $f$ is onbeperkt afleidbaar op $\mathbb{R}_{0}$.\waarom
+  Bovendien zien de afgeleiden er als volgt uit:
+  \[ \forall k\in \mathbb{N}:\ f^{(k)}(x) = e^{-\frac{1}{x^{2}}}q_{k}\left(\frac{1}{k}\right) \]
+  Hierin is $q_{k}$ een veeltermfunctie van graad $3k$.
+  Ook in $0$ is $f$ onbeperkt afleidbaar met afgeleide telkens nul.
+  $f$ heeft echter \textbf{geen} Taylorreeksontwikkeling rond $0$ voor om het even welke $x \neq 0$. 
+\extra{meer uitleg in het voorbeeld pagina 47, dit deel her- en uitschrijven.}
+\end{vb}
 
 \begin{de}
   We noemen een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$, gedefinieerd op een open deel $A$ van $\mathbb{R}$, \term{analytisch} op $A$ als er voor elke $a\in A$ een $\delta \in \mathbb{R}_{0}^{+}$ bestaat als volgt:
   \begin{itemize}
   \item $\interval[open]{a-\delta}{a+\delta} \subseteq A$
   \item Er bestaat een rij $(c_{n})_{n}$ in $\mathbb{R}$ zodat voor alle $\interval[open]{a-\delta}{a+\delta}$ het volgende geldt:
-    \[ f(x) = \lim_{n\rightarrow +\infty}\sum_{k=0}^{n}c_{k}(x-a)^{k} \]
+    \[ f(x) = \lim_{n\rightarrow +\infty}\sum_{k=0}^{n}c_{k}(x-a)^{k} \]  
   \end{itemize}
 \end{de}
 
@@ -172,11 +273,31 @@
   \item Als $f''$ strikt positief is in $a$, dan bereikt $f$ in $a$ een lokaal minimum.
   \item Als $f''$ strikt negatief is in $a$, dan bereikt $f$ in $a$ een lokaal maximum.
   \end{itemize}
-\TODO{bewijs p 48}
+
+  \begin{proof}
+    Twee delen.
+    \begin{itemize}
+    \item Stel dat $f''(a)$ strikt positief is.\\
+      Omdat $f''$ continu is, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:\waarom
+      \[ \forall x\in I:\ |x-a|<\delta \Rightarrow  f(x)>0 \]
+      Kies nu een willekeurige $h\in \mathbb{R}$ met $|h| < \delta$ en $a+h\in I$.
+      Uit de middelwaardestelling van Taylor volgt nu dat er een $c$ strikt tussen $a$ en $a+h$ bestaat als volgt  wanneer $a+h$ in $I$ zit:\stref{st:middelwaardestelling-taylor}
+      \[ f(a+h) = f(a) + f'(a)h + \frac{f''(c)}{2}h^{2} = f(a) + \frac{f''(t)}{2}h^{2} \]
+      Het teken van $f(a+h)-f(a)$ zal dus hetzelfde zijn als het teken van $f''(c)$.
+      Omdat $c$ tussen $a$ en $a+h$ ligt, zal zeker $|c-a|<\delta$ gelden en zal dus $f''(c)>0$ gelden.
+      Bijgevogl geldt het volgende voor $h$ voldoende klein:
+      \[ f(a+h)-f(a) \ge 0 \]
+      $a$ levert dus een lokaal minimum.
+      \extra{beter uitschrijven, tweede deel zelf vinden zonder naar het eerste te kijken.}
+    \item Stel dat $f''(a)$ strikt negatief is.\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \begin{opm}
   Bovenstaande propositie zegt ons niets in het geval dat $f''$ nul is in $a$.
+\extra{vind voorbeelden in meerdere gevallen.}
 \end{opm}
 
 \end{document}

@@ -538,6 +538,7 @@
     \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x^{2}+ \frac{1}{n^{2}}} \]
     \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ |x| \]
     \end{minipage}
+
     Voor elke $x\in \mathbb{R}$ geldt $\lim_{n\rightarrow \infty}f_{n}(x) = \sqrt{x^{2}} = |x|$, dus de rij functies convergeert al zeker puntsgewijs naar $f$.
     De convergentie is bovendien uniforum op $\mathbb{R}$ vanwege de volgende afschatting:
     \[
@@ -553,7 +554,7 @@
 \end{tvb}
 
 \subsection{De regel van de l'H\^opital}
-\label{sec:de-regel-van}
+\label{sec:de-regel-van-de-hopital}
 
 \begin{bpr}
   Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $a\in A$ die een ophopingspunt is van $A$.
@@ -686,6 +687,7 @@
         \[ \lim_{x\rightarrow +\infty}\frac{f(N_{0})}{g(x)} = 0 \]
         We kunnen dus een $N_{1}\in \mathbb{R}$, groter dan $b$, vinden zodat het volgende geldt voor alle $x>N_{1}$.
         \[ \left| \frac{g(x)-g(N_{0})}{g(x)} -1 \right| < \frac{1}{2}  \Rightarrow \frac{g(x)-g(N_{0})}{g(x)} > \frac{1}{2} \]
+        \question{kleiner dan 3/2, niet groter dan 1/2}
         We kunnen ook een $N_{2}\in \mathbb{R}$, groter dan $b$, vinden zodat het volgende geldt voor alle $x>N_{2}$.
         \[ \left| \frac{f(N_{0})}{g(x)} -0 \right| < 1 \Rightarrow \frac{f(N_{0})}{g(x)} < 1 \]
         \question{wat? dit klopt niet echt he...}
@@ -847,7 +849,6 @@
   Een afleidbare functie kan wel discontinuiteiten van de tweede soort hebben.
 \extra{voorbeeld hiervan}
 \end{opm}
-
 
 
 
