@@ -1184,7 +1184,7 @@
     \[ \forall b \in A:\ |a-b| < \delta \Rightarrow b\in A \]
     $b+t$ zit bijgevolg ook in $A+t$.
   \end{proof}
-\feed
+\feed''
 \end{st}
 
 \begin{st}
@@ -1897,6 +1897,7 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:modulus-door-optelling}
   \[ \forall z_{1},z_{2}\in \mathbb{C}:\ \overline{z_{1}+z_{2}} = \overline{z_{1}} + \overline{z_{2}} \]
 
   \begin{proof}
@@ -1937,7 +1938,7 @@
 \end{pr}
 
 \begin{pr}
-  \label{pr:reel-deel-kleine}
+  \label{pr:reel-deel-kleiner}
   \[ \forall z\in \mathbb{C}:\ |Re(z)| \le |z| \]
 
   \begin{proof}
@@ -1955,7 +1956,8 @@
 \end{pr}
 
 \begin{pr}
-  \[ \forall z\in \mathbb{C}:\ \bar{z}z\in \mathbb{R} \]
+  \label{pr:normaal-maal-toegevoegde-in-r}
+  \[ \forall z\in \mathbb{C}:\ \bar{z}z = Im(z)^{2}+Re(z)^{2} \in \mathbb{R} \]
 
   \begin{proof}
     $\forall a+bi\in \mathbb{C}:\  \overline{a+bi}\cdot(a+bi) = (a-bi)(a+bi) = a^{2} + (-bi)a + a(bi) + (-bi)(bi) = a^{2} + b^{2} \in \mathbb{R}$
@@ -1963,6 +1965,7 @@
 \end{pr}
 
 \begin{pr}
+  \label{pr:modulus-in-termen-van-toegevoegde}
   \[ \forall z\in \mathbb{C}:\ |z| = \sqrt{\bar{z}z} \]
 
   \begin{proof}
