@@ -275,23 +275,24 @@
   \end{itemize}
 
   \begin{proof}
-    Twee delen.
-    \begin{itemize}
-    \item Stel dat $f''(a)$ strikt positief is.\\
-      Omdat $f''$ continu is, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:\waarom
-      \[ \forall x\in I:\ |x-a|<\delta \Rightarrow  f(x)>0 \]
-      Kies nu een willekeurige $h\in \mathbb{R}$ met $|h| < \delta$ en $a+h\in I$.
-      Uit de middelwaardestelling van Taylor volgt nu dat er een $c$ strikt tussen $a$ en $a+h$ bestaat als volgt  wanneer $a+h$ in $I$ zit:\stref{st:middelwaardestelling-taylor}
-      \[ f(a+h) = f(a) + f'(a)h + \frac{f''(c)}{2}h^{2} = f(a) + \frac{f''(t)}{2}h^{2} \]
-      Het teken van $f(a+h)-f(a)$ zal dus hetzelfde zijn als het teken van $f''(c)$.
-      Omdat $c$ tussen $a$ en $a+h$ ligt, zal zeker $|c-a|<\delta$ gelden en zal dus $f''(c)>0$ gelden.
-      Bijgevogl geldt het volgende voor $h$ voldoende klein:
-      \[ f(a+h)-f(a) \ge 0 \]
-      $a$ levert dus een lokaal minimum.
-      \extra{beter uitschrijven, tweede deel zelf vinden zonder naar het eerste te kijken.}
-    \item Stel dat $f''(a)$ strikt negatief is.\\
-      \extra{bewijs}
-    \end{itemize}
+    \begin{idee}
+      Het lokaal minimum/maximum ligt in een lokaal 'kuiltje'.
+      We zoeken dat kuiltje via de tweede afgeleide en bewijzen door het bestaan ervan het bestaan van het lokaal maximum/minimum.
+    \end{idee}
+    
+    Omdat $f''$ continu is, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden waarin elke tweede afgeleide hetzelfde teken heeft als in $a$.
+    \[ \forall x\in I:\ |a-x|< \delta \Rightarrow sign(f''(x)) < sign(f''(a)) \]
+    Kies nu een willekeurige $b\in \interval[open]{a-\delta}{a+\delta} \cap I$.
+    Uit de middelwaardestelling van Taylor volgt nu dat er een $c$, strikt tussen $a$ en $b$ bestaat als volgt.\stref{st:middelwaardestelling-taylor}
+    \[ f(b) = f(a) + f'(a)(b-a) + \frac{f''(c)}{2}(b-a)^{2} = f(a) + \frac{f''(c)}{2}(b-a)^{2} \]
+    We herschrijven dit als volgt:
+    \[ f(b)-f(a) =\frac{f''(c)}{2}(b-a)^{2} \]
+    Omdat $\frac{(b-a)^{2}}{2}$ positief is moet $f(b)-f(a)$ hetzelfde teken hebben als $f''(c)$:
+    We weten bovendien dat $f''(c)$ strikt positief/negatief is omdat $c$ tussen $a$ en $b$ ligt en dus op een afstand, kleiner dan $\delta$ van $a$.
+    \[ sign(f(b)-f(a)) = sign(f''(c)) \]
+    Er bestaat dus een omgeving $\interval[open]{a-\delta}{a+\delta} \cap I$ waarin $f$ een minimum/maximum bereikt in $a$:
+    \[ \forall x \in \interval[open]{a-\delta}{a+\delta} \cap I:\ f(b) \overset{>}{<} f(a) \]
+
   \end{proof}
 \end{bpr}
 
