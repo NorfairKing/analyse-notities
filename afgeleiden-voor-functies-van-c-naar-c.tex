@@ -100,6 +100,23 @@
 \extra{bewijs}
 \end{vb}
 
+\begin{tvb}
+  De modulusfunctie is nergens complex afleidbaar:
+  \[ f:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto |z| \]
+
+  \begin{proof}
+    Kies een element $a\in \mathbb{C}$.
+    De afgeleide van $f$ is $a$ ziet er uit als volgt als hij bestaat.
+    \[ \lim_{z \rightarrow a}\frac{f(z)-f(a)}{z-a} \]
+    We tonen aan dat deze limiet niet bestaat.
+    Stel hiertoe $z=a+h$ met $h\in \mathbb{R}$:
+    \[ \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} = \frac{|a+h|-|a|}{h} \le \frac{|a| + |h| - |a|}{h} = 1\]
+    Stel dan $z=a+k$ met $k = hi$:
+    \[ \lim_{h\rightarrow 0}\frac{f(a+k)-f(a)}{k} = \frac{|a+hi|-|a|}{hi} \le \frac{|a| + |hi| - |a|}{hi} = \frac{|hi|}{hi} = -i \]
+    De afgeleide van de modulusfunctie kan dus niet bestaan in $a$.
+  \end{proof}
+\end{tvb}
+
 \begin{bpr}
   Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ met $A \cap \mathbb{R} \neq \emptyset$ en $f(A \cap \mathbb{R})\subseteq \mathbb{R}$.
   Zij $a \in \mathbb{R}$ een ophopingspunt van $A \cap \mathbb{R}$ en noteer $g=f|_{A \cap \mathbb{R}}$.

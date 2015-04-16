@@ -38,12 +38,65 @@
   Stel dat er een rij $(M_{k})_{k}$ in $\mathbb{R}^{+}$ bestaat zodat $\sum_{k}M_{k}$ convergeert als volgt:
   \[ \forall k\in \mathbb{N}, \forall x \in W:\ |f_{k}(x)| < M_{k} \]
   Dan convergeert $\sum_{n}f_{n}$ absoluut en uniforum op $W$.
-\TODO{bewijs p 14}
+
+  \begin{proof}
+    Volgens de vergelijkingstest convergeert $\sum_{k}f_{k}(x)$ absoluut voor elke $x\in A$.\stref{st:vergelijkingstest}
+    Noteer de limietfunctie met $f$.\\
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Beschouw de rij $(s_{n})_{n}$ partieelsomfuncties:
+    \[ s_{n} = \sum_{k=0}^{n}f_{k} \]
+    Noteer met $(t_{n})_{n}$ de rij van de partieesommen van de reeks $\sum_{k}M_{k}$.
+    \[ t_{n} = \sum_{k=0}^{n}M_{k} \]
+    Omdat $\sum_{k}M_{k}$ convergeert, kunnen we een $n_{0}\in \mathbb{N}$ vinden als volgt:\prref{pr:convergent-dan-cauchy}
+    \[ \forall n \in \mathbb{N}, \forall p\in \mathbb{N}_{0}:\ n \ge n_{0} \Rightarrow |t_{n+p}-t_{n}| < \epsilon \]
+    We vinden dan het volgende:
+    \[
+    \begin{array}{rl}
+      \forall n\in \mathbb{N}, \forall p\in \mathbb{N}_{0}, \forall x\in A:\ n \ge n_{0} \Rightarrow\\
+      |s_{n+p}(x) - s_{n}(x)|
+      &= \left|\sum_{k=n+1}^{n+p}f_{k}(x)\right|\\
+      &\le \sum_{k=n+1}^{n+p}|f_{k}(x)|\\
+      &\le \sum_{k=n+1}^{n+p}M_{K}\\
+      &=|t_{n+p}-t_{n}| < \epsilon\\
+    \end{array}
+    \]
+    Wanneer we hiervan de limiet voor $p$ gaande naar $+\infty$ nemen, vinden we dit:
+    \[ \forall n \in \mathbb{N}, \forall x\in A:\ n \ge n_{0} \Rightarrow |f(x)-s_{n}(x)| < \epsilon \]
+    \extra{meer uitleg? lijkt te simpel.}
+  \end{proof}
 \end{bst}
 
+
 \begin{bpr}
-  Zij $sum_{n}f_{n}$ een reeks van continue functies $f_{n}:\ W \rightarrow \mathbb{C}$, die uniforum convergeert op $W$, dan is de limietfunctie $\sum_{k=0}^{\infty}f_{k}$ ook continu.
-\TODO{bewijs p 15}
+  Zij $\sum_{n}f_{n}$ een reeks van continue functies $f_{n}:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, die uniforum convergeert op $A$, dan is de limietfunctie $\sum_{k=0}^{\infty}f_{k}$ ook continu.
+
+  \begin{proof}
+    Noteer $s_{n} = \sum_{k=0}^{n}f_{k}$ en kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    \begin{itemize}
+    \item Beschouw eerst volgende afschatting:
+      \[
+      \begin{array}{rl}
+        |f(x)-f(a)| &= |f(x) - s_{n}(x) + s_{n}(x) - s_{n}(a) + s_{n}(a) - f(a)|\\
+        &\le |f(x) - s_{n}(x)| + |s_{n}(x) - s_{n}(a)| + |s_{n}(a) - f(a)|\\
+      \end{array}
+      \]
+    \item Omdat $\sum_{n}f_{n}$ uniform convergeert naar $f$, kunnen we een $n_{0}\in \mathbb{N}$ vinden als volgt:
+      \[ \forall y \in A, \forall n\in \mathbb{N}:\ n\ge n \Rightarrow |s_{n}(y)-f(y)|<\frac{\epsilon}{3} \]
+    \item Omdat $f_{n}$ continu is in $a$, en elke eindige som van continue functies opnieuw continu\waarom, is $s_{n}$ continu in $a$ en kunnen we een $\delta$ vinden als volgt:
+      \[ \forall x\in A:\ |x-a| <\delta \Rightarrow |s_{n}(x) - s_{n}(a)| < \frac{\epsilon}{3} \]
+    \item 
+      Voor elke $x\in A$ met $|x-a|<\delta$ en $n\ge n_{0}$ geldt nu het volgende:
+      \[
+      \begin{array}{rl}
+        |f(x)-f(a)| &\le |f(x) - s_{n}(x)| + |s_{n}(x) - s_{n}(a)| + |s_{n}(a) - f(a)|\\
+        &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\
+        &= \epsilon
+      \end{array}
+      \]
+    \end{itemize}
+    $f$ is dus continu in $a$.
+\feed
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}

@@ -301,6 +301,47 @@
 \extra{vind voorbeelden in meerdere gevallen.}
 \end{opm}
 
+
+\begin{st}
+  Zij $f$ een twee maal afleidbare functie over een interval $I$ als volgt:
+  \[ f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R} \]
+  Stel bovendien dat $f''$ over heel $I$ positief is.
+  \begin{enumerate}[(a)]
+  \item Toon aan:
+    \[ \forall a,x \in I:\ f(x) \ge f(a) + f'(a)(x-a) m\]
+  \item Toon aan dat $f$ een globaal minimum bereikt in $a$ als $a$ een kritiek punt is van $f$.
+  \end{enumerate}
+
+  \begin{proof}
+    Kies een willekeurige $a\in I$ en $x\in I$.
+    Er bestaat dan een $c$ als volgt: \stref{st:middelwaardestelling-taylor}
+    \[ f(x) = f(a) + f'(a)(x-a) + \frac{f''(c)}{2}(x-a)^{2} \]
+    Omdat $f''$ positief is over heel $I$ geldt volgende ongelijkheid:
+    \[ f(x) \ge f(a) + f'(a)(x-a) \]
+    Als $a$ nu ook nog een kritiek punt is van $f$, dan kunnen we nog een term schrappen om de stelling te bekomen:
+    \[ f(x) \ge f(a) \]
+\feed
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Beschouw een drie maal afleidbare functie $f$, gedefinieerd op een open interval $I$, als volgt:
+  \[ f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R} \] 
+  Stel dat de derde afgeleide functie $f'''$ continu is en dat de eerste en de tweede afgeleide van $f$ in een punt $a\in I$ nul zijn, maar de derde niet, dan kan $f$ \textbf{geen} lokaal extremum bereiken in $a$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat $f$ een lokaal extremum bereikt in $a$.
+    We passen de middelwaardestelling van Taylor toe om voor elke $x\in I$ een $c\in \interval[open]{x}{a}$ te vinden als volgt:
+    \[ f(x)
+    = f(a) + f'(a)(x-a) + \frac{f''(a)}{2}(x-a)^{2} + \frac{f'''(c)}{6}(x-a)^{3}
+    = f(a) + \frac{f'''(c)}{6}(x-a)^{3}
+    \]
+    Omdat $f$ een lokaal extremum bereikt in $a$ moet $\frac{f'''(c)}{6}(x-a)^{3}$ ofwel overal positief zijn, ofwel overal negatief.
+    Opdat dit het geval zou zijn, zou $f'''(x)$ negatief moeten zijn voor $x<a$ en positief voor $x>a$ maar zeker geen $0$ in $a$.
+    Dit kan niet omdat $f'''$ continu is op $I$ (aanname).
+  \end{proof}
+\end{st}
+
 \end{document}
 
 %%% Local Variables:

@@ -240,6 +240,21 @@
 \end{vb}
 
 \begin{st}
+  Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ rijen in $\mathbb{R}_{0}^{+}$ zodat $\lim_{n\rightarrow +\infty}\frac{x_{n}}{y_{n}}$ bestaat, eindig en niet nul is.
+  $\sum_{n}x_{n}$ convergeert als en slechts als $\sum_{n}y_{n}$ convergeert.
+
+  \begin{proof}
+    Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$, dan bestaat er een $n_{0} \in \mathbb{N}$ als volgt:
+    \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow \left|\frac{x_{n}}{y_{n}} - z\right| < \epsilon \]
+    Equivalent met de laatste ongelijkheid zijn deze:
+    \[ -\epsilon < \frac{x_{n}}{y_{n}} - z < \epsilon \]
+    \[ y_{n}(-\epsilon + z) < x_{n} < y_{n}(\epsilon + z) \]
+    Vanaf die $n_{0}$ geldt dus voor alle grotere $n\in \mathbb{N}$ zowel $x_{n}< y_{n}(\epsilon + z)$ als $y_{n}< \frac{1}{-\epsilon+z}x_{n}$.
+    Uit de vergelijkingstest volgt dat $\sum_{n}x_{n}$ convergeert als $\sum_{n}y_{n}$ convergeert vanuit de eerste ongelijkheid en dat $\sum_{n}y_{n}$ convergeert als $\sum_{n}x_{n}$ convergeert vanuit de tweede ongelijkheid.\stref{st:vergelijkingstest}
+  \end{proof}
+\end{st}
+
+\begin{st}
   \label{st:verhoudingstest-dalembert}
   De \term{verhoudingstest van d'Alembert}\\
   Beschouw een reeks $\sum_{n}x_{n}$ in $\mathbb{C}$ met alle termen verschillend van nul.
@@ -311,7 +326,7 @@
 
 \begin{opm}
   Als $\limsup_{n\rightarrow \infty}\sqrt[n]{|x_{n}|}= 1$ geldt, doet de wortel geen uitspraak.
-\extra{waarom?, voorbeelden.}
+  Immers, voor $\sum_{n}\frac{1}{n}$ geldt $\limsup_{n}\sqrt[n]{|x_{n}|} = 1$ en de reeks niet, maar voor $\sum_{n}\frac{1}{n^{2}}$ geldt dit ook en die reeks convergeert wel.
 \end{opm}
 
 \extra{voorbeelden p 10}
