@@ -23,10 +23,10 @@
 \end{de}
 
 \begin{de}
-  We zeggen dat een reeks $((f_{n})_{n},(s_{n})_{n})$ van functies $f_{n}:\ W \rightarrow \mathbb{C}$ \term{uniforum convergeert} als de rij $(s_{n})_{n}$ uniforum convergeert op $W$.
+  We zeggen dat een reeks $((f_{n})_{n},(s_{n})_{n})$ van functies $f_{n}:\ W \rightarrow \mathbb{C}$ \term{uniform convergeert} als de rij $(s_{n})_{n}$ uniform convergeert op $W$.
 \end{de}
 
-\extra{uniforume convergentie impliceert puntsgewijze convergentie, maar niet omgekeerd}.
+\extra{uniforme convergentie impliceert puntsgewijze convergentie, maar niet omgekeerd}.
 
 \begin{de}
   We zeggen dat een reeks $((f_{n})_{n},(s_{n})_{n})$ van functies $f_{n}:\ W \rightarrow \mathbb{C}$ \term{absoluut convergeert} als de rij $(s_{n})_{n}$ absoluut convergeert voor elke $x \in W$
@@ -37,7 +37,7 @@
   Zij $\sum_{n}f_{n}$ een reeks van functies $f_{n}:\ W \rightarrow \mathbb{C}$.
   Stel dat er een rij $(M_{k})_{k}$ in $\mathbb{R}^{+}$ bestaat zodat $\sum_{k}M_{k}$ convergeert als volgt:
   \[ \forall k\in \mathbb{N}, \forall x \in W:\ |f_{k}(x)| < M_{k} \]
-  Dan convergeert $\sum_{n}f_{n}$ absoluut en uniforum op $W$.
+  Dan convergeert $\sum_{n}f_{n}$ absoluut en uniform op $W$.
 
   \begin{proof}
     Volgens de vergelijkingstest convergeert $\sum_{k}f_{k}(x)$ absoluut voor elke $x\in A$.\stref{st:vergelijkingstest}
@@ -62,13 +62,12 @@
     \]
     Wanneer we hiervan de limiet voor $p$ gaande naar $+\infty$ nemen, vinden we dit:
     \[ \forall n \in \mathbb{N}, \forall x\in A:\ n \ge n_{0} \Rightarrow |f(x)-s_{n}(x)| < \epsilon \]
-    \extra{meer uitleg? lijkt te simpel.}
   \end{proof}
 \end{bst}
 
 
 \begin{bpr}
-  Zij $\sum_{n}f_{n}$ een reeks van continue functies $f_{n}:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, die uniforum convergeert op $A$, dan is de limietfunctie $\sum_{k=0}^{\infty}f_{k}$ ook continu.
+  Zij $\sum_{n}f_{n}$ een reeks van continue functies $f_{n}:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, die uniform convergeert op $A$, dan is de limietfunctie $\sum_{k=0}^{\infty}f_{k}$ ook continu.
 
   \begin{proof}
     Noteer $s_{n} = \sum_{k=0}^{n}f_{k}$ en kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
@@ -101,7 +100,7 @@
 
 \begin{bpr}
   Zij $\sum_{n}f_{n}$ een reeks van afleidbare functies, gedefineerd op een open, convex, deel $A$ van $\mathbb{C}$ met waarden in $\mathbb{C}$.
-  Stel dat $\sum_{n}f_{n}$ puntsgewijs convergeert naar een functie $f:\ A\subseteq \mathbb{C} \rightarrow \mathbb{C}$ en dat de reeks $\sum_{n}f'_{n}$ uniforum convergeert op $A$, dan geldt:
+  Stel dat $\sum_{n}f_{n}$ puntsgewijs convergeert naar een functie $f:\ A\subseteq \mathbb{C} \rightarrow \mathbb{C}$ en dat de reeks $\sum_{n}f'_{n}$ uniform convergeert op $A$, dan geldt:
   \begin{itemize}
   \item $f$ is afleidbaar
   \item $\forall x\in A:\ f'(x) = \sum_{k=0}^{\infty}f'_{k}(x)$
@@ -131,7 +130,12 @@
   \item Als $|z-a| < R$ geldt, dan convergeert de machtreeks absoluut.
   \item Als $|z-a| > R$ geldt, dan convergeert de machtreeks niet.
   \end{itemize}
-\TODO{bewijs p 17}
+
+  \begin{proof}
+    Kies een $z\in \mathbb{C}$ en noem $x_{n}=c_{n}(z-a)^{n}$.
+    \[ \limsup_{n\rightarrow +\infty}\sqrt[n]{|x_{n}|} = |z-a|\limsup_{n\rightarrow +\infty}\sqrt[n]{|c_{n}|} = |z-a|\gamma \]
+    Uit de worteltest van Cauchy volgt nu meteen de stelling.\stref{st:worteltest-cauchy}
+  \end{proof}
 \end{bst}
 
 \extra{wat gebeurt er bij $|z-a| = R$?}
@@ -144,15 +148,35 @@
 
 \begin{bpr}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$.
-  Stel dat $c_{n}$ vanaf een bepaalde $n_{0}$ nooit $0$ is en dat de limiet $\lim_{n \rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|}$ bestaat, dan is diee limiet gelijk aan de convergentiestraal van de machtreeks.
-\TODO{bewijs p 18}
+  Stel dat $c_{n}$ vanaf een bepaalde $n_{0}$ nooit $0$ is en dat de limiet $\lim_{n \rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|}$ bestaat, dan is die limiet gelijk aan de convergentiestraal van de machtreeks.
+
+  \begin{proof}
+    Noem $\rho = \lim_{n\rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|}$ en noem de convergentiestraal van de machtreeks $R$.
+    Kies een $z\in \mathbb{C}$, verschillend van $a$ en stel $x_{n} = c_{n}(z-a)^{n}$, dan geldt het volgende:
+    \[
+    \lim_{n\rightarrow +\infty}\frac{|x_{n}+1|}{|x_{n}} = 
+    \left\{
+      \begin{array}{cl}
+        +\infty & \text{ als } \rho = 0\\
+        \frac{|z-a|}{\rho} & \text{ als } \rho \in \interval[open]{0}{+\infty}\\
+        0 & \text{ als } \rho = +\infty\\
+      \end{array}
+    \right.
+    \]
+    Met behulp van de verhoudingstest kunnen we volgende besluiten trekken:
+    \begin{itemize}
+    \item Als $\rho=0$ geldt, zal de machtreeks nooit convergeren voor $z \neq a$ dus geldt $R=0=\rho$.
+    \item Als $\rho \in \interval[open]{0}{+\infty}$ geldt, zal de machtreeks absoluut convergeren als voor $\frac{|z-a|}{\rho}<1$ en niet convergeren voor $\frac{|z-a|}{\rho} >1$ dus geldt $R = \rho$.
+    \item Als $\rho=+\infty$ geldt, zal de machtreeks voor alle $z\in \mathbb{C}$ convergeren en geldt dus $R = +\infty = \rho$.
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \extra{voorbeelden p 19}
 
 \begin{bst}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
-  \[ \forall \rho \in \interval[open]{0}{R} \subseteq \mathbb{R}:\ \text{ de reeks convergeert uniforum op } \left\{ z \in \mathbb{C} \mid |z-a| \le \rho \right\} \]
+  \[ \forall \rho \in \interval[open]{0}{R} \subseteq \mathbb{R}:\ \text{ de reeks convergeert uniform op } \left\{ z \in \mathbb{C} \mid |z-a| \le \rho \right\} \]
 \TODO{bewijs p 19}
 \end{bst}
 
