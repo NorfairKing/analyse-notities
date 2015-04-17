@@ -104,7 +104,7 @@
   \end{proof}
 \end{st}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:unie-open-verzamelingen-open}
   De unie van open verzamelingen is open.
 
@@ -114,9 +114,9 @@
     Als $U$ niet leeg is, dan bestaat er een $x\in U$ die tot een $A \in \mathcal{O}$ behoort.
     Omdat $A$ open is, kunnen we een open interval rond $x$ vinden dat tot $A$, en dus tot $U$, behoort.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:eindige-doorsnede-open-verzamelingen-open}
   De doorsnede van \textbf{een eindig aantal} open verzamelingen is open.
 
@@ -131,7 +131,7 @@
     Nu behoort $]x-\delta,x+\delta[$ tot alle $]x-\delta_{i},x+\delta_{i}[$ en dus tot $D$.
     Bijgevolg is $D$ open.
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{tvb}
   De doorsnede van een oneindig aantal open intervallen is niet noodzakelijk open.
@@ -143,7 +143,7 @@
   \end{proof}
 \end{tvb}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:doorsnede-gesloten-verzamelingen-gesloten}
   Een doorsnede van gesloten verzamelingen is gesloten.
 
@@ -152,9 +152,9 @@
     Het complement van $D$ is de unie van de complementen van $A_{i}$\needed en daarom open.\prref{pr:unie-open-verzamelingen-open}
     Bijgevolg is $D$ gesloten.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:eindige-unie-gesloten-verzamelingen-gesloten}
   De unie van \textbf{een eindig aantal} gesloten verzamelingen is gesloten.
 
@@ -163,9 +163,9 @@
     Het complement van $U$ is de doorsnede van de (open) complementen van (een eindig aantal) $A_{i}$ en bijgevolg open.\prref{pr:eindige-doorsnede-open-verzamelingen-open}
     Bijgevolg is $U$ gesloten.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:gesloten-asa-elke-convergente-rij-in-A-limiet-in-A}
   Zij $A$ een niet-leeg deel van $\mathbb{R}$, dan is $A$ gesloten als en slechts als elke convergente rij $(x_{n})_{n}$ in $A$ een limiet heeft in $A$.
 
@@ -191,9 +191,9 @@
       De limiet van $(x_{n})_{n}$ is dus $a$.
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $A$ een niet-leeg deel van $\mathbb{R}$, dan is $A$ gesloten en begrensd als en slechts als elke rij in $A$ een convergente deelrij heeft met limiet in $A$.
 
   \begin{proof}
@@ -218,7 +218,7 @@
       \end{itemize}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{st}
   Elke niet-lege, gesloten, naar boven begrensde deelverzameling van $\mathbb{R}$ heeft een maximum.
@@ -418,7 +418,30 @@
   \end{proof}
 \end{st}
 
-\begin{pr}
+
+\begin{vb}
+  Zij $A = \interval[open left]{0}{1} \cup \{2\} $.
+  \begin{itemize}
+  \item De grootste open deelverzameling van $A$ is $\interval[open]{0}{1}$.
+  \item De grootste gesloten deelverzameling van $A$ bestaat niet. 
+  \item De kleinste open oververzameling van $A$ bestaat niet
+  \item De kleinste gesloten oververzameling van $A$ is $\interval{0}{2}$.
+  \end{itemize}
+\feed
+\end{vb}
+
+\begin{vb}
+  Beschouw $\mathbb{Q}$.
+  \begin{itemize}
+  \item De grootste open deelverzameling van $\mathbb{Q}$ is $\emptyset$.
+  \item De grootste gesloten deelverzameling van $\mathbb{Q}$ is $\emptyset$.
+  \item De kleinste open oververzameling van $\mathbb{Q}$ is $\mathbb{R}$.
+  \item De kleinste gesloten oververzameling van $\mathbb{Q}$ is $\mathbb{R}$.
+  \end{itemize}
+\feed
+\end{vb}
+
+\begin{bpr}
   Zij $A$ een deelverzameling van $\mathbb{R}$, dan ziet $\mathring{A}$ er als volgt uit:
   \[ \mathring{A} = \{ x\in A\mid \exists \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \subseteq A \} \]
 
@@ -461,9 +484,9 @@
     \end{itemize}
     We concluderen dat $\mathring{A}$ inderdaad gelijk is aan $V$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   Zij $A$ een deelverzameling van $\mathbb{R}$, dan ziet $\bar{A}$ er als volgt uit:
   \[ \bar{A} = \{ x\in \mathbb{R} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{ x+\delta} \cap A \neq \emptyset \} \]
 
@@ -489,7 +512,7 @@
     \end{itemize}
     We concluderen dat $\bar{A}$ inderdaad gelijk is aan $\mathbb{R}$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{de}
   We noemen een punt $x$ van niet-lege deelverzameling $A$ van $\mathbb{R}$ een \term{inwendig punt} van $A$ als het tot $\mathring{A}$ behoort.
@@ -501,7 +524,24 @@
   \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ \interval[open]{x-\delta}{x+\delta} \cap A \neq \emptyset \]
 \end{de}
 
-\begin{pr}
+\begin{vb}
+  Zij $A= \interval[open left]{0}{1}$.
+  \begin{itemize}
+  \item $\mathring{A} = \interval[open]{0}{1}$.
+  \item $\overline{A} = \interval{0}{1} \cup \{2\}$
+  \end{itemize}
+\end{vb}
+
+\begin{vb}
+  Zij $A= \left\{ \frac{1}{n} \mid n\in \mathbb{N}_{0} \right\}$.
+  \begin{itemize}
+  \item $\mathring{A} = \emptyset$.
+  \item $\overline{A} = A \cup \{ 0 \}$
+  \end{itemize}
+\end{vb}
+
+
+\begin{bpr}
   Zij $A$ een deel van $\mathbb{R}$ en $x\in \mathbb{R}$, dan behoort $x$ tot $\bar{A}$ als en slechts als er een rij $(x_{n})_{n}$ in $A$ bestaat met $x$ als limiet.
 
   \begin{proof}
@@ -521,7 +561,7 @@
       De doorsnede van $A$ en $\interval[open]{x-\delta}{x+\delta}$ bevat dus al zeker $x_{n}$ en is bijgevolg niet leeg.
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{pr}
   \[ \mathring{\mathbb{Q}} = \emptyset \quad\text{ en }\quad \overline{\mathbb{Q}} = \mathbb{R} \]
@@ -634,6 +674,7 @@
 \extra{bewijs}
 \extra{geldt dit in $\mathbb{C}$?}
 \end{st}
+
 \subsection{Randpunten, ge\"isoleerde punten en ophopingspunten.}
 \label{sec:randp-geis-punt}
 
@@ -647,7 +688,7 @@
 \end{de}
 
 \begin{opm}
-  Eer randpunt van $A$ hoeft niet tot $A$ te behoren.
+  Een randpunt van $A$ hoeft niet tot $A$ te behoren.
 \extra{voorbeeld}
 \end{opm}
 
@@ -685,7 +726,25 @@
   De definities zijn immers de negatie van elkaar.
 \end{opm}
 
-\begin{pr}
+\begin{vb}
+  Zij $A= \interval[open left]{0}{1} \cup \{2\}$.
+  \begin{itemize}
+  \item $\partial{A} = \{0\} \cup \{1\} \cup \{2\}$
+  \item De ge\"isoleerde punten van $A$ zijn $\{2\}$.
+  \item De ophopingspunten van $A$ zijn $\interval{0}{1}$.
+  \end{itemize}
+\end{vb}
+
+\begin{vb}
+  Zij $A= \left\{ \frac{1}{n} \mid n\in \mathbb{N}_{0} \right\}$.
+  \begin{itemize}
+  \item $\partial{A} = \overline{A}$
+  \item Alle punten van $A$ zijn ge\"isoleerde punten.
+  \item De ophopingspunten van $A$ zijn $\interval{0}{1}$.
+  \end{itemize}
+\end{vb}
+
+\begin{bpr}
   \label{pr:equivalenties-ophopingspunt}
   Zij $A$ een niet een niet-lege deelverzameling van $\mathbb{R}$, dan zijn volgende uitspraken equivalent.
   \begin{enumerate}
@@ -711,9 +770,9 @@
       $\interval[open]{x-\delta}{x+\delta} \cap (A \setminus \{x\})$ bevat dan nog steeds oneindig veel punten en is dus niet leeg.
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{st}
+\begin{bst}
   De \term{stelling van Bolzano-Weierstra\ss} (ophopingspuntversie).
   Elk oneindig begrensd deel van $\mathbb{R}$ heeft minstens \'e\'en ophopingspunt.
 
@@ -729,7 +788,7 @@
     Het interval $\interval[open]{x-\delta}{x+\delta}$ bevat dan oneindig veel punten (tenminste alle $x_{n_{k}}$ met $k>k_{0}$).
     Bijgevolg is $x$ een ophopingspunt van $A$.\prref{pr:equivalenties-ophopingspunt}
   \end{proof}
-\end{st}
+\end{bst}
 
 \begin{st}
   Elke overaftelbare deelverzameling van $\mathbb{R}$ heeft minstens \'e\'en ophopingspunt.
@@ -1049,13 +1108,31 @@
 
 \begin{de}
   Een (open) \term{cirkelschijf} in $\mathbb{C}$ met middelpunt $m\in \mathbb{C}$ en straal $r\in \mathbb{R}_{0}^{+}$ is de verzameling $C$:
-  \[ C = \{ z \mid |z-m| < r \} \]
+  \[ C = \{ z \in \mathbb{C} \mid |z-m| < r \} \]
 \end{de}
 
 \begin{st}
   Een open cirkelschijf in $\mathbb{C}$ is een open deelverzameling van $\mathbb{C}$.
-\extra{bewijs}
+
+  \begin{proof}
+    Kies een willekeurige $x$ in een cirkelschijf $A = \{ z \in \mathbb{C} \mid |z-m| < r \}$ en noem $\delta = r-|x-a| > 0$.
+    Nu geldt het volgende, en daaruit volgt dat $A$ open is:
+    \[ \forall y\in \mathbb{C}:\ |y-x|<\delta \Rightarrow |y-a| \le |y-x|+|x-a| < \delta + |x+a| = r \]
+  \end{proof}
 \end{st}
+
+\begin{vb}
+  Zij $a\in \mathbb{C}$ en $r>0$, dan is de verzameling $B = \{x\in \mathbb{C}\mid |x-a|\le r\}$ gesloten.
+
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De verzameling $A$ als volgt is open.
+  \[ A = \left\{z \in \mathbb{C} \mid Re z \in \interval[open]{-1}{1} \text{ en } Im z \in \interval[open]{-1}{1} \right\} \]
+
+\extra{bewijs}
+\end{vb}
 
 \begin{st}
   Equivalente definite van open in $\mathbb{C}$:\\
