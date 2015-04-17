@@ -4,19 +4,98 @@
 \chapter{Re\"ele en complexe getallen}
 \label{cha:reele-en-complexe-getallen}
 
-\section{De rationale getallen en hun structuur}
-\label{sec:de-rati-getall}
+\section{Natuurlijke getallen}
+\label{sec:natuurlijke-getallen}
 
 \begin{de}
-  De \term{gehele getallen}, genoteerd als $\mathbb{Z}$.
+  De \term{natuurlijke getallen} zijn inductief gedefinieerd met de volgende axioma's.
+  \begin{itemize}
+  \item $0$ is een natuurlijk getal: $0 \in \mathbb{N}$.
+  \item $\forall a \in \mathbb{N}: S(a) \in \mathbb{N}$.
+  \item $\forall a,b\in \mathbb{N}: S(a) = S(b) \Rightarrow a=b$
+  \item Als een verzameling $V$ $0$ bevat alsook de successor van elk getal in $V$, dan geldt $V=\mathbb{N}$.
+  \end{itemize}
+\end{de}
+
+\begin{de}
+  De \term{optellling} is gedefinieerd als volgt:
+  \[ a + S(b) = s(a+b) \]
+\end{de}
+
+\begin{de}
+  De \term{vermenigvuldiging} is gedefinieerd als volgt:
+  \[ a \cdot S(b) = a+ s(a\cdot b) \]
+\end{de}
+
+\begin{de}
+  De \term{orde} in $\mathbb{N}$ is gedefinieerd als volgt:
+  \[ n \le S(m) \Leftrightarrow n = S(m) \vee n \le m \]
+\end{de}
+
+\begin{de}
+  De \term{natuurlijke getallen} kunnen ook concreet gedefineerd worden:
+  \[
+  \left\{
+  \begin{array}{rl}
+    0 &= \emptyset\\
+    s(n) &= n \cup \{ n \}\\
+  \end{array}
+  \right.
+  \]
+\end{de}
+
+\section{Gehele getallen}
+\label{sec:gehele-getallen}
+
+
+\begin{de}
+  De \term{gehele getallen}, genoteerd als $\mathbb{Z}$, definieren we intu\"itief als volgt:
   \[ \mathbb{Z} = \mathbb{N} \cup \{ -n \mid n\in \mathbb{N} \}  \]
 \end{de}
+
+\begin{de}
+  We kunnen de \term{gehele getallen} ook concreet definieren als volgt:
+  $\mathbb{Z}$ is partitie van $\mathbb{N}^{2}$ onder de equivalentierelatie $\sim$ als volgt:
+  \[ \sim:\ \mathbb{N}^{2} \times \mathbb{N}^{2}:\ (a,b) \sim (c,d) \Leftrightarrow b+c = d+a \]
+\end{de}
+
+\begin{opm}
+  In deze representatie stelt $(a,b)$ $b+(-a)$ voor in de intu\"itieve notatie.
+\end{opm}
+
+\begin{de}
+  De \term{optelling} definieren we dan als volgt:
+  \[ (a,b) + (c,d) = (a+c,b+d) \]
+\end{de}
+\extra{nagaan dat deze definitie onafhankelijk is van de gekozen representanten uit de equivalentieklassen}
+
+\begin{de}
+  De \term{vermenigvuldiging} definieren we als volgt:
+  \[ (a,b) \cdot (c,d) = (bd+ac,da+bc) \]
+\end{de}
+\extra{nagaan dat deze definitie onafhankelijk is van de gekozen representanten uit de equivalentieklassen}
+
+\begin{de}
+  De \term{orde} definieren we in termen van de orde op $\mathbb{N}$ als volgt:
+  \[ (a,b) \le (c,d) \Leftrightarrow b+c \le d+a \]
+\end{de}
+
+
+
+\section{De rationale getallen en hun structuur}
+\label{sec:de-rati-getall}
 
 \begin{de}
   De \term{rationale getallen}, genoteerd als $\mathbb{Q}$.
   \[ \mathbb{Q} = \{ \nicefrac{n}{m} \mid n\in \mathbb{Z}, m\in \mathbb{Z}, m \neq 0 \} \]
 \end{de}
 
+\begin{de}
+  Concreet is $\mathbb{Q}$ het breukenveld van $\mathbb{Z}$, maar daarover later meer.
+\end{de}
+
+\section{Velden}
+\label{sec:velden}
 
 \begin{de}
   Een \term{veld} $\mathbb{F},+,\cdot$ is een verzameling $\mathbb{F}$ met twee bewerkingen $+$ en $\cdot$ met de volgende eigenschappen.
@@ -44,7 +123,7 @@
 
 \begin{de}
   \label{de:totaal-geordend-veld}
-  Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we het een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
+  Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we $\mathbb{F},+,\cdot,\le$ een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
   \begin{itemize}
   \item $\forall x,y,z \in \mathbb{F}:\ x \le y \Rightarrow (x+z) \le (y+z)$
   \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
