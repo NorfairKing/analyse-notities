@@ -67,6 +67,7 @@
 
 
 \begin{bpr}
+  \label{pr:reeks-uniform-convergent-dan-limietfunctie-continu}
   Zij $\sum_{n}f_{n}$ een reeks van continue functies $f_{n}:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, die uniform convergeert op $A$, dan is de limietfunctie $\sum_{k=0}^{\infty}f_{k}$ ook continu.
 
   \begin{proof}
@@ -99,6 +100,7 @@
 \end{bpr}
 
 \begin{bpr}
+  \label{pr:reeks-uniform-convergent-etc-dan-limietfunctie-afleidbaar}
   Zij $\sum_{n}f_{n}$ een reeks van afleidbare functies, gedefineerd op een open, convex, deel $A$ van $\mathbb{C}$ met waarden in $\mathbb{C}$.
   Stel dat $\sum_{n}f_{n}$ puntsgewijs convergeert naar een functie $f:\ A\subseteq \mathbb{C} \rightarrow \mathbb{C}$ en dat de reeks $\sum_{n}f'_{n}$ uniform convergeert op $A$, dan geldt:
   \begin{itemize}
@@ -154,7 +156,7 @@
     Noem $\rho = \lim_{n\rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|}$ en noem de convergentiestraal van de machtreeks $R$.
     Kies een $z\in \mathbb{C}$, verschillend van $a$ en stel $x_{n} = c_{n}(z-a)^{n}$, dan geldt het volgende:
     \[
-    \lim_{n\rightarrow +\infty}\frac{|x_{n}+1|}{|x_{n}} = 
+    \lim_{n\rightarrow +\infty}\frac{|x_{n}+1|}{|x_{n}|} = 
     \left\{
       \begin{array}{cl}
         +\infty & \text{ als } \rho = 0\\
@@ -172,25 +174,108 @@
   \end{proof}
 \end{bpr}
 
-\extra{voorbeelden p 19}
+\begin{vb}
+  De machtreeks $\sum_{n=1}^{+\infty}\frac{1}{n}z^{n}$ rond $0$ heeft convergentiestraal $1$.
+
+  \begin{proof}
+    \[
+    \lim_{n\rightarrow +\infty}\frac{\left|\frac{1}{n}\right|}{\left|\frac{1}{n+1}\right|} 
+    = \lim_{n\rightarrow +\infty}\frac{\frac{1}{n}}{\frac{1}{n+1}} 
+    = \lim_{n\rightarrow +\infty} \frac{n+1}{n} = 1
+    \]
+    Merk hier op dat de reeks niet convergeert voor $z=1$ maar wel voor $z=-1$.
+\extra{uitwerken.}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De machtreeks $\sum_{n}n!z^{n}$ rond $0$ heeft convergentiestraal $0$
+  
+  \begin{proof}
+    \[
+    \lim_{n\rightarrow +\infty}\frac{\left|n!\right|}{\left| (n+1)!\right|}
+    = \lim_{n\rightarrow +\infty}\frac{n!}{(n+1)!}
+    = \lim_{n\rightarrow +\infty}\frac{1}{n+1}
+    = 0
+    \]
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De machtreeks $\sum_{n}\frac{1}{n^{n}}z^{n}$ heeft convergentiestraal $+\infty$.
+  
+  \begin{proof}
+    \[
+    \lim_{n \rightarrow +\infty} \frac{\frac{1}{n^{n}}}{\frac{1}{(n+1)^{n+1}}}
+    = \lim_{n \rightarrow +\infty}\frac{(n+1)^{n+1}}{n^{n}}
+    = +\infty
+    \]
+    ... maar het kan nog simpeler:
+    \[ \limsup_{n\rightarrow +\infty}\sqrt[n]{\frac{1}{n^{n}}} = \limsup_{n\rightarrow +\infty}\frac{1}{n} = 0 \]
+  \end{proof}
+\end{vb}
 
 \begin{bst}
+  \label{st:machtreeks-convergeert-uniform-op-open-convergentieschijf}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
   \[ \forall \rho \in \interval[open]{0}{R} \subseteq \mathbb{R}:\ \text{ de reeks convergeert uniform op } \left\{ z \in \mathbb{C} \mid |z-a| \le \rho \right\} \]
-\TODO{bewijs p 19}
+
+  \begin{proof}
+    Kies een willekeurige $\rho \in \interval[open]{0}{R} \subseteq \mathbb{R}$.
+    De reeks $\sum_{n}|c_{n}|\rho^{n}$ zal zeker convergeren.
+    Anderzijds geldt ook het volgende:
+    \[ \forall z\in \mathbb{C}, \forall n\in \mathbb{N}:\ |z-a|\le \rho \Rightarrow |c_{n}(z-a)^{n}| \le |c_{n}|\rho^{n} \]
+    De stelling volgt nu meteen uit de M-test van Weierstra\ss.
+  \end{proof}
 \end{bst}
+
+\begin{gev}
+  Een machtreeks convergeert uniform op begrensde gesloten delen van haar open convergentieschijf $B(a,R)$.
+  \begin{proof}
+    Zij $D$ een begrensd, gesloten deel $D$ van $B(a,R)$, dan bestaat er een $\rho \in \interval[open right]{0}{R}$ als volgt:
+    \[ D \subseteq \{ z \in \mathbb{C} \mid |z-a| \le \rho \} \]
+    Omdat $\rho \in \interval[open right]{0}{R}$ geldt, convergeert de machtreeks uniform op $\{ z \in \mathbb{C} \mid |z-a| \le \rho \}$\stref{st:machtreeks-convergeert-uniform-op-open-convergentieschijf} en dus op $D$.
+  \end{proof}
+\end{gev}
 
 \begin{bgev}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
   De volgende functie is continu:
   \[ f:\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=0}^{\infty}c_{n}(z-a)^{n}  \]
-\TODO{bewijs: oefening p 20}
+
+  \begin{proof}
+    De machtreeks convergeert uniform op $\left\{ z \in \mathbb{C} \mid |z-a| \le R \right\}$\stref{st:machtreeks-convergeert-uniform-op-open-convergentieschijf}.
+    Bijgevolg is de limietfunctie continu.\prref{pr:reeks-uniform-convergent-dan-limietfunctie-continu}
+  \end{proof}
 \end{bgev}
 
 \begin{blem}
+  \label{lem:afgeleide-reeks-zelfde-limsup}
   Voor elke rij $(c_{n})_{n}$ in $\mathbb{C}$ geldt $\limsup_{n\rightarrow +\infty}\sqrt[n]{n|c_{n}|} = \limsup_{n\rightarrow +\infty}\sqrt[n]{|c_{n}|}$.
-\TODO{bewijs p 20}
+
+  \begin{proof}
+    Noteer $a=\limsup_{n\rightarrow +\infty}\sqrt[n]{n|c_{n}|}$ en $b= \limsup_{n\rightarrow +\infty}\sqrt[n]{|c_{n}|}$.
+    Omdat $n|c_{n}| \ge |c_{n}|$ geldt voor alle $n \ge 1$ moet $a\ge b$ gelden.
+    Als $b$ $+\infty$ is, is het bewijs hierbij geleverd.
+    Beschouw daarom het geval waarin $b < +\infty$ geldt.
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $\lim_{n\rightarrow +\infty}\sqrt[n]{n} = 1$ geldt\waarom, kunnen we een $n_{0}\in \mathbb{N}$ nemen als volgt:
+    \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow \sqrt[n]{n} < 1+\epsilon \]
+    Voor $n\ge n_{0}$ geldt dan ook $\sqrt[n]{n|c_{n}|} = \sqrt[n]{n}\sqrt[n]{|c_{n}|} < (1+\epsilon)\sqrt[n]{|c_{n}|}$.
+    Hieruit volgt $a\le (1+\epsilon)b$.\prref{pr:limiet-behoudt-orde}
+    $\epsilon$ kan hierin willekeurig klein gekozen worden, dus $a\le b$ moet gelden.
+    Uit $a\ge b$ en $a \le b$ volgt dat $a$ en $b$ gelijk zijn.
+  \end{proof}
 \end{blem}
+
+\begin{gev}
+  \label{gev:afgeleide-reeks-zelfde-straal}
+  De ``afgeleide machtreeks'' $\sum_{n=1}nc_{n}(z-a)^{n-1}$ van een machtreeks $\sum_{n}c_{n}(z-a)^{n}$ rond $a$ heeft dezelfde convergentiestraal.
+
+  \begin{proof}
+    De convergentiestraal is de inverse van $\limsup_{n\rightarrow +\infty}\sqrt[n]{|c_{n}|}$, en die is voor beide reeksen gelijk.\lemref{lem:afgeleide-reeks-zelfde-limsup}
+  \end{proof}
+\end{gev}
 
 \begin{bst}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$ met convergentiestraal $R$.
@@ -198,7 +283,12 @@
   \[ f:\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=0}^{\infty}c_{n}(z-a)^{n}  \]
   Bovendien vinden we de afgeleide functie als volgt:
   \[ f':\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=1}^{\infty}nc_{n}(z-a)^{n-1}  \]
-\TODO{bewijs sp 21}
+
+  \begin{proof}
+    We weten al dat $\sum_{n}f_{n}$ uniform, en dus puntsgewijs\needed, convergeert naar $f$ op $\left\{ z \in \mathbb{C} \mid |z-a| \le R \right\}$.\stref{st:machtreeks-convergeert-uniform-op-open-convergentieschijf}
+    We weten eveneens dat $(f'_{n})_{n}$ uniforum convergeert op $\left\{ z \in \mathbb{C} \mid |z-a| \le R \right\}$.\gevref{gev:afgeleide-reeks-zelfde-straal}\stref{st:machtreeks-convergeert-uniform-op-open-convergentieschijf}
+    $\sum_{n}f'_{n}$ convergeert dan naar $f'$.\prref{pr:reeks-uniform-convergent-etc-dan-limietfunctie-afleidbaar}
+  \end{proof}
 \end{bst}
 
 \begin{bgev}
@@ -208,28 +298,86 @@
   Bovendien vinden we de $k$-de afgeleide functie als volgt voor elke $k\in \mathbb{N}$:
   \[ f^{(k)}:\ \left\{ z \in \mathbb{C} \mid |z-a| \le R \right\} \rightarrow \mathbb{C}:\ z \mapsto \sum_{n=k}^{\infty}\binom{n}{k}c_{n}(z-a)^{n-k}  \]
   In het bijzonder geldt $f^{(k)}(a) = k!c_{k}$
-\TODO{bewijs}
+
+  \begin{proof}
+    We itereren simpelweg bovenstaande stelling.\extra{meer uitleg? inductie misschien?}
+  \end{proof}
 \end{bgev}
 
 \begin{de}
-  Gegeven twee reeksen $\sum_{n}x_{n}$, $\sum_{m}c_{n}y_{m}$ in $\mathbb{C}$, dan defini\"eren we de \term{productreeks} $\sum_{k}z_{k}$ als volgt:
+  Gegeven twee reeksen $\sum_{n}x_{n}$, $\sum_{m}y_{m}$ in $\mathbb{C}$, dan defini\"eren we de \term{productreeks} $\sum_{k}z_{k}$ als volgt:
   \[ z_{k} = \sum_{n=0}^{k}x_{n}y_{k-n} \]
 \end{de}
 
-\extra{geen stelling p 23 bovenaan}
+\begin{gst}
+  Zij $\sum_{n}x_{n}$ en $\sum_{m}y_{m}$ twee convergente machtreeksen in $\mathbb{C}$, dan zal de productreeks $\sum_{k}z_{k}$ \textbf{niet} noodzakelijk convergeren.
+\extra{vindt een tegenvoorbeeld}
+\end{gst}
 
 \begin{bst}
   Beschouw twee reeksen $\sum_{n}x_{n}$, $\sum_{m}c_{n}y_{m}$ in $\mathbb{C}$.
   Als $\sum_{n}x_{n}$ absoluut convergeert en $\sum_{m}y_{m}$ (gewoon) convergeert, dan convergeert de productreeks $\sum_{k}z_{k}$ en ziet de limiet er als volgt uit:
   \[ \sum_{k=0}^{\infty}z_{k} = \left(\sum_{n=0}^{\infty}x_{n}\right) \cdot \left(\sum_{m=0}^{\infty}y_{m}\right) \]
-\TODO{bewijs p 23}
+
+  \begin{proof}
+    Noteer:
+    \[
+    s_{n} = \sum_{k}^{n}x_{k},\quad
+    s = \lim_{n\rightarrow +\infty}s_{n}
+    \]
+    \[
+    t_{n} = \sum_{k}^{n}y_{k},\quad
+    t = \lim_{n\rightarrow +\infty}t_{n},\quad
+    \tau_{n} = t_{n}-t
+    \]
+    \[
+    u_{n} = \sum_{k=0}^{n}z_{k}
+    \]
+    \[ \rho_{n} = \sum_{k=0}^{n}x_{k}\tau_{n-k} \]
+    Merk het volgende op:
+    \[
+    \begin{array}{rll}
+      u_{n}
+      &= \sum_{k=0}^{n}\sum_{i=0}^{k}x_{i}y_{k-i}
+      &= x_{0}y_{0} + (x_{0}y_{1}+x_{1}y_{0}) + \dotsb + (x_{0}y_{n} + x_{1}y_{n-1} + \dotsb + x_{n}y_{0})\\
+      &= \sum_{k=0}^{n}x_{k}t_{n-k}
+      &= x_{0}t_{n} + x_{1}t_{n-1} + \dotsb + x_{n}t_{0}\\
+      &= \sum_{k=0}^{n}x_{k}(t+\tau_{n-k})
+      &= x_{0}(t+\tau_{n}) + x_{1}(t+\tau_{n-1}) + \dotsb + x_{n}(t+\tau_{0})\\
+      &= s_{n}t + \sum_{k=0}^{n}x_{k}\tau_{n-k}
+      &= s_{n}t + x_{0}\tau_{n} + x_{1}\tau_{n-1} + \dotsb + x_{n}\tau_{0}\\
+      &= s_{n}t + \rho_{n}\\
+    \end{array}
+    \]
+    Om aan te tonen dat $\lim_{n\rightarrow +\infty}u_{n}$ gelijk is aan $st$ is het voldoende aan te tonen dat $\rho_{n}$ naar $0$ gaat voor $n$ gaande naar $+\infty$ omdat $s_{n}t$ al naar $st$ gaat.
+    
+    Noteer $\alpha = \sum_{n}|x_{n}|$.
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Vermits $\tau_{n}$ naar $0$ gaat voor $n$ gaande naar $+\infty$, kunnen we een $n_{0}\in \mathbb{N}$ nemem als volgt:
+    \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |\tau_{n}| < \epsilon \]
+    Er geldt dan het volgende:
+    \[
+    \begin{array}{rl}
+      |\rho_{n}|
+      &= \left|\sum_{i=0}^{n}x_{k}\tau_{n-k}\right|\\
+      &\le \left|\sum_{k=0}^{n_{0}}x_{k}\tau_{n-k}\right|+\left|\sum_{k=n_{0}}^{n}x_{k}\tau_{n-k}\right|\\
+      &\le \left|\sum_{k=0}^{n_{0}}x_{k}\tau_{n-k}\right|+\epsilon\alpha\\
+    \end{array}
+    \]
+    Nemen we hiervan de $\limsup$ voor $n$ gaande naar $+\infty$, dan vinden we het volgende:
+    \[
+      \limsup_{n\rightarrow +\infty}|\rho_{n}|
+      \le \epsilon\alpha\\
+    \]
+    Omdat $\epsilon$ hier willekeurig klein gekozen kan worden mogen we besluiten dat de limiet van $\rho_{n}$ voor $n$ gaande naar $+\infty$ nul is.\waarom
+  \end{proof}
 \end{bst}
 
 \begin{bpr}
   Gegeven twee reeksen $\sum_{n}x_{n}$, $\sum_{m}c_{n}y_{m}$ in $\mathbb{C}$ met respectievelijke convergentiestraal $R_{x}$ en $R_{y}$.
   Beschouw de machtreeks $\sum_{n}c_{n}(z-a)^{n}$ waarbij $c_{n} = \sum_{k=0}^{n}a_{k}b_{n-k}$, dan heeft deze machtreeks een convergentiestraal $R \ge \min\{R_{1},R_{2}\}$ en geldt het volgende:
   \[ \sum_{n}c_{n}(z-a)^{n} = \left( \sum_{n}a_{n}(z-a)^{n}\right)\cdot \left( \sum_{n}b_{n}(z-a)^{n}\right) \]
-\TODO{bewijs p 24}
+\TODO{bewijs oefening}
 \end{bpr}
 
 
