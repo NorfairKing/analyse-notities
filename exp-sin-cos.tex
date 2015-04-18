@@ -12,84 +12,245 @@
   \[ \exp:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \exp(z) = \sum_{n=0}^{\infty}\frac{z^{n}}{n!} \]
 \end{de}
 
-\extra{de bovenstaande machtreeks heeft convergentiestraal $+\infty$}
+\begin{st}
+  De convergentiestraal van $\exp$ is $+\infty$.
+
+  \begin{proof}
+    \begin{align*}
+      \lim_{n \rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|} = \lim_{n
+        \rightarrow +\infty}\frac{\frac{1}{n!}}{\frac{1}{(n+1)!}}  =
+      \lim_{n \rightarrow +\infty}\frac{(n+1)!}{n!}  = \lim_{n
+        \rightarrow +\infty}n+1 = +\infty
+    \end{align*}
+  \end{proof}
+\end{st}
+
+\begin{gev}
+  De machtreeks $\exp$, convergeert dus overal absoluut.
+\end{gev}
 
 \begin{bst}
   De exponentiele functie is afleidbaar op $\mathbb{C}$ en is zijn eigen afgeleide.
-\TODO{bewijs p 27}
+
+  \begin{proof}
+    \begin{align*}
+      \lim_{x \rightarrow z}\frac{exp(x)-exp(z)}{x-z}
+      &= \lim_{x \rightarrow z}\frac{\sum_{n=0}^{\infty}\frac{x^{n}}{n!}-\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}{x-z}\\
+      &= \lim_{x \rightarrow z}\frac{\sum_{n=0}^{\infty}\frac{x^{n}-z^{n}}{n!}}{x-z}\\
+      &= \lim_{x \rightarrow z}\frac{\sum_{n=0}^{\infty}x^{n}-z^{n}}{(x-z)n!}\\
+      &= \sum_{n=0}^{\infty}\frac{z^{n}}{n!}
+    \end{align*}
+  \end{proof}
 \end{bst}
 
 \begin{bpr}
-  \[ exp(0) = 1 \]
-
+  \label{pr:epx-0-is-1}
+    $\exp(0) = 1$
+  \begin{proof}
+    \begin{align*}
+      exp(0)
+      = \sum_{n=0}^{\infty}\frac{0^{n}}{n!}
+      = \frac{0^{0}}{0!} + \sum_{n=1}^{\infty}\frac{0}{n!}
+      = 1 + \sum_{n=1}^{\infty}0 = 1
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall z \in \mathbb{C}:\ \overline{\exp(z)} = \exp(\overline{z}) \]
-\TODO{bewijs p 28}
+  \label{pr:exponent-toegevoegde}
+  $\forall z \in \mathbb{C}:\ \overline{\exp(z)} = \exp(\overline{z})$
+
+  \begin{proof}
+    \begin{align*}
+      \forall z \in \mathbb{C}:\ \overline{\exp(z)}
+      = \overline{\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}
+      = \sum_{n=0}^{\infty}\overline{\frac{z^{n}}{n!}}
+      = \sum_{n=0}^{\infty}\frac{\overline{z^{n}}}{n!}
+      = \sum_{n=0}^{\infty}\frac{\overline{z}^{n}}{n!}
+      = \exp(\overline{z})
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{pr}
+  \label{pr:optelling-exp}
+  $\forall x,y \in \mathbb{C}:\ \exp(x+y) = \exp(x)\exp(y)$
+
+  \begin{proof}
+    Kies willekeurig $x$ en $y$ uit $\mathbb{c}$.
+    noem $x_{n} = \frac{x^{n}}{n!}$ en $y_{n} = \frac{y^{n}}{n!}$:
+    \[ \exp(x) = \sum_{n=0}^{+\infty}x_{n} \quad\text{ en }\quad \exp(y) = \sum_{n=0}^{+\infty}y_{n} \]
+    we weten dat beide reeksen absoluut convergeren en dat de productreeks en dus als volgt uitziet:\stref{st:productreeks-van-absoluut-en-gewoon-convergent}
+    
+    \begin{align*}
+      \exp(x)\exp(y)
+      &= \left(\sum_{n=0}^{\infty}\frac{z^{n}}{n!}\right)\left(\sum_{n=0}^{\infty}\frac{z^{n}}{n!}\right)\\
+      &= \sum_{n=0}^{+\infty}\sum_{k=0}^{n}x_{n}y_{k-n}\\
+      &= \sum_{n=0}^{+\infty}\sum_{k=0}^{n}\frac{x^{k}}{k!}\frac{y^{n-k}}{(n-k)!}\\
+      &= \sum_{n=0}^{+\infty}\frac{1}{n!}\sum_{k=0}^{n}\frac{n!}{k!(n-k)!}x^{k}y^{n-k}\\
+      &= \sum_{n=0}^{+\infty}\frac{(x+y)^{n}}{n!}\\
+    \end{align*}
+  \end{proof}
+\end{pr}
+
+
+\begin{bpr}
+  \label{pr:exp-nooit-nul}
+  $\forall z \in \mathbb{c}:\ \exp(z) \neq 0$
+
+  \begin{proof}
+    bewijs uit het ongerijmde: stel dat er een $a\in \mathbb{c}$ bestaat zodat $\exp(a)$ nul is.
+    voor elke $b\in \mathbb{c}$ moet $\exp(a+b)$ dan ook $0$ zijn:\prref{pr:optelling-exp}
+    \[ \exp(a+b) = \exp(a)\exp(b) = 0\exp(b) = 0 \]
+    omdat $b$ hierin willekeurig is moet dan $\exp$ overal nul zijn, maar we weten al dat $\exp(0) = 1 \neq 0$ geldt.\prref{pr:epx-0-is-1}
+    contradictie.
+  \end{proof}
+\end{bpr}
+\feed 
+
+\begin{bpr}
+  \label{pr:inverse-exponent}
+  $\forall z \in \mathbb{c}:\ \exp(-z) = \frac{1}{\exp(z)}$
+
+  \begin{proof}
+    \begin{align*}
+      1 = \exp(0)
+      = \exp(z+(-z))
+      = \exp(z)\exp(-z)
+      \rightarrow
+      \exp(-z)
+      = \frac{1}{\exp(z)}
+    \end{align*}
+    merk op dat dit enkel steek houdt omdat $\exp(z)$ nooit $0$ kan zijn.\prref{pr:exp-nooit-nul}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall x,y \in \mathbb{C}:\ \exp(x+y) = \exp(x)\exp(y) \]
-\TODO{bewijs p 28}
+  \label{pr:lengte-imaginaire-exponentiatie-1}
+  $\forall t \in \mathbb{r}:\ |\exp(it)| = 1$
+
+  \begin{proof}
+    \begin{align*}
+      |\exp(it)|
+      = \left|\exp(i)^{t}\right|
+      = \left|\exp(i)\right|^{t}
+      = 1^{t}
+      = 1
+    \end{align*}
+  \end{proof}
 \end{bpr}
+\question{waarom geldt dit ook voor reele $t$'s en niet enkel gehele?}
 
 \begin{bpr}
-  \[ \forall z \in \mathbb{C}:\ \exp(z) \neq 0 \]
-\TODO{bewijs p 28}
+  \label{pr:reele-exponentiatie-positief}
+  $\forall t \in \mathbb{R}:\ \exp(t) > 0$
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat er een $t\in \mathbb{R}$ bestaat zodat $\exp(t)$ negatief is.
+    $\exp(t)$ is zeker geen nul\prref{pr:exp-nooit-nul} en gelijk aan $\exp\left(\frac{t}{2}\right)\exp\left(\frac{t}{2}\right)$.\prref{pr:optelling-exp}
+    Omdat $\exp(t)$ negatief is moeten deze factoren een verschillend teken hebben.
+    Contradictie.
+  \end{proof}
 \end{bpr}
+  \feed
 
 \begin{bpr}
-  \[ \forall z \in \mathbb{C}:\ \exp(-z) = \frac{1}{\exp(z)} \]
-\TODO{bewijs p 28}
-\end{bpr}
+  $\forall z \in \mathbb{C}:\ |\exp(z)| = \exp(Re(z))$
 
-\begin{bpr}
-  \[ \forall t \in \mathbb{R}:\ |\exp(it)| = 1 \]
-\TODO{bewijs p 28}
-\end{bpr}
-
-\begin{bpr}
-  \[ \forall z \in \mathbb{C}:\ |\exp(z)| = \exp(Re(z)) \]
-\TODO{bewijs p 28}
+  \begin{proof}
+    \begin{align*}
+      |\exp(z)|
+      &= |\exp(Re(z) + Im(z)i)|\\
+      &= |\exp(Re(z))\exp(Im(z)i)|\\
+      &= |\exp(Re(z))||\exp(Im(z)i)|\\
+      &\overset{\prref{pr:lengte-imaginaire-exponentiatie-1}}{=} |\exp(Re(z))|\\
+      &\overset{\prref{pr:reele-exponentiatie-positief}}{=} \exp(Re(z))\\
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{pr}
   $\exp(\mathbb{R}) \subseteq \mathbb{R}$
-\extra{bewijs}
+
+  \begin{proof}
+    We zullen bewijzen dat voor een willeurige $r\in \mathbb{R}$, $\exp(r)$ gelijk is aan $\overline{\exp(r)}$.
+    \begin{align*}
+      \overline{\exp(r)}
+      =
+      \exp\left(\overline{r}\right) = \exp(r)
+    \end{align*}
+  \end{proof}
 \end{pr}
 
 \begin{bpr}
-  \[ \forall t \in \mathbb{R}:\ \exp(t) > 0 \]
-\TODO{bewijs p 29}
+  \label{pr:exp-van-positief-getal-groter-dan-1}
+  $\forall t \in \mathbb{R}_{0}^{+}:\ \exp(t) > 1$
+
+  \begin{proof}
+    Kies een willekeurige $t\in \mathbb{R}_{0}^{+}$.
+    \begin{align*}
+      \exp(t)
+      = \sum_{n=0}^{\infty}\frac{t^{n}}{n!}
+      = \frac{t^{0}}{n!} + \sum_{n=0}^{\infty}\frac{t^{n}}{n!}
+      = 1 + \sum_{n=0}^{\infty}\frac{t^{n}}{n!}
+      > 1
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall t \in \mathbb{R}_{0}^{+}:\ \exp(t) > 1 \]
-\TODO{bewijs p 29}
-\end{bpr}
-
-\begin{bpr}
+  \label{pr:exponent-naar-oneindig-oneindig}
   De functie $\exp: \mathbb{R} \rightarrow \mathbb{R}_{0}^{+}:\ t \rightarrow \exp(t)$ is strikt stijgend.
-\TODO{bewijs p 29}
+
+  \begin{proof}
+    Kies twee elemnten $x$ en $y$ uit $\mathbb{R}$ met $x < y$.
+    We weten dan dat $y-x$ strikt positief is en daarmee het volgende:\prref{pr:exp-van-positief-getal-groter-dan-1}
+    \[ \exp(y-x) > 1 \]
+    \begin{align*}
+      \exp(y-x)
+      = \frac{\exp(y)}{\exp(x)}
+      > 1 \Rightarrow \exp(y)
+      > \exp(x)
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \lim_{t \rightarrow +\infty}\exp(t) = +\infty \]
-\TODO{bewijs p 29}
+  $\lim_{t \rightarrow +\infty}\exp(t) = +\infty$
+
+  \begin{proof}
+    Voor een willekeurige $t\in \mathbb{R}_{0}^{+}$ vinden we $\exp(t) > 1 + t$ uit de reeksontwikkeling.
+    Dit, samen met het strikt stijgen van $\exp$, betekent dat $\exp$ naar $+\infty$ divergeert.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \lim_{t \rightarrow -\infty}\exp(t) = 0 \]
-\TODO{bewijs p 29}
+  $\lim_{t \rightarrow -\infty}\exp(t) = 0$
+
+  \begin{proof}
+    Dit volgt meteen uit de rekenregel voor de inverse exponent\prref{pr:inverse-exponent} en de limiet naar oneindig van $\exp$.\prref{pr:exponent-naar-oneindig-oneindig}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   De functie $\exp: \mathbb{R} \rightarrow \mathbb{R}_{0}^{+}:\ t \rightarrow \exp(t)$ is een bijectie.
-\TODO{bewijs p 29}
+
+  \begin{proof}
+    \begin{itemize}
+    \item $\exp$ is injectief\\
+      $\exp$ is overal strikt stijgend en dus injectief.\prref{pr:exponent-naar-oneindig-oneindig}
+    \item $\exp$ is surjectief.\\
+      Omdat $\exp$ afleidbaar is, is $\exp$ continu.
+      Nu is $\exp$ surjectief vanwege de tussenwaardestelling voor continue functies.\stref{st:tussenwaardestelling}
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
-\extra{logaritmische functie}
+\begin{de}
+  De inverse van de exponenti\"ele functie noemen we de \term{logaritmische functie}
+  \[ \ln:\ \mathbb{R}_{0}^{+}\rightarrow \mathbb{R}:\ x \mapsto \exp^{-1}(x) \]
+\end{de}
+
 \extra{eigenschappen onderaan p 29}
 
 \begin{de}
@@ -97,18 +258,26 @@
 \end{de}
 
 \begin{bpr}
-  \[ \forall q \in \mathbb{Q}:\ \exp(q) = e^{q} \]
-\TODO{bewijs p 30}
+  $\forall q \in \mathbb{Q}:\ \exp(q) = e^{q}$
+
+  \begin{proof}
+    Noem $q = \frac{n}{m}$ en neem aan dat $q$ strikt positief is (in het andere geval kunnen we dit herleiden tot een positieve $q$).
+    Merk eerst op dat $\exp(n)$ gelijk is aan $\exp(1)^{n} = e^{n}$.
+    Merk nu het volgende op:
+    \[ \exp(q)^{m} = \exp(mq) = \exp(n) = e^{n} \]
+    Omdat $q$ strikt positief is mogen we het volgende besluiten: 
+    \[ \exp(q) = \sqrt[m]{e^{n}} = e^{q} \]
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   Zij $x\in \mathbb{R}$ en $(q_{n})_{n}$ een rij in $\mathbb{Q}$ die naar $x$ convergeert.
   \[ \exp(x) = \lim_{n\rightarrow +\infty}e^{q_{n}} \]
-\end{bpr}
 
-\begin{de}
-  We noteren $\exp(z) = e^{z}$.
-\end{de}
+  \begin{proof}
+    Dit volgt meteen uit de continu\"iteit van $\exp$.\needed
+  \end{proof}
+\end{bpr}
 
 \subsection{$\sin$ en $\cos$}
 \label{sec:sin-en-cos}
@@ -120,79 +289,213 @@
 
 \begin{de}
   We definie\"eren de \term{sinusfunctie} $\cos$ als volgt:
-  \[ \sin:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \cos(z) = \frac{e^{iz} - e^{-iz}}{2i} \]
+  \[ \sin:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \sin(z) = \frac{e^{iz} - e^{-iz}}{2i} \]
 \end{de}
 
 \begin{bpr}
-  \[ \forall z \in \mathbb{C}:\ cos(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n}}{(2n)!} \]
-\TODO{bewijs: oef p 31}
+  $\forall z \in \mathbb{C}:\ cos(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n}}{(2n)!}$
+
+  \begin{proof}
+    \begin{align*}
+      \cos(z)
+      &= \frac{e^{iz} + e^{-iz}}{2}\\
+      &= \frac{\sum_{n=0}^{\infty}\frac{(iz)^{n}}{n!} + \sum_{n=0}^{\infty}\frac{(-iz)^{n}}{n!}}{2}\\
+      &= \sum_{n=0}^{\infty}\frac{(iz)^{n} + (-iz)^{n}}{2(n!)}\\
+      &= \sum_{n=0}^{\infty}\frac{(iz)^{n} + (-iz)^{n}}{2(n!)}\\
+      &= \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n}}{(2n)!}
+    \end{align*}
+  \end{proof}
+\extra{dit kan beter uitgeschreven}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall z \in \mathbb{C}:\ sin(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!} \]
-\TODO{bewijs: oef p 31}
+  $\forall z \in \mathbb{C}:\ sin(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!}$
+
+  \begin{proof}
+    \begin{align*}
+      \sin(z)
+      &= \frac{e^{iz} - e^{-iz}}{2i}\\
+      &= \frac{\sum_{n=0}^{\infty}\frac{(iz)^{n}}{n!} - \sum_{n=0}^{\infty}\frac{(-iz)^{n}}{n!}}{2i}\\
+      &= \sum_{n=0}^{\infty}\frac{(iz)^{n} - (-iz)^{n}}{2i(n!)}\\
+      &= \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!}
+    \end{align*}
+  \end{proof}
+\extra{dit kan beter uitgeschreven}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall z \in \mathbb{C}: \cos(-z) = \cos(z) \]
-\TODO{bewijs: oef p 31}
+  $\forall z \in \mathbb{C}: \cos(-z) = \cos(z)$
+
+  \begin{proof}
+    \begin{align*}
+      \cos(-z)
+      = \frac{e^{-zi} + e^{iz}}{2}
+      = \frac{e^{zi} + e^{-iz}}{2}
+      = \cos(z)
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall z \in \mathbb{C}: \sin(-z) = -\sin(z) \]
-\TODO{bewijs: oef p 31}
+  $\forall z \in \mathbb{C}: \sin(-z) = -\sin(z)$
+
+  \begin{proof}
+    \begin{align*}
+      \sin(-z)
+      = \frac{e^{-zi} - e^{iz}}{2i}
+      = -\frac{e^{zi} - e^{-iz}}{2i}
+      = -\sin(z)
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \cos(0) = 1 \]
-\TODO{bewijs: oef p 31}
+  $\cos(0) = 1$
+
+  \begin{proof}
+    \begin{align*}
+      \cos(0)
+      = \frac{e^{i0} + e^{-i0}}{2}
+      = \frac{1+1}{2}
+      = 1
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \sin(0) = 0 \]
-\TODO{bewijs: oef p 31}
+  $\sin(0) = 0$
+  \begin{proof}
+    \begin{align*}
+      \sin(0)
+      = \frac{e^{i0} - e^{-i0}}{2i}
+      = \frac{1-1}{2i}
+      = 0
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   $\cos$ is afleidbaar op $\mathbb{C}$ met $\cos'$ als afgeleide:
   \[ \cos' = -\sin \]
-\TODO{bewijs: oef p 31}
+  
+  \begin{proof}
+    Kies een willekeurige $z\in \mathbb{C}$
+    \begin{align*}
+      \cos'(z)
+      = \left(\frac{e^{iz} + e^{-iz}}{2}\right)'
+      = \frac{\left(e^{iz}\right)' + \left(e^{-iz}\right)'}{2}
+      = i\frac{e^{iz} - e^{-iz}}{2}
+      = -\frac{e^{iz} - e^{-iz}}{2i}
+      = -\sin(z)
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   $\sin$ is afleidbaar op $\mathbb{C}$ met $\sin'$ als afgeleide:
-  \[ \sin' = -cos \]
-\TODO{bewijs: oef p 31}
+  \[ \sin' = cos \]
+
+  \begin{proof}
+    Kies een willekeurige $z\in \mathbb{C}$
+    \begin{align*}
+      \sin'(z)
+      = \left(\frac{e^{iz} - e^{-iz}}{2i}\right)'
+      = \frac{\left(e^{iz}\right)' - \left(e^{-iz}\right)'}{2i}
+      = i\frac{e^{iz}+e^{iz}}{2i}
+      = \frac{e^{iz}+e^{iz}}{2}
+      = \cos(z)
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \cos(\mathbb{R}) \subseteq \mathbb{R} \]
-\TODO{bewijs: oef p 31}
+  \label{pr:cos-van-reel-reel}
+  $\forall x\in \mathbb{R} \cos(x) = Re(e^{ix}) \in \mathbb{R}$
+
+  \begin{proof}
+    Kies willekeurig een $x\in \mathbb{R}$
+    \begin{align*}
+      \cos(x)
+      = \frac{e^{ix} + e^{-ix}}{2}
+      = \frac{e^{ix} + \overline{e^{ix}}}{2}
+      = \frac{2Re(e^{ix})}{2}
+      = Re(e^{ix})
+      \in \mathbb{R}
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \sin(\mathbb{R}) \subseteq \mathbb{R} \]
-\TODO{bewijs: oef p 31}
+  \label{pr:sin-van-reel-reel}
+  $\forall x\in \mathbb{R} \sin(x) = Im(e^{ix}) \in \mathbb{R}$
+  
+  \begin{proof}
+    Kies willekeurig een $x\in \mathbb{R}$
+    \begin{align*}
+      \sin(x)
+      = \frac{e^{ix} - e^{-ix}}{2i}
+      = \frac{e^{ix} - \overline{e^{ix}}}{2i}
+      = \frac{2Im(e^{ix})}{2i}
+      = Im(e^{ix})
+      \in \mathbb{R}
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall t\in \mathbb{R}:\ e^{it} = \cos(t) + i\sin(t) \]
-\TODO{bewijs: oef p 31}
+  $\forall t\in \mathbb{R}:\ e^{it} = \cos(t) + i\sin(t)$
+
+  \begin{proof}
+    Dit volgt meteen uit de vorige twee stellingen.\prref{pr:cos-van-reel-reel}\prref{pr:sin-van-reel-reel}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall t\in \mathbb{R}:\ \cos^{2}(t) + \sin^{2}(t) = 1 \]
-\TODO{bewijs: oef p 31}
+  $\forall t\in \mathbb{R}:\ \cos^{2}(t) + \sin^{2}(t) = 1$
+
+  \begin{proof}
+    Kies willekeurig een $x\in \mathbb{R}$
+    \begin{align*}
+      \cos^{2}(t) + \sin^{2}(t)
+      &=  \left(\frac{e^{it} + e^{-it}}{2}\right)^{2} + \left(\frac{e^{it} - e^{-it}}{2i}\right)^{2}\\
+      &=  \frac{(e^{it} + e^{-it})^{2}-(e^{it} - e^{-it})^{2}}{4}\\
+      &=  \frac{\cancel{e^{2it}} +2e^{it}e^{-it} +\cancel{e^{-2it}}-\cancel{e^{2it}} +2e^{it}e^{-it}- \cancel{e^{-2it}}}{4}\\
+      &=  \frac{4e^{it}e^{-it}}{4}\\
+      &=  \frac{4\frac{e^{it}}{e^{it}}}{4}\\
+      &=  \frac{4}{4}
+      = 1
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall x,y\in \mathbb{R}:\ \cos(x+y) = \cos(x)\cos(y) - \sin(x)\sin(y) \]
-\TODO{bewijs: oef p 31}
+  $\forall x,y\in \mathbb{R}:\ \cos(x+y) = \cos(x)\cos(y) - \sin(x)\sin(y)$
+
+  \begin{proof}
+    \begin{align*}
+      &\cos(x)\cos(y) - \sin(x)\sin(y)\\
+      &= \frac{e^{ix} + e^{-ix}}{2}\frac{e^{iy} + e^{-iy}}{2} - \frac{e^{ix} - e^{-ix}}{2i}\frac{e^{iy} - e^{-iy}}{2i}\\
+      &= \frac{\left(e^{ix} + e^{-ix}\right)\left(e^{iy} + e^{-iy}\right)}{4} + \frac{\left(e^{ix} - e^{-ix}\right)\left(e^{iy} - e^{-iy}\right)}{4}\\
+      &= \frac{e^{i(x+y)} + \cancel{e^{ix - iy}} + \cancel{e^{-ix +iy}} + e^{-i(x+y)} + e^{i(x+y)} - \cancel{e^{ix-iy}} -\cancel{e^{-ix+iy}} + e^{-i(x+y)}}{4}\\
+      &= \frac{e^{i(x+y)} + e^{-i(x+y)}}{2}\\
+      &= \cos(x+y)
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  \[ \forall x,y\in \mathbb{R}:\ \sin(x+y) = \sin(x)\cos(y) + \cos(x)\sin(y) \]
-\TODO{bewijs: oef p 31}
+  $\forall x,y\in \mathbb{R}:\ \sin(x+y) = \sin(x)\cos(y) + \cos(x)\sin(y)$
+
+  \begin{proof}
+    \begin{align*}
+      &\sin(x)\cos(y) + \cos(x)\sin(y)\\
+      &=\frac{e^{ix} - e^{-ix}}{2i}\frac{e^{iy} + e^{-iy}}{2} + \frac{e^{ix} + e^{-ix}}{2}\frac{e^{iy} - e^{-iy}}{2i}\\
+      &= \frac{\left(e^{ix} - e^{-ix}\right)\left(e^{iy} + e^{-iy}\right)}{4i} + \frac{\left(e^{ix} + e^{-ix}\right)\left(e^{iy} - e^{-iy}\right)}{4i}\\
+      &= \frac{e^{i(x+y)}+\cancel{e^{ix-iy}}-\cancel{e^{-ix+iy}}-e^{-i(x+y)} + e^{i(x+y)}-\cancel{e^{ix-iy}}+\cancel{e^{-ix+iy}}-e^{-i(x+y)}}{4i}\\
+      &= \frac{e^{i(x+y)} - e^{-i(x+y)}}{2i}\\
+      &= \sin(x+y)
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}

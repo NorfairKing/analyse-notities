@@ -10,9 +10,6 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
-% Voor urls
-\usepackage{hyperref}
-
 % Een mooier bestand met wiskunde ondersteuning
 \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
@@ -66,6 +63,10 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
+% Om te doorstrepen in vergelijkingen
+\usepackage{cancel}
+
+
 % Voor commit in titelpagina
 \immediate\write18{git rev-parse --short HEAD > commit.tex}
 
@@ -74,3 +75,6 @@
 % indices
 \usepackage{makeidx}
 \makeindex
+
+% Voor urls (dit moet als laatste)
+\usepackage{hyperref}
