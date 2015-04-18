@@ -236,6 +236,7 @@
   De functie $\exp: \mathbb{R} \rightarrow \mathbb{R}_{0}^{+}:\ t \rightarrow \exp(t)$ is een bijectie.
 
   \begin{proof}
+    Bewijs van bijectiviteit
     \begin{itemize}
     \item $\exp$ is injectief\\
       $\exp$ is overal strikt stijgend en dus injectief.\prref{pr:exponent-naar-oneindig-oneindig}
@@ -499,6 +500,7 @@
 \end{bpr}
 
 \begin{bpr}
+  \label{pr:inleiding-pi}
   Er bestaat een unieke $t_{0} \in \interval[open]{0}{2}$ zodat het volgende geldt:
   \begin{itemize}
   \item $\cos(t_{0}) = 0$
@@ -506,34 +508,184 @@
   \item $\sin(t_{0})=1$
   \item $\forall t\in \interval[open left]{0}{t_{0}}:\ \sin(t)> 0$ 
   \end{itemize}
-\TODO{bewijs p 31}
+
+  \begin{proof}
+    In delen:
+    \begin{itemize}
+    \item 
+    We weten dat $\cos(0) = 1$ geldt en beweren nu dat $\cos(2)$ strikt negatief is:
+    \[ \cos(2) = 1 - \frac{2^{2}}{2!} + \frac{2^{4}}{4!} - \sum_{n=2}^{+\infty}\left( \frac{2^{4n-2}}{(4n-2)!} - \frac{2^{4n}}{(4n!)}\right) \]
+    De eerste drie termen hierin zijn al strikt negatief...
+    \[ 1 - \frac{2^{2}}{2!} + \frac{2^{4}}{4!} = 1-2+\frac{16}{24} < 0 \]
+    ... en de volgende termen samen zijn ook negatief:
+    \[
+    \forall n\in \mathbb{N}:\ n \ge 2
+    \Rightarrow -\frac{2^{4n-2}}{(4n-2)!} - \frac{2^{4n}}{(4n!)}
+    = -\frac{2^{4n-2}}{(4n-2)!}\left( 1 - \frac{4}{4n(4n-1)} \right)
+    > 0
+    \]
+    Omdat $\cos$ continu is volgt uit de tussenwaardestelling\stref{st:tussenwaardestelling} dat $\cos$ minstens \'e\'en nulpunt moet heben in $\interval[open]{0}{2}$.
+    De verzameling $N = \{ t \in \interval[open]{0}{2} \mid \cos(t) = 0\}$ is dus niet leeg en naar onder begrensd.
+    Noem $t_{0}$ het infimum van deze verzameling.
+    Omdat $\cos$ continu is, moet $\cos(t_{0})$ nul zijn. \waarom
+  \item 
+    Omdat bovendien $cos(0) =1$ geldt, moet $t_{0}$ strikt positief zijn.
+    Per constructie heeft $\cos$ geen nulpunten tussen $0$ en $t_{0}$.
+    Omdat $\cos(0)$ positief is, volgt nu uit de continu\"iteit van $\cos$ dat $\forall t\in \interval[open right]{0}{t_{0}}:\ \cos(t)>0$ geldt.
+  \item
+    Omdat $\sin'=\cos$ geldt, stijgt $\sin$ strikt op $\interval{0}{t_{0}}$.
+    Omdat $\sin(0) = 0$ geldt, betekent dit dat $\forall t\in \interval[open left]{0}{t_{0}}:\ \sin(t)>0$ geldt.
+  \item Vanuit $\sin^{2}(t_{0}) + \cos^{2}(t_{0}) = 1$ vinden we nu dat $\sin(t_{0})$ gelijk is aan $1$.
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{de}
+  We definieren $\pi$ als $2t_{0}$ uit de vorige propositie:
+  \[ \cos\left(\frac{\pi}{2}\right) = 0 \quad\text{ en }\quad \sin\left(\frac{\pi}{2}\right) = 1 \]
+\end{de}
+
+\begin{bpr}
+  \label{pr:cos-en-sin-periodiek}
+  De sinusfuncie en de cosinusfunctie zijn periodiek op $\mathbb{R}$ met periode $2\pi$.
+
+  \begin{proof}
+    Beschouw eerst voor alle $t\in \mathbb{R}$:
+    \begin{align*}
+      \cos\left(t+\frac{\pi}{2}\right)
+      = \cos(t)\cos\left(\frac{\pi}{2}\right) - \sin(t)\sin\left(\frac{\pi}{2}\right)
+      = \cos(t)0 - \sin(t)1
+      = - \sin(t)
+    \end{align*}
+    ... en ...
+    \begin{align*}
+      \sin\left(t+\frac{\pi}{2}\right)
+      = \sin(t)\cos\left(\frac{\pi}{2}\right) + \cos(t)\sin\left(\frac{\pi}{2}\right)
+      = \sin(t)0 + \cos(t)1
+      = \cos(t)
+    \end{align*}
+    Het volstaat dus om de periodiciteit van $\cos$ aan te tonen.
+    Beschouw nu $\cos(t+2\pi)$:
+    \begin{align*}
+      \cos(t+2\pi)
+      = -\sin\left(t+\frac{3}{2}\pi\right)
+      = -\cos(t+\pi)
+      = \sin\left(t + \frac{\pi}{2}\right)
+      = \cos(t)
+    \end{align*}
+    Om periodiciteit aan te tonen moeten we nog aantonen dat er geen kleinere positieve $T$ bestaat zodat $\forall \cos(t+T)=\cos(t)$ geldt.
+    We tonen nog iets sterker aan: $\forall T\in \interval[open]{0}{2\pi}: \cos(T) < \cos(0) = 1$.
+    Kies daartoe een willekeurige $T\in \interval[open]{0}{2\pi}$ en kies $t=\frac{T}{4}$, dan geldt $t\in\interval[open]{0}{\frac{\pi}{2}}$ en bijgevolg ook $\cos(t) > 0$.
+    Anderzijds geldt ook $\cos(t) < 1$ want er bestaat een $c\in \interval[open]{0}{1}$ als volgt:\stref{st:middelwaardestelling-lagrange}\prref{pr:inleiding-pi}
+    \[ \frac{\cos(t)-\cos(0)}{t-0} = \cos'(c) = -sin(c) < 0 \]
+    We bekijken nu $\cos(T)$:
+    \begin{align*}
+      \cos(T)
+      &= Re(\exp(iT))\\
+      &= Re(e^{4it})\\
+      &= Re\left(\left(\cos(t) +i\sin(t)\right)^{4}\right)\\
+      &= \cos^{4}(t) - 6\cos^{2}(t)\sin^{2}(t) + \sin^{4}(t)\\
+      &= 8\cos^{4}(t) - 8\cos^{2}(t) + 1\\
+      &= 1-8\left(t-\cos^{2}(t)\right)\cos^{2}(t)\\
+      &<1
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  De sinusfuncie is periodiek op $\mathbb{R}$ met periode $2\pi$.
-\TODO{ bewijs p 32}
-\end{bpr}
-
-\begin{bpr}
-  De cosinusfuncie is periodiek op $\mathbb{R}$ met periode $2\pi$.
-\TODO{ bewijs p 32}
-\end{bpr}
-
-\begin{bpr}
-  Neem $t\in \interval[open]{0}{2\pi}$ en beschouw het punt $(\cos(t),\sin(t))$ op de cirkel in $\mathbb{R}^{2}$ mett middelpunt $(0,0)$ en straal $1$.
-  $t$ is dan de booglengte van de boog op de cirkel die in $(1,0)$ beging en eindigt in $(\cos(t),\sin(t))$.
+  Neem $t\in \interval[open]{0}{2\pi}$ en beschouw het punt $(\cos(t),\sin(t))$ op de cirkel in $\mathbb{R}^{2}$ met middelpunt $(0,0)$ en straal $1$.
+  $t$ is dan de booglengte van de boog op de cirkel die in $(1,0)$ begint en eindigt in $(\cos(t),\sin(t))$.
   De cirkel wordt hierbij doorlopen in tegenzin.
-\TODO{ bewijs p 33 }
+
+  \begin{proof}
+    Kies $n\in \mathbb{N}_{0}$ willekeurig en beschouw $z_{k}$ als volgt:
+    \[ z_{k} = \left(\cos\frac{kt}{n},\sin\frac{kt}{n}\right) \]
+    We bewijzen dat de totale afstand tussen opeenvolgende punten $z_{k}$ naar $t$ gaat in de limiet voor $k$ gaande naar $+\infty$.
+    Beschouw eerst het kwadraat van de afstand tussen twee opeenvolgende punten $z_{k}$ en $z_{k+1}$.
+    \begin{align*}
+      \left\|z_{k+1}-z_{k}\right\|^{2}
+      &= \left( \cos\left(\frac{(k+1)t}{n}\right) - \cos\left(\frac{kt}{n}\right) \right)^{2}
+       + \left( \sin\left(\frac{(k+1)t}{n}\right) - \sin\left(\frac{kt}{n}\right) \right)^{2}\\
+      &= \cos^{2}\left(\frac{(k+1)t}{n}\right) - 2\cos\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right) + \cos^{2}\left(\frac{kt}{n}\right)\\
+      &+ \sin^{2}\left(\frac{(k+1)t}{n}\right) - 2\sin\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right) + \sin^{2}\left(\frac{kt}{n}\right)\\
+      &= 2 - 2\cos\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right) - 2\sin\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right)\\
+      &= 2 - \left(2\cos\left(\frac{(k+1)t}{n}\right)\cos\left(-\frac{kt}{n}\right) - 2\sin\left(\frac{(k+1)t}{n}\right)\cos\left(-\frac{kt}{n}\right)\right)\\
+      &= 2-2\cos\left( \frac{(k+1)t}{n} - \frac{kt}{n}\right)\\
+      &= 2-2\cos\left(\frac{t}{n}\right)\\
+      &= 2-2\cos\left(\frac{t}{2n}+ \frac{t}{2n}\right)\\
+      &= 2-2\left(\cos^{2}\left(\frac{t}{2n}\right)-\sin^{2}\left(\frac{t}{2n}\right)\right)\\
+      &= 2\left(1-\cos^{2}\left(\frac{t}{2n}\right)\right) + 2\sin^{2}\left(\frac{t}{2n}\right)\\
+      &= 4\sin^{2}\left(\frac{t}{2n}\right)
+    \end{align*}
+    Voor $n$ groot genoeg is $\sin\left(\frac{t}{2n}\right)$ strikt positief en ziet de afstand tussen twee opeenvolgende punten er als volgt uit:
+    \[ \left\|z_{k+1}-z_{k}\right\| = 2\sin\left(\frac{t}{2n}\right) \]
+    Merk op dat dit onafhankelijk is van $k$.
+    De totale lengte van al deze koorden is dan $2n\sin\left(\frac{x}{2n}\right)$.
+    \begin{align*}
+      \lim_{n\rightarrow +\infty}2n\sin\left(\frac{t}{2n}\right)
+      = \lim_{n\rightarrow +\infty}\frac{2nt}{t}\sin\left(\frac{t}{2n}\right)
+      = \lim_{n\rightarrow +\infty}t\frac{\sin\left(\frac{t}{2n}\right)}{\frac{t}{2n}}
+      = t
+    \end{align*}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   \[ \forall z\in \mathbb{C}:\ \exp(z+2\pi i) = \exp(z) \quad\text{ en }\quad \exp(z) = 1 \Leftrightarrow \exists k\in \mathbb{Z}:\ z = 2k\pi i \]
-\TODO{ bewijs p 34 }
+
+  \begin{proof}
+    \[ \forall z \in \mathbb{C}:\ \exp(z + 2\pi i) = \exp(z)\exp(2\pi i) = \exp(z) \]
+    \question{waarom is $\exp(2\pi i)$ precies $1$?}
+    Zij $x+yi \in \mathbb{C}$ met $x,y \in \mathbb{R}$ met $\exp(z)=1$.
+    Beschouw nu $|\exp(z)| = 1$:
+    \begin{align*}
+      \left|\exp(z)\right|
+      = \left|\exp(x+yi)\right|
+      = \left|\exp(x)\right|\left|\exp(yi)\right|
+      = \left|\exp(x)\right|1
+      = \exp(x)
+    \end{align*}
+    Hieruit volgt dat $x$ nul moet zijn.\waarom
+    We houden over dat $e^{iy}=1$ geldt.
+    $\cos(y)$ moet dus $1$ zijn.
+    We weten dat $\cos(t) < 1$ geldt voor alle $t\in \interval[open]{0}{2\pi}$.
+    Omdat $\cos$ ook periode $2\pi$ heeft\prref{pr:cos-en-sin-periodiek} moet $\forall t\in (\mathbb{R} \setminus 2\pi\mathbb{Z}):\ \cos(t) < 1$ gelden.
+    Bijgevolg moet $y$ een element zijn van $2\pi \mathbb{Z}$ en er dus een $k$ bestaat zodat $y$ gelijk is aan $2\pi k$.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  Zij een $z\in \mathbb{C}$, dan bestaat er een unieke $\theta \in \interval[open right]{0}{2\pi}$ zodat $z=e^{i\pi}|z|$ geldt.
-\TODO{ bewijs p 34 }
+  Zij een $z\in \mathbb{C}_{0}$, dan bestaat er een unieke $\theta \in \interval[open right]{0}{2\pi}$ zodat $z=e^{i\theta}|z|$ geldt.
+
+  \begin{proof}
+    Kies een willekeurige $z\in \mathbb{C}_{0}$ met $|z| = 1$.
+    Het geval waarin $|z|$ niet $1$ is, valt te herleiden naar een geval waarin $|z|=1$ wel geldt, met dezelfde $\theta$. \waarom
+    \begin{itemize}
+    \item Bestaan\\
+      Noem $z=x+yi$ met $x,y\in \mathbb{R}$ en merk op dat $x^{2}+y^{2}=1$ geldt.
+      We maken een gevalsonderscheid voor de tekens van $x$ en $y$.
+      \begin{itemize}
+      \item $x\ge 0$ en $y\ge 0$\\
+        Omdat $x$ in $\interval{0}{1}$ zit, omdat $\cos(0) = 1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval{0}{\frac{\pi}{2}}$ zodat $\cos\theta = x$ geldt.
+        Dan geldt, omdat $\sin(\theta)$ positief is\waarom, het volgende:
+        \[ y = \sqrt{1-x^{2}} = \sqrt{1-\cos^{2}(\theta)} = \sqrt{\sin^{2}(\theta)} = \sin(\theta) \]
+        Bijgevolg geldt $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$.\needed
+      \item $x<0$ en $y \ge 0$\\
+        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, $\cos(\pi) = -1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is,  $\theta \in \interval[open left]{\frac{\pi}{2}}{\pi}$ zodat $\cos\theta = x$ geldt.
+        Analoog aan het vorige geval volgt uit $\sin(\theta)>0$ dat $y$ gelijk is aan $\sin(\theta)$ en dus dat $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$ geldt.
+      \item $x<0$ en $y < 0$\\
+        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, omdat $\cos(\pi) = -1$ en $\cos\left(\frac{3\pi}{2}\right) = 0$\waarom gelden en omdat $\cos$ continu is, bestaat er een $\theta \in [open]{\pi}{\frac{3\pi}{2}}$ zodat $x = \cos(\theta)$ geldt.
+        Nu is $\sin(\theta)$ strikt negatief en hieruit volgt dan het volgende:
+        \[ y = -\sqrt{1-x^{2}} = -\sqrt{1-\cos^{2}(\theta)} = -\sqrt{\sin^{2}(\theta)} = \sin(\theta) \]
+        Bijgevolg geldt $x+yi= e^{i\theta}$.
+      \item $x\ge 0$ en $y< 0$\\
+        \extra{bewijs p 35 zelf uitschrijven}
+      \end{itemize}
+    \item Uniciteit\\
+      Dit volgt meteen uit de periodiciteit van $\exp$.
+      \question{Serieus? Waarom?!}
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \begin{bst}
