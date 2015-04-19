@@ -666,20 +666,21 @@
       We maken een gevalsonderscheid voor de tekens van $x$ en $y$.
       \begin{itemize}
       \item $x\ge 0$ en $y\ge 0$\\
-        Omdat $x$ in $\interval{0}{1}$ zit, omdat $\cos(0) = 1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval{0}{\frac{\pi}{2}}$ zodat $\cos\theta = x$ geldt.
+        Omdat $x$ in $\interval{0}{1}$ zit, omdat $\cos(0) = 1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval{0}{\frac{\pi}{2}}$ zodat $\cos(\theta) = x$ geldt.
         Dan geldt, omdat $\sin(\theta)$ positief is\waarom, het volgende:
         \[ y = \sqrt{1-x^{2}} = \sqrt{1-\cos^{2}(\theta)} = \sqrt{\sin^{2}(\theta)} = \sin(\theta) \]
         Bijgevolg geldt $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$.\needed
       \item $x<0$ en $y \ge 0$\\
-        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, $\cos(\pi) = -1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is,  $\theta \in \interval[open left]{\frac{\pi}{2}}{\pi}$ zodat $\cos\theta = x$ geldt.
+        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, $\cos(\pi) = -1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is,  $\theta \in \interval[open left]{\frac{\pi}{2}}{\pi}$ zodat $\cos(\theta) = x$ geldt.
         Analoog aan het vorige geval volgt uit $\sin(\theta)>0$ dat $y$ gelijk is aan $\sin(\theta)$ en dus dat $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$ geldt.
       \item $x<0$ en $y < 0$\\
-        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, omdat $\cos(\pi) = -1$ en $\cos\left(\frac{3\pi}{2}\right) = 0$\waarom gelden en omdat $\cos$ continu is, bestaat er een $\theta \in [open]{\pi}{\frac{3\pi}{2}}$ zodat $x = \cos(\theta)$ geldt.
+        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, omdat $\cos(\pi) = -1$ en $\cos\left(\frac{3\pi}{2}\right) = 0$\waarom gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval[open]{\pi}{\frac{3\pi}{2}}$ zodat $x = \cos(\theta)$ geldt.
         Nu is $\sin(\theta)$ strikt negatief en hieruit volgt dan het volgende:
         \[ y = -\sqrt{1-x^{2}} = -\sqrt{1-\cos^{2}(\theta)} = -\sqrt{\sin^{2}(\theta)} = \sin(\theta) \]
         Bijgevolg geldt $x+yi= e^{i\theta}$.
       \item $x\ge 0$ en $y< 0$\\
-        \extra{bewijs p 35 zelf uitschrijven}
+        Omdat $x$ in $\interval{0}{1}$ zit, omdat $\cos()=$ en $\cos\left(\right)=$ gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval[open right]{\frac{3\pi}{2}}{2\pi}$ zodat $\cos(\theta) = x$x geldt.
+        Analoog aan het vorige geval volgt uit $\sin(\theta)<0$ dat $y$ gelijk is aan $\sin(\theta)$ en dus dat $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$ geldt.
       \end{itemize}
     \item Uniciteit\\
       Dit volgt meteen uit de periodiciteit van $\exp$.
@@ -690,7 +691,45 @@
 
 \begin{bst}
   Zij $P:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto P(z) = \sum_{k=0}^{n}a_{k}z^{k}$ een veeltermfunctie van graad $n\in \mathbb{N}_{0}$ met co\"efficienten $a_{k}\in \mathbb{C}$, dan bestaat er een $z_{0}\in \mathbb{C}$ waarvoor $P(z_{0})=0$ geldt.
-\TODO{ bewijs p 35 }
+
+  \begin{proof}
+    Zonder beperking van de algemeenheid veronderstellen we dat $a_{n}=1$ geldt.
+    In het andere geval delen we de $a_{k}$ gewoon door $a_{n}$.
+    Dit kan omdat we het over nulpunten hebben.
+    \begin{itemize}
+    \item Noem $m = \inf\{ |P(x)| \mid z\in \mathbb{C} \}$.
+      Kies nu willekeurig een $r\in \mathbb{R}_{0}^{+}$.
+      \[
+      \forall z\in \mathbb{C}:\ |z| = r \Rightarrow
+      \begin{array}{rl}
+        |P(z)|
+        &= \left|\sum_{k=0}^{n}a_{k}z^{k}\right|\\
+        &\ge r^{n}\left( 1 - \sum_{i=1}^{n}\frac{|a_{n-i}|}{r^{i}}\right)\\
+      \end{array}     
+      \]
+      \question{hier MOET uitleg bij!}
+      Duidelijk is dat het rechterlid hierin naar $+\infty$ gaat voor $r$ gaande naar $+\infty$.
+      Er bestaat dus een $r_{0}\in \mathbb{R}_{0}^{+}$ zodat $|P(z)| > $ geldt voor alle $z\in \mathbb{C}$ met $|z| > r_{0}$.
+      Bijgevolg ziet $m$ er als volgt uit:
+      \[ m =  \inf\{ |P(x)| \mid z\in \mathbb{C}, |z| \le r_{0} \} \]
+      Omdat $z \mapsto |P(z)|$ een continue functie is en $\{ |P(x)| \mid z\in \mathbb{C}, |z| \le r_{0} \}$ een gesloten, begrensde verzameling, bestaat er een $z_{0}\in \mathbb{C}$ met $|z_{0}| \le r_{0}$ zodat $m = |P(z_{0})|$ geldt.\waarom
+      We beweren nu dat $m$ nul is en dat $z_{0}$ dus een nulpunt is van $P$.
+      Veronderstel immers dat $m$ strikt positief is, beschouw dan de veeltermfunctie $Q$ als volgt:
+      \[ Q:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \frac{P(z+z_{0})}{P(z_{0})} \]
+      Er geldt nu $Q(0)=1$ en $\forall z \in \mathbb{C}:\ |Q(z)| \ge 1$.
+      Merk op dat $Q(z)$ een veelterm is van graad $n$ en noteer met $k$ de kleinste strikt positieve macht van $z$ waarvan de co\"efficient niet nul is.
+      \[ Q(z) = 1+ \sum_{i=k}^{n}b_{i}z^{i} \]
+      Er bestaat nu een $\theta$ als volgt:\needed
+      \[ e^{ik\theta}b_{k} = -|b_{k}| \]
+      Als $r\in \mathbb{R}_{0}^{+}$ geldt en $r$ klein genoeg is, opdat $r^{k}|b_{k}|<1$ geldt, zal het volgende gelden:
+      \[ |1+r^{k}e^{ik\theta}b_{k} = |1-r^{k}|b_{k}|| = 1-r^{k}|b_{k}| \]
+      Hieruit volgt dan dit:
+      \[ |Q(re^{i\theta})| \le 1-r^{k}\left(|b_{k}| - \sum_{i=1}^{n-k}r^{i}|b_{k+i}|\right) \]
+      Voor $r$ klein genoeg is het rechterlid strikt pasitief en $|Q(re^{i\theta})|$ dus strikt kleiner dan $1$.
+      Contradictie.
+    \end{itemize}
+  \end{proof}
+\extra{hermaken met meer uitleg en agenda erbij}
 \end{bst}
 
 
