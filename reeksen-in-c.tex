@@ -231,10 +231,9 @@
     \left| \frac{n}{\sqrt{n^{3}+1}}\right|
     = \frac{n}{\sqrt{n^{3}+1}}
     = \frac{1}{\sqrt{n + \frac{1}{n^{2}}}}
-    \ge \frac{1}{\sqrt{n}}
-    \ge \frac{1}{\sqrt{n}}
+    \ge \frac{1}{2\sqrt{n}}
     \]
-    Vanuit de vergelijkingstest weten we dan dat de reeks niet convergeert omdat $\sum\frac{1}{\sqrt{n}}$ niet convergeert.\stref{st:vergelijkingstest}
+    Vanuit de vergelijkingstest weten we dan dat de reeks niet convergeert omdat $\sum\frac{1}{2\sqrt{n}}$ niet convergeert.\stref{st:vergelijkingstest}
     \question{kunnen we die laatste stap niet weglaten?}
   \end{proof}
 \end{vb}
@@ -311,7 +310,7 @@
   \begin{proof}
     Twee delen.
     \begin{itemize}
-    \item Als $L$ kleiner is dan $1$ kunnen we een $r\in \interval[open]{L}{1}$ nemen.
+    \item Als $L$ kleiner is dan $1$ kunnen we een $r\in \interval[open]{L}{1} \cap \interval[open]{0}{1}$ nemen.
       Er bestaat dus een $n_{0}\in \mathbb{N}$ als volgt:
       \[ \forall k\in \mathbb{N}:\ k \ge n_{0} \Rightarrow \sqrt[k]{|x_{k}|} < r \]
       We herschrijven dit als volgt:

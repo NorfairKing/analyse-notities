@@ -642,8 +642,7 @@
         \end{array}
         \]
       \item 
-        Volgens de middelwaardestelling van Cauchy bestaat er een $c\in \interval[open]{x}{y}$ als volgt:\stref{st:middelwaardestelling-cauchy}
-        \question{de stelling van Cauchy geldt voor continue functies op een gesloten en begrensd interval, dit is open?!}
+        Volgens de middelwaardestelling van Cauchy bestaat er een $c\in \interval{y}{x}$ als volgt:\stref{st:middelwaardestelling-cauchy}
         \[ \left( f(x) - f(y) \right) g'(c) = f'(c) \left( g(x) - g(y) \right) \]
         Voor die $c$ geldt dan het volgende:
         \[ \frac{f(x)-f(y)}{f(x)-g(y)} = \frac{f'(c)}{g'(c)} \]
@@ -653,14 +652,13 @@
         \[ \left|\frac{f(x)}{g(x)}-L\right|
         = \left|\lim_{y \rightarrow a}\frac{f(x)-f(y)}{g(x)-g(y)} - L \right|
         = \left| \lim_{y\rightarrow a}\frac{f'(c)}{g'(c)} - L \right|
-        = \left| \frac{f'(c)}{g'(c)} - L \right|< \epsilon
+        < \epsilon
         \]
-        \question{hoe zit het met die voorlaatste gelijkheid?!}
       \end{itemize}
     \item $a=+\infty$, $\lim_{x \rightarrow a}g(x) = +\infty$, $\lim_{x \rightarrow a}\frac{f'(x)}{g'(x)} = -\infty$
       Omdat $+\infty$ een ophopingspunt is van $I$, en omdat $I$ een interval is, bestaat er een $b\in \mathbb{R}$ zodat $\interval[open]{b}{+\infty}$ een deel is van $I$.
       We zullen aantonen dat $\lim_{x \rightarrow +\infty}\frac{f(x)}{g(x)} = -\infty$ geldt.
-      Kies daartoe een $M \in \mathbb{R}$.
+      Kies daartoe een $M \in \mathbb{R}^{-}$.
       We zoeken een $N\in \mathbb{R}$ zodat uit $x>N$ volgt dat $\frac{f(x)}{g(x)}<M$ geldt:\deref{de:limiet-van-functie-in-plus-oneindig}
       \begin{itemize}
       \item Omdat $\lim_{x \rightarrow +\infty}\frac{f'(x)}{g'(x)} = -\infty$ geldt, kunnen we een $N_{0} \in \mathbb{R}$, groter dan $b$ vinden zodat het volgende volgt.
@@ -687,10 +685,8 @@
         \[ \lim_{x\rightarrow +\infty}\frac{f(N_{0})}{g(x)} = 0 \]
         We kunnen dus een $N_{1}\in \mathbb{R}$, groter dan $b$, vinden zodat het volgende geldt voor alle $x>N_{1}$.
         \[ \left| \frac{g(x)-g(N_{0})}{g(x)} -1 \right| < \frac{1}{2}  \Rightarrow \frac{g(x)-g(N_{0})}{g(x)} > \frac{1}{2} \]
-        \question{kleiner dan 3/2, niet groter dan 1/2}
-        We kunnen ook een $N_{2}\in \mathbb{R}$, groter dan $b$, vinden zodat het volgende geldt voor alle $x>N_{2}$.
+        We kunnen ook een $N_{2}\in \mathbb{R}$, groter dan $b$, vinden zodat het volgende geldt voor alle $x>N_{2}$:
         \[ \left| \frac{f(N_{0})}{g(x)} -0 \right| < 1 \Rightarrow \frac{f(N_{0})}{g(x)} < 1 \]
-        \question{wat? dit klopt niet echt he...}
       \item 
         Er bestaat, volgens de middelwaardestelling van Cauchy, een $c$ strikt tussen $N_{0}$ en $x$ als volgt:\stref{st:middelwaardestelling-cauchy}
         \[ \left( f(x) - f(N_{0}) \right) g'(c) = f'(c) \left( g(x) - g(N_{0}) \right) \]
@@ -701,7 +697,6 @@
       \item 
         Kies nu $N = \max\{N_{0},N_{1},N_{2}\}$, dan geldt het volgende voor alle $x>N$:
         \[ \frac{f(x)}{g(x)} = \frac{f(x)-f(y)}{f(x)-g(y)}  \frac{g(x)-g(N_{0})}{g(x)} + \frac{f(N_{0})}{g(x)} < (2M-2)\frac{1}{2} + 1 = M \]
-        \question{wat? geldt die ongelijkheid wel?}
       \end{itemize}
     \end{itemize}
     \TODO{nog minstens twee gevallen!}
