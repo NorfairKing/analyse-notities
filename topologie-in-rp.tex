@@ -1,0 +1,85 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Topologie in $\mathbb{R}^p$}
+\label{sec:topologie-mathbbrp}
+
+\begin{de}
+  We gebruiken $B(x,\delta)$ als afkorting voor de volgende verzameling:
+  \[ B(x,\delta) = \{ y \in \mathbb{R}^{p} \mid \|x-y\| < \delta \} \]
+\end{de}
+\begin{de}
+  We gebruiken $B\interval{x}{\delta}$ als afkorting voor de volgende verzameling:
+  \[ B\interval{x}{\delta} = \{ y \in \mathbb{R}^{p} \mid \|x-y\| \le \delta \} \]
+\end{de}
+
+\begin{de}
+  We noemen een deelverzameling $A$ van $\mathbb{R}^{p}$ \term{open} als het volgende geldt:
+  \[ \forall x\in A, \exists \delta \in \mathbb{R}_{0}^{+}, \forall y\in \mathbb{R}^{p}:\ \|y-x\| < \delta \Rightarrow y \in A \]
+\end{de}
+
+\begin{de}
+  We noemen een deelverzameling $B$ van $\mathbb{R}^{p}$ \term{gesloten} als het complement ervan open is.
+\end{de}
+
+\begin{de}
+  We noemen een deelverzameling $A$ van $\mathbb{R}^{+}$ \term{begrensd} als er een $M \in \mathbb{R}^{+}$ bestaat als volgt:
+  \[ \forall x \in A:\ x \le M \]
+\end{de}
+
+\mst{unie/doorsnede van open en geslotens}
+\mst{gesloten asa elke convergente rij erin limiet erin}
+\mst{gesloten en begrensd asa elke convergente deelrij een limiet erin.}
+
+\begin{de}
+  De grootste open deelverzameling van $A$ noemen we het \term{inwendige} $\mathring{A}$ van $A$.
+\end{de}
+
+\begin{de}
+  De kleinste gesloten deelverzameling van $A$ noemen we de \term{sluiting} $overline{A}$ van $A$.
+\end{de}
+
+\mst{puntsgewijze karakterisatie inwendige/sluiting}
+\mst{sluiting via rijen}
+
+\begin{de}
+  De \term{rand} $\partial A$ van een deelverzameling $A$ van $\mathbb{R}^{+}$ definieren we als volgt:
+  \[ \partial A = \overline{A} \setminus \mathring{A} \]
+\end{de}
+
+\begin{de}
+  Zij $A$ een niet-leeg deel van $\mathbb{R}^{p}$, dan noemen we een punt $x\in A$ een \term{ge\"isoleerd punt} van $A$ als er een $\delta \in \mathbb{R}^{+}$ bestaat als volgt:
+  \[ B(x,\delta) \cap A = \{x\} \]
+\end{de}
+
+\begin{de}
+  Zij $A$ een niet-leeg deel van $\mathbb{R}^{p}$, dan noemen we een punt $x\in A$ een \term{ophopingspunt} van $A$ als voor alle $\delta \in \mathbb{R}^{+}_{0}$ het volgende geldt:
+  \[ B(x,\delta) \cap (A \setminus \{x\}) \neq \emptyset \]
+\end{de}
+
+\mst{karakterisatie ophopingspunt}
+
+\mst{ophopingspuntversie van Bolzano-Weierstrass}
+
+\subsection{Relatieve topologie}
+\label{sec:relatieve-topologie}
+
+\begin{de}
+  Zij $X$ een niet-lege deelverzameling van $\mathbb{R}$.
+  We noemen een niet-lege deelverzameling $A$ van $X$ \term{relatief open} in $X$ als het volgende geldt:
+  \[ \forall x\in A, \exists \delta \in \mathbb{R}_{0}^{+}, \forall y\in X:\ \|y-x\| < \delta \Rightarrow y \in A \]
+\end{de}
+
+\begin{de}
+  Zij $X$ een niet-lege deelverzameling van $\mathbb{R}$.
+  We noemen een niet-lege deelverzameling $A$ van $X$ \term{relatief open} in $X$ als het relatief complement van $A$ in $X$ relatief open is in $X$.
+\end{de}
+
+\mst{karakterisatie relatieve open/gesloten delen}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
