@@ -1,7 +1,60 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{Metrische ruimten}
+\label{sec:metrische-ruimten}
 
+\begin{de}
+  Een \term{Metrische ruimte} $V,d$ is een tupel van een verzameling $V$ en een functie $d$ met de volgende eigenschappen:
+  \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (v,w) \mapsto d(v,w) \]
+  \begin{itemize}
+  \item $d$ is \textbf{symmetrisch}:
+    \[ \forall v,w \in V:\ d(v,w) = d(w,v) \]
+  \item $d$ is nul als en slechts als de argumenten gelijk zijn:
+    \[ \forall v,w \in V:\ d(v,w) = 0 \Leftrightarrow v = w \]
+  \item $d$ voldoet aan de \textbf{driehoeksongelijkheid}:
+    \[ \forall u,v,w \in V:\ d(v,u) \le d(v,w) + d(w,u) \]
+  \end{itemize}
+  Men noemt $d$ de \term{metriek} of \term{afstandsfunctie} en $d(v,w)$ de \term{afstand} tussen $v$ en $w$.
+\end{de}
+
+\begin{de}
+  Een rij $(x_{n})_{n}$ in een metrische ruimte $V,d$ noemen we \term{convergent} als er een $a\in V$ bestaat als volgt:
+  \[ \forall \epsilon, \exists n_{0}\in \mathbb{N}, \forall n\in \mathbb{N}: n \ge n_{0} \Rightarrow d(x_{n},a) < \epsilon \]
+  $a$ noemen we dan de \term{limiet} van de rij $(x_{n})_{n}$.
+\end{de}
+
+\begin{de}
+  Zij $V,d$ een metrische ruimte, dan noemen we een rij $(x_{n})_{n}$ een \term{Cauchyrij} als en slechts als het volgende geldt:
+  \[ \forall \epsilon, \exists n_{0} \in \mathbb{N}, \forall n,m\in \mathbb{N}:\ n,m\ge n_{0} \Rightarrow d(x_{n},x_{m}) < \epsilon \]
+\end{de}
+
+\begin{de}
+  Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{begrensd} als het volgende geldt:
+  \[ \exists M\in \mathbb{R}^{+}, \forall n\in \mathbb{N}:\ d(x_{0},x_{n}) < M \]
+\end{de}
+
+\begin{de}
+  Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{open} als het volgende geldt:
+  \[ \forall v\in W, \exists \delta \in \mathbb{R}_{0}^{+}, \forall w\in W:\ d(v,w) < \delta \Rightarrow w \in W \]
+\end{de}
+
+\begin{de}
+  Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{gesloten} als het complement $V\setminus W$ van $W$ in $V$ open is.
+\end{de}
+ 
+\begin{de}
+  Zij $V,d$ een metrische ruimte, dan noemen we de unie $\mathring{W}$ van alle open deelverzamelingen van een deelverzameling $W$ van $V$ het \term{inwendige} van $W$.
+\end{de}
+
+\begin{de}
+  Zij $V,d$ een metrische ruimte, dan noemen we de doorsnede $\overline{W}$ van alle gesloten oververzamelingen van een deelverzameling $W$ van $V$ de \term{sluiting} van $W$.
+\end{de}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{continu} in een punt $a\in A$ als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall b \in A\]
+\end{de}
 
 \end{document}
 
