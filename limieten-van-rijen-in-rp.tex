@@ -21,7 +21,7 @@
 
 \begin{de}
   We definieren de \term{norm} van een element $v\in \mathbb{R}^{q}$ als de wortel van het scalair product met zichzelf:
-  \[ \|v\| = \sqrt{\langle v,v \rangle} \in \mathbb{R} \]
+  \[ \|v\| = \sqrt{\langle v,v \rangle} = \sum_{i=0}^{p}v_{i}^{2} \in \mathbb{R} \]
 \end{de}
 
 \begin{de}
@@ -43,6 +43,11 @@
 \extra{bewijs}
 \end{st}
 
+\begin{st}
+  Er is geen 'natuurlijke orde' in $\mathbb{R}^{p}$.
+\clarify{wat betekent dit zelfs?}
+\end{st}
+
 \subsection{Rijen in $\mathbb{R}^p$}
 \label{sec:rijen-mathbbrp}
 
@@ -54,20 +59,31 @@
 \end{de}
 
 \begin{opm}
-  Het concept van een oneindige limiet bestaat niet.
-\extra{zeker?}
+  Het concept van een oneindige limiet bestaat niet op dezelfde manier.
+  We kunnen enkel componentsgewijs over limieten naar oneindig spreken, of aan de hand van de norm.
+\extra{doen? of niet nuttig?}
 \end{opm}
 
 \begin{st}
+  \label{st:in-rp-convergeert-asa-componenten-convergeren}
   Zij $(x_{n})_{n} = ((x_{1,n},x_{2,n},\dotsc,x_{p,n})_{n}$ een rij in $\mathbb{R}^{p}$, dan convergeert $(x_{n})$ als en slechts als elk van de rijen $(x_{i,n})_{n}$ convergeert.
 
   \begin{proof}
     Zij $x$ de limiet van $(x_{n})_{n}$.
+    Merk de volgende ongelijkheden op:\stref{st:eerste-driehoeksongelijkheid-rp}\stref{st:tweede-driehoeksongelijkheid-rp}
     \begin{align*}
       \|x_{n}-x\| &\le |x_{n,1}-x_{1}| + |x_{n,2}-x_{2}| + \dotsc + |x_{n,p}-x_{p}|\\
       |x_{n,i}-x_{i}| &\le \|x_{n}-x\|
     \end{align*}
-\extra{bewijs}
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies willekeurig een $\delta \in \mathbb{R}_{0}^{+}$ en een willekeurige $i$.
+      Omdat er een $n_{0}$ bestaat zodat $x_{n}$ dichter dan $\delta$ bij $x$ komt, en de afstand van $x_{n,i}$ tot $x_{i}$ kleiner is dan, of gelijk aan, de afstand tusssen $x_{n}$ en $x$, kunnen we diezelfde $n_{0}$ nemen om $x_{n,i}$ willekeurig dicht bij $x_{i}$ te laten komen.
+    \item $\Leftarrow$\\
+      Kies willekeurig een $\delta \in \mathbb{R}_{0}^{+}$.
+      Voor elke $i$ bestaat er een $n_{i}$ zodat $x_{n,i}$ dichter dan $\frac{\delta}{p}$ bij $x_{i}$ komt.
+      Neem nu $m=\max_{i}\{x_{i}\}$, dan komt $x_{n}$ dichter dan $p\frac{\delta}{p}=\delta$ bij $x$.
+    \end{itemize}
   \end{proof}
 \end{st}
 
@@ -100,8 +116,8 @@
             axis equal image,
             disabledatascaling
             ]
-            \filldraw[fill=black!25!white, draw=black!20!white] (1,2) circle [radius=.705];
-            \filldraw [fill=black!25!white, draw=black!20!white] (2,1) circle [radius=.705];
+            \filldraw[fill=black!25!white, draw=black!20!white,ultra thick] (1,2) circle [radius=.705];
+            \filldraw [fill=black!25!white, draw=black!20!white,ultra thick] (2,1) circle [radius=.705];
             \draw (1,2) node {$a$};
             \draw (1,2) node {} edge[<->] (1,1.3);
             \draw (.9,1.65) node {$\delta$};
@@ -136,6 +152,7 @@
 \end{de}
 
 \begin{st}
+  \label{st:in-rp-convergent-dan-begrensd}
   Een convergente rij $(x_{n})_{n}$ is begrensd.
 
   \begin{proof}
@@ -158,7 +175,7 @@
           axis equal image,
           disabledatascaling
           ]
-          \filldraw[fill=black!25!white, draw=black!20!white] (1.5,1.5) circle [radius=1];
+          \filldraw[fill=black!25!white, draw=black!20!white, ultra thick] (1.5,1.5) circle [radius=1];
           \draw (1.5,1.5) node {$a$};
           \draw (1.5,1.5) node {} edge[<->] (1.5,0.5);
           \draw (1.4,1.15) node {$1$};
@@ -197,16 +214,47 @@
 
 \mst{Voor elk element $x\in \mathbb{R}^{p}$, bestaat er een rij $(q_{n})_{n}\in \mathbb{Q}^{p}$ die convergeert naar $x$.}
 
-\clarify{stijgend en dalend adhv afstand tot oorsprong? Ok, maar dan geldt stijgend en begrensd dan limiet niet.}
 
-\mst{rekenregels behalve vermenigvuldiging want die bestaat niet zozeer. deling evenmin.}
-\mst{deelrij zelfde rij als moederrij: lijkt nog steeds te gelden.}
-\mst{bolzano weierstrass}
+\begin{st}
+  Zij $(x_{n})_{n}$ een convergente rij in $\mathbb{R}^{p}$.
+  \[ \lim_{n\rightarrow +\infty}\lambda x_{n} = \lambda \lim_{n\rightarrow +\infty}x_{n} \]
+\extra{bewijs op definitie.}
+\extra{Bewijs op $\mathbb{R}$}
+\end{st}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee convergente rijen in $\mathbb{R}^{p}$.
+  \[ \lim_{n\rightarrow +\infty}(x_{n}+y_{n}) = \lim_{n\rightarrow +\infty}x_{n}+\lim_{n\rightarrow +\infty}y_{n} \]
+\extra{bewijs op definitie.}
+\extra{Bewijs op $\mathbb{R}$}
+\end{st}
+
+\begin{opm}
+  De vermenigvuldiging en deling van twee $p$-tallen zijn niet gedefinieerd.
+\end{opm}
+
+\begin{st}
+  \label{st:in-rp-deelrij-zelfde-limiet}
+  Deelrijen van convergente rijen in $\mathbb{R}^{p}$ zijn convergent en hebben dezelfde limiet.
+  \extra{bewijs: triviaal?}
+\end{st}
+
+\begin{st}
+  De \term{stelling van Bolzano-Weierstra\ss} (rijen).\\
+  Elke begrensde rij in $\mathbb{R}^{p}$ heeft een convergente deelrij.
+\extra{bewijs adhv argument voor $\mathbb{C}$}
+\end{st}
 
 \begin{de}
   Een \term{Cauchyrij} in $\mathbb{R}^{p}$ is een rij $(x_{n})_{n}$ met de volgende eigenschap:
   \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall n,m \in \mathbb{N}:\ n,m \ge n_{0} \Rightarrow |x_{n}-x_{m}| < \epsilon \]
 \end{de}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ een rij in $\mathbb{R}^{p}$, dan convergeert $(x_{n})_{n}$ als en slechts als $(x_{n})_{n}$ een Cauchyrij is.
+\extra{bewijs adhv argumnet voor $\mathbb{C}$, dus vanuit $\mathbb{R}$.}
+\end{st}
+
 
 \mst{convergentie asa cauchy}
 
