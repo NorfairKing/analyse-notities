@@ -18,21 +18,168 @@
   Men noemt $d$ de \term{metriek} of \term{afstandsfunctie} en $d(v,w)$ de \term{afstand} tussen $v$ en $w$.
 \end{de}
 
+\begin{vb}
+  $\mathbb{R}$, uitgerust met een metriek gebaseerd op de absolute-waardefunctie, is een metrische ruimte:
+  \[ d:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d(x,y)=|x-y| \]
+  Men noemt dit de \term{gewone metriek op $\mathbb{R}$}.
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d(x,y)=\frac{|x-y|}{1+|x-y|} \]
+  \begin{proof}
+    \begin{itemize}
+    \item $d$ is symmestrisch.
+      Dit volgt meteen uit de symmetrie van de gewone metriek op $\mathbb{R}$.
+    \item $d$ is nu als en slechts als de argumentien nul zijn.
+      Dit volgt uit dezelfde eigenschap van de gewone metriek op $\mathbb{R}$
+    \item $d$ voldoet aan de driehoeksongelijkheid:\\
+      Kies $x,y,z \in \mathbb{R}$ en houdt de driehoeksongelijkheid voor de gewone metriek op $\mathbb{R}$ in het achterhoofd.
+      Merk op dat de functie $f$ als volgt stijgend is.
+      \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}:\ t \mapsto \frac{t}{1+t} \]
+      \begin{align*}
+        d(x,y)
+        &= f(|x-y|)\\
+        &\le f(|x-z|+|z-y|)\\
+        &= \frac{|x-z|+|z-y|}{1+|x-z|+|z-y|}\\
+        &= \frac{|x-z|}{1+|x-z|+|z-y|}+\frac{|z-y|}{1+|x-z|+|z-y|}\\
+        &\le \frac{|x-z|}{1+|x-z|}+\frac{|z-y|}{1+|z-y|}\\
+        &= d(x,z) + d(z,y)
+      \end{align*}
+    \end{itemize}
+  \end{proof}
+
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d(x,y)=\left| \frac{x}{1+|x|} - \frac{y}{1+|y|} \right| \]
+
+\extra{bewijs algemener bij oef 1 van reeks VI.1.6}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d(x,y)=\|x-y\| \]
+  We noemen dit de \term{gewone metriek} of \term{euclidische metriek} op $\mathbb{R}^{p}$.
+  \extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d(x,y)=\sum_{i=1}^{p}|x_{i}-y_{i}| \]
+  We noemen dit de \term{city block metriek}.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d(x,y)=\max_{i}|x_{i}-y_{i}| \]
+  We noemen dit de \term{maximummetriek}.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[
+  d:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d(x,y)=
+  \begin{cases}
+    \|x-y\| &\text{ als $x$ en $y$ lineair afhankelijk zijn}\\
+    \|x\|+\|y\| &\text{ als $x$ en $y$ lineair onafhankelijk zijn}
+  \end{cases}
+  \]
+  We noemen dit de \term{spoorwegmetriek}.
+\extra{bewijs}
+\end{vb}
+
+\begin{de}
+  We noteren met $\mathbb{R}^{\mathbb{N}}$ de verzamelingen van alle rijen in $\mathbb{R}$.
+  Merk op dat $\mathbb{R}^{\mathbb{N}}$ een vectorruimte is over $\mathbb{R}$.
+\end{de}
+
+\begin{vb}
+  $\mathbb{R}^{\mathbb{N}}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{\mathbb{N}} \times \mathbb{R}^{\mathbb{N}} \rightarrow \mathbb{R}^{+}:\ ((x_{n})_{n},(y_{n})_{n}) \mapsto \sum_{n=0}^{+\infty}\frac{|x_{n}-y_{n}|}{2^{n}(1+|x_{n}-y_{n}|)} \]
+\extra{bewijs en bewijs waarom dit goed gedefinieerd is}
+\end{vb}
+
+\begin{vb}
+  Noteer met $l^{\infty}(\mathbb{N})$ het volgende:
+  \[ l^{\infty}(\mathbb{N}) = \{ (x_{n})_{n} \in \mathbb{R}^{\mathbb{N}} \mid (x_{n})_{n} \text{ is begrensd.}\} \]
+  $l^{\infty}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{\mathbb{N}} \times \mathbb{R}^{\mathbb{N}} \rightarrow \mathbb{R}^{+}:\ ((x_{n})_{n},(y_{n})_{n}) \mapsto \sup\{|x_{n}-y_{n}| \mid n\in \mathbb{N}\} \]
+\end{vb}
+
+
+
+
 \begin{de}
   Een rij $(x_{n})_{n}$ in een metrische ruimte $V,d$ noemen we \term{convergent} als er een $a\in V$ bestaat als volgt:
   \[ \forall \epsilon, \exists n_{0}\in \mathbb{N}, \forall n\in \mathbb{N}: n \ge n_{0} \Rightarrow d(x_{n},a) < \epsilon \]
   $a$ noemen we dan de \term{limiet} van de rij $(x_{n})_{n}$.
 \end{de}
 
+\begin{st}
+  Zij $(x_{n})_{n}$ een convergente rij met limiet $x$ in een metrische ruimte $V,d$, dan is $x$ uniek.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat er twee limieten $a$ en $b$ zijn van $(x_{n})_{n}$.\\
+    Kies $\delta = \frac{d(a,b)}{2}$.
+    Omdat $a$ de limiet is van $(x_{n})_{n}$, bestaat er een $n_{a}$ als volgt:
+    \[ \forall n\in \mathbb{N}: n \ge n_{a} \Rightarrow d(x_{n},a) < \epsilon \]
+    Omdat $b$ eveneens de limiet is van  $(x_{n})_{n}$, bestaat er ook een $n_{b}$ als volgt:
+    \[ \forall n\in \mathbb{N}: n \ge n_{b} \Rightarrow d(x_{n},a) < \epsilon \]
+    Merk nu voor alle $n\in \mathbb{N}$ de volgende ongelijkheid op die geldt vanuit de driehoeksongelijkheid:
+    \[ d(a,b) \le d(a,x_{n}) + d(b,x_{n}) \]
+    Kies $m = \max\{n_{a},n_{b}\}$, dan geldt voor alle $n\in \mathbb{N}$, groter dan $m$ de volgende contradictie.
+    \[ 2\delta = d(a,b) \le d(a,x_{n}) + d(b,x_{n}) < \delta + \delta = 2\delta \]
+  \end{proof}
+\end{st}
+
+% \begin{st}
+%   Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee convergente rijen in een metrische ruimte $V,d$ met een associatieve en commutatieve bewering $\blacksquare:\ V\times V \rightarrow V$, dan geldt het volgende:
+%   \[ \lim_{n\rightarrow +\infty}\left( x_{n} \blacksquare y_{n}\right) = \lim_{n\rightarrow +\infty}x_{n} \blacksquare \lim_{n\rightarrow \infty}y_{n}\]
+
+%   \begin{proof}
+%     Zij $x$ de limiet van $(x_{n})_{n}$ en $y$ de limiet van $(y_{n})_{n}$.
+%     Kies willekeurig een $\delta \in \mathbb{R}_{0}^{+}$, dan bestaan er getallen $n_{x}$ en $n_{y}$ als volgt:
+%     \[ \forall n\in \mathbb{N}:\ n \ge n_{x} \Rightarrow d(x_{n},x) < \frac{\delta}{2} \]
+%     \[ \forall n\in \mathbb{N}:\ n \ge n_{y} \Rightarrow d(n_{y},y) < \frac{\delta}{2} \]
+%     Merk bovendien de volgende ongelijkheid op voor alle $n\in \mathbb{N}$.
+%     Kies nu $n = \max(n_{x},n_{y})$
+%     \[ d(x_{n} \blacksquare y_{n}, x \blacksquare y) \]
+   
+%   \end{proof}
+% \end{st}
+        
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een rij $(x_{n})_{n}$ een \term{Cauchyrij} als en slechts als het volgende geldt:
   \[ \forall \epsilon, \exists n_{0} \in \mathbb{N}, \forall n,m\in \mathbb{N}:\ n,m\ge n_{0} \Rightarrow d(x_{n},x_{m}) < \epsilon \]
 \end{de}
 
+\begin{st}
+  Zij $V,d$ een metrische ruimte, dan is elke onvergente rij hierin een Cauchyrij.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een convergente rij met limiet $x\in V$.
+    Merk voor alle $n,m\in \mathbb{N}$ de volgende ongelijkheid op:
+    \[ d\left(x_{n},x_{m}\right) \le d(x_{n},x) + d(x_{m},x) \]
+    Kies willekeurig een $\delta \in \mathbb{R}_{0}^{+}$, dan bestaat er een $n_{0}\in \mathbb{N}$ als volgt:
+    \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d(x_{n},x) < \frac{\delta}{2}\]
+    Gebruiken we nu de vorige ongelijkheid, dan vinden we dat $(x_{n})_{n}$ een Cauchyrij is:
+    \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d\left(x_{n},x_{m}\right) \le d(x_{n},x) + d(x_{m},x) < \frac{\delta}{2} + \frac{\delta}{2} = \delta\]
+  \end{proof}
+\end{st}
+
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{begrensd} als het volgende geldt:
-  \[ \exists M\in \mathbb{R}^{+}, \forall n\in \mathbb{N}:\ d(x_{0},x_{n}) < M \]
+  \[ \forall v\in W, \exists M\in \mathbb{R}^{+}, \forall w\in W:\ d(v,w) < M \]
 \end{de}
+
+\begin{st}
+  Een convergente rij is begrensd.
+\extra{is begrensd wel juist?}
+\end{st}
 
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{open} als het volgende geldt:
@@ -42,6 +189,80 @@
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{gesloten} als het complement $V\setminus W$ van $W$ in $V$ open is.
 \end{de}
+
+
+\begin{pr}
+  Zij $V,d$ een metrische ruimte, dan is de unie van open verzamelingen in $V$ ook open in $V$.
+
+  \begin{proof}
+    Zij $\mathcal{O}$ een niet-lege verzameling van open deelverzamelingen van $V$.
+    Noem $U = \bigcup_{A\in \mathcal{O}}A$.
+    \begin{itemize}
+    \item Als $U$ leeg is, is $U$ trivialerwijs open.
+    \item Als $U$ niet leeg is, dan bestaat er een $a$ in een $A \subseteq \mathcal{O}$ als volgt:
+      \[ \forall v\in A, \exists \delta \in \mathbb{R}_{0}^{+}, \forall w\in V:\ d(v,w) < \delta \Rightarrow w \in A \]
+      Omdat $A$ een deel is van $U$, zal hetzelfde gelden voor $U$.
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  Zij $V,d$ een metrische ruimte, dan is een \textbf{eindige} doorsnede van open verzamelingen in $V$ ook open in $V$.
+  
+  \begin{proof}
+    Beschouw een eindig aantal ($n$) open deelverzamelingen $A_{i}$ van $V$.
+    Noem $D = \bigcap_{i}A_{x}$.
+    \begin{itemize}
+    \item Als $D$ leeg is, is $D$ trivialerwijs open.
+    \item Als $D$ niet leeg is, dan bestaat er een $a\in D$ als volgt:
+      \[ \forall i, \exists \delta_{i} \in \mathbb{R}_{0}^{+}, \forall w\in V:\ d(a,w) < \delta \Rightarrow w \in A_{i} \]
+      Kies nu $\delta = \min_{i}\delta_{i}$, dan geldt het volgende:
+      \[ \forall w\in V:\ d(a,w) < \delta \Rightarrow w\in D \]
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{opm}
+  Deze stelling geldt niet voor een oneindige doorsnede van verzamelingen omdat $\min_{i}\delta_{i}$ dan niet noodzakelijk bestaat.
+\end{opm}
+\extra{tegenvoorbeeld}
+
+\begin{pr}
+  Een doorsnede van gesloten verzamelingen is gesloten.
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Een \textbf{eindige} unie van gesloten verzamelingen is gesloten
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Zij $V,d$ een metrische ruimte en $A$ een niet-leeg deel van $V$, dan is $A$ gesloten als en slechts als de limiet van elke convergente rij in $A$ ook tot $A$ behoort.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een willekeurige convergente rij $(x_{n})_{n}$ in $A$ en noem de limiet $x$.
+      Veronderstel dat $x$ niet tot $A$ zou behoren, dan behoort $x$ tot het open deel $V \setminus A$ van $V$.
+      We kunnen dus een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
+      \[ \forall w \in A:\ d(x,w) < \delta \Rightarrow w \in V \setminus A \]
+      Omdat $x$ de limiet is van $(x_{n})_{n}$, kunnne we eveneens een $n_{0}\in \mathbb{N}$ vinden als volgt:
+      \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d(x_{n},x) < \delta \]
+      Nemen we deze beweringen samen, dan bestaat er minstens \'e\'en $x_{n}$ met $n\ge n_{0}$ in $V \setminus A$.
+      Contridictie.
+    \item $\Leftarrow$\\
+      Bewijs uit het ongerijmde: Stel dat $A$ niet gesloten is.
+      $A^{c}$ is dan niet open en er bestaat dus een $a\in V \setminus A$ als volgt:
+      \[ \forall \delta \in \mathbb{R}_{0}^{+}, \exists b\in V:\ d(a,b) < \delta \wedge b \in A \]
+      We kunnen een rij construeren door voor $\delta_{n}$ telkens $\frac{1}{n}$ te kiezen en zo een $x_{n}$ te bekomen.
+      Per constructie geldt voor elke $n\in \mathbb{N}$ dan $d(x_{n},a) < \frac{1}{n}$ en zal de rij dus naar $a$ convergeren.
+      We hebben nu een convergente rij $(x_{n})_{n}$ in $A$ geconstrueerd waarvoor de limiet niet tot $A$ behoort.
+      Contradictie.
+    \end{itemize}
+  \end{proof}
+\end{pr}
  
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we de unie $\mathring{W}$ van alle open deelverzamelingen van een deelverzameling $W$ van $V$ het \term{inwendige} van $W$.
@@ -53,7 +274,12 @@
 
 \begin{de}
   Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{continu} in een punt $a\in A$ als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall b \in A\]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
+\end{de}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{uniform continu} op $A$ als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall a,b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
 \end{de}
 
 \end{document}
