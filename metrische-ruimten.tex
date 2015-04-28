@@ -4,6 +4,9 @@
 \section{Metrische ruimten}
 \label{sec:metrische-ruimten}
 
+\subsection{Het concept metrische ruimte}
+\label{sec:het-conc-metr}
+
 \begin{de}
   Een \term{Metrische ruimte} $V,d$ is een tupel van een verzameling $V$ en een functie $d$ met de volgende eigenschappen:
   \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (v,w) \mapsto d(v,w) \]
@@ -108,18 +111,140 @@
   \[ l^{\infty}(\mathbb{N}) = \{ (x_{n})_{n} \in \mathbb{R}^{\mathbb{N}} \mid (x_{n})_{n} \text{ is begrensd.}\} \]
   $l^{\infty}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
   \[ d:\ \mathbb{R}^{\mathbb{N}} \times \mathbb{R}^{\mathbb{N}} \rightarrow \mathbb{R}^{+}:\ ((x_{n})_{n},(y_{n})_{n}) \mapsto \sup\{|x_{n}-y_{n}| \mid n\in \mathbb{N}\} \]
+\extra{bewijs}
 \end{vb}
 
+\begin{vb}
+  Zij $X$ een gesloten en begrensde deelverzameling van $\mathbb{R}^{p}$ en noteer met $C(X)$ de vectorruimte van de continue functie van $X$ naar $\mathbb{R}$.
+  $C(X)$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ C(x)\times C(X)\rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto d(f,g) = \sup \{ |f(x)-g(x)| \mid x \in X \} \]
+\extra{bewijs}
+\end{vb}
 
+\begin{vb}
+  Zij $\interval{a}{b}$ een gesloten begrensd interval en noteer met $C(\interval{a}{b})$ de vectorruimte van de continue functies van $\interval{a}{b}$ naar $\mathbb{R}$.
+  $C(\interval{a}{b})$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ C(\interval{a}{b})\times C(\interval{a}{b}) \rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto \int_{a}^{b}|f(x)-g(x)|dx \]
+\extra{bewijs}
+\end{vb}
 
+\begin{vb}
+  Zij $\interval{a}{b}$ een gesloten begrensd interval en noteer met $C(\interval{a}{b})$ de vectorruimte van de continue functies van $\interval{a}{b}$ naar $\mathbb{R}$.
+  $C(\interval{a}{b})$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ C(\interval{a}{b})\times C(\interval{a}{b}) \rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto \sqrt{\int_{a}^{b}|f(x)-g(x)|dx} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  Zij $X$ een willekeurige, niet-lege verzameling.
+  De \term{discrete metriek} of \term{triviale metriek} op $X$ wordt gegeven als volgt.
+  \[
+  d:\ X \times X \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto
+  \begin{cases}
+    0 &\text{ als } x = y\\
+    1 &\text{ als } x \neq y
+  \end{cases}
+  \]
+  $X,d$ vormt een metrische ruimte.
+\end{vb}
+
+\extra{product van metrische ruimten}
 
 \begin{de}
-  Een rij $(x_{n})_{n}$ in een metrische ruimte $V,d$ noemen we \term{convergent} als er een $a\in V$ bestaat als volgt:
-  \[ \forall \epsilon, \exists n_{0}\in \mathbb{N}, \forall n\in \mathbb{N}: n \ge n_{0} \Rightarrow d(x_{n},a) < \epsilon \]
-  $a$ noemen we dan de \term{limiet} van de rij $(x_{n})_{n}$.
+  Zij $(\mathbb{R},V,+)$ een vectorruimte, dan is een \term{norm} op $V$ een afbeelding als volgt:
+  \[ \|\cdot\|:\ V \rightarrow \mathbb{R}^{+}:\ v \mapsto \|v\| \]
+  \begin{enumerate}
+  \item $\forall v\in V:\ \|v\| = 0 \Leftrightarrow v=0$
+  \item $\forall v\in V, \forall \lambda \in \mathbb{R}:\ \|\lambda v\| = |\lambda|\|v\|$
+  \item $\forall v,w\in V:\ \|v+w\| < \|v\| + \|w\|$
+  \end{enumerate}
+\end{de}
+
+\begin{de}
+  Een vectorruimte $\mathbb{R},V,+$, uitgerust met een norm noemen we een \term{genormeerde vectorruimte}.
 \end{de}
 
 \begin{st}
+  Een genormeerde vectorruimte $\mathbb{R},V,+,\|\cdot\|$, uitgerust met de volgende functie als metriek, vormt een metrische ruimte:
+  \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto \|x-y\| \]
+\extra{bewijs}
+\end{st}
+
+\begin{de}
+  Voor een niet-lege deelverzameling $A$ van $\mathbb{R}^{p}$ en een $r\in \mathbb{R}^{+}$ definie\"eren we de $r$-omhullende $[A]_{r}$ van $A$ als volgt:
+  \[ [A]_{r} = \{r \in \mathbb{R}^{p} \mid \exists a \in A:\ d(x,a) \le r \} \]
+  Hierin staat $d$ voor de gewone euclidische metriek.
+\end{de}
+
+\begin{de}
+  Noteer met $\mathcal{F}$ de verzameling van niet-lege gesloten en begrensde deelverzamelingen van $\mathbb{R}^{p}$.
+  \[ \mathcal{F} = \{ A \mid A \subseteq \mathbb{R}^{p} \} \]
+\end{de}
+
+\begin{de}
+  We defini\"eren de \term{Hausdorffafstand} $h(F,G)$ tussen twee deelverzamelingen $F,G \in \mathcal{F}$ als volgt:
+  \[ h(F,G) = \inf\{ r\in \mathbb{R}^{+} \mid F \subseteq [G]_{r} \text{ en } G \subseteq [F]_{r} \} \]
+\end{de}
+
+\begin{blem}
+  Zij $A \subseteq \mathbb{R}^{p}$ en $r,s\in\mathbb{R}^{+}$ met $r\ge s \ge 0$.
+  \[ [A]_{s} \subseteq [A]_{r} \]
+\TODO{bewijs p 16}
+\end{blem}
+
+\begin{blem}
+  Zij $A \subseteq \mathbb{R}^{p}$ en $r,s\in\mathbb{R}^{+}$:
+  \[ \left[ [A]_{r}\right]_{s} \subseteq [A]_{r+s} \]
+\TODO{bewijs p 16}
+\end{blem}
+
+\begin{blem}
+  Zij $F,G \in \mathcal{F}$ en $r=h(F,G)$.
+  \[ F \subseteq [G]_{r} \text{ en } G \subseteq [F]_{r} \]
+\TODO{bewijs p 16}
+\end{blem}
+
+\begin{pr}
+  De Hausdorffafstand $h$ is een metriek die $\mathcal{F},h$ een metrische ruimte maakt.
+  \TODO{bewijs p 17}
+\end{pr}
+
+\begin{st}
+  \[ \forall x,y \in \mathbb{R}^{p}:\ h(\{x\},\{y\}) = d(x,y) \]
+\TODO{bewijs}
+\end{st}
+
+\TODO{voorbeelden van HDafstandberekeningen}
+
+\subsection{Begrensde verzamelingen}
+\label{sec:begr-verz}
+
+\begin{de}
+  Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{begrensd} als het volgende geldt:
+  \[ \exists M\in \mathbb{R}^{+}, \forall v,w\in W:\ d(v,w) < M \]
+\end{de}
+
+\begin{de}
+  Zij $V,d$ een metrische ruimte en $A$ een niet-lege begrensde deelverzameling van $V$, dan definieren we de \term{diameter} van $A$ als volgt:
+  \[ diam(A) = \sup\{d(x,y) \mid x,y \in A \} \]
+\end{de}
+
+\begin{bpr}
+  Zij $V,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$, dan is $A$ begrensd als en slechts als er voor elke $x_{0}\in V$ een $R\in \mathbb{R}^{+}$ bestaat zodat $\forall a\in A:\ d(x_{0},a) \le R$ geldt.
+\TODO{ bewpjs p 18}
+\end{bpr}
+
+\subsection{Rijen in metrische ruimten}
+\label{sec:rijen-metr-ruimt}
+
+\begin{de}
+  Een rij $(x_{n})_{n}$ in een metrische ruimte $V,d$ noemen we \term{convergent} voor $d$ als er een $a\in V$ bestaat als volgt:
+  \[ \forall \epsilon\in\mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall n\in \mathbb{N}: n \ge n_{0} \Rightarrow d(x_{n},a) < \epsilon \]
+  $a$ noemen we dan de \term{limiet} van de rij $(x_{n})_{n}$:
+  \[ \lim_{n\rightarrow +\infty}x_{n} = a \]
+\end{de}
+
+\begin{bst}
   Zij $(x_{n})_{n}$ een convergente rij met limiet $x$ in een metrische ruimte $V,d$, dan is $x$ uniek.
 
   \begin{proof}
@@ -134,23 +259,7 @@
     Kies $m = \max\{n_{a},n_{b}\}$, dan geldt voor alle $n\in \mathbb{N}$, groter dan $m$ de volgende contradictie.
     \[ 2\delta = d(a,b) \le d(a,x_{n}) + d(b,x_{n}) < \delta + \delta = 2\delta \]
   \end{proof}
-\end{st}
-
-% \begin{st}
-%   Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee convergente rijen in een metrische ruimte $V,d$ met een associatieve en commutatieve bewering $\blacksquare:\ V\times V \rightarrow V$, dan geldt het volgende:
-%   \[ \lim_{n\rightarrow +\infty}\left( x_{n} \blacksquare y_{n}\right) = \lim_{n\rightarrow +\infty}x_{n} \blacksquare \lim_{n\rightarrow \infty}y_{n}\]
-
-%   \begin{proof}
-%     Zij $x$ de limiet van $(x_{n})_{n}$ en $y$ de limiet van $(y_{n})_{n}$.
-%     Kies willekeurig een $\delta \in \mathbb{R}_{0}^{+}$, dan bestaan er getallen $n_{x}$ en $n_{y}$ als volgt:
-%     \[ \forall n\in \mathbb{N}:\ n \ge n_{x} \Rightarrow d(x_{n},x) < \frac{\delta}{2} \]
-%     \[ \forall n\in \mathbb{N}:\ n \ge n_{y} \Rightarrow d(n_{y},y) < \frac{\delta}{2} \]
-%     Merk bovendien de volgende ongelijkheid op voor alle $n\in \mathbb{N}$.
-%     Kies nu $n = \max(n_{x},n_{y})$
-%     \[ d(x_{n} \blacksquare y_{n}, x \blacksquare y) \]
-   
-%   \end{proof}
-% \end{st}
+\end{bst}
         
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een rij $(x_{n})_{n}$ een \term{Cauchyrij} als en slechts als het volgende geldt:
@@ -158,6 +267,21 @@
 \end{de}
 
 \begin{st}
+  Beschouw de ruimte $C(X)$ van de re\"ele continue functies op een gesloten, begrensd deel $X$ van $\mathbb{R}^{p}$ en beschouw hierop de $d_{\infty}$-metriek.
+  Een rij $(f_{n})_{n}$ in $C(X)$ zal volgens de $d_{\infty}$ metriek convergeren naar een $f\in C(X)$ als en slechts als $(f_{n})_{n}$ uniforum naar $f$ convergeert.
+\TODO{bewijs p 20}
+\TODO{dit is cool, moet dit niet ergens anders staan?}
+\end{st}
+\extra{voorbeeld p 20 onderaan, waar hoort dit?}
+
+\begin{st}
+  Een rij gesloten bollen $(B_{n})_{n}$ in $\mathbb{R}^{p}$ met middelpunten $x_{n}$ en stralen $r_{n}$ zal voor de Hausdorffmetriek convergeren naar een gesloten bol $B$ met middelpunt $x$ en straal $r$ als en slechts als $\lim_{n\rightarrow +\infty}x_{n}=x$ en $\lim_{n\rightarrow +\infty}r_{n} = r$ gelden.
+\extra{bewijs}
+\TODO{again, hoort dit wel hier?}
+\end{st}
+\extra{voorbeeld p 21}
+
+\begin{bst}
   Zij $V,d$ een metrische ruimte, dan is elke onvergente rij hierin een Cauchyrij.
 
   \begin{proof}
@@ -169,17 +293,83 @@
     Gebruiken we nu de vorige ongelijkheid, dan vinden we dat $(x_{n})_{n}$ een Cauchyrij is:
     \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d\left(x_{n},x_{m}\right) \le d(x_{n},x) + d(x_{m},x) < \frac{\delta}{2} + \frac{\delta}{2} = \delta\]
   \end{proof}
-\end{st}
+\end{bst}
 
 \begin{de}
-  Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{begrensd} als het volgende geldt:
-  \[ \forall v\in W, \exists M\in \mathbb{R}^{+}, \forall w\in W:\ d(v,w) < M \]
+  Zij $V,d$ een metrische ruimte, dan noemen we deze \term{volledig} als elke Cauchyrij convergent is in $V$.
 \end{de}
 
 \begin{st}
   Een convergente rij is begrensd.
-\extra{is begrensd wel juist?}
+\extra{zeker?}
 \end{st}
+
+\subsection{Continue functies tussen metrische ruimten}
+\label{sec:cont-funct-tuss}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{continu} in een punt $a\in A$ als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
+\end{de}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{uniform continu} op $A$ als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall a,b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
+\end{de}
+
+\begin{vb}
+  Zij $d_{X}$ de triviale metriek voor een verzameling $X$, is elke functie $f:\ X \rightarrow Y$ met $Y,d_{Y}$ een metrische ruimte, continu.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  Beshouw $I$ als volgt:
+  \[ I:\ C(\interval{a}{b}) \Rightarrow \mathbb{R}:\ f \mapsto \int_{a}^{b}f(x)dx \]
+  Beschouw op $C(\interval{a}{b}$ de $d_{\infty}$ metriek.
+  $I$ is continu.
+  \extra{bewijs}
+\end{vb}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, dan noemen we een funcie $f:\ X \rightarrow Y$ een \term{contractie} als het volgende geldt:
+  \[ \forall x,y\in X:\ d_{Y}(f(x),f(y)) \le d_{X}(x,y) \]
+\end{de}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, dan noemen we een funcie $f:\ X \rightarrow Y$ een \term{strikte contractie} als er een $c\in \interval[open right]{0}{1}$ bestaat als volgt:
+  \[ \forall x,y\in X:\ d_{Y}(f(x),f(y)) \le c d_{X}(x,y) \]
+  De kleinste $c$ die hieraan voldoet noemen we de \term{contractiefactor}
+\end{de}
+
+\begin{st}
+  Contracties zijn uniform continu.
+\TODO{bewijs}
+\end{st}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, dan noemen we een funcie $f:\ X \rightarrow Y$ een \term{isometrie} als $f$ afstanden bewaart:
+  \[ \forall x,y \in X: d_{W}(f(x),f(y)) = d_{V}(x,y) \]
+\end{de}
+
+\begin{st}
+  Elke isometrie is injectief.
+\TODO{bewijs}
+\end{st}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, dan zeggen we dat $V,d_{V}$ \term{isometrisch ingebed} kan worden in $W,d_{W}$ als er een isometrie $f:\ X \rightarrow Y$ bestaat.
+\end{de}
+
+\begin{de}
+  Twee metrische ruimten $V,d_{V}$ en $W,d_{W}$ noemen we \term{isometrisch} als en slechts als er een bijectieve isometrie $f:\ X \rightarrow Y$ bestaat.
+\end{de}
+
+\TODO{zoek hiervan de voorbeelden hierboven}
+
+\extra{voorbeeld p 23}
+
+
+
 
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{open} als het volgende geldt:
@@ -272,15 +462,6 @@
   Zij $V,d$ een metrische ruimte, dan noemen we de doorsnede $\overline{W}$ van alle gesloten oververzamelingen van een deelverzameling $W$ van $V$ de \term{sluiting} van $W$.
 \end{de}
 
-\begin{de}
-  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{continu} in een punt $a\in A$ als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
-\end{de}
-
-\begin{de}
-  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{uniform continu} op $A$ als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall a,b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
-\end{de}
 
 \end{document}
 
