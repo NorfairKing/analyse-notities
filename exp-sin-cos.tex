@@ -131,15 +131,16 @@
 
   \begin{proof}
     \begin{align*}
-      |\exp(it)|
-      = \left|\exp(i)^{t}\right|
-      = \left|\exp(i)\right|^{t}
-      = 1^{t}
-      = 1
+      1
+      &= \exp(0)\\
+      &= \exp(it-it)\\
+      &= \exp(it)\exp(-it)\\
+      &= \exp(it)\exp(\overline{it})\\
+      &= \exp(it)\overline{\exp(it)}\\
+      &= |\exp(it)|^{2}
     \end{align*}
   \end{proof}
 \end{bpr}
-\question{waarom geldt dit ook voor reele $t$'s en niet enkel gehele?}
 
 \begin{bpr}
   \label{pr:reele-exponentiatie-positief}
@@ -684,7 +685,10 @@
       \end{itemize}
     \item Uniciteit\\
       Dit volgt meteen uit de periodiciteit van $\exp$.
-      \question{Serieus? Waarom?!}
+      Stel immers dat er twee getallen $\theta_{1}$ en $\theta_{2}$ zouden bestaan als volgt:
+      \[ e^{i\theta_{1}}|z| = e^{i\theta_{2}}|z| \Rightarrow e^{i(\theta_{1}-\theta_{2})} = 1 \]
+      \[ \Leftrightarrow \exists k\in \mathbb{Z}:\ \theta_{1}-\theta_{2} = k2\pi \]
+      Omdat $\theta_{1}$ beide in $\interval[open right]{0}{2\pi}$ moeten zitten leidt dit tot een contradictie.
     \end{itemize}
   \end{proof}
 \end{bpr}
@@ -702,12 +706,14 @@
       \[
       \forall z\in \mathbb{C}:\ |z| = r \Rightarrow
       \begin{array}{rl}
-        |P(z)|
-        &= \left|\sum_{k=0}^{n}a_{k}z^{k}\right|\\
-        &\ge r^{n}\left( 1 - \sum_{i=1}^{n}\frac{|a_{n-i}|}{r^{i}}\right)\\
+        |z^{n}|
+        &= \left|P(z) - \sum_{k=0}^{n}a_{k}z^{k}\right|\\
+        &= \left|P(z) + \sum_{k=0}^{n}-a_{k}z^{k}\right|\\
+        &\le \left|P(z)\right| + \sum_{k=0}^{n}|-a_{k}||z|^{k}\\
+        r^{n}&\le \left|P(z)\right| + r^{n}\sum_{i=0}^{n-1}\frac{|a_{k}|}{r^{k}}\\
+        |P(z)| &\ge r^{n}\left(1-\sum_{i=0}^{n-1}\frac{|a_{k}|}{r^{k}}\right)
       \end{array}     
       \]
-      \question{hier MOET uitleg bij!}
       Duidelijk is dat het rechterlid hierin naar $+\infty$ gaat voor $r$ gaande naar $+\infty$.
       Er bestaat dus een $r_{0}\in \mathbb{R}_{0}^{+}$ zodat $|P(z)| > $ geldt voor alle $z\in \mathbb{C}$ met $|z| > r_{0}$.
       Bijgevolg ziet $m$ er als volgt uit:
