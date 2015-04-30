@@ -1,0 +1,593 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Voorbeelden in metrische ruimten}
+\label{sec:voorb-metr-ruimt}
+
+
+\subsection{Metrieken op $\mathbb{R}$}
+\label{sec:metrieken-op-mathbbr}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met een metriek gebaseerd op de absolute-waardefunctie, is een metrische ruimte:
+  \[ d:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d(x,y)=|x-y| \]
+  Men noemt dit de \term{gewone metriek op $\mathbb{R}$}.
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+      \draw[latex-latex] (-1.5,0) -- (1.5,0);
+      \draw[color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$a$};
+      \draw[(-),thick,color=red] (-1,0) -- (1,0);
+    \end{tikzpicture}
+    \caption{Een open bol in $\mathbb{R},d$}
+  \end{figure}
+\end{vb}
+
+\begin{opm}
+  $\mathbb{R}$ is duidelijk niet begrensd voor $d$.
+\end{opm}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{1}:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d_{1}(x,y)=\frac{|x-y|}{1+|x-y|} \]
+  \begin{proof}
+    We gaan elke eigenschap van een metrische ruimte na.
+    \begin{itemize}
+    \item $d$ is symmestrisch.
+      Dit volgt meteen uit de symmetrie van de gewone metriek op $\mathbb{R}$.
+    \item $d$ is nu als en slechts als de argumentien nul zijn.
+      Dit volgt uit dezelfde eigenschap van de gewone metriek op $\mathbb{R}$
+    \item $d$ voldoet aan de driehoeksongelijkheid:\\
+      Kies $x,y,z \in \mathbb{R}$ en houdt de driehoeksongelijkheid voor de gewone metriek op $\mathbb{R}$ in het achterhoofd.
+      Merk op dat de functie $f$ als volgt stijgend is.
+      \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}:\ t \mapsto \frac{t}{1+t} \]
+      \begin{align*}
+        d_{1}(x,y)
+        &= f(|x-y|)\\
+        &\le f(|x-z|+|z-y|)\\
+        &= \frac{|x-z|+|z-y|}{1+|x-z|+|z-y|}\\
+        &= \frac{|x-z|}{1+|x-z|+|z-y|}+\frac{|z-y|}{1+|x-z|+|z-y|}\\
+        &\le \frac{|x-z|}{1+|x-z|}+\frac{|z-y|}{1+|z-y|}\\
+        &= d_{1}(x,z) + d_{1}(z,y)
+      \end{align*}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{st}
+  Voor de $d_{1}$ metriek hierboven is $\mathbb{R}$ begrensd.
+  \begin{proof}
+    Kies willekeurig $x,y\in\mathbb{R}$ en kies $M=1\in \mathbb{R}^{+}$, dan geldt het volgende:
+    \[ d_{1}(x,y) = \frac{|x-y|}{1+|x-y|} < M \]
+  \end{proof}
+\end{st}
+\extra{vindt de diameter}
+
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{2}:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d_{2}(x,y)=\left| \frac{x}{1+|x|} - \frac{y}{1+|y|} \right| \]
+
+\extra{bewijs algemener bij oef 1 van reeks VI.1.6}
+\end{vb}
+
+\begin{st}
+  Voor de $d_{2}$ metriek hierboven is $\mathbb{R}$ begrensd.
+\extra{bewijs}
+\end{st}
+\extra{vindt de diameter}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{\circ_{r}}:\ \mathbb{R} \times \mathbb{R} \rightarrow (x,y) \mapsto d_{\circ_{r}}(x,y) = r\sqrt{(\cos(x)-\cos(y))^{2} + (\sin(x)-\sin(y))^{2}} \]
+  \extra{is het echt een metriek?}
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=-1.5, ymax=1.5,
+        xmin=-1.5, xmax=1.5,
+        axis equal image,
+        disabledatascaling
+        ]
+        \draw (0,0) circle [radius=1];
+        \fill [fill=red] ++(5:1) circle [radius=0.02];
+        \draw [(-),color=red,thick] ++(50:1) arc (50:-40:1);
+        \draw ++(5:1.1) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Een open deel van $\mathbb{R},d_{0_{r}}$}
+  \end{figure}
+
+\end{vb}
+
+\subsection{Metrieken op $\mathbb{R}^p$}
+\label{sec:metr-op-mathbbrp}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d(x,y)=\|x-y\| \]
+  We noemen dit de \term{gewone metriek} of \term{euclidische metriek} op $\mathbb{R}^{p}$.
+  \extra{bewijs}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=0, ymax=3,
+        xmin=0, xmax=3,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \filldraw [ultra thick,fill=black!25!white, draw=black!20!white] (1.5,1.5) circle [radius=1];
+        \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+        \draw (1.5,1.6) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=0, ymax=3,
+        xmin=0, xmax=3,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \filldraw [ultra thick,fill=black!25!white, draw=black!40!white] (1.5,1.5) circle [radius=1];
+        \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+        \draw (1.5,1.6) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Een open bol en een gesloten bol in $\mathbb{R}^{2},d$}
+  \end{figure}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{1}:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d_{1}(x,y)=\sum_{i=1}^{p}|x_{i}-y_{i}| \]
+  We noemen dit de \term{city block metriek} of \term{taxicab metriek}.
+\extra{bewijs}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=0, ymax=3,
+        xmin=0, xmax=3,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \filldraw[ultra thick,fill=black!25!white, draw=black!20!white] (0.5,1.5) -- (1.5,2.5) -- (2.5,1.5) -- (1.5,0.5) -- cycle;
+        \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+        \draw (1.5,1.6) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=0, ymax=3,
+        xmin=0, xmax=3,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \filldraw[ultra thick,fill=black!25!white, draw=black!40!white] (0.5,1.5) -- (1.5,2.5) -- (2.5,1.5) -- (1.5,0.5) -- cycle;
+        \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+        \draw (1.5,1.6) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Een open bol en een gesloten bol in $\mathbb{R}^{2},d_{1}$}
+  \end{figure}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{\infty}:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d_{\infty}(x,y)=\max_{i}|x_{i}-y_{i}| \]
+  We noemen dit de \term{maximummetriek}.
+\extra{bewijs}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=0, ymax=3,
+        xmin=0, xmax=3,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \filldraw[ultra thick,fill=black!25!white, draw=black!20!white] (0.5,2.5) -- (2.5,2.5) -- (2.5,0.5) -- (0.5,0.5) -- cycle;
+        \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+        \draw (1.5,1.6) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=0, ymax=3,
+        xmin=0, xmax=3,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \filldraw[ultra thick,fill=black!25!white, draw=black!40!white] (0.5,2.5) -- (2.5,2.5) -- (2.5,0.5) -- (0.5,0.5) -- cycle;
+        \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+        \draw (1.5,1.6) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Een open bol en een gesloten bol in $\mathbb{R}^{2},d_{\infty}$}
+  \end{figure}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[
+  d_{NMBS}:\ \mathbb{R}^{p}\times\mathbb{R}^{p}\rightarrow (x,y) \mapsto d_{NMBS}(x,y)=
+  \begin{cases}
+    \|x-y\| &\text{ als $x$ en $y$ lineair afhankelijk zijn}\\
+    \|x\|+\|y\| &\text{ als $x$ en $y$ lineair onafhankelijk zijn}
+  \end{cases}
+  \]
+  We noemen dit de \term{spoorwegmetriek}.
+\extra{bewijs}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=-1.5, ymax=2.5,
+        xmin=-1.5, xmax=2.5,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \filldraw [ultra thick,fill=black!25!white, draw=black!20!white] (0,0) circle [radius=1];
+        \fill [fill=black] (1.1,0.2) circle [radius=0.01];
+        \draw [(-),color=black] (2.2,0.4) -- (0,0);
+        \draw (1.1,0.4) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \begin{axis}[ 
+        ticks=none,
+        axis lines = middle,
+        axis line style={->},
+        ymin=0, ymax=2.5,
+        xmin=0, xmax=2.5,
+        xlabel={$x_{1}$},
+        ylabel={$x_{2}$},
+        axis equal image,
+        disabledatascaling
+        ]
+        \fill [fill=black] (1.0,0.5) circle [radius=0.01];
+        \draw [(-),color=black] (0.5,0.25) -- (1.5,0.75);
+        \draw (1.1,0.4) node {$a$};
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Twee open bollen in $\mathbb{R}^{2},d_{NMBS}$ van verschillende straal}
+  \end{figure}
+\end{vb}
+
+\subsection{Metrieken op rijruimten}
+\label{sec:metr-op-rijr}
+
+\begin{de}
+  We noteren met $\mathbb{R}^{\mathbb{N}}$ de verzamelingen van alle rijen in $\mathbb{R}$.
+  Merk op dat $\mathbb{R}^{\mathbb{N}}$ een vectorruimte is over $\mathbb{R}$.
+\end{de}
+
+\begin{vb}
+  $\mathbb{R}^{\mathbb{N}}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{\mathbb{N}} \times \mathbb{R}^{\mathbb{N}} \rightarrow \mathbb{R}^{+}:\ ((x_{n})_{n},(y_{n})_{n}) \mapsto \sum_{n=0}^{+\infty}\frac{|x_{n}-y_{n}|}{2^{n}(1+|x_{n}-y_{n}|)} \]
+\extra{bewijs en bewijs waarom dit goed gedefinieerd is}
+\end{vb}
+
+\begin{vb}
+  Noteer met $l^{\infty}(\mathbb{N})$ het volgende:
+  \[ l^{\infty}(\mathbb{N}) = \{ (x_{n})_{n} \in \mathbb{R}^{\mathbb{N}} \mid (x_{n})_{n} \text{ is begrensd.}\} \]
+  $l^{\infty}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{\mathbb{N}} \times \mathbb{R}^{\mathbb{N}} \rightarrow \mathbb{R}^{+}:\ ((x_{n})_{n},(y_{n})_{n}) \mapsto \sup\{|x_{n}-y_{n}| \mid n\in \mathbb{N}\} \]
+\extra{bewijs}
+\end{vb}
+
+\subsection{Metrieken op functieruimten}
+\label{sec:metr-op-funct}
+
+\begin{de}
+  Zij $X$ een gesloten, begrensd deel van $\mathbb{R}^{p}$. Dan noteren we met $C(X)$ de vectorruimte van de continue functies van $X$ naar $\mathbb{R}$.
+\end{de}
+
+\begin{vb}
+  Zij $X$ een gesloten en begrensde deelverzameling van $\mathbb{R}^{p}$, dan is $C(X)$, uitgerust met de volgende functie als metriek,9 een metrische ruimte:
+  \[ d_{\infty}:\ C(x)\times C(X)\rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto d_{\infty}(f,g) = \sup \{ |f(x)-g(x)| \mid x \in X \} \]
+  \extra{bewijs}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=.75]
+      \begin{axis}[ymin=-0.5, ymax=4, xmin=-2.5, xmax=2.5, no markers]
+        \addplot[smooth,color=red,thick,domain=-3:-1]{-x};
+        \addplot[smooth,color=red,thick,domain=-1:1]{x^2};
+        \addplot[smooth,color=red,thick,domain=1:3]{x^3};
+        \addplot[name path=A,smooth,color=black!20,thick,domain=-3:-1]{-x+0.25};
+        \addplot[name path=B,smooth,color=black!20,thick,domain=-3:-1]{-x-0.25};
+        \addplot[black!20] fill between[of=A and B];
+        \addplot[name path=A,smooth,color=black!20,thick,domain=-1:1]{x^2+0.25};
+        \addplot[name path=B,smooth,color=black!20,thick,domain=-1:1]{x^2-0.25};
+        \addplot[black!20] fill between[of=A and B];
+        \addplot[name path=A,smooth,color=black!20,thick,domain=1:3]{x^3+0.25};
+        \addplot[name path=B,smooth,color=black!20,thick,domain=1:3]{x^3-0.25};
+        \addplot[black!20] fill between[of=A and B];
+      \end{axis}
+    \end{tikzpicture}
+    \caption{ Een open bol in $C(\interval{3}{3})$ voor $p=1$. }
+  \end{figure}
+\end{vb}
+
+
+\begin{st}
+  Een rij $(f_{n})_{n}$ in $C(X)$ zal volgens de $d_{\infty}$ metriek convergeren naar een $f\in C(X)$ als en slechts als $(f_{n})_{n}$ uniforum naar $f$ convergeert.
+
+\extra{bewijs: ookal is het al duidelijk}
+\end{st}
+
+\begin{vb}
+  Beschouw de rij functies $(f_{n})_{n}$ in $C(\interval{0}{1})$ gegeven als volgt:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=0:(1/(2*\i))]{2*\i*x};
+            \addplot[smooth,domain=(1/(2*\i)):(1/\i)]{2-2*\i*x};
+            \addplot[smooth,domain=(1/(\i)):1.1]{0};
+          }
+          \addplot[smooth,color=red,ultra thick,domain=-3:3]{0};
+          \addplot[soldot,color=red] coordinates {(0,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      2nx   & \text{ als } x \in \interval[open right]{0}{\frac{1}{2n}}\\
+      2-2nx & \text{ als } x \in \interval{\frac{1}{2n}}{\frac{1}{n}}\\
+      0     & \text{ als } x \in \interval[open left ]{\frac{1}{n}}{1}\\
+    \end{array}
+  \right.
+  \]
+  \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+  \end{minipage}
+  
+  Deze rij convergeert niet voor de $d_{\infty}$-metriek want ze convergeert niet uniform.
+  Volgens de $d_{1}$-metriek convergeert deze rij echer wel naar de nulfunctie.
+\end{vb}
+
+\begin{de}
+  Zij $\interval{a}{b}$ een gesloten, begrensd interval in $\mathbb{R}$, dan noteren we met $C(\interval{a}{b})$ de vectorruimte van de continue functies van $\interval{a}{b}$ naar $\mathbb{R}$.
+\end{de}
+
+\begin{vb}
+  Zij $\interval{a}{b}$ een gesloten en begrensd interval, dan is $C(\interval{a}{b})$,, uitgerust met de volgende functie als metriek, een metrische ruimte:
+  \[ d_{1}:\ C(\interval{a}{b})\times C(\interval{a}{b}) \rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto \int_{a}^{b}|f(x)-g(x)|dx \]
+\extra{bewijs}
+\end{vb}
+
+\begin{opm}
+  In deze metrische ruimte is het moeilijk om over open bollen te tekenen, het inwendige van een deel van $C(\interval{a}{b})$ is namelijk leeg.
+\end{opm}
+
+\begin{vb}
+  Zij $\interval{a}{b}$ een gesloten begrensd interval, dan is $C(\interval{a}{b})$, uitgerust met de volgende functie als metriek, een metrische ruimte:
+  \[ d_{2}:\ C(\interval{a}{b})\times C(\interval{a}{b}) \rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto \sqrt{\int_{a}^{b}|f(x)-g(x)|dx} \]
+\end{vb}
+
+\subsection{De discrete metriek}
+\label{sec:de-discrete-metriek}
+
+\begin{vb}
+  Zij $X$ een willekeurige, niet-lege verzameling.
+  De \term{discrete metriek} of \term{triviale metriek} op $X$ wordt gegeven als volgt.
+  \[
+  d:\ X \times X \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto
+  \begin{cases}
+    0 &\text{ als } x = y\\
+    1 &\text{ als } x \neq y
+  \end{cases}
+  \]
+  $X,d$ vormt een metrische ruimte.
+\end{vb}
+
+\begin{st}
+  Elke verzameling is begrensd voor de discrete metriek.
+
+  \begin{proof}
+    Inderdaad, de afstand tussen twee elementen is nooit groter dan $1$.
+  \end{proof}
+\end{st}
+
+
+\subsection{Het product van metrische ruimten}
+\label{sec:het-product-van}
+
+\extra{product van metrische ruimten}
+
+\subsection{Genormeerde vectorruimten}
+\label{sec:genorm-vect}
+
+\begin{de}
+  Zij $(\mathbb{R},V,+)$ een vectorruimte, dan is een \term{norm} op $V$ een afbeelding als volgt:
+  \[ \|\cdot\|:\ V \rightarrow \mathbb{R}^{+}:\ v \mapsto \|v\| \]
+  \begin{enumerate}
+  \item $\forall v\in V:\ \|v\| = 0 \Leftrightarrow v=0$
+  \item $\forall v\in V, \forall \lambda \in \mathbb{R}:\ \|\lambda v\| = |\lambda|\|v\|$
+  \item $\forall v,w\in V:\ \|v+w\| < \|v\| + \|w\|$
+  \end{enumerate}
+\end{de}
+
+\begin{de}
+  Een vectorruimte $\mathbb{R},V,+$, uitgerust met een norm noemen we een \term{genormeerde vectorruimte}.
+\end{de}
+
+\begin{st}
+  Een genormeerde vectorruimte $\mathbb{R},V,+,\|\cdot\|$, uitgerust met de volgende functie als metriek, vormt een metrische ruimte:
+  \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto \|x-y\| \]
+\extra{bewijs}
+\end{st}
+
+\subsection{Hausdorffmetriek}
+\label{sec:hausdorffmetriek}
+
+\begin{de}
+  Voor een niet-lege deelverzameling $A$ van $\mathbb{R}^{p}$ en een $r\in \mathbb{R}^{+}$ definie\"eren we de $r$-omhullende $[A]_{r}$ van $A$ als volgt:
+  \[ [A]_{r} = \{r \in \mathbb{R}^{p} \mid \exists a \in A:\ d(x,a) \le r \} \]
+  Hierin staat $d$ voor de gewone euclidische metriek.
+\end{de}
+
+\begin{de}
+  Noteer met $\mathcal{F}$ de verzameling van niet-lege gesloten en begrensde deelverzamelingen van $\mathbb{R}^{p}$.
+  \[ \mathcal{F} = \{ A \mid A \subseteq \mathbb{R}^{p}, A \text{ is gesloten en begrensd } \} \]
+\end{de}
+
+\begin{de}
+  We defini\"eren de \term{Hausdorffafstand} $h(F,G)$ tussen twee deelverzamelingen $F,G \in \mathcal{F}$ als volgt:
+  \[ h(F,G) = \inf\{ r\in \mathbb{R}^{+} \mid F \subseteq [G]_{r} \text{ en } G \subseteq [F]_{r} \} \]
+\end{de}
+
+\begin{blem}
+  \label{lem:omhullenden-in-elkaar}
+  Zij $A \subseteq \mathbb{R}^{p}$ en $r,s\in\mathbb{R}^{+}$ met $r\ge s \ge 0$.
+  \[ [A]_{s} \subseteq [A]_{r} \]
+
+  \begin{proof}
+    Dit volgt meteen uit de definitie:
+    Kies een $x\in [A]_{s}$, dan bestaat er een $a\in A$ zodat $d(x,a) \le s$ geldt.
+    Omdat $r \ge s$ geldt, geldt ook $d(x,a) \le r$ en dus zit $x$ ook in $[A]_{r}$.
+  \end{proof}
+\end{blem}
+
+\begin{blem}
+  Zij $A \subseteq \mathbb{R}^{p}$ en $r,s\in\mathbb{R}^{+}$:
+  \[ \left[ [A]_{r}\right]_{s} \subseteq [A]_{r+s} \]
+
+  \begin{proof}
+    Kies een $x\in \left[[A]_{r}\right]_{s}$, dan bestaat er een $b\in [A]_{r}$ als volgt:
+    \[ d(x,b) \le s \]
+    Omdat $b$ in $[A]_{r}$ zit, bestaat er ook een $c\in A$ als volgt:
+    \[ d(b,c) \le r \]
+    We gebruiken nu de driehoeksongelijkheid:
+    \[ d(x,c) \le d(x,b) + d(b,c) \le r + s \]
+    $x$ behoort dus tot $[A]_{r+s}$.
+  \end{proof}
+\end{blem}
+
+\begin{blem}
+  Zij $F,G \in \mathcal{F}$ en $r=h(F,G)$.
+  \[ F \subseteq [G]_{r} \text{ en } G \subseteq [F]_{r} \]
+
+  \begin{proof}
+    Kies een willekeurige $x\in F$.
+    Omdat $r = h(F,G)$ geldt, zal volgens de definitie van $h$ het volgende gelden:\lemref{lem:omhullenden-in-elkaar}
+    \[ F \subseteq [G]_{r+\frac{1}{n}}\]
+    Er bestaat dus een rij punten $(y_{n})_{n}$ in $G$ met de volgende eigenschap:
+    \[ \forall n \in \mathbb{N}:\ d(x,y_{n}) \le r + \frac{1}{n} \]
+    Omdat $G$ gesloten en begrensd is, bestaat er een deelriij $(y_{n_{k}})_{k}$ die convergeert naar een $y\in G$.\stref{st:in-rp-gesloten-en-begrensd-itv-rijen}
+    Voor deze $y$ zal $d(x,y) \le r$ gelden.
+    We vinden dus dat $x$ in $[G]_{r}$ zit.
+    $F$ moet dus een deel zijn van $[G]_{r}$ en omgekeerd is de redenering hetzelfde met de namen $F$ en $G$ omgewisseld.
+  \end{proof}
+\end{blem}
+
+\begin{pr}
+  De Hausdorffafstand $h$ is een metriek die $\mathcal{F},h$ een metrische ruimte maakt.
+
+  \begin{proof}
+    We gaan de eigenschappen van een metrische ruimte na.
+    \begin{itemize}
+    \item $\forall F,G\in \mathcal{F}:\ h(F,G) \ge 0$: Dit volgt meteen uit de definitie.
+    \item $\forall F,G\in \mathcal{F}:\ h(F,G) = 0 \Leftrightarrow F = G$: Idem
+    \item $h$ is symmetrisch: Dit zit vervat in de definitie.
+    \item $h$ voldoet aan de driehoeksongelijkheid.
+      Kies 3 elementen $F$, $G$ en $H$ uit $\mathcal{F}$.
+      Noem $s=h(F,G)$ en $t=(G,H)$.
+      Meteen vinden we het volgende:
+      \[ G \subseteq [H]_{t} \quad\text{ en }\quad F \subseteq [G]_{s} \subseteq \left[[H_{t}]\right]_{s} \subseteq [H_{t+s}] \]
+      Analoog vinden we $H \subseteq [F]_{t+s}$ en bijgevolg $h(F,H) \le s+t$.\needed
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{st}
+  \[ \forall x,y \in \mathbb{R}^{p}:\ h(\{x\},\{y\}) = d(x,y) \]
+
+  \begin{proof}
+    
+  \end{proof}
+\end{st}
+\begin{opm}
+  We kunnen $\mathbb{R}^{p},d$ dus als deelruimte van $\mathcal{F},h$ via de inbedding $\mathfrak{i}$ als volgt:
+  \[ \mathfrak{i}:\ \mathbb{R}^{p} \rightarrow \mathcal{F}:\ x \mapsto \{x\} \]
+\end{opm}
+
+\begin{vb}
+  Beschouw $F_{1} = B\interval{x_{1}}{r_{1}}$ en $F_{2}= B\interval{x_{2}}{r_{2}}$.
+
+\extra{bewijs: $h(F_{1},F_{2}) = d(x_{1},x_{2}) + |r_{1}-r_{2}|$.}
+\end{vb}
+
+\extra{voorbeelden van HDafstandberekeningen}
+
+\begin{st}
+  Een rij gesloten bollen $(B_{n})_{n}$ in $\mathbb{R}^{p}$ met middelpunten $x_{n}$ en stralen $r_{n}$ zal voor de Hausdorffmetriek convergeren naar een gesloten bol $B$ met middelpunt $x$ en straal $r$ als en slechts als $\lim_{n\rightarrow +\infty}x_{n}=x$ en $\lim_{n\rightarrow +\infty}r_{n} = r$ gelden.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  $(n)_{n}$ in $\mathbb{R}$ is voor de gewone metriek geen Cauchyrij maar wel voor de $d_{2}$-metriek.
+\extra{bewijs}
+\extra{wat met de $d_1$-metriek?}
+\end{st}
+
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
