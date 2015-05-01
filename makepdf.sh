@@ -2,15 +2,15 @@ dir=$(dirname $1)
 cd $dir
 basename=$(basename $1)
 filename="${basename%.*}"
-pdflatex --shell-escape --interaction nonstopmode $basename  || true
-makeglossaries "$filename"  || true
-makeindex "$filename"  || true
-pdflatex --shell-escape --interaction nonstopmode $basename  || true
-bibtex "$filename"  || true
-makeglossaries "$filename"  || true
-makeindex "$filename"  || true
-pdflatex --shell-escape --interaction nonstopmode $basename  || true
-bibtex "$filename"  || true
-pdflatex --shell-escape --interaction nonstopmode $basename  || true
-pdflatex --shell-escape --interaction nonstopmode $basename  || true
+pdflatex -shell-escape -halt-on-error $basename
+makeglossaries "$filename"
+makeindex "$filename"
+pdflatex -shell-escape -halt-on-error $basename
+bibtex "$filename"
+makeglossaries "$filename"
+makeindex "$filename"
+pdflatex -shell-escape -halt-on-error $basename
+bibtex "$filename"
+pdflatex -shell-escape -halt-on-error $basename
+pdflatex -shell-escape -halt-on-error $basename
 rm -f *.aux *.out *.log *.bbl *.blg *.lst *.idx *~ *.*~* *.backup *.nav *.snm *.toc *.xwm
