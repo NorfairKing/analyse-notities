@@ -1,0 +1,515 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+\section{Limieten van functies}
+\label{sec:limi-van-funct}
+
+\subsection{Het limietbegrip voor functies}
+
+\begin{de}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in \mathbb{R}$ een ophopingspunt van $A$.
+  We noemen de \term{limiet} van $f$ in $a$ ...
+  \begin{itemize}
+  \item ... $L\in \mathbb{R}$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow a}f(x) = L \quad\Leftrightarrow\quad
+    \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall x\in A:\ 0 < |x-a| < \delta \Rightarrow |f(x) - L| < \epsilon
+    \]
+  \item ... $+\infty$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow a}f(x) = +\infty\quad\Leftrightarrow\quad
+    \forall M \in \mathbb{R}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall x\in A:\ 0 < |x-a| < \delta \Rightarrow f(x) > M
+    \]
+  \item ... $-\infty$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow a}f(x) = -\infty\quad\Leftrightarrow\quad
+    \forall M \in \mathbb{R}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall x\in A:\ 0 < |x-a| < \delta \Rightarrow f(x) < M
+    \]
+  \end{itemize}
+\end{de}
+
+\begin{opm}
+  We bespreken enkel limieten in ophopingspunten omdat we dan zeker zijn dat in de omgeving van het punt nog punten liggen.
+\end{opm}
+
+\begin{de}
+  Zij $A$ een deelverzameling van $\mathbb{R}$.
+  We noemen ...
+  \begin{itemize}
+  \item ... $+\infty$ een \term{ophopingspunt} van $A$ als het volgende geldt:
+    \[ \forall N \in \mathbb{R}:\ A \cap \interval[open right]{N}{+\infty} \neq \emptyset \]
+  \item ... $-\infty$ een \term{ophopingspunt} van $A$ als het volgende geldt:
+    \[ \forall N \in \mathbb{R}:\ A \cap \interval[open left]{-\infty}{N} \neq \emptyset \]
+  \end{itemize}
+\end{de}
+
+\begin{de}
+  \label{de:limiet-van-functie-in-plus-oneindig}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $A \subseteq \mathbb{R}$ zodat $+\infty$ een ophopinspunt is van $A$.
+  We noemen de \term{limiet} van $f$ in $+\infty$ ...
+  \begin{itemize}
+  \item ... $L\in \mathbb{R}$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow +\infty}f(x) = L \quad\Leftrightarrow\quad
+    \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists N \in \mathbb{R}: \forall x\in A:\ x > N \Rightarrow |f(x) - L| < \epsilon
+    \]
+  \item ... $+\infty$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow +\infty}f(x) = +\infty\quad\Leftrightarrow\quad
+    \forall M \in \mathbb{R}: \exists N \in \mathbb{R}: \forall x\in A:\ x > N \Rightarrow f(x) > M
+    \]
+  \item ... $-\infty$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow +\infty}f(x) = -\infty\quad\Leftrightarrow\quad
+    \forall M \in \mathbb{R}: \exists N \in \mathbb{R}: \forall x\in A:\ x > N \Rightarrow f(x) < M
+    \]
+  \end{itemize}
+\end{de}
+
+\begin{de}
+  \label{de:limiet-van-functie-in-min-oneindig}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $A \subseteq \mathbb{R}$ zodat $-\infty$ een ophopinspunt is van $A$.
+  We noemen de \term{limiet} van $f$ in $-\infty$ ...
+  \begin{itemize}
+  \item ... $L\in \mathbb{R}$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow -\infty}f(x) = L \quad\Leftrightarrow\quad
+    \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists N \in \mathbb{R}: \forall x\in A:\ x > N \Rightarrow |f(x) - L| < \epsilon
+    \]
+  \item ... $+\infty$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow -\infty}f(x) = +\infty\quad\Leftrightarrow\quad
+    \forall M \in \mathbb{R}: \exists N \in \mathbb{R}: \forall x\in A:\ x < N \Rightarrow f(x) > M
+    \]
+  \item ... $-\infty$ als het volgende geldt:
+    \[
+    \lim_{x\rightarrow -\infty}f(x) = -\infty\quad\Leftrightarrow\quad
+    \forall M \in \mathbb{R}: \exists N \in \mathbb{R}: \forall x\in A:\ x < N \Rightarrow f(x) < M
+    \]
+  \end{itemize}
+\end{de}
+
+\begin{bpr}
+  \label{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een $L \in \mathbb{R} \cup \{-\infty,+\infty\}$.
+  Zij $a \in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
+  De limiet van $f(x)$ in $a$ is $L$ als en slechts als $L$ ook de limiet is van het beeld van elke rij $(x_{n})_{n}$ in $A\setminus\{a\}$ die $a$ als limiet heeft.
+
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a = -\infty$
+      \begin{itemize}
+      \item $L = -\infty$
+\extra{bewijs}
+      \item $L \in \mathbb{R}$
+\extra{bewijs}
+      \item $L = +\infty$
+\extra{bewijs}
+      \end{itemize}
+    \item $a\in\mathbb{R}$
+      \begin{itemize}
+      \item $L = -\infty$
+\extra{bewijs}
+      \item $L \in \mathbb{R}$
+        \begin{itemize}
+        \item $\Rightarrow$
+          Zij $(x_{n})_{n}$ een rij in $A\setminus \{a\}$ met $a$ als limiet.
+          Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+          Omdat de limiet van $f$ in $a$ $L$ is, bestaat er dan een $\delta \in \mathbb{R}_{0}^{+}$ zodat uit voor alle $x\in A$ uit $|x-a|<\delta$ volgt dat $|f(x)-L|<\epsilon$ geldt.
+          Omdat de rij convergeert naar $a$, bestaat er een $n_{0}\in \mathbb{N}$ zodat voor alle volgende $n\in\mathbb{N}$ geldt dat $|x_{n}-a|$ kleiner is dan $\delta$.
+          Vanaf die $n_{0}$ is $|f(x_{n})-L|$ dus kleiner dan $\epsilon$.
+        \item $\Leftarrow$
+        \end{itemize}
+      \item $L = +\infty$
+\extra{bewijs}
+      \end{itemize}
+    \item $a = +\infty$
+      \begin{itemize}
+      \item $L = -\infty$
+\extra{bewijs}
+      \item $L \in \mathbb{R}$
+\extra{bewijs}
+      \item $L = +\infty$
+\extra{bewijs}
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{de}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in \mathbb{R}$.
+  \begin{itemize}
+  \item Als $a$ een ophopingspunt is van $\interval[open left]{-\infty}{a} \cap A$ zeggen we dat $f$ een \term{linkerlimiet} heeft in $a$ als de beperking van $f$ tot $\interval[open left]{-\infty}{a} \cap A$ een limiet $L \in \mathbb{R} \cup \{ -\infty, +\infty \}$ heeft.
+    \[ \lim_{x \overset{<}{\rightarrow} a}f(x) = L \quad\text{of}\quad \lim_{x \rightarrow a^{-}}f(x) = L \quad\text{of}\quad f(a^{-}) = L \]
+  \item Als $a$ een ophopingspunt is van $\interval[open right]{a}{+\infty} \cap A$ zeggen we dat $f$ een \term{rechterlimiet} heeft in $a$ als de beperking van $f$ tot $\interval[open right]{a}{+\infty} \cap A$ een limiet $L \in \mathbb{R} \cup \{ -\infty, +\infty \}$ heeft.
+    \[ \lim_{x \overset{>}{\rightarrow} a}f(x) = L \quad\text{of}\quad \lim_{x \rightarrow a^{+}}f(x) = L \quad\text{of}\quad f(a^{+}) = L \]
+  \end{itemize}
+\end{de}
+
+\begin{st}
+  Een equivalente definities voor een linker- en rechterlimiet.\\
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in\mathbb{R}$ een ophopingspunt van $A$.
+  \begin{itemize}
+  \item De linker limiet van $f$ in $A$ noemen we $L$ als het volgende geldt:
+    \[ \forall \epsilon\in\mathbb{R}_{0}^{+},\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ a-\delta<x\le a \Rightarrow |f(x)-L|<\epsilon \]
+  \item De rechter limiet van $f$ in $A$ noemen we $L$ als het volgende geldt:
+    \[ \forall \epsilon\in\mathbb{R}_{0}^{+},\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ a\le x < a+\delta \Rightarrow |f(x)-L|<\epsilon\]
+  \end{itemize}
+  \extra{bewijs}
+\end{st}
+
+\subsection{Classificatie van discontinuiteiten}
+
+\begin{bpr}
+  \label{pr:functie-continu-asa-limiet-is-beeld}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$.
+  Stel dat $a$ zowel een element van $A$ als een ophopingspunt van $A$ is.
+  $f$ is continu in $a$ als en slechts als de limiet van $f$ in $a$ $f(a)$ is.
+
+  \begin{proof}
+    $f$ is continu in $a$, dus voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert geldt dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.\prref{pr:continu-asa-behoudt-convergentie}
+    Dit is equivalent met de stelling dat $f(a)$ de limiet is van $f$ in $a$.\prref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en $a\in \mathbb{R}$.
+  Stel dat $a$ een ophopingspunt is van zowel $\interval[open right]{a}{+\infty} \cap A$ als $\interval[open left]{-\infty}{a} \cap A$.
+  $f$ heeft in $a$ een limiet $L\in \mathbb{R}\cup \{ -\infty,+\infty\}$ als en slechts als de linker- en rechterlimiet van $f$ in $a$ bestaan en gelijk zijn aan $L$.
+
+  \begin{itemize}
+  \item $\Rightarrow$\\
+    Zij $L$ de limiet van $f$ in $a$, dan is dit ook de limiet van $f|_{\mathbb{A} \cap \interval[open]{-\infty}{a}}$ in $a$ en ook de limiet van $f|_{\mathbb{A} \cap \interval[open]{a}{+\infty}}$ in $a$.
+  \item $\Leftarrow$\\
+    Stel dat $f$ zowel een linker- als een rechterlimiet heeft in $a$ en ze beide gelijk zijn aan $L$.
+    Kies dan een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$.
+    Er bestaat dan een $\delta_{l}$ en een $\delta_{r}$ als volgt.
+    \[ \forall x\in A:\ a-\delta_{l}<x\le a \Rightarrow |f(x)-L|<\epsilon \]
+    \[ \forall x\in A:\ a\le x < a+\delta_{r} \Rightarrow |f(x)-L|<\epsilon \]
+    Noem nu $\delta = \min\{\delta_{1},\delta_{2}\}$ zodat het volgende geldt.
+    \[ \forall x\in A:\ a\le |x-a|<\delta \Rightarrow |f(x)-L|<\epsilon \]
+    $f$ heeft dus $L$ als limiet in $a$.
+  \end{itemize}
+\end{bpr}
+
+\begin{de}
+  \label{de:classificatie-van-discontinuiteiten}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en $a\in A$.
+  Stel dat $f$ niet continu is in $a$, dan karakteriseren we deze discontinu\"eteit als volgt:
+  \begin{itemize}
+  \item Als de limiet van $f$ naar $a$ bestaat en eindig is, noemen we $a$ een \term{ophefbare discontinu\"iteit}.
+  \item Als $a$ een ophopingspunt is van zowel $\interval[open right]{a}{+\infty} \cap A$ als $\interval[open left]{-\infty}{a} \cap A$ en als zowel de linker als de rechterlimiet van $f$ in $a$ bestaan, maar ze zijn niet gelijk, dan noem men $a$ een \term{discontinu\"iteit van de eerste soort} of \term{sprongdiscontinu\"iteit}.
+  \item Als $a$ een ophopingspunt is van $\interval[open left]{-\infty}{a} \cap A$, maar de linkerlimiet van $f$ in $a$ niet bestaat, of als $a$ een ophopingspunt is van $\interval[open right]{a}{+\infty}\cap A$, maar de rechterlimiet van $f$ in $a$ niet bestaat, dan noemt men $a$ een \term{discontinu\"iteit van de tweede soort} of \term{essentie\"ele discontinu\"iteit}.
+  \end{itemize}
+\end{de}
+
+\begin{bpr}
+  Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een monotone functie op een (niet-leeg) open interval $I$, dan kan $f$ enkel discontinu\"iteiten van de eerste soort vertonen.
+  Bovendien is het aantal discontinu\"iteiten van $f$ aftelbaar.
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $f$ is monotoon stijgend.
+      \begin{itemize}
+      \item De linkerlimiet van $f$ in elk punt $a\in I$ bestaat en is eindig
+        Die linkerlimiet wordt in het bijzonder gegeven als volgt:
+        \[ \lim_{x \overset{<}{\rightarrow} a}f(x) = \sup\{ f(x)\mid x\in I \wedge x < a \} \]
+        De verzameling $\{ f(x)\mid x\in I \wedge x < a \}$ is immers een niet-lege, naar boven begrensde verzameling.
+        Noem $s$ het supremum van die verzameling.
+        Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$, dan
+        bestaat er een $y\in I$ groter dan $a$ zodat $f(y)$ tussen
+        $s-\epsilon$ en $s$ ligt.  Omdat $f$ stijgt, zal voor alle
+        $x\in F$ tussen $y$ en $a$ gelden dat $f(x)$ tussen $f(y)$ en
+        $s$ ligt.  Noem nu $\delta = a-y > 0$.  Voor alle
+        $x\in I\cap\interval[open left]{-\infty}{a}$ met
+        $0<|x-a|<\delta$ geldt dan dat $|f(x)-s|<\epsilon$ geldt.
+      \item De rechterlimiet van $f$ in elk punt $a\in I$ bestaat en is eindig.
+        Die rechterlimiet wordt in het bijzonder gegeven als volgt:
+        \[ \lim_{x \overset{>}{\rightarrow} a}f(x) = \inf\{ f(x)\mid x\in I \wedge x > a \} \]
+      \item Vermits de linker- en rechterlimiet van $f$ in elk punt van $I$ bestaan, kunnen we al besluiten dat $f$ enkel discontinu\"iteiten van de eerste soort kan hebben.
+      \item Merk op dat de linkerlimiet kleiner of gelijk aan de rechterlimiet is in elk punt $a\in I$.
+        Als en slechts als de limieten verschillend zijn is $f$ niet continu in $a$.
+        (Omdat $f$ monotoon stijgt kan er geen ophefbare discontinu\"iteit zijn.)
+        De verzameling $D$ van de discontinu\"iteiten van $f$ ziet er dus als volgt uit:
+        \[ D = \left\{ a \in I \mid \lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x) > 0 \right\} \]
+        We tonen aan dat $D$ afterlbaar is.\\
+        Merk eerst op dat voor $k$ elementen $a_{i}$ uit $D$ tussen $c$ en $d$ in $I$ het volgende geldt:
+        \[ \sum_{i=1}^{k}\left(\lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x)\right) \le f(d) - f(c) \]
+        Omdat $I$ open is, kunnen we een strikt dalende rij $(c_{n})_{n}$ en een strikt stijgende rij $(d_{n})_{n}$ in $I$ nemen zodat $I$ de unie is van alle intervallen $\interval[open]{c}{d}$.
+        Beschouw nu voor elk $n$ de deelverzameling $D_{n}$ van $D$.
+        \[ D_{n} = \left\{ a \in \interval[open]{c_{n}}{d_{n}} \mid \left(\lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x)\right) > \frac{1}{n} \right\} \]
+        Elke afstand $\left(\lim_{x \overset{<}{\rightarrow} a}f(x)- \lim_{x \overset{>}{\rightarrow} a}f(x)\right)$ is groter dan $\frac{1}{n}$, de som is dus groter dan $\frac{\#D_{n}}{n}$.
+        De som is echter ook kleiner dan $f(d_{n})-f(c_{n})$, om tot de volgende ongelijkheid te komen.
+        \[ \#D_{n} \le n(f(d_{n})-f(c_{n})) \]
+        $\#D_{n}$ is dus eindig.
+        $D$ is een aftelbare unie van eindige verzamelingen $D_{n}$ en daarom aftelbaar.
+      \end{itemize}
+    \item $f$ is monotoon dalend.\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+
+\subsection{Eigenschappen en rekenregels voor limieten}
+\label{sec:eigensch-en-rekenr}
+
+\begin{bpr}
+  Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
+  Stel dat $\forall a\in A: f(x) \le g(x)$ geldt, en dat de limiet van zowel $f$ als $g$ in $a$ bestaat, dan is de limiet van $f$ in $a$ kleiner dan of gelijk aan de limiet van $g$ in $a$.\
+\extra{bewijs}
+\end{bpr}
+
+\begin{bst}
+  De \term{insluitstelling voor functies}\\
+  Beschouw functies $f,g,h:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
+  Stel dat $\forall a\in A: f(x) \le g(x) \le h(x)$ geldt, en dat de limiet van zowel $f$ als $h$ in $a$ bestaat en deze gelijk zijn, dan bestaat de limiet van $g$ in $x$ en zijn de drie limieten gelijk.
+\extra{bewijs}
+\end{bst}
+
+\begin{bpr}
+  \label{pr:rekenregels-limieten-van-functies}
+  Beschouw functies $f,g:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
+  Zij $\lambda \in \mathbb{R}$ en stel dat de limieten van $f$ en $g$ in $a$ bestaan en eindig zijn.
+  \begin{itemize}
+  \item $\lim_{a}(\lambda f) = \lambda \lim_{a} f$
+  \item $\lim_{a}(f+g) = \lim_{a}f + \lim_{a}g$
+  \item $\lim_{a}(fg) = \lim_{a}f \lim_{a}g$
+  \item $\lim_{a}\frac{f}{g} = \frac{\lim_{a}f}{\lim_{a}g}$ als $\lim_{a}g \neq 0$ met $\frac{f}{g}:\ \{x\in A\mid g(x) \neq 0\} \rightarrow \mathbb{R}:\ x \mapsto \frac{f(x)}{g(x)}$
+  \end{itemize}
+\extra{bewijs}
+\end{bpr}
+
+\extra{zelfde extra rekenregels voor oneindigheden etc (veel werk)}
+
+\begin{bpr}
+  Beschouw functies $f:\ A \subseteq \mathbb{R} \rightarrow B \subseteq \mathbb{R}$ en $g:\ B \rightarrow \mathbb{R}$.
+  Zij $a\in \mathbb{R} \cup \{-infty,+\infty\}$ een ophopingspunt van $A$.
+  Stel dat de limiet $b$ van $f$ in $a$ bestaat.
+  \begin{itemize}
+  \item Als $b$ in $B$ zit en $g$ continu is in $b$, dan bestaat de limiet van $g\circ f$ in $a$:
+    \[ \lim_{a}g\circ f = g(\lim_{a}f) \]
+  \item Als $b$ niet tot $B$ behoort, dan is $b$ een ophopingspunt van $B$ en de limiet van $g$ in $b$ bestaat, dan bestaat de limiet van $g\circ f$ in $a$:
+    \[ \lim_{a}g\circ f = \lim_{a}g \]
+  \end{itemize}
+
+  \begin{proof}
+    Gevalsonderscheid
+    \begin{itemize}
+    \item
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A\setminus\{a\}$ die naar $a$ convergeert.
+      We bewijzen dat $((g\circ f)(x_{n}))_{n}$ naar $(g\circ f)(a)$ convergeert.
+      Hieruit volgt dan de stelling.\prref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij}
+      Omdat $b$ de limiet is van $f$ in $a$ weten we dat $(f(x_{n})_{n}$ een rij is die naar $b$ convergeert.
+      Omdat $g$ continu is in $b$ geldt dan het volgende:
+      \[ \lim_{n\rightarrow \infty}(g\circ f)(x_{n}) = \lim_{n\rightarrow \infty}g(f(x_{n})) = g(b) \]
+      Hiermee is het volgende aangetoond:
+      \[ \lim_{a}(g\circ f)=g(b) \]
+    \item \extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{bst}
+  Zij $(f_{n})_{n}$ een rij van functies van $A \subseteq \mathbb{R}$ naar $\mathbb{R}$ die uniform op $A$ convergeert naar een functie $f: A \rightarrow \mathbb{R}$.
+  Zij $a\in \mathbb{R} \cup \{-\infty,+\infty\}$ een ophopingspunt van $A$.
+  Stel dat voor alle $n$ de limiet $L_{n}$ van $f_{n}$ in $a$ bestaat en eindig is, dan convergeert $(L_{n})_{n}$ en geldt bovendien het volgende:
+  \[ \lim_{a}f = \lim_{n \rightarrow +\infty} L_{n} = \lim_{n\ \rightarrow +\infty} \lim_{x \rightarrow a} f_{n}(x) \]
+
+  \begin{proof}
+    Bewijs in delen.
+    \begin{itemize}
+    \item $(L_{n})_{n}$ is een Cauchyrij:\\
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat $(f_{n})_{n}$ uniform op $A$ convergeert kunnen we een $n_{0}\in \mathbb{N}$ vinden zodat het volgende geldt:
+      \[ \forall x\in A:\ \forall n,m \ge m_{0}:\ |f_{n}(x) -f_{m}(x)| < \epsilon \]
+      Door van deze ongelijkheid de limiet te nemen voor $x$ gaande naar $a$ vinden we de volgende ongelijkheid:
+      \clarify{mag dit zomaar?}
+      \[ \forall n,m \ge m_{0}:\ \lim_{x \rightarrow a}|f_{n}(x) -f_{m}(x)| < \lim_{x \rightarrow a}\epsilon\]
+      \[ \forall n,m \ge m_{0}:\ |\lim_{x \rightarrow a}\left(f_{n}(x) -f_{m}(x)\right)| < \epsilon\]
+      \[ \forall n,m \ge m_{0}:\ |\lim_{x \rightarrow a}f_{n}(x) -\lim_{x \rightarrow a}f_{m}(x)| < \epsilon\]
+      \[ \forall n,m \ge m_{0}:\ |L_{n}-L_{m}| \le \epsilon \]
+      Dit toont dat $(L_{n})_{n}$ een Cauchyrij is.
+      Omdat $\mathbb{R}$ volledig is zal dan $(L_{n})_{n}$ convergeren.
+      We noteren de limiet met $L$.
+    \item $\lim_{a}f =  \lim_{n\ \rightarrow +\infty} \lim_{x \rightarrow a} f_{n}(x)$:\\
+      Kies nu een willekeurige rij $(x_{k})_{k} \in A\setminus \{a\}$ die naar $a$ convergeert.
+      We zullen bewijzen dat, in de limiet naar $a$, het beeld van $x_{k}$ naar $L$ gaat.
+      Merk eerst op dat het volgende geldt:
+      \[ \forall k\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ |f(x_{n})-L| \le |f(x_{k}) -f_{n}(x_{k})| + |f_{k}(x_{k})-L_{n}| + |L_{n}-L| \]
+      \begin{itemize}
+      \item 
+        Omdat $(L_{n})_{n}$ naar $L$ convergeert kunnen we een $n_{0}\in\mathbb{N}$ nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
+        \[ |L_{n}-L| < \frac{\epsilon}{3} \]
+      \item Omdat $(f_{n})_{n}$ uniform convergeert op $A$ naar $f$, kunnen we een $n_{1}\in \mathbb{N}$  nemen zodat het volgende geldt voor alle volgende $n\in \mathbb{N}$:
+        \[ \forall x\in A:\ |f_{n}-f(x)| < \frac{\epsilon}{3} \]
+      \item Omdat
+        $(f_{n}(x_{k}))_{k}$ voor alle $n$ naar $L_{n}$ convergeert (omdat $f$ continu is)\needed, kunnen we een $k_{0} \in \mathbb{N}$ vinden zodat ook het volgende geldt voor alle volgende $k \in \mathbb{N}$:
+        \[ |f_{n}(x_{k}) - L_{n}| < \frac{\epsilon}{3} \]
+      \end{itemize}
+
+      Noem nu $n' = \max\{n_{0},n_{1},k_{1}\}$, dan geldt voor alle volgende $n\in \mathbb{N}$ de bewering die de stelling bewijst:
+      \[ |f(x_{n})-L| \le |f(x_{k}) -f_{n}(x_{k})| + |f_{k}(x_{k})-L_{n}| + |L_{n}-L| < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon \]
+    \end{itemize}
+  \end{proof}
+  \extra{bewijs zelf: Cauchyrij van functies convergeert (met nodige voorwaarden)}
+\end{bst}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als $(f_{n})_{n}$ slechts puntsgewijs convergeert naar $f$.
+
+  \begin{proof}
+    Beschouw $f_{n}$ als volgt. $(f_{n})_{n}$ convergeert puntsgewijs naar $f$.\needed
+    
+    \noindent
+    \begin{minipage}{.45\textwidth}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+            \foreach \i in {1,...,10}
+            {
+              \addplot[smooth,domain=-3:(-1/\i)]{-1};
+              \addplot[smooth,domain=(-1/\i):(1/\i)]{\i*x};
+              \addplot[smooth,domain=(1/\i):3]{1};
+            }
+            \addplot[smooth,color=blue,thick,domain=-3:0]{-1};
+            \addplot[smooth,color=blue,thick,domain=0:3]{1};
+            \addplot[soldot,color=blue] coordinates{(0,0)};
+            \addplot[holdot,color=blue,fill=white] coordinates{(0,1)(0,-1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[
+      f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          -1 & \text{ als } x \in \interval[open left ]{-\infty}{-\frac{1}{n}}\\
+          nx & \text{ als } x \in \interval[open      ]{-\frac{1}{n}}{\frac{1}{n}}\\
+          1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+      \[
+      f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
+          0  & \text{ als } x = 0\\
+          1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+    \end{minipage}
+    De limiet van $f$ in $0$ bestaat niet terwijl de limiet van elke $f_{n}$ in $0$, $0$ is.\\
+
+    Beschouw omgekeerd $g_{n}$ als volgt. $(g_{n})_{n}$ convergeert puntsgewijs naar de nulfunctie.
+    
+    \begin{figure}[H]
+      \begin{center}
+        \foreach \n in {1,...,8} {
+          \ifthenelse{\isodd{\n}} {
+            \begin{tikzpicture}[scale=.4]
+              \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+                \addplot[smooth,domain=-3:-(1/\n)]{0};
+                \addplot[smooth,domain=-(1/\n):0]{\n*x+1};
+                \addplot[smooth,domain=0:(1/\n)]{-\n*x+1};
+                \addplot[smooth,domain=(1/\n):3]{0};
+              \end{axis}
+            \end{tikzpicture}
+          }{
+            \begin{tikzpicture}[scale=.4]
+              \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+                \addplot[smooth,domain=-3:-(1/\n)]{0};
+                \addplot[smooth,domain=-(1/\n):0]{-\n*x-1};
+                \addplot[smooth,domain=0:(1/\n)]{\n*x-1};
+                \addplot[smooth,domain=(1/\n):3]{0};
+              \end{axis}
+            \end{tikzpicture}
+          }}
+      \end{center}
+    \end{figure}
+    \begin{figure}[H]
+      \begin{center}
+        \begin{tikzpicture}[scale=1.0]
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+            \addplot[smooth,color=blue,thick,domain=-3:3]{0};
+            \addplot[holdot,color=blue,fill=white] coordinates{(0,0)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+    \end{figure}
+    \[
+    g_{n}: \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto
+    \left\{
+      \begin{array}{cl}
+        \left\{
+          \begin{array}{rl}
+            nx+1 & \text{ als } x \in \interval[open]{-\frac{1}{n}}{0}\\
+            -nx+1 & \text{ als } x \in \interval[open]{0}{\frac{1}{n}}\\ 
+            0 & \text{ elders}\\
+          \end{array}
+        \right. & \text{ als } n \text{ even }\\
+        \left\{
+          \begin{array}{rl}
+            -nx-1 & \text{ als } x \in \interval[open]{-\frac{1}{n}}{0}\\
+            nx-1 & \text{ als } x \in \interval[open]{0}{\frac{1}{n}}\\ 
+            0 & \text{ elders}\\
+          \end{array}
+        \right. & \text{ als } n \text{ oneven }\\
+      \end{array}
+    \right.
+    \]
+    \[
+    g: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0
+    \]
+    De limiet $\lim_{n \rightarrow +\infty}\lim_{x \rightarrow a}g_{n}(x)$ bestaat niet, want $\lim_{x \rightarrow a}g_{n}(x)$ is afwisselend $1$ en $-1$, maar de limiet van $g$ in $0$ is $0$.
+  \end{proof}
+\end{tvb}
+
+
+\subsection{Escapade: dubbelrijen}
+\label{sec:escap-dubb}
+
+\begin{de}
+  Een \term{dubbelrij} $(x_{n,m})_{n,m}$ is een functie $x$ als volgt:
+  \[ x:\ \mathbb{N}^{2} \rightarrow \mathbb{R}:\ (n,m) \mapsto x(n,m) = x_{n,m} \]
+\end{de}
+
+\begin{st}
+  Zij $(x_{n,m})_{n,m}$ een dubbelrij zodat $(x_{n,m})_{n,m}$ in $m$ uniform convergeert naar $(y_{n})_{n}$,
+  dan convergeert voor elke $n\in \mathbb{N}$ de $(x_{n,m})_{n,m}$ (naar $z_{n}$) en (bestaan en) zijn volgende limieten gelijk.
+  \[ \lim_{m \rightarrow +\infty}\lim_{n \rightarrow +\infty}x_{n,m} = \lim_{n \rightarrow +\infty}\lim_{m \rightarrow +\infty}x_{n,m} \]
+\extra{bewijs:katelijne}
+\end{st}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een dubbelrij in het algemeen.
+
+  \begin{proof}
+    Beschouw de dubbelrij $(x_{n,m})_{n,m}$ als volgt:
+    \[
+    x_{n,m} = 
+    \left\{
+      \begin{array}{rl}
+        0 & \text{ als } n \le m \\
+        m & \text{ als } n > m \\
+      \end{array}
+    \right.
+    \] 
+    \[ \lim_{m \rightarrow +\infty}\lim_{n \rightarrow +\infty}x_{n,m} = \lim_{m\rightarrow +\infty}m = +\infty \]
+    \[ \lim_{n \rightarrow +\infty}\lim_{m \rightarrow +\infty}x_{n,m} = \lim_{n \rightarrow +\infty}0 = 0 \]
+  \end{proof}
+\end{tvb}
+
+
+
+
+
+
+\end{document}

@@ -10,9 +10,6 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
-% Voor urls
-\usepackage{hyperref}
-
 % Een mooier bestand met wiskunde ondersteuning
 \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
@@ -28,12 +25,60 @@
 \usepackage{mdframed}
 
 % Om de marges aan te passen
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,headheight=15pt]{geometry}
 
 % Voor mooiere breuken
 \usepackage{nicefrac}
 
-%indices
+% Voor intervallen
+\usepackage{interval}
+
+% Voor mooiere enumerates
+\usepackage{enumerate}
+
+% Voor tekeningen
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{pgfplots}
+\pgfplotsset{soldot/.style={only marks,mark=*}}                                         
+\pgfplotsset{holdot/.style={fill=white,only marks,mark=*}}
+\usetikzlibrary{external}
+\usepgfplotslibrary{fillbetween}
+\tikzexternalize[prefix=figures/]
+
+\makeatletter
+\renewcommand{\todo}[2][]{
+    \tikzexternaldisable
+    \@todo[#1]{#2}
+    \tikzexternalenable
+}
+\makeatother
+
+\usepackage{tikz-3dplot}
+
+% Headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Analyse Notities}
+\rhead{\thepage}
+\cfoot{Tom Sydney Kerckhove}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Om te doorstrepen in vergelijkingen
+\usepackage{cancel}
+
+
+% Voor commit in titelpagina
+\immediate\write18{git rev-parse --short HEAD > commit.tex}
+
+
+% Voor samengenomen cellen in tabel
+\usepackage{multirow}%
+% indices
 \usepackage{makeidx}
 \makeindex
 
+% Voor urls (dit moet als laatste)
+\usepackage{hyperref}

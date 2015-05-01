@@ -1,0 +1,202 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+\section{Continue functies op intervallen}
+\label{sec:continue-functies-op}
+
+\begin{bst}
+  \label{st:continue-functie-op-gesloten-begrensd-interval-bereikt-extreme-waarden}
+  Beschouw een continue functie $f: \interval{a}{b} \rightarrow \mathbb{R}$ gedefinieerd op een gesloten begrensd interval $\interval{a}{b}$.
+  $f$ is begrensd en bereikt op $\interval{a}{b}$ haar minimale en maximale waarde.
+  Er bestaan dus waarden $c,d \in \interval{a}{b}$ als volgt:
+  \[ f(c) = \sup\left\{ f(x) \mid x \in \interval{a}{b} \right\} \quad\text{ en }\quad f(d) = \sup\left\{ f(x) \mid x \in \interval{a}{b} \right\} \]
+
+  \begin{proof}
+    \begin{itemize}
+    \item $f$ is begrensd.\\
+      Stel immers dat $f$ niet begrensd is, dan kunnen we een rij $(x_{n})_{n}$ construeren zodat $|f(x_{n})|$ telkens groter is dan $n$.
+      We verkrijgen zo een rij in $\interval{a}{b}$.
+      Omdat $\interval{a}{b}$ gesloten en begrensd is, kunnen we een deelrij nemen die convergeert naar een $x\in\interval{a}{b}$.
+      Omdat $f$ continu is moet $f(x_{n_{k}})_{k}$ dan convergeren naar $f(x)$.\prref{pr:continu-asa-behoudt-convergentie}
+      Sterker nog, $(f(x_{n_{k}}))_{k}$ moet begrensd zijn.\prref{pr:convergente-rij-begrensd}
+      Dit is echter strijdig met het feit dat voor alle $k$, $|f(x_{n_{k}})|$ groter is dan $k$.
+    \item $f$ bereikt een maximale waarde op $\interval{a}{b}$.\\
+      We weten al dat $f$ begrensd is, dus we kunnen $M$ het supremum van $f(\interval{a}{b})$ noemen.
+      We kunnen nu voor alle $\mathbb{N}_{0}$ een $x_{n} \in \interval{a}{b}$ kiezen zodat het volgende geldt:\waarom
+      \[ M- \frac{1}{n} < f(x_{n}) \le M \]
+      We verkrijgen zo een rij $(x_{n})_{n}$ in $\interval{a}{b}$.
+      Omdat $\interval{a}{b}$ gesloten en begrensd is, kunnen we een deelrij $(x_{n_{k}})_{k}$ vinden die convergeert naar een $c\in \interval{a}{b}$.
+      Omdat $f$ continu is zal $(f(x_{n_{k}}))_{k}$ naar $f(c)$ convergeren.
+      Omdat $f_{n_{k}}$ willekeurig dicht bij $M$ komt vanaf een geschikte $n_{0}\in\mathbb{N}_{0}$ zal $c$ gelijk zijn aan $M$.
+    \item $f$ bereikt een minimale waarde op $\interval{a}{b}$.\\
+      \extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\question{waar wordt de supremumeigenschap gebruikt?}
+\question{kunnen we het gesloten interval vervangen door een gesloten verzameling?}
+\end{bst}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een niet-continu\"e functie.
+  $f$ is wel begrensd, maar de extreme waarden hoeven niet bereikt te worden.
+
+  \begin{proof}
+    $f$ is begrensd: \extra{bewijs}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}
+          \addplot[domain=0:1] {-x};
+          \addplot[domain=1:2] {x-1};
+          \addplot[domain=2:3] {0};
+          \addplot[holdot] coordinates{(1,-1)(2,1)};
+          \addplot[soldot] coordinates{(0,0)(1,0)(2,0)(3,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    Kies $f$ als volgt:
+    \[
+    f:\ \interval{0}{3} \rightarrow \mathbb{R}:\ x \mapsto
+    \left\{
+      \begin{array}{rl}
+        -x & \text{ als } x \in \interval[open right]{0}{1}\\
+        x-1 & \text{ als } x \in \interval[open right]{1}{2}\\
+        0 & \text{ als } x \in \interval{2}{3}\\
+      \end{array}
+    \right.
+    \]
+    $f$ is niet continu, maar wel gedefinieerd op een gesloten en begrensd interval $\interval{0}{3}$ en bereikt haar infimum en supremum niet.
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een niet-gesloten interval.
+  
+  \begin{proof}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=0.5]
+        \begin{axis}
+          \addplot[domain=0:1] {1/x};
+          \addplot[holdot] coordinates{(0,0)};
+          \addplot[soldot] coordinates{(1,1)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    Beschouw $f$ als volgt:
+    \[ f:\ \interval[open left]{0}{1} \rightarrow \mathbb{R}: \ x \mapsto \frac{1}{x} \]
+    $f$ is niet begrensd.
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet voor een niet-begrensd interval.
+
+  \begin{proof}
+    Beschouw $f:\ \interval[open right]{0}{+\infty}:\ x \mapsto x$.
+    $f$ is een continue functie, gedefinieerd op een niet-begrensd gesloten interval.
+    $f$ is niet begrensd.
+  \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet in $\mathbb{Q}$.
+  Nauwkeuriger: Kies $a,b \in \mathbb{Q}$, dan bestaan er continue functies $f: \{ x \in \mathbb{Q} \mid a \le x \le b \} \rightarrow \mathbb{Q} $ die ...
+  \begin{itemize}
+  \item ... niet begrensd zijn.
+  \item ... wel begrensd zijn, maar hun maximale en/of minimale waarde niet bereiken.
+  \end{itemize}
+
+  \begin{proof}
+    We vinden twee voorbeelden door een niet-rationaal getal te vinden tussen $a$ en $b$.
+    Kies bijvoorbeeld $\left( \frac{\sqrt{2}}{2}(b-a) \right)$.
+    \begin{itemize}
+    \item Kies $f$ als volgt: 
+      \[
+      f:\ \{ x \in \mathbb{Q} \mid a \le x \le b \} \rightarrow \mathbb{Q}:\ 
+      \frac{1}{4x-2(b-a)^{2}}
+      \]
+      $f$ is continu maar niet begrensd.
+    \item Kies $f$ als volgt:
+      \[
+      f:\ \{ x \in \mathbb{Q} \mid a \le x \le b \} \rightarrow \mathbb{Q}:\ 
+      \left\{
+        \begin{array}{rl}
+          -x & \text{ als } x \le  4x-2(b-a)^{2}\\
+          x & \text{ als } x \ge  4x-2(b-a)^{2}\\
+        \end{array}
+      \right.
+      \]
+      $f$ is continu en begrensd, maar bereikt zijn minimale waarde niet.
+    \end{itemize}
+  \end{proof}
+\end{tvb}
+
+\begin{bst}
+  \label{st:tussenwaardestelling}
+  De \term{tussenwaardestelling}\\
+  Zij $f: I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie op een interval $I$.
+  Zij $x_{1},x_{2}\in I$ en noem $y_{i}=f(x_{i})$.
+  \[ \forall y \in \interval{y_{1}}{y_{2}}:\ \exists x \in I:\ f(x) = y \]
+
+  \begin{proof}
+    We beschouwen het geval waarin $x_{1}<x_{2}$ en $y_{1}<y_{2}$ gelden, de andere gevallen gaan analoog.\extra{uitwerken?}
+    Kies vervolgens een willekeurige $y\in \interval{y_{1}}{y_{2}}$.
+    \begin{itemize}
+    \item Als $y$ gelijk is aan $y_{1}$ of $y_{2}$ kiezen we voor $x$ gewoon $x_{1}$,respectievelijk $x_{2}$.
+    \item Als $y$ verschillend is van zowel $y_{1}$ als $y_{2}$ zoeken we in het interval $\interval{y_{1}}{y_{2}}$ binair naar een waarde $x$ met als functiewaarde $y$.
+      \begin{itemize}
+      \item Als het zoeken eindigt met een interval waarin $y$ een randpunt is, dan hebben we $x$ gevonden als het overeenkomstig randpunt van het interval van de $x$-en.
+      \item Als het zoeken nooit eindigd, krijgen we een rij intervallen $(I_{n})_{n}$.
+        De rij van linkereindpunten $(l_{n})_{n}$ is een stijgende, naar boven begrensde rij in $\mathbb{R}$ en convergeert bijgevolg.\stref{st:stijgend-dan-limiet}
+        De rij van rechtereindpunten $(r_{n})_{n}$ is een dalende, naar onder begrensde rij in $\mathbb{R}$ en convergeert bijgevolg.\stref{st:dalend-dan-limiet}
+        Omdat de lengte van de intervallen $I_{n}$ naar nulconvergeert is de limiet $l$ van $(l_{n})_{n}$ gelijk aan de limiet $r$ van $(r_{n})_{n}$.
+        Noem deze limiet $x$.
+        Omdat $f$ continu is, is $f(x)$ ook de limiet van $(f(l_{n}))_{n}$ en $(r(l_{n}))_{n}$.
+        Omdat $f(x)$, per constructie, zowel kleiner of gelijk aan, als groter of gelijk aan $y$ moet zijn,\waarom moeten $f(x)$ en $y$ gelijk zijn.
+        We hebben dan de gezochte $x$ gevonden.
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{bst}
+
+\begin{st}
+  Zij $f: \mathbb{R} \rightarrow \mathbb{R}$ een continue functie zodat $f(\mathbb{R}) \subseteq \mathbb{Q}$ geldt, dan is $f$ constant.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:\\
+    Stel dat $f$ niet constant is, dan bestaan er getallen $x,y \in \mathbb{R}$ zodat $f(x)$ en $f(y)$ verschillend zijn.
+    Omdat $f$ continu is op het interval $\interval{x}{y}$ bestaat er voor elke $z \in \interval{f(x)}{f(y)}$ een $u\in \mathbb{R}$ zodat $z$ het beeld is van $u$.\stref{st:tussenwaardestelling}
+    Omdat er minstens \'e\'en element van $\mathbb{R} \setminus \mathbb{Q}$ in $\interval{f(x)}{f(y)}$ zit\needed, kan het beeld van $f$ geen deel zijn van $\mathbb{Q}$.
+    contridictie.
+  \end{proof}
+\feed
+\end{st}
+
+\begin{tvb}
+  Er bestaat geen continue functie met de volgende eigenschap:
+  \[
+  f:\ \mathbb{R} \rightarrow \mathbb{R} \quad\text{met}\quad f(\mathbb{Q}) \subseteq \mathbb{R} \setminus \mathbb{Q} \text{ en } f(\mathbb{R} \setminus \mathbb{Q}) \subseteq \mathbb{Q}
+  \]
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel dat er wel zo'n functie $f$ bestaat, dan moet $f(0)$ en $f(\sqrt{2})$ verschillend zijn.
+    Noem $m=\min\{f(0),f(\sqrt{2})\}$ en $M= \max\{f(0),f(\sqrt{2})\}$
+    Voor elke $z \in \interval{m}{M}$ bestaat er een $u \in \interval{0}{\sqrt{2}}$ zodat $f(u) = z$ geldt.\stref{st:tussenwaardestelling}
+    Er liggen overaftelbaar veel re\"eele getallen tussen $m$ en $M$, maar die mogen enkel bereikt worden (vanuit de eigenschap van de functie) vanuit de aftelbare verzameling van rationale getallen tussen $0$ en $sqrt{2}$.
+    Contradictie.
+  \end{proof}
+\feed
+\end{tvb}
+
+\begin{st}
+  Toepassinkje:\\
+  Stel dat temperatuur een continue functie is van plaats op de aarde, dan bestaan er op elk ogenblik twee plaatsen op de aarde die diametraal over elkaar staan waar de temperatuur gelijk is.
+  \extra{bewijs: hoe?!}
+\end{st}
+
+
+
+\end{document}

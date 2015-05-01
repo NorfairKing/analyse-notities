@@ -1,0 +1,53 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+\chapter{Cheat sheet}
+\label{cha:cheat-sheet}
+
+
+
+\begin{de}
+  Continu\"iteit van $f$ in $a$.
+  \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ |x-a| < \delta \Rightarrow |f(x) -f(a)| < \epsilon \]
+\end{de}
+
+\begin{de}
+  Uniforme continu\"iteit van $f$.
+  \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x,y \in A:\ |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon \]
+\end{de}
+
+\begin{de}
+  Puntsgewijze convergentie van rij $(f_{n})_{n}$ van functies naar $f$.
+  \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+  \[ \forall x\in A:\ \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ n \ge n \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
+\end{de}
+
+\begin{de}
+  Uniforme convergentie van rij $(f_{n})_{n}$ van functies naar $f$.
+  \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0} \in \mathbb{N}:\ \forall x \in A:\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
+\end{de}
+
+\begin{de}
+  Limiet van $f$ in $a$.
+  \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+    \[
+    \lim_{x\rightarrow a}f(x) = L \quad\Leftrightarrow\quad
+    \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall x\in A:\ 0 < |x-a| < \delta \Rightarrow |f(x) - L| < \epsilon
+    \]
+\end{de}
+
+\begin{de}
+  Afgeleide van een functie $f$ in een ophopingspunt $a \in A$
+  \[ L = \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} = \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a} \]
+\end{de}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,9 +1,1002 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\chapter{Re\"ele en complexe getallen}
+\chapter{Getallen}
 \label{cha:reele-en-complexe-getallen}
 
+\section{Natuurlijke getallen}
+\label{sec:natuurlijke-getallen}
+
+\begin{de}
+  De \term{natuurlijke getallen} zijn inductief gedefinieerd met de volgende axioma's.
+  \begin{itemize}
+  \item $0$ is een natuurlijk getal: $0 \in \mathbb{N}$.
+  \item $\forall a \in \mathbb{N}: S(a) \in \mathbb{N}$.
+  \item $\forall a,b\in \mathbb{N}: S(a) = S(b) \Rightarrow a=b$
+  \item Als een verzameling $V$ $0$ bevat alsook de successor van elk getal in $V$, dan geldt $V=\mathbb{N}$.
+  \end{itemize}
+\end{de}
+
+\begin{de}
+  De \term{optellling} is gedefinieerd als volgt:
+  \[ a + S(b) = s(a+b) \]
+\end{de}
+
+\begin{de}
+  De \term{vermenigvuldiging} is gedefinieerd als volgt:
+  \[ a \cdot S(b) = a+ s(a\cdot b) \]
+\end{de}
+
+\begin{de}
+  De \term{orde} in $\mathbb{N}$ is gedefinieerd als volgt:
+  \[ n \le S(m) \Leftrightarrow n = S(m) \vee n \le m \]
+\end{de}
+
+\begin{de}
+  De \term{natuurlijke getallen} kunnen ook concreet gedefineerd worden:
+  \[
+  \left\{
+  \begin{array}{rl}
+    0 &= \emptyset\\
+    s(n) &= n \cup \{ n \}\\
+  \end{array}
+  \right.
+  \]
+\end{de}
+
+\section{Gehele getallen}
+\label{sec:gehele-getallen}
+
+
+\begin{de}
+  De \term{gehele getallen}, genoteerd als $\mathbb{Z}$, definieren we intu\"itief als volgt:
+  \[ \mathbb{Z} = \mathbb{N} \cup \{ -n \mid n\in \mathbb{N} \}  \]
+\end{de}
+
+\begin{de}
+  We kunnen de \term{gehele getallen} ook concreet definieren als volgt:
+  $\mathbb{Z}$ is partitie van $\mathbb{N}^{2}$ onder de equivalentierelatie $\sim$ als volgt:
+  \[ \sim:\ \mathbb{N}^{2} \times \mathbb{N}^{2}:\ (a,b) \sim (c,d) \Leftrightarrow b+c = d+a \]
+\end{de}
+
+\begin{opm}
+  In deze representatie stelt $(a,b)$ $b+(-a)$ voor in de intu\"itieve notatie.
+\end{opm}
+
+\begin{de}
+  De \term{optelling} definieren we dan als volgt:
+  \[ (a,b) + (c,d) = (a+c,b+d) \]
+\end{de}
+\extra{nagaan dat deze definitie onafhankelijk is van de gekozen representanten uit de equivalentieklassen}
+
+\begin{de}
+  De \term{vermenigvuldiging} definieren we als volgt:
+  \[ (a,b) \cdot (c,d) = (bd+ac,da+bc) \]
+\end{de}
+\extra{nagaan dat deze definitie onafhankelijk is van de gekozen representanten uit de equivalentieklassen}
+
+\begin{de}
+  De \term{orde} definieren we in termen van de orde op $\mathbb{N}$ als volgt:
+  \[ (a,b) \le (c,d) \Leftrightarrow b+c \le d+a \]
+\end{de}
+
+
+
+\section{De rationale getallen en hun structuur}
+\label{sec:de-rati-getall}
+
+\begin{de}
+  De \term{rationale getallen}, genoteerd als $\mathbb{Q}$.
+  \[ \mathbb{Q} = \{ \nicefrac{n}{m} \mid n\in \mathbb{Z}, m\in \mathbb{Z}, m \neq 0 \} \]
+\end{de}
+
+\begin{de}
+  Concreet is $\mathbb{Q}$ het breukenveld van $\mathbb{Z}$, maar daarover later meer.
+\end{de}
+
+\section{Velden}
+\label{sec:velden}
+
+\begin{de}
+  Een \term{veld} $\mathbb{F},+,\cdot$ is een verzameling $\mathbb{F}$ met twee bewerkingen $+$ en $\cdot$ met de volgende eigenschappen.
+  \begin{itemize}
+  \item $+$ is associatief:
+    \[ \forall f,g,h \in \mathbb{F}:\ (f+g)+h = f+(g+h) \]
+  \item Er bestaat een (uniek) neutraal element $0$ voor $+$:
+    \[ \forall f\in \mathbb{F}:\ f + 0 = f = 0 + f \]
+  \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$:
+    \[ \forall f\in \mathbb{F}: \exists (-f) \in \mathbb{F}: \ f + (-f) = 0 = (-f) + f \]
+  \item $+$ is commutatief:
+    \[ \forall f,g \in \mathbb{F}:\ f+g = g+f \]
+  \item $\cdot$ is associatief:
+    \[ \forall f,g,h \in \mathbb{F}:\ (f\cdot g) \cdot h = f\cdot (g\cdot h) \]
+  \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$:
+    \[ \forall f\in \mathbb{F}:\ f \cdot 1 = f = 1 \cdot f \]
+  \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$:
+    \[ \forall f\in \mathbb{F}: \exists f^{-1} \in \mathbb{F}: \ f \cdot f^{-1} = 0 = f^{-1} \cdot f \]
+  \item $\cdot$ is commutatief:
+    \[ \forall f,g \in \mathbb{F}:\ f\cdot g = g \cdot f \]
+  \item $\cdot$ is distributief ten opzichte van $+$:
+    \[ \forall f,g,h \in \mathbb{F}:\ f \cdot (g+h) = (f \cdot g) + (f \cdot h) \]
+  \end{itemize}
+\end{de}
+
+\begin{de}
+  \label{de:totaal-geordend-veld}
+  Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we $\mathbb{F},+,\cdot,\le$ een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
+  \begin{itemize}
+  \item $\forall x,y,z \in \mathbb{F}:\ x \le y \Rightarrow (x+z) \le (y+z)$
+  \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
+  \end{itemize}
+\end{de}
+
+\begin{pr}
+  $\mathbb{Q}$ is een totaal geordend veld.
+
+  \begin{proof}
+    We bewijzen elk deel appart.
+    \begin{itemize}
+    \item $\mathbb{Q}$ is een veld.
+      \begin{itemize}
+      \item $+$ is associatief:
+        \[ 
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\
+          &\left(\frac{f_{t}}{f_{n}} + \frac{g_{t}}{g_{n}}\right) + \frac{h_{t}}{h_{n}}
+          &= \frac{f_{t}g_{n} + g_{t}f_{n}}{f_{n}g_{n}} + \frac{h_{t}}{h_{n}}\\
+          &&= \frac{f_{t}g_{n}h_{n} + g_{t}f_{n}h_{n} + h_{t}f_{n}g_{n}}{f_{n}g_{n}h_{n}}\\
+          &&=  \frac{f_{t}}{f_{n}} + \frac{g_{t}h_{n} + h_{t}g_{n}}{g_{n}h_{n}}\\
+          &&= \frac{f_{t}}{f_{n}} + \left(\frac{g_{t}}{g_{n}} + \frac{h_{t}}{h_{n}}\right)\\
+        \end{array}
+        \]
+        We gebruiken hier dat $+$ en $\cdot$ associatief en commutatief zijn in $\mathbb{Z}$
+      \item Er bestaat een (uniek) neutraal element $0$ voor $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}:\
+          &\frac{f_{t}}{f_{n}} + \frac{0}{1}
+          &= \frac{f_{t} + 0}{1}\\
+          &&= \frac{f_{t}}{f_{n}}\\
+          &&= \frac{0 + f_{t}}{1}\\
+          &&= 0 +  \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $0$ het neutraal element is voor $+$ in $\mathbb{Z}$.
+      \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}: \exists (-f) = \frac{-f_{t}}{f_{n}} \in \mathbb{F}: \ 
+          &\frac{f_{t}}{f_{n}} + \frac{-f_{t}}{f_{n}}
+          &= \frac{f_{t}f_{n} + (-f_{t}f_{n})}{f_{n}^{2}}\\
+          &&= \frac{0}{f_{n}^{2}}\\
+          &&= 0 \\
+          &&= \frac{0}{f_{n}^{2}}\\
+          &&= \frac{-f_{t}f_{n} + f_{t}f_{n}}{f_{n}^{2}}\\
+          &&= \frac{-f_{t}}{f_{n}} + \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $-x$ het invers element is van $x$ voor $+$ in $\mathbb{Z}$. 
+      \item $+$ is commutatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}} \in \mathbb{Q}:\
+        \frac{f_{t}}{f_{n}} + \frac{g_{t}}{g_{n}}
+        = \frac{f_{t}g_{n}+g_{t}f_{n}}{f_{n}g_{n}}\\ 
+        = \frac{g_{t}}{g_{n}} + \frac{f_{t}}{f_{n}}\\
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is en $+$ associatief in $\mathbb{Z}$.
+      \item $\cdot$ is associatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\
+        \left(\frac{f_{t}}{f_{n}} \cdot \frac{g_{t}}{g_{n}}\right) \cdot \frac{h_{t}}{h_{n}}
+        =\frac{f_{t}g_{t}}{f_{n}g_{n}} \cdot \frac{h_{t}}{h_{n}}
+        =\frac{f_{t}g_{t}h_{t}}{f_{n}g_{n}h_{n}}
+        =\frac{f_{t}}{f_{n}} \cdot \frac{g_{t}h_{t}}{g_{n}h_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}:\
+          &\frac{f_{t}}{f_{n}} \cdot \frac{1}{1}
+          &= \frac{f_{t}\cdot 1}{1 \cdot 1}\\
+          &&= \frac{f_{t}}{f_{n}}\\
+          &&= \frac{1\cdot f_{t}}{1 \cdot 1}\\
+          &&= 1 \cdot \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $1$ het neutraal element is voor $\cdot$ in $\mathbb{Z}$.
+      \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$:
+        \[
+        \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}: \exists \frac{f_{t}}{f_{n}}^{-1} = \frac{f_{n}}{f_{t}} \in \mathbb{F}: \
+        = \frac{f_{t}}{f_{n}}\frac{f_{n}}{f_{t}}
+        = \frac{f_{t}f_{n}}{f_{t}f_{n}}
+        = 1
+        = \frac{f_{n}f_{t}}{f_{t}f_{n}}
+        = \frac{f_{n}}{f_{t}}\frac{f_{t}}{f_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item $\cdot$ is commutatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}} \in \mathbb{Q}:\
+        \frac{f_{t}}{f_{n}} \cdot \frac{g_{t}}{g_{n}}
+        = \frac{f_{t}g_{t}}{f_{n}g_{n}}
+        = \frac{g_{t}}{g_{n}} \cdot \frac{f_{t}}{f_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item $\cdot$ is distributief ten opzichte van $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\ 
+          &\frac{f_{t}}{f_{n}} \cdot \left(\frac{g_{t}}{g_{n}} + \frac{h_{t}}{h_{n}} \right)
+          &= \frac{f_{t}}{f_{n}} \cdot \frac{g_{t}h_{n}+h_{t}g_{n}}{g_{n}h_{n}}\\
+          &&= \frac{f_{t}\cdot (g_{t}h_{n}+h_{t}g_{n})}{f_{n}g_{n}h_{n}}\\
+          &&= \frac{(f_{t} \cdot g_{t}h_{n}) + (f_{t}\cdot h_{t}g_{n})}{f_{n}g_{n}h_{n}}\\
+          &&= \frac{f_{t}g_{t}}{f_{n}g_{n}} + \frac{f_{t}h_{t}}{f_{n}h_{n}}\\
+        \end{array}
+        \]
+      \end{itemize}
+    \item $\mathbb{Q}$ is totaal geordend veld.
+      \begin{itemize}
+      \item
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\ 
+        \frac{f_{t}}{f_{n}} \le \frac{g_{t}}{g_{n}}
+        \Rightarrow
+        \frac{f_{t}}{f_{n}}+\frac{h_{t}}{h_{n}} \le \frac{g_{t}}{g_{n}}+\frac{h_{t}}{h_{n}}
+        \]
+        \extra{vanuit welke axioma's bewijzen we dit?}
+      \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
+        \extra{vanuit welke axioma's bewijzen we dit?}
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:geordend-veld-optelling-ongelijkheden}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b,c,d \in \mathbb{F}:\ a\le b \wedge c \le d \Rightarrow (a+c) \le (b+d) \]
+
+  \begin{proof}
+    We gebruiken enkel de eerste eigenschap in de definitie van een totaal geordend veld.
+    Omdat $a\le b$ geldt geldt ook $a + c \le b+c$.
+    Bovendien geldt $c+b \le d+b$ omdat $c\le d$ geldt.
+    Omdat $+$ commutatief is in $\mathbb{F}$, geldt dan ook het volgende:
+    \[ a+c \le b+c \le b+d\]
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:geordend-veld-ongelijkheid-maal-min-een}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b\in \mathbb{F}:\ a \le b \Rightarrow -b \le -a \]
+
+  \begin{proof}
+    Bewijs uit het ongerijmbde\\
+    Stel $a \le b$ en $-b > -a$ (dus $-a \le b$).
+    Omdat $\mathbb{F}$ een totaal geordend veld is, volgt uit $-a \le -b$ zowel $a \le -b+2a$ en $-a+2b \le -b$.
+    Tel deze ongelijkheden op\prref{pr:geordend-veld-optelling-ongelijkheden} om $2b \le 2a$ te bekomen.
+    Uit $a\le b$ volgt echter dat $2a \le 2b$ geldt (tel immers $a\le b$ bij zichzelf op).
+    Contradictie.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:geordend-veld-tegengestelde-wisselt-teken}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall b \in \mathbb{F}:\ 0 \le b \Leftrightarrow -a \le 0 \]
+
+  \begin{proof}
+    Gebruik in propositie \ref{pr:geordend-veld-ongelijkheid-maal-min-een} $a=0$.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:geordend-veld-ongelijkheid-vermenigvuldiging}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b \in \mathbb{F}:\ 0 \le a \wedge 0 \le b \Rightarrow 0 \le ab \]
+
+  \begin{proof}
+    Omdat $\mathbb{F}$ een geordend veld is, volgt uit $0\le a$ dat $0b \le ab$ geldt vanwege $0 \le b$.
+    Omdat $0$ het nulelement is van $\mathbb{F}$ geldt $0b = 0$.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:nul-kleiner-dan-een}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ 0 < 1 \]
+
+  \begin{proof}
+    Bewijs uit het ongerijmde\\
+    Stel dat $1 \le 0$ geldt, dan moet $1<0$ gelden omdat in een veld $1$ verschilt van $0$.
+    Tel hierbij $-1$ op, dan bekomen we $0 \le -1$.
+    Vanwege de tweede definierende eigenschap van een totaal geordend veld moet dan uit $1 \le 0$ ook $-1 \le 0$ volgen, maar dat is in strijd met $0 \le -1$ omdat $0$ verschilt van $1$.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:geordend-veld-inverse-zelfde-teken}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a \in \mathbb{F}_{0}:\ 0 \le a \Rightarrow 0 \le a^{-1}\]
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel $0 \le a$ maar ook $a^{-1} < 0$ geldt.
+    We mogen die tweede ongelijkheid dan vermenigvuldigen met $a$ om $aa^{-1}< 0$ te bekomen.
+    Dit zou $1<0$ betekenen en dat is in contradictie met propositie \ref{pr:nul-kleiner-dan-een}.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b \in \mathbb{F}_{0}^{+}:\  a \le b \Rightarrow b^{-1} \le a^{-1}\]
+
+  \begin{proof}
+    Omdat zowel $0 \le a$ en $0 \le b$ geld, mogen we $a\le b$ vermenigvuldigen met $a^{-1}$ en $b^{-1}$\prref{pr:geordend-veld-inverse-zelfde-teken} om $b^{-1} \le a^{-1}$ te bekomen.
+  \end{proof}
+\end{pr}
+
+\begin{st}
+  $\sqrt{2}$ is geen element van $\mathbb{Q}$.
+  \extra{bewijs}
+\end{st}
+
+\begin{st}
+  $\mathbb{Q}$ heeft de supremumeigenschap niet.
+\end{st}
+
+\begin{st}
+  De stelling van rolle geldt niet in $\mathbb{Q}$.
+  \extra{verwijzen naar een plaats met betere uitleg.}
+\end{st}
+
+\extra{nog een gebrek van $\mathbb{Q}$.}
+
+\subsection{Axiomatische beschrijving van $\mathbb{R}$}
+\label{sec:axiom-beschr-van}
+
+\begin{st}
+  \label{st:supremumeigenschap-R}
+  De \term{supremumeigenschap}\\
+  In $\mathbb{R}$ heeft elke niet-lege, naar boven begrensde deelverzameling een supremum.
+  \extra{bewijs verder rigoreuzer}
+\end{st}
+
+\begin{st}
+  Er bestaat, op isomorfisme na, maar \'e\'en totaal geordend veld met de supremumeigenschap.
+  \extra{bewijs later}
+\end{st}
+
+\begin{pr}
+  Er bestaat een unieke afbeelding $i:\ \mathbb{Q} \rightarrow \mathbb{R}$ met de volgende eigenschappen.
+  \begin{itemize}
+  \item $i(0_{\mathbb{Q}}) = 0_{\mathbb{R}}$
+  \item $i(1_{\mathbb{Q}}) = 1_{\mathbb{R}}$
+  \item $\forall p,q \in \mathbb{Q}: i(p+_{\mathbb{Q}}q) = i(p) +_{\mathbb{R}} i(q)$
+  \item $\forall p,q \in \mathbb{Q}: i(p\cdot_{\mathbb{Q}} q) = i(p) \cdot_{\mathbb{R}} i(q)$
+  \item $\forall p,q \in \mathbb{Q}: p \le_{\mathbb{Q}} q \Rightarrow i(p) \le_{\mathbb{R}} i(q)$
+  \end{itemize}
+  Bovendien is deze afbeelding injectief.
+
+  \begin{proof}
+    \begin{itemize}
+    \item Uniciteit\\
+      We bewijzen dat er slechts \'e\'en $i$ kan bestaan, eerst over $\mathbb{N}$, dan over $\mathbb{Z}$ en tenslotte over $\mathbb{Q}$.
+      \begin{itemize}
+      \item Beschouw een $n\in \mathbb{N}$.
+        Er zijn dan twee gevallen:
+        \begin{itemize}
+        \item $n = 0_{\mathbb{O}}$:
+          Dan moet $i(n)$ $0_{\mathbb{R}}$ zijn vanwege de eerste eigenschap.
+        \item $n \neq 0$:
+          $n$ is dan als de som van $n$ $1_{\mathbb{Q}}$-tjes te schrijven:\needed
+          \[ n = n 1_{\mathbb{Q}} \]
+          Vanwege de derde eigenschap is $i(n)$ dan de som van $n$ $1_{\mathbb{R}}$-jes te schrijven.
+        \end{itemize}
+        Hierdoor ligt $i$ al vast op $\mathbb{N}$. \waarom
+      \item Beschouw vervolgens een getal $z\in \mathbb{Z}\setminus \mathbb{N}$.
+        Er bestaat dan een getal $n \in \mathbb{N}$ zodat $z$ het tegengestelde is van $n$: $z = -n$.\needed
+        De vierde eigenschap zegt ons dan het volgende:
+        \[ i(-n) = -i(n) \]
+        Hierdoor ligt $i$ al vast op $\mathbb{Z}$. \waarom
+      \item Beschouw tenslotte een $q\in \mathbb{Q}$, dan valt $q$ te schrijven als $\nicefrac{n}{m}$ met $n\in \mathbb{Z}$ en $m\in \mathbb{N}_{0}$.
+        Uit de derde eigenschap volgt dan dat het volgende moet gelden:
+        \[ i(q) = i(n)i(m)^{-1} \]
+        Dit vervolledigt de uniciteit van $i$.
+      \end{itemize}
+    \item Bestaan\\
+      Verdergaand op het bewijs van de uniciteit construeren we $i$ achtereenvolgens op $\mathbb{N}$, dan op $\mathbb{Z}$ en dan op $\mathbb{Q}$.
+      \extra{bewijzen dat $i$ door $+$ en $\cdot$ gaat}
+      \extra{bewijzen dat $i$ goed gedefinieerd is voor $\mathbb{Q}$ (onafhankelijk van de gekozen $m$ en $n$).}
+      \extra{bewijzen dat $i$ injectief en stijgend is}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{opm}
+  Onder dit morfisme beschouwen we $\mathbb{Q}$ als een deelverzameling van $\mathbb{R}$.
+\end{opm}
+
+
+\begin{lem}
+  \label{lem:lemma-van-archimedes}
+  Het \term{lemma van Archimedes}\\
+  Voor elke $x\in \mathbb{R}$ bestaat er een $n\in \mathbb{N}$ zodat $x < n$ geldt.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde\\
+    Stel dat er een $x\in \mathbb{R}$ zou bestaan zodat $\forall n \in \mathbb{N}:\ x \ge n$ geldt, dan zou $\mathbb{N}$ naar boven begrensd zijn door die $x$.
+    Noem $s$ dan het supremum van $\mathbb{N}$, dat bestaat immers zeker.\needed
+    Omdat $s$ de kleinste bovengrens is van $\mathbb{N}$ is $s-1$ zeker geen bovengrens.
+    We kunnen dus een $k\in \mathbb{N}$ vinden zodat $s-1$ kleiner is dan $k$.
+    $s$ is dan echter kleiner dan $k+1$ en dus geen bovengrens.
+  \end{proof}
+\end{lem}
+
+\begin{gev}
+  $\forall a \in \mathbb{R}_{0}^{+},\ \forall b\in \mathbb{R}:\ \exists n\in N:\ na > b$
+
+  \begin{proof}
+    Als $b$ kleiner is dan $a$ is de stelling evident met $n=1$.
+    Als $b$ groter is dan of gelijk aan $a$, ga dan als volgt te werk:
+    $a^{-1}$ is positief (want $a$ is positief)\prref{pr:geordend-veld-inverse-zelfde-teken}, uit $a \le b$ volgt dus $1 \le \frac{b}{a}$.
+    Kies dan een $n\in \mathbb{N}$ groter dan $\frac{b}{a}$, dit kan immers altijd.\lemref{lem:lemma-van-archimedes}
+    Vermenigvuldig tenslotte $\frac{b}{a} < n$ met $a$ om de stelling te bekomen.\deref{de:geordend-veld}
+  \end{proof}
+\end{gev}
+
+\begin{gev}
+  \label{gev:er-bestaat-alijd-iets-rationaal-kleiner}
+  $\forall \epsilon \in \mathbb{R}_{0}^{+},\ \exists n\in \mathbb{N}_{0}:\ \frac{1}{n} < \epsilon$
+
+  \begin{proof}
+    Gegeven een $\epsilon \in \mathbb{R}_{0}^{+}$, bestaat er een $n \in \mathbb{N}$ groter dan $\frac{1}{\epsilon}$. \lemref{lem:lemma-van-archimedes}
+    Voor deze $n$ geldt $\frac{1}{n} < \epsilon$. \prref{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
+  \end{proof}
+\end{gev}
+
+\begin{gev}
+  \label{gev:z-omsluit-elk-r}
+  $\forall x\in \mathbb{R}:\ \exists m \in \mathbb{Z}:\ m-1 \le x < m$
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $x = 0$: triviaal, kies $m=1$.
+    \item $x > 0$\\
+      Noem $X$ de verzameling van natuurlijke getallen groter dan $x$.
+      $X$ is zeker niet leeg.\lemref{lem:lemma-van-archimedes}
+      Kies nu voor $m$ het minimum van $X$.(Dat bestaat zeker.) \waarom
+      Omdat $m$ het kleinste element is van $X$ is $(m-1)$ geen element van $X$.
+    \item $x < 0$\\
+      Vindt zoals hierboven beschreven de $m$ zodat $m-1 \le -x < m$ geldt.
+      Voor $x$ $-m+1$ dan het gezochte getal.\waarom
+    \end{itemize}
+  \end{proof}
+\end{gev}
+
+\begin{pr}
+  \label{pr:q-dicht-in-r}
+  $\forall x,y \in \mathbb{R}: (x<y \Rightarrow \exists q\in \mathbb{Q}:\ x<q<y)$
+
+  \begin{proof}
+    Kies twee elementen $x$ en $y$ in $\mathbb{R}$ met $x<y$, dan kunnen we een $n\in \mathbb{N}_{0}$ nemen zodat $\frac{1}{n}< (y-x)$ geldt.\gevref{gev:er-bestaat-alijd-iets-rationaal-kleiner}
+    Tel bij beide kanten van de ongelijkheid $x$ op om $x<\left(x+\frac{1}{n}\right)<y$ te krijgen.\deref{de:totaal-geordend-veld}
+    Neem nu een $m\in \mathbb{Z}$ zodat $m-1<nx<m$ geldt.\gevref{gev:z-omsluit-elk-r}
+    Vermenigvuldig de rechtse ongelijkheid met $n^{-1}$ om $x< \frac{m}{n}$ te bekomen.\prref{pr:geordend-veld-ongelijkheid-vermenigvuldiging}\prref{pr:geordend-veld-inverse-zelfde-teken}
+    Tel bovendien bij de linkse ongelijkheid $1$ op om $m \le nx+1$ te bekomen.\deref{de:totaal-geordend-veld}
+    Zet de laatste twee resultaten om $x < \frac{m}{n} < y$ te bekomen.
+    Deze $\frac{m}{n}$ is dan de gezochte $q$.
+  \end{proof}
+\end{pr}
+
+\begin{opm}
+  We zeggen dat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.
+\end{opm}
+
+\begin{st}
+  \[ \forall x\in \mathbb{R}^{+},\ \forall n\in \mathbb{N}:\ (n\ge 2 \Rightarrow \exists!\ y\in \mathbb{R}^{+}:\ y^{n}=x) \]
+  
+  \begin{proof}
+    Voor $x=0$ is de stelling triviaal met $y=0$.
+    Beschouw daarom $x>0$.
+    \begin{itemize}
+    \item Bestaan\\
+      Beschouw de verzameling $A$:
+      \[ A = \{ a\in \mathbb{R}^{+}\mid a^{n}<x \} \]
+      \begin{itemize}
+      \item $A$ is niet leeg:\\
+        Beschouw $a=\frac{x}{x+1}$, dan geldt $a^{n} < a$ omdat $a \le 1$ geldt (want $x+1$ is groter dan $x$).
+        $a$ is bovendien kleiner dan $x$ (want $x+1$ is groter dan $1$, $x$ is immers positief).
+        $a$ behoort dus tot $A$.
+      \item $A$ is naar boven begrensd:\\
+        We beweren dat $x+1$ een bovengrens is voor $A$.
+        Neem daartoe een $a\in A$.
+        Als $x+1$ immers kleiner zijn dan $A$, zou $x$ kleiner zijn dan $a^{n}$, en dat is een tegenspraak.
+        \[ 
+        \begin{array}{c}
+          x+1 < a\\
+          (x+1)^{n} < a^{n}\\
+          x < x+1 \le (x+1)^{n} < a^{n}\\
+        \end{array}
+        \]
+      \item $y = sup A$ zodat $y^{n}=x$:\\
+        We maken een gevalsonderscheid om de tegenstelling tegen te spreken:
+        \begin{itemize}
+        \item $y^{n}<n$\\
+          Moest dit gelden, dan zou er een $h\in \mathbb{R}_{0}^{+}$ bestaan zodat $(y+h)^{n}<x$ geldt (zie hierna), maar dat zou betekenen dat $y+h$ ook in $A$ zou zitten en dat kan niet omdat $y$ een bovengrens is.
+          \[ (y+h)^{n}-y^{n} = h\left( \sum^{n-1}_{i=0}(y+h)^{n-1-i}y^{i}\right) \]
+          Als $h$ kleiner is dan $1$ is het rechterlid kleiner dan $nh(y+1)^{n-1}$.\waarom
+          Als $h$ kleiner is dan $\min\left\{ 1,\frac{x-y}{h(y+1)^{n-1}}\right\}$ is dit kleiner dan $x-y^{n}$\waarom.
+          Hieruit volgt tenslotte $(y+h)^{n}<x$.
+        \item $y^{n}>k$\\
+          Analoog vinden we een $h\in \mathbb{R}_{0}^{+}$ zodat $y-h>0$ en $(y-h)^{n}>x$ gelden.\question{hoe precies?}
+          Omdat $y-h$ hierdoor geen bovengrens is voor $A$\waarom, bestaat er dan een $a\in A$ groter dan $y-h$.
+          Daaruit volgt dan dat $x<a^{n}$ geldt en dat is opnieuw een tegenspraak.
+        \end{itemize}
+      \end{itemize}
+    \item Uniciteit\\
+      Uit het ongerijmde:
+      Stel dat er twee verschillende getallen $y$ en $y'$ bestonden met $y^{n}=x$ en $y'^{n}=x$, stel met $y<y'$, dan zou $y^{n}$ kleiner zijn dan $y'^{n}$ en dat is in tegenspraak met $y^{n}=x$:\waarom
+      \[ y^{n}-y'^{n} = (y-y')\left( \sum^{n-1}_{i=0}y^{n-1-i}y'^{i}\right) \]
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\subsection{Intervallen in $\mathbb{R}$}
+\label{sec:intervallen-in-R}
+
+\begin{de}
+  Een \term{interval} in een totaal geordende verzameling $F,\le$ is een niet-lege deelverzameling $I$ van $F$ waarvoor elk element van $F$ dat tussen twee elementen in $I$ ligt, tot $I$ behoort.
+  \[ \forall x,y \in I,\ \forall z\in F:\ x \le z \le y \Rightarrow z\in I \]
+\end{de}
+
+\begin{vb}
+  $\{x\in \mathbb{R} \mid i \le x \le 2\}$ is een interval.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\{1,2\}$ is geen interval want $1 \le \nicefrac{3}{2} \le 2$ geldt maar $\nicefrac{3}{2}$ zit niet in $\{1,2\}$.  
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\{x\in \mathbb{R} \mid x > 5\}$ is een interval.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}_{0}$ is geen interval.
+\extra{bewijs}
+\end{vb}
+
+
+\subsubsection{Classificatie van intervallen}
+\label{sec:class-van-interv}
+
+\begin{st}
+  De \term{classificatie van intervallen in $\mathbb{R}$}.
+
+  Beschouw een willekeurig interval $I \subseteq \mathbb{R}$, dan zijn er een aantal mogelijkheden:
+  \begin{itemize}
+  \item $I$ is zowel naar boven als naar onder begrensd.\\
+    $I$ heeft dan zowel een supremum $b$ als een infimum $a$.\stref{st:supremumeigenschap-R}.
+    \begin{itemize}
+    \item $a=b$: $I=\{a\} = [a,a]$
+    \item $a<b$: 
+      \begin{itemize}
+      \item $a\in I \wedge b\in I$: $I = \{ x\in \mathbb{R} \mid a\le x \le b\} = [a,b]$ : ``het gesloten interval $a,b$''.
+      \item $a\in I \wedge b\not\in I$: $I = \{ x\in \mathbb{R} \mid a\le x < b\} = [a,b[$ : ``het halfopen interval $a,b$, open in $b$''.
+      \item $a\not\in I \wedge b\in I$: $I = \{ x\in \mathbb{R} \mid a< x \le b\} = ]a,b]$ : ``het halfopen interval $a,b$, open in $a$''.
+      \item $a\not\in I \wedge b\not\in I$: $I = \{ x\in \mathbb{R} \mid a< x < b\} = ]a,b[$ : ``het open interval $a,b$''.
+      \end{itemize}
+    \end{itemize}
+  \item $I$ is naar onder begrensd.
+    $I$ heeft dan een infimum $a$.
+    \begin{itemize}
+    \item $a\in I$: $I = \{ x\in \mathbb{R} \mid x \ge a\} = [a,+\infty[$ : ``het gesloten interval $a, +\infty$''.
+    \item $a\not\in I$: $I = \{ x\in \mathbb{R} \mid x > a\} = ]a,+\infty[$ : ``het open interval $a, +\infty$''.
+    \end{itemize}
+  \item $I$ is naar boven begrensd.
+    $I$ heeft dan een supremum $b$.
+    \begin{itemize}
+    \item $a\in I$: $I = \{ x\in \mathbb{R} \mid x \le b \} = ]-\infty,b]$ : ``het gesloten interval $-\infty, b$''.
+    \item $a\not\in I$: $I = \{ x\in \mathbb{R} \mid x < b \} = ]-\infty,b[$ : ``het open interval $-\infty,b$''. 
+    \end{itemize}
+  \item $I$ is niet begrensd. $I$ is dan gelijk aan $\mathbb{R}$.
+  \end{itemize}
+  \zb
+\end{st}
+
+
+\subsection{Absolute waarde}
+\label{sec:absolute-waarde}
+
+\begin{de}
+  De \term{absolute waarde} van een element $a$ van een totaal geordend veld $F,+,\cdot,\le$ defeni\"eren we als $|a|$:
+  \[ 
+  |a| = 
+  \left\{
+    \begin{array}{cl}
+      a &\text{ als } a\ge 0\\
+      -a &\text{ als } a < 0\\
+    \end{array}
+  \right.
+  \]
+\end{de}
+
+\begin{pr}
+  \label{pr:absolute-waarde-positief}
+  $\forall a\in F: |a| \ge 0$
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $a \ge 0$: $|a| = a \ge 0$
+    \item $a < 0$: $|a| = -a \ge 0$\prref{pr:geordend-veld-tegengestelde-wisselt-teken}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: |a| = 0 \Leftrightarrow a = 0$
+  \question{hoe bewijzen we dit?}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: |a| = |-a|$
+
+  \begin{proof}
+    Ofwel $a$, ofwel $-a$ is negatief\needed, de absolute waarde daarvan is het tegengestelde, dus de andere en die blijft gelijk.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: -|a| \le a \le |a|$
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a \ge 0$: $a = |a|$ en zeker $a \ge -a = -|a| \le 0$\prref{pr:absolute-waarde-positief}\prref{pr:geordend-veld-tegengestelde-wisselt-teken}
+    \item $a <0$: $a=-|a|$ en zeker $a \le |a| \ge 0$\prref{pr:absolute-waarde-positief}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  $\forall a,b\in F: |a| \le b \Leftrightarrow -b \le a \le b$.
+
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a \ge 0$: $a \le b \Leftrightarrow -b \le -a \le a \le b$
+    \item $a <0$: $-a \le b \Leftrightarrow -b \le a \le -a \le b$
+      \extra{meer uitwerken?}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{de}
+  De \term{afstand} tussen twee elementen van een totaal geordend veld $F,+,\cdot,\le$ defini\"eren we als $|x-y|$.
+\end{de}
+
+\begin{pr}
+  De \term{driehoeksongelijkheid}\\
+  \begin{itemize}
+  \item $\forall a,b\in F:\ |a+b| \le |a| + |b|$
+  \item $\forall x,y,z\in F:\ |x-y| \le |x-z| + |z-y|$
+  \end{itemize}
+  \extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  De \term{tweede driehoeksongelijkheid}\\
+  $\forall a,b\in F: ||a|-|b|| \le |a-b|$
+  \extra{bewijs}
+\end{pr}
+
+\section{Complexe getallen}
+\label{sec:complexe-getallen}
+
+
+
+\begin{de}
+  De verzameling $\mathbb{C}$ van \term{complexe getallen} defini\"eren we als volgt, samen met de optelling $(+)$ en vermenigvuldiging $(\cdot)$.
+  \[ \mathbb{C} = \mathbb{R}^{2} = \{ (a,b) \mid a,b\in \mathbb{R} \} \]
+  \[ (+):\ \mathbb{C}^{2} \rightarrow \mathbb{C}:\ (a,b) + (c,d) = (a+c,b+d) \]
+  \[ (\cdot):\ \mathbb{C}^{2} \rightarrow \mathbb{C}:\ (a,b) \cdot (c,d) = (ac-bd, ad+bc) \]
+\end{de}
+
+\begin{st}
+  $\mathbb{C},+,\cdot$ is een veld.
+  \extra{bewijs p 81}
+\end{st}
+
+\begin{pr}
+  We kunnen $\mathbb{R}$ inbedden in $\mathbb{C}$ met de volgende injectieve afbeelding:
+  \[ \phi:\ \mathbb{R} \rightarrow \mathbb{C}:\ a \mapsto (a,0) \]
+  Deze afbeelding is bovendien een ringmorfisme:
+  \[ \forall a,b \in \mathbb{R}:\ \phi(a+b) = \phi(a) + \phi(b) \]
+  \[ \forall a,b \in \mathbb{R}:\ \phi(ab) = \phi(a)\phi(b) \] 
+  \extra{bewijs: oefening}
+\end{pr}
+
+\begin{opm}
+  Onder deze injectie beschouwen we $\mathbb{R}$ als een deelveld van $\mathbb{C}$.
+\end{opm}
+
+\begin{de}
+  We noteren een element $(a,b)$ van $\mathbb{C}$ vaak als $a+bi$.
+  We noemen dit de \term{carthesiaanse vorm van een complex getal}.
+\end{de}
+
+\begin{opm}
+  Deze notatie komt van pas om rekenregels binnen $\mathbb{C}$ eenvoudig te houden als we $i^{2}=1$ als regel in het achterhoofd houden. 
+  \extra{bewijs!}
+\end{opm}
+
+\begin{de}
+  We noemen in een element $a+bi$ van $\mathbb{C}$ $a$ het \term{re\"eel} deel en $b$ het \term{imaginair} deel.
+  We voeren daarom twee afbeeldingen in:
+  \[ Re:\ \mathbb{C} \rightarrow \mathbb{R}:\ (a+bi) \mapsto a \]
+  \[ Im:\ \mathbb{C} \rightarrow \mathbb{R}:\ (a+bi) \mapsto b \]
+\end{de}
+
+\begin{st}
+  De \term{hoofdstelling van de algebra}\\
+  $\mathbb{C}$ is algebra\"isch gesloten: Een $n$-de graadsveelterm over $\mathbb{C}$ heeft precies $n$ wortels in $\mathbb{C}$.
+  \zb
+\end{st}
+
+\begin{pr}
+  Er bestaat geen orde op $\mathbb{C}$ die van $\mathbb{C},+,\cdot$ een totaal geordend veld maakt.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat er wel zo'n orde $\le$ bestaat.
+    Dan moet $i$ ofwel groter dan $0$ zijn, ofwel kleiner dan nul.
+    In beide gevallen volgt $-1 > 0$ of $1 < 0$,\prref{pr:geordend-veld-ongelijkheid-vermenigvuldiging} wat niet mogelijk is in een geordende veld.\prref{pr:nul-kleiner-dan-een}
+  \end{proof}
+\end{pr}
+
+\begin{de}
+  Het \term{complex toegevoegde} $\overline{a+bi}$ van een complex getal $a+bi$ definieren we als volgt:
+  \[ \overline{a+bi} = a-bi \]
+  \[ \overline{\, \cdot\ }:\ \mathbb{C} \rightarrow \mathbb{C}:\ a+bi \mapsto \overline{a+bi} = a-bi \]
+\end{de}
+
+\begin{de}
+  De \term{modulus} $|a+bi|$ van een complex getal $a+bi$ definieren we als volgt:
+  \[ |a+bi| = \sqrt{a^{2}+b^{2}} \]
+  \[ |\cdot|:\ \mathbb{C} \rightarrow \mathbb{R}:\ a+bi \mapsto |a+bi| = \sqrt{a^{2}+b^{2}} \]
+\end{de}
+
+\begin{ei}
+  De modulus van een complex getal is de tegenhanger van de absolute waarde van een re\"eel getal.
+  \[ \forall a \in \mathbb{R}:\ |a| = |\phi(a)| \]
+  \begin{proof}
+    $\forall a\in \mathbb{R}:\ |\phi(a)| = |a+0i| = \sqrt{a^{2} + 0^{2}} = |a|$
+  \end{proof}
+\end{ei}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ \bar{\bar{z}} = z \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\ \bar{\bar{a+bi}} = \bar{a-bi} = a-(-bi) = a+bi$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:modulus-door-optelling}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ \overline{z_{1}+z_{2}} = \overline{z_{1}} + \overline{z_{2}} \]
+
+  \begin{proof}
+    $\forall a+bi,c+di \in \mathbb{C}:\ \overline{a+bi + c+di} = \overline{(a+c)+(b+d)i} =(a+c)-(b+d)i = a+c-bi-di = (a-bi) + (c-di)$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ \overline{z_{1}z_{2}} = \bar{z}_{1}  \bar{z}_{2} \]
+
+  \begin{proof}
+    $\forall a+bi,c+di \in \mathbb{C}:\ \overline{a+bi \cdot c+di} = \overline{ac-bd + (ad+bc)i} = ac-bd - adi - bci = ac-(-b)(-d) + (a(-d)+(-b)c)i = \overline{a+bi} \cdot \overline{c+di} $
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ Re(z) = \frac{z+\bar{z}}{2} \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\ \frac{(a+bi)+\overline{a+bi}}{2} = \frac{(a+bi)+(a-bi)}{2} = \frac{2a}{2} = a = Re(a+bi)$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ Im(z) = \frac{z-\bar{z}}{2i} \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\ \frac{(a+bi)-\overline{a+bi}}{2i} = \frac{(a+bi)-(a-bi)}{2i} = \frac{(a+bi-a+bi)}{2i} = \frac{2bi}{2i} = b = Im(a+bi) $
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ |\bar{z}| = |z| \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\ |\bar{a+bi}| = |a-bi| = \sqrt{a^{2}+(-b)^{2}} = \sqrt{a^{2}+b^{2}} = |a+bi|$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:reel-deel-kleiner}
+  \[ \forall z\in \mathbb{C}:\ |Re(z)| \le |z| \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\  |Re(a+bi)| = |a| \le \sqrt{a^{2}+b^{2}} = |a+bi|$ 
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:imaginair-deel-kleiner}
+  \[ \forall z\in \mathbb{C}:\ |Im(z)| \le |z|\]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\  |Im(a+bi)| = |b| \le \sqrt{a^{2}+b^{2}} = |a+bi|$ 
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:normaal-maal-toegevoegde-in-r}
+  \[ \forall z\in \mathbb{C}:\ \bar{z}z = Im(z)^{2}+Re(z)^{2} \in \mathbb{R} \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\  \overline{a+bi}\cdot(a+bi) = (a-bi)(a+bi) = a^{2} + (-bi)a + a(bi) + (-bi)(bi) = a^{2} + b^{2} \in \mathbb{R}$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:modulus-in-termen-van-toegevoegde}
+  \[ \forall z\in \mathbb{C}:\ |z| = \sqrt{\bar{z}z} \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\ \sqrt{\overline{a+bi}\cdot(a+bi)} = \sqrt{a^{2}+b^{2}} = |a+bi|$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z\in \mathbb{C}:\ \forall z \in \mathbb{C}_{0}: \frac{1}{z} = \frac{\bar{z}}{|z|^{2}} \]
+
+  \begin{proof}
+    $\forall a+bi\in \mathbb{C}:\ \frac{\overline{a+bi}}{|a+bi|^{2}} = \frac{a-bi}{\left(\sqrt{a^{2}+b^{2}}\right)^{2}} = \frac{a-bi}{a^{2}+b^{2}}= \frac{(a-bi)(a+bi)}{(a^{2}+b^{2})(a+bi)} = \frac{a^{2}+b^{2}}{(a^{2}+b^{2})(a+bi)} = \frac{1}{a+bi}$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ |z_{1}z_{2}| = |z_{1}||z_{2}| \]
+
+  \begin{proof}
+    \[
+    \forall a+bi,c+di \in \mathbb{C}:\
+    \begin{array}{rll}
+      |(a+bi)(c+di)| &= |ac-bd + (ad+bc)i|\\
+      &= \sqrt{(ac-bd)^{2} + (ad+bc)^{2}}\\
+      &= \sqrt{a^{2}c^{2} +b^{2}d^{2}-2abcd + a^{2}d^{2} + b^{2}c^{2} +2abcd}\\
+      &= \sqrt{a^{2}c^{2} +b^{2}d^{2} + a^{2}d^{2} + b^{2}c^{2}}\\
+      &= \sqrt{a^{2}+b^{2}}\sqrt{c^{2}+d^{2}}
+    \end{array}
+    \]
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ |z_{1}+z_{2}| \le |z_{1}|+|z_{2}| \]
+
+  \begin{proof}
+    \[
+    \forall a+bi,c+di \in \mathbb{C}:\
+    \begin{array}{rll}
+      |(a+bi)+(c+di)|^{2} &= |(a+c)+(b+d)i|^{2}\\
+      &= (a+c)^{2}+ (b+d)^{2}\\
+      &= a^{2}+c^{2} + b^{2}+d^{2}+2(ac + bd)\\
+      &= a^{2}+c^{2} + b^{2}+d^{2}+2Re((a-bi)(c+di))\\
+      &\le a^{2}+b^{2} + c^{2}+d^{2} + 2|(a-bi)(c+di)|\\
+      &= a^{2}+b^{2} + c^{2}+d^{2} + 2\sqrt{a^{2}c^{2} + a^{2}d^{2} +b^{2}c^{2}+ b^{2}d^{2}}\\
+      &= a^{2}+b^{2} + c^{2}+d^{2} + 2\sqrt{(a^{2}+b^{2})(c^{2}+d^{2})}\\
+      &= |a+bi|^{2} + |c+di|^{2} + 2|a+bi||c+di|\\
+      &= \left(|a+bi|+|c+di|\right)^{2}\\
+    \end{array}
+    \]
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \label{pr:tweede-driehoeksongelijkheid-C}
+  \[ \forall x,y,z\in \mathbb{C}:\ |x-z| \le |x-y| + |y-z| \]
+
+  \begin{proof}
+    Gebruik de driehoeksongelijkheid op $|(x-y)+(y-z)| \le |x-y| + |y-z|$
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  \[ \forall z_{1},z_{2}\in \mathbb{C}:\ ||z_{1}|-|z_{2}|| \le |z_{1}-z_{2}| \]
+
+  \begin{proof}
+    \[ |x| + |y-x| \ge |x+y-x| = |y| \]
+    \[ |y| + |x-y| \ge |y+x-y| = |x| \]
+    Verplaats in beide ongelijkheden de linker term naar de rechterkant:
+    \[ |y-x| \ge |y| - |x| \]
+    \[ |x-y| \ge |x| - |y| \]
+    $|y-x|$ is gelijk aan $|x-y|$. Hieruit, samen met $t \ge a \wedge t \ge -a \Rightarrow t \ge |a|$ volgt de stelling:
+    \[ |x-y| \ge \left||x|-|y|\right| \]
+    \extra{gebruikte stelling afsplitsen}
+  \end{proof}
+\end{pr}
+
+\begin{de}
+  Zij $z = a+bi$ de carthesiaanse co\"ordinaten van een complex getal, dan definieren we de \term{poolcoordinaten} van dat getal als $(r,\theta)$:
+  \[ a = r \cos \theta \quad\text{ en }\quad b = r\sin \theta \]
+  \[ z = r(\cos \theta + i \sin \theta)  \]
+\end{de}
+
+\begin{st}
+  \label{st:vermenigvuldiging-poolcoordinaten}
+  \[
+  \forall z_{1},z_{2} \in \mathbb{C}:\ 
+  r_{1}(\cos \theta_{1} + i \sin \theta_{1}) \cdot r_{2}(\cos \theta_{2} + i \sin \theta_{2})
+  = r_{1}r_{2}\left(\cos(\theta_{1}+\theta_{2}) + i\sin(\theta_{1}+\theta_{2})\right)
+  \]
+  
+  \[ 
+  \begin{array}{l}
+    \forall z_{1},z_{2} \in \mathbb{C}:\\
+    r_{1}(\cos \theta_{1} + i \sin \theta_{1}) \cdot r_{2}(\cos \theta_{2} + i \sin \theta_{2})\\
+    = r_{1}r_{2} (\cos \theta_{1} + i \sin \theta_{1})(\cos \theta_{2} + i \sin \theta_{2})\\
+    = r_{1}r_{2} \left( \left(\cos \theta_{1}\cos \theta_{2} -\sin \theta_{1}\sin \theta_{2}\right)+ i\left( \sin \theta_{1}\cos \theta_{2} + \cos \theta_{1}\sin \theta_{2}\right)  \right)\\
+    = r_{1}r_{2}\left(\cos(\theta_{1}+\theta_{2}) + i\sin(\theta_{1}+\theta_{2})\right)\\
+  \end{array}
+  \]
+\end{st}
+
+\begin{st}
+  De \term{formule van de Moivre}\\
+  \[ \forall z = r(\cos \theta + i \sin \theta) \in \mathbb{C}, n\in \mathbb{Z}:\ (r(\cos \theta + i \sin \theta))^{n} = r^{n}(\cos n\theta + i \sin n\theta)\]
+
+  \begin{proof}
+    Gevalsonderscheid
+    \begin{itemize}
+    \item Voor alle $n\in \mathbb{N}$ volgt dit meteen uit stelling
+      \ref{st:vermenigvuldiging-poolcoordinaten}.
+    \item Voor $n=-1$:
+      \[
+      \begin{array}{rl}
+        (r(\cos \theta + i \sin \theta))^{-1}
+        &= \frac{1}{r(\cos \theta + i \sin \theta)}\\
+        &= \frac{\cos \theta - i \sin \theta}{r(\cos \theta + i \sin \theta)(\cos \theta - i \sin \theta)}\\
+        &= \frac{\cos(\theta) - i\sin(\theta)}{r}\\
+        &= r^{-1}\cos(-\theta) + i\sin(-\theta)\\
+      \end{array}
+      \]
+    \item Voor $-n\in \mathbb{Z}^{-}$ komt een $-n$-de macht met een $n$-de macht en een $-1$-e macht na elkaar.
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+
+\begin{de}
+  We noemen $z\in \mathbb{C}$ een $n$-de \term{eenheidswortel} als het volgende geldt:
+  \[ z^{n} = 1 \]
+  Merk op dat er voor graad $n$ precies $n$ eenheidswortel zijn:
+  \[ z = \cos\left(\frac{2k\pi}{n}\right) + i \sin \left( \frac{2k\pi}{n} \right) \]
+  \extra{afsplitsen in stelling?}
+\end{de}
 
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

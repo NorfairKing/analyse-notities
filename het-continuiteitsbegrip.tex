@@ -1,0 +1,339 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+\section{Het continu\"iteitsbegrip}
+\label{sec:het-cont}
+
+\begin{de}
+  Zij $f$ een functie en $a\in A$:
+  \[ f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f(x) \]
+  We noemen $f$ \term{continu} in $a$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ |x-a| < \delta \Rightarrow |f(x) -f(a)| < \epsilon \]
+  We noemen $f$ \term{continu} op $A$ als $f$ continu is in elke $a\in A$.
+\end{de}
+
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2} \]
+
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Voor elke $x\in \mathbb{R}$ geldt het volgende:
+    \[ |f(x)-f(a)| = |x^{2}-a^{2}| = |x-a||x+a| \le |x-a|(|x|+|a|) \]
+    Voor $|x-a|$ kleiner dan $1$ zal $|x| \le |a|+1$ gelden.
+    \[ |f(x)-f(a)| \le (2|a|+1)|x-a| \]
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ 1, \frac{\epsilon}{2|a|+1} \right\}$.
+    Uit $|x-a|< \delta$ volgt nu het volgende.
+    \[ |f(x)-f(a)| < (2|a|+1)\delta \le (2|a|+1)\frac{\epsilon}{2|a|+1} = \epsilon \]
+    $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x} \]
+  
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}_{0}$.
+    Voor elke $x \in \mathbb{R}_{0}$ geldt het volgende:
+    \[ |f(x)-f(a)| = \left|\frac{1}{x}-\frac{1}{a}\right| = \frac{|x-a|}{|x||a|} \]
+    Voor $|x-a|$ kleiner dan $\frac{1}{2}|a|$ zal $|x| > \frac{1}{2}|a|$ gelden.
+    \[ |f(x)-f(a)| \le \frac{2}{|a|^{2}}|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ \frac{1}{2}|a|, \frac{\epsilon|a|^{2}}{2} \right\}$.
+    Uit $|x-a|< \delta$ volgt nu het volgende.
+    \[ |f(x)-f(a)| < \frac{2}{|a|^{2}}\delta \le \frac{2}{|a|^{2}}\frac{\epsilon|a|^{2}}{2} = \epsilon \]
+    $f$ is dus continu in elke $a\in \mathbb{R}_{0}$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \setminus \{-1\} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{1+x} \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}\setminus \{-1\}$.
+    Voor elke $x\in \mathbb{R}\setminus \{-1\}$ geldt het volgende:
+    \[ |f(x)-f(a)| = \left| \frac{1}{1+x}-\frac{1}{1+a} \right| = \left| \frac{(1+a)-(1+x)}{(1+x)(1+a)} \right|  = \frac{|x-a|}{|1+x||1+a|} \]
+    Voor $|x-a|$ kleiner dan $|1+a|$ geldt nu het volgende:
+    \[ |1+x| = |1+a-a+x| = |1+a+x-a| \le |1+a|+|x-a| \le 2|1+a| \]
+    \[ |f(x)-f(a)| \le  \frac{1}{3|1+a|^{2}}|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\left\{ |1+a|,3\epsilon|1+a|^{2}\right\}$
+    Voor $|x-a| < \delta$ geldt dan het volgende:
+    \[ \frac{1}{3|1+a|^{2}}|x-a| < \frac{1}{3|1+a|^{2}}\delta \le \frac{3\epsilon|1+a|^{2}}{3|1+a|^{2}} = \epsilon\]
+    $f$ is dus continu in elke $a \in \mathbb{R}\setminus \{-1\}$
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x} \]
+
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Voor elke $x \in \mathbb{R}$ geldt het volgende:
+    \[ |f(x)-f(a)| = |\sqrt{x}-\sqrt{a}| = \left|\sqrt{x}-\sqrt{a}\right|\frac{\sqrt{x}+\sqrt{a}}{\sqrt{x}+\sqrt{a}} = \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \]
+    \begin{itemize}
+    \item Voor $a>0$ kunnen we als volgt verder gaan :
+      \[ \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \le \frac{|x-a|}{\sqrt{a}} \]
+      Voor een willekeurige $\epsilon$ kunnen we nu voor $\delta$ $\epsilon\sqrt{a}$ kiezen.
+      Uit $|x-a|< \delta$ volgt dan het volgende:
+      \[ |f(x)-f(a)| = \frac{|x-a|}{\sqrt{x}+\sqrt{a}} \le \frac{|x-a|}{\sqrt{a}} < \frac{\delta}{\sqrt{a}} = \frac{\epsilon\sqrt{a}}{\sqrt{a}} = \epsilon \]
+    \item Voor $a=0$ is het eenvoudiger:
+      \[ |f(x)-f(a)| =  \frac{|x-a|}{\sqrt{x}+\sqrt{a}} = \frac{|x|}{\sqrt{x}} \]
+      Voor een willekeurige $\epsilon$ kunnen we nu voor $\delta$ $\epsilon^{2}$ kiezen. 
+      Uit $|x-a|=|x|< \delta$ volgt dan het volgende:
+      \[ \frac{|x|}{\sqrt{x}} < \frac{\delta}{\sqrt{\delta}} = \frac{\epsilon^{2}}{\epsilon} = \epsilon \]
+    \end{itemize}
+    $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{(1+x^{2})} \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}$.
+    Er geldt dan voor alle $x \in \mathbb{R}$ het volgende:
+    \[
+    |f(x)-f(a)|
+    = \left| \frac{1}{1+x^{2}} - \frac{1}{1+a^{2}}\right|
+    = \left| \frac{(1+a^{2})-(1+x^{2})}{(1+x^{2})(1+a^{2})}\right|
+    = \frac{|a^{2}-x^{2}|}{|1+x^{2}||1+a^{2}|}
+    = \frac{|a+x||a-x|}{|1+x^{2}||1+a^{2}|}
+    \]
+    Voor $|x-a| \le \frac{1}{2}|a|$ geldt $x \le \frac{3}{2}|a|$, $x \ge \frac{1}{2}|a|$ en dus het volgende:
+    \[ |x+a| \ge ||x|-|a|| \ge |\frac{1}{2}|a| - |a|| = |-\frac{1}{2}|a|| = \frac{1}{2}|a| \]
+    ,
+    \[ |x+a| \le |x|+|a| \le \frac{3}{2}|a| + |a| = \frac{5}{2}|a| \]
+    ... en bovendien het volgende:
+    \[ |1+x^{2}| = 1 + |x^{2}| \le 1 + \left(\frac{3}{2}|a|\right)^{2} = 1 + \frac{9}{4}|a|^{2} \]
+    \[
+    |f(x)-f(a)|
+    = \frac{|a+x||a-x|}{|1+x^{2}||1+a^{2}|}
+    \le \frac{|a||a-x|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}
+    \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \min\{\frac{1}{2}|a|,\epsilon\frac{|1+a^{2}|2\left(1 + \frac{9}{4}|a|^{2}\right)}{|a|} \}$.
+    Uit $|x-a| < \delta$ volgt dan het volgende:
+    \[ 
+    |f(x)-f(a)|
+    \le \frac{|a||a-x|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}
+    < \frac{|a|}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}|}\delta
+    \le \frac{\epsilon|a||1+a^{2}|2\left(1 + \frac{9}{4}|a|^{2}\right)}{2\left(1 + \frac{9}{4}|a|^{2}\right)|1+a^{2}||a|} = \epsilon
+    \]
+  \end{proof}
+\feed
+\end{vb}
+
+\extra{vb p 4 onderaan}
+
+\begin{tvb}
+  De functie $f$ is niet continu in $0$:
+  \[
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x\mapsto 
+  \left\{
+    \begin{array}{cl}
+      1 & \text{ als } x \ge 0\\
+      0 & \text{ als } x < 0
+    \end{array}
+  \right.
+  \]
+
+  \begin{proof}
+    Kies $\epsilon = 1$, dan bestaat er voor elke $\delta$ een $x\in \mathbb{R}$ zodat $|x-0|<\delta$ en $|f(x)-f(0)|\ge \epsilon$ beide gelden.
+    Voor een willekeurige $\delta$ kiezen we $x = -\frac{\delta}{2}$:
+    \[ |x-0| = \frac{\delta}{2} \text{ en } |f(x)-f(0)| = 1 \ge \epsilon \]
+    $f$ is dus niet continu in $0$.
+  \end{proof}
+\end{tvb}
+
+\extra{tvb p 5 onderaan}
+
+\begin{vb}
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x| \]
+
+  \begin{proof}
+    Kies een willekeurige $a\in \mathbb{R}$:
+    Beschouw eerst $|f(x)-f(a)|$:
+    \[ |f(x)-f(a)| = \left||x|-|a|\right| \le |x-a| \]
+    Kies nu een willekeurige $\epsilon$ en kies $\delta = \epsilon$.
+    Uit $|x-a| <\delta$ volgt nu het volgende:
+    \[ |f(x)-f(a)| \le |x-a| < \delta = \epsilon \]
+    $f$ is dus continu in $a$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $(\in \mathbb{Q})$ is nergens continu:
+  \[
+  (\in \mathbb{Q}):\ \mathbb{R} \rightarrow \mathbb{R}:\ 
+  \left\{
+    \begin{array}{rl}
+      1 &\text{ als } x\in \mathbb{Q}\\
+      0 &\text{ als } x\in \mathbb{R}\setminus \mathbb{Q}
+    \end{array}
+  \right.
+  \]
+  
+  \begin{proof}
+    Kies een willekeurige $a \in \mathbb{R}$.
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $a\in \mathbb{Q}$
+      Kies $\epsilon = \frac{1}{2}$, dan bestaat er voor elke $\delta \in \mathbb{R}_{0}^{+}$ een $x\in \mathbb{R}$ zodat uit $|x-a| < \delta$ $|((x \in \mathbb{Q})-(a\in \mathbb{Q})| \ge \epsilon$ volgt:
+      Kies immers een willekeurige $\delta \in \mathbb{R}_{0}^{+}$, dan bestaat er een $x\in \mathbb{R}\setminus \mathbb{Q}$ met $|x-a| < \delta$. \needed
+      Hiervoor geldt dan $|((x \in \mathbb{Q})-(a\in \mathbb{Q})| = 1 \ge \frac{1}{2} = \epsilon$.
+    \item $a\in \mathbb{R}\setminus \mathbb{Q}$
+      \extra{bewijs analoog}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  (Bewijs via karakterisatie van continu\"iteit in termen van rijen.)
+  De functie $f$ is continu:
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}: x \mapsto x^{2} \]
+  
+  \begin{proof}
+    We moeten bewijzen dat voor een willekeurige rij $(x_{n})_{n}$ die naar $x$ convergeert, $(f(x_{n}))_{n}$ naar $f(x)$ convergeert.
+    Kies daartoe een willekeurige $(x_{n})_{n}$ die naar $x$ convergeert.
+    Voor een willekeurige $x_{n}$ uit de rij geldt het volgende:
+    \[ |f(x_{n})-f(x)| = |x_{n}^{2}-x^{2}| = |x_{n}+x||x_{n}-x| \]
+    Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\epsilon}{|x_{n}+x|}$
+    Omdat $(x_{n})_{n}$ naar $x$ convergeert, bestaat er dan een $m\in \mathbb{N}$ zodat het volgende geldt:
+    \[ \forall n\in \mathbb{N}: n \ge m:\ |x_{n}-x| < \frac{\epsilon}{|x_{n}+x|} \]
+    Voor $n \ge m$ geldt dus het volgende:
+    \[ |f(x_{n})-f(x)| = |x_{n}+x||x_{n}-x| < |x_{n}+x|\frac{\epsilon}{|x_{n}+x|} = \epsilon \]
+    De rij $(f(x_{n}))_{n}$ convergeert dus naar $f(x)$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Zij $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie die continu is in een punt $a\in A$ met $f(a) > 0$.
+  Er bestaat dan een $\delta \in \mathbb{R}_{0}^{+}$ zodat $f(x)>0$ geldt voor alle $x\in A$ met $|x-a| < \delta$.
+
+  \begin{proof}
+    Kies $\epsilon = f(a)$, dan bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat de stelling geldt omdat $f$ continu is in $A$.
+  \end{proof}
+\end{vb}
+
+\begin{st}
+  Equivalente definitie van \term{continu\"iteit}:\\
+  $f$ is continu in $a$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ f(\interval[open]{a-\delta}{a+\delta} \cap A) \subseteq \interval[open]{f(a)-\epsilon}{f(a)+\epsilon} \]
+\extra{bewijs}
+\end{st}
+
+
+\begin{bpr}
+  De \term{karakterisering van continu\"iteit in termen van rijen}.\\
+  \label{pr:continu-asa-behoudt-convergentie}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
+  $f$ is continu in $a$ als en slechts als er voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert geldt dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert.
+      We moeten bewijzen dat $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
+      Kies daartoe een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat $f$ continu is in $a$ kunnen we een $\delta\in \mathbb{R}_{0}^{+}$ vinden zodat $|f(x)-f(a)| < \epsilon$ geldt voor alle $x\in A$ met $|x-a| < \delta$.
+      Omdat $(x_{n})_{n}$ naar $a$ convergeert, kunnen we een $n_{0}\in \mathbb{N}$ vinden zodat voor alle volgende $n\in\mathbb{N}$ de afstandvan $x_{n}$ tot $a$ kleiner is dan $\delta$.
+      Voor elke $n\ge n_{0}$ zal dan $|f(x_{n})-f(a)| < \epsilon$ gelden.
+      De rij $(f(x_{n}))_{n}$ convergeert dus naar $f(a)$.
+    \item $\Leftarrow$\\
+      Contrapositie: Als $f$ niet continu is in $a$ zal er een rij in $A$ bestaan die naar een $a$ convergeert waarvoor $(f(x_{n}))_{n}$ niet naar $f(a)$ convergeert.
+      Omdat $f$ niet continu is bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat er voor elke $\delta\in \mathbb{R}_{0}^{+}$ een $x$ kan genomen worden zodat het volgende geldt:
+      \[ |x-a| < \delta \quad\wedge\quad |f(x)-f(a)| \ge \epsilon \]
+      We kunnen dan een rij $(x_{n})_{n}$ in $A$ construeren zodat voor alle $n\in\mathbb{N}_{0}$ $x_{n}$ als volgt gekozen is:
+      \[ |x_{n}-a| < \frac{1}{n} \quad\wedge\quad |f(x_{n})-f(a)| \ge \epsilon \]
+      Uit de eerste ongelijkheid volgt dat $x_{n}$ naar $a$ convergeert terwijl uit de tweede ongelijkheid volgt dat $(f(x_{n}))_{n}$ niet kan convergeren naar $f(a)$.
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  De \term{karakterisering van continu\"iteit in termen van opens}\\
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie.
+  $f$ is continu op $A$ als en slechts als er voor elk open deel $V$ van $\mathbb{R}$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een willekeurig open deel $V$ van $\mathbb{R}$.
+      Als $f^{-1}(V)$ leeg is, is $f^{-1}(V)$ triviaal open.
+      Als $f^{-1}(V)$ niet leeg is, dan bestaat er een $a\in f^{-1}(V)$.
+      $f(a)$ zit dan in $V$ en omdat $V$ open is kunnen we een $\epsilon$ vinden zodat $\interval[open]{f(a)-\epsilon}{f(a)+\epsilon}$ een deel is van $V$.
+      Omdat $f$ continu is in $a$ kunnen we een $\delta\in \mathbb{R}_{0}^{+}$ vinden zodat uit $x\in A$ en $|x-a| < \delta$ volgt dat $f(x) \in \interval[open]{f(a)-\epsilon}{f(a)+\epsilon}$
+      Dit betekent dat $\interval[open]{a-\delta}{a+\delta} \cap A \subseteq f^{-1}(V)$ geldt en dus dat $f^{-1}(V)$ relatief open is in $A$.
+    \item $\Leftarrow$\\
+      Stel dat er voor elk open deel $V$ van $\mathbb{R}$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
+      Kies nu een willekeurige $a\in A$.
+      We bewijzen dat $f$ continu is in $a$.
+      Beschouw daarvoor de verzameling $U$ voor een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$:
+      \[ U = f^{-1}(\interval[open]{f(a)-\epsilon}{f(a)+\epsilon}) \]
+      $U$ bevat zeker $a$ en is bovendien relatief open in $A$.
+      Er bestaat dus een $\delta \in \mathbb{R}_{0}^{+}$ zodat uit $x\in A$ en $|x-a|< \delta$ volgt dat $x$ tot $U$ behoort.
+      Kies dan een willekeurige $x\in A$ met $|x-a|< \delta$, opdat $x$ tot $U$ behoort.
+      $f(x)$ behoort dan ook tot $f(U) = \interval[open]{f(a)-\epsilon}{f(a)+\epsilon}$.
+      Er geldt met andere woorden $|f(x)-f(a)|<\epsilon$, dus $f$ is continu in $a$.
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+\extra{zelfde stelling voor gesloten: tegenvoorbeeld!}
+\extra{I gesloten dan F(I) gesloten?}
+
+\begin{tvb}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een continue functie en $V$ een open deel van $\mathbb{R}$, dan hoeft $f(V)$ niet open te zijn.
+  
+  \begin{proof}
+    Zij $f$ de absolute-waardefunctie:
+    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}: x \mapsto |x| \]
+    Kies $V = \interval[open]{-1}{1}$, dan is $f(V)$ het halfopen interval $\interval[open right]{0}{1}$ en dus niet open.
+  \end{proof}
+\end{tvb}
+
+\begin{de}
+  Zij $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie en $a\in A$.
+  We noemen $f$ ...
+  \begin{itemize}
+  \item ...\term{linkscontinu} in $a$ als en slechts als de beperking van $f$ tot $\interval[open left]{-\infty}{a} \cap A$ continu is in $a$.
+  \item ...\term{rechtscontinu} in $a$ als en slechts als de beperking van $f$ tot $\interval[open right]{a}{+\infty} \cap A$ continu is in $a$.
+  \end{itemize}
+\end{de}
+
+\begin{st}
+  \examenvraag{TTT 1 2015}
+  Zij $f,g:\ \mathbb{R} \rightarrow \mathbb{R}$ twee continue functies zodat $\forall q\in \mathbb{Q}: f(q) = g(q)$ geldt, dan zijn $f$ en $g$ gelijk.
+
+  \begin{proof}
+    Voor elk getal $c \in \mathbb{R}$ bestaat er een Cauchyrij $(x_{n})_{n}$ van rationale getallen met $c$ als limiet.\waarom
+    \[ \lim_{n\rightarrow \infty}x_{n} = c\]
+    Omdat $f$ en $g$ continu zijn moet ook het volgende gelden:
+    \[ \lim_{n\rightarrow \infty}f(x_{n}) = f(c) \text{ en } \lim_{n\rightarrow \infty}g(x_{n}) = g(c) \]
+    Omdat $x_{n}$ rationaal is, geldt voor elke $n\in \mathbb{N}$ $f(x_{n})=g(x_{n})$.
+    De limieten moeten dan gelijk zijn\waarom, en dus moet $f(c)$ gelijk zijn aan $g(c)$ voor alle $c\in \mathbb{R}$.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ functie.
+  $f$ is continu als en slechts het volgende geldt:
+  \[ \forall X \subseteq \mathbb{R}:\ f^{-1}(\mathring{X}) \subseteq \mathring{\left(f^{-1}(X)\right)} \]
+\extra{oefening}
+\end{st}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ functie.
+  $f$ is continu als en slechts het volgende geldt:
+  \[ \forall X \subseteq \mathbb{R}:\ \overline{f^{-1}(X)} \subseteq f^{-1}(\overline{X}) \]
+\extra{oefening}
+\end{st}
+
+
+
+\end{document}

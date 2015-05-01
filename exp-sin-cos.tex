@@ -1,0 +1,753 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{$\exp$, $\sin$ en $\cos$}
+\label{sec:exp-sin-en}
+
+\subsection{$\exp$}
+\label{sec:exp}
+
+\begin{de}
+  De \term{exponentie\"ele functie} op $\mathbb{C}$ is de functie $\exp$.
+  \[ \exp:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \exp(z) = \sum_{n=0}^{\infty}\frac{z^{n}}{n!} \]
+\end{de}
+
+\begin{st}
+  De convergentiestraal van $\exp$ is $+\infty$.
+
+  \begin{proof}
+    \begin{align*}
+      \lim_{n \rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|} = \lim_{n
+        \rightarrow +\infty}\frac{\frac{1}{n!}}{\frac{1}{(n+1)!}}  =
+      \lim_{n \rightarrow +\infty}\frac{(n+1)!}{n!}  = \lim_{n
+        \rightarrow +\infty}n+1 = +\infty
+    \end{align*}
+  \end{proof}
+\end{st}
+
+\begin{gev}
+  De machtreeks $\exp$, convergeert dus overal absoluut.
+\end{gev}
+
+\begin{bst}
+  De exponentiele functie is afleidbaar op $\mathbb{C}$ en is zijn eigen afgeleide.
+
+  \begin{proof}
+    \begin{align*}
+      \lim_{x \rightarrow z}\frac{exp(x)-exp(z)}{x-z}
+      &= \lim_{x \rightarrow z}\frac{\sum_{n=0}^{\infty}\frac{x^{n}}{n!}-\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}{x-z}\\
+      &= \lim_{x \rightarrow z}\frac{\sum_{n=0}^{\infty}\frac{x^{n}-z^{n}}{n!}}{x-z}\\
+      &= \lim_{x \rightarrow z}\frac{\sum_{n=0}^{\infty}x^{n}-z^{n}}{(x-z)n!}\\
+      &= \sum_{n=0}^{\infty}\frac{z^{n}}{n!}
+    \end{align*}
+  \end{proof}
+\end{bst}
+
+\begin{bpr}
+  \label{pr:epx-0-is-1}
+    $\exp(0) = 1$
+  \begin{proof}
+    \begin{align*}
+      exp(0)
+      = \sum_{n=0}^{\infty}\frac{0^{n}}{n!}
+      = \frac{0^{0}}{0!} + \sum_{n=1}^{\infty}\frac{0}{n!}
+      = 1 + \sum_{n=1}^{\infty}0 = 1
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:exponent-toegevoegde}
+  $\forall z \in \mathbb{C}:\ \overline{\exp(z)} = \exp(\overline{z})$
+
+  \begin{proof}
+    \begin{align*}
+      \forall z \in \mathbb{C}:\ \overline{\exp(z)}
+      = \overline{\sum_{n=0}^{\infty}\frac{z^{n}}{n!}}
+      = \sum_{n=0}^{\infty}\overline{\frac{z^{n}}{n!}}
+      = \sum_{n=0}^{\infty}\frac{\overline{z^{n}}}{n!}
+      = \sum_{n=0}^{\infty}\frac{\overline{z}^{n}}{n!}
+      = \exp(\overline{z})
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{pr}
+  \label{pr:optelling-exp}
+  $\forall x,y \in \mathbb{C}:\ \exp(x+y) = \exp(x)\exp(y)$
+
+  \begin{proof}
+    Kies willekeurig $x$ en $y$ uit $\mathbb{c}$.
+    noem $x_{n} = \frac{x^{n}}{n!}$ en $y_{n} = \frac{y^{n}}{n!}$:
+    \[ \exp(x) = \sum_{n=0}^{+\infty}x_{n} \quad\text{ en }\quad \exp(y) = \sum_{n=0}^{+\infty}y_{n} \]
+    we weten dat beide reeksen absoluut convergeren en dat de productreeks en dus als volgt uitziet:\stref{st:productreeks-van-absoluut-en-gewoon-convergent}
+    
+    \begin{align*}
+      \exp(x)\exp(y)
+      &= \left(\sum_{n=0}^{\infty}\frac{z^{n}}{n!}\right)\left(\sum_{n=0}^{\infty}\frac{z^{n}}{n!}\right)\\
+      &= \sum_{n=0}^{+\infty}\sum_{k=0}^{n}x_{n}y_{k-n}\\
+      &= \sum_{n=0}^{+\infty}\sum_{k=0}^{n}\frac{x^{k}}{k!}\frac{y^{n-k}}{(n-k)!}\\
+      &= \sum_{n=0}^{+\infty}\frac{1}{n!}\sum_{k=0}^{n}\frac{n!}{k!(n-k)!}x^{k}y^{n-k}\\
+      &= \sum_{n=0}^{+\infty}\frac{(x+y)^{n}}{n!}\\
+    \end{align*}
+  \end{proof}
+\end{pr}
+
+
+\begin{bpr}
+  \label{pr:exp-nooit-nul}
+  $\forall z \in \mathbb{c}:\ \exp(z) \neq 0$
+
+  \begin{proof}
+    bewijs uit het ongerijmde: stel dat er een $a\in \mathbb{c}$ bestaat zodat $\exp(a)$ nul is.
+    voor elke $b\in \mathbb{c}$ moet $\exp(a+b)$ dan ook $0$ zijn:\prref{pr:optelling-exp}
+    \[ \exp(a+b) = \exp(a)\exp(b) = 0\exp(b) = 0 \]
+    omdat $b$ hierin willekeurig is moet dan $\exp$ overal nul zijn, maar we weten al dat $\exp(0) = 1 \neq 0$ geldt.\prref{pr:epx-0-is-1}
+    contradictie.
+  \end{proof}
+\end{bpr}
+\feed 
+
+\begin{bpr}
+  \label{pr:inverse-exponent}
+  $\forall z \in \mathbb{c}:\ \exp(-z) = \frac{1}{\exp(z)}$
+
+  \begin{proof}
+    \begin{align*}
+      1 = \exp(0)
+      = \exp(z+(-z))
+      = \exp(z)\exp(-z)
+      \rightarrow
+      \exp(-z)
+      = \frac{1}{\exp(z)}
+    \end{align*}
+    merk op dat dit enkel steek houdt omdat $\exp(z)$ nooit $0$ kan zijn.\prref{pr:exp-nooit-nul}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:lengte-imaginaire-exponentiatie-1}
+  $\forall t \in \mathbb{r}:\ |\exp(it)| = 1$
+
+  \begin{proof}
+    \begin{align*}
+      1
+      &= \exp(0)\\
+      &= \exp(it-it)\\
+      &= \exp(it)\exp(-it)\\
+      &= \exp(it)\exp(\overline{it})\\
+      &= \exp(it)\overline{\exp(it)}\\
+      &= |\exp(it)|^{2}
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:reele-exponentiatie-positief}
+  $\forall t \in \mathbb{R}:\ \exp(t) > 0$
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat er een $t\in \mathbb{R}$ bestaat zodat $\exp(t)$ negatief is.
+    $\exp(t)$ is zeker geen nul\prref{pr:exp-nooit-nul} en gelijk aan $\exp\left(\frac{t}{2}\right)\exp\left(\frac{t}{2}\right)$.\prref{pr:optelling-exp}
+    Omdat $\exp(t)$ negatief is moeten deze factoren een verschillend teken hebben.
+    Contradictie.
+  \end{proof}
+\end{bpr}
+  \feed
+
+\begin{bpr}
+  $\forall z \in \mathbb{C}:\ |\exp(z)| = \exp(Re(z))$
+
+  \begin{proof}
+    \begin{align*}
+      |\exp(z)|
+      &= |\exp(Re(z) + Im(z)i)|\\
+      &= |\exp(Re(z))\exp(Im(z)i)|\\
+      &= |\exp(Re(z))||\exp(Im(z)i)|\\
+      &\overset{\prref{pr:lengte-imaginaire-exponentiatie-1}}{=} |\exp(Re(z))|\\
+      &\overset{\prref{pr:reele-exponentiatie-positief}}{=} \exp(Re(z))\\
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{pr}
+  $\exp(\mathbb{R}) \subseteq \mathbb{R}$
+
+  \begin{proof}
+    We zullen bewijzen dat voor een willeurige $r\in \mathbb{R}$, $\exp(r)$ gelijk is aan $\overline{\exp(r)}$.
+    \begin{align*}
+      \overline{\exp(r)}
+      =
+      \exp\left(\overline{r}\right) = \exp(r)
+    \end{align*}
+  \end{proof}
+\end{pr}
+
+\begin{bpr}
+  \label{pr:exp-van-positief-getal-groter-dan-1}
+  $\forall t \in \mathbb{R}_{0}^{+}:\ \exp(t) > 1$
+
+  \begin{proof}
+    Kies een willekeurige $t\in \mathbb{R}_{0}^{+}$.
+    \begin{align*}
+      \exp(t)
+      = \sum_{n=0}^{\infty}\frac{t^{n}}{n!}
+      = \frac{t^{0}}{n!} + \sum_{n=0}^{\infty}\frac{t^{n}}{n!}
+      = 1 + \sum_{n=0}^{\infty}\frac{t^{n}}{n!}
+      > 1
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:exponent-naar-oneindig-oneindig}
+  De functie $\exp: \mathbb{R} \rightarrow \mathbb{R}_{0}^{+}:\ t \rightarrow \exp(t)$ is strikt stijgend.
+
+  \begin{proof}
+    Kies twee elemnten $x$ en $y$ uit $\mathbb{R}$ met $x < y$.
+    We weten dan dat $y-x$ strikt positief is en daarmee het volgende:\prref{pr:exp-van-positief-getal-groter-dan-1}
+    \[ \exp(y-x) > 1 \]
+    \begin{align*}
+      \exp(y-x)
+      = \frac{\exp(y)}{\exp(x)}
+      > 1 \Rightarrow \exp(y)
+      > \exp(x)
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\lim_{t \rightarrow +\infty}\exp(t) = +\infty$
+
+  \begin{proof}
+    Voor een willekeurige $t\in \mathbb{R}_{0}^{+}$ vinden we $\exp(t) > 1 + t$ uit de reeksontwikkeling.
+    Dit, samen met het strikt stijgen van $\exp$, betekent dat $\exp$ naar $+\infty$ divergeert.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\lim_{t \rightarrow -\infty}\exp(t) = 0$
+
+  \begin{proof}
+    Dit volgt meteen uit de rekenregel voor de inverse exponent\prref{pr:inverse-exponent} en de limiet naar oneindig van $\exp$.\prref{pr:exponent-naar-oneindig-oneindig}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  De functie $\exp: \mathbb{R} \rightarrow \mathbb{R}_{0}^{+}:\ t \rightarrow \exp(t)$ is een bijectie.
+
+  \begin{proof}
+    Bewijs van bijectiviteit
+    \begin{itemize}
+    \item $\exp$ is injectief\\
+      $\exp$ is overal strikt stijgend en dus injectief.\prref{pr:exponent-naar-oneindig-oneindig}
+    \item $\exp$ is surjectief.\\
+      Omdat $\exp$ afleidbaar is, is $\exp$ continu.
+      Nu is $\exp$ surjectief vanwege de tussenwaardestelling voor continue functies.\stref{st:tussenwaardestelling}
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{de}
+  De inverse van de exponenti\"ele functie noemen we de \term{logaritmische functie}
+  \[ \ln:\ \mathbb{R}_{0}^{+}\rightarrow \mathbb{R}:\ x \mapsto \exp^{-1}(x) \]
+\end{de}
+
+\extra{eigenschappen onderaan p 29}
+
+\begin{de}
+  We definieren $e = \exp(1)$.
+\end{de}
+
+\begin{bpr}
+  $\forall q \in \mathbb{Q}:\ \exp(q) = e^{q}$
+
+  \begin{proof}
+    Noem $q = \frac{n}{m}$ en neem aan dat $q$ strikt positief is (in het andere geval kunnen we dit herleiden tot een positieve $q$).
+    Merk eerst op dat $\exp(n)$ gelijk is aan $\exp(1)^{n} = e^{n}$.
+    Merk nu het volgende op:
+    \[ \exp(q)^{m} = \exp(mq) = \exp(n) = e^{n} \]
+    Omdat $q$ strikt positief is mogen we het volgende besluiten: 
+    \[ \exp(q) = \sqrt[m]{e^{n}} = e^{q} \]
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Zij $x\in \mathbb{R}$ en $(q_{n})_{n}$ een rij in $\mathbb{Q}$ die naar $x$ convergeert.
+  \[ \exp(x) = \lim_{n\rightarrow +\infty}e^{q_{n}} \]
+
+  \begin{proof}
+    Dit volgt meteen uit de continu\"iteit van $\exp$.\needed
+  \end{proof}
+\end{bpr}
+
+\subsection{$\sin$ en $\cos$}
+\label{sec:sin-en-cos}
+
+\begin{de}
+  We definie\"eren de \term{cosinusfunctie} $\cos$ als volgt:
+  \[ \cos:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \cos(z) = \frac{e^{iz} + e^{-iz}}{2} \]
+\end{de}
+
+\begin{de}
+  We definie\"eren de \term{sinusfunctie} $\cos$ als volgt:
+  \[ \sin:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \sin(z) = \frac{e^{iz} - e^{-iz}}{2i} \]
+\end{de}
+
+\begin{bpr}
+  $\forall z \in \mathbb{C}:\ cos(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n}}{(2n)!}$
+
+  \begin{proof}
+    \begin{align*}
+      \cos(z)
+      &= \frac{e^{iz} + e^{-iz}}{2}\\
+      &= \frac{\sum_{n=0}^{\infty}\frac{(iz)^{n}}{n!} + \sum_{n=0}^{\infty}\frac{(-iz)^{n}}{n!}}{2}\\
+      &= \sum_{n=0}^{\infty}\frac{(iz)^{n} + (-iz)^{n}}{2(n!)}\\
+      &= \sum_{n=0}^{\infty}\frac{(iz)^{n} + (-iz)^{n}}{2(n!)}\\
+      &= \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n}}{(2n)!}
+    \end{align*}
+  \end{proof}
+\extra{dit kan beter uitgeschreven}
+\end{bpr}
+
+\begin{bpr}
+  $\forall z \in \mathbb{C}:\ sin(z) = \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!}$
+
+  \begin{proof}
+    \begin{align*}
+      \sin(z)
+      &= \frac{e^{iz} - e^{-iz}}{2i}\\
+      &= \frac{\sum_{n=0}^{\infty}\frac{(iz)^{n}}{n!} - \sum_{n=0}^{\infty}\frac{(-iz)^{n}}{n!}}{2i}\\
+      &= \sum_{n=0}^{\infty}\frac{(iz)^{n} - (-iz)^{n}}{2i(n!)}\\
+      &= \sum_{n=0}^{+\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!}
+    \end{align*}
+  \end{proof}
+\extra{dit kan beter uitgeschreven}
+\end{bpr}
+
+\begin{bpr}
+  $\forall z \in \mathbb{C}: \cos(-z) = \cos(z)$
+
+  \begin{proof}
+    \begin{align*}
+      \cos(-z)
+      = \frac{e^{-zi} + e^{iz}}{2}
+      = \frac{e^{zi} + e^{-iz}}{2}
+      = \cos(z)
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\forall z \in \mathbb{C}: \sin(-z) = -\sin(z)$
+
+  \begin{proof}
+    \begin{align*}
+      \sin(-z)
+      = \frac{e^{-zi} - e^{iz}}{2i}
+      = -\frac{e^{zi} - e^{-iz}}{2i}
+      = -\sin(z)
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\cos(0) = 1$
+
+  \begin{proof}
+    \begin{align*}
+      \cos(0)
+      = \frac{e^{i0} + e^{-i0}}{2}
+      = \frac{1+1}{2}
+      = 1
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\sin(0) = 0$
+  \begin{proof}
+    \begin{align*}
+      \sin(0)
+      = \frac{e^{i0} - e^{-i0}}{2i}
+      = \frac{1-1}{2i}
+      = 0
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\cos$ is afleidbaar op $\mathbb{C}$ met $\cos'$ als afgeleide:
+  \[ \cos' = -\sin \]
+  
+  \begin{proof}
+    Kies een willekeurige $z\in \mathbb{C}$
+    \begin{align*}
+      \cos'(z)
+      = \left(\frac{e^{iz} + e^{-iz}}{2}\right)'
+      = \frac{\left(e^{iz}\right)' + \left(e^{-iz}\right)'}{2}
+      = i\frac{e^{iz} - e^{-iz}}{2}
+      = -\frac{e^{iz} - e^{-iz}}{2i}
+      = -\sin(z)
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\sin$ is afleidbaar op $\mathbb{C}$ met $\sin'$ als afgeleide:
+  \[ \sin' = cos \]
+
+  \begin{proof}
+    Kies een willekeurige $z\in \mathbb{C}$
+    \begin{align*}
+      \sin'(z)
+      = \left(\frac{e^{iz} - e^{-iz}}{2i}\right)'
+      = \frac{\left(e^{iz}\right)' - \left(e^{-iz}\right)'}{2i}
+      = i\frac{e^{iz}+e^{iz}}{2i}
+      = \frac{e^{iz}+e^{iz}}{2}
+      = \cos(z)
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:cos-van-reel-reel}
+  $\forall x\in \mathbb{R} \cos(x) = Re(e^{ix}) \in \mathbb{R}$
+
+  \begin{proof}
+    Kies willekeurig een $x\in \mathbb{R}$
+    \begin{align*}
+      \cos(x)
+      = \frac{e^{ix} + e^{-ix}}{2}
+      = \frac{e^{ix} + \overline{e^{ix}}}{2}
+      = \frac{2Re(e^{ix})}{2}
+      = Re(e^{ix})
+      \in \mathbb{R}
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:sin-van-reel-reel}
+  $\forall x\in \mathbb{R} \sin(x) = Im(e^{ix}) \in \mathbb{R}$
+  
+  \begin{proof}
+    Kies willekeurig een $x\in \mathbb{R}$
+    \begin{align*}
+      \sin(x)
+      = \frac{e^{ix} - e^{-ix}}{2i}
+      = \frac{e^{ix} - \overline{e^{ix}}}{2i}
+      = \frac{2Im(e^{ix})}{2i}
+      = Im(e^{ix})
+      \in \mathbb{R}
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\forall t\in \mathbb{R}:\ e^{it} = \cos(t) + i\sin(t)$
+
+  \begin{proof}
+    Dit volgt meteen uit de vorige twee stellingen.\prref{pr:cos-van-reel-reel}\prref{pr:sin-van-reel-reel}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\forall t\in \mathbb{R}:\ \cos^{2}(t) + \sin^{2}(t) = 1$
+
+  \begin{proof}
+    Kies willekeurig een $x\in \mathbb{R}$
+    \begin{align*}
+      \cos^{2}(t) + \sin^{2}(t)
+      &=  \left(\frac{e^{it} + e^{-it}}{2}\right)^{2} + \left(\frac{e^{it} - e^{-it}}{2i}\right)^{2}\\
+      &=  \frac{(e^{it} + e^{-it})^{2}-(e^{it} - e^{-it})^{2}}{4}\\
+      &=  \frac{\cancel{e^{2it}} +2e^{it}e^{-it} +\cancel{e^{-2it}}-\cancel{e^{2it}} +2e^{it}e^{-it}- \cancel{e^{-2it}}}{4}\\
+      &=  \frac{4e^{it}e^{-it}}{4}\\
+      &=  \frac{4\frac{e^{it}}{e^{it}}}{4}\\
+      &=  \frac{4}{4}
+      = 1
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\forall x,y\in \mathbb{R}:\ \cos(x+y) = \cos(x)\cos(y) - \sin(x)\sin(y)$
+
+  \begin{proof}
+    \begin{align*}
+      &\cos(x)\cos(y) - \sin(x)\sin(y)\\
+      &= \frac{e^{ix} + e^{-ix}}{2}\frac{e^{iy} + e^{-iy}}{2} - \frac{e^{ix} - e^{-ix}}{2i}\frac{e^{iy} - e^{-iy}}{2i}\\
+      &= \frac{\left(e^{ix} + e^{-ix}\right)\left(e^{iy} + e^{-iy}\right)}{4} + \frac{\left(e^{ix} - e^{-ix}\right)\left(e^{iy} - e^{-iy}\right)}{4}\\
+      &= \frac{e^{i(x+y)} + \cancel{e^{ix - iy}} + \cancel{e^{-ix +iy}} + e^{-i(x+y)} + e^{i(x+y)} - \cancel{e^{ix-iy}} -\cancel{e^{-ix+iy}} + e^{-i(x+y)}}{4}\\
+      &= \frac{e^{i(x+y)} + e^{-i(x+y)}}{2}\\
+      &= \cos(x+y)
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  $\forall x,y\in \mathbb{R}:\ \sin(x+y) = \sin(x)\cos(y) + \cos(x)\sin(y)$
+
+  \begin{proof}
+    \begin{align*}
+      &\sin(x)\cos(y) + \cos(x)\sin(y)\\
+      &=\frac{e^{ix} - e^{-ix}}{2i}\frac{e^{iy} + e^{-iy}}{2} + \frac{e^{ix} + e^{-ix}}{2}\frac{e^{iy} - e^{-iy}}{2i}\\
+      &= \frac{\left(e^{ix} - e^{-ix}\right)\left(e^{iy} + e^{-iy}\right)}{4i} + \frac{\left(e^{ix} + e^{-ix}\right)\left(e^{iy} - e^{-iy}\right)}{4i}\\
+      &= \frac{e^{i(x+y)}+\cancel{e^{ix-iy}}-\cancel{e^{-ix+iy}}-e^{-i(x+y)} + e^{i(x+y)}-\cancel{e^{ix-iy}}+\cancel{e^{-ix+iy}}-e^{-i(x+y)}}{4i}\\
+      &= \frac{e^{i(x+y)} - e^{-i(x+y)}}{2i}\\
+      &= \sin(x+y)
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:inleiding-pi}
+  Er bestaat een unieke $t_{0} \in \interval[open]{0}{2}$ zodat het volgende geldt:
+  \begin{itemize}
+  \item $\cos(t_{0}) = 0$
+  \item $\forall t\in \interval[open right]{0}{t_{0}}:\ \cos(t) > 0$
+  \item $\sin(t_{0})=1$
+  \item $\forall t\in \interval[open left]{0}{t_{0}}:\ \sin(t)> 0$ 
+  \end{itemize}
+
+  \begin{proof}
+    In delen:
+    \begin{itemize}
+    \item 
+    We weten dat $\cos(0) = 1$ geldt en beweren nu dat $\cos(2)$ strikt negatief is:
+    \[ \cos(2) = 1 - \frac{2^{2}}{2!} + \frac{2^{4}}{4!} - \sum_{n=2}^{+\infty}\left( \frac{2^{4n-2}}{(4n-2)!} - \frac{2^{4n}}{(4n!)}\right) \]
+    De eerste drie termen hierin zijn al strikt negatief...
+    \[ 1 - \frac{2^{2}}{2!} + \frac{2^{4}}{4!} = 1-2+\frac{16}{24} < 0 \]
+    ... en de volgende termen samen zijn ook negatief:
+    \[
+    \forall n\in \mathbb{N}:\ n \ge 2
+    \Rightarrow -\frac{2^{4n-2}}{(4n-2)!} - \frac{2^{4n}}{(4n!)}
+    = -\frac{2^{4n-2}}{(4n-2)!}\left( 1 - \frac{4}{4n(4n-1)} \right)
+    > 0
+    \]
+    Omdat $\cos$ continu is volgt uit de tussenwaardestelling\stref{st:tussenwaardestelling} dat $\cos$ minstens \'e\'en nulpunt moet heben in $\interval[open]{0}{2}$.
+    De verzameling $N = \{ t \in \interval[open]{0}{2} \mid \cos(t) = 0\}$ is dus niet leeg en naar onder begrensd.
+    Noem $t_{0}$ het infimum van deze verzameling.
+    Omdat $\cos$ continu is, moet $\cos(t_{0})$ nul zijn. \waarom
+  \item 
+    Omdat bovendien $cos(0) =1$ geldt, moet $t_{0}$ strikt positief zijn.
+    Per constructie heeft $\cos$ geen nulpunten tussen $0$ en $t_{0}$.
+    Omdat $\cos(0)$ positief is, volgt nu uit de continu\"iteit van $\cos$ dat $\forall t\in \interval[open right]{0}{t_{0}}:\ \cos(t)>0$ geldt.
+  \item
+    Omdat $\sin'=\cos$ geldt, stijgt $\sin$ strikt op $\interval{0}{t_{0}}$.
+    Omdat $\sin(0) = 0$ geldt, betekent dit dat $\forall t\in \interval[open left]{0}{t_{0}}:\ \sin(t)>0$ geldt.
+  \item Vanuit $\sin^{2}(t_{0}) + \cos^{2}(t_{0}) = 1$ vinden we nu dat $\sin(t_{0})$ gelijk is aan $1$.
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{de}
+  We definieren $\pi$ als $2t_{0}$ uit de vorige propositie:
+  \[ \cos\left(\frac{\pi}{2}\right) = 0 \quad\text{ en }\quad \sin\left(\frac{\pi}{2}\right) = 1 \]
+\end{de}
+
+\begin{bpr}
+  \label{pr:cos-en-sin-periodiek}
+  De sinusfuncie en de cosinusfunctie zijn periodiek op $\mathbb{R}$ met periode $2\pi$.
+
+  \begin{proof}
+    Beschouw eerst voor alle $t\in \mathbb{R}$:
+    \begin{align*}
+      \cos\left(t+\frac{\pi}{2}\right)
+      = \cos(t)\cos\left(\frac{\pi}{2}\right) - \sin(t)\sin\left(\frac{\pi}{2}\right)
+      = \cos(t)0 - \sin(t)1
+      = - \sin(t)
+    \end{align*}
+    ... en ...
+    \begin{align*}
+      \sin\left(t+\frac{\pi}{2}\right)
+      = \sin(t)\cos\left(\frac{\pi}{2}\right) + \cos(t)\sin\left(\frac{\pi}{2}\right)
+      = \sin(t)0 + \cos(t)1
+      = \cos(t)
+    \end{align*}
+    Het volstaat dus om de periodiciteit van $\cos$ aan te tonen.
+    Beschouw nu $\cos(t+2\pi)$:
+    \begin{align*}
+      \cos(t+2\pi)
+      = -\sin\left(t+\frac{3}{2}\pi\right)
+      = -\cos(t+\pi)
+      = \sin\left(t + \frac{\pi}{2}\right)
+      = \cos(t)
+    \end{align*}
+    Om periodiciteit aan te tonen moeten we nog aantonen dat er geen kleinere positieve $T$ bestaat zodat $\forall \cos(t+T)=\cos(t)$ geldt.
+    We tonen nog iets sterker aan: $\forall T\in \interval[open]{0}{2\pi}: \cos(T) < \cos(0) = 1$.
+    Kies daartoe een willekeurige $T\in \interval[open]{0}{2\pi}$ en kies $t=\frac{T}{4}$, dan geldt $t\in\interval[open]{0}{\frac{\pi}{2}}$ en bijgevolg ook $\cos(t) > 0$.
+    Anderzijds geldt ook $\cos(t) < 1$ want er bestaat een $c\in \interval[open]{0}{1}$ als volgt:\stref{st:middelwaardestelling-lagrange}\prref{pr:inleiding-pi}
+    \[ \frac{\cos(t)-\cos(0)}{t-0} = \cos'(c) = -sin(c) < 0 \]
+    We bekijken nu $\cos(T)$:
+    \begin{align*}
+      \cos(T)
+      &= Re(\exp(iT))\\
+      &= Re(e^{4it})\\
+      &= Re\left(\left(\cos(t) +i\sin(t)\right)^{4}\right)\\
+      &= \cos^{4}(t) - 6\cos^{2}(t)\sin^{2}(t) + \sin^{4}(t)\\
+      &= 8\cos^{4}(t) - 8\cos^{2}(t) + 1\\
+      &= 1-8\left(t-\cos^{2}(t)\right)\cos^{2}(t)\\
+      &<1
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Neem $t\in \interval[open]{0}{2\pi}$ en beschouw het punt $(\cos(t),\sin(t))$ op de cirkel in $\mathbb{R}^{2}$ met middelpunt $(0,0)$ en straal $1$.
+  $t$ is dan de booglengte van de boog op de cirkel die in $(1,0)$ begint en eindigt in $(\cos(t),\sin(t))$.
+  De cirkel wordt hierbij doorlopen in tegenzin.
+
+  \begin{proof}
+    Kies $n\in \mathbb{N}_{0}$ willekeurig en beschouw $z_{k}$ als volgt:
+    \[ z_{k} = \left(\cos\frac{kt}{n},\sin\frac{kt}{n}\right) \]
+    We bewijzen dat de totale afstand tussen opeenvolgende punten $z_{k}$ naar $t$ gaat in de limiet voor $k$ gaande naar $+\infty$.
+    Beschouw eerst het kwadraat van de afstand tussen twee opeenvolgende punten $z_{k}$ en $z_{k+1}$.
+    \begin{align*}
+      \left\|z_{k+1}-z_{k}\right\|^{2}
+      &= \left( \cos\left(\frac{(k+1)t}{n}\right) - \cos\left(\frac{kt}{n}\right) \right)^{2}
+       + \left( \sin\left(\frac{(k+1)t}{n}\right) - \sin\left(\frac{kt}{n}\right) \right)^{2}\\
+      &= \cos^{2}\left(\frac{(k+1)t}{n}\right) - 2\cos\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right) + \cos^{2}\left(\frac{kt}{n}\right)\\
+      &+ \sin^{2}\left(\frac{(k+1)t}{n}\right) - 2\sin\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right) + \sin^{2}\left(\frac{kt}{n}\right)\\
+      &= 2 - 2\cos\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right) - 2\sin\left(\frac{(k+1)t}{n}\right)\cos\left(\frac{kt}{n}\right)\\
+      &= 2 - \left(2\cos\left(\frac{(k+1)t}{n}\right)\cos\left(-\frac{kt}{n}\right) - 2\sin\left(\frac{(k+1)t}{n}\right)\cos\left(-\frac{kt}{n}\right)\right)\\
+      &= 2-2\cos\left( \frac{(k+1)t}{n} - \frac{kt}{n}\right)\\
+      &= 2-2\cos\left(\frac{t}{n}\right)\\
+      &= 2-2\cos\left(\frac{t}{2n}+ \frac{t}{2n}\right)\\
+      &= 2-2\left(\cos^{2}\left(\frac{t}{2n}\right)-\sin^{2}\left(\frac{t}{2n}\right)\right)\\
+      &= 2\left(1-\cos^{2}\left(\frac{t}{2n}\right)\right) + 2\sin^{2}\left(\frac{t}{2n}\right)\\
+      &= 4\sin^{2}\left(\frac{t}{2n}\right)
+    \end{align*}
+    Voor $n$ groot genoeg is $\sin\left(\frac{t}{2n}\right)$ strikt positief en ziet de afstand tussen twee opeenvolgende punten er als volgt uit:
+    \[ \left\|z_{k+1}-z_{k}\right\| = 2\sin\left(\frac{t}{2n}\right) \]
+    Merk op dat dit onafhankelijk is van $k$.
+    De totale lengte van al deze koorden is dan $2n\sin\left(\frac{x}{2n}\right)$.
+    \begin{align*}
+      \lim_{n\rightarrow +\infty}2n\sin\left(\frac{t}{2n}\right)
+      = \lim_{n\rightarrow +\infty}\frac{2nt}{t}\sin\left(\frac{t}{2n}\right)
+      = \lim_{n\rightarrow +\infty}t\frac{\sin\left(\frac{t}{2n}\right)}{\frac{t}{2n}}
+      = t
+    \end{align*}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \[ \forall z\in \mathbb{C}:\ \exp(z+2\pi i) = \exp(z) \quad\text{ en }\quad \exp(z) = 1 \Leftrightarrow \exists k\in \mathbb{Z}:\ z = 2k\pi i \]
+
+  \begin{proof}
+    \[ \forall z \in \mathbb{C}:\ \exp(z + 2\pi i) = \exp(z)\exp(2\pi i) = \exp(z) \]
+    \question{waarom is $\exp(2\pi i)$ precies $1$?}
+    Zij $x+yi \in \mathbb{C}$ met $x,y \in \mathbb{R}$ met $\exp(z)=1$.
+    Beschouw nu $|\exp(z)| = 1$:
+    \begin{align*}
+      \left|\exp(z)\right|
+      = \left|\exp(x+yi)\right|
+      = \left|\exp(x)\right|\left|\exp(yi)\right|
+      = \left|\exp(x)\right|1
+      = \exp(x)
+    \end{align*}
+    Hieruit volgt dat $x$ nul moet zijn.\waarom
+    We houden over dat $e^{iy}=1$ geldt.
+    $\cos(y)$ moet dus $1$ zijn.
+    We weten dat $\cos(t) < 1$ geldt voor alle $t\in \interval[open]{0}{2\pi}$.
+    Omdat $\cos$ ook periode $2\pi$ heeft\prref{pr:cos-en-sin-periodiek} moet $\forall t\in (\mathbb{R} \setminus 2\pi\mathbb{Z}):\ \cos(t) < 1$ gelden.
+    Bijgevolg moet $y$ een element zijn van $2\pi \mathbb{Z}$ en er dus een $k$ bestaat zodat $y$ gelijk is aan $2\pi k$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  Zij een $z\in \mathbb{C}_{0}$, dan bestaat er een unieke $\theta \in \interval[open right]{0}{2\pi}$ zodat $z=e^{i\theta}|z|$ geldt.
+
+  \begin{proof}
+    Kies een willekeurige $z\in \mathbb{C}_{0}$ met $|z| = 1$.
+    Het geval waarin $|z|$ niet $1$ is, valt te herleiden naar een geval waarin $|z|=1$ wel geldt, met dezelfde $\theta$. \waarom
+    \begin{itemize}
+    \item Bestaan\\
+      Noem $z=x+yi$ met $x,y\in \mathbb{R}$ en merk op dat $x^{2}+y^{2}=1$ geldt.
+      We maken een gevalsonderscheid voor de tekens van $x$ en $y$.
+      \begin{itemize}
+      \item $x\ge 0$ en $y\ge 0$\\
+        Omdat $x$ in $\interval{0}{1}$ zit, omdat $\cos(0) = 1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval{0}{\frac{\pi}{2}}$ zodat $\cos(\theta) = x$ geldt.
+        Dan geldt, omdat $\sin(\theta)$ positief is\waarom, het volgende:
+        \[ y = \sqrt{1-x^{2}} = \sqrt{1-\cos^{2}(\theta)} = \sqrt{\sin^{2}(\theta)} = \sin(\theta) \]
+        Bijgevolg geldt $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$.\needed
+      \item $x<0$ en $y \ge 0$\\
+        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, $\cos(\pi) = -1$ en $\cos\left(\frac{\pi}{2}\right) = 0$ gelden en omdat $\cos$ continu is,  $\theta \in \interval[open left]{\frac{\pi}{2}}{\pi}$ zodat $\cos(\theta) = x$ geldt.
+        Analoog aan het vorige geval volgt uit $\sin(\theta)>0$ dat $y$ gelijk is aan $\sin(\theta)$ en dus dat $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$ geldt.
+      \item $x<0$ en $y < 0$\\
+        Omdat $x$ in $\interval[open right]{-1}{0}$ zit, omdat $\cos(\pi) = -1$ en $\cos\left(\frac{3\pi}{2}\right) = 0$\waarom gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval[open]{\pi}{\frac{3\pi}{2}}$ zodat $x = \cos(\theta)$ geldt.
+        Nu is $\sin(\theta)$ strikt negatief en hieruit volgt dan het volgende:
+        \[ y = -\sqrt{1-x^{2}} = -\sqrt{1-\cos^{2}(\theta)} = -\sqrt{\sin^{2}(\theta)} = \sin(\theta) \]
+        Bijgevolg geldt $x+yi= e^{i\theta}$.
+      \item $x\ge 0$ en $y< 0$\\
+        Omdat $x$ in $\interval{0}{1}$ zit, omdat $\cos()=$ en $\cos\left(\right)=$ gelden en omdat $\cos$ continu is, bestaat er een $\theta \in \interval[open right]{\frac{3\pi}{2}}{2\pi}$ zodat $\cos(\theta) = x$x geldt.
+        Analoog aan het vorige geval volgt uit $\sin(\theta)<0$ dat $y$ gelijk is aan $\sin(\theta)$ en dus dat $x+yi = \cos(\theta) + i \sin(\theta) = e^{i\theta}$ geldt.
+      \end{itemize}
+    \item Uniciteit\\
+      Dit volgt meteen uit de periodiciteit van $\exp$.
+      Stel immers dat er twee getallen $\theta_{1}$ en $\theta_{2}$ zouden bestaan als volgt:
+      \[ e^{i\theta_{1}}|z| = e^{i\theta_{2}}|z| \Rightarrow e^{i(\theta_{1}-\theta_{2})} = 1 \]
+      \[ \Leftrightarrow \exists k\in \mathbb{Z}:\ \theta_{1}-\theta_{2} = k2\pi \]
+      Omdat $\theta_{1}$ beide in $\interval[open right]{0}{2\pi}$ moeten zitten leidt dit tot een contradictie.
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{bst}
+  Zij $P:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto P(z) = \sum_{k=0}^{n}a_{k}z^{k}$ een veeltermfunctie van graad $n\in \mathbb{N}_{0}$ met co\"efficienten $a_{k}\in \mathbb{C}$, dan bestaat er een $z_{0}\in \mathbb{C}$ waarvoor $P(z_{0})=0$ geldt.
+
+  \begin{proof}
+    Zonder beperking van de algemeenheid veronderstellen we dat $a_{n}=1$ geldt.
+    In het andere geval delen we de $a_{k}$ gewoon door $a_{n}$.
+    Dit kan omdat we het over nulpunten hebben.
+    \begin{itemize}
+    \item Noem $m = \inf\{ |P(x)| \mid z\in \mathbb{C} \}$.
+      Kies nu willekeurig een $r\in \mathbb{R}_{0}^{+}$.
+      \[
+      \forall z\in \mathbb{C}:\ |z| = r \Rightarrow
+      \begin{array}{rl}
+        |z^{n}|
+        &= \left|P(z) - \sum_{k=0}^{n}a_{k}z^{k}\right|\\
+        &= \left|P(z) + \sum_{k=0}^{n}-a_{k}z^{k}\right|\\
+        &\le \left|P(z)\right| + \sum_{k=0}^{n}|-a_{k}||z|^{k}\\
+        r^{n}&\le \left|P(z)\right| + r^{n}\sum_{i=0}^{n-1}\frac{|a_{k}|}{r^{k}}\\
+        |P(z)| &\ge r^{n}\left(1-\sum_{i=0}^{n-1}\frac{|a_{k}|}{r^{k}}\right)
+      \end{array}     
+      \]
+      Duidelijk is dat het rechterlid hierin naar $+\infty$ gaat voor $r$ gaande naar $+\infty$.
+      Er bestaat dus een $r_{0}\in \mathbb{R}_{0}^{+}$ zodat $|P(z)| > $ geldt voor alle $z\in \mathbb{C}$ met $|z| > r_{0}$.
+      Bijgevolg ziet $m$ er als volgt uit:
+      \[ m =  \inf\{ |P(x)| \mid z\in \mathbb{C}, |z| \le r_{0} \} \]
+      Omdat $z \mapsto |P(z)|$ een continue functie is en $\{ |P(x)| \mid z\in \mathbb{C}, |z| \le r_{0} \}$ een gesloten, begrensde verzameling, bestaat er een $z_{0}\in \mathbb{C}$ met $|z_{0}| \le r_{0}$ zodat $m = |P(z_{0})|$ geldt.\waarom
+      We beweren nu dat $m$ nul is en dat $z_{0}$ dus een nulpunt is van $P$.
+      Veronderstel immers dat $m$ strikt positief is, beschouw dan de veeltermfunctie $Q$ als volgt:
+      \[ Q:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \frac{P(z+z_{0})}{P(z_{0})} \]
+      Er geldt nu $Q(0)=1$ en $\forall z \in \mathbb{C}:\ |Q(z)| \ge 1$.
+      Merk op dat $Q(z)$ een veelterm is van graad $n$ en noteer met $k$ de kleinste strikt positieve macht van $z$ waarvan de co\"efficient niet nul is.
+      \[ Q(z) = 1+ \sum_{i=k}^{n}b_{i}z^{i} \]
+      Er bestaat nu een $\theta$ als volgt:\needed
+      \[ e^{ik\theta}b_{k} = -|b_{k}| \]
+      Als $r\in \mathbb{R}_{0}^{+}$ geldt en $r$ klein genoeg is, opdat $r^{k}|b_{k}|<1$ geldt, zal het volgende gelden:
+      \[ |1+r^{k}e^{ik\theta}b_{k} = |1-r^{k}|b_{k}|| = 1-r^{k}|b_{k}| \]
+      Hieruit volgt dan dit:
+      \[ |Q(re^{i\theta})| \le 1-r^{k}\left(|b_{k}| - \sum_{i=1}^{n-k}r^{i}|b_{k+i}|\right) \]
+      Voor $r$ klein genoeg is het rechterlid strikt pasitief en $|Q(re^{i\theta})|$ dus strikt kleiner dan $1$.
+      Contradictie.
+    \end{itemize}
+  \end{proof}
+\extra{hermaken met meer uitleg en agenda erbij}
+\end{bst}
+
+
+
+
+
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

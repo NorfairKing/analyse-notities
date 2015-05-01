@@ -2,22 +2,41 @@
 \usepackage[latin1]{inputenc}
 \usepackage[dutch]{babel}
 
+% Voor commit in titelpagina
+\immediate\write18{git rev-parse --short HEAD > commit.tex}
+
 \input{packages}
 \input{header}
+
 
 \begin{document}
 
 \input{titelpagina}
 
+
 \tableofcontents
 
+\subfile{voorkennis}
 \subfile{getallen}
+\subfile{rijen}
+\subfile{continuiteit-voor-functies-van-r-naar-r}
+\subfile{afgeleiden-van-functies-van-r-naar-r}
+\subfile{reeksen}
+\subfile{continuiteit-voor-functies-van-rp-naar-rp}
+\subfile{metrische-ruimten-en-continuiteit}
+\subfile{de-riemannintegraal}
 
 \subfile{voorbeelden}
+\subfile{algoritmes}
+
+
+
 
 \bibliographystyle{plain}
 \bibliography{main}
 
-\listoftodos
+\printindex
+
+\subfile{oproep}
 
 \end{document}

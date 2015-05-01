@@ -1,0 +1,307 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Afgeleiden voor functies van $\mathbb{C}$ naar $\mathbb{C}$}
+\label{sec:afgel-voor-funct}
+
+\TODO{definieer ophopingspunt in $\mathbb{C}$}
+\begin{de}
+  Zij $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ een complexe functie en $a \in \mathbb{C}$ een ophopingspunt van $A$.
+  We noemen $L\in \mathbb{C}$ de \term{limiet} van $f$ in $a$, en noteren dit als volgt:
+  \[ \lim_{z \rightarrow a}f(z) = L \]
+  ... als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall z\in A:\ 0 < |z-a| < \delta \Rightarrow |f(z) - L| < \epsilon \]
+\end{de}
+
+\begin{pr}
+  \label{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij-in-c}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ en een $L \in \mathbb{C}$.
+  Zij $a \in \mathbb{C}$ een ophopingspunt van $A$.
+  De limiet van $f(x)$ in $a$ is $L$ als en slechts als $L$ ook de limiet is van het beeld van elke rij $(z_{n})_{n}$ in $A\setminus\{a\}$ die $a$ als limiet heeft.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$
+      Zij $(z_{n})_{n}$ een rij in $A\setminus \{a\}$ met $a$ als limiet.
+      Kies een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat de limiet van $f$ in $a$ $L$ is, bestaat er dan een $\delta \in \mathbb{C}_{0}^{+}$ zodat uit voor alle $z\in A$ uit $|z-a|<\delta$ volgt dat $|f(z)-L|<\epsilon$ geldt.
+      Omdat de rij convergeert naar $a$, bestaat er een $n_{0}\in \mathbb{N}$ zodat voor alle volgende $n\in\mathbb{N}$ geldt dat $|z_{n}-a|$ kleiner is dan $\delta$.
+      Vanaf die $n_{0}$ is $|f(z_{n})-L|$ dus kleiner dan $\epsilon$.
+    \item $\Leftarrow$
+\extra{bewijs}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\TODO{rekenregels voor limieten in $\mathbb{C}$}
+
+\begin{de}
+  Zij $f$ een functie en $a\in A$:
+  \[ f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}:\ x \mapsto f(x) \]
+  We noemen $f$ \term{continu} in $a$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall z\in A:\ |z-a| < \delta \Rightarrow |f(z) -f(a)| < \epsilon \]
+  We noemen $f$ \term{continu} op $A$ als $f$ continu is in elke $a\in A$.
+\end{de}
+
+\TODO{verband tussen limieten en continu\"iteit}
+
+\begin{bpr}
+  \label{pr:limiet-in-c-dan-beperking-limiet-in-r}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ met $A \cap \mathbb{R} \neq \emptyset$.
+  Zij $a \in \mathbb{R}$ een ophopingspunt van $A \cap \mathbb{R}$ en noteer $g=f|_{A \cap \mathbb{R}}$.
+  Als $\lim_{z\rightarrow a}f(z)$ bestaat, dan bestaat ook $\lim_{x \rightarrow a}g(x)$ en dan geldt $\lim_{x \rightarrow a}g(x) = \lim_{z \rightarrow a}f(z)$.
+
+  \begin{proof}
+    Stel dat de limiet $L = lim_{z\rightarrow a}f(z)$ bestaat, dan geldt per definitie het volgende:
+    \[ \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall z\in A:\ 0 < |z-a| < \delta \Rightarrow |f(z) - L| < \epsilon \]
+    Het is nu evident dat ook het volgende geldt, wat de stelling bewijst:
+    \[ \forall \epsilon \in \mathbb{R}_{0}^{+}: \exists \delta \in \mathbb{R}_{0}^{+}: \forall r\in A\cap \mathbb{R}:\ 0 < |r-a| < \delta \Rightarrow |f(r) - L| < \epsilon \]
+  \end{proof}
+\end{bpr}
+
+\begin{tvb}
+  \label{tvb:limiet-in-c-dan-beperking-limiet-in-r}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+
+  \begin{proof}
+    Beschouw de functie $f$ als volgt en kies $a=0$.
+    \[ f:\ \mathbb{C}_{0} \rightarrow \mathbb{C}:\ z \mapsto \frac{\overline{z}}{z} \]
+    $a$ is inderdaad een ophopingspunt van $A\cap \mathbb{R}$.
+    Hier ziet $g$ er als volgt uit:
+    \[ g:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto 1 \]
+    De limiet van $g$ in $0$ is nu natuurlijk $1$, maar de limiet van $f$ in $0$ bestaat niet.
+    Kies ter illustratie de rij $\left(\frac{1}{n}\right)_{n}$ die convergeert naar nul.
+    Het beeld van deze rij convergeert naar $1$.
+    Kies ook die rij $\left(\frac{i}{n}\right)_{n}$ die eveneens convergeert naar nul.
+    Het beeld van deze rij convergeert naar $-1$, dus de limiet van $f$ in $0$ kan niet bestaan.\prref{pr:limiet-van-functie-asa-limiet-van-beeld-van-rij-in-c}
+  \end{proof}
+\end{tvb}
+
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ en een ophopingspunt $a\in A$ van $A$.
+  We noemen $f$ \term{afleidbaar} in $a$ als en slechts als de volgende limiet bestaat in $\mathbb{C}$
+  \[ \lim_{z \rightarrow a}\frac{f(z)-f(a)}{z-a} \]
+  We noemen deze limiet de \term{afgeleide} van $f$ in $a$ en noteren hem met $f'(a)$.
+  Als alle punten van $A$ ophopingspunten zijn van $A$, noemen we $f$ \term{afleidbaar op} $A$ als afleidbaar is in elke $z \in A$.
+  We definieren dan de \term{afgeleide functie} $f'$ als volgt:
+  \[ f':\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto f'(z) \]
+\end{de}
+
+\TODO{rekenregels voor afgeleiden in $\mathbb{C}$}
+
+\begin{vb}
+  Voor alle $n \in \mathbb{N}_{0}$ is de afgeleide functie $f'$ van $f:\ \mathbb{C} \rightarrow \mathbb{C}: z \mapsto z^{n}$ gegeven door $f':\ \mathbb{C} \rightarrow \mathbb{C}: z \mapsto nz^{n-1}$.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De afgeleide functie $f'$ van $f:\ \mathbb{C}_{0} \rightarrow \mathbb{C}: z \mapsto \frac{1}{z}$ is gegeven door $f':\ \mathbb{C}_{0} \rightarrow \mathbb{C}: z \mapsto -\frac{1}{z^{2}}$.
+\extra{bewijs}
+\end{vb}
+
+\begin{tvb}
+  De modulusfunctie is nergens complex afleidbaar:
+  \[ f:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto |z| \]
+
+  \begin{proof}
+    Kies een element $a\in \mathbb{C}$.
+    De afgeleide van $f$ is $a$ ziet er uit als volgt als hij bestaat.
+    \[ \lim_{z \rightarrow a}\frac{f(z)-f(a)}{z-a} \]
+    We tonen aan dat deze limiet niet bestaat.
+    Stel hiertoe $z=a+h$ met $h\in \mathbb{R}$:
+    \[ \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} = \frac{|a+h|-|a|}{h} \le \frac{|a| + |h| - |a|}{h} = 1\]
+    Stel dan $z=a+k$ met $k = hi$:
+    \[ \lim_{h\rightarrow 0}\frac{f(a+k)-f(a)}{k} = \frac{|a+hi|-|a|}{hi} \le \frac{|a| + |hi| - |a|}{hi} = \frac{|hi|}{hi} = -i \]
+    De afgeleide van de modulusfunctie kan dus niet bestaan in $a$.
+  \end{proof}
+\end{tvb}
+
+\begin{bpr}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ met $A \cap \mathbb{R} \neq \emptyset$ en $f(A \cap \mathbb{R})\subseteq \mathbb{R}$.
+  Zij $a \in \mathbb{R}$ een ophopingspunt van $A \cap \mathbb{R}$ en noteer $g=f|_{A \cap \mathbb{R}}$.
+  Als $f$ afleidbaar is in $a$, dan is ook $g$ afleidbaar in $a$ en geldt $g'(a)=f'(a)$.
+
+  \begin{proof}
+    Dit volgt rechtstreeks uit propositie \ref{pr:limiet-in-c-dan-beperking-limiet-in-r} op pagina \pageref{pr:limiet-in-c-dan-beperking-limiet-in-r}.
+  \end{proof}
+\end{bpr}
+
+\begin{tvb}
+  Het omgekeerde van deze stelling geldt niet.
+
+  \begin{proof}
+    Kies de functie $f$ als volgt en kies $a=0$.
+    \[ f:\ \mathbb{C} \rightarrow \mathbb{C}:\ z \mapsto \overline{z} \]
+    $a$ is een ophopingspunt van $A \cap \mathbb{R}$.
+    Hier ziet $g$ er als volgt uit:
+    \[ g:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x \]
+    $g$ is dus afleidbaar in $0$ met afgeleide $1$.
+    Voor alle $z \neq 0$ in $\mathbb{C}$ is echter $\frac{f(z)-f(0)}{z}$ gelijk aan $\frac{\overline{z}}{z}$ en de limiet daarvan in $0$ bestaat niet.\tvbref{tvb:limiet-in-c-dan-beperking-limiet-in-r}
+  \end{proof}
+\end{tvb}
+
+\mst{complexe afleidbaarheid is sterker dan re\"ele afleidbaarheid}
+
+\begin{bst}
+  Beschouw een functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, gedefinieerd op een open deel $A$ van $\mathbb{C}$.
+  Stel dat $f$ \'e\'en maal afleidbaar is op $A$, dan geldt:
+  \begin{itemize}
+  \item $f$ is oneindig keer afleidbaar op $A$.
+  \item Zij $a\in A$, $r\in \mathbb{R}_{0}^{+}$ zodat uit $|z-a|< r$ volgt dat $z\in A$ geldt, dana geldt:
+    \[ \forall z\in \mathbb{C}:\ |z-a|< r \Rightarrow f(z) = \lim_{n \rightarrow \infty}\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(z-a)^{k} \]
+  \end{itemize}
+\zb
+\end{bst}
+
+\begin{st}
+  Als een functie $f:\ \mathbb{C} \rightarrow \mathbb{C}$ afleidbaar is op $\mathbb{C}$ en begrensd, dan is $f$ constant.
+\zb
+\end{st}
+
+\begin{st}
+  Als $f: A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ afleidbaar is op een open deel $A$ van $\mathbb{C}$ en als $\gamma$ een gesloten kromme is die samen met haar binnenste in $A$ ligt, dan is de waarde vnan $f$ in alle punten binnen de kromme $\gamma$ bepaald door de waarde die $f$ aanneemt in punten op de kromme $\gamma$.
+\zb
+\end{st}
+
+\begin{st}
+  Als $f: A \subseteq \mathbb{C} \rightarrow \mathbb{C}$ afleidbaar is op een open deel $A$ van $\mathbb{C}$, dan kan $|f|$ geen lokaal maximum bereiken in $A$.
+\zb
+\end{st}
+
+\begin{gst}
+  De stelling van Rolle geldt niet in $\mathbb{C}$.
+
+  \begin{proof}
+    Kies $f:\ \interval{0}{1} \rightarrow \mathbb{C}:\ z \mapsto ((i-1)z+1)^{4}$.
+    $f$ is de beperking van een afleidbare functie, gedefinieerd op gans $\mathbb{C}$, met hetzelfde voorschrift, tot $\interval{0}{1}$.
+    De voorwaarden voor de stelling van rolle zijn voldaan:\stref{st:rolle}
+    \[ f(0) = 1 = f(1) \]
+    Er bestaat echter geen $c\in \interval[open]{0}{1}$ waarin $f'(c)$ nul is.
+    \extra{ga dit na! zie forum}
+  \end{proof}
+\end{gst}
+\begin{gst}
+  De stelling van Lagrange geldt dus ook niet meer in $\mathbb{C}$
+
+  \begin{proof}
+    Dit volg meteen uit de vorige stelling.
+  \end{proof}
+\end{gst}
+
+\begin{de}
+  We noemen in $\mathbb{C}$ het \term{lijnstuk} tussen twee punten $a,b\in \mathbb{C}$ de volgende verzameling:
+  \[ \{(1-\lambda)a+\lambda b\mid \lambda \in \interval{a}{b} \} \]
+\end{de}
+
+\begin{de}
+  Een verzameling $A \subseteq \mathbb{C}$ noemen we \term{convex} als ze de volgende eigenschap heeft.
+  \[ \forall a,b \in A:\ \forall \lambda \in \interval{0}{1}:\ ((1-\lambda)a+\lambda b) \in A \]
+\end{de}
+\extra{voorbeelden van convexe deelverzamelingen van $\mathbb{C}$.}
+
+\begin{bpr}
+  \label{pr:lagrange-achtig-in-c}
+  Beschouw een afleidbare functie $f:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, gedefinieerd op een open, convex deel $A$ van $\mathbb{C}$.
+  \[ \forall a,b \in A:\ a \neq b \Rightarrow \left|\frac{f(b)-f(a)}{b-a}\right| \le \sup\left\{ \left|f'((1-\lambda)a+\lambda b)\right| \mid \lambda \in \interval{0}{1} \right\} \]
+
+  \begin{proof}
+    \extra{idee van dit bewijs?}
+    Definieer $F$ als volgt:
+    \[ F:\ \interval{0}{1} \rightarrow \mathbb{R}:\ \lambda \mapsto F(\lambda) = Re\left((\overline{f(b)}-\overline{f(a)})f((1-\lambda)a+\lambda b)\right) \]
+    Deze functie is afleidbaar, en dus continu\needed, op $\interval{0}{1}$.\waarom
+    De afgeleide functie ziet er bovendien als volgt uit.
+    \[ F'(\lambda) = Re\left( (\overline{f(b)}-\overline{f(a)})f'((1-\lambda)a+\lambda b)(b-a)\right) \]
+    We passen de middelwaardestelling toe op $F$ om een $\lambda \in \interval[open]{0}{1}$ te bekomen als volgt:\stref{st:middelwaardestelling-lagrange}
+    \[ F(1)-F(0) = F'(\lambda) \]
+    Nemen we van beide leden de modules, dan bekomen we het volgende: ... \prref{pr:modulus-door-optelling}\prref{pr:normaal-maal-toegevoegde-in-r}\prref{pr:modulus-in-termen-van-toegevoegde}
+    \[
+    \begin{array}{rl}
+      \left| F(1)-F(0) \right|
+      &= \left| Re\left((\overline{f(b)}-\overline{f(a)})(f(b)-f(a))\right) \right|\\
+      &= \left| Re\left((\overline{f(b)-f(a)})(f(b)-f(a))\right) \right|\\
+      &= \left| Re\left( \left(Re(f(b)-f(a))\right)^{2} + \left( Im(f(b)-f(a))\right)^{2} \right) \right|\\
+      &= \left| \left(Re(f(b)-f(a))\right)^{2} + \left( Im(f(b)-f(a))\right)^{2} \right|\\
+      &= \left| f(b)-f(a) \right|^{2}\\
+    \end{array}
+    \]
+    ... en dit:\prref{pr:reel-deel-kleiner}
+    \[ 
+    \begin{array}{rl}
+      \left|F'(\lambda)\right|
+      &= \left| Re\left( (\overline{f(b)}-\overline{f(a)})f'((1-\lambda)a+\lambda b)(b-a)\right) \right|\\
+      &\le \left| (\overline{f(b)}-\overline{f(a)})f'((1-\lambda)a+\lambda b)(b-a) \right|\\
+      &= \left| (\overline{f(b)}-\overline{f(a)})\right|\left|f'((1-\lambda)a+\lambda b)\right|\left|(b-a) \right|\\
+      &= \left| (\overline{f(b)-f(a)})\right|\left|(b-a) \right|\left|f'((1-\lambda)a+\lambda b)\right|\\
+      &= \left| f(b)-f(a) \right|\left|(b-a) \right|\left|f'((1-\lambda)a+\lambda b)\right|\\
+      &\le \left| f(b)-f(a) \right|\left|(b-a) \right|\sup\left\{ \left|f'((1-\lambda)a+\lambda b) \right| \mid \lambda \in \interval{0}{1} \right\}\\
+    \end{array}
+    \]
+    We bekomen de gevraagde ongelijkheid:
+    \[
+    \begin{array}{rl}
+      \left| f(b)-f(a) \right|^{2}
+      &\le \left| f(b)-f(a) \right|\left|(b-a) \right|\sup\left\{ \left|f'((1-\lambda)a+\lambda b) \right| \mid \lambda \in \interval{0}{1} \right\}\\
+      \left| f(b)-f(a) \right|
+      &\le \left|(b-a) \right|\sup\left\{ \left|f'((1-\lambda)a+\lambda b) \right| \mid \lambda \in \interval{0}{1} \right\}\\
+      \frac{\left| f(b)-f(a) \right|}{\left|(b-a) \right|}
+      &\le \sup\left\{ \left|f'((1-\lambda)a+\lambda b) \right| \mid \lambda \in \interval{0}{1} \right\}\\
+    \end{array}
+    \]
+  \end{proof}
+\end{bpr}
+
+\TODO{definieer convergentie van functies in $\mathbb{C}$?}
+
+\begin{st}
+  Beschouw een rij $(f_{n})_{n}$ van afleidbare functies, gedefineerd op een convex, open deel $A$ van $\mathbb{C}$ met waarden in $\mathbb{C}$, die puntsgewijs convergeert naar een functie $f:\ A \rightarrow \mathbb{C}$.
+  Stel bovendien dat $(f'_{n})_{n}$ uniform convergeert op $A$, dan geldt:
+  \begin{itemize}
+  \item $f$ is afleidbaar.
+  \item $\forall a\in A:\ f'(a) = \lim_{n \rightarrow \infty}f'_{n}(a)$
+  \end{itemize}
+
+  \begin{proof}
+    Kies een willekeurige $a \in A$ en noteer $L= \lim_{n\rightarrow +\infty}f'_{n}(a)$.
+    We tonen het volgende aan, daarmee is ineens heel de stelling bewezen.
+    \begin{itemize}
+    \item Merk eerst het volgende op voor alle $x\in I$, verchillend van $a$ en alle $m\in \mathbb{N}$:
+      \[
+      \begin{array}{rl}
+        \left|\frac{f(x)-f(a)}{x-a}-L\right|
+        &\le \left| \frac{f(x)-f(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a} \right|\\
+        & +  \left| \frac{f_{m}(x)-f_{m}(a)}{x-a} -f'_{m}(a) \right|\\
+        & +  \left| f'_{m}(a)-L \right|\\
+      \end{array}
+      \]
+    \item Kies een willekeurigie $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Omdat $(f'_{n})_{n}$ uniforum convergeert op $A$ kunnen we een $n_{0}\in \mathbb{N}$ vinden als volgt:
+      \[ \forall n,m\in \mathbb{N}:\ \forall y\in A:\ \left| f'_{n}(y)-f'_{m}(y) \right| < \frac{\epsilon}{3} \]
+      We vinden zo de volgende afschatting voor alle $x\in A$, verschillend van $a$ en voor alle $n,m\in \mathbb{N}$:\prref{pr:lagrange-achtig-in-c}\question{hoe precies volgt deze afschatting uit deze stelling?!}
+      \[ \left|\frac{f_{n}(x)-f_{n}(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right|
+      \le \sup\left\{ \left|f_{n}'((1-\lambda)a+\lambda x) - f_{m}'((1-\lambda)a+\lambda x)\right| \mid \lambda \in \interval{0}{1} \right\}\]
+      We weten bovendien het volgende:\question{hoe?!}
+      \[ \sup\left\{ \left|f_{n}'((1-\lambda)a+\lambda x) - f_{m}'((1-\lambda)a+\lambda x)\right| \mid \lambda \in \interval{0}{1} \right\} \le \left| f'_{n}(y)-f'_{m}(y) \right| \]
+      ... en vinden daarom dit:
+      \[ \forall x\in A, \forall n,m \in \mathbb{N}:\ x \neq a \wedge n,m\ge n_{0} \Rightarrow \left|\frac{f_{n}(x)-f_{n}(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right| < \frac{\epsilon}{3} \]
+      Nemen we hiervan de limiet van, voor $n$ gaande naar $+\infty$, dan vinden we het volgende:
+      \waarom
+      \[ \forall x\in A, \forall m \in \mathbb{N}:\ x \neq a \wedge m\ge n_{0} \Rightarrow \left|\frac{f(x)-f(a)}{x-a} - \frac{f_{m}(x)-f_{m}(a)}{x-a}\right| < \frac{\epsilon}{3} \]
+      
+    \item Omdat $\left(f'_{n}(a)\right)_{n}$ naar $L$ convergeert voor $n$ gaande naar $+\infty$ kunnen we een $n_{1}\in \mathbb{N}$ vinden zodat $|f'_{m}(a)-L|<\frac{\epsilon}{3}$ geldt.
+    \item Omdat elke $f_{m}$ afleidbaar is in $a$, kunnen we een $m$ kiezen en dan een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
+      \[ \forall x\in A:\ 0 < |x-a| < \delta \Rightarrow \left| \frac{f_{m}(x)-f_{m}(a)}{x-a}-f'_{m}(a) \right| < \frac{\epsilon}{3} \]
+    \item Uit de eerste opmerking volgt nu het volgende:
+      \[ \forall x\in A:\ 0 < |x-a| < \delta \Rightarrow \left|\frac{f(x)-f(a)}{x-a}-L\right| < \frac{\epsilon}{3} + \frac{\epsilon}{3}  + \frac{\epsilon}{3} = \epsilon \]
+    \end{itemize}
+  \end{proof}
+\extra{bewijs opnieuw bekijken en vragen stellen!}
+\end{st}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

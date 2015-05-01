@@ -1,0 +1,268 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+\section{Basisbegrippen}
+\label{sec:basisbegrippen}
+
+\begin{de}
+  Beschouw een functie $f: A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a\in A$ dat ook een ophopingspunt is van $A$.
+  We zeggen dat $f$ \term{afleidbaar} is in $a$ als de volgende limiet bestaat en eindig is:
+  \[ L = \lim_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h} \]
+  We noemen $L$ de \term{afgeleide} van $f$ in $a$ en noteren $L$ als $f'(a)$.
+  Als alle punten van $A$ ophopingspunten zijn van $A$ noemen we $f$ \term{afleidbaar} over $A$ als $f$ afleidbaar is in elke $x\in A$.
+  In dit geval definieren we de \term{afgeleide functie} $f$ als volgt:
+  \[ f':\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto f'(x) \]
+\end{de}
+
+\begin{st}
+  Equivalente definitie
+  \[ f'(a) = \lim_{x \rightarrow a}\frac{f(x)-f(a)}{x-a} \]
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  De afgeleide van een functie in een punt is uniek (omdat dat punt een ophopingspunt is).
+\extra{bewijs}
+\end{st}
+\begin{de}
+  We schrijven $f'$ soms als $Df$ en $f'(x)$ soms als $\frac{df(x)}{dx}$
+\end{de}
+
+\begin{vb}
+  De constante functie $f$ is afleidbaar en de afgeleide is overal $0$.
+  \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto c \]
+
+  \begin{proof}
+    Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+    \[ \frac{f(x+h)-f(x)}{h} = \frac{c-c}{h} = 0 \]
+    Nemen we de limiet van deze gelijkheid voor $h$ gaande naar $0$, dan bekomen we de stelling.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{n}$ voor een bepaalde $n \in \mathbb{N}_{0}$ is afleidbaar en heeft $f': \mathbb{R} \rightarrow \mathbb{R}:\ nx^{n-1}$ als afgeleide functie.
+  \begin{figure}[H]
+    \centering
+    \foreach \n in {1,...,4}{
+      \begin{tikzpicture}[scale=.5]
+        \begin{axis}[xmin=-2, xmax=2, ymin=-2, ymax=2]
+          \addplot[domain=-2:2,smooth]{x^\n};
+        \end{axis}
+      \end{tikzpicture}
+    }
+  \end{figure}
+
+  \begin{proof}
+    Bewijs door volledige inductie op $\mathbb{N}_{0}$.
+    \begin{itemize}
+    \item De bewering geldt voor $k=1$:\\
+      Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+      \[ \frac{f(x+h)-f(x)}{h} = \frac{x+h-x}{h}=1 = 1x^{0} \]
+      We nemen van beide kanten de limiet voor $h$ gaande naar $0$ om de stelling te bekomen.
+    \item Uit de bewering voor $k=n$ volgt de bewering voor $k+1$:\\
+      \extra{bewijs wanneer de kettingregel gezien is}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x}$ is afleidbaar met $f': \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto -\frac{1}{x^{2}}$.
+
+  \begin{proof}
+    Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+    \[
+    f'(x)
+    = \lim_{h \rightarrow 0}\frac{f(x+h)-f(x)}{h}
+    = \lim_{h \rightarrow 0}\frac{\frac{1}{x+h}-\frac{1}{x}}{h}
+    = \lim_{h \rightarrow 0}\frac{x-x-h}{hx^{2}+h^{2}x} = \frac{-h}{hx^{2}+h^{2}x}
+    = \lim_{h \rightarrow 0}-\frac{1}{x^{2}+hx}
+    = -\frac{1}{x^{2}}
+    \]
+    We nemen van beide kanten de limiet voor $h$ gaande naar $0$ om de stelling te bekomen.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De functie $f:\ \mathbb{R}_{0} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{x}$ is afleidbaar met $f': \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{2\sqrt{x}}$.
+
+  \begin{proof}
+    Kies een willekeurige $x \in \mathbb{R}$, dan geldt voor elke $h\in \mathbb{R}_{0}$ het volgende:
+    \[ 
+    \begin{array}{rl}
+    f'(x)
+    &= \lim_{h \rightarrow 0}\frac{f(x+h)-f(x)}{h}\\
+    &= \lim_{h \rightarrow 0}\frac{\sqrt{x+h}-\sqrt{x}}{h}\\
+    &= \lim_{h \rightarrow 0}\frac{\left(\sqrt{x+h}-\sqrt{x}\right)\left(\sqrt{x+h}+\sqrt{x}\right)}{h\left(\sqrt{x+h}+\sqrt{x}\right)}\\
+    &= \lim_{h \rightarrow 0}\frac{x+h-x}{h\left(\sqrt{x+h}+\sqrt{x}\right)}\\
+    &= \lim_{h \rightarrow 0}\frac{1}{\sqrt{x+h}+\sqrt{x}}\\
+    &= \frac{1}{2\sqrt{x}}\\
+  \end{array}
+    \]
+  \end{proof}
+\end{vb}
+
+\begin{tvb}
+  \label{tvb:absolute-waarde-niet-afleidbaar-in-0}
+  De functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x|$ is links-, en rechtsafleidbaar in $0$, maar de linker en rechter afgeleide zijn niet gelijk. $f$ is dus niet afleidbaar in $0$.
+  Elders is $f$ wel afleidbaar.
+  
+  \begin{proof}
+    \[ \lim_{h \underset{<}{\rightarrow} 0}\frac{|h|}{h} = -1 \quad\text{ en }\quad \lim_{h \underset{>}{\rightarrow} 0}\frac{|h|}{h} = 1 \]
+    \extra{elders wel afleidbaar}
+  \end{proof}
+\end{tvb}
+
+\begin{vb}
+  \label{vb:erge-functie-afleidbaar-in-0}
+  De volgende functie is enkel afleidbaar in $0$:
+  \[
+  f:\ \mathbb{R}\rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      x^{2} & \text{ als } x\in \mathbb{Q}\\
+      -x^{2} & \text{ als } x \not \in \mathbb{Q}
+    \end{array}
+  \right.
+  \]
+
+  \begin{proof}
+    In delen.
+    \begin{itemize}
+    \item $f$ is afleidbaar in $0$:\\
+      \[ \lim_{h \rightarrow 0}\frac{f(h) - f(0)}{h} = \lim_{h \rightarrow 0}h = 0 \]
+    \item $f$ is niet afleidbaar in elk ander punt:\\
+        \[
+        \frac{f(x+h)-f(x)}{h}
+        = \frac{\pm(x+h)^{2}\pm x^{2}}{h}
+        \]
+        Aangezien $x+h$ afgebeeldt wordt op een tegengesteld punt, afhankelijk van of het in $\mathbb{Q}$ of $\mathbb{R} \setminus \mathbb{Q}$ zit. 
+        De limiet voor $h$ gaande naar $0$ bestaat dus nooit wanneer $x^{2}$ verschillend is van $-x^{2}$.
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{tvb}
+  Als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ continu is in een punt $a$, betekent dit nog \textbf{niet} dat $f$ afleidbaar is in $a$.
+
+  \begin{proof}
+    Beschouw de functie $f:\ \mathbb{R} \rightarrow \mathbb{R}^{+}: x \mapsto |x|$.
+    $f$ is continu in $0$\vbref{vb:absolute-waardefunctie-continu}, maar niet afleidbaar in $0$.\tvbref{tvb:absolute-waarde-niet-afleidbaar-in-0}
+  \end{proof}
+\end{tvb}
+
+\TODO{mogelijke stellingen: $f$ onbeperkt afleidbaar dan geldt $f=0$ als $0=f(x)=f'(x)=f''(x)...$}
+\TODO{Bewijs of geef een tegenvoorbeeld voor al deze stellingen in $\mathbb{Q}$.}
+
+\begin{tvb}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ afleidbaar in een $a\in \mathbb{R}$, dan bestaat er \textbf{niet} noodzakelijk een open interval rond $a$ waarin $f$ continu is.
+
+  \begin{proof}
+    De volgende functie is enkel afleidbaar in $0$\vbref{vb:erge-functie-afleidbaar-in-0}, maar is in geen enkel open interval rond $0$ continu.\waarom
+  \end{proof}
+\feed
+\end{tvb}
+
+\begin{tvb}
+  Zelfs als een functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ overal afleidbaar is, hoeft de afgeleide functie nog \textbf{niet} continu te zijn.
+  \extra{tegenvoorbeeld}
+\end{tvb}
+
+\begin{tvb}
+   Er bestaat geen afleidbare functie $f:\ \mathbb{R} \rightarrow \mathbb{R}$ waarvoor $f'(x)=0$ voor $x<0$ en $f'(x)=1$ met $x \ge 0$ gelden.
+
+\extra{bewijs: hopelijk}
+\end{tvb}
+
+\begin{st}
+  Zij een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en $a$ een inwendig punt van $A$.
+  $f$ is afleidbaar in $a$ als en slechts er een $\lambda \in \mathbb{R}$, een $\delta \in \mathbb{R}_{0}^{+}$ en een functie $\phi:\ \interval[open]{-\delta}{\delta} \rightarrow \mathbb{R}$ als volgt:
+  \begin{itemize}
+  \item $\interval[open]{a-\delta}{a+\delta}\subseteq A$
+  \item $\phi(0) = 0$
+  \item $\forall h \in \interval[open]{-\delta}{\delta}:\ f(a+h) = f(a) + \lambda h + h\phi(h)$ 
+  \item $\phi$ is continu in $0$.
+  \end{itemize}
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Omdat $a$ een inwendig punt is van $A$, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat $\interval[open]{a-\delta}{a+\delta}\subseteq A$ geldt.
+      Kies $\lambda = f'(a)$ en definieer $\phi$ als volgt:
+      \[ \phi(h):\ \interval[open]{-\delta}{\delta} \rightarrow \mathbb{R}:\ h \mapsto 
+      \left\{
+      \begin{array}{cl}
+        \frac{f(a+h)-f(a)}{h}-f'(a) & \text{ als } h \neq 0\\
+        0 & \text{ als } h = 0\\
+      \end{array}
+      \right.
+      \]
+      Nu gelden per constructie al de eerste drie voorwaarden.
+      De continu\"iteit van $\phi$ in $0$ volgt nu meteen uit de afleidbaarheid van $f$ in $a$.\extra{hoe dan?}
+    \item $\Leftarrow$\\
+      We moeten bewijzen dat de volgende limiet bestaat.
+      \[ \lim_{h \rightarrow 0}\frac{f(a+h)-f(a)}{h} \]
+      Merk op dat het volgende geldt voor alle $h$ verschillend van $0$ die dicht genoeg (dichter dan $\delta$) bij $0$ liggen. 
+      \[ \frac{f(a+h)-f(a)}{h} = \frac{f(a) + \lambda h + h\phi(h)-f(a)}{h} = \lambda + \phi(h)\]
+      Bekijken we nu opnieuw die limiet, dan gebruiken we dat $\phi$ continu is in $0$\prref{pr:functie-continu-asa-limiet-is-beeld}:
+      \[ \lim_{h \rightarrow 0}\frac{f(a+h)-f(a)}{h} =\lambda + \lim_{h \rightarrow 0}\phi(h) = \lambda \]
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een afleidbare functie zofat $f'$ begrensd is, dan is $f$ uniforum continu.
+
+  \begin{proof}
+    $f'$ is begrensd, dus er bestaat een $M\in \mathbb{R}$ als volgt voor elke $a \in \mathbb{R}$:
+    \[ \left|\lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a}\right| \le M\]
+    Omdat de limiet begrensd is, moet ook het volgende gelden voor elke $x\in \mathbb{R}$ verschillend van $a$: \clarify{mag dit zomaar?!}
+    \[ \left|\frac{f(x)-f(a)}{x-a}\right| = \frac{|f(x)-f(a)|}{|x-a|} \le M \]
+    Dit betekent dat $|f(x)-f(a)|$ hoogstens een constante factor van $|x-a|$ verschilt:
+    \[ |f(x)-f(a)| \le M|x-a| \]
+    Kies nu een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\epsilon}{M}$.
+    Voor willekeurige $x,y \in \mathbb{R}$ volgt dan uit $|x-y|< \delta$ het volgende:
+    \[ |f(x)-f(y)| \le M|x-y| < M\delta = M\frac{\epsilon}{M} = \epsilon \]
+    $f$ is dus uniform continu.
+\feed
+  \end{proof}
+\end{st}
+
+\subsection{Meetkundige betekenis}
+\label{sec:meetk-betek}
+
+\begin{de}
+  Een \term{koorde} is een rechte tussen twee punten $(a,f(a))$ en $(a+h,f(a+h))$ op de grafiek van een functie.
+  \[ y = \frac{f(a+h) -f(a)}{h} (x-a) + f(a) \]
+\end{de}
+
+\begin{de}
+  De \term{raaklijn} aan een grafiek in een punt is de limiet van de koorde in dat punt van $h$ gaande naar nul.
+  \[ y = \lim_{h\rightarrow 0}\frac{f(a+h) -f(a)}{h} (x-a) + f(a) \]
+  We noemen de raaklijn de \term{eerste orde benadering} of de \term{standaard eerstegraadsbenadering} van $f$ rond $a$.
+\end{de}
+
+\begin{de}
+  Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een punt $a \in A$.
+  \begin{itemize}
+  \item Als $a$ een ophopingspunt is van $A \cap \interval[open left]{-\infty}{a}$ en de beperking van $f$ tot $A \cap \interval[open left]{-\infty}{a}$ afleidbaar is in $a$, dan noemen we $f$ \term{linksafleidbaar} in $a$.
+    We noemen de afgeleide van de beperkte functie in $a$ de \term{linkerafgeleide} $f'(a^{-})$ van $f$ in $a$.
+  \item Als $a$ een ophopingspunt is van $A \cap \interval[open right]{a}{+\infty}$en de beperking van $f$ tot $A \cap \interval[open left]{a}{+\infty}$ afleidbaar is in $a$, dan noemen we $f$ \term{rechtsafleidbaar} in $a$.
+    We noemen de afgeleide van de beperkte functie in $a$ de \term{rechterafgeleide} $f'(a^{+})$ van $f$ in $a$.
+  \end{itemize}
+\end{de}
+
+\begin{st}
+  $f$ is links-, respectievelijk rechtsafleidbaar in $a$ als en slechts de volgende limiet bestaat en eindig is.
+  \[ \lim_{h\overset{<}{\rightarrow} 0}\frac{f(a+h)-f(a)}{h} \quad\text{en}\quad \lim_{h\overset{>}{\rightarrow} 0}\frac{f(a+h)-f(a)}{h} \]
+\extra{bewijs}
+\end{st}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

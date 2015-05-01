@@ -1,0 +1,348 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Reeksen in $\mathbb{C}$}
+\label{sec:reeksen-mathbbc}
+
+\begin{de}
+  Zij $(x_{n})_{n}$ een rij in $\mathbb{C}$.
+  Hiermee construeren we een nieuwe rij $(s_{n})_{n}$ als volgt:
+  \[  s_{n} = \sum_{k=0}^{n}x_{k}  \]
+  Men noemt het stel $((x_{n})_{n}, (s_{n})_{n})$ de \term{reeks} van de rij $(x_{n})_{n}$ .
+  Men noemt $s_{n}$ de $n$-de \term{partieelsom} van de reeks en $x_{n}$ de $n$-de \term{term} van de reeks.
+\end{de}
+
+\begin{de}
+  Men koort het tupel $((x_{n})_{n}, (s_{n})_{n})$ vaak af met $\sum_{k}x_{k}$.
+\end{de}
+
+\begin{opm}
+  Het maakt natuurlijk niet uit met welk getal we de reeks/rij beginnen te nummeren.
+  De volgorde maakt wel uit. \needed
+\end{opm}
+
+\begin{de}
+  We zekken dat een reeks $((x_{n})_{n}, (s_{n})_{n})$ convergeert in $\mathbb{C}$ als de rij $(s_{n})_{n}$ een limiet heeft in $\mathbb{C}$.
+  Men noteert die limiet dan als $\sum_{k=0}^{\infty}x_{k}$.
+\end{de}
+
+\begin{vb}
+  De volgende reeks convergeert als en slechts als $p \in \mathbb{R}$ groter is dan $1$.
+  \[ \sum_{n}\frac{1}{n^{p}} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{bpr}
+  \label{pr:termen-van-convergente-reeks-naar-0}
+  Stel dat een reeks $\sum_{k}x_{k}$ convergeert, dan geldt $\lim_{n \rightarrow \infty}x_{n} = 0$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel dat $(x_{n})_{n}$ niet naar nul convergeert, dan geldt het volgende:
+    \[ \exists \epsilon \in R_{0}^{+},\ \forall n_{0}\in \mathbb{N},\ \exists n\in \mathbb{N}:\ n \ge n_{0} \wedge |x_{n}| \ge \epsilon \]
+    De reeks $\sum_{k}x_{k}$ kunnen we dan als volgt herschrijven:
+    \[ \lim_{n\rightarrow +\infty}\sum_{k=1}^{n}x_{n} = \lim_{n \rightarrow \infty}n\epsilon = +\infty \]
+    $\sum_{k}x_{k}$ kan dus niet convergeren.
+    \feed
+  \end{proof}
+\end{bpr}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+  Zie hieronder voor een tegenvoorbeeld.
+\end{tvb}
+
+\begin{de}
+  De \term{harmonische reeks} is de volgende reeks in $\mathbb{C}$.
+  \[ \sum_{n}\frac{1}{n} \]
+\end{de}
+
+\begin{st}
+  \label{st:termen-harmonische-reeks-naar-nul}
+  De termen van de harmonische reeks gaan naar nul.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  De harmonische reeks convergeert niet.
+
+  \begin{proof}
+    Bekijk de eerste paar partieelsommen:
+    \[
+    s_{1} = \frac{1}{1}\quad
+    s_{2} = 1 + \frac{1}{2}\quad
+    s_{4} = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4}\quad
+    s_{8} = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}
+    \]
+    Merk nu het volgende op:
+    \[ \frac{1}{3} + \frac{1}{4} \ge \frac{1}{4} + \frac{1}{4} = \frac{1}{2} \quad\text{en in het bijzonder: }\quad \forall m\in \mathbb{N}:\ \sum_{i=2^{m}}^{2^{m+1}}\frac{1}{i} \le 2^{m}\frac{1}{2^{m+1}} = \frac{1}{2} \]
+    We vinden het volgende:
+    \[ \lim_{n\rightarrow +\infty}\sum_{i=1}^{n}\frac{1}{i} \le \lim_{n\rightarrow +\infty} 1+ \log_{2}(n)\frac{1}{2} = +\infty \]
+\feed
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \label{st:criterium-leibniz}
+  Het \term{Criterium van Leibniz}\\
+  Beschouw een dalende rij $(x_{n})_{n}$ van positieve getallen die naar nul gaat, dan convergeert $\sum_{n}(-1)^{n}x_{n}$.
+
+  \begin{proof}
+    Noteer met $(s_{n})_{n}$ de rij van partieelsommen.
+    Voor alle $n\in \mathbb{N}$ vinden we het volgende:
+    \[ s_{2n} = s_{2(n-1)} - (x_{2n-1}-x_{2n}) \]
+    \[ s_{2n+1} = s_{2(n-1)+1} + (x_{2n}-x_{2n+1}) \]
+    $(s_{2n})_{n}$ is dus een dalende rij en $(s_{2n+1})_{n}$ een stijgende rij.
+    Bovendien geldt $s_{2n+1} = s_{2n}-x_{2n+1}$ zodat $s_{2n+1}$ voor alle $n\in \mathbb{N}$ kleiner is dan, of gelijk aan $s_{2n}$.
+    Samen levert dit dat $(s_{2n})_{n}$ naar onder begrensd is, $(s_{2n+1})_{n}$ naar boven begrensd is en dat $sup_{n}s_{2n+1} \le \inf_{n}s_{2n}$ geldt.\question{hoe werkt die notatie?}
+    Omdat $s_{2n}-s_{2n+1} = x_{2n+1}$ geldt, en $(x_{2n+1})$ naar $0$ convergeert (omdat $(x_{n})_{n}$ naar nul convergeert), moet $sup_{n}s_{2n+1} = \inf_{n}s_{2n}$ gelden.
+    Dit getal is dus de limiet van $(s_{n})_{n}$ voor $n$ gaande naar oneindig.
+    \[ \lim_{n \rightarrow +\infty}s_{2n+1} = \lim_{n \rightarrow +\infty}s_{2n} = \lim_{n \rightarrow +\infty}s_{n} \]
+    $\sum_{n}(-1)^{n}x_{n}$ is dus convergent.
+  \end{proof}
+\end{st}
+
+\begin{de}
+  De \term{alternerende harmonische reeks} is de volgende reeks in $\mathbb{C}$.
+  \[ \sum_{n}(-1)^{n}\frac{1}{n} \]
+\end{de}
+
+\begin{st}
+  De alternerende harmonische reeks convergeert.
+
+  \begin{proof}
+    De termen van de harmonische reeks convergeren naar $0$.\stref{st:termen-harmonische-reeks-naar-nul}
+    Wanneer we er alternerend een min en een plus tussen zetten, moet de bekomen reeks convergeren.\stref{st:criterium-leibniz}
+  \end{proof}
+\end{st}
+
+\extra{voorbeeld van volgorde van termen maakt uit p 4}
+\extra{procedure om om het even welke limiet te bekomen.}
+
+\begin{de}
+  \label{de:absoluut-convergent}
+  Men noemt een reeks $\sum_{n}x_{n}$ in $\mathbb{C}$ \term{absoluut convergent} als de reeks $\sum_{n}|x_{n}|$ convergent is (in $\mathbb{R}$).
+\end{de}
+
+\begin{vb}
+  De volgende reeks (met $z\in \mathbb{C}$) convergeert absoluut als $|z|$ kleiner is dan $1$ en anders helemaal niet
+  \[ \sum_{n}z^{n} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{bpr}
+  Een absoluut convergente reeks is convergent.
+
+  \begin{proof}
+    Zij $\sum_{n}x_{n}$ een absoluut convergente reeks.
+    Noteer de rij van partieelsommen van $\sum_{n}x_{n}$ als $(s_{n})_{n}$ en die van $\sum_{n}|x_{n}|$ als $(t_{n})_{n}$.
+    We vinden nu voor alle $n\in \mathbb{N}$ en $p\in \mathbb{N}_{0}$ het volgende:
+    \[
+    |s_{n+p} - s_{n}|
+    = \left| \sum_{k=n+1}^{n+p}x_{k} \right|
+    \le \sum_{k=n+1}^{n+p}|x_{k}|
+    = |t_{n+p}-t_{n}|
+    \]
+    Vermits de reeks absoluut convergeert, convergeert de rij $(t_{n})_{n}$\deref{de:absoluut-convergent} en is ze dus een cauchyrij.\prref{pr:convergent-dan-cauchy}
+    Uit bovenstaande afschatting volgt dat $(s_{n})_{n}$ ook een Cauchyrij is en dus convergent.\stref{st:cauchyrij-in-C-asa-convergent}
+  \end{proof}
+\end{bpr}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+\extra{tegenvoorbeeld}
+\end{tvb}
+
+\begin{bst}
+  Zij $\sum_{n}x_{n}$ een absoluut convergente reeks in $\mathbb{C}$.
+  Zij $\pi:\ \mathbb{N} \rightarrow \mathbb{N}$ een bijectie, dan convergeert de reeks $\sum_{n}x_{\pi(n)}$ en de limiet ervan is dezelfde als die van de reeks $\sum_{n}x_{n}$.
+
+  \begin{proof}
+    Noteer:
+    \[
+    s_{n} = \sum_{k=1}^{n}x_{k},\quad
+    s=\lim_{n\rightarrow +\infty}s_{n}\quad
+    \text{ en }\quad
+    t_{n} = \sum_{k=1}^{n}x_{\pi(k)}
+    \]
+    Kies een $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $\sum_{n}x_{n}$ absoluut convergeert, kunnen we een $n_{0}\in \mathbb{N}$ vinden als volgt:
+    \[ \forall p\in \mathbb{N}:\ p \ge n_{0}\Rightarrow \sum_{k=n_{0}+1}^{p}|x_{k}| < \epsilon \]
+    Kies nu $q_{0}$ groot genoeg, zodat het volgende geldt:
+    \[ \{ 1,2,\dotsc,n_{0} \} \subseteq \{ \pi(1), \pi(2), \dotsc, \pi(q_{0}) \} \]
+    Kies nu een willekeurige $q\in \mathbb{N}$, groter dan $q_{0}$.
+    We vinden het volgende:
+    \[ \forall m\in \mathbb{N}:\ m\ge \max\{\pi(j)\mid j\in \{1,2,\dotsc q\} \} \Rightarrow |s_{m}-t_{q}| = \left| \sum_{k=0}^{m}x_{k} - \sum_{j=0}^{q}x_{\pi(j)}\right| \le \sum_{k=n_{0}+1}^{m}|x_{k}| < \epsilon \]
+    Neem hiervan de limiet voor $m$ gaande naar $+\infty$.
+    Dit levert het volgende:
+    \[ \forall q\in \mathbb{N}:\ q \ge q_{0} \Rightarrow |s-t_{q}| \le \epsilon \]
+    Dit bewijst dat $(t_{q})_{q}$ convergeert naar $s$.
+  \end{proof}
+\end{bst}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ een rij in $\mathbb{C}$ zodat voor alle bijecties $\pi:\ \mathbb{N} \rightarrow \mathbb{N}$, de reeks $\sum_{n}x_{\pi(n)}$ convergeert, dan moet de reeks $\sum_{n}x_{n}$ absoluut convergeren.
+\extra{bewijs}
+\end{st}
+
+\begin{bst}
+  \label{st:vergelijkingstest}
+  De \term{vergelijkingstest}\\
+  Zij $(x_{n})_{n}$ een rij in $\mathbb{C}$ en $(y_{n})_{n}$ een rij in $\mathbb{R}^{+}$.
+  Stel dat er een $n\in \mathbb{N}$ bestaat zodat voor alle volgende $n\in \mathbb{N}$ $|x_{n}| < y_{n}$ geldt, dan convergeert $\sum_{n}x_{n}$ absoluut als $\sum_{n}y_{n}$ convergeert.
+
+  \begin{proof}
+    Noteer:
+    \[ 
+    s_{n} = \sum_{k=0}^{n}|x_{n}|,\quad
+    \text{ en }\quad
+    t_{n} = \sum_{k=0}^{n}y_{n}
+    \]
+    We vinden het volgende:
+    \[ \forall n,m\in \mathbb{N}:\ m \ge n_{0} \wedge n > m \Rightarrow |s_{n}-s_{m}| = \sum_{k=m+1}^{n}|x_{k}| \le \sum_{k=m+1}^{n}y_{k} = |t_{n}-t_{m}| \]
+    Omdat $\sum_{n}y_{n}$ convergent is, is $(t_{n})_{n}$ een Cauchyrij.\prref{pr:convergent-dan-cauchy}
+    Uit bovenstaande afschatting volgt dan dat $(s_{n})_{n}$ ook een Cauchyrij is en dus convergent.\stref{st:cauchyrij-in-C-asa-convergent}
+    Bijgevolg convergeert $\sum_{n}|x_{n}|$.
+  \end{proof}
+\end{bst}
+
+\begin{vb}
+  De volgende reeks is absoluut convergent:
+  \[ \sum_{n}\frac{(-1)^{n}n}{n^{3}+1} \]
+  
+  \begin{proof}
+    We weten dat het volgende geldt voor $n\ge 1$
+    \[
+    \left| \frac{(-1)^{n}n}{n^{3}+1} \right|
+    = \frac{|n|}{|n^{3}+1|}
+    \le \frac{1}{n^{2}+ \frac{1}{n}}
+    \le \frac{1}{n^{2}} \]
+    Vanuit de vergelijkingstest weten we dan dat de reeks absoluut convergeert omdat $\sum_{n}\frac{1}{n^{2}}$ convergeert.\stref{st:vergelijkingstest}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De volgende reeks convergeert niet.
+  \[ \sum_{n}\frac{n}{\sqrt{n^{3}+1}} \]
+
+  \begin{proof}
+    We weten dat het volgende geldt voor $n\ge 1$
+    \[
+    \left| \frac{n}{\sqrt{n^{3}+1}}\right|
+    = \frac{n}{\sqrt{n^{3}+1}}
+    = \frac{1}{\sqrt{n + \frac{1}{n^{2}}}}
+    \ge \frac{1}{2\sqrt{n}}
+    \]
+    Vanuit de vergelijkingstest weten we dan dat de reeks niet convergeert omdat $\sum\frac{1}{2\sqrt{n}}$ niet convergeert.\stref{st:vergelijkingstest}
+    \question{kunnen we die laatste stap niet weglaten?}
+  \end{proof}
+\end{vb}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ rijen in $\mathbb{R}_{0}^{+}$ zodat $\lim_{n\rightarrow +\infty}\frac{x_{n}}{y_{n}}$ bestaat, eindig en niet nul is.
+  $\sum_{n}x_{n}$ convergeert als en slechts als $\sum_{n}y_{n}$ convergeert.
+
+  \begin{proof}
+    Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$, dan bestaat er een $n_{0} \in \mathbb{N}$ als volgt:
+    \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow \left|\frac{x_{n}}{y_{n}} - z\right| < \epsilon \]
+    Equivalent met de laatste ongelijkheid zijn deze:
+    \[ -\epsilon < \frac{x_{n}}{y_{n}} - z < \epsilon \]
+    \[ y_{n}(-\epsilon + z) < x_{n} < y_{n}(\epsilon + z) \]
+    Vanaf die $n_{0}$ geldt dus voor alle grotere $n\in \mathbb{N}$ zowel $x_{n}< y_{n}(\epsilon + z)$ als $y_{n}< \frac{1}{-\epsilon+z}x_{n}$.
+    Uit de vergelijkingstest volgt dat $\sum_{n}x_{n}$ convergeert als $\sum_{n}y_{n}$ convergeert vanuit de eerste ongelijkheid en dat $\sum_{n}y_{n}$ convergeert als $\sum_{n}x_{n}$ convergeert vanuit de tweede ongelijkheid.\stref{st:vergelijkingstest}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \label{st:verhoudingstest-dalembert}
+  De \term{verhoudingstest van d'Alembert}\\
+  Beschouw een reeks $\sum_{n}x_{n}$ in $\mathbb{C}$ met alle termen verschillend van nul.
+  \begin{itemize}
+  \item Als $\limsup_{n\rightarrow \infty}\left| \frac{x_{n+1}}{x_{n}}\right|$ kleiner is dan $1$, dan convergeert de reeks asoluut.
+  \item Als er een $n_{0}$ bestaat zodat $\left| \frac{x_{n+1}}{x_{n}}\right|$ groter wordt dan $1$ voor alle volgende $n\in \mathbb{N}$, dan convergeert de reeks niet.
+  \end{itemize}
+
+  \begin{proof}
+    Twee delen:
+    \begin{itemize}
+    \item Als $\limsup_{n\rightarrow \infty}\left| \frac{x_{n+1}}{x_{n}}\right| < 1$ geldt, kunnen we een $r\in \interval[open]{0}{1}$ vinden als volgt:
+      \[ \limsup_{n\rightarrow \infty}\left| \frac{x_{n+1}}{x_{n}}\right| < r < 1 \]
+      Er bestaat dan een $n_{0}\in \mathbb{N}$ als volgt:\waarom
+      \[ k \ge n_{0} \Rightarrow \frac{|x_{k+1}|}{|x_{k}|} < r \]
+      Dit impliceert het volgende:
+      \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |x_{n}| < r|x_{n-1}| < r^{2}|x_{n-2}| < \dotsb < r^{n-n_{0}}|x_{n_{0}}| = (r^{-n_{0}}|x_{n_{0}}|)r^{n} \]
+      Omdat $r$ kleiner is dan $1$, convergeert de reeks $\sum_{n}(r^{-n_{0}}|x_{n_{0}}|)r^{n}$.
+      Uit de vergelijkingstes volgt dan dat $\sum_{n}x_{n}$ absoluut convergeert.\stref{st:vergelijkingstest}
+    \item Als $\frac{|x_{n+1}|}{|x_{n}|} \ge 1$ geldt vanaf een zekere $n$, zal het volgende gelden:
+      \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |x_{n}| \ge |x_{n_{0}}| \]
+      Omdat $x_{n_{0}}$ niet nul is, zal $(x_{n})_{n}$ niet naar $0$ convergeren en kan de reeks dus ook niet convergeren.\prref{pr:termen-van-convergente-reeks-naar-0}
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{opm}
+  Als $\lim_{n\rightarrow \infty}\left|\frac{x_{n+1}}{x_{n}}\right| = 1$ geldt, doet de verhoudingstest geen uitspraak.
+\extra{waarom?} voorbeelden.
+\end{opm}
+
+\begin{vb}
+  Beschouw de volgende reeks in $\mathbb{C}$ voor een willekeurige $z\in \mathbb{C}$.
+  \[ \sum_{n}\frac{z^{n}}{n!} \]
+  We toetsen met de verhoudingstest of deze reeks convergeert.
+
+  \begin{proof}
+    Voor $z=0$ is de convergentie triviaal.
+    Beschouw daarom het geval $z \neq 0$.
+    \[ \lim_{n\rightarrow +\infty}\frac{\frac{|z^{n+1}|}{(n+1)!}}{\frac{|z^{n}|}{n!}} = \lim_{n \rightarrow +\infty }\frac{|z|}{n+1} = 0 \]
+    Bijgevolg geldt hetzelfde voor $\limsup$ \question{... gok ik? wat hier staat is toch niet hetzelfde als in de stelling?} en convergeert de reeks absoluut.\stref{st:verhoudingstest-dalembert}
+  \end{proof}
+\end{vb}
+
+\begin{st}
+  \label{st:worteltest-cauchy}
+  De \term{Worteltest van Cauchy}\\
+  Beschouw een reeks $\sum_{n}x_{n}$ in $\mathbb{C}$ en noem $L= \limsup_{n\rightarrow \infty}\sqrt[n]{|x_{n}|}$.
+  \begin{itemize}
+  \item Als $L<1$ geldt, dan convergeert de reeks absoluut.
+  \item Als $L>1$ geldt, dan convergeert de reeks niet.
+  \end{itemize}
+
+  \begin{proof}
+    Twee delen.
+    \begin{itemize}
+    \item Als $L$ kleiner is dan $1$ kunnen we een $r\in \interval[open]{L}{1} \cap \interval[open]{0}{1}$ nemen.
+      Er bestaat dus een $n_{0}\in \mathbb{N}$ als volgt:
+      \[ \forall k\in \mathbb{N}:\ k \ge n_{0} \Rightarrow \sqrt[k]{|x_{k}|} < r \]
+      We herschrijven dit als volgt:
+      \[ \forall k\in \mathbb{N}:\ k \ge n_{0} \Rightarrow |x_{k}| < r^{k} \]
+      De absolute convergente volgt nu uit de vergelijkingstest.\stref{st:vergelijkingstest}
+    \item Als $L$ groter is dan $1$ geldt per definite het volgende:
+      \[ \forall n\in \mathbb{N}:\ \sup_{k\ge n}\sqrt[k]{|x_{k}|} > 1 \]
+      Voor elke $n$ bestaat er dus een $k\ge n$ zodat $\sqrt[k]{|x_{k}|}$ groter is dan $1$ en $|x_{k}|$ dus ook.
+      $(x_{n})_{n}$ kan dan niet naar $0$ convergeren en de reeks dus ook niet.\prref{pr:termen-van-convergente-reeks-naar-0}
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{opm}
+  Als $\limsup_{n\rightarrow \infty}\sqrt[n]{|x_{n}|}= 1$ geldt, doet de wortel geen uitspraak.
+  Immers, voor $\sum_{n}\frac{1}{n}$ geldt $\limsup_{n}\sqrt[n]{|x_{n}|} = 1$ en de reeks niet, maar voor $\sum_{n}\frac{1}{n^{2}}$ geldt dit ook en die reeks convergeert wel.
+\end{opm}
+
+\extra{voorbeelden p 10}
+
+\begin{st}
+  De worteltest is fijner dan de verhoudingstest.
+\extra{formuleer p 11 en bewijs}
+\end{st}
+
+
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
