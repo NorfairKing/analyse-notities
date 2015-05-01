@@ -22,6 +22,22 @@
 \end{de}
 
 
+\begin{st}
+  Zij $f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}$ een stijgende concave functie zodat $f(t)$ nul is als en slechts als $t$ nul is.
+  Zij $X,d$ een metrische ruimte, dan is $d_{f} = f\circ d$ een metriek op $X$.
+
+  \begin{proof}
+    We gaan alle eigenschappen na.
+    \begin{itemize}
+    \item $d_{f}$ is symmetrisch: evident.
+    \item $d_{f}$ is nul als en slechts als de argumenten gelijk: aanname.
+    \item $d_{f}$ voldoet aan de driehoeksongelijkheid:
+      \[ f(d(x,z)) \le f(d(x,y) + d(y,z)) \]
+\TODO{en nu?}
+    \end{itemize}
+  \end{proof}
+\end{st}
+
 \subsection{Begrensde verzamelingen}
 \label{sec:begr-verz}
 
@@ -127,19 +143,6 @@
   \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall a,b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
 \end{de}
 
-\begin{vb}
-  Zij $d_{X}$ de triviale metriek voor een verzameling $X$, is elke functie $f:\ X \rightarrow Y$ met $Y,d_{Y}$ een metrische ruimte, continu.
-\extra{bewijs}
-\end{vb}
-
-\begin{vb}
-  Beshouw $I$ als volgt:
-  \[ I:\ C(\interval{a}{b}) \Rightarrow \mathbb{R}:\ f \mapsto \int_{a}^{b}f(x)dx \]
-  Beschouw op $C(\interval{a}{b}$ de $d_{\infty}$ metriek.
-  $I$ is continu.
-  \extra{bewijs}
-\end{vb}
-
 \begin{de}
   Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, dan noemen we een funcie $f:\ X \rightarrow Y$ een \term{contractie} als het volgende geldt:
   \[ \forall x,y\in X:\ d_{Y}(f(x),f(y)) \le d_{X}(x,y) \]
@@ -163,7 +166,10 @@
 
 \begin{st}
   Elke isometrie is injectief.
-\TODO{bewijs}
+
+  \begin{proof}
+    Kies twee elementen $x$ en $y$ uit $V$ met hetzelfde beeld $z\in W$ omdat $d(z,z)$ nul is, en omdat $f$ een isometrie is, moet $d(x,y)$ nul zijn en $x$ en $y$ dus gelijk zijn.
+  \end{proof}
 \end{st}
 
 \begin{de}

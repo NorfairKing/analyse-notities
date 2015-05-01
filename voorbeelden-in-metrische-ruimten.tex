@@ -5,14 +5,73 @@
 \label{sec:voorb-metr-ruimt}
 
 
+\subsection{De discrete metriek}
+\label{sec:de-discrete-metriek}
+
+\begin{vb}
+  Zij $X$ een willekeurige, niet-lege verzameling.
+  De \term{discrete metriek} of \term{triviale metriek} op $X$ wordt gegeven als volgt.
+  \[
+  d_{X}:\ X \times X \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto
+  \begin{cases}
+    0 &\text{ als } x = y\\
+    1 &\text{ als } x \neq y
+  \end{cases}
+  \]
+  $X,d_{X}$ vormt een metrische ruimte.
+\end{vb}
+
+\begin{st}
+  Elke verzameling is begrensd voor de discrete metriek.
+
+  \begin{proof}
+    Inderdaad, de afstand tussen twee elementen is nooit groter dan $1$.
+  \end{proof}
+\end{st}
+
+\begin{vb}
+  Een open bol rond $x\in \mathbb{R}$ met straal $\delta\in \mathbb{R}_{0}^{+}$ voor de gewone metriek ziet eruit als volgt:
+  \[ B(x,\delta) = 
+  \begin{cases}
+    \{x\} &\text{ als } r\le 1\\
+    X &\text{ als } r > 1
+  \end{cases}
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{st}
+  Elke deelverzameling $A$ van een verzameling $X$ is zowel open als gesloten voor de triviale metriek.
+\extra{bewijs}
+\end{st}
+
+
+\begin{vb}
+  Voor de triviale metriek $d_{X}$ voor een verzameling $X$, is elke functie $f:\ X \rightarrow Y$ met $Y,d_{Y}$ een metrische ruimte, continu.
+\extra{bewijs}
+\end{vb}
+
 \subsection{Metrieken op $\mathbb{R}$}
 \label{sec:metrieken-op-mathbbr}
+
+\subsubsection{De gewone metriek op $\mathbb{R}$}
+\label{sec:de-gewone-metriek}
 
 \begin{vb}
   $\mathbb{R}$, uitgerust met een metriek gebaseerd op de absolute-waardefunctie, is een metrische ruimte:
   \[ d:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d(x,y)=|x-y| \]
   Men noemt dit de \term{gewone metriek op $\mathbb{R}$}.
+\extra{bewijs}
+\end{vb}
 
+\begin{opm}
+  $\mathbb{R}$ is niet begrensd voor $d$.
+\extra{bewijs}
+\end{opm}
+
+\begin{vb}
+  Een open bol rond $x\in \mathbb{R}$ met straal $\delta\in \mathbb{R}_{0}^{+}$ voor de gewone metriek ziet eruit als volgt:
+  \[ B(x,\delta) = \interval[open]{x-\delta}{x+\delta} \]
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1.5]
@@ -22,11 +81,12 @@
     \end{tikzpicture}
     \caption{Een open bol in $\mathbb{R},d$}
   \end{figure}
+\extra{bewijs}
 \end{vb}
 
-\begin{opm}
-  $\mathbb{R}$ is duidelijk niet begrensd voor $d$.
-\end{opm}
+
+\subsubsection{De $d_1$-metriek op $\mathbb{R}$}
+\label{sec:d_1-metriek-op}
 
 \begin{vb}
   $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
@@ -56,7 +116,7 @@
 \end{vb}
 
 \begin{st}
-  Voor de $d_{1}$ metriek hierboven is $\mathbb{R}$ begrensd.
+  Voor de $d_{1}$ metriek is $\mathbb{R}$ begrensd.
   \begin{proof}
     Kies willekeurig $x,y\in\mathbb{R}$ en kies $M=1\in \mathbb{R}^{+}$, dan geldt het volgende:
     \[ d_{1}(x,y) = \frac{|x-y|}{1+|x-y|} < M \]
@@ -64,12 +124,29 @@
 \end{st}
 \extra{vindt de diameter}
 
+\begin{vb}
+  Een open bol rond $x\in \mathbb{R}$ met straal $\delta\in \mathbb{R}_{0}^{+}$ voor de $d_{1}$-metriek ziet eruit als volgt:
+  \[ B(x,\delta) = 
+  \begin{cases}
+    \mathbb{R} &\text{ als } r \ge 1\\
+    \interval[open]{x-\frac{r}{1-r}}{x+\frac{r}{1-r}}
+  \end{cases}
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{st}
+  Een deelverzameling $A$ van $\mathbb{R}$ is $d_{1}$-open als en slechts als ze open is voor de gewone metriek.
+\extra{bewijs}
+\end{st}
+
+\subsubsection{De $d_2$-metriek op $\mathbb{R}$}
+\label{sec:d_2-metriek-op}
 
 \begin{vb}
   $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
   \[ d_{2}:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d_{2}(x,y)=\left| \frac{x}{1+|x|} - \frac{y}{1+|y|} \right| \]
-
-\extra{bewijs algemener bij oef 1 van reeks VI.1.6}
+\extra{bewijs}
 \end{vb}
 
 \begin{st}
@@ -78,36 +155,35 @@
 \end{st}
 \extra{vindt de diameter}
 
+\mst{Een deelverzameling $A$ van $\mathbb{R}$ is $d_{2}$-open als en slechts als ze open is voor de gewone metriek.}
+
 \begin{vb}
-  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
-  \[ d_{\circ_{r}}:\ \mathbb{R} \times \mathbb{R} \rightarrow (x,y) \mapsto d_{\circ_{r}}(x,y) = r\sqrt{(\cos(x)-\cos(y))^{2} + (\sin(x)-\sin(y))^{2}} \]
-  \extra{is het echt een metriek?}
-
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-      \begin{axis}[ 
-        ticks=none,
-        axis lines = middle,
-        axis line style={->},
-        ymin=-1.5, ymax=1.5,
-        xmin=-1.5, xmax=1.5,
-        axis equal image,
-        disabledatascaling
-        ]
-        \draw (0,0) circle [radius=1];
-        \fill [fill=red] ++(5:1) circle [radius=0.02];
-        \draw [(-),color=red,thick] ++(50:1) arc (50:-40:1);
-        \draw ++(5:1.1) node {$a$};
-      \end{axis}
-    \end{tikzpicture}
-    \caption{Een open deel van $\mathbb{R},d_{0_{r}}$}
-  \end{figure}
-
+  $\mathbb{R},d_{2}$ en $\interval[open]{-1}{1},d$ zijn isometrisch.
+\extra{bewijs} 
 \end{vb}
+
+\subsubsection{De $d_3$-metriek op $\mathbb{R}$}
+\label{sec:d_3-metriek-op}
+
+\begin{vb}
+  De functie $d_{3}$ als volgt is een metriek voor $\mathbb{R}$.
+  \[
+  d_{3}:\ \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto
+  \begin{cases}
+    d_{3}(x,y) = |x-y| &\text{ als } x\neq 0 \neq y\\
+    d_{3}(x,0) = d(0,x) = 1 + |x| &\text{ als } x \neq 0\\
+    d_{3}(0,0) = 0
+  \end{cases}
+  \]
+\extra{bewijs}
+\end{vb}
+
 
 \subsection{Metrieken op $\mathbb{R}^p$}
 \label{sec:metr-op-mathbbrp}
+
+\subsubsection{De gewone metriek op $\mathbb{R}^p$}
+\label{sec:gewone-metriek-op}
 
 \begin{vb}
   $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
@@ -131,6 +207,8 @@
         \filldraw [ultra thick,fill=black!25!white, draw=black!20!white] (1.5,1.5) circle [radius=1];
         \fill [fill=black] (1.5,1.5) circle [radius=0.01];
         \draw (1.5,1.6) node {$a$};
+        \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+        \draw (1,1.6) node {$\delta$};
       \end{axis}
     \end{tikzpicture}
     \begin{tikzpicture}
@@ -148,11 +226,16 @@
         \filldraw [ultra thick,fill=black!25!white, draw=black!40!white] (1.5,1.5) circle [radius=1];
         \fill [fill=black] (1.5,1.5) circle [radius=0.01];
         \draw (1.5,1.6) node {$a$};
+        \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+        \draw (1,1.6) node {$\delta$};
       \end{axis}
     \end{tikzpicture}
     \caption{Een open bol en een gesloten bol in $\mathbb{R}^{2},d$}
   \end{figure}
 \end{vb}
+
+\subsubsection{De $d_1$- of city block metriek op $\mathbb{R}^p$}
+\label{sec:de-d_1-city}
 
 \begin{vb}
   $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
@@ -176,6 +259,8 @@
         \filldraw[ultra thick,fill=black!25!white, draw=black!20!white] (0.5,1.5) -- (1.5,2.5) -- (2.5,1.5) -- (1.5,0.5) -- cycle;
         \fill [fill=black] (1.5,1.5) circle [radius=0.01];
         \draw (1.5,1.6) node {$a$};
+        \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+        \draw (1,1.6) node {$\delta$};
       \end{axis}
     \end{tikzpicture}
     \begin{tikzpicture}
@@ -193,11 +278,85 @@
         \filldraw[ultra thick,fill=black!25!white, draw=black!40!white] (0.5,1.5) -- (1.5,2.5) -- (2.5,1.5) -- (1.5,0.5) -- cycle;
         \fill [fill=black] (1.5,1.5) circle [radius=0.01];
         \draw (1.5,1.6) node {$a$};
+        \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+        \draw (1,1.6) node {$\delta$};
       \end{axis}
     \end{tikzpicture}
     \caption{Een open bol en een gesloten bol in $\mathbb{R}^{2},d_{1}$}
   \end{figure}
 \end{vb}
+
+\begin{st}
+  Elke deelverzameling $A\subseteq \mathbb{R}^{p}$ is open voor de gewone metriek als en slechts als ze $d_{1}$-open is.
+
+  \begin{proof}
+    We moeten bewijzen dat er voor elke open bol $B(x,r)$ voor de gewone metriek een $d_{1}$-open bol $B_{1}(x,r_{1})$ bestaat met hetzelfde middelpunt die erin ligt en omgekeerd.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een open bol $B(x,r)$ voor de gewone metriek.
+      $B_{1}(x,r)$ voor de $d_{1}$ metriek is er dan een deel van:
+      \[ \forall x,y\in A:\ d_{1}(x,y)^{2} = \left(\sum_{i=1}^{p}|x_{i}-y_{i}|\right)^{2} \ge \sum_{i=1}^{p}|x_{i}-y_{i}| = d(x,y)^{2} \]
+      Als $d_{1}(x,y)$ dus kleiner is dan $r$ dan zal $d(x,y)$ dat ook zijn.
+
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+          \begin{axis}[ 
+            ticks=none,
+            axis lines = middle,
+            axis line style={->},
+            ymin=0, ymax=3,
+            xmin=0, xmax=3,
+            xlabel={$x_{1}$},
+            ylabel={$x_{2}$},
+            axis equal image,
+            disabledatascaling
+            ]
+            \filldraw [ultra thick,fill=black!25!white, draw=black!20!white] (1.5,1.5) circle [radius=1];
+            \filldraw[ultra thick,fill=black!50!white, draw=black!40!white] (0.5,1.5) -- (1.5,2.5) -- (2.5,1.5) -- (1.5,0.5) -- cycle;
+            \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+            \draw (1.5,1.6) node {$a$};
+            \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+            \draw (1,1.6) node {$\delta$};
+          \end{axis}
+        \end{tikzpicture}
+        \caption{Een illustratie in $\mathbb{R}^{2}$}
+      \end{figure}
+
+    \item $\Leftarrow$\\
+      Omgekeerd moeten we voor $r_{1}$ eenvoudigweg $\frac{r}{\sqrt{p}}$ nemen:
+      \[ \forall x,y \in A:\ B_{1}(x,r) = \sum_{i=1}^{p}|x_{i}-y_{i}| \le \sqrt{\sum_{i=1}^{p}1} \sqrt{\sum_{i=1}^{p}|x_{i}-y_{i}|} = \sqrt{p}d(x,y) \]
+
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+          \begin{axis}[ 
+            ticks=none,
+            axis lines = middle,
+            axis line style={->},
+            ymin=0, ymax=3,
+            xmin=0, xmax=3,
+            xlabel={$x_{1}$},
+            ylabel={$x_{2}$},
+            axis equal image,
+            disabledatascaling
+            ]
+            \filldraw[ultra thick,fill=black!25!white, draw=black!20!white] (0.5,1.5) -- (1.5,2.5) -- (2.5,1.5) -- (1.5,0.5) -- cycle;
+            \filldraw [ultra thick,fill=black!50!white, draw=black!40!white] (1.5,1.5) circle [radius=1/sqrt(2)];
+            \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+            \draw (1.5,1.6) node {$a$};
+            \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+            \draw (1,1.6) node {$\delta$};
+          \end{axis}
+        \end{tikzpicture}
+        \caption{Een illustratie in $\mathbb{R}^{2}$}
+      \end{figure}
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\subsubsection{De $d_\infty$- of maximummetriek op $\mathbb{R}^p$}
+\label{sec:de-d_infty-maxim}
 
 \begin{vb}
   $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
@@ -221,6 +380,8 @@
         \filldraw[ultra thick,fill=black!25!white, draw=black!20!white] (0.5,2.5) -- (2.5,2.5) -- (2.5,0.5) -- (0.5,0.5) -- cycle;
         \fill [fill=black] (1.5,1.5) circle [radius=0.01];
         \draw (1.5,1.6) node {$a$};
+        \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+        \draw (1,1.6) node {$\delta$};
       \end{axis}
     \end{tikzpicture}
     \begin{tikzpicture}
@@ -238,11 +399,84 @@
         \filldraw[ultra thick,fill=black!25!white, draw=black!40!white] (0.5,2.5) -- (2.5,2.5) -- (2.5,0.5) -- (0.5,0.5) -- cycle;
         \fill [fill=black] (1.5,1.5) circle [radius=0.01];
         \draw (1.5,1.6) node {$a$};
+        \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+        \draw (1,1.6) node {$\delta$};
       \end{axis}
     \end{tikzpicture}
     \caption{Een open bol en een gesloten bol in $\mathbb{R}^{2},d_{\infty}$}
   \end{figure}
 \end{vb}
+
+\begin{st}
+  Elke deelverzameling $A\subseteq \mathbb{R}^{p}$ is open voor de gewone metriek als en slechts als ze $d_{1}$-open is.
+
+  \begin{proof}
+    We moeten bewijzen dat er voor elke open bol $B(x,r)$ voor de gewone metriek een $d_{\infty}$-open bol $B_{\infty}(x,r_{1})$ bestaat met hetzelfde middelpunt die erin ligt en omgekeerd.
+    \begin{itemize}
+    \item $\Leftarrow$\\
+      Kies $r_{\infty} = \frac{1}{\sqrt{p}}r$:
+      \extra{bewijs}
+
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+          \begin{axis}[ 
+            ticks=none,
+            axis lines = middle,
+            axis line style={->},
+            ymin=0, ymax=3,
+            xmin=0, xmax=3,
+            xlabel={$x_{1}$},
+            ylabel={$x_{2}$},
+            axis equal image,
+            disabledatascaling
+            ]
+            \filldraw [ultra thick,fill=black!25!white, draw=black!20!white] (1.5,1.5) circle [radius=sqrt(2)+0.02];
+            \filldraw[ultra thick,fill=black!50!white, draw=black!40!white] (0.5,2.5) -- (2.5,2.5) -- (2.5,0.5) -- (0.5,0.5) -- cycle;
+            \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+            \draw (1.5,1.6) node {$a$};
+            \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+            \draw (1,1.6) node {$\delta$};
+          \end{axis}
+        \end{tikzpicture}
+        \caption{Een illustratie in $\mathbb{R}^{2}$}
+      \end{figure}
+
+    \item $\Rightarrow$\\
+      Kies $r = r_{\infty}$:
+      \extra{bewijs}
+
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+          \begin{axis}[ 
+            ticks=none,
+            axis lines = middle,
+            axis line style={->},
+            ymin=0, ymax=3,
+            xmin=0, xmax=3,
+            xlabel={$x_{1}$},
+            ylabel={$x_{2}$},
+            axis equal image,
+            disabledatascaling
+            ]
+            \filldraw[ultra thick,fill=black!25!white, draw=black!20!white] (0.5,2.5) -- (2.5,2.5) -- (2.5,0.5) -- (0.5,0.5) -- cycle;
+            \filldraw [ultra thick,fill=black!50!white, draw=black!40!white] (1.5,1.5) circle [radius=1];
+            \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+            \draw (1.5,1.6) node {$a$};
+            \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+            \draw (1,1.6) node {$\delta$};
+          \end{axis}
+        \end{tikzpicture}
+        \caption{Een illustratie in $\mathbb{R}^{2}$}
+      \end{figure}
+
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\subsubsection{De spoorwegmetriek op $\mathbb{R}^p$}
+\label{sec:de-spoorw-op}
 
 \begin{vb}
   $\mathbb{R}^{p}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
@@ -325,14 +559,28 @@
   Zij $X$ een gesloten, begrensd deel van $\mathbb{R}^{p}$. Dan noteren we met $C(X)$ de vectorruimte van de continue functies van $X$ naar $\mathbb{R}$.
 \end{de}
 
+\begin{de}
+  Zij $\interval{a}{b}$ een gesloten, begrensd interval in $\mathbb{R}$, dan noteren we met $C(\interval{a}{b})$ de vectorruimte van de continue functies van $\interval{a}{b}$ naar $\mathbb{R}$.
+\end{de}
+
 \begin{vb}
-  Zij $X$ een gesloten en begrensde deelverzameling van $\mathbb{R}^{p}$, dan is $C(X)$, uitgerust met de volgende functie als metriek,9 een metrische ruimte:
+  Zij $X$ een gesloten en begrensde deelverzameling van $\mathbb{R}^{p}$, dan is $C(X)$, uitgerust met de volgende functie als metriek, een metrische ruimte:
   \[ d_{\infty}:\ C(x)\times C(X)\rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto d_{\infty}(f,g) = \sup \{ |f(x)-g(x)| \mid x \in X \} \]
+
   \extra{bewijs}
+\end{vb}
+
+\begin{opm}
+  Merk op dat dit goed gedefinieerd is omdat $|f(x)-g(x)|$ voor continue functies op een gesloten, begrensd deel steeds begrensd blijft. \needed
+\end{opm}
+
+\begin{vb}
+  Een open bol $B(f,\delta)$ in $C(\interval{a}{b})$ ziet er als volgt uit:
+  \[ B(f,\delta) = \{ g \in C(\interval{a}{b} \mid  \forall x\in \interval{a}{b}:\ |g(x)-f(x)|< \delta \]
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=.75]
-      \begin{axis}[ymin=-0.5, ymax=4, xmin=-2.5, xmax=2.5, no markers]
+      \begin{axis}[ymin=-0.5, ymax=4, xmin=-2.9, xmax=2.9, no markers]
         \addplot[smooth,color=red,thick,domain=-3:-1]{-x};
         \addplot[smooth,color=red,thick,domain=-1:1]{x^2};
         \addplot[smooth,color=red,thick,domain=1:3]{x^3};
@@ -347,8 +595,47 @@
         \addplot[black!20] fill between[of=A and B];
       \end{axis}
     \end{tikzpicture}
-    \caption{ Een open bol in $C(\interval{3}{3})$ voor $p=1$. }
+    \caption{ Een illustratie van een open bol in $C(\interval{3}{3})$ rond een functie voor $p=1$. }
   \end{figure}
+
+  \noindent
+  Merk op dat dit slechts een illustratie is.
+  Elke functie die volledig binnen de $\delta$-strook ligt, ligt binnen de open bol.
+  Merk ook op dat de strook overal even breed is, ookal lijkt ze smaller voor een sterker stijgend deel van de functie.
+\end{vb}
+
+\begin{vb}
+  Zij $f_{1},f_{2}:\ \interval{0}{1} \rightarrow \mathbb{R}$ twee continue functies met de volgende eigenschap
+  \[ \forall t\in \interval{0}{1}:\ f_{1}(t) < f_{2}(t) \]
+  Benoem een deelverzameling $A$ van $C(\interval{0}{1})$ als volgt:
+  \[ A = \{ f\in C(\interval{0}{1}) \mid \forall t\in \interval{0}{1}:\ f_{1}(t) < f(t) < f_{2}(t) \} \]
+  $A$ is dan $d_{\infty}$ open.
+
+  \begin{proof}
+    Kies een willekeurige $f\in A$.
+    Voor alle $t\in \interval{0}{1}$ is $f(t) - f_{1}(t)$ strikt positief.
+    Omdat $f-f_{1}$ continu is\prref{pr:optelling-continu} en $\interval{0}{1}$ gesloten\stref{st:gesloten-interval-gesloten} en begrensd, bestaat er een $r_{1}\in\mathbb{R}_{0}^{+}$ zodat $\forall t\in \interval{0}{1}:\ f(t)-f_{1}(t) > r_{1}$ geldt.
+    Analoog bestaat er een $r_{2}\in \mathbb{R}^{+}$ zodat $\forall t\in \interval{0}{1}:\ f_{2}(t) -f(t) > r_{2}$
+    Noem nu $r=\min\{r_{1},r_{2}\}$ en kies een willekeurige $g\in B_{\infty}(f,r)$, dan geldt het volgende en zit $g$ dus in $A$.
+    \[ \forall t\in \interval{0}{1}:\ f_{1}(t) < f(t) - r_{1} \le f(t) - r < g(t) < f(t) + r \le f(t) + r_{2} < f_{2}(t) \]
+
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1, no markers]
+          \addplot[name path=A,smooth,color=red,ultra thick,domain=0:1]{sin(150*x+60)};
+          \addplot[name path=B,smooth,color=red,ultra thick,domain=0:1]{cos(150*x+60)};
+          \addplot[black!20] fill between[of=A and B];
+
+          \addplot[smooth,domain=0:1]{-1.45*x^2+0.75};
+          \addplot[name path=C,smooth,color=black!30,thick,domain=0:1]{-1.5*x^2+0.75+0.1};
+          \addplot[name path=D,smooth,color=black!30,thick,domain=0:1]{-1.5*x^2+0.75-0.1};
+          \addplot[black!40] fill between[of=C and D];
+        \end{axis}
+      \end{tikzpicture}
+      \caption{ Een illustratie van de situatie voor twee gekozen functies (rood), een willekeurige functie in $A$ (zwart) en een strook er rond om een open bol voor te stellen.}
+    \end{figure}
+  \end{proof}
 \end{vb}
 
 
@@ -356,6 +643,8 @@
   Een rij $(f_{n})_{n}$ in $C(X)$ zal volgens de $d_{\infty}$ metriek convergeren naar een $f\in C(X)$ als en slechts als $(f_{n})_{n}$ uniforum naar $f$ convergeert.
 
 \extra{bewijs: ookal is het al duidelijk}
+Hint uit les: zie forum, Eline heeft dit uitgeschreven.
+Let wel op de ongelijheid met het supremum.
 \end{st}
 
 \begin{vb}
@@ -397,9 +686,12 @@
   Volgens de $d_{1}$-metriek convergeert deze rij echer wel naar de nulfunctie.
 \end{vb}
 
-\begin{de}
-  Zij $\interval{a}{b}$ een gesloten, begrensd interval in $\mathbb{R}$, dan noteren we met $C(\interval{a}{b})$ de vectorruimte van de continue functies van $\interval{a}{b}$ naar $\mathbb{R}$.
-\end{de}
+\begin{vb}
+  Beschouw de functie $I$ als volgt:
+  \[ I:\ C(\interval{a}{b}) \rightarrow \mathbb{R}:\ f \mapsto \int_{a}^{b}f(x)\ dx \]
+  $I$ is continu als we op $C(\interval{a}{b})$ de $d_{\infty}$-metriek beschouwen en op $\mathbb{R}$ de gewone metriek.
+\extra{bewijs}
+\end{vb}
 
 \begin{vb}
   Zij $\interval{a}{b}$ een gesloten en begrensd interval, dan is $C(\interval{a}{b})$,, uitgerust met de volgende functie als metriek, een metrische ruimte:
@@ -408,37 +700,48 @@
 \end{vb}
 
 \begin{opm}
-  In deze metrische ruimte is het moeilijk om over open bollen te tekenen, het inwendige van een deel van $C(\interval{a}{b})$ is namelijk leeg.
+  In deze metrische ruimte is het moeilijk om open bollen te tekenen, het inwendige van een deel van $C(\interval{a}{b})$ is namelijk seeds leeg.
 \end{opm}
 
 \begin{vb}
   Zij $\interval{a}{b}$ een gesloten begrensd interval, dan is $C(\interval{a}{b})$, uitgerust met de volgende functie als metriek, een metrische ruimte:
   \[ d_{2}:\ C(\interval{a}{b})\times C(\interval{a}{b}) \rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto \sqrt{\int_{a}^{b}|f(x)-g(x)|dx} \]
+  \extra{bewijs}
+  Hint uit de les: het bewijs reduceert zich tot dit:
+  \[ \left|\int_{a}^{b}f(x)g(x)\right| < \left(\int_{a}^{b}f(x)^{2}\ dx \right) \left(\int_{a}^{b}g(x)^{2}\ dx \right) \]
+  Los hiervoor volgende ongelijkheid uit de genormeerde vectorruimte op met een discriminant.
+  \[ \left\| v+\lambda w \right\| > 0 \]
 \end{vb}
 
-\subsection{De discrete metriek}
-\label{sec:de-discrete-metriek}
-
 \begin{vb}
-  Zij $X$ een willekeurige, niet-lege verzameling.
-  De \term{discrete metriek} of \term{triviale metriek} op $X$ wordt gegeven als volgt.
-  \[
-  d:\ X \times X \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto
-  \begin{cases}
-    0 &\text{ als } x = y\\
-    1 &\text{ als } x \neq y
-  \end{cases}
-  \]
-  $X,d$ vormt een metrische ruimte.
+  De verzameling $A$ als volgt is een voorbeeld van een deel van $C(\interval{0}{1})$ dat begrensd is voor $d_{1}$, maar niet voor $d_{\infty}$.
+  \[ A = \{ f \in C(\interval{0}{1}) \mid \int_{0}^{1}f(x)dx = 1 \]
+
+  \begin{proof}
+    De $d_{1}$ afstand is begrensd door $1$, maar de $d_{2}$ afstand is onbegrensd.
+  \end{proof}
 \end{vb}
 
 \begin{st}
-  Elke verzameling is begrensd voor de discrete metriek.
-
-  \begin{proof}
-    Inderdaad, de afstand tussen twee elementen is nooit groter dan $1$.
-  \end{proof}
+  $\forall f,g \in C(\interval{a}{b}):\ d_{1}(f,g) \le d_{\infty}(f,g)$
+\extra{bewijs}
 \end{st}
+
+\begin{de}
+  Noem de verzameling functies $f:\ \mathbb{R} \rightarrow \mathbb{R}$ die in beide oneindigheden naar $0$ gaan: $C_{0}(\mathbb{R})$.
+\end{de}
+
+\begin{vb}
+  De functie $d$ als volgt, is niet alleen geen metriek voor $C_{0}(\mathbb{R})$, ze is ook niet goed gedefinieerd.
+  \[ \int_{-\infty}^{+\infty}|f(x)-g(x)|\ dx \]
+  De integraal bestaat immers niet steeds.
+\end{vb}
+
+\begin{vb}
+  De functie $d$ als volgt, is een metriek voor $C_{0}(\mathbb{R})$.
+  \[ d(f,g) = \int_{-\infty}^{+\infty}\frac{|f(x)-g(x)|}{1+x^{2}}\ dx \]
+ \extra{bewijs}
+\end{vb}
 
 
 \subsection{Het product van metrische ruimten}
@@ -466,6 +769,13 @@
 \begin{st}
   Een genormeerde vectorruimte $\mathbb{R},V,+,\|\cdot\|$, uitgerust met de volgende functie als metriek, vormt een metrische ruimte:
   \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto \|x-y\| \]
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  Equivalente definitie voor begrensde delen in een genormeerde vectorruimte:
+  Een deel $A$ van een genormeerde vectorruimte $\mathbb{R},V,+$ is begrensd als en slechts als er een $M \in \mathbb{R}^{+}$ bestaat als volgt:
+  \[ \forall x\in A:\ \|x\| \le M \]
 \extra{bewijs}
 \end{st}
 
@@ -551,6 +861,13 @@
   \end{proof}
 \end{pr}
 
+\begin{opm}
+  Het is belangrijk dat de deelverzamelingen waartussen we de afstand meten gesloten en begrensd zijn.
+  Stel immers dat \'e\'en ervan niet begrensd zou zijn, dan bestaat de Hausdorffafstand niet.
+  Een $r$-omhulling heeft immers een eindige $r$ nodig om zinvel te zijn.
+  Stel anderzijds dat de verzamelingen niet gesloten zouden zijn, dan bestaat het supremem in de definitie niet noodzakelijk.
+\end{opm}
+
 \begin{st}
   \[ \forall x,y \in \mathbb{R}^{p}:\ h(\{x\},\{y\}) = d(x,y) \]
 
@@ -574,6 +891,17 @@
 \begin{st}
   Een rij gesloten bollen $(B_{n})_{n}$ in $\mathbb{R}^{p}$ met middelpunten $x_{n}$ en stralen $r_{n}$ zal voor de Hausdorffmetriek convergeren naar een gesloten bol $B$ met middelpunt $x$ en straal $r$ als en slechts als $\lim_{n\rightarrow +\infty}x_{n}=x$ en $\lim_{n\rightarrow +\infty}r_{n} = r$ gelden.
 \extra{bewijs}
+Hint:
+\begin{proof}
+  \begin{lem}
+    $\forall r,s \in \mathbb{R}^{+}:\ \left[B\interval{x}{r}\right]_{s} = B\interval{x}{r+s}$
+  \end{lem}
+
+  \begin{lem}
+    $\forall r\in \mathbb{R}^{+}:\ B\interval{x}{r} \subseteq B\interval{y}{r+\|x-y\|}$
+  \end{lem}
+  Gevalsonderscheid.
+\end{proof}
 \end{st}
 
 \begin{st}

@@ -35,11 +35,16 @@
 
 \newenvironment{idee}{Idee:}{}
 
+
+\newcounter{todocounter}
+\newcommand{\todonum}[2][]{\stepcounter{todocounter}\todo[#1]{#2}}
+
+
 % Mooiere TODO's
-\newcommand{\TODO}[1]{\todo[color=red,inline,size=\small]{TODO: #1}}
-\newcommand{\extra}[1]{\todo[color=orange,inline,size=\small]{EXTRA: #1}}
-\newcommand{\clarify}[1]{\todo[color=yellow,inline,size=\small]{CLARIFY: #1}}
-\newcommand{\question}[1]{\todo[color=green,inline,size=\small]{QUESTION: #1}}
+\newcommand{\TODO}[1]{\todonum[color=red,inline,size=\small]{TODO: #1}}
+\newcommand{\extra}[1]{\todonum[color=orange,inline,size=\small]{EXTRA: #1}}
+\newcommand{\clarify}[1]{\todonum[color=yellow,inline,size=\small]{CLARIFY: #1}}
+\newcommand{\question}[1]{\todonum[color=green,inline,size=\small]{QUESTION: #1}}
 \newcommand{\mst}[1]{\extra{mogelijke stelling: #1}}
 
 \newcommand{\waarom}[0]{\clarify{waarom?}}
@@ -48,7 +53,7 @@
 \newcommand{\term}[1]{\index{#1}\textbf{#1}}
 \newcommand{\zb}[0]{{\footnotesize {\it Zonder bewijs\/}}}
 
-\newcommand{\feed}[0]{\todo[color=pink,inline,size=\small]{GET FEEDBACK}}
+\newcommand{\feed}[0]{\todonum[color=pink,inline,size=\small]{GET FEEDBACK}}
 
 % badges
 \newcommand{\bx}[1]{ \framebox[1.1\width]{#1} }
@@ -56,6 +61,7 @@
 \newcommand{\examenvraag}[1]{\bx{{\bf Examenvraag: #1 !}}\\}
 
 % Voor meer plaats tussen wiskunde
-\renewcommand{\arraystretch}{1.25}%  
+\renewcommand{\arraystretch}{1.25}
 
 \renewcommand{\qedsymbol}{$\square$}
+
