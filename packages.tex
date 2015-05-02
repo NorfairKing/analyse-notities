@@ -42,10 +42,9 @@
 \usepackage{pgfplots}
 \pgfplotsset{soldot/.style={only marks,mark=*}}                                         
 \pgfplotsset{holdot/.style={fill=white,only marks,mark=*}}
-\usetikzlibrary{external}
 \usepgfplotslibrary{fillbetween}
+\usetikzlibrary{external}
 \tikzexternalize[prefix=figures/]
-
 \makeatletter
 \renewcommand{\todo}[2][]{
     \tikzexternaldisable

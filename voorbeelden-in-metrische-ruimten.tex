@@ -166,6 +166,8 @@
 
 \mst{Een deelverzameling $A$ van $\mathbb{R}$ is $d_{2}$-open als en slechts als ze open is voor de gewone metriek.}
 
+\question{Hoe bewijzen we dat $d_{2}$ en $d$ topologisch equivalent zijn (lijkt evident) en hoe zien de open bollen eruit? (Die moeten toch assymmetrisch zijn...}
+
 \begin{vb}
   $\mathbb{R},d_{2}$ en $\interval[open]{-1}{1},d$ zijn isometrisch.
 \extra{bewijs} 
@@ -296,7 +298,7 @@
 \end{vb}
 
 \begin{st}
-  Elke deelverzameling $A\subseteq \mathbb{R}^{p}$ is open voor de gewone metriek als en slechts als ze $d_{1}$-open is.
+  $d$ en $d_{1}$ zijn topologisch equivalent op $\mathbb{R}^{p}$.
 
   \begin{proof}
     We moeten bewijzen dat er voor elke open bol $B(x,r)$ voor de gewone metriek een $d_{1}$-open bol $B_{1}(x,r_{1})$ bestaat met hetzelfde middelpunt die erin ligt en omgekeerd.
@@ -417,7 +419,7 @@
 \end{vb}
 
 \begin{st}
-  Elke deelverzameling $A\subseteq \mathbb{R}^{p}$ is open voor de gewone metriek als en slechts als ze $d_{1}$-open is.
+  $d$ en $d_{1}$ zijn topologisch equivalent op $\mathbb{R}^{p}$.
 
   \begin{proof}
     We moeten bewijzen dat er voor elke open bol $B(x,r)$ voor de gewone metriek een $d_{\infty}$-open bol $B_{\infty}(x,r_{1})$ bestaat met hetzelfde middelpunt die erin ligt en omgekeerd.
@@ -512,7 +514,7 @@
         axis equal image,
         disabledatascaling
         ]
-        \filldraw [ultra thick,fill=black!25!white, draw=black!20!white] (0,0) circle [radius=0.55];
+        \filldraw [ultra thick,fill=black!25!white, draw=black!20!white] (0,0) circle [radius=0.5];
         \fill [fill=black] (0.55,0.1) circle [radius=0.02];
         \draw [(-,color=black] (1.65,0.3) -- (0,0);
         \draw (0.55,0.2) node {$a$};
@@ -571,6 +573,9 @@
 \begin{de}
   Zij $\interval{a}{b}$ een gesloten, begrensd interval in $\mathbb{R}$, dan noteren we met $C(\interval{a}{b})$ de vectorruimte van de continue functies van $\interval{a}{b}$ naar $\mathbb{R}$.
 \end{de}
+
+\subsubsection{De supremum metriek}
+\label{sec:supremum-metriek}
 
 \begin{vb}
   Zij $X$ een gesloten en begrensde deelverzameling van $\mathbb{R}^{p}$, dan is $C(X)$, uitgerust met de volgende functie als metriek, een metrische ruimte:
@@ -703,14 +708,108 @@ Let wel op de ongelijheid met het supremum.
 \end{vb}
 
 \begin{vb}
+  Beschouw de deelverzameling $N$, als volgt, van $C(\interval{0}{1})$.
+  \[ N = \{ f \in C(\interval{0}{1}) \mid f(0) = 0 \} \]
+  Voor $d_{\infty}$ is $\mathring{N}$ is dan leeg en $\overline{N}$ is heel $N$.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item Kies willekeurig een $f\in N$ en willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$.
+      Beschouw de functie $g=f+\frac{\epsilon}{2}$.
+      $g$ zit dan in $C(\interval{0}{1})\setminus N$ en ligt op een afstand kleiner dan $\epsilon$ van $f$, maar zit niet in $N$.
+    \item De sluiting van $N$ is $N$ zelf want $N$ is $d_{\infty}$-gesloten.
+      Kies immers een rij $(f_{n})_{n}$ in $N$ die puntsgewijs (?!) naar een $f\in C(\interval{0}{1})$ convergeert.
+      Omdat $\forall n\in \mathbb{N}:\ |f_{n}(0)-f(0)| \le d_{\infty}(f_{n},f)$ geldt en $(f_{n})_{n}$ naar $f$ convergeert zal $(f_{n}(0))_{n}$ naar $f(0)$ convergeren.
+      Omdat $f_{n}(0)$ steeds nul is zal dus ook $f(0)$ nul zijn en $f$ dus in $N$ zitten.
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\subsubsection{De $d_1$-metriek op $C(\interval{0}{1})$}
+\label{sec:de-d_1-metriek}
+
+\begin{vb}
   Zij $\interval{a}{b}$ een gesloten en begrensd interval, dan is $C(\interval{a}{b})$,, uitgerust met de volgende functie als metriek, een metrische ruimte:
   \[ d_{1}:\ C(\interval{a}{b})\times C(\interval{a}{b}) \rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto \int_{a}^{b}|f(x)-g(x)|dx \]
 \extra{bewijs}
 \end{vb}
 
 \begin{opm}
-  In deze metrische ruimte is het moeilijk om open bollen te tekenen, het inwendige van een deel van $C(\interval{a}{b})$ is namelijk seeds leeg.
+  In deze metrische ruimte is het moeilijk om open bollen te tekenen, het inwendige van een deel van $C(\interval{a}{b})$ is namelijk steeds leeg.
 \end{opm}
+
+\begin{vb}
+  De verzameling $A$ als volgt is een voorbeeld van een deel van $C(\interval{0}{1})$ dat begrensd is voor $d_{1}$, maar niet voor $d_{\infty}$.
+  \[ A = \left\{ f \in C(\interval{0}{1}) \mid \int_{0}^{1}f(x)dx = 1 \right\}\]
+
+  \begin{proof}
+    De $d_{1}$ afstand is begrensd door $1$, maar de $d_{\infty}$ afstand is onbegrensd.
+    We kunnen immers een functie vinden in $A$ met, intu\"itief uitgelegd, een heel dunne piek.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Beschouw de deelverzameling $N$, als volgt, van $C(\interval{0}{1})$.
+  \[ N = \{ f \in C(\interval{0}{1}) \mid f(0) = 0 \} \]
+  Voor $d_{1}$ is $\mathring{N}$ is dan leeg en $\overline{N}$ is heel $C(\interval{0}{1})$.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item 
+      Kies een willekeurige $f\in N$ en $\epsilon\in \mathbb{R}_{0}^{+}$.
+      Er bestaat dan een functie $g\in C(\interval{0}{1})$ op afstand kleiner dan $\epsilon$ die niet tot $N$ behoort.
+      \question{welke? zie forum}
+    \item
+      Kies een willekeurige $f\in C(\interval{0}{1})$.
+      We construeren een rij $(f_{n})_{n}$ in $N$ die naar $f$ convergeert.\prref{pr:metrische-ruimte-sluiting-itv-limiet}
+      \begin{klad}
+        We zullen een rij opbouwen die steeds meer op $f$ gaat lijken.
+        Het eerste deel zal gewoon een lijn zijn (door $(0,0)$) die naar een steeds dichter punt op de grafiek loopt en het tweede deel zal gewoon $f$ zijn.
+        Op die manier convergeert $(f_{n})_{n}$ naar $f$ en zeker nul zijn in $0$.
+      \end{klad}
+      Construeer $f_{n}$ als volgt:
+      \[ f_{n}:\ \interval{0}{1} \rightarrow \mathbb{R}:\ t \mapsto f_{n}(t) = 
+      \begin{cases}
+        f(t) &\text{ als } t \in \interval[open left]{\frac{1}{n}}{1}\\
+        ntf\left(\frac{1}{n}\right) &\text{ als } t \in \interval{0}{\frac{1}{n}}
+      \end{cases}
+      \]
+      Er bestaat dan een $M\in \mathbb{R}^{+}$ zodat $f$ begrensd is door $M$.
+      Dit kan omdat continue functies op een gesloten begrensd interval een gesloten en begrensd beeld hebben.\needed
+      Voor alle $n\in \mathbb{N}_{0}$ geldt nu het volgende:\waarom
+      \[ \forall t\in \interval{0}{\nicefrac{1}{n}}:\ |f_{n}(t) - f(t)| < 2M \]
+      \[ \forall t\in \interval{\nicefrac{1}{n}}{1}:\ |f_{n}(t) - f(t)| = 0 \]
+      We vinden dan $d_{1}(f_{n},f)$ naar nul gaat:
+      \[
+      \forall n\in \mathbb{N}_{0}:\ 
+      d_{1}(f_{n},f)
+      = \int_{0}^{1}|f_{n}(t)-f(t)|\ dt
+      = \int_{0}^{\frac{1}{n}}|f_{n}(t)-f(t)|\ dt
+      \le \int_{0}^{\frac{1}{n}}2M\ dt
+      = \frac{2M}{n}
+      \]
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[ymin=-0.1, ymax=4.1, xmin=-0.1, xmax=1.1]
+          \addplot[smooth,color=red,ultra thick,domain=0:1]{(2*x)^2};
+          \foreach \n in {1,...,5}
+          {
+            \addplot[smooth,domain=0:(1/(\n))]{\n*x*(2/\n)^2};
+          }
+          \addplot[smooth,color=black,thick,domain=0:1]{(2*x)^2};
+        \end{axis}
+      \end{tikzpicture}
+      \caption{ Een illustratie van de situatie voor $f(x) = x^{2}$}
+    \end{figure}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\subsubsection{De $d_2$-metriek op $C(\interval{0}{1})$}
+\label{sec:de-d_2-metriek}
 
 \begin{vb}
   Zij $\interval{a}{b}$ een gesloten begrensd interval, dan is $C(\interval{a}{b})$, uitgerust met de volgende functie als metriek, een metrische ruimte:
@@ -720,15 +819,6 @@ Let wel op de ongelijheid met het supremum.
   \[ \left|\int_{a}^{b}f(x)g(x)\right| < \left(\int_{a}^{b}f(x)^{2}\ dx \right) \left(\int_{a}^{b}g(x)^{2}\ dx \right) \]
   Los hiervoor volgende ongelijkheid uit de genormeerde vectorruimte op met een discriminant.
   \[ \left\| v+\lambda w \right\| > 0 \]
-\end{vb}
-
-\begin{vb}
-  De verzameling $A$ als volgt is een voorbeeld van een deel van $C(\interval{0}{1})$ dat begrensd is voor $d_{1}$, maar niet voor $d_{\infty}$.
-  \[ A = \{ f \in C(\interval{0}{1}) \mid \int_{0}^{1}f(x)dx = 1 \]
-
-  \begin{proof}
-    De $d_{1}$ afstand is begrensd door $1$, maar de $d_{2}$ afstand is onbegrensd.
-  \end{proof}
 \end{vb}
 
 \begin{st}
