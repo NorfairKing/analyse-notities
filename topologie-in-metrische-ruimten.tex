@@ -234,14 +234,79 @@
 \extra{bewijs}
 \end{pr}
 
+\begin{de}
+  We noemen een deelverzameling $A$ van $X$ in een metrische ruimte $X,d$ \term{dicht in} $X$ als $\overline{A}$ heel $X$ is.
+\end{de}
+
+\begin{st}
+  \label{st:metrische-ruimte-dicht-in-test}
+  We kunnen eenvoudig testen of een deelverzameling $A\subseteq X$ dicht ligt in een metrische ruimte $X,d$.
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \forall x\in X, \exists a\in A:\ d(x,a) < \epsilon \]
+\clarify{ dit is niet baanbrekend, maar wel een handige herformulering van de puntsgewijze karakterisatie van de sluiting}
+\end{st}
+
+\begin{de}
+  We noemen een metrisch eruimte \term{separabel} als ze een aftelbaar dicht deel heeft.
+\end{de}
+
+\subsection{Randpunten, ge\"isoleerde punten, ophopingspunten}
+\label{sec:randp-geis-punt}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  De \term{rand} $\partial A$ van $A$ is een naam voor $\overline{A} \setminus \mathring{A}$.
+  De punten in de rand van $A$ noemen we \term{randpunten}
+\end{de}
+
+\begin{de}
+  We noemen een punt $a\in A$ een \term{ge\"isoleerd punt} van $A$ als het volgende geldt:
+  \[ \exists \delta \in \mathbb{R}_{0}^{+}:\ B(x,\delta) \cap A = \{a\} \]
+\end{de}
+
+\begin{de}
+  We noemen een punt $x\in X$ een \term{ophopingspunt} van $A$ als het volgende geldt:
+  \[ \forall \delta \in \mathbb{R}_{0}^{+}:\ B(x,\delta) \cap (A \setminus \{x\}) \neq \emptyset \]
+\end{de}
+
+\begin{pr}
+  Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$ en $x\in X$, dan zijn volgende uitspraken equivalent:
+  \begin{enumerate}
+  \item $x$ is een ophopingspunt van $A$.
+  \item Voor alle $\delta \in \mathbb{R}_{0}^{+}$ bevat $B(x,\delta) \cap A$ oneindig veel punten.
+  \item Er bestaat een rij $(x_{n})_{n}$ in $A\setminus \{x\}$ die naar $x$ convergeert.
+  \end{enumerate}
+\extra{bewijs}
+\end{pr}
+
+\subsection{Relatieve topologie}
+\label{sec:relatieve-topologie}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en zij $Y$ een niet-lege deelverzameling van $X$, dan noemen we een deelverzameling $A$ van $Y$ \term{relatief open} in $Y$ als het volgende geldt:
+  \[ \forall x\in A, \exists \delta \in \mathbb{R}_{0}^{+}, \forall y\in Y:\ d(x,y) < \delta \Rightarrow y\in A \]
+\end{de}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en zij $Y$ een niet-lege deelverzameling van $X$, dan noemen we een deelverzameling $A$ van $Y$ \term{relatief gesloten} in $Y$ als het relatief complement $Y\setminus B$ van $B$ ten opzichte van $Y$ relatief open is in $Y$.
+\end{de}
+
+\begin{pr}
+  Zij $X,d$ een metrische ruimte en zij $Y$ een niet-lege deelverzameling van $X$.
+  Beschouw een $A \subseteq Y$.
+  $A$ is relatief open in $Y$ als en slechts als er een open $V \subseteq X$ bestaat zodat $A=V \cap Y$ geldt.
+\extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  Zij $X,d$ een metrische ruimte en zij $Y$ een niet-lege deelverzameling van $X$.
+  Beschouw een $A \subseteq Y$.
+  $A$ is relatief gesloten in $Y$ als en slechts als er een gesloten $F \subseteq X$ bestaat zodat $A=F \cap Y$ geldt.
+\extra{bewijs}
+\end{pr}
 
 
-
-
-
-
-
-
+\subsection{Compacte verzamelingen}
+\label{sec:comp-verz}
 
 \begin{st}
   Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$.

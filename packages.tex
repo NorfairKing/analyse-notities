@@ -44,6 +44,7 @@
 \pgfplotsset{holdot/.style={fill=white,only marks,mark=*}}
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{external}
+%\iffalse
 \tikzexternalize[prefix=figures/]
 \makeatletter
 \renewcommand{\todo}[2][]{
@@ -52,6 +53,7 @@
     \tikzexternalenable
 }
 \makeatother
+%\fi
 
 \usepackage{tikz-3dplot}
 
