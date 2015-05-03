@@ -1111,30 +1111,59 @@ Hint:
 \begin{vb}
   \examenvraag{TTT II 2014}
   Beschouw de niet-lege, gesloten, begrensde, deelverzameling $F_{n}$ van $\mathbb{R}^{2}$ als volgt voor een $n\in \mathbb{N}_{0}$.
+  \[ F_{n} = \left\{ \left(\frac{k}{n},\frac{t}{n}\right) \middle| t,k \in \{0,\dotsc,n\} \right\} \]
   De rij $(F_{n})_{n}$ convergeert volgens de Hausdorffmetriek.
-  \begin{figure}[H]
-    \centering
-    \foreach \n in {1,...,20} {
-      \begin{tikzpicture}
-        \foreach \k in {0,...,\n} {
-          \foreach \l in {0,...,\n} {
-            \node(\n\k\l) at (\k/\n,\l/\n) {\textbullet};
-          }
-        }
-      \end{tikzpicture}
-    }
-  \caption{ $F_{n}$ voor $n\in \{1,\dotsc,20\}$ }
-  \end{figure}
 
   \begin{proof}
-    \TODO{oplossen}
+    Merk op dat we inderdaad over de Hausdorffafstand kunnen spreken omdat de $F_{n}$ niet leeg, gesloten en begrensd zijn.
     \begin{klad}
       Om een idee te krijgen van hoe $F_{n}$ eruit ziet zal u waarschijnlijk minstens twee intanties ervan moeten tekenen.
       Wanneer we die verzamelingen tekenen krijgen we een idee van de convergentie van $F_{n}$ en bovendien van de limiet.
-      Het ziet ernaar uit dat de limiet er als volgt zal uitzien:
-      \[ \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
-    \end{klad}
 
+      \begin{figure}[H]
+        \centering
+        \foreach \n in {1,...,20} {
+          \begin{tikzpicture}
+            \foreach \k in {0,...,\n} {
+              \foreach \l in {0,...,\n} {
+                \node(\n\k\l) at (\k/\n,\l/\n) {\textbullet};
+              }
+            }
+          \end{tikzpicture}
+        }
+      \end{figure}
+      Het ziet ernaar uit dat de limiet er als volgt zal uitzien:
+      \[ L = \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
+      Het kan van pas komen om de Hausdorffafstand van $F_{n}$ tot $L$ voor een paar getallen $n\in \mathbb{N}_{0}$ te berekenen.
+      \begin{figure}[H]
+        \centering
+        \foreach \n in {1,...,9} {
+          \begin{tikzpicture}
+            \foreach \k in {0,...,\n} {
+              \foreach \l in {0,...,\n} {
+                \fill [thick,fill=black!25!white,opacity=0.2] (\k/\n,\l/\n) circle [radius=sqrt(2)/(2*\n)];
+                \node(\n\k\l) at (\k/\n,\l/\n) {\textbullet};
+              }
+            }
+          \end{tikzpicture}
+        }
+      \end{figure}
+      \[
+      \begin{array}{|c|c|c|c|c|c|c|c|}
+        \hline
+        n & 1 & 2 & 3 & 4 & 5 & 6 & i\\
+        \hline
+        H(F_{n},L) & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{4} & \frac{\sqrt{2}}{6} & \frac{\sqrt{2}}{8} & \frac{\sqrt{2}}{10} & \frac{\sqrt{2}}{12} & \frac{\sqrt{2}}{2i}\\
+        \hline
+      \end{array}
+      \]
+    \end{klad}
+    Merk op dat de Hausdorffafstand tussen $F_{n}$ voor een gegeven $n\in \mathbb{N}_{0}$ en de verzameling $L$ als volgt steeds $\frac{\sqrt{2}}{2n}$ meet.
+    \[ L = \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
+    Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$ en noem $n_{0} = \frac{1}{\sqrt{2}\epsilon}$.
+    Kies nu willekeurig een $n\in \mathbb{N}$, strikt groter dan $n_{0}$.
+    \[ d(F_{n},L) = \frac{\sqrt{2}}{2n} < \frac{\sqrt{2}}{2n_{0}} = \frac{\sqrt{2}^{2}\epsilon}{2} = \epsilon \]
+    $(F_{n})_{n}$ convergeert dus naar $L$ voor de Hausdorff metriek.
   \end{proof}
 \end{vb}
 
