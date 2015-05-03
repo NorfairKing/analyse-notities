@@ -6,7 +6,7 @@
 
 \subsection{Open en gesloten verzamelingen}
 \label{sec:open-en-gesloten}
-
+hello it is i leclerc
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{open} als het volgende geldt:
   \[ \forall v\in W, \exists \delta \in \mathbb{R}_{0}^{+}, \forall w\in W:\ d(v,w) < \delta \Rightarrow w \in W \]
@@ -30,19 +30,23 @@
   Een open bol $B(x,\delta)$ in een metrische ruimte $V,d$ is een open deelverzameling van $V$.
 
   \begin{proof}
-    Kies een willekeurig punt $y\in V$ met $d(x,y) < \delta$. 
-    \begin{lem}
-      Er bestaat een open bol $B(y,\epsilon)$ rond elk punt $y\in B(x,\delta)$ die een deel is van $B(x,\delta)$.
-      \begin{proof}
-        Noem
-      \end{proof}
-    \end{lem}
+    Kies een willekeurig punt $y\in V$ met $d(x,y) < \delta$ en kies $\epsilon = \delta - d(x,y)$.
+    Kies een willekeurig punt $z\in B(y,\epsilon)$, dan geldt het volgende:
+    \[ d(x,z) \le d(x,y) + d(y,z) < d(x,y) + \epsilon = d(x,y) + \delta - d(x,y) = \delta \]
+    Er bestaat dus steeds een open bol binnen $B(x,\delta)$ die er deel van uitmaakt.
   \end{proof}
 \end{st}
 
 \begin{st}
   Een gesloten bol $B\interval{x}{\delta}$ in een metrische ruimte $V,d$ is een gesloten deelverzameling van $V$.
-\extra{bewijs}
+
+  \begin{proof}
+    We bewijzen dat $X = V \setminus B\interval{x}{\delta}$ open is.
+    Kies willekeurig een $z\in X$ en noem $\epsilon = d(x,z) - \delta$.
+    Kies een willekeurig punt $y\in B(z,\epsilon)$, dan geldt het volgende:
+    \[ d(x,y) \ge d(x,z) - d(y,z) > d(x,z) - \epsilon = d(x,z) -d(x,z) + \delta = \delta \]
+    Er bestaat dus een open bol rond elk punt $x$ buiten $B\interval{x}{\delta}$ die volledig buiten $B\interval{x}{\delta}$ ligt.
+  \end{proof}
 \end{st}
 
 
@@ -156,7 +160,7 @@
     \begin{itemize}
     \item $(1) \Rightarrow (2)$\\
       Kies willekeurig een $x \in X$ en een $r\in \mathbb{R}_{0}^{+}$.
-      $B_{d_{2}}(x,r)$ is dan een open bol voor $d_{2}$, maar ook $d_{1}$ open\question{maar dan niet noodzakelijk een bol?} omdat $d_{1}$ topologisch fijner is dan $d_{2}$.
+      $B_{d_{2}}(x,r)$ is dan een open bol voor $d_{2}$, maar ook $d_{1}$ open (,hoewel dan niet noodzakelijk een bol,) omdat $d_{1}$ topologisch fijner is dan $d_{2}$.
       Nu is $x$ ook een element van $B_{d_{2}}(x,r)$ en dus bestaat er een $r'\in \mathbb{R}_{0}^{+}$ zodat $B_{d_{1}}(x,r')$ een deel is van $B_{d_{2}}(x,r)$.
     \item $(2) \Rightarrow (3)$\\
       Kies een willekeurige $x\in X$ en een $\epsilon \in \mathbb{R}_{0}^{+}$.
