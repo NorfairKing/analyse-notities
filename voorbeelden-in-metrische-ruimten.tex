@@ -199,7 +199,27 @@
     d_{3}(0,0) = 0
   \end{cases}
   \]
-\extra{bewijs}
+
+  \begin{proof}
+    We gaan de eigenschappen van een metriek na.
+    \begin{itemize}
+    \item $d_{3}$ is symmetrisch. OK
+    \item $d_{3}(x,y)$ is nul als en slechts als $x$ en $y$ nul zijn. OK
+    \item Kies willekeurig drie getallen $x$, $y$, $z$.
+      \[ d(x,z) \le d(x,y) + d(y,z) \]
+      We moeten $8$ gevallen nagaan:
+      \begin{enumerate}
+      \item $x=0$, $y=0$, $z=0$: $d(0,0) = 0 \le 0 + 0 = d(0,0) + d(0,0)$. OK
+      \item $x=0$, $y=0$, $z\neq0$: $d(0,z) = 1 + |z| \le 0 + 1 + |z| = d(0,0) + d(y,z)$. OK 
+      \item $x=0$, $y=\neq$, $z=0$: $d(0,0) = 0 \le 1+|y| + 1+|y| = d(0,y) + d(y,0)$. OK
+      \item $x=0$, $y\neq0$, $z\neq0$: $d(0,z) = 1+ |z| \le 1+|y| + |y-z| = d(0,y) + d(y,z)$. OK
+      \item $x\neq0$, $y=0$, $z=0$: $d(x,0) = 1+|x| \le 1+|x| + 0 = d(x,0) + d(0,0)$. OK
+      \item $x\neq0$, $y=0$, $z\neq0$: $d(x,z) = |x-z| \le 1+|x| + 1+|z| = d(x,0) + d(0,z)$. OK
+      \item $x\neq0$, $y\neq0$, $z=0$: $d(x,0) = 1+|x| \le |x-y| + 1+|y| = d(x,y) + d(y,0)$. OK
+      \item $x\neq0$, $y\neq0$, $z\neq0$: $d(x,z) = |x-z| \le |x-y| + |y-z| = d(x,y) + d(y,z)$. OK
+      \end{enumerate}
+    \end{itemize}
+  \end{proof}
 \end{vb}
 
 
