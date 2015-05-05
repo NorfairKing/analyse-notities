@@ -42,6 +42,7 @@
 \label{sec:begr-verz}
 
 \begin{de}
+  \label{de:metrische-ruimte-begrensde-verzameling}
   Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{begrensd} als het volgende geldt:
   \[ \exists M\in \mathbb{R}^{+}, \forall v,w\in W:\ d(v,w) < M \]
 \end{de}
@@ -186,7 +187,100 @@
 \extra{voorbeeld p 23}
 
 
+\subsection{Enkele resultaten}
+\label{sec:enkele-resultaten}
+\TODO{staan deze op hun plaats?}
 
+\begin{st}
+  Beschouw een metrische ruimte $X,d$ en $A$ een deelverzameling van $X$.
+  Definieer de functie $d_{A}$ als volgt:
+  \[ d_{A}:\ X \rightarrow \mathbb{R}^{+}:\ d_{A}(x) = \inf\{d(x,a) \mid a\in A\} \]
+  Beschouw nu begrensde verzamelingen $A$ en $B$.
+  \begin{enumerate}
+  \item $d_{A\cup B}(x) = \min\{d_{A}(x),d_{B}(x)\}$
+  \item $d_{A\cap B}(x) \ge \max\{d_{A}(x),d_{B}(x)\}$
+  \end{enumerate}
+
+  \begin{proof}
+    \noindent
+    Noem $d(x,a') = \{d(x,a) \mid a\in A\}$ en $d(x,b') = \{d(x,b) \mid b\in B\}$
+    \begin{enumerate}
+    \item Het infimum van $\inf\{d(x,a) \mid a\in A\cup B\}$ is ofwel $d(x,a')$ $d(x,b')$ en in het bijzonder het infimum van de twee, dus het minimum ervan.
+      \question{wat valt er hier meer over te zeggen?}
+    \item Het infimum van $\{d(x,a) \mid a\in A\cap B\}$ is $d(x,c)$ met $c\in A\cap B$ en $c$ \'e\'en van de $a'$ en $b'$ en dan is het inderdaad het maximum van $d_{A}(x)$ en $d_{B}(x)$.
+      \question{dit klinkt niet juist, wat mist er}?
+    \end{enumerate}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  De functie $d_{A}$ zoals hierboven beschreven is continu.
+  
+  \begin{proof}
+    Beschouw eerst volgende ongelijkheden voor willekeurige $x,y\in X$:
+    \[ d_{A}(x) \le d(x,y) + d_{A}(x) \text{ en } d_{A}(y) \le d(x,y) + d_{A}(x) \]
+    Hieruit volgt meteen deze:
+    \[ d(x,y) \ge |d_{A}(x)-d_{A}(y)| \]
+    Kies willekeurig een $x\in X$, $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \epsilon$, dan volgt uit bovenstaande ongelijkheid meteen continu\"iteit.
+    \[ \forall y\in X:\ d(x,y) < \delta \Rightarrow |d_{A}(x)-d_{A}(y)| \le d(x,y) < \delta = \epsilon \]
+    \feed
+  \end{proof}
+\end{st}
+
+
+\subsection{Genormeerde vectorruimten}
+\label{sec:genorm-vect}
+
+\begin{de}
+  \label{de:norm}
+  Zij $(\mathbb{R},V,+)$ een vectorruimte, dan is een \term{norm} op $V$ een afbeelding als volgt:
+  \[ \|\cdot\|:\ V \rightarrow \mathbb{R}^{+}:\ v \mapsto \|v\| \]
+  \begin{enumerate}
+  \item $\forall v\in V:\ \|v\| = 0 \Leftrightarrow v=0$
+  \item $\forall v\in V, \forall \lambda \in \mathbb{R}:\ \|\lambda v\| = |\lambda|\|v\|$
+  \item $\forall v,w\in V:\ \|v+w\| \le \|v\| + \|w\|$
+  \end{enumerate}
+\end{de}
+
+\begin{de}
+  Een vectorruimte $\mathbb{R},V,+$, uitgerust met een norm noemen we een \term{genormeerde vectorruimte}.
+\end{de}
+
+\begin{st}
+  Een genormeerde vectorruimte $\mathbb{R},V,+,\|\cdot\|$, uitgerust met de volgende functie als metriek, vormt een metrische ruimte:
+  \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto \|x-y\| \]
+
+  \begin{proof}
+    We gaan de eigenschappen van een metrische ruimte na.
+    \begin{itemize}
+    \item $d$ is symmetrisch: $\|x-y\| = \|(-1)(y-x)\| = |-1|\|y-x\| = \|y-x\|$
+    \item $d$ is nul als en slechts als de argumenten gelijk zijn: $\|x-x\| = \|0\| = 0$
+    \item $d$ voldoet aan de driehoeksongelijkheid: $\| x-z \| = \| (x-y)+(y-z) \| \le \|x-y\| + \| y-z \|$
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Equivalente definitie voor begrensde delen in een genormeerde vectorruimte:
+  Een deel $A$ van een genormeerde vectorruimte $\mathbb{R},V,+$ is begrensd als en slechts als er een $M \in \mathbb{R}^{+}$ bestaat als volgt:
+  \[ \forall x\in A:\ \|x\| \le M \]
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Omdat $A$ begrensd is, bestaat er een $N\in \mathbb{R}^{+}$ als volgt:\deref{de:metrische-ruimte-begrensde-verzameling}
+      \[ \forall v,w\in A:\ \|v-w\| < N \]
+      Kies nu een willekeurige $a\in A$, dan geldt er voor elke $x\in A$ het volgende:
+      \[ \|x\| = \|x+a-a\| \le \|a\| + \|x-a\| < \|a\| + N \]
+      Kies nu $M = \|a\|+N$, dan is $A$ bij norm begrensd door $M\in \mathbb{R}^{+}$.
+    \item $\Leftarrow$\\
+      Kies twee willekeurige elementen $x,y\in A$, dan geldt het volgende:
+      \[ \|x-y\| \le \|x\| + \|y\| < 2M \]
+      $A$ is dus bij metriek begrensd door $N=2M \in \mathbb{R}^{+}$.
+    \end{itemize}
+  \end{proof}
+\end{st}
 
 
 \end{document}

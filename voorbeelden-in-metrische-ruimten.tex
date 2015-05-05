@@ -70,6 +70,16 @@
 \extra{bewijs}
 \end{st}
 
+\begin{st}
+  De verzameling $\{ x_{n} \mid n\in \mathbb{N} \}$ van elementen van een convergente rij $(x_{n})_{n}$ voor de discrete metriek is steeds eindig.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een convergente rij in een verzameling $X$ en noem $x$ de limiet..
+    Omdat $(x_{n})_{n}$ convergeert, bestaat er een $n_{0}\in \mathbb{N}$ zodat alle $x_{n}$ vanaf $n_{0}$ dichter dan $1$ bij $x$ liggen en dus gelijk zijn aan $x$.
+    Er zijn dan nog hoogstens $n_{0}-1$ (en dus hoogstens een eindig aantal) andere elementen in de rij te vinden.
+  \end{proof}
+\end{st}
+
 \subsection{Metrieken op $\mathbb{R}$}
 \label{sec:metrieken-op-mathbbr}
 
@@ -410,7 +420,7 @@
     \[ \delta = \inf \{ d(a,b) \mid a\in A, b\in B \} \]
     Zelfs dan gaat de bewering niet op:
     \begin{proof}
-      Beschouw de verzamelingen $A = \{ F_{2n} \mid n \in \mathbb{N}_{0} \}$ en $B = \{ F_{2n+1} \mid n\in \mathbb{N}_{0} \}$ in de metrische ruimte $\mathcal{F},h$.
+      Beschouw de verzamelingen $A = \{ F_{2n} \mid n \in \mathbb{N}_{0} \}$ en $B = \{ F_{2n+1} \mid n\in \mathbb{N}_{0} \}$ in de metrische ruimte $\mathcal{F},h$ (uit voorbeeld \ref{vb:ttt-2-2014-1} op pagina \pageref{vb:ttt-2-2014-1}) 
       $A$ en $B$ zijn disjunct, begrensd en gesloten, maar $\delta$ zal toch $0$ zijn.
     \end{proof}
   \item Neem in plaats van $\mathbb{R}^{p}$ een willekeurige genormeerde vectorruimte en definieer de afstandsfunctie aan de hand van de norm.
@@ -1103,37 +1113,6 @@ Let wel op de ongelijheid met het supremum.
 
 \extra{product van metrische ruimten}
 
-\subsection{Genormeerde vectorruimten}
-\label{sec:genorm-vect}
-
-\begin{de}
-  \label{de:norm}
-  Zij $(\mathbb{R},V,+)$ een vectorruimte, dan is een \term{norm} op $V$ een afbeelding als volgt:
-  \[ \|\cdot\|:\ V \rightarrow \mathbb{R}^{+}:\ v \mapsto \|v\| \]
-  \begin{enumerate}
-  \item $\forall v\in V:\ \|v\| = 0 \Leftrightarrow v=0$
-  \item $\forall v\in V, \forall \lambda \in \mathbb{R}:\ \|\lambda v\| = |\lambda|\|v\|$
-  \item $\forall v,w\in V:\ \|v+w\| < \|v\| + \|w\|$
-  \end{enumerate}
-\end{de}
-
-\begin{de}
-  Een vectorruimte $\mathbb{R},V,+$, uitgerust met een norm noemen we een \term{genormeerde vectorruimte}.
-\end{de}
-
-\begin{st}
-  Een genormeerde vectorruimte $\mathbb{R},V,+,\|\cdot\|$, uitgerust met de volgende functie als metriek, vormt een metrische ruimte:
-  \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto \|x-y\| \]
-\extra{bewijs}
-\end{st}
-
-\begin{st}
-  Equivalente definitie voor begrensde delen in een genormeerde vectorruimte:
-  Een deel $A$ van een genormeerde vectorruimte $\mathbb{R},V,+$ is begrensd als en slechts als er een $M \in \mathbb{R}^{+}$ bestaat als volgt:
-  \[ \forall x\in A:\ \|x\| \le M \]
-\extra{bewijs}
-\end{st}
-
 \subsection{Hausdorffmetriek}
 \label{sec:hausdorffmetriek}
 
@@ -1266,6 +1245,7 @@ Hint:
 \end{st}
 
 \begin{vb}
+  \label{vb:ttt-2-2014-1}
   \examenvraag{TTT II 2014}
   Beschouw de niet-lege, gesloten, begrensde, deelverzameling $F_{n}$ van $\mathbb{R}^{2}$ als volgt voor een $n\in \mathbb{N}_{0}$.
   \[ F_{n} = \left\{ \left(\frac{k}{n},\frac{t}{n}\right) \middle| t,k \in \{0,\dotsc,n\} \right\} \]
