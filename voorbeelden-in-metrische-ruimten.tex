@@ -70,6 +70,16 @@
 \extra{bewijs}
 \end{st}
 
+\begin{st}
+  De verzameling $\{ x_{n} \mid n\in \mathbb{N} \}$ van elementen van een convergente rij $(x_{n})_{n}$ voor de discrete metriek is steeds eindig.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een convergente rij in een verzameling $X$ en noem $x$ de limiet..
+    Omdat $(x_{n})_{n}$ convergeert, bestaat er een $n_{0}\in \mathbb{N}$ zodat alle $x_{n}$ vanaf $n_{0}$ dichter dan $1$ bij $x$ liggen en dus gelijk zijn aan $x$.
+    Er zijn dan nog hoogstens $n_{0}-1$ (en dus hoogstens een eindig aantal) andere elementen in de rij te vinden.
+  \end{proof}
+\end{st}
+
 \subsection{Metrieken op $\mathbb{R}$}
 \label{sec:metrieken-op-mathbbr}
 
@@ -199,7 +209,27 @@
     d_{3}(0,0) = 0
   \end{cases}
   \]
-\extra{bewijs}
+
+  \begin{proof}
+    We gaan de eigenschappen van een metriek na.
+    \begin{itemize}
+    \item $d_{3}$ is symmetrisch. OK
+    \item $d_{3}(x,y)$ is nul als en slechts als $x$ en $y$ nul zijn. OK
+    \item Kies willekeurig drie getallen $x$, $y$, $z$.
+      \[ d(x,z) \le d(x,y) + d(y,z) \]
+      We moeten $8$ gevallen nagaan:
+      \begin{enumerate}
+      \item $x=0$, $y=0$, $z=0$: $d(0,0) = 0 \le 0 + 0 = d(0,0) + d(0,0)$. OK
+      \item $x=0$, $y=0$, $z\neq0$: $d(0,z) = 1 + |z| \le 0 + 1 + |z| = d(0,0) + d(y,z)$. OK 
+      \item $x=0$, $y=\neq$, $z=0$: $d(0,0) = 0 \le 1+|y| + 1+|y| = d(0,y) + d(y,0)$. OK
+      \item $x=0$, $y\neq0$, $z\neq0$: $d(0,z) = 1+ |z| \le 1+|y| + |y-z| = d(0,y) + d(y,z)$. OK
+      \item $x\neq0$, $y=0$, $z=0$: $d(x,0) = 1+|x| \le 1+|x| + 0 = d(x,0) + d(0,0)$. OK
+      \item $x\neq0$, $y=0$, $z\neq0$: $d(x,z) = |x-z| \le 1+|x| + 1+|z| = d(x,0) + d(0,z)$. OK
+      \item $x\neq0$, $y\neq0$, $z=0$: $d(x,0) = 1+|x| \le |x-y| + 1+|y| = d(x,y) + d(y,0)$. OK
+      \item $x\neq0$, $y\neq0$, $z\neq0$: $d(x,z) = |x-z| \le |x-y| + |y-z| = d(x,y) + d(y,z)$. OK
+      \end{enumerate}
+    \end{itemize}
+  \end{proof}
 \end{vb}
 
 
@@ -262,6 +292,142 @@
   $\mathbb{R}^{p},d$ is separabel door $\mathbb{Q}^{p}$.
 \extra{bewijs}
 \end{vb}
+
+\begin{st}
+  \examenvraag{TTT II 2014}
+  Zij $A$ en $B$ twee niet-lege, onderling disjuncte delen van $\mathbb{R}^{p}$ met $p \ge 2$ en benoem $\delta$ als volgt:
+  \[ \delta = \inf \{ \|a-b\| \mid a\in A, b\in B \} \]
+  \begin{enumerate}
+  \item Als $A$ en $B$ beide gesloten en begrensd zijn, geldt $\delta > 0$.
+  \item Geef expliciete tegenvoorbeelden als \'e\'en van de voorwaarden niet geldt.
+  \item Argumenteer of dit resultaat valt te verheffen naar willekeurige metrische ruimten.
+  \end{enumerate}
+
+  \begin{klad}
+    Allereerst moeten we een idee krijgen van wat $\delta$ precies voorstelt.
+    Het ziet ernaar uit dat $\delta$ voorstelt wat we de ``afstand'' tussen twee vlakke figuren zouden noemen.
+    Intu\"itief kennen we natuurlijk enkel de afstand voor wat we ``normale'' figuren zouden noemen.
+  \end{klad}
+
+  \begin{enumerate}
+  \item
+    \begin{klad}
+      Intu\"itief: De verzameling $V = \{ \|a-b\| \mid a \in A, b \in B \}$ zal gesloten en (naar onder) begrensd zijn als zowel $A$ als $B$ begrensd is.
+      Van een gesloten en begrensde verzameling weten we dat het infimum erin zit.
+      Omdat de verzamelingen $A$ en $B$ disjunct zijn, kan $0$ geen element zijn in die verzameling $V$.
+    \end{klad}
+    \begin{proof}
+      Bewijs uit het ongerijmde: stel dat $\delta$ niet strikt positief is.\\
+      Strikt negatief kan $\delta$ niet zijn, want normen zijn positief.
+      Stel daarom dat $\delta$ nul is.
+      Omdat $V$ een begrensde verzameling is, bestaat het infimum.
+      Het infimum is dan een element van $\overline{V}$\waarom
+      \TODO{het infimum van een begrensde verzameling behoort tot de sluiting ervan}
+      Omdat $\delta$ tot $\overline{V}$ behoort, bestaat er een rij $(z_{n})_{n}$ in $V$ die naar $\delta$ convergeert.\prref{pr:metrische-ruimte-sluiting-itv-limiet}
+      De rij $(z_{n})_{n}$ kunnen we beschrijven als $(\|a_{n}-b_{n}\|)_{n}$ met $(a_{n})_{n}$ en $(b_{n})_{n}$ respectievelijk rijen in $A$ en $B$.
+      Omdat $A$ en $B$ gesloten en begrensd zijn, bestaan er een convergente deelrijen $(a_{n_{k}})_{k}$ en $(b_{n_{k}})_{k}$ van respectievelijk $(a_{n})_{n}$ en $(b_{n})_{n}$.\stref{st:in-rp-gesloten-en-begrensd-itv-rijen}
+      Noem $a$ en $b$ de respectievelijke limieten van deze deelrijen.
+      De limiet van $(\|a_{n_{k}}-b_{n_{k}}\|)_{k}$ is dan $|a-b|$.\waarom
+      Dit is bovendien ook de limiet van $(\|a_{n}-b_{n}\|)_{n}$.\stref{st:in-rp-deelrij-zelfde-limiet}
+      Omdat $|a-b|$ nul is, moeten $a$ en $b$ gelijk zijn.\deref{de:norm}
+      Dit is in tegenspraak met de disjunctheid van $A$ en $B$.
+      Contradictie.
+    \end{proof}
+  \item
+    \begin{itemize}
+    \item Als $A$ en $B$ niet begrensd zijn (maar wel gesloten) kan $\delta$ nul zijn.
+      \begin{proof}
+        Kies $A$ en $B$ als volgt:
+
+        \noindent
+        \begin{minipage}{.45\textwidth}
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+              \begin{axis}[ 
+                ticks=none,
+                axis lines = middle,
+                axis line style={->},
+                ymin=-3, ymax=3,
+                xmin=0, xmax=10,
+                xlabel={$x_{1}$},
+                ylabel={$x_{2}$},
+                axis equal image,
+                disabledatascaling
+                ]
+                \addplot[name path=A1,color=red,thick,domain=0.1:9]{1/x};
+                \addplot[name path=A2,color=white,domain=0.1:9]{3};
+                \addplot[red!20] fill between[of=A1 and A2];
+                \addplot[name path=B1,color=blue,thick,domain=0.1:9]{-1/x};
+                \addplot[name path=B2,color=white,domain=0.1:9]{-3};
+                \addplot[blue!20] fill between[of=B1 and B2];
+                
+                \draw (1.5,1.5) node {$A$};
+                \draw (1.5,-1.5) node {$B$};
+              \end{axis}
+            \end{tikzpicture}
+          \end{figure}
+        \end{minipage}
+        \begin{minipage}{.45\textwidth}
+          \[ A = \left\{ \left(r,+q\right) \ \middle|\  r \in \mathbb{R}_{0}^{+}, q\in \mathbb{R}_{0}^{+}: q \ge r \right\} \]
+          \[ B = \left\{ \left(r,-q\right) \ \middle|\  r \in \mathbb{R}_{0}^{+}, q\in \mathbb{R}_{0}^{+}: q \ge r \right\} \]
+        \end{minipage}
+
+        Het is duidelijk dat $A$ en $B$ beide niet begrensd zijn, maar wel gesloten.
+        $\delta$ is toch $0$:
+        \[ \delta = \inf \{ \|a-b\| \mid a \in A, b \in B \} = \inf \interval[open]{0}{+\infty} = 0\]
+      \end{proof}
+    \item Als $A$ en $B$ niet gesloten zijn (maar wel begrensd) kan $\delta$ nul zijn.
+      \begin{proof}
+        Kies $A$ en $B$ als volgt:
+
+        \noindent
+        \begin{minipage}{.45\textwidth}
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+              \begin{axis}[ 
+                ticks=none,
+                axis lines = middle,
+                axis line style={->},
+                ymin=-1.5, ymax=1.5,
+                xmin=0, xmax=1.5,
+                xlabel={$x_{1}$},
+                ylabel={$x_{2}$},
+                axis equal image,
+                disabledatascaling
+                ]
+                \fill [color=red!20] (0.0,0.001) rectangle (1,1);
+                \fill [color=blue!20] (0.0,-0.001) rectangle (1,-1);
+                \draw (0.5,0.5) node {$A$};
+                \draw (0.5,-0.5) node {$B$};
+              \end{axis}
+            \end{tikzpicture}
+          \end{figure}
+        \end{minipage}
+        \begin{minipage}{.45\textwidth}
+          \[ A = \left\{ (x,+y) \mid x \in \interval[open]{0}{1} \wedge y\in \interval[open]{0}{1} \right\} \]
+          \[ A = \left\{ (x,-y) \mid x \in \interval[open]{0}{1} \wedge y\in \interval[open]{0}{1} \right\} \]
+        \end{minipage}
+        
+        Het is duidelijk dat $A$ en $B$ beide niet gesloten zijn, maar wel begrensd.
+        $\delta$ is toch $0$:
+        \[ \delta = \inf \{ \|a-b\| \mid a \in A, b \in B \} = \inf \interval[open]{0}{\sqrt{5}} \]
+      \end{proof}
+    \end{itemize}
+  \item In willekeurige metrische ruimten bestaat er geen norm, maar we kunnen de stelling herformuleren als volgt:
+    Zij $A$ en $B$ twee niet-lege, onderling disjuncte delen van een metrische ruimte $X,d$ en benoem $\delta$ als volgt:
+    \[ \delta = \inf \{ d(a,b) \mid a\in A, b\in B \} \]
+    Zelfs dan gaat de bewering niet op:
+    \begin{proof}
+      Beschouw de verzamelingen $A = \{ F_{2n} \mid n \in \mathbb{N}_{0} \}$ en $B = \{ F_{2n+1} \mid n\in \mathbb{N}_{0} \}$ in de metrische ruimte $\mathcal{F},h$ (uit voorbeeld \ref{vb:ttt-2-2014-1} op pagina \pageref{vb:ttt-2-2014-1}) 
+      $A$ en $B$ zijn disjunct, begrensd en gesloten, maar $\delta$ zal toch $0$ zijn.
+    \end{proof}
+  \item Neem in plaats van $\mathbb{R}^{p}$ een willekeurige genormeerde vectorruimte en definieer de afstandsfunctie aan de hand van de norm.
+    \extra{In een willekeurige genormeerde ruimte lijkt de stelling wel te gelden, bewijs}
+  \end{enumerate}
+  \feed
+\end{st}
 
 \subsubsection{De $d_1$- of city block metriek op $\mathbb{R}^p$}
 \label{sec:de-d_1-city}
@@ -947,36 +1113,6 @@ Let wel op de ongelijheid met het supremum.
 
 \extra{product van metrische ruimten}
 
-\subsection{Genormeerde vectorruimten}
-\label{sec:genorm-vect}
-
-\begin{de}
-  Zij $(\mathbb{R},V,+)$ een vectorruimte, dan is een \term{norm} op $V$ een afbeelding als volgt:
-  \[ \|\cdot\|:\ V \rightarrow \mathbb{R}^{+}:\ v \mapsto \|v\| \]
-  \begin{enumerate}
-  \item $\forall v\in V:\ \|v\| = 0 \Leftrightarrow v=0$
-  \item $\forall v\in V, \forall \lambda \in \mathbb{R}:\ \|\lambda v\| = |\lambda|\|v\|$
-  \item $\forall v,w\in V:\ \|v+w\| < \|v\| + \|w\|$
-  \end{enumerate}
-\end{de}
-
-\begin{de}
-  Een vectorruimte $\mathbb{R},V,+$, uitgerust met een norm noemen we een \term{genormeerde vectorruimte}.
-\end{de}
-
-\begin{st}
-  Een genormeerde vectorruimte $\mathbb{R},V,+,\|\cdot\|$, uitgerust met de volgende functie als metriek, vormt een metrische ruimte:
-  \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto \|x-y\| \]
-\extra{bewijs}
-\end{st}
-
-\begin{st}
-  Equivalente definitie voor begrensde delen in een genormeerde vectorruimte:
-  Een deel $A$ van een genormeerde vectorruimte $\mathbb{R},V,+$ is begrensd als en slechts als er een $M \in \mathbb{R}^{+}$ bestaat als volgt:
-  \[ \forall x\in A:\ \|x\| \le M \]
-\extra{bewijs}
-\end{st}
-
 \subsection{Hausdorffmetriek}
 \label{sec:hausdorffmetriek}
 
@@ -1109,32 +1245,62 @@ Hint:
 \end{st}
 
 \begin{vb}
+  \label{vb:ttt-2-2014-1}
   \examenvraag{TTT II 2014}
   Beschouw de niet-lege, gesloten, begrensde, deelverzameling $F_{n}$ van $\mathbb{R}^{2}$ als volgt voor een $n\in \mathbb{N}_{0}$.
+  \[ F_{n} = \left\{ \left(\frac{k}{n},\frac{t}{n}\right) \middle| t,k \in \{0,\dotsc,n\} \right\} \]
   De rij $(F_{n})_{n}$ convergeert volgens de Hausdorffmetriek.
-  \begin{figure}[H]
-    \centering
-    \foreach \n in {1,...,20} {
-      \begin{tikzpicture}
-        \foreach \k in {0,...,\n} {
-          \foreach \l in {0,...,\n} {
-            \node(\n\k\l) at (\k/\n,\l/\n) {\textbullet};
-          }
-        }
-      \end{tikzpicture}
-    }
-  \caption{ $F_{n}$ voor $n\in \{1,\dotsc,20\}$ }
-  \end{figure}
 
   \begin{proof}
-    \TODO{oplossen}
+    Merk op dat we inderdaad over de Hausdorffafstand kunnen spreken omdat de $F_{n}$ niet leeg, gesloten en begrensd zijn.
     \begin{klad}
       Om een idee te krijgen van hoe $F_{n}$ eruit ziet zal u waarschijnlijk minstens twee intanties ervan moeten tekenen.
       Wanneer we die verzamelingen tekenen krijgen we een idee van de convergentie van $F_{n}$ en bovendien van de limiet.
-      Het ziet ernaar uit dat de limiet er als volgt zal uitzien:
-      \[ \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
-    \end{klad}
 
+      \begin{figure}[H]
+        \centering
+        \foreach \n in {1,...,20} {
+          \begin{tikzpicture}
+            \foreach \k in {0,...,\n} {
+              \foreach \l in {0,...,\n} {
+                \node(\n\k\l) at (\k/\n,\l/\n) {\textbullet};
+              }
+            }
+          \end{tikzpicture}
+        }
+      \end{figure}
+      Het ziet ernaar uit dat de limiet er als volgt zal uitzien:
+      \[ L = \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
+      Het kan van pas komen om de Hausdorffafstand van $F_{n}$ tot $L$ voor een paar getallen $n\in \mathbb{N}_{0}$ te berekenen.
+      \begin{figure}[H]
+        \centering
+        \foreach \n in {1,...,9} {
+          \begin{tikzpicture}
+            \foreach \k in {0,...,\n} {
+              \foreach \l in {0,...,\n} {
+                \fill [thick,fill=black!25!white,opacity=0.2] (\k/\n,\l/\n) circle [radius=sqrt(2)/(2*\n)];
+                \node(\n\k\l) at (\k/\n,\l/\n) {\textbullet};
+              }
+            }
+          \end{tikzpicture}
+        }
+      \end{figure}
+      \[
+      \begin{array}{|c|c|c|c|c|c|c|c|}
+        \hline
+        n & 1 & 2 & 3 & 4 & 5 & 6 & i\\
+        \hline
+        H(F_{n},L) & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{4} & \frac{\sqrt{2}}{6} & \frac{\sqrt{2}}{8} & \frac{\sqrt{2}}{10} & \frac{\sqrt{2}}{12} & \frac{\sqrt{2}}{2i}\\
+        \hline
+      \end{array}
+      \]
+    \end{klad}
+    Merk op dat de Hausdorffafstand tussen $F_{n}$ voor een gegeven $n\in \mathbb{N}_{0}$ en de verzameling $L$ als volgt steeds $\frac{\sqrt{2}}{2n}$ meet.
+    \[ L = \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
+    Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$ en noem $n_{0} = \frac{1}{\sqrt{2}\epsilon}$.
+    Kies nu willekeurig een $n\in \mathbb{N}$, strikt groter dan $n_{0}$.
+    \[ d(F_{n},L) = \frac{\sqrt{2}}{2n} < \frac{\sqrt{2}}{2n_{0}} = \frac{\sqrt{2}^{2}\epsilon}{2} = \epsilon \]
+    $(F_{n})_{n}$ convergeert dus naar $L$ voor de Hausdorff metriek.
   \end{proof}
 \end{vb}
 

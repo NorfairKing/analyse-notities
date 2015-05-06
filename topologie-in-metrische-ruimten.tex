@@ -6,7 +6,7 @@
 
 \subsection{Open en gesloten verzamelingen}
 \label{sec:open-en-gesloten}
-
+hello it is i leclerc
 \begin{de}
   Zij $V,d$ een metrische ruimte, dan noemen we een deelverzameling $W$ van $V$ \term{open} als het volgende geldt:
   \[ \forall v\in W, \exists \delta \in \mathbb{R}_{0}^{+}, \forall w\in W:\ d(v,w) < \delta \Rightarrow w \in W \]
@@ -30,19 +30,23 @@
   Een open bol $B(x,\delta)$ in een metrische ruimte $V,d$ is een open deelverzameling van $V$.
 
   \begin{proof}
-    Kies een willekeurig punt $y\in V$ met $d(x,y) < \delta$. 
-    \begin{lem}
-      Er bestaat een open bol $B(y,\epsilon)$ rond elk punt $y\in B(x,\delta)$ die een deel is van $B(x,\delta)$.
-      \begin{proof}
-        Noem
-      \end{proof}
-    \end{lem}
+    Kies een willekeurig punt $y\in V$ met $d(x,y) < \delta$ en kies $\epsilon = \delta - d(x,y)$.
+    Kies een willekeurig punt $z\in B(y,\epsilon)$, dan geldt het volgende:
+    \[ d(x,z) \le d(x,y) + d(y,z) < d(x,y) + \epsilon = d(x,y) + \delta - d(x,y) = \delta \]
+    Er bestaat dus steeds een open bol binnen $B(x,\delta)$ die er deel van uitmaakt.
   \end{proof}
 \end{st}
 
 \begin{st}
   Een gesloten bol $B\interval{x}{\delta}$ in een metrische ruimte $V,d$ is een gesloten deelverzameling van $V$.
-\extra{bewijs}
+
+  \begin{proof}
+    We bewijzen dat $X = V \setminus B\interval{x}{\delta}$ open is.
+    Kies willekeurig een $z\in X$ en noem $\epsilon = d(x,z) - \delta$.
+    Kies een willekeurig punt $y\in B(z,\epsilon)$, dan geldt het volgende:
+    \[ d(x,y) \ge d(x,z) - d(y,z) > d(x,z) - \epsilon = d(x,z) -d(x,z) + \delta = \delta \]
+    Er bestaat dus een open bol rond elk punt $x$ buiten $B\interval{x}{\delta}$ die volledig buiten $B\interval{x}{\delta}$ ligt.
+  \end{proof}
 \end{st}
 
 
@@ -156,7 +160,7 @@
     \begin{itemize}
     \item $(1) \Rightarrow (2)$\\
       Kies willekeurig een $x \in X$ en een $r\in \mathbb{R}_{0}^{+}$.
-      $B_{d_{2}}(x,r)$ is dan een open bol voor $d_{2}$, maar ook $d_{1}$ open\question{maar dan niet noodzakelijk een bol?} omdat $d_{1}$ topologisch fijner is dan $d_{2}$.
+      $B_{d_{2}}(x,r)$ is dan een open bol voor $d_{2}$, maar ook $d_{1}$ open (,hoewel dan niet noodzakelijk een bol,) omdat $d_{1}$ topologisch fijner is dan $d_{2}$.
       Nu is $x$ ook een element van $B_{d_{2}}(x,r)$ en dus bestaat er een $r'\in \mathbb{R}_{0}^{+}$ zodat $B_{d_{1}}(x,r')$ een deel is van $B_{d_{2}}(x,r)$.
     \item $(2) \Rightarrow (3)$\\
       Kies een willekeurige $x\in X$ en een $\epsilon \in \mathbb{R}_{0}^{+}$.
@@ -311,13 +315,59 @@
 \begin{st}
   Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$.
   Als elke rij een convergente deelrij heeft met limiet in $A$ is $A$ gesloten en begrensd is.
-\TODO{bewijs}
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $A$ is gesloten:\\
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A$ met een $x\in X$ als limiet.
+      Neem een convergente deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$ met limiet $a\in A$.
+      Omdat een deelrij van een convergente rij dezelfde limiet heeft als de moederrij moet $x$ gelijk zijn aan $a$ en dus tot $A$ behoren.
+    \item $A$ is begrensd:\\
+      Stel dat $A$ niet begrensd zou zijn.
+      Kies willekeurig een $x\in X$, we kunnen dan voor alle $n\in \mathbb{N}_{0}$ een $x_{n}\in A$ vinden zodat $d(x,x_{n}) \ge n$ geldt.
+      We verkrijgen zo een rij $(x_{n})_{n}$ waarvan we beweren dat ze geen convergente deelrij heeft.
+      Zij immers $(x_{n_{k}})_{k}$ een convergente deelrij met limiet $a\in X$, dan volgt dit:
+      \[ \forall k\in \mathbb{N}:\ |d(x,x_{n_{k}}) -d(x,a)| \le d(x_{n_{k}},a) \]
+      $(d(x,x_{n_{k}}))_{k}$ moet dus convergeren naar $d(x,a)$, maar dit is strijdig want de rij $(d(x,x_{n_{k}}))_{k}$ is niet begrensd.
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 \begin{tvb}
   De omgekeerde implicatie geldt niet.
-\TODO{tegenvoorbeeld}
+
+  \begin{proof}
+    Beschouw $\mathbb{R},d_{2}$.
+    Voor deze metriek is $\mathbb{R}$ begrensd en uiteraard ook gesloten.
+    Beschouw echter de rij $(n)_{n}$.
+    Deze rij heeft geen convergente deelrij voor $d_{2}$.
+    Beschouw echter een deelrij $(n_{k})_{k}$ ervan, dan geldt voor elke $a\in \mathbb{R}$ het volgende:
+    \[ d_{2}(n_{k},a) = \left| \frac{n_{k}}{1+n_{k}} - \frac{a}{1+|a|} \right| \rightarrow \left|1-\frac{a}{1+|a|}\right| \neq 0 \]
+  \end{proof}
+  \begin{proof}
+    Beschouw $\mathbb{N},d_{N}$ (de triviale metriek op $\mathbb{N}$).
+    Beschouw de rij $(n)_{n}$.
+    Deze rij heeft geen convergente deelrij voor de triviale metriek.
+  \end{proof}
+  \begin{proof}
+    Beschouw $C(\interval{0}{1}),d_{\infty}$ en benoem $A$ als volgt:
+    \[ A = \{ f\in C(\interval{0}{1}) \mid \forall t\in \interval{0}{1}:\ 0 \le f(t) \le 1 \} \]
+    $A$ is gesloten en begrensd voor de supremummetriek.
+\extra{voorbeeld onderaan pagina 44 afmaken}
+  \end{proof}
 \end{tvb}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  We noemen $A$ \term{rijcompact} als en slechts als elke rij in $A$ een convergente deelrij heeft met limiet in $A$
+\end{de}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  We noemen $A$ \term{totaal begrensd} als en slechts als we voor $\epsilon \in \mathbb{R}_{0}^{+}$ de verzameling $A$ kunnen overdekken met een eindig aanatal open bollen met straal $\epsilon$.
+  \[ A \subseteq \bigcup_{i=1}^{n}B(x_{i},\epsilon) \text{ met } x_{i} \in A \]
+\end{de}
 
 
 

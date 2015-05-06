@@ -37,11 +37,13 @@
 
 
 \newcounter{todocounter}
+\newcounter{importantcounter}
 \newcommand{\todonum}[2][]{\stepcounter{todocounter}\todo[#1]{#2}}
+\newcommand{\todoi}[2][]{\stepcounter{importantcounter}\todonum[#1]{#2}}
 
 
 % Mooiere TODO's
-\newcommand{\TODO}[1]{\todonum[color=red,inline,size=\small]{TODO: #1}}
+\newcommand{\TODO}[1]{\todoi[color=red,inline,size=\small]{TODO: #1}}
 \newcommand{\extra}[1]{\todonum[color=orange,inline,size=\small]{EXTRA: #1}}
 \newcommand{\clarify}[1]{\todonum[color=yellow,inline,size=\small]{CLARIFY: #1}}
 \newcommand{\question}[1]{\todonum[color=green,inline,size=\small]{QUESTION: #1}}
@@ -69,3 +71,4 @@
 \definecolor{solarfront}{HTML}{657A81}
 \mdfdefinestyle{klad}{linewidth=0pt,backgroundcolor=solarback,fontcolor=solarfront}
 \newenvironment{klad}{\begin{mdframed}[style=klad]}{\end{mdframed}}
+
