@@ -315,13 +315,59 @@ hello it is i leclerc
 \begin{st}
   Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$.
   Als elke rij een convergente deelrij heeft met limiet in $A$ is $A$ gesloten en begrensd is.
-\TODO{bewijs}
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $A$ is gesloten:\\
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A$ met een $x\in X$ als limiet.
+      Neem een convergente deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$ met limiet $a\in A$.
+      Omdat een deelrij van een convergente rij dezelfde limiet heeft als de moederrij moet $x$ gelijk zijn aan $a$ en dus tot $A$ behoren.
+    \item $A$ is begrensd:\\
+      Stel dat $A$ niet begrensd zou zijn.
+      Kies willekeurig een $x\in X$, we kunnen dan voor alle $n\in \mathbb{N}_{0}$ een $x_{n}\in A$ vinden zodat $d(x,x_{n}) \ge n$ geldt.
+      We verkrijgen zo een rij $(x_{n})_{n}$ waarvan we beweren dat ze geen convergente deelrij heeft.
+      Zij immers $(x_{n_{k}})_{k}$ een convergente deelrij met limiet $a\in X$, dan volgt dit:
+      \[ \forall k\in \mathbb{N}:\ |d(x,x_{n_{k}}) -d(x,a)| \le d(x_{n_{k}},a) \]
+      $(d(x,x_{n_{k}}))_{k}$ moet dus convergeren naar $d(x,a)$, maar dit is strijdig want de rij $(d(x,x_{n_{k}}))_{k}$ is niet begrensd.
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 \begin{tvb}
   De omgekeerde implicatie geldt niet.
-\TODO{tegenvoorbeeld}
+
+  \begin{proof}
+    Beschouw $\mathbb{R},d_{2}$.
+    Voor deze metriek is $\mathbb{R}$ begrensd en uiteraard ook gesloten.
+    Beschouw echter de rij $(n)_{n}$.
+    Deze rij heeft geen convergente deelrij voor $d_{2}$.
+    Beschouw echter een deelrij $(n_{k})_{k}$ ervan, dan geldt voor elke $a\in \mathbb{R}$ het volgende:
+    \[ d_{2}(n_{k},a) = \left| \frac{n_{k}}{1+n_{k}} - \frac{a}{1+|a|} \right| \rightarrow \left|1-\frac{a}{1+|a|}\right| \neq 0 \]
+  \end{proof}
+  \begin{proof}
+    Beschouw $\mathbb{N},d_{N}$ (de triviale metriek op $\mathbb{N}$).
+    Beschouw de rij $(n)_{n}$.
+    Deze rij heeft geen convergente deelrij voor de triviale metriek.
+  \end{proof}
+  \begin{proof}
+    Beschouw $C(\interval{0}{1}),d_{\infty}$ en benoem $A$ als volgt:
+    \[ A = \{ f\in C(\interval{0}{1}) \mid \forall t\in \interval{0}{1}:\ 0 \le f(t) \le 1 \} \]
+    $A$ is gesloten en begrensd voor de supremummetriek.
+\extra{voorbeeld onderaan pagina 44 afmaken}
+  \end{proof}
 \end{tvb}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  We noemen $A$ \term{rijcompact} als en slechts als elke rij in $A$ een convergente deelrij heeft met limiet in $A$
+\end{de}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  We noemen $A$ \term{totaal begrensd} als en slechts als we voor $\epsilon \in \mathbb{R}_{0}^{+}$ de verzameling $A$ kunnen overdekken met een eindig aanatal open bollen met straal $\epsilon$.
+  \[ A \subseteq \bigcup_{i=1}^{n}B(x_{i},\epsilon) \text{ met } x_{i} \in A \]
+\end{de}
 
 
 
