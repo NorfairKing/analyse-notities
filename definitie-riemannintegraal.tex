@@ -1,6 +1,63 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{Definitie Riemannintegraal}
+\label{sec:defin-riem}
+
+\begin{de}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een functie en $x_{0}, \dotsc, x_{n}$ $n+1$ punten.
+  De som van de rechthoeken onder de grafiek van $f$ noemen we de \term{ondersom}.
+  De som van de rechthoeken boven de grafiek van $f$ noemen we de \term{bovensom}.
+\end{de}
+
+\begin{de}
+  Een \term{verdeling} van een interval $\interval{a}{b}$ is een verzameling $P = \{x_{0},x_{1},\dotsc,x_{n}\}$ met $a = x_{0} < x_{1} < \dotsb < x_{n-1} < x_{n} = b$.
+\end{de}
+
+\begin{de}
+  We noemen een verdeling $P'$ \term{fijner} dan een verzameling $P$ als $P$ een deel is van $P'$.
+\end{de}
+
+\begin{de}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie gedefinieerdop een gesloten begrensd interval en zij $P = \{x_{0},\dotsc,x_{n}\}$ een verdeling van het interval $\interval{a}{b}$.
+  We definieren de \term{ondersom} $\underline{S}(f,P)$ als volgt:
+  \[ \underline{S}(f,P) = \sum_{k=1}^{n} \inf\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}}\} (x_{k}-x_{k-1}) \]
+  We definieren de \term{bovensom} $\overline{S}(f,P)$ als volgt:  
+  \[ \overline{S}(f,P) = \sum_{k=1}^{n} \sup\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}}\} (x_{k}-x_{k-1}) \]
+\end{de}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie en $P$ en $P'$ verdelingen van $\interval{a}{b}$ zodat $P'$ fijner is dan $P$, dan geldt het volgende:
+  \[ \underline{S}(f,P) \le \underline{S}(f,P') \le \overline{S}(f,P') \le \overline{S}(f,P) \]
+\TODO{bewijs 4}
+\end{bpr}
+
+\begin{de}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie.
+  De \term{onder-Riemannintegraal} $\underline{S}$ van $f$ over $\interval{a}{b}$ definieren we als volgt:
+  \[ \underline{S} = \sup\left\{\underline{S}(f,P) \mid P \text{ is een verdeling van } \interval{a}{b} \right\} \]
+\end{de}
+
+\begin{de}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie.
+  De \term{boven-Riemannintegraal} $\overline{S}$ van $f$ over $\interval{a}{b}$ definieren we als volgt:
+  \[ \overline{S} = \inf\left\{\overline{S}(f,P) \mid P \text{ is een verdeling van } \interval{a}{b} \right\} \]
+\end{de}
+
+\begin{de}
+  We noemen een begrensde functie $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ \term{Riemannintegreerbaar} als $\underline{S}(f) = \overline{S}(f)$ geldt.
+  In dit geval noemen we deze waarde de \term{Riemannintegraal} van $f$ over $\interval{a}{b}$.
+  We noteren dit dan als volgt:
+  \[ \int_{a}^{b}f \quad\text{ of }\quad \int_{a}^{b}f(x)\ dx \]
+\end{de}
+
+
+
+
+
+
+
+
 
 
 
