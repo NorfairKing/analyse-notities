@@ -1,6 +1,95 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{Volledigheid}
+\label{sec:volledigheid}
+
+\begin{de}
+  We noemen een metrische ruimte \term{volledig} als elke Cauchyrij erin convergeert.
+\end{de}
+
+\begin{bpr}
+  Zij $X,d$ een willekeurige metrische ruimte, dan is $C_{b}(X),d_{\infty}$ als volgt een volledige metrische ruimte.
+  \[ C_{b}(X) = \{ f:\ X \rightarrow \mathbb{R} \mid f \text{ is continu en begrensd.} \} \]
+  \[ d_{\infty} = \sup\{ |f(x)-g(x)| \mid x \in X \} \]
+\TODO{bewijs p 75}
+\end{bpr}
+
+\begin{bpr}
+  De metrische ruimte $C\left( \interval{-1}{1} \right),d_{1}$ is niet volledig.
+\TODO{bewijs p 76}
+\end{bpr}
+
+\begin{bpr}
+  De metrische ruimte $\mathcal{F},h$ is volledig.
+\TODO{bewijs p 77}
+\end{bpr}
+
+\subsection{De vastepuntsstelling en haar toepassingen}
+\label{sec:vastepuntsstelling}
+
+\begin{bst}
+  De \term{vastepuntsstelling van Banach}.\\
+  Zij $X,d$ een volledige metrische ruimte en $f:\ X \rightarrow X$ een strikte contractie, dan heeft $f$ een uniek vast punt.
+  Dat vast punt wordt bovendien verkregen als limiet van de rij gedefinieerd als volgt:
+  \[ x_{0}\in X,\ x_{n+1} = f(x_{n}) \]
+\TODO{bewijs p 78}
+\end{bst}
+
+\subsubsection{Toepassing: ge\"itereerde functiesystemen en fractalen}
+\label{sec:toep-geit-funct}
+
+\begin{de}
+  We noemen een deel $F$ van $\mathbb{R}^{2}$ \term{zelfsimilair} als er een eindig aantal contractieve afbeeldingen $W_{i}:\ \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}$ bestaan zodat $F = \bigcup_{i}W_{i}$ geldt.
+  Als de afbeeldingen bovendien affien zijn spreken we van \term{affiene zelfsimilariteit}.
+\end{de}
+
+\begin{de}
+  We noemen een eindige verzameling $\mathcal{W} = \{ W_{1}, \dotsc, W_{m}\}$ van strikt contractieve afbeeldingen $W_{i}:\ \mathbb{R}^{2}\rightarrow \mathbb{R}^{2}$ een \term{ge\"itereerd functiesysteem} (\term{IFS}).
+\end{de}
+
+\begin{de}
+  De \term{contractiefactor} van een IFS definieren we als het maximum van de contractiefactoren van de elementen ervan.
+\end{de}
+
+\begin{de}
+  Als de afbeeldingen van een IFS affien zijn, spreken we van een \term{affien IFS}.
+\end{de}
+
+\begin{de}
+  Aan een IFS associ\"eren we een afbeelding van $\mathcal{F}$ naar $\mathcal{F}$ die we met het symbool $\mathcal{W}$ noteren:
+  \[ \mathcal{W}:\ \mathcal{F} \rightarrow \mathcal{F}:\ F \mapsto \mathcal{W} = \bigcup_{i}W_{i}(F) \]
+  Deze afbeelding noemen we de \term{Hutchinson-operator}.
+\end{de}
+
+\begin{bpr}
+  Zij $\mathcal{W} = \{ W_{1}, \dotsc, W_{m}$ een IFS in $\mathbb{R}^{2}$ met contractiefactor kleiner dan $1$, dan is de geassocieerde Hutchinson-operator strikt contractief op $\mathcal{F},h$ met contractiefactor $c$:
+  \[ \forall F,G \in \mathcal{F}:\ h\left(\mathcal{W}(F), \mathcal{W}(G)\right) \le c h(F,G) \]
+\TODO{bewijs p 82}
+\end{bpr}
+
+\extra{fractaal en Hausdorffdimensie?}
+
+\subsection{Vervollediging}
+\label{sec:vervollediging}
+
+\begin{bst}
+  Zij $X,d$ een metrische ruimte, dan bestaat er een metrische ruimte $X_{v},d_{v}$ en een isometrische inbedding $\mathcal{i}:\ X \rightarrow X_{v}$ zodat $\mathcal{i}(X)$ dicht is in $X_{v}$.
+  Zo'n ruimte $X_{v},d_{v}$ is uniek op isometrie na.
+\TODO{bewijs p 85}
+\end{bst}
+
+\begin{de}
+  We noemen de $X_{v},d_{v}$ hierboven de \term{vervollediging} van $X,d$.
+\end{de}
+
+\subsubsection{Contructie van $\mathbb{R}$}
+\label{sec:contr-van-mathbbr}
+
+\TODO{de constructie}
+
+
+
 
 
 
