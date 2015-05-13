@@ -1,8 +1,261 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{Eigenschappen van de Riemannintegraal}
+\label{sec:eigenschappen-van-de}
 
+\subsection{Eigenschappen in verband met integreerbaarheid}
+\label{sec:eigensch-verb-met}
 
+\begin{bpr}
+  Een begrensde functie $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ is Riemannintegreerbaar als en slechts als er voor elke $\epsilon > 0$ een verdeling $P$ van $\interval{a}{b}$ bestaat als volgt:
+  \[ \overline{S}(f,P) - \underline{S}(f,P) < \epsilon \]
+  \TODO{bewijs p 7}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie, dan is $f$ Riemannintegreerbaar.
+\TODO{bewijs p 8}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie en zij $c\in \interval{a}{b}$.
+  Noteer met $f_{1}$ de beperking van $f$ tot $\interval{a}{c}$ en met $f_{2}$ de beperking van $f$ tot $\interval{c}{b}$.
+  Volgende uitspraken zijn dan equivalent:
+  \begin{enumerate}
+  \item $f$ is Riemannintegreerbaar over $\interval{a}{b}$
+  \item $f_{1}$ en $f_{2}$ zijn Riemannintegreerbaar over $\interval{a}{c}$, respectievelijk $\interval{c}{b}$.
+  \end{enumerate}
+  \[ \int_{a}^{b}f = \int_{a}^{c}f_{1} + \int_{c}^{b}f_{2} \]
+\end{bpr}
+
+\subsection{Lineariteit van de integraal}
+\label{sec:lineariteit-van-de}
+
+\begin{bpr}
+  Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ Riemannintegreerbare functies, dan is $f+g$ is Riemannintegreerbaar en geldt $\int_{a}^{b}(f+g) = \int_{a}^{b}f + \int_{a}^{b}g$
+\TODO{bewijs p 10}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie, en $\lambda \in \mathbb{R}$, dan is $\lambda f$ is Riemannintegreerbaar en geldt $\int_{a}^{b}(\lambda f) = \lambda \int_{a}^{b}f$.
+\TODO{bewijs p 10}
+\end{bpr}
+
+\begin{de}
+  Noteer met $\mathcal{R}(\interval{a}{b})$ de verzameling van de Riemannintegreerbare functies $f:\ \interval{a}{b} \rightarrow \mathbb{R}$.
+\end{de}
+
+\begin{bgev}
+  $\mathcal{R}(\interval{a}{b})$ in een re\"ele vectorruimte en de volgende afbeelding is lineair:
+  \[ \int_{a}^{b}:\ \mathcal{R}(\interval{a}{b}) \rightarrow \mathbb{R}:\ f \mapsto \int_{a}^{b}f \]
+\extra{bewijs}
+\end{bgev}
+
+\subsection{Integraal en orde}
+\label{sec:integraal-en-orde}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie.
+  \[ \left( \forall x\in \interval{a}{b}:\ f(x) \ge 0 \right) \Rightarrow \int_{a}^{b} f \ge 0 \]
+\TODO{bewijs p 11}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ twee Riemannintegreerbare functies.
+  \[ \left( \forall x\in \interval{a}{b}:\ f(x) \ge g(x) \right) \Rightarrow \int_{a}^{b} f \ge \int_{a}^{b}g \]
+\TODO{bewijs p 11}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie en $m,M \in \mathbb{R}$
+  \[ \left( \forall x\in \interval{a}{b}:\ m \le f(x) \le M \right) \Rightarrow m(b-a) \le \int_{a}^{b}f \le M(b-a) \]
+\TODO{bewijs p 11}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegeerbare functie, dan is $|f|$ ook Riemannintegreerbaar en geldt het volgende:
+  \[ \left| \int_{a}^{b}f \right| \le \int_{a}^{b}|f| \]
+\TODO{bewijs p 12}
+\end{bpr}
+
+\begin{de}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie.
+  Het \term{gemiddelde} van $f$ over $\interval{a}{b}$ wordt gedefinieerd als volgt:
+  \[ \frac{1}{b-a} \int_{a}^{b}f \]
+\end{de}
+
+\begin{bst}
+  De \term{middelwaardestelling voor de integraal}\\
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie, dan bestaat er minstens \'e\'en $c\in \interval{a}{b}$ waarvoor het volgende geldt:
+  \[ f(c) = \frac{1}{b-a} \int_{a}^{b}f \]
+\TODO{bewijs p 13}
+\end{bst}
+
+\subsection{De hoofdstelling en enkele gevolgen}
+\label{sec:de-hoofdstelling-en}
+
+\begin{bst}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie.
+  Beschouw de functie $g$ als volgt.
+  \[ g:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto \int_{a}^{b}f \]
+  Er geldt dan het volgende:
+  \begin{enumerate}
+  \item $g$ is continu.
+  \item Als $f$ continu is in een punt $x_{0}\in \interval{a}{b}$, dan is $g$ afleidbaar in $x_{0}$ en geldt $g'(x_{0}) = f(x_{0})$.
+  \end{enumerate}
+\TODO{bewijs p 14}
+\end{bst}
+
+\begin{bst}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie, dan is de functie $g$ als volgt afleidbaar en de afgeleide functie ervan gelijk aan $f$.
+  \[ g:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto \int_{a}^{x}f \]
+\TODO{bewijs p 15}
+\end{bst}
+
+\begin{de}
+  Zij $f:\ I \subseteq \mathbb{R} \rightarrow \mathbb{R}$ een functie op een interval $I$.
+  We noemen een functie $F:\ I \rightarrow \mathbb{R}$ een \term{primitieve functie} van $f$ als $F$ afleidbaar is en $F'$ gelijk is aan $f$.
+\end{de}
+
+\begin{de}
+  Een functie waarvoor een primitieve functie bestaat noemen we \term{primitieveerbaar}.
+\end{de}
+
+\begin{bpr}
+  Zij $f:\ I \subseteq \mathbb{R}\rightarrow \mathbb{R}$ een functie op een interval $I$.
+  Elke twee primitieve functies van $f$ zijn op een constante $C\in \mathbb{R}$ na gelijk.
+\TODO{bewijs: oefening}
+\end{bpr}
+
+\begin{bpr}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie en zij $F$ een primitieve functie van $f$, dan geldt volgende gelijkheid:
+  \[ \int_{a}^{b}f = F(b) - F(a) \]
+\TODO{bewijs p 16}
+\end{bpr}
+
+\begin{bst}
+  Zij $F:\ \interval{a}{b} \rightarrow \mathbb{R}$ een afleidbare functie.
+  Als $F'$ Riemannintegreerbaar is over $\interval{a}{b}$, dan geldt volgende gelijkheid:
+  \[ \int_{a}^{b}F' = F(b) - F(a) \]
+\TODO{bewijs p 17}
+\end{bst}
+
+\begin{bpr}
+  De \term{parti\"ele integratieregel}\\
+  Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ afleidbare fnucties met continue afgeleiden, dan geldt volgende gelijkheid:
+  \[ \int_{a}^{b}fg' = f(b)g(b)-f(a)g(a) - \int_{a}^{b}f'g \]
+\TODO{bewijs p 18}
+\end{bpr}
+
+\begin{bpr}
+  De \term{substitutieregel}\\
+  Zij $f:\ \interval{c}{d}\rightarrow\mathbb{R}$ een continue functie en $g:\ \interval{a}{b} \rightarrow \interval{c}{d}$ een afleidbare functie waarvoor $g'$ continu is, dan geldt volgende ongelijkheid:
+  \[ \int_{g(a)}^{g(b)}f(t)\ dt = \int_{a}^{b}f(g(x))g'(x)\ dx \]
+\TODO{bewijs p 18}
+\end{bpr}
+
+\subsection{Integralen en limieten van rijen van functies}
+\label{sec:integr-en-limi}
+
+\begin{bst}
+  De \term{begrensde convergentiestelling}\\
+  Zij $(f_{n})_{n}$ een rij van Riemannintegreerbare functies op een interval $\interval{a}{b}$ is die puntsgewijs convergeert naar een Riemannintegreerbare functie $f$.
+  Stel dat die rij begrensd is:
+  \[ \exists M\in \mathbb{R}:\ \forall n\in \mathbb{N}_{0}, \forall x\in \interval{a}{b}:\ \left|f_{n}(M)\right| \le M \]
+  Er geldt dan de volgende ongelijkheid:
+  \[ \lim_{n\rightarrow \infty}\int_{a}^{b}f_{n} = \int_{a}^{b}f \]
+\end{bst}
+
+\subsection{Uitbreidingen van de Riemannintegraal}
+\label{sec:uitbreidingen-van-de}
+
+\subsubsection{Oneigenlijke Riemannintegraal}
+\label{sec:oneig-riem}
+
+\begin{de}
+  We noemen een functie $f:\ \interval[open right]{a}{+\infty} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open right]{a}{+\infty}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{a}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{b\rightarrow +\infty}\int_{a}^{b}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{a}^{+\infty}f \]
+\end{de}
+
+\begin{de}
+  We noemen een functie $f:\ \interval[open left]{a}{b} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open left]{a}{b}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{c}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{c\overset{>}{\rightarrow} a}\int_{a}^{b}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{a}^{b}f \]
+\end{de}
+
+\begin{de}
+  Beschouw $a,b \in \mathbb{R} \cup \{ -\infty, +\infty \}$ met $a < b$ en beschouw een functie $g$ als volgt:
+  \[ g:\ \interval[open]{a}{b} \times \interval[open]{a}{b} \rightarrow \mathbb{R} \]
+  Zij verder $L \in \mathbb{R} \cup \{ -\infty, +\infty \}$.
+  Als voor elke keuze van rijen $(c_{n})_{n}$ en $(d_{n})_{n}$ in $\interval[open]{a}{b}$ die respectievelijk naar $a$ en $b$ convergeren geldt dat $(g(c_{n},d_{n}))_{n}$ naar $L$ convergeert, dan zeggen we het volgende:
+  \[ \lim_{\overset{d \overset{<}{\rightarrow} b}{c\overset{>}{\rightarrow} a}} g(c,d) = L \]
+\end{de}
+
+\begin{de}
+  Beschouw $a,b\in \mathbb{R} \cup \{-\infty,+\infty\}$ met $a<b$.
+  We noemen een functie $f:\ \interval[open left]{a}{b} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open left]{a}{b}$ als $f$ Riemannintegreerbaar is over elk gesloten begrensd interval $\interval{c}{b} \subseteq \interval[open]{a}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{\overset{d \overset{<}{\rightarrow} b}{c\overset{>}{\rightarrow} a}}\int_{c}^{d}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{a}^{b}f \]
+\end{de}
+
+\begin{bpr}
+  Beschouw $a,b\in \mathbb{R} \cup \{-\infty,+\infty\}$ met $a<b$.
+  Zij $f:\ \interval[open]{a}{b} \rightarrow \mathbb{R}$ een functie.
+  Kies een $c\in \interval[open]{a}{b}$.
+  Volgende uitspraken zijn equivalent:
+  \begin{enumerate}
+  \item $f$ is oneigenlijk Riemannintegreerbaar over $\interval[open]{a}{b}$.
+  \item $f_{\interval[open left]{a}{c}}$ is oneigenlijk Riemannintegreerbaar over $\interval[open]{a}{c}$ en $f_{\interval[open right]{c}{b}}$ is oneigenlijk Riemannintegreerbaar over $\interval[open]{c}{b}$.
+  \end{enumerate}
+  Er geldt dan volgende ongelijkheid:
+  \[ \int_{a}^{b}f = \int_{a}^{c}f_{\interval[open left]{a}{c}} + \int_{c}^{b}f_{\interval[open right]{c}{b}} \]
+  \TODO{bewijs: oefening}
+\end{bpr}
+
+\begin{bst}
+  Zij $f,g:\ I \rightarrow \mathbb{R}$ functies op een niet ``eindig en gesloten'' gesloten interval $I$ met de volgende eigenschap:
+  \[ \forall x\in I:\ |f(x)| \le g(x) \]
+  Stel dat $f$ Riemannintegreerbaar is over elk gesloten begrensd deelinterval van $I$ en dat $g$ oneigenlijk Riemannintegreerbaar is over $I$, dan is $f$ oneigenlijk Riemannintegreerbaar over $I$.
+\TODO{bewijs p 34}
+\end{bst}
+
+\begin{bst}
+  Zij $\sum_{n}x_{n}$ een reeks met positieve termen.
+  Zij $f:\ \mathbb{R}^{+}\rightarrow \mathbb{R}$ een dalende continue functie.
+  Stel dat er een $N\in \mathbb{N}$ bestaat zodat $x_{n}$ gelijk is aan $f(n)$ voor alle volgende $n\in \mathbb{N}$, dan is $f$ oneigenlijk integreerbaar over $\interval[open right]{0}{+\infty}$ als en slechts als $\sum_{n}x_{n}$ convergeert.
+  \TODO{bewijs p 35}
+\end{bst}
+
+\subsection{De Riemann-Stieltjesintegraal}
+\label{sec:de-riem-stieltj}
+
+\begin{de}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie.
+  Zij $P = \{x_{0},x_{1},\dotsc,x_{n}\}$ een verdeling van het interval $\interval{a}{b}$.
+  De \term{$F$-ondersom} $\underline{S}(f,P,F)$ van $f$ bij de verdeling $P$ definieren we als volgt:
+\[ \underline{S}(f,P,F) = \sum_{k=1}^{n} \inf\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}} \left( F(x_{k}) - F(x_{k-1}) \right) \]
+  De \term{$F$-bovensom} $\overline{S}(f,P,F)$ van $f$ bij de verdeling $P$ definieren we als volgt:
+\[ \overline{S}(f,P,F) = \sum_{k=1}^{n} \sup\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}} \left( F(x_{k}) - F(x_{k-1}) \right) \]
+\end{de}
+
+\begin{de}
+  We noemen een begrensde functie $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ \term{Riemann-Stieltjesintegreerbaar} ten opzichte van $F$ als $\underline{S}(f,P,F)$ gelijk is aan $\overline{S}(f,P,F)$.
+  In dit geval noemen we deze waarde de \term{Riemann-Stieltjesintegraal} van $f$ over $\interval{a}{b}$ ten opzichte van $F$ en noteren we deze als volgt:
+  \[ \int_{a}^{b}f\ dF \]
+\end{de}
+
+\begin{bst}
+  Zij $F:\ \interval{a}{b}\rightarrow \mathbb{R}$ een stijgende afleidbare functie en $F'$ Riemannintegreerbaar.
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie.
+  Als $fF'$ Riemannintegreerbaar is, dan is $f$ Riemann-Stieltjesintegreerbaar ten opzichte van $F$ en geldt volgende ongelijkheid:
+  \[ \int_{a}^{b}f(x)\ dF(x) = \int_{a}^{b}f(x)F'(x)\ dx \]
+\TODO{bewijs p 40}
+\end{bst}
 
 \end{document}
 
