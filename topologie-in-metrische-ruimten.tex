@@ -402,6 +402,7 @@ hello it is i leclerc
 \end{tvb}
 
 \begin{bpr}
+  \label{pr:rijcompact-dan-totaal-begrensd}
   Als $A$ rijcompact is, is $A$ totaal begrensd.
 
   \begin{proof}
@@ -417,10 +418,162 @@ hello it is i leclerc
   \end{proof}
 \end{bpr}
 
+\begin{tvb}
+  Het omgekeerde van bovenstaande propositie geldt niet.
+\TODO{zie oefening 19, 2.7}
+\end{tvb}
 
+\begin{st}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  $A$ is gesloten als en slechts $A$, bekeken als een metrische ruimte op zich voor de beperking van de metriek tot $A$ volledig is.
+\TODO{zie oef 20, 2.7}
+\end{st}
 
+\begin{bst}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  $A$ is rijcompact als en slechts als $A$ volledig en totaal begrensd is.
 
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Zij $A$ rijcompact, dan is $A$ totaal begrensd.\prref{pr:rijcompact-dan-totaal-begrensd}
+      Zij $(x_{n})_{n}$ een Cauchyrij in $A$, omdat $A$ begrensd is, bestaat er een convergente deelrij $(x_{n_{k}})_{k}$.
+      Omdat $(x_{n})_{n}$ een Cauchyrij is, zal $(x_{n})_{n}$ ook convergeren met dezelfde limiet.\TODO{waarom? apparte stelling? een cauchyrij met convergente deelrij convergeert}
+    \item $\Leftarrow$\\
+      Zij $A$ volledig en totaal begrensd.
+      Als $A$ leeg is, is $A$ triviaal rijcompact.
+      Stel daarom dat $A$ niet leeg is.
+      Kies dan een willekeurige rij $(x_{n})_{n}$ in $A$.
+      Als de verzameling $\{x_{n}\mid n\in \mathbb{N}\}$ eindig is, bevat $(x_{n})_{n}$ zeker een convergente deelrij.\waarom
+      Als $\{x_{n}\mid n\in \mathbb{N}\}$ oneindig is kunnen we een convergente deelrij construeren:
+      
+      Overdek $A$ met een eindig aantal open bollen met straal $1$.
+      Minstens \'e\'en van die bollen (zeg $B_{1}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in \mathbb{N}\}$.
+      Noem $J_{1}= \{n\in \mathbb{N} \mid x_{n}\in B_{1}\}$, dan zijn $J_{1}$ en $\{x_{n}\mid n\in J_{1}\}$ oneindige verzamelingen.
+      
+      Overdek nu $A$ met een eindig aantal open bollen met straal $\frac{1}{2}$.
+      Minstens \'e\'en van die bollen (zeg $B_{2}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in J_{1}\}$.
+      Noem $J_{2}= \{n\in J_{1} \mid x_{n}\in B_{2}\}$, dan zijn $J_{2}$ en $\{x_{n}\mid n\in J_{2}\}$ oneindige verzamelingen.
 
+      Overdek $A$ vervolgens met een eindig aantal open bollen met straal $\frac{1}{i}$.
+      Minstens \'e\'en van die bollen (zeg $B_{i}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in J_{i-1}\}$.
+      Noem $J_{i}= \{n\in J_{i-1} \mid x_{n}\in B_{i}\}$, dan zijn $J_{i}$ en $\{x_{n}\mid n\in J_{i}\}$ oneindige verzamelingen.
+      
+      We verkrijken een dalende rij verzamelingen $(J_{k})_{k}$ van oneindige deelverzamelingen van $\mathbb{N}$. Kies een $n_{1}\in J_{1}$. Omdat $J_{2}$ oneindig is kunnen we een $n_{2}\in J_{2}$ vinden zodat $n_{2} > n_{1}$. We kunnen zo een strikt stijgen de rij $(n_{k})_{k}$ in $\mathbb{N}$ opbouwen met $n_{k}\in J_{k}$ en $n_{k+1} > n_{k}$.
+      Beschouw nu de deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$.
+      We beweren dat deze deelrij een Cauchyrij is.
+      Kies immers een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en neem een $k_{0}\in \mathbb{N}$ groot genoeg opdat $\frac{2}{k_{0}}$ kleiner is dan $\epsilon$.
+      Kies dan $i,j \ge k_{0}$. $n_{1}$ zit dan in $J_{i} \subseteq J_{k_{0}}$ en $n_{j}$ in $J_{j} \subseteq J_{k_{0}}$.
+      $x_{n_{i}}$ en $x_{n_{j}}$ zitten dus per constructie beide in de open bol $B_{k_{0}}$ met straal $\frac{1}{k_{0}}$.
+      De afstand tussen $x_{n_{i}}$ en $x_{n_{j}}$ is dus kleiner dan $\frac{2}{k_{0}} < \epsilon$.
+
+      $(x_{n_{k}})_{k}$ is dus een Cauchyrij en dus convergent omwille van de volledigheid van $A$.
+      $A$ is dus rijcompact.
+    \end{itemize}
+  \end{proof}
+\end{bst}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  We noemen een verzameling $\mathcal{F}$ van open deelverzamelingen een \term{open overdekking} van $A$ als het volgende geldt:
+  \[ A \subseteq \bigcup_{V \in \mathcal{F}}V \]
+\end{de}
+
+\begin{de}
+  Een eindige deelverzameling van een open overdekking noemen we een \term{eindige deeloverdekking}.
+\end{de}
+
+\begin{bst}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan is $A$ rijcompacte als en slechts als elke open overdekking een eindige deeloverdekking heeft.
+\TODO{bewijs p 50}
+\end{bst}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan noemen we $A$ \term{compact} als elke open overdekking een eindige deeloverdekking heeft.
+\end{de}
+
+\begin{bst}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan zijn volgende uitspraken equivalent.
+  \begin{enumerate}
+  \item $X$ is rijcompact.
+  \item $X$ is compact.
+  \item $X$ is volledig en totaal begrensd.
+  \end{enumerate}
+\TODO{bewijs p 52}
+\end{bst}
+
+\begin{bpr}
+  Een gesloten deel van een compact is compact.
+\TODO{bewijs p 54}
+\extra{bewijs via rijcompactheid}
+\end{bpr}
+
+\begin{bei}
+  Zij $\mathcal{K}$ een verzameling van compacte delen van een metrische ruimte $X,d$ zodat de doorsnede van eindig veel elementen uit $\mathcal{K}$ nooit leeg is, dan is de doorsnede van alle verzamelingen uit $\mathcal{K}$ niet leeg.
+\TODO{bewijs p 54}
+\extra{bewijs via rijcompactheid}
+\end{bei}
+
+\begin{bpr}
+  Beschouw de metrische ruimte $X,d$.
+  Beschouw deelverzamelingen $A$ en $Y$ zodat $A \subseteq Y \subseteq X$ geldt.
+  Noteer de beperking van $d$ tot $Y$ met $d_{Y}$.
+  $A$ is compact in $X,d$ als en slechts als $A$ compact is in $Y,d_{Y}$.
+\end{bpr}
+
+\subsection{Samenhangende verzamelingen}
+\label{sec:samenh-verz}
+
+\begin{de}
+  We noemen een metrische ruimte $X,d$ \term{samenhangend} als enkel $\empty$ een $X$ open en gesloten zijn.
+\end{de}
+
+\begin{de}
+  Beschouw een deelverzameling $Y$ van $X$ met $X,d$ een metrische ruimte en $d_{Y}$ de beperking van $d$ tot $Y$.
+  We noemen $Y$ een \term{samenhangende deelverzameling} als en slechts als $Y,d_{Y}$ een samenhangende metrische ruimte is.
+\end{de}
+ 
+\begin{de}
+  We noemen twee verzamelingen $A$ en $B$ \term{onderling gescheiden} als het volgende geldt:
+  \[ A \cap \overline{B} = \emptyset = \overline{A} \cap B \]
+  Merk op dat $\overline{A}$ hier de sluiting is van $A$, niet het complement.
+\end{de}
+
+\begin{bpr}
+  Zij $Y$ een deelverzameling $Y$ van $X$ met $X,d$ een metrische ruimte.
+  $Y$ is niet samenhangend enkel als $Y$ te schrijven valt als een unie $A \cup B$ waarbij $A$ en $B$ beide niet leeg zijn en onderling gescheiden.
+\end{bpr}
+
+\begin{bpr}
+  Een deelverzameling $Y$ van $\mathbb{R}$ is samenhangend als en slechts het een interval is.
+\TODO{bewijs p 59}
+\extra{juiste plaats?}
+\end{bpr}
+
+\begin{bpr}
+  Zij $\mathbb{R},V,+, \|\cdot\|$ een genormeerde vectorruimte.
+  Alle convexe deelverzamelingen van $V$ zijn samenhangend voor de metriek ge\"induceerd door $\|\cdot\|$.
+\TODO{bewijs p 60}
+\end{bpr}
+
+\begin{bpr}
+  In een metrische ruimte $X,d$ is de unie van niet-disjunctie samenhangende verzamelingen samenhangend.
+\TODO{bewijs p 60}
+\end{bpr}
+
+\begin{bpr}
+  Beschouw een willekeurige deelverzameling $Y$ van een metrische ruimte $X,d$.
+  Voor elke $x\in Y$ bestaat er een grootste samenhangende deelverzameling $Y_{x}$ die $x$ bevat en deel is van $Y$.
+  Voor elk paar $x$ en $y$ in $Y$ zal dan $Y_{x} \cap Y_{y}$ leeg zijn of $Y_{x} = Y_{y}$ gelden.
+  $Y$ is de unie van twee aan twee disjunctie samenhangende deelverzamelingen.
+\TODO{bewijs p 61}
+\end{bpr}
+
+\begin{bpr}
+ Als $Y$ een open deel is van $\mathbb{R}^{p}$, dan zijn de samenhangende componenten van $Y$ weer open.
+\TODO{bewijs p 61}
+\end{bpr}
 
 \end{document}
 
