@@ -1,6 +1,88 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\section{Continu\"iteit}
+\label{sec:continuiteit}
+
+\begin{bpr}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten.
+  Zij $f:\ A \subseteq X \rightarrow Y$ een functie en een $a\in A$, dan is $f$ continu in $a$ als en slechts als voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
+\TODO{bewijs: oefening}
+\end{bpr}
+
+\begin{bpr}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten.
+  Zij $f:\ A \subseteq X \rightarrow Y$ een functie, dan is $f$ continu op $A$ als en slechts voor elke $V \subseteq Y$ $f^{-1}(V)$ relatief open is in $A$.
+\TODO{bewijs: oefening}
+\end{bpr}
+
+\subsection{Eigenschappen van continue functies}
+\label{sec:eigensch-van-cont}
+
+\begin{bpr}
+  Beschouw metrische ruimten $X,d_{X}$, $Y,d_{Y}$ en $Z,d_{Z}$ en functies $f:\ X \rightarrow Y$ en $g:\ Y \rightarrow Z$.
+  Stel dat $f$ continu is in een punt $a\in X$ en $g$ in $f(a)$, dan is $g\circ f$ continu in $a$.
+\TODO{bewijs: oefening}
+\end{bpr}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue functie.
+  Als $K \subseteq X$ compact is, is $f(K)$ ook compact.
+\TODO{bewijs p 68}
+\end{bst}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue functie.
+  Als $K \subseteq X$ compact is, is $f$ uniform continu op $K$.
+\TODO{bewijs p 69}
+\end{bst}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue injectieve functie.
+  Als $X$ compact is, dan is $f^{-1}:\ f(X) \rightarrow X$ continu.
+\TODO{bewijs p 69}
+\end{bst}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue functie.
+  Als $S \subseteq X$ samenhangend is, is $f(S)$ ook samenhangend.
+\TODO{bewijs p 70}
+\end{bst}
+
+\subsection{Convergentie van rijen van continue functies}
+\label{sec:conv-van-rijen}
+
+\begin{de}
+  Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $X$ met waarden in een metrische ruimte $Y,d_{Y}$, dan zeggen we dat $(f_{n})_{n}$ \term{puntsgewijs convergeert} op $X$ naar een functie $f:\ X \rightarrow Y$ als en slechts als voor elke $x\in X$ de rij $(f_{n}(x))_{n}$ naar $f(x)$ convergeert:
+  \[ \forall x\in X, \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0} \in \mathbb{N}, \forall n\in \mathbb{N}:\ n \ge n_{0}:\ \Rightarrow d_{Y}(f_{n}(x),f(x)) < \epsilon \]
+\end{de}
+
+\begin{de}
+  Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $X$ met waarden in een metrische ruimte $Y,d_{Y}$, dan zeggen we dat $(f_{n})_{n}$ \term{puntsgewijs convergeert} op $X$ naar een functie $f:\ X \rightarrow Y$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall x\in X, \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d_{y}(f_{n}(x),f_{n}(y)) < \epsilon \]
+\end{de}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{y}$ metrische ruimten.
+  Beschouw een rij $(f_{n})_{n}$ van functies $f_{n}:\ X \rightarrow Y$.
+  Veronderstel dat $(f_{n})_{n}$ uniform convergeert op $X$ naar een functie $f:\ X \rightarrow Y$, dan gelden volgende uitspraken:
+  \begin{enumerate}
+  \item Als alle $f_{n}$ continu zijn in eenzelfde $a\in X$, dan is ook $f$ continu in $a$.
+  \item Als alle $f_{n}$ uniform continu zijn op $X$, dan is ook $f$ uniform continu op $X$.
+  \end{enumerate}
+\end{bst}
+
+\begin{bst}
+  Zij $X,d$ een compacte metrische ruimte en $(f_{n})_{n}$ een rij van functies van $X$ naar $\mathbb{R}$.
+  Als aan de volgende voorwaarden voldaan is zal $f_{n}$ uniform convergeren naar $f$.
+  \begin{enumerate}
+  \item Alle functies $f_{n}$ zijn continu.
+  \item De rij $(f_{n})_{n}$ convergeert puntsgewijs naar een continue functie $X \rightarrow \mathbb{R}$.
+  \item Voor elke $x\in X$ is de rij $(f_{n}(x))_{n}$ stijgend.
+  \end{enumerate}
+\TODO{bewijs p 72}
+\end{bst}
+
 
 
 
