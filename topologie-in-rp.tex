@@ -15,18 +15,37 @@
 \end{de}
 
 \begin{de}
-  We noemen een deelverzameling $A$ van $\mathbb{R}^{p}$ \term{open} als het volgende geldt:
-  \[ \forall x\in A, \exists \delta \in \mathbb{R}_{0}^{+}, \forall y\in \mathbb{R}^{p}:\ \|y-x\| < \delta \Rightarrow y \in A \]
-\end{de}
-
-\begin{de}
   We noemen een deelverzameling $A$ van $\mathbb{R}^{+}$ \term{begrensd} als er een $M \in \mathbb{R}^{+}$ bestaat als volgt:
   \[ \forall x \in A:\ x \le M \]
 \end{de}
 
+\begin{de}
+  We noemen een deelverzameling $A$ van $\mathbb{R}^{p}$ \term{open} als het volgende geldt:
+  \[ \forall x\in A, \exists \delta \in \mathbb{R}_{0}^{+}, \forall y\in \mathbb{R}^{p}:\ \|y-x\| < \delta \Rightarrow y \in A \]
+\end{de}
+
 \begin{opm}
   Een deelverzameling $A$ van $\mathbb{R}^{p}$ is dus open als en slechts als er rond elk punt $x\in A$ een open bol kan gevonden worden die helemaal binnen $A$ ligt.
+\extra{bewijs?}
 \end{opm}
+
+\begin{st}
+  Equivalente definitie van open\\
+  Zij $A$ een deelverzameling van $\mathbb{R}^{p}$, dan is $A$ open als en slechts er, voor elke $x\in A$ een $\delta\in\mathbb{R}_{0}^{+}$ bestaat zodat $B\interval{x}{\delta}$ volledig binnen $A$ ligt.
+
+  \begin{proof}
+    Bewijs van een equivalentie
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Zij $A$ open en $x\in A$ willekeurig.
+      Omdat $A$ open is bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat $B(x,\epsilon)$ binnen $A$ ligt.
+      Kies nu $\delta = \frac{\epsilon}{2}$, dan ligt $B\interval{x}{\delta}$ binnen $B(x,\epsilon)$ en dus binnen $A$.
+    \item $\Leftarrow$\\
+      Kies $x\in A$ willekeurig.
+      Stel dat er steeds een $\delta \in \mathbb{R}_{0}^{+}$ bestaat zodat $B\interval{x}{\delta}$ binnen $A$ ligt, dan kunnen we dezelfde $\delta$ gebruiken als straal van een open bol om aan te tonen dat $A$ open is.
+    \end{itemize}
+  \end{proof}
+\end{st}
 
 \begin{st}
   Een open bol in $\mathbb{R}^{p}$ is een open deelverzameling van $\mathbb{R}^{p}$.
@@ -219,6 +238,7 @@
 \end{st}
 
 \begin{de}
+  \label{de:inwendige}
   De grootste open deelverzameling van $A$ noemen we het \term{inwendige} $\mathring{A}$ van $A$.
 \end{de}
 
@@ -227,21 +247,49 @@
 \end{de}
 
 \begin{pr}
+  \label{pr:rp-puntsgewijze-karakterisatie-inwendige}
   Zij $A$ een deel van $\mathbb{R}^{p}$, dan kunnen we $\mathring{A}$ als volgt beschrijven:
   \[ \mathring{A} = \{ x \in A \mid \exists \delta \in \mathbb{R}_{0}^{+}:\ B(x,\delta) \subseteq A \} \]
 \extra{bewijs}
 \end{pr}
 
 \begin{pr}
-  Zij $A$ een deel van $\mathbb{R}^{p}$, dan kunnen we $\mathring{A}$ als volgt beschrijven:
+  \label{pr:rp-puntsgewijze-karakterisatie-sluiting}
+  Zij $A$ een deel van $\mathbb{R}^{p}$, dan kunnen we $\overline{A}$ als volgt beschrijven:
   \[ \overline{A} = \{ x \in \mathbb{R}^{p} \mid \forall \delta \in \mathbb{R}_{0}^{+}:\ B(x,\delta) \cap A \neq \emptyset \} \]
 \extra{bewijs}
 \end{pr}
 
 \begin{pr}
+  \label{pr:rp-karakterisatie-sluiting-itv-rijen}
   Zij $A$ een deel van $\mathbb{R}^{p}$ en $x\in \mathbb{R}^{p}$, dan behoort $x$ tot $\overline{A}$ als en slechts als er een rij $(x_{n})_{n}$ in $A$ bestaat met $x$ als limiet.
 \extra{bewijs}
 \end{pr}
+
+\begin{st}
+  Zij $a\in \mathbb{R}^{p}$ en $r\in \mathbb{R}_{0}^{+}$.
+  Het inwendige van $B\interval{a}{r}$ is $B(a,r)$.
+
+  \begin{proof}
+    Van $B(a,r)$ weten we dat het binnen het inwendige van $B\interval{a}{r}$ ligt (want het is open).\label{de:rp-inwendige}
+    Beschouw daarom een punt $x$ dat op een afstand groter dan $r$ ligt van $a$.
+    We argumenteren dat $x$ niet in $\mathring{B\interval{a}{r}}$ kan liggen.
+    Kies daartoe een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $y=a + (x-a)\left(1+\frac{\epsilon}{\|x-a\|}\right)$.\prref{pr:rp-puntsgewijze-karakterisatie-inwendige}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $a\in \mathbb{R}^{p}$ en $r\in \mathbb{R}_{0}^{+}$.
+  De sluiting van $B(a,r)$ is $B\interval{a}{r}$.
+
+  \begin{proof}
+    Van $B(a,r)$ weten we dat het binnen de sluiting ervan ligt.
+    Beschouw daarom een punt $x$ dat op een afstand precies $r$ ligt van $a$.
+    We zullen een rij contstrueren in $A$ met $x$ als limiet. \prref{pr:rp-karakterisatie-sluiting-itv-rijen}
+    Kies daartoe de rij $(a + (r-a)\frac{1}{n})_{n}$.
+\question{wat nu?}
+  \end{proof}
+\end{st}
 
 \begin{de}
   De \term{rand} $\partial A$ van een deelverzameling $A$ van $\mathbb{R}^{+}$ definieren we als volgt:
