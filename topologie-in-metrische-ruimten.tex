@@ -312,60 +312,13 @@ hello it is i leclerc
 \subsection{Compacte verzamelingen}
 \label{sec:comp-verz}
 
-\begin{st}
-  Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$.
-  Als elke rij een convergente deelrij heeft met limiet in $A$ is $A$ gesloten en begrensd is.
 
-  \begin{proof}
-    \noindent
-    \begin{itemize}
-    \item $A$ is gesloten:\\
-      Kies een willekeurige rij $(x_{n})_{n}$ in $A$ met een $x\in X$ als limiet.
-      Neem een convergente deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$ met limiet $a\in A$.
-      Omdat een deelrij van een convergente rij dezelfde limiet heeft als de moederrij moet $x$ gelijk zijn aan $a$ en dus tot $A$ behoren.
-    \item $A$ is begrensd:\\
-      Stel dat $A$ niet begrensd zou zijn.
-      Kies willekeurig een $x\in X$, we kunnen dan voor alle $n\in \mathbb{N}_{0}$ een $x_{n}\in A$ vinden zodat $d(x,x_{n}) \ge n$ geldt.
-      We verkrijgen zo een rij $(x_{n})_{n}$ waarvan we beweren dat ze geen convergente deelrij heeft.
-      Zij immers $(x_{n_{k}})_{k}$ een convergente deelrij met limiet $a\in X$, dan volgt dit:
-      \[ \forall k\in \mathbb{N}:\ |d(x,x_{n_{k}}) -d(x,a)| \le d(x_{n_{k}},a) \]
-      $(d(x,x_{n_{k}}))_{k}$ moet dus convergeren naar $d(x,a)$, maar dit is strijdig want de rij $(d(x,x_{n_{k}}))_{k}$ is niet begrensd.
-    \end{itemize}
-  \end{proof}
-\end{st}
-
-\begin{tvb}
-  De omgekeerde implicatie geldt niet.
-
-  \begin{proof}
-    Beschouw $\mathbb{R},d_{2}$.
-    Voor deze metriek is $\mathbb{R}$ begrensd en uiteraard ook gesloten.
-    Beschouw echter de rij $(n)_{n}$.
-    Deze rij heeft geen convergente deelrij voor $d_{2}$.
-    Beschouw echter een deelrij $(n_{k})_{k}$ ervan, dan geldt voor elke $a\in \mathbb{R}$ het volgende:
-    \[ d_{2}(n_{k},a) = \left| \frac{n_{k}}{1+n_{k}} - \frac{a}{1+|a|} \right| \rightarrow \left|1-\frac{a}{1+|a|}\right| \neq 0 \]
-  \end{proof}
-  \begin{proof}
-    Beschouw $\mathbb{N},d_{N}$ (de triviale metriek op $\mathbb{N}$).
-    Beschouw de rij $(n)_{n}$.
-    Deze rij heeft geen convergente deelrij voor de triviale metriek.
-  \end{proof}
-  \begin{proof}
-    Beschouw $C(\interval{0}{1}),d_{\infty}$ en benoem $A$ als volgt:
-    \[ A = \{ f\in C(\interval{0}{1}) \mid \forall t\in \interval{0}{1}:\ 0 \le f(t) \le 1 \} \]
-    $A$ is gesloten en begrensd voor de supremummetriek.
-\extra{voorbeeld onderaan pagina 44 afmaken}
-  \end{proof}
-\end{tvb}
+\subsubsection{Totaal begrensd}
+\label{sec:totaal-begrensd}
 
 \begin{de}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
-  We noemen $A$ \term{rijcompact} als en slechts als elke rij in $A$ een convergente deelrij heeft met limiet in $A$
-\end{de}
-
-\begin{de}
-  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
-  We noemen $A$ \term{totaal begrensd} als en slechts als we voor $\epsilon \in \mathbb{R}_{0}^{+}$ de verzameling $A$ kunnen overdekken met een eindige verzameling open bollen met straal $\epsilon$.
+  We noemen $A$ \term{totaal begrensd} als en slechts als we voor elke $\epsilon \in \mathbb{R}_{0}^{+}$ de verzameling $A$ kunnen overdekken met een eindige verzameling open bollen met straal $\epsilon$.
   \[ A \subseteq \bigcup_{i=1}^{n}B(x_{i},\epsilon) \text{ met } x_{i} \in A \]
 \end{de}
 
@@ -394,11 +347,77 @@ hello it is i leclerc
     $\mathbb{N}$ is begrensd met diameter $1$, maar niet totaal begrensd.
     Je kan immers $\mathbb{N}$ niet overdekken met een eindig aantal open bollen van straal $\frac{1}{2}$.
   \end{proof}
+  \begin{proof}
+    Beschouw $l^{\infty}(\mathbb{N}$ met de supremummetriek $d_{\infty}$ en beschouw de verzameling $A$ als volgt:
+    \[ A = \{ (x_{n})_{n} \in l^{\infty}(\mathbb{N}) \mid \forall n\in \mathbb{N}:\ 0 \le x_{n} \le 1 \} \]
+    $A$ is begrensd met diameter $1$, maar niet totaal begrensd.
+    Er bestaan immers een oneindig aantal rijen die elk op een verschillende plaats een $1$ bevatten en voor de rest nullen.
+    Deze rijen liggen op afstand $1$ van elkaar en moeten dus in een verschillende open bol van straal $\frac{1}{2}$ zitten.
+    $A$ kan dus niet overdekt worden met een eindig aantal open bollen van straal $\frac{1}{2}$:
+  \end{proof}
 \end{tvb}
 
+\subsubsection{Cauchy-compact}
+\label{sec:cauchy-compact}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte.
+  We noemen een deelverzameling $V$ van $X$ \term{Cauchycompact} als elke rij in $V$ een Cauchy-deelrij heeft.
+\end{de}
+
+\begin{st}
+  \label{st:cauchycompact-dan-totaal-begrensd}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  Als $A$ Cauchycompact is, dan is $A$ totaal begrensd.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat $A$ niet totaal begrensd zou zijn.
+    Er zou dan een $\epsilon \in \mathbb{R}_{0}^{+}$ bestaan zodat $A$ niet overdekt kan worden met een eindig aantal open bollen met straal $\epsilon$.
+    We construeren nu een rij $(x_{n})_{n}$ in $A$ die geen cauchy deelrij heeft.
+    Kies $x_{1}\in A$, dan geldt $A \not\subseteq B(x_{1},\epsilon)$.
+    Kies dan $x_{2}\in A \setminus B(x_{1},\epsilon)$, dan geldt $A \not \subseteq B(x_{1},\epsilon) \cup B(x_{2},\epsilon)$.
+    Kies vervolgens $x_{i}\in A\setminus \bigcup_{j=1}^{i-1}B(x_{j},\epsilon)$, zodat $A \not \subseteq \bigcup_{j=1}^{i}B(x_{j},\epsilon)$ geldt.
+    We verkrijgen zo een rij met de volgende eigenschap:
+    \[ x_{k+1} \not \in \bigcup_{i=1}^{k}B(x_{i},\epsilon) \]
+    Per constructie geldt dus $\forall n,m\in \mathbb{N}:\ n\neq m \Rightarrow d(x_{n},x_{m}) \ge \epsilon$ en kan $(x_{n})_{n}$ dus geen Cauchy-deelrij hebben.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan is $A$ Cauchycompact als en slechts $A$ totaal begrensd is.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Zi
+    \item $\Leftarrow$\\
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\subsubsection{Rijcompact}
+\label{sec:rijcompact}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte.
+  We noemen een deelverzameling $V$ van $X$ \term{rijcompact} als elke rij in $V$ een convergente deelrij heeft met limiet in $V$.
+\end{de}
+
+\begin{st}
+  \label{st:rijcompact-dan-cauchycompact}
+  Rijcompact impliceert Cauchycompact.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een willekeurige rij in een rijcompacte deelverzameling $V$ van een metrische ruimte $X,d$.
+    Er bestaat dan een convergente deelrij $(x_{n_{k}})_{k}$.
+    Deze deelrij is bovendien een Cauchyrij.\stref{st:convergent-dan-cauchy}
+  \end{proof}
+\end{st}
+
 \begin{tvb}
-  Beschouw $l^{\infty}(\mathbb{N}$ met de supremummetriek $d_{\infty}$ en beschouw de verzameling $A$ als volgt:
-  \[ A = \{ (x_{n})_{n} \in l^{\infty}(\mathbb{N}) \mid \forall n\in \mathbb{N}:\ 0 \le x_{n} \le 1 \} \]
+  De omgekeerde implicatie geldt niet.
+\TODO{tegenvoorbeeld}
 \end{tvb}
 
 \begin{bpr}
@@ -406,17 +425,99 @@ hello it is i leclerc
   Als $A$ rijcompact is, is $A$ totaal begrensd.
 
   \begin{proof}
-    Zij $X,d$ een metrische ruimte en $A \subseteq X$.
-    Stel dat $A$ niet begrensd zou zijn, dan zou er een $\epsilon \in \mathbb{R}_{0}^{+}$ bestaan zodat $A$ niet overdekt kan worden met een eindig aantal open bollen met straal $\epsilon$.
-    We construeren nu een rij $(x_{n})_{n}$ in $A$ die geen convergente deelrij heeft.
-    Kies $x_{1}\in A$, dan geldt $A \not\subseteq B(x_{1},\epsilon)$.
-    Kies dan $x_{2}\in A \setminus B(x_{1},\epsilon)$, dan geldt $A \not \subseteq B(x_{1},\epsilon) \cup B(x_{2},\epsilon)$.
-    Kies vervolgens $x_{i}\in A\setminus \bigcup_{j=1}^{i-1}B(x_{j},\epsilon)$, zodat $A \not \subseteq \bigcup_{j=1}^{i}B(x_{j},\epsilon)$ geldt.
-    We verkrijgen zo een rij met de volgende eigenschap:
-    \[ x_{k+1} \not \in \bigcup_{i=1}^{k}B(x_{i},\epsilon) \]
-    Per constructie geldt dus $\forall n,m\in \mathbb{N}:\ n\neq m \Rightarrow d(x_{n},x_{m}) \ge \epsilon$ en kan $(x_{n})_{n}$ geen convergente deelrij hebben.
+    Omdat $A$ rijcompact is, is $A$ Cauchycompact \stref{st:rijcompact-dan-cauchycompact} en dus totaal begrensd.\stref{st:cauchycompact-dan-totaal-begrensd}
   \end{proof}
 \end{bpr}
+
+\begin{bst}
+  Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$.
+  Als $A$ rijcompact is, dan is $A$ gesloten en begrensd.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $A$ is gesloten:\\
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A$ met een $x\in X$ als limiet.
+      Neem een convergente deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$ met limiet $a\in A$.
+      Omdat een deelrij van een convergente rij dezelfde limiet heeft als de moederrij moet $x$ gelijk zijn aan $a$ en dus tot $A$ behoren.
+    \item $A$ is begrensd:\\
+      Stel dat $A$ niet begrensd zou zijn.
+      Kies willekeurig een $x\in X$, we kunnen dan voor alle $n\in \mathbb{N}_{0}$ een $x_{n}\in A$ vinden zodat $d(x,x_{n}) \ge n$ geldt.
+      We verkrijgen zo een rij $(x_{n})_{n}$ waarvan we beweren dat ze geen convergente deelrij heeft.
+      Zij immers $(x_{n_{k}})_{k}$ een convergente deelrij met limiet $a\in X$, dan volgt dit:
+      \[ \forall k\in \mathbb{N}:\ |d(x,x_{n_{k}}) -d(x,a)| \le d(x_{n_{k}},a) \]
+      $(d(x,x_{n_{k}}))_{k}$ moet dus convergeren naar $d(x,a)$, maar dit is strijdig want de rij $(d(x,x_{n_{k}}))_{k}$ is niet begrensd.
+    \end{itemize}
+  \end{proof}
+\end{bst}
+
+\begin{tvb}
+  De omgekeerde implicatie geldt niet.
+
+  \begin{proof}
+    Beschouw $\mathbb{R},d_{2}$.
+    Voor deze metriek is $\mathbb{R}$ begrensd en uiteraard ook gesloten.
+    Beschouw echter de rij $(n)_{n}$.
+    Deze rij heeft geen convergente deelrij voor $d_{2}$.
+    Beschouw echter een deelrij $(n_{k})_{k}$ ervan, dan geldt voor elke $a\in \mathbb{R}$ het volgende:
+    \[ d_{2}(n_{k},a) = \left| \frac{n_{k}}{1+n_{k}} - \frac{a}{1+|a|} \right| \rightarrow \left|1-\frac{a}{1+|a|}\right| \neq 0 \]
+  \end{proof}
+  \begin{proof}
+    Beschouw $\mathbb{N},d_{N}$ (de triviale metriek op $\mathbb{N}$).
+    Beschouw de rij $(n)_{n}$.
+    Deze rij heeft geen convergente deelrij voor de triviale metriek.
+  \end{proof}
+  \begin{proof}
+    Beschouw $C(\interval{0}{1}),d_{\infty}$ en benoem $A$ als volgt:
+    \[ A = \{ f\in C(\interval{0}{1}) \mid \forall t\in \interval{0}{1}:\ 0 \le f(t) \le 1 \} \]
+    $A$ is gesloten en begrensd voor de supremummetriek.
+    Beschouw nu de rij $(f_{n})_{n}$ als volgt:
+
+    \noindent
+    \begin{minipage}{.45\textwidth}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+            \foreach \i in {1,...,10}
+            {
+              \addplot[smooth,domain=0:(1/(2*\i))]{2*\i*x};
+              \addplot[smooth,domain=(1/(2*\i)):(1/\i)]{2-2*\i*x};
+              \addplot[smooth,domain=(1/(\i)):1.1]{0};
+            }
+            \addplot[smooth,color=red,ultra thick,domain=-3:3]{0};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[
+      f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          2nx   & \text{ als } x \in \interval[open right]{0}{\frac{1}{2n}}\\
+          2-2nx & \text{ als } x \in \interval{\frac{1}{2n}}{\frac{1}{n}}\\
+          0     & \text{ als } x \in \interval[open left ]{\frac{1}{n}}{1}\\
+        \end{array}
+      \right.
+      \]
+      \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+    \end{minipage}
+
+    Merk op dat $(f_{n})_{n}$ inderdaad een rij in $A$ is.
+    We beweren dat $(f_{n})_{n}$ geen convergente deelrij heeft.
+    Inderdaad, kies een willekeurige deelrij $(f_{n_{k}})_{k}$ van $(f_{n})_{n}$.
+    Vermits de rij $(f_{n})_{n}$ (en dus ook $(f_{n_{k}}$\stref{st:deelrij-zelfde-limiet-als-convergente-moederrij}) puntsgewijs naar de nulfunctie convergeert, is de nulfunctie de enige functie die in aanmerking komt voor de $d_{\infty}$-limiet van deze deelrij.
+    Voor elke $k$ is echter $d_{\infty}(f_{n_{k}},0)$ gelijk aan $1$, dus $(f_{n_{k}})_{k}$ kan niet convergeren voor de $d_{\infty}$-metriek.
+  \end{proof}
+\end{tvb}
+
+
+\subsubsection{Compact}
+\label{sec:compact}
+
+
+
 
 \begin{tvb}
   Het omgekeerde van bovenstaande propositie geldt niet.
@@ -439,13 +540,13 @@ hello it is i leclerc
     \item $\Rightarrow$\\
       Zij $A$ rijcompact, dan is $A$ totaal begrensd.\prref{pr:rijcompact-dan-totaal-begrensd}
       Zij $(x_{n})_{n}$ een Cauchyrij in $A$, omdat $A$ begrensd is, bestaat er een convergente deelrij $(x_{n_{k}})_{k}$.
-      Omdat $(x_{n})_{n}$ een Cauchyrij is, zal $(x_{n})_{n}$ ook convergeren met dezelfde limiet.\TODO{waarom? apparte stelling? een cauchyrij met convergente deelrij convergeert}
+      Omdat $(x_{n})_{n}$ een Cauchyrij is, zal $(x_{n})_{n}$ ook convergeren met dezelfde limiet.\stref{st:cauchy-asa-convergente-deelrij}
     \item $\Leftarrow$\\
       Zij $A$ volledig en totaal begrensd.
       Als $A$ leeg is, is $A$ triviaal rijcompact.
       Stel daarom dat $A$ niet leeg is.
       Kies dan een willekeurige rij $(x_{n})_{n}$ in $A$.
-      Als de verzameling $\{x_{n}\mid n\in \mathbb{N}\}$ eindig is, bevat $(x_{n})_{n}$ zeker een convergente deelrij.\waarom
+      Als de verzameling $\{x_{n}\mid n\in \mathbb{N}\}$ eindig is, bevat $(x_{n})_{n}$ zeker een convergente deelrij.\stref{st:rij-met-eindig-aantal-waarden-convergente-deelrij}
       Als $\{x_{n}\mid n\in \mathbb{N}\}$ oneindig is kunnen we een convergente deelrij construeren:
       
       Overdek $A$ met een eindig aantal open bollen met straal $1$.
@@ -486,12 +587,37 @@ hello it is i leclerc
 
 \begin{bst}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan is $A$ rijcompacte als en slechts als elke open overdekking een eindige deeloverdekking heeft.
-\TODO{bewijs p 50}
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Bewijs uit het ongerijmde:
+      Stel dat er een rijcompacte deelverzameling $A$ van $X$ bestaat en een open overdekking $\mathcal{F}$ van $A$ die geen eindige deeloverdekking heeft.
+    \item $\Leftarrow$\\
+    \end{itemize}
+  \end{proof}
 \end{bst}
 
 \begin{de}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan noemen we $A$ \term{compact} als elke open overdekking een eindige deeloverdekking heeft.
 \end{de}
+
+\begin{opm}
+  Compact is dus equivalent met rijcompact.
+\end{opm}
+
+\begin{st}
+  \label{st:eindig-dan-compact}
+  In een metrische ruimte $X,d$ is elke eindige deelverzameling $A$ van $X$ compact.
+
+  \begin{proof}
+    Zij $V$ een willekeurige open overdekking van $A$.
+    Kies dan voor elk element $a\in A$ een deelverzameling $V_{a}$ van $X$ in $V$ die $a$ overdekt.
+    De unie $U$ van deze verzamelingen is dan een eindige deeloverdekking.
+    \[ U = \bigcup_{a\in A}V_{a} \]
+  \end{proof}
+\end{st}
 
 \begin{bst}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan zijn volgende uitspraken equivalent.

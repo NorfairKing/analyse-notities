@@ -115,15 +115,94 @@
 
 \begin{vb}
   $\mathbb{R},d$ is separabel door $\mathbb{Q}$.
+\TODO{een echt bewijs dat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.}
 \end{vb}
 
 \begin{vb}
-  Noem $A = \interval[open right]{0}{1}$ en $\mathcal{F} = \left\{ \interval[open]{-1}{1-\frac{1}{n}} \mid n \in \mathbb{N}_{0} \right\}$.
-  $\mathcal{F}$ is een verzameling van open delen van $\mathbb{R}$ en de unie ervan is $\interval[open]{0}{1}$, een oververzameling van $A$.
-  $\mathcal{F}$ is dus een open overdekking van $A$.
-  Deze overdekking heeft geen eindige deeloverdekking.
-  Elke deelverzameling van $\mathcal{F}$ is immers van de vorm $\interval[open]{-1}{1-\frac{1}{n}}$.
+  De verzameling $\interval[open right]{0}{1}$ is niet compact.
+  \begin{proof}
+    Benoem $A = \interval[open right]{0}{1}$ en $\mathcal{F}$ als volgt:
+    \[ \mathcal{F} = \left\{      \interval[open]{-1}{1-\frac{1}{n}} \mid n \in \mathbb{N}_{0} \right\} \]
+    $\mathcal{F}$ is een verzameling van open delen van $\mathbb{R}$ en de unie ervan is $\interval[open]{0}{1}$, een oververzameling van $A$.
+    $\mathcal{F}$ is dus een open overdekking van $A$.
+    eze overdekking heeft geen eindige deeloverdekking.
+    Elke deelverzameling van $\mathcal{F}$ is immers van de vorm $\interval[open]{-1}{1-\frac{1}{n}}$.
+  \end{proof}
 \end{vb}
+
+\begin{vb}
+  De verzameling $A$ als volgt is niet compact in $\mathbb{R},d$
+  \[ A = \left\{ \frac{1}{n} \mid n\in \mathbb{N} \right\} \]
+
+    \begin{proof}
+      \noindent
+      \begin{klad}
+        We construeren een open overdekking $\mathcal{A}$ zodat elk element uit $A$ in hoogstens \'e\'en open deel in $\mathcal{A}$ zit.
+        Beschouw eerst de afstand tussen twee opeenvolgende elementen uit $A$:
+        \[ d\left(\frac{1}{n},\frac{1}{n+1}\right) = \frac{n+1 - n}{n(n+1)} = \frac{1}{n(n+1)} \]
+        Als we rond elk element een open bol nemen met straal $r$ waarbij $r$ de helft is van de minimale afstand tussen twee elementen naast elkaar, dan hebben we een geschikte open overdekking.
+      \end{klad}
+      Beschouw de open overdekking $\mathcal{A}$ als volgt.
+      \[ \left\{ B\left(\frac{1}{n},\frac{1}{2n(n+1)}\right) \mid n\in \mathbb{N} \right\} \]
+      Merk op dat in elke open bol in $\mathcal{A}$ precies \'e\'en element van $A$ zit.
+      Omdat $A$ oneindig veel elementen bevat heeft deze open overdekking dus geen eindige deeloverdekking.
+    \end{proof}
+\end{vb}
+
+\begin{vb}
+  De verzameling $B$ als volgt is compact in $\mathbb{R},d$.
+  \[ B = \{0\} \cup \left\{ \frac{1}{n} \mid n\in \mathbb{N} \right\} \]
+
+  \begin{proof}
+    Kies een willekeurige overdekking $\mathcal{B}$ van $B$.
+    We argumenteren dat $\mathcal{B}$ te reduceren valt tot een eindige deeloverdekking.
+    \begin{klad}
+      Omdat $0$ is $B$ zit, moet $0$ overdekt worden door een open deel.
+      In dat open deel moeten oneindig veel elementen zitten uit $B$.
+      Voor de overige elementen uit $B$ kiezen we dan nog een open deel uit $\mathcal{B}$ om onze eindige deeloverdekking te vervolledigen.
+    \end{klad}
+    Omdat $\mathcal{B}$ open is en $0$ bevat, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat $B(0,\delta)$ een deelverzameling is van het open deel $O$ in $\mathcal{B}$ dat $0$ overdekt.
+    Noem $m=\left\lceil\frac{1}{\delta}\right\rceil$ en merk dan op dat $B(0,\delta)$ alle elementen $\frac{1}{n}$ bevat met $n > m$.
+    Kies nu nog voor elke $\frac{1}{n}$ met $n \le m$ een open deel $O_{n}$ uit $\mathcal{B}$ dat $\frac{1}{n}$ overdekt.
+    Beschouw dan de open deeloverdekking $\{ O \} \cup \{ O_{n} \mid n \le m \}$.
+    Deze deeloverdekking is eindig.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Een gesloten interval $\interval{a}{b}$ is compact in $\mathbb{R},d$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel dat er een open overdekking $\mathcal{O}$ van $\interval{0}{1}$ bestaat die geen eindige deeloverdekking heeft.
+    Beschouw de twee helften $\interval{a}{\frac{a+b}{2}}$ en $\interval{\frac{a+b}{2}}{b}$.
+    Minstens \'e\'en van de twee helften valt dan niet te eindig open de overdekken met een deel van $\mathcal{O}$.\waarom
+    Noteer die helft met $\interval{a_{1}}{b_{1}}$
+    We kunnen dit opnieuw blijven doen om een dalende rij intervallen $\left(\interval{a_{n}}{b_{n}}\right)_{n}$ te construeren die elk niet eindig te overdekken vallen met een deel van $\mathcal{O}$ en waarvan de lengte naar nul gaat.
+    De doorsnede van al deze intervallen is een singleton, zeg $\{x\}$.\stref{st:geneste-intervallen}
+    Neem nu een open deel $O$ in $\mathcal{O}$ dat $x$ overdekt.
+    Omdat $O$ open is, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat $B(x,\delta)$ een deel is van $O$.
+    Voor $n$ voldoende groot \clarify{hoe groot?} zit $\interval{a_{n}}{b_{n}}$ dus volledig in $\mathcal{O}$.
+    Dit is in strijd met de constructie van $\interval{a_{n}}{b_{n}}$.
+    Contradictie.
+  \end{proof}
+\TODO{later makkelijker bewijzen via stelling ipv via definitie}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{Z}$ is niet compact in $\mathbb{R},d$.
+
+  \begin{proof}
+    Neem de open overdekking $\mathcal{F}$ als volgt:
+    \[ \left\{ B\left(n,\frac{1}{2}\right) \mid n \in \mathbb{Z} \right\} \]
+    Elk element van (het oneindige) $\mathbb{Z}$ zit in precies \'e\'en deelverzameling in $\mathcal{F}$.
+    Er bestaat dus geen eindige deeloverdekking van $\mathcal{F}$.
+  \end{proof}
+\end{vb}
+
+\begin{opm}
+  In $\mathbb{R}^{p}$ kan je bovenstaand argument telkens gebruiken om te bewijzen dat een gesloten en begrensde verzameling compact is door de verzameling steeds op gelijkaardige wijze in $2^{p}$ te splitsen.
+\end{opm}
 
 \subsubsection{De $d_1$-metriek op $\mathbb{R}$}
 \label{sec:d_1-metriek-op}

@@ -109,7 +109,7 @@
 
 
 \begin{bst}
-  \label{st:convergent-dan-begrensd}
+  \label{st:convergent-dan-cauchy}
   Zij $V,d$ een metrische ruimte, dan is elke onvergente rij hierin een Cauchyrij.
 
   \begin{proof}
@@ -146,6 +146,54 @@
 \begin{gev}
   In elke metrische ruimte is dus in het bijzonder elke convergente rij begrensd.\stref{st:convergent-dan-begrensd}
 \end{gev}
+
+\subsection{Deelrijen}
+\label{sec:deelrijen}
+
+\begin{de}
+  Zij $(x_{n})_{n}$ een rij over een verzameling $V\subseteq X$ in een metrische ruimte en $(n_{k})_{k}$ een strikt stijgende rij over $\mathbb{N}$, dan is de rij $(x_{n_{k}})_{k}$ een \term{deelrij} van $(x_{n})_{n}$.
+\end{de}
+
+\begin{st}
+  \label{st:deelrij-zelfde-limiet-als-convergente-moederrij}
+  Zij $(x_{n})_{n}$ een convergente rij in een metrische ruimte $X,d$ en $(x_{n_{k}})_{k}$ een deelrij van $(x_{n})_{n}$, dan convergeent $(x_{n_{k}})_{k}$ naar dezelfde limiet.
+\TODO{bewijs}
+\end{st}
+
+\begin{st}
+  \label{st:cauchy-asa-convergente-deelrij}
+  In een metrische ruimte $X,d$ is een Cauchyrij $(x_{n})_{n}$ convergent als en slechts als ze een convergente deelrij heeft. 
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$:
+      De rij $(x_{n})_{n}$ is een convergente deelrij van zichzelf.
+    \item $\Leftarrow$\\
+      Zij $(x_{n_{k}})_{k}$ een convergente deelrij van de Cauchyrij $(x_{n})_{n}$ en noem de limiet $x$.
+      Kies $\epsilon \in \mathbb{R}_{0}^{+}$ willekeurig.
+      Er bestaat dan een $k_{0} \in \mathbb{N}$ als volgt:
+      \[ \forall k\in \mathbb{N}:\ k \ge k_{0} \Rightarrow d(x_{n_{k}},x) < \frac{\epsilon}{2} \]
+      Omdat $(x_{n})_{n}$ een Cauchyrij is, bestaat er een $n_{0} \in \mathbb{N}$ als volgt:
+      \[ \forall m,n\in \mathbb{N}:\ m,n \ge n_{0}:\ d(x_{m},x_{n}) < \frac{\epsilon}{2} \]
+      Kies nu $m = \max\{k_{0},n_{0}\}$.
+      \[ \forall n\in \mathbb{N}:\ n \ge m \Rightarrow d(x_{n},x) \le d(x_{n},x_{n_{n}}) + d(x_{n_{n}},x) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \label{st:rij-met-eindig-aantal-waarden-convergente-deelrij}
+  Zij $(x_{n})_{n}$ een rij die een eindig aantal waarden aanneemt, dan bevat die zeker een convergente deelrij.
+
+  \begin{proof}
+    Dat een rij $(x_{n})_{n}$ een eindig aantal waarden aanneemt, houdt in dat de volgende verzameling eindig is.
+    \[ A = \{ x_{n} \mid n \in \mathbb{N} \} \]
+    Opdat $A$ eindig zou kunnen zijn, moet er een waarde $x_{n}$ in zitten die oneindig veel voorkomt in de rij $(x_{n})_{n}$.
+    Nummer die waarden (met $k$) zodat $\{ x_{n_{k}} \mid k \in \mathbb{N} \}$ een constante rij is.
+    Deze is convergent.\needed
+  \end{proof}
+\end{st}
 
 \subsection{Continue functies tussen metrische ruimten}
 \label{sec:cont-funct-tuss}
