@@ -851,7 +851,7 @@
 
 \begin{vb}
   Een open bol $B(f,\delta)$ in $C(\interval{a}{b})$ ziet er als volgt uit:
-  \[ B(f,\delta) = \{ g \in C(\interval{a}{b} \mid  \forall x\in \interval{a}{b}:\ |g(x)-f(x)|< \delta \]
+  \[ B(f,\delta) = \{ g \in C(\interval{a}{b} \mid  \forall x\in \interval{a}{b}:\ |g(x)-f(x)|< \delta \} \]
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=.75]
@@ -915,51 +915,12 @@
 
 
 \begin{st}
-  Een rij $(f_{n})_{n}$ in $C(X)$ zal volgens de $d_{\infty}$ metriek convergeren naar een $f\in C(X)$ als en slechts als $(f_{n})_{n}$ uniforum naar $f$ convergeert.
+  Een rij $(f_{n})_{n}$ in $C(X)$ zal volgens de $d_{\infty}$ metriek convergeren naar een $f\in C(X)$ als en slechts als $(f_{n})_{n}$ uniform naar $f$ convergeert.
 
 \extra{bewijs: ookal is het al duidelijk}
 Hint uit les: zie forum, Eline heeft dit uitgeschreven.
 Let wel op de ongelijheid met het supremum.
 \end{st}
-
-\begin{vb}
-  Beschouw de rij functies $(f_{n})_{n}$ in $C(\interval{0}{1})$ gegeven als volgt:
-
-  \noindent
-  \begin{minipage}{.45\textwidth}
-    \begin{figure}[H]
-      \centering
-      \begin{tikzpicture}[scale=.75]
-        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1]
-          \foreach \i in {1,...,10}
-          {
-            \addplot[smooth,domain=0:(1/(2*\i))]{2*\i*x};
-            \addplot[smooth,domain=(1/(2*\i)):(1/\i)]{2-2*\i*x};
-            \addplot[smooth,domain=(1/(\i)):1.1]{0};
-          }
-          \addplot[smooth,color=red,ultra thick,domain=-3:3]{0};
-          \addplot[soldot,color=red] coordinates {(0,0)};
-        \end{axis}
-      \end{tikzpicture}
-    \end{figure}
-  \end{minipage}
-  \begin{minipage}{.45\textwidth}
-  \[
-  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
-  \left\{
-    \begin{array}{rl}
-      2nx   & \text{ als } x \in \interval[open right]{0}{\frac{1}{2n}}\\
-      2-2nx & \text{ als } x \in \interval{\frac{1}{2n}}{\frac{1}{n}}\\
-      0     & \text{ als } x \in \interval[open left ]{\frac{1}{n}}{1}\\
-    \end{array}
-  \right.
-  \]
-  \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
-  \end{minipage}
-  
-  Deze rij convergeert niet voor de $d_{\infty}$-metriek want ze convergeert niet uniform.
-  Volgens de $d_{1}$-metriek convergeert deze rij echer wel naar de nulfunctie.
-\end{vb}
 
 \begin{vb}
   Beschouw de functie $I$ als volgt:
@@ -1011,6 +972,47 @@ Let wel op de ongelijheid met het supremum.
 \begin{opm}
   In deze metrische ruimte is het moeilijk om open bollen te tekenen, het inwendige van een deel van $C(\interval{a}{b})$ is namelijk steeds leeg.
 \end{opm}
+
+
+\begin{vb}
+  Beschouw de rij functies $(f_{n})_{n}$ in $C(\interval{0}{1})$ gegeven als volgt:
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+          \foreach \i in {1,...,10}
+          {
+            \addplot[smooth,domain=0:(1/(2*\i))]{2*\i*x};
+            \addplot[smooth,domain=(1/(2*\i)):(1/\i)]{2-2*\i*x};
+            \addplot[smooth,domain=(1/(\i)):1.1]{0};
+          }
+          \addplot[smooth,color=red,ultra thick,domain=-3:3]{0};
+          \addplot[soldot,color=red] coordinates {(0,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+  \[
+  f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \left\{
+    \begin{array}{rl}
+      2nx   & \text{ als } x \in \interval[open right]{0}{\frac{1}{2n}}\\
+      2-2nx & \text{ als } x \in \interval{\frac{1}{2n}}{\frac{1}{n}}\\
+      0     & \text{ als } x \in \interval[open left ]{\frac{1}{n}}{1}\\
+    \end{array}
+  \right.
+  \]
+  \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+  \end{minipage}
+  
+  Deze rij convergeert niet voor de $d_{\infty}$-metriek want ze convergeert niet uniform.
+  Volgens de $d_{1}$-metriek convergeert deze rij echer wel naar de nulfunctie.
+\end{vb}
+
 
 \begin{vb}
   De verzameling $A$ als volgt is een voorbeeld van een deel van $C(\interval{0}{1})$ dat begrensd is voor $d_{1}$, maar niet voor $d_{\infty}$.
@@ -1152,6 +1154,57 @@ Let wel op de ongelijheid met het supremum.
   \end{proof}
 \end{blem}
 
+\begin{vb}
+  De Hausdorffafstand tussen een (vol) gesloten vierkant en zijn omschreven cirkelschijf is gegeven als $\frac{(\sqrt{2}-1)z}{2}$.
+  Hierin is $z$ de zijde van het vierkant.
+
+  \begin{proof}
+    Beschouw een vierkant $V$ met zijde $z$ en middelpunt $p\in \mathbb{R}^{2}$.
+    Merk op dat de omschreven cirkelschijf $C$ hetzelfde middelpunt en straal $r=\frac{z}{\sqrt{2}}$ heeft.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+          \begin{axis}[ 
+            ticks=none,
+            axis lines = middle,
+            axis line style={->},
+            ymin=0, ymax=3,
+            xmin=0, xmax=3,
+            xlabel={$x_{1}$},
+            ylabel={$x_{2}$},
+            axis equal image,
+            disabledatascaling
+            ]
+            \filldraw [ultra thick,fill=black!25!white, draw=black!40!white] (1.5,1.5) circle [radius=sqrt(2)+0.02];
+            \filldraw[ultra thick,fill=black!50!white, draw=black!60!white] (0.5,2.5) -- (2.5,2.5) -- (2.5,0.5) -- (0.5,0.5) -- cycle;
+            \fill [fill=black] (1.5,1.5) circle [radius=0.01];
+            \draw (1.5,1.6) node {$a$};
+            \draw (1.5,1.5) node {} edge[<->] (0.5,1.5);
+            \draw (1,1.65) node {$\frac{z}{2}$};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    Voor elke omhullende van de circkel zit het vierkant erin.
+    We zoeken dus een de kleinste omhullende van het vierkant dat ook de cirkel omhult.
+    Kies $f = \frac{(\sqrt{2}-1)z}{2}$.
+    \begin{klad}
+      Dit is de afstand tussen een uiterste punt van de cirkel en het dichtstbijzijnde punt op de rand van het vierkant.
+      Intu\"itief zou het duidelijk moeten zijn dat dit de Hausdorffaffstand zal zijn.
+    \end{klad}
+    Beschouw $V_{[f]}$ en kies een willekeurig punt $x$ in de cirkelschijf $C$.
+    Er geldt dat $\|x\| < r$ en kies $y = x\frac{\left\|\frac{z}{2}\right\|}{\|r\|}$.
+    $y$ ligt dan binnnen $V$\waarom
+    Er geldt bovendien:
+    \[ \|x-y\| = \|x\| \left|1-\frac{z}{r}\right| \le r - \frac{z}{2} = f \]
+    $x$ ligt dus binnen de $f$-omhullende van $V$.
+    Er rest ons nog te bewijzen dat $h(C,V)$ zeker niet kleiner is dan $f$.
+    Bechouw de rechte door het middelpunt van het vierkant en het midden van een zijde van het vierkant.
+    Het is duidelijk dat het dichtste punt $s$ van $C$ tot $V$ het midden $m$ van de zijde van het vierkant is.
+    Deze afstand is $f$.
+    Als $h(C,V)$ moet dus minstens $f$ bedragen.
+  \end{proof}
+\end{vb}
+
 \begin{blem}
   Zij $A \subseteq \mathbb{R}^{p}$ en $r,s\in\mathbb{R}^{+}$:
   \[ \left[ [A]_{r}\right]_{s} \subseteq [A]_{r+s} \]
@@ -1233,7 +1286,7 @@ Let wel op de ongelijheid met het supremum.
 \begin{st}
   Een rij gesloten bollen $(B_{n})_{n}$ in $\mathbb{R}^{p}$ met middelpunten $x_{n}$ en stralen $r_{n}$ zal voor de Hausdorffmetriek convergeren naar een gesloten bol $B$ met middelpunt $x$ en straal $r$ als en slechts als $\lim_{n\rightarrow +\infty}x_{n}=x$ en $\lim_{n\rightarrow +\infty}r_{n} = r$ gelden.
 \extra{bewijs}
-Hint:
+\begin{klad}
 \begin{proof}
   \begin{lem}
     $\forall r,s \in \mathbb{R}^{+}:\ \left[B\interval{x}{r}\right]_{s} = B\interval{x}{r+s}$
@@ -1244,6 +1297,7 @@ Hint:
   \end{lem}
   Gevalsonderscheid.
 \end{proof}
+\end{klad}
 \end{st}
 
 \begin{st}
@@ -1251,6 +1305,58 @@ Hint:
 \extra{bewijs}
 \extra{wat met de $d_1$-metriek?}
 \end{st}
+
+\begin{vb}
+  Beschouw de niet-lege, gesloten, begrensde deelverzameling $F_{n}$ van $\mathbb{R}$ als volgt voor een $n\in \mathbb{N}_{0}$.
+  \[ F_{n} = \{0,1\} \cup \left\{ \frac{i}{n} \ \middle|\ i \in \mathbb{N}, 0 \le \frac{i}{n} \le 1 \right\} \]
+  De rij $(F_{n})_{n}$ convergeert volgens de Hausdorffmetriek.
+  \begin{proof}
+    \begin{klad}
+      Om een idee te krijgen van hoe $F_{n}$ eruit ziet tekent u best een paar instanties.
+      U ziet dan meteen dat $(F_{n})_{n}$ zal convergeren.
+
+      \begin{figure}[H]
+        \centering
+        \foreach \n in {1,...,20} {
+          \begin{tikzpicture}
+            \foreach \l in {0,...,\n} {
+              \node(\n\l) at (\l/\n,0) {\textbullet};
+            }
+          \end{tikzpicture}
+        }
+      \end{figure}
+      Het ziet ernaar uit dat $(F_{n})_{n}$ naar $\interval{0}{1}$ zal convergeren.
+      Het kan van pas komen om de Hausdorffafstand van $F_{n}$ tot $\interval{0}{1}$ voor een paar getallen $n\in \mathbb{N}_{0}$ te berekenen.
+
+      \begin{figure}[H]
+        \centering
+        \foreach \n in {1,...,9} {
+          \begin{tikzpicture}
+            \foreach \l in {0,...,\n} {
+              \fill [thick,fill=black!25!white,opacity=0.2] (\l/\n,) circle [radius=1/(2*\n)];
+              \node(\n\l) at (\l/\n,) {\textbullet};
+            }
+          \end{tikzpicture}
+        }
+      \end{figure}
+      \[
+      \begin{array}{|c|c|c|c|c|c|c|c|}
+        \hline
+        n & 1 & 2 & 3 & 4 & 5 & 6 & i\\
+        \hline
+        H(F_{n},L) & \frac{1}{2} & \frac{1}{4} & \frac{1}{6} & \frac{1}{8} & \frac{1}{10} & \frac{1}{12} & \frac{1}{2i}\\
+        \hline
+      \end{array}
+      \]
+      Vanaf de derde $F_{n}$ zou het patroon duidelijk moeten zijn.
+    \end{klad}
+    Merk op dat de Hausdorffafstand tussen $F_{n}$, voor een gegeven $n\in \mathbb{N}_{0}$ en $\interval{0}{1}$ steeds $\frac{1}{2n}$ meet.
+    Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$ en noem $n_{0}= \frac{1}{2\epsilon}$.
+    Kies nu willekeurig een $n\in\mathbb{N}$,strikt groter dan $n_{0}$.
+    \[ h(F_{n},\interval{0}{1}) = \frac{1}{2n} < \frac{1}{2n_{0}} = \frac{2\epsilon}{2} = \epsilon \]
+    $(F_{n})_{n}$ convergeert dus naar $\interval{0}{1}$ voor de Hausdorffmetriek.
+  \end{proof}
+\end{vb}
 
 \begin{vb}
   \label{vb:ttt-2-2014-1}
@@ -1280,6 +1386,7 @@ Hint:
       Het ziet ernaar uit dat de limiet er als volgt zal uitzien:
       \[ L = \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
       Het kan van pas komen om de Hausdorffafstand van $F_{n}$ tot $L$ voor een paar getallen $n\in \mathbb{N}_{0}$ te berekenen.
+
       \begin{figure}[H]
         \centering
         \foreach \n in {1,...,9} {
@@ -1303,14 +1410,19 @@ Hint:
       \end{array}
       \]
     \end{klad}
-    Merk op dat de Hausdorffafstand tussen $F_{n}$ voor een gegeven $n\in \mathbb{N}_{0}$ en de verzameling $L$ als volgt steeds $\frac{\sqrt{2}}{2n}$ meet.
+    Merk op dat de Hausdorffafstand tussen $F_{n}$, voor een gegeven $n\in \mathbb{N}_{0}$, en de verzameling $L$ als volgt steeds $\frac{\sqrt{2}}{2n}$ meet.
     \[ L = \{ (x,y) \mid x,y\in\interval{0}{1} \} \]
     Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$ en noem $n_{0} = \frac{1}{\sqrt{2}\epsilon}$.
     Kies nu willekeurig een $n\in \mathbb{N}$, strikt groter dan $n_{0}$.
-    \[ d(F_{n},L) = \frac{\sqrt{2}}{2n} < \frac{\sqrt{2}}{2n_{0}} = \frac{\sqrt{2}^{2}\epsilon}{2} = \epsilon \]
+    \[ h(F_{n},L) = \frac{\sqrt{2}}{2n} < \frac{\sqrt{2}}{2n_{0}} = \frac{\sqrt{2}^{2}\epsilon}{2} = \epsilon \]
     $(F_{n})_{n}$ convergeert dus naar $L$ voor de Hausdorff metriek.
   \end{proof}
 \end{vb}
+
+\begin{opm}
+  Het patroon van de twee bovenstaande voorbeelden kunnen we voorzetten naar $\mathbb{R}^{p}$.
+  Daar is de Hausdorffafstand tussen $F_{n}$ en $L$ dan $\frac{\sqrt{p}}{2n}$ en convergeert $(F_{n})_{n}$ naar een $p$-dimensionale gesloten cubus.
+\end{opm}
 
 \end{document}
 
