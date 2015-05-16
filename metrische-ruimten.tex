@@ -109,6 +109,7 @@
 
 
 \begin{bst}
+  \label{st:convergent-dan-begrensd}
   Zij $V,d$ een metrische ruimte, dan is elke onvergente rij hierin een Cauchyrij.
 
   \begin{proof}
@@ -128,9 +129,23 @@
 \end{de}
 
 \begin{st}
-  Een convergente rij is begrensd.
-\extra{zeker?}
+  In een metrische ruimte is elke Cauchyrij begrensd.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een Cauchyrij in een metrische ruimte $X,d$.
+    Omdat $(x_{n})_{n}$ een Cauchyrij is, bestaat er een $m\in \mathbb{N}$ zodat $d(x_{k},k_{l}) < 1$ geldt voor alle $k,l \in \mathbb{N}$, groter dan $m$.
+    In het bijzonder geldt dan ook $d(x_{m},x_{n} < 1$ voor alle $n\in \mathbb{N}$ groter dan $m$.
+    Kies nu $\alpha = \max\{ d(x_{m},x_{n}) \mid n\in \mathbb{N}, n < m \}$.
+    Merk op dat voor alle $n\in \mathbb{N}$ dan $d(x_{n},x_{m}) < \alpha + 1$ geldt.
+    Kies nu twee willekeurige elementen $x_{a},x_{b}$ uit de rij ($a,b\in \mathbb{N}$) en kies $M=2\alpha+2$.
+    \[ d(x_{a},x_{b}) \le d(x_{a},x_{m}) + d(x_{m},x_{b}) < 2(\alpha+1) = M \]
+    De rij $(x_{n})_{n}$ is dus begrensd door $M$.
+  \end{proof}
 \end{st}
+
+\begin{gev}
+  In elke metrische ruimte is dus in het bijzonder elke convergente rij begrensd.\stref{st:convergent-dan-begrensd}
+\end{gev}
 
 \subsection{Continue functies tussen metrische ruimten}
 \label{sec:cont-funct-tuss}
