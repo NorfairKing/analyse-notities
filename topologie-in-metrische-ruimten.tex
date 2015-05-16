@@ -362,7 +362,7 @@ hello it is i leclerc
 
 \begin{de}
   Zij $X,d$ een metrische ruimte.
-  We noemen een deelverzameling $V$ van $X$ \term{Cauchycompact} als elke rij in $V$ een Cauchy-deelrij heeft.
+  We noemen een deelverzameling $V$ van $X$ \term{Cauchycompact} (\term{precompact}) als elke rij in $V$ een Cauchy-deelrij heeft.
 \end{de}
 
 \begin{st}
@@ -384,17 +384,43 @@ hello it is i leclerc
 \end{st}
 
 \begin{st}
-  Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan is $A$ Cauchycompact als en slechts $A$ totaal begrensd is.
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  Als $A$ totaal begrensd is, dan is $A$ Cauchycompact.
 
   \begin{proof}
-    Bewijs van een equivalentie.
-    \begin{itemize}
-    \item $\Rightarrow$\\
-      Zi
-    \item $\Leftarrow$\\
-    \end{itemize}
-  \end{proof}
-\end{st}
+      Zij $A$ totaal begrensd.
+      Als $A$ leeg is, is $A$ triviaal Cauchycompact.
+      Stel daarom dat $A$ niet leeg is.
+      Kies dan een willekeurige rij $(x_{n})_{n}$ in $A$.
+      Als de verzameling $\{x_{n}\mid n\in \mathbb{N}\}$ eindig is, bevat $(x_{n})_{n}$ zeker een convergente deelrij\stref{st:rij-met-eindig-aantal-waarden-convergente-deelrij} en dus een Cauchy deelrij.\stref{st:convergent-dan-cauchy}
+      Als $\{x_{n}\mid n\in \mathbb{N}\}$ oneindig is kunnen we een convergente deelrij construeren:
+      
+      \begin{itemize}
+      \item 
+        Overdek $A$ met een eindig aantal open bollen met straal $1$.
+        Minstens \'e\'en van die bollen (zeg $B_{1}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in \mathbb{N}\}$.
+        Noem $J_{1}= \{n\in \mathbb{N} \mid x_{n}\in B_{1}\}$, dan zijn $J_{1}$ en $\{x_{n}\mid n\in J_{1}\}$ oneindige verzamelingen.
+      \item 
+        Overdek nu $A$ met een eindig aantal open bollen met straal $\frac{1}{2}$.
+        Minstens \'e\'en van die bollen (zeg $B_{2}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in J_{1}\}$.
+        Noem $J_{2}= \{n\in J_{1} \mid x_{n}\in B_{2}\}$, dan zijn $J_{2}$ en $\{x_{n}\mid n\in J_{2}\}$ oneindige verzamelingen.
+      \item 
+        Overdek $A$ vervolgens met een eindig aantal open bollen met straal $\frac{1}{i}$.
+        Minstens \'e\'en van die bollen (zeg $B_{i}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in J_{i-1}\}$.
+        Noem $J_{i}= \{n\in J_{i-1} \mid x_{n}\in B_{i}\}$, dan zijn $J_{i}$ en $\{x_{n}\mid n\in J_{i}\}$ oneindige verzamelingen.
+      \item 
+        We verkrijken een dalende rij verzamelingen $(J_{k})_{k}$ van oneindige deelverzamelingen van $\mathbb{N}$. Kies een $n_{1}\in J_{1}$. Omdat $J_{2}$ oneindig is kunnen we een $n_{2}\in J_{2}$ vinden zodat $n_{2} > n_{1}$. We kunnen zo een strikt stijgen de rij $(n_{k})_{k}$ in $\mathbb{N}$ opbouwen met $n_{k}\in J_{k}$ en $n_{k+1} > n_{k}$.
+        Beschouw nu de deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$.
+      \item 
+        We beweren dat deze deelrij een Cauchyrij is:
+        Kies immers een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en neem een $k_{0}\in \mathbb{N}$ groot genoeg opdat $\frac{2}{k_{0}}$ kleiner is dan $\epsilon$.
+        Kies dan $i,j \ge k_{0}$. $n_{1}$ zit dan in $J_{i} \subseteq J_{k_{0}}$ en $n_{j}$ in $J_{j} \subseteq J_{k_{0}}$.
+        $x_{n_{i}}$ en $x_{n_{j}}$ zitten dus per constructie beide in de open bol $B_{k_{0}}$ met straal $\frac{1}{k_{0}}$.
+        De afstand tussen $x_{n_{i}}$ en $x_{n_{j}}$ is dus kleiner dan $\frac{2}{k_{0}} < \epsilon$.
+      \end{itemize}
+      $(x_{n_{k}})_{k}$ is dus een Cauchyrij en bijgevolg $A$ Cauchycompact.
+    \end{proof}
+  \end{st}
 
 \subsubsection{Rijcompact}
 \label{sec:rijcompact}
@@ -420,39 +446,38 @@ hello it is i leclerc
 \TODO{tegenvoorbeeld}
 \end{tvb}
 
-\begin{bpr}
+\begin{st}
+  \label{st:cauchycompact-en-volledig-dan-rijcompact}
+  Cauchycompact en volledig impliceert rijcompact.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een willekeurige rij in een Cauchycompacte deelverzameling $V$ van een metrische ruimte $X,d$.
+    Er bestaat dan een Cauchy deelrij $(x_{n_{k}})_{k}$
+    Deze deelrij is bovendien convergent omdat $V$ volledig is.\deref{de:metrische-ruimte-volledig}
+  \end{proof}
+\end{st}
+
+\begin{pr}
   \label{pr:rijcompact-dan-totaal-begrensd}
   Als $A$ rijcompact is, is $A$ totaal begrensd.
 
   \begin{proof}
     Omdat $A$ rijcompact is, is $A$ Cauchycompact \stref{st:rijcompact-dan-cauchycompact} en dus totaal begrensd.\stref{st:cauchycompact-dan-totaal-begrensd}
   \end{proof}
-\end{bpr}
+\end{pr}
 
 \begin{bst}
   Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$.
-  Als $A$ rijcompact is, dan is $A$ gesloten en begrensd.
-
+  Als $A$ rijcompact is, dan is $A$ gesloten.
   \begin{proof}
-    \noindent
-    \begin{itemize}
-    \item $A$ is gesloten:\\
       Kies een willekeurige rij $(x_{n})_{n}$ in $A$ met een $x\in X$ als limiet.
       Neem een convergente deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$ met limiet $a\in A$.
       Omdat een deelrij van een convergente rij dezelfde limiet heeft als de moederrij moet $x$ gelijk zijn aan $a$ en dus tot $A$ behoren.
-    \item $A$ is begrensd:\\
-      Stel dat $A$ niet begrensd zou zijn.
-      Kies willekeurig een $x\in X$, we kunnen dan voor alle $n\in \mathbb{N}_{0}$ een $x_{n}\in A$ vinden zodat $d(x,x_{n}) \ge n$ geldt.
-      We verkrijgen zo een rij $(x_{n})_{n}$ waarvan we beweren dat ze geen convergente deelrij heeft.
-      Zij immers $(x_{n_{k}})_{k}$ een convergente deelrij met limiet $a\in X$, dan volgt dit:
-      \[ \forall k\in \mathbb{N}:\ |d(x,x_{n_{k}}) -d(x,a)| \le d(x_{n_{k}},a) \]
-      $(d(x,x_{n_{k}}))_{k}$ moet dus convergeren naar $d(x,a)$, maar dit is strijdig want de rij $(d(x,x_{n_{k}}))_{k}$ is niet begrensd.
-    \end{itemize}
   \end{proof}
 \end{bst}
 
 \begin{tvb}
-  De omgekeerde implicatie geldt niet.
+  Een gesloten en begrensde verzameling hoeft \textbf{niet} noodzakelijk rijcompact te zijn.
 
   \begin{proof}
     Beschouw $\mathbb{R},d_{2}$.
@@ -530,6 +555,7 @@ hello it is i leclerc
 \TODO{zie oef 20, 2.7}
 \end{st}
 
+\iffalse
 \begin{bst}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
   $A$ is rijcompact als en slechts als $A$ volledig en totaal begrensd is.
@@ -574,6 +600,7 @@ hello it is i leclerc
     \end{itemize}
   \end{proof}
 \end{bst}
+\fi
 
 \begin{de}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
@@ -586,18 +613,25 @@ hello it is i leclerc
 \end{de}
 
 \begin{bst}
-  Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan is $A$ rijcompacte als en slechts als elke open overdekking een eindige deeloverdekking heeft.
+  \label{st:rijcompact-dan-compact}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  Als $A$ rijcompact is, dan is $A$ compact.
 
   \begin{proof}
-    Bewijs van een equivalentie.
-    \begin{itemize}
-    \item $\Rightarrow$\\
-      Bewijs uit het ongerijmde:
-      Stel dat er een rijcompacte deelverzameling $A$ van $X$ bestaat en een open overdekking $\mathcal{F}$ van $A$ die geen eindige deeloverdekking heeft.
-    \item $\Leftarrow$\\
-    \end{itemize}
+    Bewijs uit het ongerijmde:
+    Stel dat er een rijcompacte deelverzameling $A$ van $X$ bestaat en een open overdekking $\mathcal{F}$ van $A$ die geen eindige deeloverdekking heeft.
+    \TODO{bewijs}
   \end{proof}
 \end{bst}
+
+\begin{bst}
+  \label{st:compact-dan-rijcompact}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  Als $A$ compact is, dan is $A$ rijcompact.
+\TODO{bewijs}
+\end{bst}
+
+
 
 \begin{de}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan noemen we $A$ \term{compact} als elke open overdekking een eindige deeloverdekking heeft.
@@ -652,7 +686,7 @@ hello it is i leclerc
 \label{sec:samenh-verz}
 
 \begin{de}
-  We noemen een metrische ruimte $X,d$ \term{samenhangend} als enkel $\empty$ een $X$ open en gesloten zijn.
+  We noemen een metrische ruimte $X,d$ \term{samenhangend} als enkel $\emptyset$ een $X$ open en gesloten zijn.
 \end{de}
 
 \begin{de}
