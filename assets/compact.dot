@@ -29,4 +29,7 @@ digraph compact {
     rc -> c;
     c -> rc;
     e -> c;
+    rc -> v;
+    g -> v;
+    v -> g;
 }
