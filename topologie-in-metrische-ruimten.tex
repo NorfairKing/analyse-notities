@@ -357,6 +357,12 @@ hello it is i leclerc
   \end{proof}
 \end{tvb}
 
+\begin{st}
+  \label{st:deelverzameling-van-totaal-begrensd-ook-totaal-begrensd}
+  Een deelverzameling van een totaal begrensde verzameling is ook totaal begrensd.
+\extra{bewijs}
+\end{st}
+
 \subsubsection{Cauchy-compact}
 \label{sec:cauchy-compact}
 
@@ -384,6 +390,7 @@ hello it is i leclerc
 \end{st}
 
 \begin{st}
+  \label{st:totaal-begrensd-dan-cauchycompact}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
   Als $A$ totaal begrensd is, dan is $A$ Cauchycompact.
 
@@ -426,6 +433,7 @@ hello it is i leclerc
 \label{sec:rijcompact}
 
 \begin{de}
+  \label{de:rijcompact}
   Zij $X,d$ een metrische ruimte.
   We noemen een deelverzameling $V$ van $X$ \term{rijcompact} als elke rij in $V$ een convergente deelrij heeft met limiet in $V$.
 \end{de}
@@ -537,70 +545,38 @@ hello it is i leclerc
   \end{proof}
 \end{tvb}
 
+\begin{bst}
+  \label{st:rijcompact-dan-volledig}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  Als $A$ rijcompact is, is $A$ volledig.
+  
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een Cauchyrij in $A$, omdat $A$ begrensd is, bestaat er een convergente deelrij $(x_{n_{k}})_{k}$.
+    Omdat $(x_{n})_{n}$ een Cauchyrij is, zal $(x_{n})_{n}$ ook convergeren met dezelfde limiet.\stref{st:cauchy-asa-convergente-deelrij}
+  \end{proof}    
+\end{bst}
+
+\begin{bst}
+  \label{st:volledig-en-totaal-begrensd-dan-rijcompact}
+  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
+  Als $A$ volledig en totaal begrensd is, is $A$ rijcompact.
+  
+  \begin{proof}
+    Omdat $A$ totaal begrensd is, is $A$ Cauchycompact\stref{st:totaal-begrensd-dan-cauchycompact}
+    Kies een willekeurige rij $(x_{n})_{n}$ in $A$.
+    Omdat $A$ Cauchycompact is, bestaat er een Cauchy deelrij van $(x_{n})_{n}$.
+    Omdat $A$ volledig is convergeert deze Cauchyrij.\deref{de:metrische-ruimte-volledig}
+  \end{proof}
+\end{bst}
 
 \subsubsection{Compact}
 \label{sec:compact}
-
-
-
-
-\begin{tvb}
-  Het omgekeerde van bovenstaande propositie geldt niet.
-\TODO{zie oefening 19, 2.7}
-\end{tvb}
 
 \begin{st}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
   $A$ is gesloten als en slechts $A$, bekeken als een metrische ruimte op zich voor de beperking van de metriek tot $A$ volledig is.
 \TODO{zie oef 20, 2.7}
 \end{st}
-
-\iffalse
-\begin{bst}
-  Zij $X,d$ een metrische ruimte en $A \subseteq X$.
-  $A$ is rijcompact als en slechts als $A$ volledig en totaal begrensd is.
-
-  \begin{proof}
-    Bewijs van een equivalentie.
-    \begin{itemize}
-    \item $\Rightarrow$\\
-      Zij $A$ rijcompact, dan is $A$ totaal begrensd.\prref{pr:rijcompact-dan-totaal-begrensd}
-      Zij $(x_{n})_{n}$ een Cauchyrij in $A$, omdat $A$ begrensd is, bestaat er een convergente deelrij $(x_{n_{k}})_{k}$.
-      Omdat $(x_{n})_{n}$ een Cauchyrij is, zal $(x_{n})_{n}$ ook convergeren met dezelfde limiet.\stref{st:cauchy-asa-convergente-deelrij}
-    \item $\Leftarrow$\\
-      Zij $A$ volledig en totaal begrensd.
-      Als $A$ leeg is, is $A$ triviaal rijcompact.
-      Stel daarom dat $A$ niet leeg is.
-      Kies dan een willekeurige rij $(x_{n})_{n}$ in $A$.
-      Als de verzameling $\{x_{n}\mid n\in \mathbb{N}\}$ eindig is, bevat $(x_{n})_{n}$ zeker een convergente deelrij.\stref{st:rij-met-eindig-aantal-waarden-convergente-deelrij}
-      Als $\{x_{n}\mid n\in \mathbb{N}\}$ oneindig is kunnen we een convergente deelrij construeren:
-      
-      Overdek $A$ met een eindig aantal open bollen met straal $1$.
-      Minstens \'e\'en van die bollen (zeg $B_{1}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in \mathbb{N}\}$.
-      Noem $J_{1}= \{n\in \mathbb{N} \mid x_{n}\in B_{1}\}$, dan zijn $J_{1}$ en $\{x_{n}\mid n\in J_{1}\}$ oneindige verzamelingen.
-      
-      Overdek nu $A$ met een eindig aantal open bollen met straal $\frac{1}{2}$.
-      Minstens \'e\'en van die bollen (zeg $B_{2}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in J_{1}\}$.
-      Noem $J_{2}= \{n\in J_{1} \mid x_{n}\in B_{2}\}$, dan zijn $J_{2}$ en $\{x_{n}\mid n\in J_{2}\}$ oneindige verzamelingen.
-
-      Overdek $A$ vervolgens met een eindig aantal open bollen met straal $\frac{1}{i}$.
-      Minstens \'e\'en van die bollen (zeg $B_{i}$) bevat oneindig veel verschillende elementen uit $\{x_{n}\mid n\in J_{i-1}\}$.
-      Noem $J_{i}= \{n\in J_{i-1} \mid x_{n}\in B_{i}\}$, dan zijn $J_{i}$ en $\{x_{n}\mid n\in J_{i}\}$ oneindige verzamelingen.
-      
-      We verkrijken een dalende rij verzamelingen $(J_{k})_{k}$ van oneindige deelverzamelingen van $\mathbb{N}$. Kies een $n_{1}\in J_{1}$. Omdat $J_{2}$ oneindig is kunnen we een $n_{2}\in J_{2}$ vinden zodat $n_{2} > n_{1}$. We kunnen zo een strikt stijgen de rij $(n_{k})_{k}$ in $\mathbb{N}$ opbouwen met $n_{k}\in J_{k}$ en $n_{k+1} > n_{k}$.
-      Beschouw nu de deelrij $(x_{n_{k}})_{k}$ van $(x_{n})_{n}$.
-      We beweren dat deze deelrij een Cauchyrij is.
-      Kies immers een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en neem een $k_{0}\in \mathbb{N}$ groot genoeg opdat $\frac{2}{k_{0}}$ kleiner is dan $\epsilon$.
-      Kies dan $i,j \ge k_{0}$. $n_{1}$ zit dan in $J_{i} \subseteq J_{k_{0}}$ en $n_{j}$ in $J_{j} \subseteq J_{k_{0}}$.
-      $x_{n_{i}}$ en $x_{n_{j}}$ zitten dus per constructie beide in de open bol $B_{k_{0}}$ met straal $\frac{1}{k_{0}}$.
-      De afstand tussen $x_{n_{i}}$ en $x_{n_{j}}$ is dus kleiner dan $\frac{2}{k_{0}} < \epsilon$.
-
-      $(x_{n_{k}})_{k}$ is dus een Cauchyrij en dus convergent omwille van de volledigheid van $A$.
-      $A$ is dus rijcompact.
-    \end{itemize}
-  \end{proof}
-\end{bst}
-\fi
 
 \begin{de}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
@@ -620,7 +596,35 @@ hello it is i leclerc
   \begin{proof}
     Bewijs uit het ongerijmde:
     Stel dat er een rijcompacte deelverzameling $A$ van $X$ bestaat en een open overdekking $\mathcal{F}$ van $A$ die geen eindige deeloverdekking heeft.
-    \TODO{bewijs}
+    Omdat $A$ rijcompact is, is $A$ volledig\stref{st:rijcompact-dan-volledig} en totaal begrensd.\prref{pr:rijcompact-dan-totaal-begrensd}
+    \begin{itemize}
+    \item 
+      Overdek dus $A$ met een eindig aantal open bollen met straal $\frac{1}{2}$.
+      Voor minstens \'e\'en van die bollen, zeg $B_{1}$ is de doorsnede $A_{1} = B_{1} \cap A$ niet te overdekken met een eindige deelverzameling van $\mathcal{F}$.
+      Als deel van een totaal begrensde verzameling is $A_{1}$ ook zelf totaal begrensd.\stref{st:deelverzameling-van-totaal-begrensd-ook-totaal-begrensd}
+    \item 
+      Overdek $A_{i-1}$ met een eindig aantal open bollen van straal $\frac{1}{2^{i}}$.
+      Minstens \'e\'en van die bollen, zeg $B_{i}$ is de doorsnede $A_{i} = B_{i} \cap A_{i-1}$ niet te overdekken met een eindig aantal elementen van $\mathcal{F}$.
+      Als deel van een totaal begrensde verzameling is $A_{i}$ ook zelf totaal begrensd.
+    \item
+      We verkrijgen zo een rij $(B_{n})_{n}$ van open bellen met straal van $B_{n}$ gelijk aan $\frac{1}{2^{n}}$ en een dalende rij $(A_{n})_{n}$ van open deelverzamelingen van $A$ zodat $A_{n} \subseteq B_{n}$ steeds geldt en zodat $A_{n}$ niet te overdekken is met een eindig aantal elementen van $\mathcal{F}$.
+      $A_{n}$ is bovendien niet leeg.
+    \end{itemize}
+    Kies nu voor elke $n\in \mathbb{N}_{0}$ een $x_{n}\in A_{n}$.
+    We vinden zo een rij $(x_{n})_{n}$ in $A$.
+    Voor twee getallen $m,n\in\mathbb{N}$ met $m\ge n$ liggen $x_{m}$ en $x_{n}$ beide in $A_{n}$ en dus ook in $B_{n}$.
+    De afstand ertussen is daarom strikt kleiner dan $\frac{1}{2^{n-1}}$.
+    Dit toont aan dat $(x_{n})_{n}$ een Cauchyrij is.
+    Omdat $A$ volledig is, convergeert $(x_{n})_{n}$ dus naar een bepaalde $a\in A$.
+    Er geldt dan:
+    \[ d(x_{n},a) \le \frac{1}{2^{n-1}} \]
+    Omdat $a$ een element is van $A$ bestaat er een open deel $V$ in $\mathcal{F}$ dat $a$ bevat.
+    Omdat $V$ open is, kunnen we een $n$ nemen die voldoende groot is opdat $B\left(a,\frac{1}{2^{n}}\right)$ volledig binnen $V$ ligt.
+    We beweren nu dat $A_{n+2}$ ook een deel is van $B\left(a,\frac{1}{2^{n}}\right)$.
+    Inderdaad, kies een $y\in A_{n+2}$ en merk op:
+    \[ d(y,a) \le d(y,x_{n+2}) + d(x_{n+2},a) < \frac{1}{2^{n+1}} + \frac{1}{2^{n+1}} = \frac{1}{2^{n}} \]
+    We vinden dus dat $A_{n+2}$ een deel is van $V$ en dat $A_{n+2}$ dus volledig door \'e\'en element van $\mathcal{F}$ overdekt kan worden.
+    Contradictie.
   \end{proof}
 \end{bst}
 
@@ -628,7 +632,31 @@ hello it is i leclerc
   \label{st:compact-dan-rijcompact}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
   Als $A$ compact is, dan is $A$ rijcompact.
-\TODO{bewijs}
+
+  \begin{proof}
+    Kies een willekeurige rij $(x_{n})_{n}$ in $A$.
+    Beschouw de rij verzamelingen $(\overline{S_{n}})_{n}$ met $S_{n} = \{x_{k}\mid k \ge n\}$.
+    \begin{itemize}
+    \item 
+      We beweren nu dat het volgende geldt:
+      \[ \left( \bigcap_{n\in \mathbb{N}_{0}}\overline{S_{n}} \right) \cap A \neq \emptyset \]
+      Inderdaad, veronderstel dat de doorsnede in het linkerlid wel leeg zou zijn, dan zou $A$ een deel zijn van het complement ervan:
+      \[ A \subseteq \left( \bigcap_{n\in\mathbb{N}_{0}}\overline{S_{n}}\right)^{c} = \bigcup_{n\in\mathbb{N}_{0}}\overline{S_{n}}^{c} \]
+      Dit zou betekenen dat de verzameling $\{ \overline{S_{n}}^{c} \mid n \in \mathbb{N}_{0} \}$ een open overdekking van $A$ zou zijn.
+      Die overdekking zou dan een eindige deeloverdekking moeten hebben.
+      Er zou dus een $m\in \mathbb{N}_{0}$ moeten bestaan zodat $A$ een deel is van $\bigcup_{n=1}^{m}\overline{S_{n}}^{c}$.
+      Dit zou betekenen dat de doorsnede $A \cap \bigcap_{n=1}^{m}\overline{S_{n}}$ leeg zou zijn en dat kan niet want $x_{m}$ zit er zeker in.\waarom
+    \item 
+      Er bestaat dus een $a\in A$ die ook in $\bigcap_{n\in\mathbb{N}_{0}}\overline{S_{n}}$ zit.
+      We construeren nu een convergente deelrij van $(x_{n})_{n}$ met limiet $a$.\deref{de:rijcompact}
+      Omdat $a$ in $\overline{S_{1}}$ zit, bestaat er een $n_{1} > 1$ zodat $d(a,x_{n_{1}}) < 1$ geldt.\waarom
+      Omdat $a$ in $\overline{S_{n_{1}}}$ zit, bestaat er een $n_{2} > n_{1}$ zodat $d(a,x_{n_{2}}) < \frac{1}{2}$ geldt.
+      Omdat $a$ in $\overline{S_{n_{k}+1}}$ zit, betsaat er een $n_{k+1} > n_{k}$ zodat $d(a,x_{n_{k}+1}) < \frac{1}{k+1}$ geldt.
+      We verkrijgen zo een strikt stijgende rij $(n_{k})_{k}$ in $\mathbb{N}$ zodat $d(a,x_{n_{k}}) < \frac{1}{k}$ geldt voor elke $k\in \mathbb{N}$.
+      $(x_{n_{k}})_{k}$ zal dus naar $a$ convergeren.
+    \end{itemize}
+  \end{proof}
+\TODO{meer uitleg bij dit bewijs?}
 \end{bst}
 
 
@@ -652,16 +680,6 @@ hello it is i leclerc
     \[ U = \bigcup_{a\in A}V_{a} \]
   \end{proof}
 \end{st}
-
-\begin{bst}
-  Zij $X,d$ een metrische ruimte en $A \subseteq X$, dan zijn volgende uitspraken equivalent.
-  \begin{enumerate}
-  \item $X$ is rijcompact.
-  \item $X$ is compact.
-  \item $X$ is volledig en totaal begrensd.
-  \end{enumerate}
-\TODO{bewijs p 52}
-\end{bst}
 
 \begin{bpr}
   Een gesloten deel van een compact is compact.
