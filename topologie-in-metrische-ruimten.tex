@@ -303,6 +303,7 @@ hello it is i leclerc
 \end{pr}
 
 \begin{pr}
+  \label{pr:relatief-gesloten-snijdigen}
   Zij $X,d$ een metrische ruimte en zij $Y$ een niet-lege deelverzameling van $X$.
   Beschouw een $A \subseteq Y$.
   $A$ is relatief gesloten in $Y$ als en slechts als er een gesloten $F \subseteq X$ bestaat zodat $A=F \cap Y$ geldt.
@@ -766,8 +767,26 @@ hello it is i leclerc
 \end{de}
 
 \begin{bpr}
+  \label{pr:karakterisatie-niet-samenhangend}
   Zij $Y$ een deelverzameling $Y$ van $X$ met $X,d$ een metrische ruimte.
-  $Y$ is niet samenhangend enkel als $Y$ te schrijven valt als een unie $A \cup B$ waarbij $A$ en $B$ beide niet leeg zijn en onderling gescheiden.
+  $Y$ is niet samenhangend enkel als $Y$ te schrijven valt als een unie $A \cup B$ waarbij $A$ en $B$ beide niet leeg en onderling gescheiden zijn.
+  In het bijzonder zijn $A$ en $B$ dan gesloten.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Er bestaat een gesloten deelverzameling $F$ van $X$ zodat $A = F \cap Y$ geldt.\prref{pr:relatief-gesloten-snijdigen}
+      We vinden dan:
+      \[ B \cap \overline{A} = B \cap \overline{F \cap Y} \subseteq B \cap F = (B \cap Y) \cap F = B \cap (Y \cap F) = B \cap A = \emptyset \]
+    \item $\Leftarrow$\\
+      Het is voldoende om aan te tonen dat $A$ en $B$ gesloten zijn in $Y$.
+      Nu geldt:
+      \[ Y \cap \overline{A} = (A \cup B) \cap \overline{A} = (A \cap \overline{A}) \cup (B \cap \overline{A}) = A \cup \emptyset = A \]
+      $A$ is dus relatief gesloten in $Y$.\prref{pr:relatief-gesloten-snijdigen}
+      De bewering gaat analoog op voor $B$.
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
