@@ -31,6 +31,7 @@
   Een inwendig punt van een deel $A$ van $\mathbb{R}$ waarvoor $f'(a)=0$ geldt, noemt men een \term{kritiek punt} van $f$.
 \end{de}
 
+
 \begin{bpr}
   \label{pr:lokaal-extremum-is-kritiek-punt}
   Beschouw een functie $f:\ A \subseteq \mathbb{R} \rightarrow \mathbb{R}$ en een inwendig punt $a$ van $A$.
@@ -515,7 +516,7 @@
 \end{bst}
 
 \begin{tvb}
-  Bovenstaande functie geldt niet als $(f'_{n})_{n}$ niet uniforum convergeert naar $f'_{n}$.
+  Bovenstaande stelling geldt niet als $(f'_{n})_{n}$ niet uniforum convergeert naar $f'_{n}$.
   \begin{proof}
     Beschouw de volgende rij afleidbare functies $f_{n}$.
 
@@ -551,6 +552,23 @@
     We hebben nu een rij afleidbare functies $(f_{n})_{n}$ die uniforum convergeert op $\mathbb{R}$ naar een functie $f$ die niet afleidbaar is in $0$.
     $(f_{n}')_{n}$ convergeert dus niet naar $f'$.
   \end{proof}
+\end{tvb}
+
+\begin{tvb}
+  Beschouw de rij $(f_{n})_{n}$ als volgt:
+  \[ f_{n}(x) = \sum_{k=0}^{n}a^{k}\cos(b^{k}\pi x) \]
+  Hierin is $a\in \interval[open]{0}{1}$ en $b$ een oneven natuurlijk getal zodat $ab >1$ geldt.
+  De rij $(f_{n})_{n}$ convergeert uniform.
+  De limiet is de Weierstra\ss functie en die is nergens afleidbaar.
+\extra{bewijs uniforme convergentie?}
+\end{tvb}
+
+\begin{tvb}
+  Beschouw de rij $(f_{n})_{n}$ als volgt:
+  \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{n}\sin(nx) \]
+  $f_{n}$ is afleidbaar voor elke $n\in \mathbb{N}_{0}$ en de rij $(f_{n})_{n}$ convergeert uniform naar de nulfunctie.
+  De limietfunctie is hier afleidbaar, maar $(f'_{n})_{n}$ convergeert niet naar $f'$.
+  \extra{bewijs?}
 \end{tvb}
 
 \subsection{De regel van de l'H\^opital}

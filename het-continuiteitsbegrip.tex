@@ -127,7 +127,11 @@
 \feed
 \end{vb}
 
-\extra{vb p 4 onderaan}
+\begin{vb}
+  De functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{1+x^{2}}$ is continu.
+
+  \extra{bewijs p II.4 onderaan.}
+\end{vb}
 
 \begin{tvb}
   De functie $f$ is niet continu in $0$:
@@ -149,7 +153,15 @@
   \end{proof}
 \end{tvb}
 
-\extra{tvb p 5 onderaan}
+\begin{tvb}
+  De functie $f$ als volgt is \textbf{niet} continu in $0$.
+  \begin{proof}
+  Kies $\epsilon = 1$ en kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+  Kies $k$ voldoende groot zodat $\left(2k+\frac{1}{2}\right)\pi > \frac{1}{\delta}$ geldt en stel $x = \frac{1}{\left(2k+\frac{1}{2}\right)\pi}$.
+  Dan geldt:
+  \[ |x-0| < \delta \text{ en } |f(x)-f(0)| = 1 \ge \epsilon \]
+  \end{proof}
+\end{tvb}
 
 \begin{vb}
   De functie $f$ is continu:

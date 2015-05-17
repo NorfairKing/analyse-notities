@@ -30,7 +30,10 @@
   \begin{minipage}{.45\textwidth}
     \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{n} \]
   \end{minipage}
-  \extra{bewijs}
+
+  \begin{proof}
+    \[ \forall x\in \mathbb{R}:\ \lim_{n \rightarrow \infty}f_{n}(x) = \lim_{n\rightarrow \infty}\frac{x}{n} = 0 \]
+  \end{proof}
 \end{vb}
 
 \begin{vb}
@@ -42,8 +45,8 @@
       \centering
       \begin{tikzpicture}[scale=.75]
         \begin{axis}[ymin=-4, ymax=6, xmin=-4, xmax=6]
-          \foreach \i in {1,...,10}
-          {\addplot[smooth,domain=-5:5]{1- (3/\i)*(x-1+(1/\i)) + (x/\i)};}
+          \foreach \i in {1,...,20}
+          {\addplot[smooth,domain=-5:5]{1- (3/\i)*(x-1+(1/\i))^2 + (x/\i)};}
           \addplot[domain=-5:5,color=red,ultra thick]{1};
         \end{axis}
       \end{tikzpicture}
@@ -52,7 +55,13 @@
   \begin{minipage}{.45\textwidth}
   \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 1- \frac{3}{n}\left(x-1+\frac{1}{n}\right) + \frac{x}{n} \]
   \end{minipage}
-\extra{bewijs}
+
+  \begin{proof}
+    \[ \forall x\in \mathbb{R}:\ \lim_{n\rightarrow\infty}f_{n}(x)
+    = \lim_{n\rightarrow\infty}1- \lim_{n\rightarrow\infty}\frac{3}{n}\left(x-1+\frac{1}{n}\right) + \lim_{n\rightarrow\infty}\frac{x}{n}
+    = \lim_{n\rightarrow\infty}1 - 0 + 0
+    = 1 \]
+  \end{proof}
 \end{vb}
 
 \begin{vb}
@@ -74,7 +83,15 @@
   \begin{minipage}{.45\textwidth}
   \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sin\left(\left(1+\frac{1}{n}\right)x\right) \]
   \end{minipage}
-\extra{bewijs zodra de sinusfunctie gedefinieerd is.}
+
+  \begin{proof}
+    \[
+    \forall x\in \mathbb{R}:\
+    \lim_{n\rightarrow\infty}\sin\left(\left(1+\frac{1}{n}\right)x\right)
+    = \sin\left(\lim_{n\rightarrow\infty}\left(1+\frac{1}{n}\right)x\right)
+    = \sin\left(x\right)
+    \]
+  \end{proof}
 \end{vb}
 
 \begin{vb}
@@ -122,7 +139,6 @@
   \right.
   \]
   \end{minipage}
-\extra{bewijs}
 \end{vb}
 
 \begin{vb}
@@ -160,7 +176,6 @@
     \right.
     \]
   \end{minipage}
-  \extra{bewijs}
 \end{vb}
 
 \begin{vb}
@@ -196,7 +211,6 @@
   \]
   \[ f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
   \end{minipage}
-\extra{bewijs}
 \end{vb}
 
 \begin{vb}
