@@ -295,6 +295,7 @@ hello it is i leclerc
 \end{de}
 
 \begin{pr}
+  \label{pr:relatief-open-snijdigen}
   Zij $X,d$ een metrische ruimte en zij $Y$ een niet-lege deelverzameling van $X$.
   Beschouw een $A \subseteq Y$.
   $A$ is relatief open in $Y$ als en slechts als er een open $V \subseteq X$ bestaat zodat $A=V \cap Y$ geldt.
@@ -475,6 +476,7 @@ hello it is i leclerc
 \end{pr}
 
 \begin{bst}
+  \label{st:rijcompact-dan-gesloten}
   Zij $X,d$ een metrische ruimte en $A$ een niet-leeg deel van $X$.
   Als $A$ rijcompact is, dan is $A$ gesloten.
   \begin{proof}
@@ -683,21 +685,59 @@ hello it is i leclerc
 
 \begin{bpr}
   Een gesloten deel van een compact is compact.
-\TODO{bewijs p 54}
+
+  \begin{proof}
+    Zij $K$ een compact deel van een metrische ruimte en $G$ een deel van $K$.
+    Kies een willekeurige open overdekking $\mathcal{F}$ van $G$, dan is $F \cup \{G^{c}\}$ een open overdekking van $K$ (want $G$ is gesloten).
+    Omdat $K$ compcat is, kunnen we een eindige deeloverdekking $\{V_{1},\dotsc,V_{n}\}$ van $\mathcal{F}$ vinden:
+    \[ G \subseteq K \subseteq G^{c} \cup \bigcup_{i=1}^{n}V_{i} \]
+    Duidelijk is nu dat $G$ een deel is van $\bigcup_{i=1}^{n}V_{i}$, een eindige deeloverdekking van $\mathcal{F}$ voor $G$.
+  \end{proof}
 \extra{bewijs via rijcompactheid}
 \end{bpr}
 
 \begin{bei}
   Zij $\mathcal{K}$ een verzameling van compacte delen van een metrische ruimte $X,d$ zodat de doorsnede van eindig veel elementen uit $\mathcal{K}$ nooit leeg is, dan is de doorsnede van alle verzamelingen uit $\mathcal{K}$ niet leeg.
-\TODO{bewijs p 54}
-\extra{bewijs via rijcompactheid}
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat de doorsnede $\bigcap\mathcal{K}$ van de elementen van $\mathcal{K}$ leeg is.
+    Noem dan $\mathcal{F} = \{K^{c}\mid K \in \mathcal{K}\}$.
+    Merk op dat $\mathcal{F}$ uit open verzamelingen bestaat want elke $K$ is compact en dus gesloten.\stref{st:compact-dan-rijcompact}\stref{st:rijcompact-dan-gesloten}
+    Beschouw nu een willekeurig element $K_{0} \in \mathcal{K}$.
+    Omdat de unie $\bigcup_{K\in \mathcal{K}}K^{c}$ heel de metrische ruimte is, is $\mathcal{F}$ een open overdekking van $K_{0}$.
+    Omdat $K_{0}$ compact is, kunnen we dus een eindig aantal verzamelingen $K_{1},\dotsc,K_{n} \in \mathcal{K}$ vinden als volgt:
+    \[ K_{0} \subseteq \bigcup_{i=1}^{n}K_{i}^{c} \]
+    Dit betekent echter dat de doorsnede van alle $K_{i}$ leeg is, en dat is in strijd met het gegeven.
+    Contradictie.
+  \end{proof}
 \end{bei}
+\extra{bewijs via rijcompactheid}
 
 \begin{bpr}
   Beschouw de metrische ruimte $X,d$.
   Beschouw deelverzamelingen $A$ en $Y$ zodat $A \subseteq Y \subseteq X$ geldt.
   Noteer de beperking van $d$ tot $Y$ met $d_{Y}$.
   $A$ is compact in $X,d$ als en slechts als $A$ compact is in $Y,d_{Y}$.
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Zij $A$ compact in $X,d$.
+      Zij $\mathcal{F}$ een willekeurige overdekking van $A$ met open delen van $Y,d_{Y}$.
+      Voor elke $V\in \mathcal{F}$ kunnen we een open $V'$ in $X$ kiezen zodat $V = V'\cap Y$ geldt.\prref{pr:relatief-open-snijdigen}
+      Noteer $\mathcal{F}' = \{ V' \mid V \in \mathcal{F}\}$.
+      $\mathcal{F}'$ is dan een overdekking van $A$ met open delen van $X$.
+      Bijgevolg heeft $\mathcal{F}'$ een eindige deeloverdekking.
+      Er zijn dus een eindig aantal elementen $V_{1}',\dotsc,V_{n}' \in \mathcal{F}'$ die samen $A$ overdekken.
+      Wanneer we $\bigcup_{i=1}^{n}V_{i}'$ snijden met $Y$ vinden we het volgende:
+      \[ A = A \cap Y \subseteq \bigcup_{i=1}^{n}V_{i} \]
+      We verkrijgen een eindige deeloverdekking van $\mathcal{F}$.
+      Dit toont dat $A$ compact is in $Y,d_{y}$.
+    \item $\Leftarrow$\\
+\TODO{bewijs:oefening}
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \begin{figure}[H]
