@@ -768,7 +768,7 @@ hello it is i leclerc
 
 \begin{bpr}
   \label{pr:karakterisatie-niet-samenhangend}
-  Zij $Y$ een deelverzameling $Y$ van $X$ met $X,d$ een metrische ruimte.
+  Zij $Y$ een deelverzameling van $X$ met $X,d$ een metrische ruimte.
   $Y$ is niet samenhangend enkel als $Y$ te schrijven valt als een unie $A \cup B$ waarbij $A$ en $B$ beide niet leeg en onderling gescheiden zijn.
   In het bijzonder zijn $A$ en $B$ dan gesloten.
 
@@ -789,21 +789,92 @@ hello it is i leclerc
   \end{proof}
 \end{bpr}
 
+\begin{de}
+  Zij $Y$ een deelverzameling van $X$ met $X,d$ een metrische ruimte.
+  We noemen $Y$ \term{totaal onsamenhangend} als enkel de singletons samenhangende deelverzamelingen zijn van $Y$.
+\end{de}
+
+\begin{st}
+  \label{st:singleton-samenhangend}
+  Een singleton $\{x\}$, als deelverzameling van $X$ in de metrische ruimte $X,d$ is steeds samenhangend.
+  
+  \begin{proof}
+    Enkel $\{x\}$ en $\emptyset$ zijn zowel open als gesloten.
+    Er zijn bovendien geen andere mogelijke deelverzamelingen van $\{x\}$.
+  \end{proof}
+\end{st}
+
 \begin{bpr}
+  \label{pr:samenhangend-asa-interval}
   Een deelverzameling $Y$ van $\mathbb{R}$ is samenhangend als en slechts het een interval is.
-\TODO{bewijs p 59}
-\extra{juiste plaats?}
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Stel dat $Y$ geen interval is, dan bestaan er punten $x$,$y$ en $z$ zodat $x < z < y$ gelden met $x,y \in Y$ en $z \not\in Y$.
+      Noem nu $A = \{ t \in Y \mid t < z \}$ en $B = \{ t \in Y \mid t > z \}$.
+      Er geldt nu $Y = A \cup B$, $A \neq \emptyset \neq B$ en $A \cap \overline{B} = \overline{A} \cap B = \emptyset$.
+    \item $\Leftarrow$\\
+      Stel dat $Y$ een interval is maar niet samenhangend.
+      We kunnen dan $Y$ beschrijven als $A \cup B$ met $A$ en $B$ niet leeg en $A \cap \overline{B} = \overline{A} \cap B = \emptyset$.
+      Kies een $a\in A$ en $b\in B$.
+      Na eventuele hernoeming geldt $a < b$.
+      Noteer $C = \{ x \in A \mid x < b \}$ en stel $z=\sup C$.
+      Dit supremum moet bestaan want $C$ is niet leeg ($a$ zit erin) en naar boven begrensd (door $b$).
+      Duidelijk is dat $z$ tussen $a$ en $b$ ligt en omdat $Y$ een interval is moet $z$ tot $Y$ behoren.
+      Bovendien behoort $z$ tot de sluiting van de verzameling $C$ waarvan het het supremum is en dus zeker $z\in \overline{A}$.
+      Omdat $\overline{A} \cap B$ leeg is kan $z$ geen element zijn uit $B$ en daarom moet $z$ verschillend zijn van $b$.
+      Vermits $z$ tot $Y = A \cup B$ behoort moet $z$ dus tot $A$ behoren.
+      Omdat $A \cap \overline{B}$ ook leeg is kan $z$ niet in $\overline{B}$ liggen.
+      Omdat $\overline{B}$ gesloten is en $z$ strikt kleiner dan $b$, kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden die klein genoeg is opdat $\interval[open]{z-\delta}{z+\delta}$ een deel is van $C$.
+      Het supremum van $C$ zou dus strikt groter moeten zijn dan $z$, wat strijdig is met de definitie van $z$.
+      Contradictie.
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
+  \label{pr:convexe-deelverzamelingen-samenhangend}
   Zij $\mathbb{R},V,+, \|\cdot\|$ een genormeerde vectorruimte.
   Alle convexe deelverzamelingen van $V$ zijn samenhangend voor de metriek ge\"induceerd door $\|\cdot\|$.
-\TODO{bewijs p 60}
+
+  \begin{proof}
+    Stel dat $Y$ een niet-leeg convex deel is van $V$ maar niet samenhangend.
+    $Y$ valt dan te schrijven als $A \cup B$ met $A$ en $B$ elk niet leeg en $A \cap \overline{B} = \overline{A} \cap B = \emptyset$.
+    Kies een $x\in A$ en een $y\in B$ en benoem $S$ en $T$ als volgt:
+    \[ S = \{ t\in \interval{0}{1} \mid (1-t)x + ty \in A \} \]
+    \[ T = \{ t\in \interval{0}{1} \mid (1-t)x + ty \in B \} \]
+    $S$ en $T$ zijn dan niet leeg want $0 \in S$ en $1 \in T$ gelden.
+    Omdat $Y$ convex is zal $\interval{0}{1}$ de unie zijn van $S$ en $T$.
+    Als $t\in S \cap \overline{T}$ zit, dan bestaat er een rij $(t_{n})_{n}$ in $T$ met $t$ als limiet.
+    Dan zal echter de rij $\left((1-t_{n})x + t_{n}y\right)$ convergeren naar $(1-t)x + ty$ in $V$ en zal dus $(1-t)x+ty$ een element zijn van $\overline{B}$.
+    Omdat $t$ ook in $S$ zit zou $(1-t)x+ty$ een element zijn van $A \cap \overline{B}$.
+    Analoog bewijst met dat $\overline{S} \cap T$ leeg is.
+    Dit zou dat betekenen dat $\interval{0}{1}$ niet samenhangend is.
+    Contradictie.\prref{pr:samenhangend-asa-interval}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
+  \label{pr:niet-disjunctie-samenhangende-unie-samenhangend}
   In een metrische ruimte $X,d$ is de unie van niet-disjunctie samenhangende verzamelingen samenhangend.
-\TODO{bewijs p 60}
+
+  \begin{proof}
+    Zij $\bigcup S$ de unie van een verzameling onderling niet disjuncte verzamelingen.
+    Bewijs uit het ongerijmde: Stel dat $\bigcup S$ niet samenhangend is.\\
+    $\bigcup S$ valt dan te schrijven als $A \cup B$ met $A$ en $B$ niet elk leeg en $A \cap \overline{B} = \overline{A} \cap B = \emptyset$.
+    Voor elke $Y = (A \cap Y) \cup (B \cap Y)$ in $S$ merken we op: 
+    \[ (A \cap Y) \cap \overline{(B \cap Y)} \subseteq A \cap \overline{B} = \emptyset \]
+    Analoog vinden we dit:
+    \[ \overline{(A \cap Y)} \cap (B \cap Y) \subseteq \overline{A} \cap B = \emptyset \]
+    Omdat $Y$ samenhangend is, zal ofwel $A \cap Y$ leeg zijn ofwel $B \cap Y$.
+    Kies nu een $x\in \bigcap S$, dan behoort $x$ ofwel tot $A$, ofwel tot $B$, want $A$ en $B$ zijn disjunct.
+    Na eventuele hernoeming kunnen we stellen dat $x$ tot $A$ behoort.
+    $x$ is dan een element van $A \cap Y$ voor elke $Y$ en dus is $B \cap Y$ leeg voor elke $Y$.
+    Dit impliceert dat $B$ leeg is.
+    Contradictie.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
@@ -811,12 +882,29 @@ hello it is i leclerc
   Voor elke $x\in Y$ bestaat er een grootste samenhangende deelverzameling $Y_{x}$ die $x$ bevat en deel is van $Y$.
   Voor elk paar $x$ en $y$ in $Y$ zal dan $Y_{x} \cap Y_{y}$ leeg zijn of $Y_{x} = Y_{y}$ gelden.
   $Y$ is de unie van twee aan twee disjunctie samenhangende deelverzamelingen.
-\TODO{bewijs p 61}
+
+  \begin{proof}
+    Kies $x\in Y$ en noteer met $S$ de verzameling van alle samenhangende deelverzamelingen van $Y$ waar $x$ toe behoort.
+    Noteer $Y_{x} = \bigcup S$.
+    Per definitie is $\bigcap S$ niet leeg.
+    $Y_{x}$ is nog steeds samenhangend.\prref{pr:niet-disjunctie-samenhangende-unie-samenhangend}
+    Het is duidelijk de grootste samenhangede deelverzameling van $Y$ waar $x$ in zit.
+    Neem nu $x,y\in Y$ en stel dat $Y_{x}\cap Y_{y}$ leeg is, dan is $Y_{x}\cup Y_{y}$ een samenhangende deelverzameling van $Y$ waar $x$ en $y$ in zitten.
+    Er geldt dus $Y_{x} \cup Y_{y} \subseteq Y_{x}$ en $Y_{y} \cup Y_{x} \subseteq Y_{y}$.
+    Dit impliceert dat $Y_{x}$ en $Y_{y}$ gelijk zijn.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
  Als $Y$ een open deel is van $\mathbb{R}^{p}$, dan zijn de samenhangende componenten van $Y$ weer open.
-\TODO{bewijs p 61}
+
+
+ \begin{proof}
+   Kies een $x\in Y$ en beschouw de samenhangende component $Y_{x}$ van $x$ in $Y$.
+   Kies een $a\in Y_{x}$.
+   Omdat $a$ tot $Y$ behoort, bestaat dan een $\delta \in \mathbb{R}_{0}^{+}$ met $B(a,\delta) \subseteq Y$.
+   Omdat $B(a,\delta)$ samenhangend is en het punt $a$ gemeen heeft met $Y_{x}$ moet $B(a,\delta)$ een deel zijn van $Y_{x}$.
+ \end{proof}
 \end{bpr}
 
 \end{document}

@@ -205,10 +205,53 @@
 \end{opm}
 
 \begin{vb}
+  \label{vb:r_0-niet-samenhangend}
   $\mathbb{R}_{0}$ is niet samenhangend.
 
   \begin{proof}
     Inderdaad, $\mathbb{R}_{0} = \mathbb{R}_{0}^{-} \cup \mathbb{R}_{0}^{+}$, $\overline{\mathbb{R}_{0}^{+}} \cap \mathbb{R}_{0}^{-} = \mathbb{R}^{+} \cap \mathbb{R}_{0}^{-} = \emptyset$ en $\overline{\mathbb{R}_{0}^{-}} \cap \mathbb{R}_{0}^{+} = \mathbb{R}^{-} \cap \mathbb{R}_{0}^{+} = \emptyset$ gelden. 
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{Q}$ is niet samenhangend.
+
+  \begin{proof}
+    Inderdaad:
+    \[ A = \{ q\in \mathbb{Q} \mid q < \sqrt{2} \} \quad\text{ en }\quad B = \{ q \in \mathbb{Q} \mid q > \sqrt{2} \} \]
+    $\mathbb{Q}$ is de unie van $A$ en $B$.
+    Noch $A$, noch $B$ is leeg.
+    $A$ en $B$ zijn bovendien gescheiden:
+    \[ \overline{A} \cap B = \interval[open left]{-\infty}{\sqrt{2}} \cap B = \emptyset \]
+    \[ A \cap \overline{B} = A \cap \interval[open right]{\sqrt{2}}{+\infty} = \emptyset \]
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{Q}$ is totaal onsamenhangend.
+
+  \begin{proof}
+    Zij $V$ een deelverzameling van $\mathbb{Q}$ met minstens twee elementen.\stref{st:singleton-samenhangend}
+    Kies twee elementen $v$ en $w$ uit $V$.
+    Er bestaat dan een $r\in \mathbb{R} \setminus \mathbb{Q}$ tussen $v$ en $w$.\needed
+    Beschouw $A$ en $B$ als volgt:
+    \[ A = \{ x \in V \mid x < r \} \quad\text{ en }\quad \{ x \in V \mid x > r \} \]
+    Noch $A$, noch $B$ is leeg, want $r$ ligt tussen $v$ en $w$.
+    De unie van $A$ en $B$ is $V$ per constructie.
+    Enkel $r$ zou in de doorsneden $\overline{A} \cap B$ en $A \cap \overline{B}$ kunnen zitten, maar $r$ zit niet in $q$ en dus niet in die doorsneden.
+    \extra{dat laatste is nogal vaag, kan het beter?}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De verzameling $Y$ als volgt is niet samenhangend in $\mathbb{R}^{2},d$.
+  \[ Y = \left\{ \left(x, \sin\frac{1}{x}\right) \mid x \in \mathbb{R}_{0} \right\} \]
+
+  \begin{proof}
+    Beschouw $Y^{+} = \left\{ \left(x, \sin\frac{1}{x}\right) \mid x \in \mathbb{R}_{0}^{+} \right\}$ en $Y^{-} = \left\{ \left(x, \sin\frac{1}{x}\right) \mid x \in \mathbb{R}_{0}^{-} \right\}$.
+    De unie van $Y^{+}$ en $Y^{-}$ is $Y$ en beiiide zijn niet leeg.
+    De sluiting van $Y^{+}$, respectievelijk $Y^{-}$ vinden we door het lijnstuk $(0,1)(0,-1)$ toe te voegen.\waarom
+    $Y^{+}$ en $Y^{-}$ zijn dus onderling gescheiden.
   \end{proof}
 \end{vb}
 
@@ -523,6 +566,45 @@
   \end{enumerate}
   \feed
 \end{st}
+
+\begin{vb}
+  Kies $Y = \mathbb{R}^{p} \setminus \{0\}$.
+  $Y$ is niet samenhangend voor $p=1$\vbref{vb:r_0-niet-samenhangend}, maar wel voor $p>1$.
+
+  \begin{proof}
+    We argumenteren dit voor $p=2$ (hogere dimensies gaan analoog).
+    Beschouw de volgende convexe verzamelingen.
+    \[ A_{1} = \{(x,y) \in \mathbb{R}^{2} \mid x > 0 \} \]
+    \[ A_{2} = \{(x,y) \in \mathbb{R}^{2} \mid x < 0 \} \]
+    \[ A_{3} = \{(x,y) \in \mathbb{R}^{2} \mid y > 0 \} \]
+    \[ A_{4} = \{(x,y) \in \mathbb{R}^{2} \mid y < 0 \} \]
+    Al deze verzamelingen zijn samenhangend \prref{pr:convexe-deelverzamelingen-samenhangend}
+    $A_{1} \cap A_{3}$ is niet leeg en $A_{1} \cup A_{3}$ dus samenhangend.
+    Analoog is $A_{2} \cup A_{4}$ samenhangend.
+    Ook $A_{1} \cap A_{2}$ is leeg en $A_{1} \cup A_{2} \cup A_{3} \cup A_{4}$ samenhangend en dit is precies $\mathbb{R}^{2} \setminus \{0\}$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Beschouw in $\mathbb{R}^{2}$ voor $n\in \mathbb{N}_{0}$ de verzameling $Y_{n}$ als volgt:
+  \[ Y_{n} = \left\{ \left( x,\frac{x}{n} \right) \in \mathbb{R}^{2} \mid x\in \interval{0}{1} \right\} \]
+  $Y_{n}$ is convex en dus samenhangend.
+  Bovendien geldt $\bigcap Y_{n} = \{(0,0)\} \neq \emptyset$.
+  De verzameling $Y = \bigcup Y_{n}$ is dus samenhangend.\prref{pr:niet-disjunctie-samenhangende-unie-samenhangend}
+  Zij $L$ het lijnstuk met eindpunten $\left(\frac{1}{2},0\right)$ en $(1,0)$.
+  $Y\cup L$ is samenhangend.
+  
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat $Y \cup L$ niet samenhangend is.
+    Er bestaan dan niet-lege, onderling gescheiden $A$ en $B$ zodat $Y\cup L = A \cup B$ geldt.
+    Merk eerst op dat $L$ tot de sluiting van $Y$ behoort.
+    Omdat $Y$ samenhangend is, moet $Y$ in zijn geheel tot ofwel $A$ ofwel $B$ behoren.
+    Omdat $L$ tot de sluiting van $Y$ behoort moet $L$ tot $A$ behoren want $A$ en $B$ zijn onderling gescheiden.
+    Er blijft dan niets meer over in $B$.
+    Contradictie.
+  \end{proof}
+\end{vb}
+
 
 \subsubsection{De $d_1$- of city block metriek op $\mathbb{R}^p$}
 \label{sec:de-d_1-city}
