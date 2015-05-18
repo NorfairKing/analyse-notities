@@ -30,6 +30,5 @@ digraph compact {
     c -> rc;
     e -> c;
     rc -> v;
-    g -> v;
     v -> g;
 }
