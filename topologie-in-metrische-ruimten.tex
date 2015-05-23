@@ -138,13 +138,16 @@ hello it is i leclerc
   T.t.z als elk $d_{2}$-open deel van $X$ ook $d_{1}$-open is.
 \end{de}
 
-\question{is 'topologisch fijner' een totale ordeverzameling?}
+\begin{opm}
+  'Topologisch fijner' is \textbf{geen} totale orderelatie.
+\end{opm}
 
 \begin{de}
   We noemen twee metrieken $d_{1}$ en $d_{2}$ \term{topologisch equivalent} als $\mathcal{T}_{d_{1}}$ en $\mathcal{T}_{d_{2}}$ gelijk zijn.
 \end{de}
 
 \begin{st}
+  \label{st:topologisch-fijner-formuleringen}
   Zij $X$ een niet-lege verzameling en $d_{1}$ en $d_{2}$ metrieken op $X$, dan zijn volgende uitspraken equivalent.
   \begin{enumerate}
   \item $d_{1}$ is topologisch fijner dan $d_{2}$.
@@ -189,7 +192,7 @@ hello it is i leclerc
 \end{st}
 
 \begin{opm}
-  Topologisch equivalente metrieken hebben dus dezelfde open bollen en dezelfde convergente rijen.
+  Topologisch equivalente metrieken hebben dus dezelfde open delen en dezelfde convergente rijen.
 \end{opm}
 
 \begin{opm}
@@ -197,6 +200,20 @@ hello it is i leclerc
   Voor twee topologisch equivalente metrieken kan $X,d_{1}$ dus volledig zijn zonder dat $X,d_{2}$ volledig is.\deref{de:metrische-ruimte-volledig}
 \TODO{voorbeeld van zo'n situatie}
 \end{opm}
+
+\begin{st}
+  Zij $d_{1}$ en $d_{2}$ twee metrieken op een verzameling $X$ met de volgende eigenschap, dan is $d_{1}$ topologisch fijner dan $d_{2}$.
+  \[ \forall x,y\in X:\ d_{1}(x,y) > d_{2}(x,y) \]
+
+  \begin{proof}
+    Kies een willekeurige $x\in X$ en een $r\in \mathbb{R}_{0}^{+}$.
+    Beschouw de $d_{2}$-open bol $B_{d_{2}}(x,r)$.
+    We argumenteren dat daarin de open bol $B_{d_{1}}(x,r)$ ligt.\stref{st:topologisch-fijner-formuleringen}
+    Kies daartoe een element $y\in B_{d_{1}}(x,r)$:
+    \[ d_{1}(x,y) < r \]
+    De $d_{2}$ afstand tussen $x$ en $y$ is nog kleiner dat $d_{1}(x,r)$, dus $y$ ligt ook in $B_{d_{2}}(x,r)$.
+  \end{proof}
+\end{st}
 
 \subsection{Sluiting en inwendige}
 \label{sec:sluit-en-inwend}
@@ -685,6 +702,7 @@ hello it is i leclerc
 \end{st}
 
 \begin{bpr}
+  \label{pr:gesloten-deel-van-compact-is-compact}
   Een gesloten deel van een compact is compact.
 
   \begin{proof}

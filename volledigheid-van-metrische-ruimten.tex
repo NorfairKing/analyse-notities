@@ -5,35 +5,203 @@
 \label{sec:volledigheid}
 
 \begin{de}
+  \label{de:volledige-metrische-ruimte}
   We noemen een metrische ruimte \term{volledig} als elke Cauchyrij erin convergeert.
 \end{de}
 
 \begin{bpr}
+  \label{pr:begrensde-functies-van-metrische-ruimte-naar-r-volledig}
   Zij $X,d$ een willekeurige metrische ruimte, dan is $C_{b}(X),d_{\infty}$ als volgt een volledige metrische ruimte.
   \[ C_{b}(X) = \{ f:\ X \rightarrow \mathbb{R} \mid f \text{ is continu en begrensd.} \} \]
   \[ d_{\infty} = \sup\{ |f(x)-g(x)| \mid x \in X \} \]
-\TODO{bewijs p 75}
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $C_{b}(X),d_{\infty}$ is een metrisch ruimte.
+      \extra{bewijs}
+    \item $C_{b}(X),d_{\infty}$ is volledig.\\
+      Kies een willekeurige Cauchyrij $(f_{n})_{n}$ in $C_{b}(X)$.
+      Vanuit de definitie van $d_{\infty}$ vinden we het volgende:
+      \[ \forall x\in X, \forall n,m\in \mathbb{N}:\ \left| f_{n}(x) -f_{m}(x) \right| \le d_{\infty} \left(f_{n},f_{m}\right) \]
+      Bijgevolg is $(f_{n}(x))_{n}$ een Cauchyrij in $\mathbb{R}$ voor elke $x\in X$.
+      De rij $(f_{n}(x))_{n}$ is dus telkens convergent want $\mathbb{R}$ is volledig.
+      We kunnen dus een functie $f$ defini\"eren als volgt:
+      \[ f:\ X \rightarrow \mathbb{R}:\ x \mapsto \lim_{m\rightarrow\infty}f_{m}(x) \]
+      We hebben nu al bewezen dat de rij $(f_{n})_{n}$ puntsgewijs convergeert.
+      Er rest ons nog aan te tonen dat de convergentie volgens de $d_{\infty}$ metriek, dus uniform, gebeurt en dat de limietfunctie $f$ tot $C_{b}(X)$ behoort.
+      Kies daartoe een willekeurige $\epsilon\in \mathbb{R}_{0}^{+}$.
+      Omdat $(f_{n})_{n}$ een Cauchyrij is, bestaat er een $n_{0}$ als volgt:
+      \[ \forall n,m\in\mathbb{N}:\ n,m \ge n_{0} \Rightarrow d_{\infty}(f_{n},f_{m}) < \epsilon \]
+      Er geldt dan het volgende:
+      \begin{align*}
+        \forall x\in X, \forall n,m\in\mathbb{N}:\ n,m \ge n_{0} &\Rightarrow \left|f_{n}(x) -f(x) \right|\\
+        &\le \left|f_{n}(x)-f_{m}(x) \right| + \left|f_{m}(x) -f(x)\right|\\
+        &\le d_{\infty}(f_{n},f_{m}) + \left|f_{m}(x) - f(x)\right|\\
+        &<\epsilon + \left|f_{m}(x) -f(x) \right|
+      \end{align*}
+      Wanneer we hiervan de limiet voor $m$ gaande naar $\infty$ beschouwen, vinden we het volgende:
+      \[ \forall x\in X, \forall n\in\mathbb{N}:\ n \ge n_{0} \Rightarrow \left|f_{n}(x) -f(x)\right| \le \epsilon \]
+      Omdat $f_{n_{0}}$ begrensd is, volgt uit het vorige (met $n=n_{0}$) dan $f$ begrensd is.
+      Bovendien hebben we ineens bewezen dat de convergentie $f_{n}\rightarrow f$ uniform gebeurt.
+      Omdat uniforme convergentie continu\"iteit behoudt\needed, weten we ook dat $f$ continu is.
+      We hebben dus een $f\in C_{b}(X)$ gevonden zodat $d_{\infty}(f_{n},f)$ naar nul gaat.
+      Dit bewijst de volledigheid.
+    \end{itemize}
+  \end{proof}
+\TODO{herbekijken}
 \end{bpr}
+
+\begin{gev}
+  Zij $X,d$ een compacte metrische ruimte, dan is $C(X),d_{\infty}$ een volledige metrische ruimte.
+
+  \begin{proof}
+    Omdat $X$ compact is, is elke functie van $X$ naar $\mathbb{R}$ begrensd.\stref{st:beeld-van-compact-ook-compact}\figref{fig:compactheid}
+    $C_{b}(X)$ is dan dus gelijk aan $C(X)$ en dus is $C(X)$ een volledige metrische ruimte.\prref{pr:begrensde-functies-van-metrische-ruimte-naar-r-volledig}
+  \end{proof}
+\end{gev}
 
 \begin{bpr}
   De metrische ruimte $C\left( \interval{-1}{1} \right),d_{1}$ is niet volledig.
-\TODO{bewijs p 76}
+
+  \begin{proof}
+    Het volstaat om een voorbeeld te geven van een $d_{1}$-Cauchyrij $(f_{n})_{n}$ die voor de $d_{1}$-metriek niet convergeert.
+    Beschouw daartoe de rij $(f_{n})_{n}$ als volgt:
+
+    \noindent
+    \begin{minipage}{.45\textwidth}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+            \addplot[smooth,domain=-1:1]{x};
+            \foreach \i in {2,...,10}
+            {
+              \addplot[smooth,domain=-1:(-1/\i)]{-1};
+              \addplot[smooth,domain=(-1/\i):(1/\i)]{\i*x};
+              \addplot[smooth,domain=(1/\i):1]{1};
+            }
+            \addplot[smooth,color=red,ultra thick,domain=-1:0]{-1};
+            \addplot[smooth,color=red,ultra thick,domain=0:1]{1};
+            \addplot[soldot,color=red] coordinates{(-1,-1)(0,0)(1,1)};
+            \addplot[holdot,color=red,fill=white] coordinates{(0,1)(0,-1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[
+      f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          -1 & \text{ als } x \in \interval[open left ]{-\infty}{-\frac{1}{n}}\\
+          nx & \text{ als } x \in \interval[open      ]{-\frac{1}{n}}{\frac{1}{n}}\\
+          1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+      \[
+      f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
+          0  & \text{ als } x = 0\\
+          1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+    \end{minipage}
+    
+    Voor alle $n_{0}\in \mathbb{N}$ en $n,m\in \mathbb{N}$, groter dan $n_{0}$, vinden we het volgende:
+    \[ d_{1}(f_{n},f_{m}) \le \frac{1}{n_{0}} \]
+    De rij $(f_{n})_{n}$ is dus een $d_{1}$-Cauchyrij.
+    De rij $(f_{n})_{n}$ convergeert bovendien puntsgewijs naar $f$, maar $f$ is niet continu en behoort dus niet tot $C\left(\interval{-1}{1}\right)$.
+    Benoem $\delta_{g}$ voor elke $g\in C\left(\interval{-1}{1}\right)$ als volgt:
+    \[ \delta_{g} = \int_{-1}^{1}|f(t)-g(t)|\ dt \]
+    Voor elke $g\in C\left(\interval{-1}{1}\right)$ en $n\in\mathbb{N}_{0}$ vinden we dan het volgende:
+    \begin{align*}
+      d_{1}(f,g)
+      &= \int_{-1}^{1}|f_{n}(t)-g(t)|\ dt\\
+      &\ge \int_{-1}^{1}|f(t)-g(t)|\ dt-\int_{-1}^{1}|f_{n}(t)-f(t)|\ dt
+      &= \delta_{g}-\frac{1}{n}
+    \end{align*}
+    De rij $(f_{n})_{n}$ kan dus niet naar een $g\in C(\interval{-1}{1})$ convergeren voor de $d_{1}$-metriek.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
-  De metrische ruimte $\mathcal{F},h$ is volledig.
-\TODO{bewijs p 77}
+  De metrische ruimte $\mathcal{F},h$, met $\mathcal{F}$ de verzameling van niet-lege compacte delen van $\mathbb{R}^{p}$, is volledig.
+
+  \begin{proof}
+    Zij $(F_{n})_{n}$ een Cauchyrij in $\mathcal{F},h$.
+    We argumenteren dat deze rij convergeert.\deref{de:volledige-metrische-ruimte}\\
+    Definieer eerst voor elke $n\in\mathbb{N}_{0}$ $G_{n}$ als volgt:
+    \[ G_{n} = \overline{\bigcup_{k \ge n}F_{k}} \]
+    $G_{n}$ is dan zeker gesloten, want het is een sluiting.
+    Omdat $(F_{n})_{n}$ een Cauchyrij is, bestaat er een $M\in\mathbb{R}^{+}$ als volgt:\stref{st:metrische-ruimte-cauchy-dan-begrensd}
+    \[ \forall k\in \mathbb{N}_{0}:\ h(F_{k},F_{1}) \le M \]
+    $F_{k}$ zal dus steeds een deel zijn van de $M$-omhullende van $F_{1}$ en daarom ook $G_{n}$ een deel van $\overline{[F_{1}]_{M}} = [F_{1}]_{M}$.
+    $G_{n}$ is dus ook een begrensd deel van $\mathbb{R}^{p}$.
+    We vinden dat $(G_{n})_{n}$ een rij is die per constructie dalend is.
+    Noem nu $G = \bigcap_{n} G_{n}$, dan zal $G$ een element zijn van $\mathcal{F}$ en de afstand tussen $G_{n}$ en $G$ naar nul neigen.\TODO{BEWIJS: oefening 14 uit 1.6}
+    We tonen nog aan dat $G$ ook de limiet is van $(F_{n})_{n}$.
+    Het is daartoe voldoende om aan te tonen dat $h(F_{n},G_{n})$ naar nul neigt.
+    Kies dus een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $(F_{n})_{n}$ een Cauchyrij is, bestaat er een $n_{0}\in\mathbb{N}_{0}$ als volgt:
+    \[ \forall n,k \in\mathbb{N}:\ n,k \ge n_{0}\Rightarrow h(F_{n},F_{k}) < \epsilon \]
+    Kies nu willekeurig een $n\ge n_{0}$, dan zal $F_{k}$ een deel zijn van de $\epsilon$-omhullende van $F_{n}$ voor alle grotere $k$.
+    Bijgevolg geldt dit:
+    \[ G_{n} = \overline{\bigcup_{k \ge n}F_{k}} \subseteq \overline{[F_{n}]_{\epsilon}} = [F_{n}]_{\epsilon} \]
+    Anderzijds geldt natuurlijk ook $F_{n} \subseteq [G_{n}]_{\epsilon}$ omdat $F_{n}$ een deel is van $G_{n}$.
+  \end{proof}
 \end{bpr}
+
+\begin{gev}
+  $\mathbb{R}^{p}$ is dus ook volledig.\stref{st:rp-als-deel-van-f}
+\end{gev}
 
 \subsection{De vastepuntsstelling en haar toepassingen}
 \label{sec:vastepuntsstelling}
 
 \begin{bst}
-  De \term{vastepuntsstelling van Banach}.\\
+  De \term{vastepuntsstelling van Banach} of de \term{contractiestelling}.\\
   Zij $X,d$ een volledige metrische ruimte en $f:\ X \rightarrow X$ een strikte contractie, dan heeft $f$ een uniek vast punt.
   Dat vast punt wordt bovendien verkregen als limiet van de rij gedefinieerd als volgt:
   \[ x_{0}\in X,\ x_{n+1} = f(x_{n}) \]
-\TODO{bewijs p 78}
+
+  \begin{proof}
+    Omdat $f$ een strikte contractie is, bestaat er een $c\in\interval[open right]{0}{1}$ als volgt:
+    \[ \forall x,y\in X:\ d\left(f(x),f(y)\right) \le cd(x,y) \]
+    \begin{itemize}
+    \item Uniciteit\\
+      Zij $x^{*}$ en $y^{*}$ twee vaste punten van $f$, dan geldt het volgende:
+      \[ d(x^{*},y^{*}) = d\left(f(x^{*}),f(y^{*})\right) \le cd(x^{*},y^{*}) \]
+      Omdat $c$ kleiner is dan $1$ moet $d(x^{*},y^{*})$ nul zijn en $x^{*}$ dus gelijk aan $y^{*}$\deref{de:metrische-ruimte}
+    \item Bestaan\\
+      We bewijzen dat er een vast punt $x^{*}$ bestaat door aan te tonen dat $(x_{n})$ naar een vast punt van $f$ convergeert.
+      Merk daartoe eerst op dat het volgende geldt voor alle $n\in \mathbb{N}_{0}$:
+      \begin{align*}
+        d(x_{n},x_{n+1})
+        &= d(f(x_{n-1}),f(x_{n}))
+        &\le cd(x_{n-1},x_{n})\\
+        &= cd(f(x_{n-2}),f(x_{n-1}))
+        &\le c^{2}d(x_{n-2},x_{n-1})\\
+        &\quad\vdots\\
+        &= c^{n-1}d(f(x_{01}),f(x_{1})) &\le c^{n}d(x_{0},x_{1})
+      \end{align*}
+      Voor alle $n\in \mathbb{N}$ en $k\in \mathbb{N}_{0}$ vinden we dus het volgende:
+      \begin{align*}
+      d(x_{n},x_{n+k})
+      &\le \sum_{i=n}^{n+k-1}d(x_{i},x_{i+1})\\
+      &\le \sum_{i=n}^{n+k-1}c^{i}d(x_{0},x_{1})\\
+      &\le \frac{c^{n}}{1-c} d(x_{0},x_{1})
+      \end{align*}
+      Omdat $c$ kleiner is dan $1$ en $c^{n}$ dus naar nul gaat\prref{pr:np-in-r-convergeert}, volgt hieruit dat $(x_{n})_{n}$ een Cauchyrij is.
+      Omdat $X,d$ volledig is, zal $(x_{n})_{n}$ convergeren.
+      We noemen de limiet $x^{*}$
+      Wanneer we van de gelijkheid $x_{n+1}=f(x_{n})$ de limiet nemen voor $n$ gaande naar $+\infty$, vinden we wegens de continu\"iteit van $f$\prref{pr:continuiteit-itv-rijen} dat $x^{*}=f(x^{*})$ een vast punt is van $f$.
+    \end{itemize}
+  \end{proof}
 \end{bst}
 
 \subsubsection{Toepassing: ge\"itereerde functiesystemen en fractalen}
@@ -73,10 +241,50 @@
 \subsection{Vervollediging}
 \label{sec:vervollediging}
 
+\begin{de}
+  We noemen een volledige metrische ruimte $X_{v},d_{v}$ een \term{vervollediging} van een metrische ruimte $X,d$ als er een isometrische inbedding $\mathfrak{i}:\ X \rightarrow X_{v}$ bestaat zodat $\mathfrak{i}(X)$ dicht is in $X_{v}$ volgens $d_{v}$.
+\end{de}
+
 \begin{bst}
-  Zij $X,d$ een metrische ruimte, dan bestaat er een metrische ruimte $X_{v},d_{v}$ en een isometrische inbedding $\mathcal{i}:\ X \rightarrow X_{v}$ zodat $\mathcal{i}(X)$ dicht is in $X_{v}$.
-  Zo'n ruimte $X_{v},d_{v}$ is uniek op isometrie na.
-\TODO{bewijs p 85}
+  De vervollediging van een metrische ruimte $X,d$ is uniek op isometrie\"en na.
+
+  \begin{proof}
+    Zij $Y,d_{Y}$ en $Z,d_{Z}$ twee vervolledigingen van een metrische ruimte $X,d$.
+    Er bestaan dan twee isometrische inbeddingen $\mathfrak{i}_{Y}:\ X \rightarrow Y$ en $\mathfrak{i}_{Z}:\ X \rightarrow Z$.
+    We tonen nu dat er een isometrische bijectie $\phi:\ Y \rightarrow Z$ bestaat als volgt:
+    \[ \forall x\in X:\ \phi(\mathfrak{i}_{Y}(x)) = \mathfrak{i}_{Z}(x) \]
+    Merk op dat $\phi$ zo al meteen vastgelegd wordt op $\mathfrak{i}_{Y}(X) \subseteq Y$.
+    We beginnen daarom al als volgt:
+    \[ \phi_{0}:\ \mathfrak{i}_{Y}(X) \subseteq Y \rightarrow Z:\ \mathfrak{i}_{Y}(x) \mapsto \mathfrak{i}_{Z}(x) \] 
+    Volgens de injectiviteit van $\mathfrak{i}_{Y}$ is dit goed gedefinieerd.
+    Omdat $\mathfrak{i}_{Y}$ en $\mathfrak{i}_{Z}$ beiden isometrie\"en zijn, is $\phi_{0}$ zeker ook isometrisch.
+    We breiden nu $\phi_{0}$ isometrisch uit tot $Y$.
+    Kies daartoe een $y\in Y$ en neem een rij $(x_{n})_{n}$ in $X$ met zodat $(\mathfrak{i}_{Y}(x_{n}))_{n}$ naar $y$ convergeert.
+    $(\mathfrak{i}_{Y}(x_{n}))_{n}$ is dan een Cauchyrij in $Y$ en omdat $\mathfrak{i}_{Z}(x_{n}) = \phi_{0}(\mathfrak{i}_{Y}(x_{n}))$ steeds geldt en $\phi_{0}$ isometrisch is, zal $\left(\mathfrak{i}_{Z}(x_{n})\right)_{n}$ een Cauchyrij zijn in $Z$ en dus convergeren naar een $z\in Z$.
+    Merk op dat de limiet $z$ niet afhangt van de keuze van de rij $(x_{n})_{n}$ maar enkel van $y$.
+    Inderdaad, als $(x'_{n})_{n}$ een andere rij in $X$ zou zijn zodat $\left(\mathfrak{i}_{Y}(x'_{n})\right)_{n}$ naar $y$ convergeert, dan gaat $d_{Y}(\mathfrak{i}_{Y}(x_{n}),\mathfrak{i}_{Y}(x'_{n}))$ naar nul en dus ook $d_{Z}(\mathfrak{i}_{Z}(x_{n}),\mathfrak{i}_{Z}(x'_{n}))$.
+    We kunnen dus eenduidig $\phi$ op $y$ defini\"eren door $\phi(y) = z$.
+    Op deze manier verkrijgen we een afbeelding $\phi:\ Y \rightarrow Z$, een uitbreiding van $\phi_{0}$.
+    We beweren dat $\phi$ isometrisch (en dus zeker al injectief\stref{st:isometrie-dan-injectie}) is.
+    Kies $y,y'\in Y$ en kies rijen $(x_{n})_{n}$ en $(x'_{n})_{n}$ in $X$ zodat $\mathfrak{i}_{Y}(x_{n})$ naar $y$ gaat en $\mathfrak{i}_{Y}(x'_{n})$ naar $y'$.
+    Er geldt dan het volgende:
+    \begin{align*}
+      d_{Z}(\phi(y),\phi(y'))
+      &= \lim_{n\rightarrow +\infty}d_{Z}(\mathfrak{i}_{Z}(x_{n}),\mathfrak{i}_{Z}(x'_{n}))\\
+      &= \lim_{n\rightarrow +\infty}d_{Y}(\mathfrak{i}_{Y}(x_{n}),\mathfrak{i}_{Y}(x'_{n}))
+      &= d_{Y}(y,y')
+    \end{align*}
+    Tenslotte argumenteren we nog dat $\phi$ surjectief is.
+    Kies een $z\in Z$ en kies een rij $(x_{n})_{n}$ in $X$ zodat $\mathfrak{i}_{Z}(x_{n})$ naar $z$ gaat.
+    Helemaal analoog toon je an dat $(\mathfrak{i}_{Y}(x_{n}))_{n}$ dan een convergente rij is in $Y$.
+    Als we de limiet $y$ noemen geldt per constructie $\phi(y) = z$.
+  \end{proof}
+  \TODO{herbekijken, dit kan simpeler gestruktureerd}
+\end{bst}
+
+\begin{bst}
+  Van elke metrische ruimte $X,d$ bestaat er een vervollediging.
+\extra{bewijs p 85}
 \end{bst}
 
 \begin{de}

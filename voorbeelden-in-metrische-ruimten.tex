@@ -334,6 +334,42 @@
 \extra{bewijs} 
 \end{vb}
 
+\begin{tvb}
+  $\mathbb{R},d_{2}$ is niet volledig.
+  
+  \begin{proof}
+    De rijen $(n)_{n}$ en $(-n)_{n}$ zijn Cauchyrijen die niet convergeren.
+    (Merk op dat het wel de enige zijn.)
+  \end{proof}
+\end{tvb}
+
+\begin{vb}
+  We kunnen $\mathbb{R},d_{2}$ vervolledigen tot $\mathbb{R}_{v}$ door twee elementen $+\infty$ en $-\infty$ toe te voegen en de functie $d_{2}$ als volgt uit te breiden:
+  \[ d_{2v}:\ \mathbb{R}\times\mathbb{R}\rightarrow
+  \begin{cases}
+    (x,y) &\mapsto \left| \frac{x}{1+|x|} - \frac{y}{1+|y|}  \right| \\
+    (-\infty,y) &\mapsto \left| \frac{y}{1+|y|} +1\right|\\
+    (x,+\infty) &\mapsto \left| \frac{x}{1+|x|} -1\right|\\
+    (-\infty,+\infty) &\mapsto 2
+  \end{cases}
+  \]
+
+  \begin{proof}
+    Er bestaat een isometrische bijectie $\phi$ tussen $\mathbb{R}_{v},d_{2v}$ en $\interval{-1}{1},d$:
+    \[
+    \phi:\ \mathbb{R}_{v} \rightarrow \interval{-1}{1}:\ 
+    \begin{cases}
+      -\infty &\mapsto -1\\
+      x &\mapsto \frac{x}{x+|x|}\\
+      +\infty &\mapsto +1\\
+    \end{cases}
+    \]
+    We weten al dat $\interval{-1}{1},d$ volledig is en dus is $\mathbb{R}_{v}d_{2v}$ ook volledig.\TODO{zie oefening 8 uit 4.4}
+  \end{proof}
+\end{vb}
+
+
+
 \subsubsection{De $d_3$-metriek op $\mathbb{R}$}
 \label{sec:d_3-metriek-op}
 
@@ -902,6 +938,15 @@
   \end{figure}
 \end{vb}
 
+\begin{st}
+  De spoorwegmetriek is topologisch fijner dan de gewone metriek.
+  
+  \begin{proof}
+    Kies twee willekeurige elementen $x,y \in \mathbb{R}^{p}$:\stref{st:fijner-itv-afstanden}
+    \[ d_{NMBS}(x,y) \ge \|x-y\| = d(x,y) \]
+  \end{proof}
+\end{st}
+
 \subsection{Metrieken op rijruimten}
 \label{sec:metr-op-rijr}
 
@@ -1127,6 +1172,25 @@ Let wel op de ongelijheid met het supremum.
   $A$ bevat bovendien enkel ophopingspunten en heeft geen ge\"isoleerde punten.
 
 \extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De verzamelingen $C\left(\interval{0}{1}\right)$, $C\left(\interval{a}{b}\right)$, $C_{0}\left(\mathbb{R}\right)$ en $C_{b}\left(\mathbb{R}\right)$, zijn separabel.
+\TODO{bewijs}
+\end{vb}
+
+\begin{opm}
+  Als dit niet het geval was, dan was numerieke modellering niet nuttig.
+\end{opm}
+
+\begin{vb}
+  De ruimte $X$ van continue functies van $\interval{0}{1} \cup \interval{2}{3}$ naar $\mathbb{R}$, uitgerust met de supremummetriek is samenhangend.
+
+  \begin{proof}
+    Merk eerst op dat $d_{\infty}$ een norm induceert op $X$:\deref{norm}
+    \[ |f|_{\infty} = d(f_{\infty},0) \]
+    $X$ is bovendien een convexe verzameling en daarom samenhangend.\prref{pr:convexe-deelverzamelingen-samenhangend}
+  \end{proof}
 \end{vb}
 
 \subsubsection{De $d_1$-metriek op $C(\interval{0}{1})$}
@@ -1433,12 +1497,10 @@ Let wel op de ongelijheid met het supremum.
 \end{opm}
 
 \begin{st}
+  \label{st:rp-als-deel-van-f}
   \[ \forall x,y \in \mathbb{R}^{p}:\ h(\{x\},\{y\}) = d(x,y) \]
-
-  \begin{proof}
-    
-  \end{proof}
 \end{st}
+
 \begin{opm}
   We kunnen $\mathbb{R}^{p},d$ dus als deelruimte van $\mathcal{F},h$ via de inbedding $\mathfrak{i}$ als volgt:
   \[ \mathfrak{i}:\ \mathbb{R}^{p} \rightarrow \mathcal{F}:\ x \mapsto \{x\} \]
