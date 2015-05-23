@@ -2,6 +2,107 @@
 \begin{document}
 
 
+\section{Uitbreidingen van de Riemannintegraal}
+\label{sec:uitbreidingen-van-de}
+
+\subsection{Oneigenlijke Riemannintegraal}
+\label{sec:oneig-riem}
+
+\begin{de}
+  We noemen een functie $f:\ \interval[open right]{a}{+\infty} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open right]{a}{+\infty}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{a}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{b\rightarrow +\infty}\int_{a}^{b}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{a}^{+\infty}f \]
+\end{de}
+
+\begin{de}
+  We noemen een functie $f:\ \interval[open left]{a}{b} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open left]{a}{b}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{c}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{c\overset{>}{\rightarrow} a}\int_{a}^{b}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{a}^{b}f \]
+\end{de}
+
+\begin{de}
+  Beschouw $a,b \in \mathbb{R} \cup \{ -\infty, +\infty \}$ met $a < b$ en beschouw een functie $g$ als volgt:
+  \[ g:\ \interval[open]{a}{b} \times \interval[open]{a}{b} \rightarrow \mathbb{R} \]
+  Zij verder $L \in \mathbb{R} \cup \{ -\infty, +\infty \}$.
+  Als voor elke keuze van rijen $(c_{n})_{n}$ en $(d_{n})_{n}$ in $\interval[open]{a}{b}$ die respectievelijk naar $a$ en $b$ convergeren geldt dat $(g(c_{n},d_{n}))_{n}$ naar $L$ convergeert, dan zeggen we het volgende:
+  \[ \lim_{\overset{d \overset{<}{\rightarrow} b}{c\overset{>}{\rightarrow} a}} g(c,d) = L \]
+\end{de}
+
+\begin{de}
+  Beschouw $a,b\in \mathbb{R} \cup \{-\infty,+\infty\}$ met $a<b$.
+  We noemen een functie $f:\ \interval[open left]{a}{b} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open left]{a}{b}$ als $f$ Riemannintegreerbaar is over elk gesloten begrensd interval $\interval{c}{b} \subseteq \interval[open]{a}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{\overset{d \overset{<}{\rightarrow} b}{c\overset{>}{\rightarrow} a}}\int_{c}^{d}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{a}^{b}f \]
+\end{de}
+
+\begin{bpr}
+  Beschouw $a,b\in \mathbb{R} \cup \{-\infty,+\infty\}$ met $a<b$.
+  Zij $f:\ \interval[open]{a}{b} \rightarrow \mathbb{R}$ een functie.
+  Kies een $c\in \interval[open]{a}{b}$.
+  Volgende uitspraken zijn equivalent:
+  \begin{enumerate}
+  \item $f$ is oneigenlijk Riemannintegreerbaar over $\interval[open]{a}{b}$.
+  \item $f_{\interval[open left]{a}{c}}$ is oneigenlijk Riemannintegreerbaar over $\interval[open]{a}{c}$ en $f_{\interval[open right]{c}{b}}$ is oneigenlijk Riemannintegreerbaar over $\interval[open]{c}{b}$.
+  \end{enumerate}
+  Er geldt dan volgende ongelijkheid:
+  \[ \int_{a}^{b}f = \int_{a}^{c}f_{\interval[open left]{a}{c}} + \int_{c}^{b}f_{\interval[open right]{c}{b}} \]
+  \TODO{bewijs: oefening}
+\end{bpr}
+
+\begin{bst}
+  Zij $f,g:\ I \rightarrow \mathbb{R}$ functies op een niet ``eindig en gesloten'' gesloten interval $I$ met de volgende eigenschap:
+  \[ \forall x\in I:\ |f(x)| \le g(x) \]
+  Stel dat $f$ Riemannintegreerbaar is over elk gesloten begrensd deelinterval van $I$ en dat $g$ oneigenlijk Riemannintegreerbaar is over $I$, dan is $f$ oneigenlijk Riemannintegreerbaar over $I$.
+
+  \begin{proof}
+    Het is voldoende om het bewijs te geven in het geval $I = \interval[open]{a}{b}$ met $a,b\in\mathbb{R} \cup \{-\infty,+\infty\}$.\waarom
+    Kies willekeurige rijen $(c_{n})_{n}$ en $(d_{n})_{n}$ in $\interval[open]{a}{b}$ met respectievelijke limieten $a$ en $b$.
+    Stel $G_{n} = \int_{c_{n}}^{d_{n}}g$ en $F_{n} = \int_{c_{n}}^{d_{n}}f$.
+    We moeten aantonen dat $(F_{n})_{n}$ een convergente rij is in $\mathbb{R}$.
+    Het volstaat het geval te bekijken waarin $(c_{n})_{n}$ daalt, $(d_{n})_{n}$ stijgt en $\forall n\in\mathbb{N}:\ c_{n}<d_{n}$ geldt.\waarom
+    Omdat $g$ oneigenlijk integreerbaar is, is $(G_{n})_{n}$ een convergente rij.
+    We vinden het volgende:
+    \[ \forall n,k\in\mathbb{N}_{0}:\ |F_{n+k}-F_{n}| \le |G_{n+k}-G_{n}| \]
+    Uit deze afschatting volgt dat $(F_{n})_{n}$ een Cauchyrij is dus convergeert in $\mathbb{R}$.
+    Hiermee is aangetoond dat $f$ oneigenlijk integreerbaar is over $I$.
+  \end{proof}
+\end{bst}
+
+\begin{bst}
+  Zij $\sum_{n}x_{n}$ een reeks met positieve termen.
+  Zij $f:\ \mathbb{R}^{+}\rightarrow \mathbb{R}$ een dalende continue functie.
+  Stel dat er een $N\in \mathbb{N}$ bestaat zodat $x_{n}$ gelijk is aan $f(n)$ voor alle volgende $n\in \mathbb{N}$, dan is $f$ oneigenlijk integreerbaar over $\interval[open right]{0}{+\infty}$ als en slechts als $\sum_{n}x_{n}$ convergeert.
+  \TODO{bewijs: oefening}
+\end{bst}
+
+\subsection{De Riemann-Stieltjesintegraal}
+\label{sec:de-riem-stieltj}
+
+\begin{de}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie.
+  Zij $P = \{x_{0},x_{1},\dotsc,x_{n}\}$ een verdeling van het interval $\interval{a}{b}$.
+  De \term{$F$-ondersom} $\underline{S}(f,P,F)$ van $f$ bij de verdeling $P$ definieren we als volgt:
+\[ \underline{S}(f,P,F) = \sum_{k=1}^{n} \inf\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}} \left( F(x_{k}) - F(x_{k-1}) \right) \]
+  De \term{$F$-bovensom} $\overline{S}(f,P,F)$ van $f$ bij de verdeling $P$ definieren we als volgt:
+\[ \overline{S}(f,P,F) = \sum_{k=1}^{n} \sup\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}} \left( F(x_{k}) - F(x_{k-1}) \right) \]
+\end{de}
+
+\begin{de}
+  We noemen een begrensde functie $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ \term{Riemann-Stieltjesintegreerbaar} ten opzichte van $F$ als $\underline{S}(f,P,F)$ gelijk is aan $\overline{S}(f,P,F)$.
+  In dit geval noemen we deze waarde de \term{Riemann-Stieltjesintegraal} van $f$ over $\interval{a}{b}$ ten opzichte van $F$ en noteren we deze als volgt:
+  \[ \int_{a}^{b}f\ dF \]
+\end{de}
+
+\begin{bst}
+  Zij $F:\ \interval{a}{b}\rightarrow \mathbb{R}$ een stijgende afleidbare functie en $F'$ Riemannintegreerbaar.
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie.
+  Als $fF'$ Riemannintegreerbaar is, dan is $f$ Riemann-Stieltjesintegreerbaar ten opzichte van $F$ en geldt volgende ongelijkheid:
+  \[ \int_{a}^{b}f(x)\ dF(x) = \int_{a}^{b}f(x)F'(x)\ dx \]
+\TODO{bewijs p 40}
+\end{bst}
 
 
 \end{document}
