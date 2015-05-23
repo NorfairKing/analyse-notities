@@ -10,13 +10,47 @@
 \begin{bpr}
   Een begrensde functie $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ is Riemannintegreerbaar als en slechts als er voor elke $\epsilon > 0$ een verdeling $P$ van $\interval{a}{b}$ bestaat als volgt:
   \[ \overline{S}(f,P) - \underline{S}(f,P) < \epsilon \]
-  \TODO{bewijs p 7}
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Stel $I = \int_{a}^{b}f$.
+      Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$.
+      Omdat $I$ gelijk is aan $\sup_{P}\underline{S}(f,P)$, bestaat er een verdeling $P_{1}$ van $\interval{a}{b}$ als volgt:
+      \[ \underline{S}(f,P_{1}) > I-\frac{\epsilon}{2} \]
+      Omdat $I$ gelijk is aan $\inf_{P}\underline{S}(f,P)$, bestaat er een verdeling $P_{2}$ van $\interval{a}{b}$ als volgt:
+      \[ \overline{S}(f,P_{2}) < I+\frac{\epsilon}{2} \]
+      Kies nu een verdeling $P$, fijner dan $P_{1}$ en fijner dan $P_{2}$.\stref{st:verdeling-kan-altijd-nog-fijner}, dan geldt het volgende:\prref{pr:fijnere-verdeling-betere-afschatting}
+      \[ \overline{S}(f,P) - \underline{S}(f,P) \le \overline{S}(f,P_{2}) - \underline{S}(f,P_{1}) < \left(I + \frac{\epsilon}{2}\right) - \left( I - \frac{\epsilon}{2} \right) = \epsilon \]
+    \item $\Leftarrow$\\
+      Er geldt onmiddeling het volgende voor alle $\epsilon\in\mathbb{R}_{0}^{+}$
+      \[ 0 \le \overline{S}(f) - \underline{S}(f) < \epsilon \]
+      Dit betekent dat $\overline{S}(f)$ en $\underline{S}(f)$ gelijk zijn.
+    \end{itemize}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie, dan is $f$ Riemannintegreerbaar.
-\TODO{bewijs p 8}
+
+  \begin{proof}
+    Omdat $f$ continu is op $\interval{a}{b}$, zal $f$ zeker begrensd zijn.\needed
+    Bovendien weten we dat $f$ uniform continu is.\needed
+    Kies nu een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$.
+    We kunnen dan een $\delta\in\mathbb{R}_{0}^{+}$ vinden als volgt:
+    \[ \forall s,t\in\interval{a}{b}:\ |s-t| < \delta \Rightarrow \left|f(s)-f(t)\right| < \frac{\epsilon}{b-a} \]
+    Kies nu een $n\in\mathbb{N}_{0}$ groot genoeg zodat $\frac{b-a}{n}$ strikt kleiner is dan $\delta$ en beschouw de verdeling $P$ die het interval $\interval{a}{b}$ in $n$ deelintervallen van gelijke lengte verdeelt.
+    Vermits de lengte van elk deelinterval kleiner is dan $\delta$, zal voor elk deelinterval gelden dat het verschil tussen het supremum en het infimum van de waarden erin kleiner is dan, of gelijk aan $\frac{\epsilon}{b-a}$.
+    Hieruit volgt dan meteen dit:
+    \[ \overline{S}(f,P) - \underline{S}(f,P) \le \epsilon \]
+  \end{proof}
 \end{bpr}
+
+\begin{st}
+  Een begrensde functie met een eindig aantal discontinu\"iteiten is Riemannintegreerbaar.
+\TODO{zie oefening 1 van reeks 2.7}
+\end{st}
 
 \begin{bpr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie en zij $c\in \interval{a}{b}$.
@@ -26,20 +60,61 @@
   \item $f$ is Riemannintegreerbaar over $\interval{a}{b}$
   \item $f_{1}$ en $f_{2}$ zijn Riemannintegreerbaar over $\interval{a}{c}$, respectievelijk $\interval{c}{b}$.
   \end{enumerate}
+  Bovendien geldt het volgende:
   \[ \int_{a}^{b}f = \int_{a}^{c}f_{1} + \int_{c}^{b}f_{2} \]
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $(1)\Rightarrow (2)$\\
+      Merk op dat $f_{1}$ en $f_{2}$ begrensd zijn als beperking van een begrensde functie.
+      Kies nu een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$. Omdat $f$ Riemannintegreerbaar is,k unnen we een verdeling $P$ van $\interval{a}{b}$ nemen zodat $\overline{S}(f,P) - \underline{S}(f,P) < \epsilon$ geldt.
+      Vermits het verschil tussen bovensom en ondersom niet vergroot als we de verdeling verfijnen, kunnen we steeds veronderstellen dat $c$ tot $P$ behoort.
+      Stel nu $P_{1} = P \cap \interval{a}{c}$ en $P_{2} = P \cap \interval{c}{b}$.
+      $P_{1}$ is dan een verdeling van $\interval{a}{c}$ en $P_{2}$ een verdeling van $\interval{c}{b}$.
+      Bovendien geldt het volgende:
+      \[ \overline{S}(f,P) = \overline{S}(f,P_{1}) + \overline{S}(f,P_{2}) \quad\text{en}\quad \underline{S}(f,P) = \underline{S}(f,P_{1}) + \underline{S}(f,P_{2})\]
+      Voor beide delen geldt dus het volgende:
+      \[ \overline{S}(f_{i},P_{i}) - \underline{S}(f_{i},P_{i}) \le \overline{S}(f,P) - \underline{S}(f,P) < \epsilon \]
+      $(2)$ is dus voldaan.
+    \item $(2)\Rightarrow (1)$\\
+    \end{itemize}
+    We tonen tenslotte de laatste gelijkheid aan.
+    \begin{align*}
+      \left| \int_{a}^{b}f - \int_{a}^{c}f_{1} - \int_{c}^{b}f_{2} \right|
+      &\le \left| \int_{a}^{b}f - \underline{S}(f,P) \right| + \left|\underline{S}(f_{1},P_{1})- \int_{a}^{c}f_{1}\right| + \left|\underline{S}(f_{2},P_{2}) - \int_{c}^{b}f_{2} \right|
+      &\le 3 \epsilon
+    \end{align*}
+    Vermits hierin $\epsilon \in \mathbb{R}_{0}^{+}$ willekeurig gekozen kan worden imliceert het de laatste gelijkheid.
+  \end{proof}
 \end{bpr}
 
 \subsection{Lineariteit van de integraal}
 \label{sec:lineariteit-van-de}
 
 \begin{bpr}
-  Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ Riemannintegreerbare functies, dan is $f+g$ is Riemannintegreerbaar en geldt $\int_{a}^{b}(f+g) = \int_{a}^{b}f + \int_{a}^{b}g$
-\TODO{bewijs p 10}
+  Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ Riemannintegreerbare functies, dan is $f+g$ is Riemannintegreerbaar en geldt het volgende:
+  \[ \int_{a}^{b}(f+g) = \int_{a}^{b}f + \int_{a}^{b}g \]
+
+  \begin{proof}
+    Merk eerst op dat de som van begrensde functies opnieuw begrensd is.
+    Het is bovendien niet moeilijk om in te zien dat voor elke verdeling $P$ van $\interval{a}{b}$ het volgende geldt:
+    \[ \underline{S}(f,P) + \underline{S}(g,P) \le \underline{S}(f+g,P) \le \overline{S}(f+g,P) \le \overline{S}(f,P) + \overline{S}(g,P) \]
+\TODO{details uitwerken}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie, en $\lambda \in \mathbb{R}$, dan is $\lambda f$ is Riemannintegreerbaar en geldt $\int_{a}^{b}(\lambda f) = \lambda \int_{a}^{b}f$.
-\TODO{bewijs p 10}
+
+  \begin{proof}
+    Het volstaat om dit aan te tonen in de gevallen $\lambda \in\mathbb{R}_{0}^{+}$ en $\lambda = -1$.\TODO{bewijs dat dit klopt}
+    Als $\lambda$ strikt positief is, geldt het volgende:
+    \[ \underline{S}(\lambda f,P) = \lambda \underline{S}(f,P) \quad\text{en}\quad \overline{S}(\lambda f,P) = \lambda \overline{S}(f,P) \]
+    \TODO{werk de details uit}
+    Anderzijds geldt ook het volgende.
+    \TODO{hieruit volgt meteen hetzelfde voor $\lambda = -1$}
+  \end{proof}
 \end{bpr}
 
 \begin{de}
@@ -56,27 +131,53 @@
 \label{sec:integraal-en-orde}
 
 \begin{bpr}
+  \label{pr:integraal-behoudt-orde-1}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie.
   \[ \left( \forall x\in \interval{a}{b}:\ f(x) \ge 0 \right) \Rightarrow \int_{a}^{b} f \ge 0 \]
-\TODO{bewijs p 11}
+
+  \begin{proof}
+    Dit volgt meteen uit het feit dat $\underline{S}(f,P)$ positief is voor elke verdeling $P$ als $f$ positief is.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
+  \label{pr:integraal-behoudt-orde-2}
   Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ twee Riemannintegreerbare functies.
   \[ \left( \forall x\in \interval{a}{b}:\ f(x) \ge g(x) \right) \Rightarrow \int_{a}^{b} f \ge \int_{a}^{b}g \]
-\TODO{bewijs p 11}
+
+  \begin{proof}
+    Dit volgt meteen uit de vorige stelling, toegepast op de functie $f-g$.\prref{pr:integraal-behoudt-orde-1}
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie en $m,M \in \mathbb{R}$
   \[ \left( \forall x\in \interval{a}{b}:\ m \le f(x) \le M \right) \Rightarrow m(b-a) \le \int_{a}^{b}f \le M(b-a) \]
-\TODO{bewijs p 11}
+
+  \begin{proof}
+    Dit is een onmiddelijk gevolg van de definitie van de integraal.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
+  \label{pr:absolute-waarde-bijna-door-integraal}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegeerbare functie, dan is $|f|$ ook Riemannintegreerbaar en geldt het volgende:
   \[ \left| \int_{a}^{b}f \right| \le \int_{a}^{b}|f| \]
-\TODO{bewijs p 12}
+
+  \begin{proof}
+    Merk eerst op dat $|f|$ begrensd is omdat $f$ begrensd is.
+    Beschouw een willekeurige verdelinvg $P = \{x_{0},x_{1},\dotsc,x_{n}\}$ van $\interval{a}{b}$ en benoem de volgende symbolen:
+    \[ m_{k} = \inf\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}} \} \]
+    \[ M_{k} = \sup\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}} \} \]
+    \[ a_{k} = \inf\{ |f(x)| \mid x\in \interval{x_{k-1}}{x_{k}} \} \]
+    \[ A_{k} = \sup\{ |f(x)| \mid x\in \interval{x_{k-1}}{x_{k}} \} \]
+    Er geldt het volgende volgens de teweede driehoeksongelijkheid.
+    \[ \forall k\in\{1,2,\dotsc,n\}, \forall x,y\in\interval{x_{k-1}}{x_{k}}:\ A_{k}-a_{k} \le M_{k}-m_{k} \]
+    Er geldt daarom het volgende:
+    \[ \overline{S}(|f|,P) - \underline{S}(|f|,P) \le \overline{S}(f,P) - \underline{S}(f,P) \]
+    Vermits deze ongelijkheid geldt voor elke verdeling $P$ impliceert de Riemannintegreerbaarheid van $f$ die van $|f|$.
+    Om nu de ongelijkheid aan te tonen volstaat het op te merken dat $-|f| \le f \le |f|$ geldt.\prref{pr:integraal-behoudt-orde-1}\prref{pr:integraal-behoudt-orde-2}
+  \end{proof}
 \end{bpr}
 
 \begin{de}
@@ -89,7 +190,14 @@
   De \term{middelwaardestelling voor de integraal}\\
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie, dan bestaat er minstens \'e\'en $c\in \interval{a}{b}$ waarvoor het volgende geldt:
   \[ f(c) = \frac{1}{b-a} \int_{a}^{b}f \]
-\TODO{bewijs p 13}
+
+  \begin{proof}
+    Omdat $f$ continu is, bestaan er getallen $x_{1},x_{2}\in\interval{a}{b}$ als volgt:\stref{st:continue-functie-op-gesloten-begrensd-interval-bereikt-extrema}
+    \[ f(x_{1}) = \inf\{f(x) \mid x\in\interval{a}{b}\} \quad\text{en}\quad f(x_{2}) = \sup\{f(x) \mid x\in\interval{a}{b}\} \]
+    Er geldt dan het volgende:\prref{pr:integraal-behoudt-orde-2}
+    \[ f(x_{1}) \le \frac{1}{b-a} \int_{a}^{b}f \le f(x_{2}) \]
+    Uit de tussenwaardestelling volgt nu deze stelling.\stref{st:tussenwaardestelling}\waarom
+  \end{proof}
 \end{bst}
 
 \subsection{De hoofdstelling en enkele gevolgen}
@@ -104,13 +212,49 @@
   \item $g$ is continu.
   \item Als $f$ continu is in een punt $x_{0}\in \interval{a}{b}$, dan is $g$ afleidbaar in $x_{0}$ en geldt $g'(x_{0}) = f(x_{0})$.
   \end{enumerate}
-\TODO{bewijs p 14}
+
+  \begin{proof}
+    \noindent
+    \begin{enumerate}
+    \item 
+      Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$.
+      Omdat $f$ Riemannintegreerbaar is, is $f$ zeker begrensd\needed en kunnen we dus een $M\in\mathbb{R}_{0}^{+}$ vinden als volgt:
+      \[ \forall t\in\interval{a}{b}:\ |f(t)| \le M \]
+      Kies nu willekeurig twee getallen $x$ en $y$ uit $\interval{a}{b}$ met $0 \le x-y \le \frac{\epsilon}{M}$.
+      We vinden dan het volgende:
+      \begin{align*}
+        |g(x)-g(y)|
+        &= \left|\int_{a}^{x}f-\int_{a}^{y}f\right|\\
+        &= \left| \int_{y}^{x}f\right|\\
+        &\le \int_{y}^{x}|f| \le M(x-y) < \epsilon
+      \end{align*}
+      Dit toont de (uniforme) continu\"iteit van $g$ aan.
+      
+    \item 
+      Stel dat $f$ continu is in een punt $x_{0}\in\interval{a}{b}$.
+      Kies nogmaals een $\epsilon\in\mathbb{R}_{0}^{+}$.
+      Volgens de continu\"iteit van $f$ in $x_{0}$ kunnen we een $\delta\in\mathbb{R}_{0}^{+}$ vinden als volgt:
+      \[ \forall t\in\interval{a}{b}:\ |t-x_{0}| < \delta \Rightarrow |f(t)-f(x_{0})| < \epsilon \]
+      Kies nu een willekeurige $x\in\interval{a}{b}$ met $0 < |x-x_{0}| < \delta$.
+      We vinden het volgende:
+      \begin{align*}
+        \left| \frac{g(x)-g(x_{0})}{x-x_{0}} - f(x_{0}) \right|
+        &= \left| \frac{1}{x-x_{0}} \int_{x_{0}}^{x}f(t)\ dt - f(x_{0}) \right|\\
+        &= \left| \frac{1}{x-x_{0}} \int_{x_{0}}^{x}(f(t)-f(x_{0}))\ dt \right|\\
+        &\le \frac{1}{x-x_{0}} \int_{\min\{x_{0},x\}}^{\max\{x_{0},m\}}|f(t)-f(x_{0})|\ dt\\
+        &< \epsilon
+      \end{align*}
+    \end{enumerate} 
+  \end{proof}
 \end{bst}
 
 \begin{bst}
+  \label{st:hoofdstelling}
+  De \term{hoofdstelling}\\
+  \question{...van wat?}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie, dan is de functie $g$ als volgt afleidbaar en de afgeleide functie ervan gelijk aan $f$.
   \[ g:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto \int_{a}^{x}f \]
-\TODO{bewijs p 15}
+  \extra{bewijs p 15}
 \end{bst}
 
 \begin{de}
@@ -123,36 +267,76 @@
 \end{de}
 
 \begin{bpr}
+  \label{pr:primitieve-functies-op-constante-na-gelijk}
   Zij $f:\ I \subseteq \mathbb{R}\rightarrow \mathbb{R}$ een functie op een interval $I$.
   Elke twee primitieve functies van $f$ zijn op een constante $C\in \mathbb{R}$ na gelijk.
-\TODO{bewijs: oefening}
+\extra{bewijs: oefening}
 \end{bpr}
 
 \begin{bpr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie en zij $F$ een primitieve functie van $f$, dan geldt volgende gelijkheid:
   \[ \int_{a}^{b}f = F(b) - F(a) \]
-\TODO{bewijs p 16}
+
+  \begin{proof}
+    De functie $g$ als volgt is een primitieve functie van $f$.
+    \[ g:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto g(x) = \int_{a}^{x}f \]
+    Er bestaat dan een $C\in\mathbb{R}$ als volgt:\prref{pr:primitieve-functies-op-constante-na-gelijk}
+    \[ \forall x\in\interval{a}{b}:\ \int_{a}^{x}f = F(x) + C \]
+    Voor $x=a$ vinden we dan het volgende:
+    \[ 0 = \int_{a}^{a}f = F(a) + C \]
+    $C$ moet dus gelijk zijn aan $-F(a)$.
+    We vinden dan het volgende:
+    \[ \forall x\in\interval{a}{b}:\ \int_{a}^{x}f = F(x)-F(a) \]
+    In het bijzonder geldt dit ook voor $b$.
+  \end{proof}
 \end{bpr}
 
 \begin{bst}
   Zij $F:\ \interval{a}{b} \rightarrow \mathbb{R}$ een afleidbare functie.
   Als $F'$ Riemannintegreerbaar is over $\interval{a}{b}$, dan geldt volgende gelijkheid:
   \[ \int_{a}^{b}F' = F(b) - F(a) \]
-\TODO{bewijs p 17}
+
+  \begin{proof}
+    Beschouw een willekeurige verdeling $P = \{x_{0},x_{1},\dotsc x_{n}\}$ van $\interval{a}{b}$.
+    Pas op elk deelinterval de middelwaardestelling van Lagrange toe.\stref{st:middelwaardestelling-lagrange}
+    Dit levert punten $c_{k}\in\interval[open]{x_{k-1}}{x_{k}}$ op als volgt:
+    \[ F(x_{k})-F(x_{k-1}) = F'(c_{k})(x_{k}-x_{k-1}) \]
+    Omdat $F'(c_{k})$ telkens tussen het infimum en het supremum ligt van de waarden van $F'$, zal het volgende gelden:
+    \[ \underline{S}(F',P) \le \sum_{k=1}^{n}(F(x_{k})-F(x_{k-1})) \le \overline{S}(F',P) \]
+    Merk nu op dat de middelste term gelijk is aan $F(b)-F(a)$.
+    Vermits vorige ongelijkheid geldt voor elke verdeling $Y$ en vermits $F'$ Riemannintegreerbaar is, volgt het gevraagde resultaat.
+  \end{proof}
 \end{bst}
 
 \begin{bpr}
   De \term{parti\"ele integratieregel}\\
   Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ afleidbare fnucties met continue afgeleiden, dan geldt volgende gelijkheid:
   \[ \int_{a}^{b}fg' = f(b)g(b)-f(a)g(a) - \int_{a}^{b}f'g \]
-\TODO{bewijs p 18}
+
+  \begin{proof}
+    Beschouw de functie $F = fg$, dan is $F$ afleidbaar en $F' = f'g + fg'$.\prref{pr:productregel-afgeleiden}
+    Merk op dat $F'$ continu is.\waarom
+    We vinden dan het volgende:\needed\needed
+    \[ F(b) - F(a) = \int_{a}^{b}F' = \int_{a}^{b}f'g + \int_{a}^{b}fg' \]
+    Dit laat zich meteen herschrijven tot de stelling.
+  \end{proof}
 \end{bpr}
 
 \begin{bpr}
   De \term{substitutieregel}\\
   Zij $f:\ \interval{c}{d}\rightarrow\mathbb{R}$ een continue functie en $g:\ \interval{a}{b} \rightarrow \interval{c}{d}$ een afleidbare functie waarvoor $g'$ continu is, dan geldt volgende ongelijkheid:
   \[ \int_{g(a)}^{g(b)}f(t)\ dt = \int_{a}^{b}f(g(x))g'(x)\ dx \]
-\TODO{bewijs p 18}
+
+  \begin{proof}
+    Beschouw de functie $F$ en $G$ als volgt:
+    \[ F:\ \interval{c}{d} \rightarrow \mathbb{R}:\ y \mapsto F(y) = \int_{g(a)}^{y}f(t)\ dt \]
+    \[ G:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto G(x) = \int_{a}^{x}f(g(y))g'(y)\ dy \]
+    De functies $F \circ g$ en $G$ zijn afleidbaar op $\interval{a}{b}$ en bovendien geldt het volgende:
+    \[ \forall x\in\interval{a}{b}:\ (F \circ g)'(x) = F'(g(x))g'(x) = f(g(x))g'(x) = G'(x) \]
+    Het verschil tussen $F\circ g$ en $G$ is dus een constante functie.
+    Omdat $(F \circ g)(a)$ en $G(a)$ echter beide nul zijn, moeten $F\circ g$ en $G$ gelijk zijn.
+    In het bijzonder geldt $F(g(b)) = G(b)$.
+  \end{proof}
 \end{bpr}
 
 \subsection{Integralen en limieten van rijen van functies}
@@ -162,10 +346,13 @@
   De \term{begrensde convergentiestelling}\\
   Zij $(f_{n})_{n}$ een rij van Riemannintegreerbare functies op een interval $\interval{a}{b}$ is die puntsgewijs convergeert naar een Riemannintegreerbare functie $f$.
   Stel dat die rij begrensd is:
-  \[ \exists M\in \mathbb{R}:\ \forall n\in \mathbb{N}_{0}, \forall x\in \interval{a}{b}:\ \left|f_{n}(M)\right| \le M \]
+  \[ \exists M\in \mathbb{R}:\ \forall n\in \mathbb{N}_{0}, \forall x \in \interval{a}{b}:\ \left|f_{n}(M)\right| \le M \]
   Er geldt dan de volgende ongelijkheid:
   \[ \lim_{n\rightarrow \infty}\int_{a}^{b}f_{n} = \int_{a}^{b}f \]
+\zb
 \end{bst}
+
+\TODO{bewijs voor uniforme convergentie}n
 
 \subsection{Uitbreidingen van de Riemannintegraal}
 \label{sec:uitbreidingen-van-de}
