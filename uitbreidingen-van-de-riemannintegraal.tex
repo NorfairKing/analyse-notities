@@ -8,6 +8,10 @@
 \subsection{Oneigenlijke Riemannintegraal}
 \label{sec:oneig-riem}
 
+\subsubsection{Integreren over een onbegrensd interval}
+\label{sec:integreren-over-een}
+
+
 \begin{de}
   We noemen een functie $f:\ \interval[open right]{a}{+\infty} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open right]{a}{+\infty}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{a}{b}$ en de volgende limiet bestaat:
   \[ \lim_{b\rightarrow +\infty}\int_{a}^{b}f \]
@@ -16,11 +20,92 @@
 \end{de}
 
 \begin{de}
+  We noemen een functie $f:\ \interval[open left]{-\infty}{b} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open left]{-\infty}{b}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{a}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{a\rightarrow -\infty}\int_{a}^{b}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{-\infty}^{b}f \]
+\end{de}
+
+\begin{vb}
+  Beschouw de functie $f$ als volgt:
+  \[ f:\ \interval[open right]{0}{+\infty} \rightarrow \mathbb{R}:\ x \mapsto e^{-x}\]
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=0, ymax=1.5, xmin=0, xmax=3]
+          \addplot[name path=A,smooth,color=blue,thick,domain=0:3]{e^(-x)};
+          \addplot[name path=B,domain=0:3]{0};
+          \addplot[blue!20] fill between[of=A and B];
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \[ f:\ \interval[open right]{0}{+\infty} \rightarrow \mathbb{R}:\ x \mapsto e^{-x}\]
+  \end{minipage}
+
+  $f$ is oneigenlijk Riemannintegreerbaar over $\interval[open right]{0}{+\infty}$ en de integraal ziet er als volgt uit:
+  \[ \int_{0}^{+\infty}e^{-x}\ dx = 1 \]
+
+  \begin{proof}
+    Kies willekeurig een interval $\interval{0}{b}$, dan is $f$ zeker Riemannintegreerbaar over $\interval{0}{b}$ met volgende integraal:
+    \[ \int_{0}^{b}e^{-x}\ dx = -e^{-x}\big|_{x=0}^{b} = 1-e^{-b}\]
+    Nemen we hieran de limiet voor $b$ gaande naar $+\infty$, dan krijgen we het gevraagde.
+    \[ \lim_{b\rightarrow +\infty}1-e^{-b} = 1 \]
+  \end{proof}
+\end{vb}
+
+\subsubsection{Een onbegrensde functie integreren}
+\label{sec:een-onbegr-funct}
+
+\begin{de}
   We noemen een functie $f:\ \interval[open left]{a}{b} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open left]{a}{b}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{c}{b}$ en de volgende limiet bestaat:
   \[ \lim_{c\overset{>}{\rightarrow} a}\int_{a}^{b}f \]
   We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
   \[ \int_{a}^{b}f \]
 \end{de}
+
+\begin{de}
+  We noemen een functie $f:\ \interval[open right]{a}{b} \rightarrow \mathbb{R}$  \term{oneigenlijk Riemannintegreerbaar} over $\interval[open right]{a}{b}$ als $f$ Riemannintegreerbaar is over elk interval $\interval{c}{b}$ en de volgende limiet bestaat:
+  \[ \lim_{c\overset{<}{\rightarrow} b}\int_{a}^{b}f \]
+  We noemen deze limiet dan de \term{oneigenlijke Riemannintegraal} en noteren hem als volgt:
+  \[ \int_{a}^{b}f \]
+\end{de}
+
+\begin{vb}
+  Beschouw de functie $f$ als volgt:
+  \[ f:\ \interval[open right]{0}{+\infty} \rightarrow \mathbb{R}:\ x \mapsto e^{-x}\]
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=0, ymax=5, xmin=0, xmax=2]
+          \addplot[name path=A,smooth,color=blue,thick,domain=0:1]{1/(sqrt(x))};
+          \addplot[name path=B,domain=0:1]{0};
+          \addplot[blue!20] fill between[of=A and B];
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \[ f:\ \interval[open right]{0}{+\infty} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{\sqrt{x}} \]
+  \end{minipage}
+
+  $f$ is oneigenlijk Riemannintegreerbaar over $\interval[open left]{0}{+\infty}$ en de integraal ziet er als volgt uit:
+  \[ \int_{0}^{+\infty}\frac{1}{\sqrt{x}}\ dx = 2 \]
+
+  \begin{proof}
+    $f$ is Riemannintegreerbaar over elk interval $\interval[open left]{c}{1}$ met $0 < c \le 1$:
+    \[ \int_{c}^{1}\frac{1}{\sqrt{x}}\ dx = 2\sqrt{x}\big|_{x=c}^{1} = 2-2\sqrt{c} \]
+    De rechterlimiet hiervan, voor $c$ gaande naar $0$, bestaat ook:
+    \[ \lim_{c \overset{>}{\rightarrow} 0} 2-2\sqrt{c} = 2 \]
+  \end{proof}
+\end{vb}
 
 \begin{de}
   Beschouw $a,b \in \mathbb{R} \cup \{ -\infty, +\infty \}$ met $a < b$ en beschouw een functie $g$ als volgt:
