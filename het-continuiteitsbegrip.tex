@@ -134,7 +134,7 @@
 \end{vb}
 
 \begin{tvb}
-  De functie $f$ is niet continu in $0$:
+  De functie $f$, als volgt, is \textbf{niet} continu in $0$:
   \[
   f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x\mapsto 
   \left\{
@@ -154,7 +154,15 @@
 \end{tvb}
 
 \begin{tvb}
-  De functie $f$ als volgt is \textbf{niet} continu in $0$.
+  De functie $f$, als volgt, is \textbf{niet} continu in $0$.
+  \[
+  f:\  \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 
+  \begin{cases}
+    \sin\left(\frac{1}{x}\right) &\text{ als } x \neq 0\\
+    0 &\text{ als } x = 0
+  \end{cases}
+  \]
+
   \begin{proof}
   Kies $\epsilon = 1$ en kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
   Kies $k$ voldoende groot zodat $\left(2k+\frac{1}{2}\right)\pi > \frac{1}{\delta}$ geldt en stel $x = \frac{1}{\left(2k+\frac{1}{2}\right)\pi}$.
@@ -164,7 +172,7 @@
 \end{tvb}
 
 \begin{vb}
-  De functie $f$ is continu:
+  De absolute waardefunctie is continu:
   \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x| \]
 
   \begin{proof}
@@ -202,6 +210,30 @@
       \extra{bewijs analoog}
     \end{itemize}
   \end{proof}
+\end{vb}
+
+\begin{vb}
+  De volgende functie is negrens continu, maar de absolute waarde ervan is overal continu:
+  \[ 
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \begin{cases}
+    1  &\text{ als } x\in \mathbb{Q}\\
+    -1 &\text{ als } x\in \mathbb{R}\setminus \mathbb{Q}
+  \end{cases}
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De volgende functie is enkel continu in $0$.
+  \[ 
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \begin{cases}
+    x  &\text{ als } x\in \mathbb{Q}\\
+    -x &\text{ als } x\in \mathbb{R}\setminus \mathbb{Q}
+  \end{cases}
+  \]
+\extra{bewijs}
 \end{vb}
 
 \begin{vb}

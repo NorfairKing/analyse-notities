@@ -71,8 +71,6 @@
 \extra{bewijs p 29}
 \end{vb}
 
-
-
 \begin{bpr}
   Zij $p\in \mathbb{Z}$, dan heeft de rij $(n^{p})_{n}$ een limiet:
   \begin{itemize}
@@ -186,9 +184,29 @@
   \end{proof}
 \end{st}
 
+\begin{st}
+  Zij $(x_{n})_{n}$ een convergente rij, dan is $(|x_{n}|)_{n}$ ook convergent.
+
+  \begin{proof}
+    Noem de limiet van $(x_{n})_{n}$ $x$.
+    Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, dan bestaat er een $n_{0}\in\mathbb{N}$ als volgt:
+    \[ \forall n\in\mathbb{N}:\ n\ge n_{0} \Rightarrow |x_{n}-x| < \epsilon \]
+    De stelling volgt nu uit de volgende ongelijkheid:\prref{pr:tweede-driehoeksongelijkheid}
+    \[ \left| |x_{n}| - |x| \right| \le |x_{n}-x| \]
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  De omgekeerde implicatie geldt niet.
+  
+  \begin{proof}
+    Beschouw de rij $((-1)^{n})_{n}$.
+  \end{proof}
+\end{tvb}
+
+
 \subsection{Limieten en orde}
 \label{sec:limieten-en-orde}
-
 
 \begin{de}
   We noemen een rij $(x_{n})_{n}$ in $\mathbb{R}$ ...
@@ -393,6 +411,14 @@
     \end{itemize}
   \end{proof}
 \end{bst}
+
+
+\begin{st}
+  Zij $(x_{n})_{n}$ een convergente rij in $\mathbb{R}^{+}$ met limiet $x$, dan convergeert ook de rij $\left(\sqrt[k]{x_{n}}\right)_{n}$.
+
+\extra{bewijs}
+\end{st}
+
 
 \subsection{Limieten en bewerkingen}
 \label{sec:limi-en-bewerk}
