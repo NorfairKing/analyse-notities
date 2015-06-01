@@ -8,25 +8,32 @@
 \input{packages}
 \input{header}
 
-
 \begin{document}
 
 \input{titelpagina}
 
-
 \tableofcontents
 
-\subfile{voorkennis}
+\part{voorkennis}
+\subfile{relaties}
+\subfile{functies}
 \subfile{getallen}
+
+\part{Re\"ele Analyse}
 \subfile{rijen}
 \subfile{continuiteit-voor-functies-van-r-naar-r}
 \subfile{afgeleiden-van-functies-van-r-naar-r}
 \subfile{reeksen}
 \subfile{continuiteit-voor-functies-van-rp-naar-rp}
-\subfile{metrische-ruimten-en-continuiteit}
 \subfile{de-riemannintegraal}
 
+\part{Metrische Analyse}
+\subfile{metrische-ruimten-en-continuiteit}
+
+\appendix
 \subfile{algoritmes}
+\subfile{oproep}
+
 
 
 
@@ -36,6 +43,10 @@
 
 \printindex
 
-\subfile{oproep}
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

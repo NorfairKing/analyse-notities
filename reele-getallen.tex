@@ -1,0 +1,366 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Axiomatische beschrijving van $\mathbb{R}$}
+\label{sec:axiom-beschr-van}
+
+\begin{st}
+  \label{st:supremumeigenschap-R}
+  De \term{supremumeigenschap}\\
+  In $\mathbb{R}$ heeft elke niet-lege, naar boven begrensde deelverzameling een supremum.
+  \extra{bewijs verder rigoreuzer}
+\end{st}
+
+\begin{st}
+  Er bestaat, op isomorfisme na, maar \'e\'en totaal geordend veld met de supremumeigenschap.
+  \extra{bewijs later}
+\end{st}
+
+\begin{pr}
+  Er bestaat een unieke afbeelding $i:\ \mathbb{Q} \rightarrow \mathbb{R}$ met de volgende eigenschappen.
+  \begin{itemize}
+  \item $i(0_{\mathbb{Q}}) = 0_{\mathbb{R}}$
+  \item $i(1_{\mathbb{Q}}) = 1_{\mathbb{R}}$
+  \item $\forall p,q \in \mathbb{Q}: i(p+_{\mathbb{Q}}q) = i(p) +_{\mathbb{R}} i(q)$
+  \item $\forall p,q \in \mathbb{Q}: i(p\cdot_{\mathbb{Q}} q) = i(p) \cdot_{\mathbb{R}} i(q)$
+  \item $\forall p,q \in \mathbb{Q}: p \le_{\mathbb{Q}} q \Rightarrow i(p) \le_{\mathbb{R}} i(q)$
+  \end{itemize}
+  Bovendien is deze afbeelding injectief.
+
+  \begin{proof}
+    \begin{itemize}
+    \item Uniciteit\\
+      We bewijzen dat er slechts \'e\'en $i$ kan bestaan, eerst over $\mathbb{N}$, dan over $\mathbb{Z}$ en tenslotte over $\mathbb{Q}$.
+      \begin{itemize}
+      \item Beschouw een $n\in \mathbb{N}$.
+        Er zijn dan twee gevallen:
+        \begin{itemize}
+        \item $n = 0_{\mathbb{O}}$:
+          Dan moet $i(n)$ $0_{\mathbb{R}}$ zijn vanwege de eerste eigenschap.
+        \item $n \neq 0$:
+          $n$ is dan als de som van $n$ $1_{\mathbb{Q}}$-tjes te schrijven:\needed
+          \[ n = n 1_{\mathbb{Q}} \]
+          Vanwege de derde eigenschap is $i(n)$ dan de som van $n$ $1_{\mathbb{R}}$-jes te schrijven.
+        \end{itemize}
+        Hierdoor ligt $i$ al vast op $\mathbb{N}$. \waarom
+      \item Beschouw vervolgens een getal $z\in \mathbb{Z}\setminus \mathbb{N}$.
+        Er bestaat dan een getal $n \in \mathbb{N}$ zodat $z$ het tegengestelde is van $n$: $z = -n$.\needed
+        De vierde eigenschap zegt ons dan het volgende:
+        \[ i(-n) = -i(n) \]
+        Hierdoor ligt $i$ al vast op $\mathbb{Z}$. \waarom
+      \item Beschouw tenslotte een $q\in \mathbb{Q}$, dan valt $q$ te schrijven als $\nicefrac{n}{m}$ met $n\in \mathbb{Z}$ en $m\in \mathbb{N}_{0}$.
+        Uit de derde eigenschap volgt dan dat het volgende moet gelden:
+        \[ i(q) = i(n)i(m)^{-1} \]
+        Dit vervolledigt de uniciteit van $i$.
+      \end{itemize}
+    \item Bestaan\\
+      Verdergaand op het bewijs van de uniciteit construeren we $i$ achtereenvolgens op $\mathbb{N}$, dan op $\mathbb{Z}$ en dan op $\mathbb{Q}$.
+      \extra{bewijzen dat $i$ door $+$ en $\cdot$ gaat}
+      \extra{bewijzen dat $i$ goed gedefinieerd is voor $\mathbb{Q}$ (onafhankelijk van de gekozen $m$ en $n$).}
+      \extra{bewijzen dat $i$ injectief en stijgend is}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{opm}
+  Onder dit morfisme beschouwen we $\mathbb{Q}$ als een deelverzameling van $\mathbb{R}$.
+\end{opm}
+
+\begin{lem}
+  \label{lem:lemma-van-archimedes}
+  Het \term{lemma van Archimedes}\\
+  Voor elke $x\in \mathbb{R}$ bestaat er een $n\in \mathbb{N}$ zodat $x < n$ geldt.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde\\
+    Stel dat er een $x\in \mathbb{R}$ zou bestaan zodat $\forall n \in \mathbb{N}:\ x \ge n$ geldt, dan zou $\mathbb{N}$ naar boven begrensd zijn door die $x$.
+    Noem $s$ dan het supremum van $\mathbb{N}$, dat bestaat immers zeker.\needed
+    Omdat $s$ de kleinste bovengrens is van $\mathbb{N}$ is $s-1$ zeker geen bovengrens.
+    We kunnen dus een $k\in \mathbb{N}$ vinden zodat $s-1$ kleiner is dan $k$.
+    $s$ is dan echter kleiner dan $k+1$ en dus geen bovengrens.
+  \end{proof}
+\end{lem}
+
+\begin{gev}
+  $\forall a \in \mathbb{R}_{0}^{+},\ \forall b\in \mathbb{R}:\ \exists n\in N:\ na > b$
+
+  \begin{proof}
+    Als $b$ kleiner is dan $a$ is de stelling evident met $n=1$.
+    Als $b$ groter is dan of gelijk aan $a$, ga dan als volgt te werk:
+    $a^{-1}$ is positief (want $a$ is positief)\prref{pr:geordend-veld-inverse-zelfde-teken}, uit $a \le b$ volgt dus $1 \le \frac{b}{a}$.
+    Kies dan een $n\in \mathbb{N}$ groter dan $\frac{b}{a}$, dit kan immers altijd.\lemref{lem:lemma-van-archimedes}
+    Vermenigvuldig tenslotte $\frac{b}{a} < n$ met $a$ om de stelling te bekomen.\deref{de:geordend-veld}
+  \end{proof}
+\end{gev}
+
+\begin{gev}
+  \label{gev:er-bestaat-alijd-iets-rationaal-kleiner}
+  $\forall \epsilon \in \mathbb{R}_{0}^{+},\ \exists n\in \mathbb{N}_{0}:\ \frac{1}{n} < \epsilon$
+
+  \begin{proof}
+    Gegeven een $\epsilon \in \mathbb{R}_{0}^{+}$, bestaat er een $n \in \mathbb{N}$ groter dan $\frac{1}{\epsilon}$. \lemref{lem:lemma-van-archimedes}
+    Voor deze $n$ geldt $\frac{1}{n} < \epsilon$. \prref{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
+  \end{proof}
+\end{gev}
+
+\begin{gev}
+  \label{gev:z-omsluit-elk-r}
+  $\forall x\in \mathbb{R}:\ \exists m \in \mathbb{Z}:\ m-1 \le x < m$
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $x = 0$: triviaal, kies $m=1$.
+    \item $x > 0$\\
+      Noem $X$ de verzameling van natuurlijke getallen groter dan $x$.
+      $X$ is zeker niet leeg.\lemref{lem:lemma-van-archimedes}
+      Kies nu voor $m$ het minimum van $X$.(Dat bestaat zeker.) \waarom
+      Omdat $m$ het kleinste element is van $X$ is $(m-1)$ geen element van $X$.
+    \item $x < 0$\\
+      Vindt zoals hierboven beschreven de $m$ zodat $m-1 \le -x < m$ geldt.
+      Voor $x$ $-m+1$ dan het gezochte getal.\waarom
+    \end{itemize}
+  \end{proof}
+\end{gev}
+
+\begin{pr}
+  \label{pr:q-dicht-in-r}
+  $\forall x,y \in \mathbb{R}: (x<y \Rightarrow \exists q\in \mathbb{Q}:\ x<q<y)$
+
+  \begin{proof}
+    Kies twee elementen $x$ en $y$ in $\mathbb{R}$ met $x<y$, dan kunnen we een $n\in \mathbb{N}_{0}$ nemen zodat $\frac{1}{n}< (y-x)$ geldt.\gevref{gev:er-bestaat-alijd-iets-rationaal-kleiner}
+    Tel bij beide kanten van de ongelijkheid $x$ op om $x<\left(x+\frac{1}{n}\right)<y$ te krijgen.\deref{de:totaal-geordend-veld}
+    Neem nu een $m\in \mathbb{Z}$ zodat $m-1<nx<m$ geldt.\gevref{gev:z-omsluit-elk-r}
+    Vermenigvuldig de rechtse ongelijkheid met $n^{-1}$ om $x< \frac{m}{n}$ te bekomen.\prref{pr:geordend-veld-ongelijkheid-vermenigvuldiging}\prref{pr:geordend-veld-inverse-zelfde-teken}
+    Tel bovendien bij de linkse ongelijkheid $1$ op om $m \le nx+1$ te bekomen.\deref{de:totaal-geordend-veld}
+    Zet de laatste twee resultaten om $x < \frac{m}{n} < y$ te bekomen.
+    Deze $\frac{m}{n}$ is dan de gezochte $q$.
+  \end{proof}
+\end{pr}
+
+\begin{opm}
+  We zeggen dat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.
+\end{opm}
+
+\begin{st}
+  \[ \forall x\in \mathbb{R}^{+},\ \forall n\in \mathbb{N}:\ (n\ge 2 \Rightarrow \exists!\ y\in \mathbb{R}^{+}:\ y^{n}=x) \]
+  
+  \begin{proof}
+    Voor $x=0$ is de stelling triviaal met $y=0$.
+    Beschouw daarom $x>0$.
+    \begin{itemize}
+    \item Bestaan\\
+      Beschouw de verzameling $A$:
+      \[ A = \{ a\in \mathbb{R}^{+}\mid a^{n}<x \} \]
+      \begin{itemize}
+      \item $A$ is niet leeg:\\
+        Beschouw $a=\frac{x}{x+1}$, dan geldt $a^{n} < a$ omdat $a \le 1$ geldt (want $x+1$ is groter dan $x$).
+        $a$ is bovendien kleiner dan $x$ (want $x+1$ is groter dan $1$, $x$ is immers positief).
+        $a$ behoort dus tot $A$.
+      \item $A$ is naar boven begrensd:\\
+        We beweren dat $x+1$ een bovengrens is voor $A$.
+        Neem daartoe een $a\in A$.
+        Als $x+1$ immers kleiner zijn dan $A$, zou $x$ kleiner zijn dan $a^{n}$, en dat is een tegenspraak.
+        \[ 
+        \begin{array}{c}
+          x+1 < a\\
+          (x+1)^{n} < a^{n}\\
+          x < x+1 \le (x+1)^{n} < a^{n}\\
+        \end{array}
+        \]
+      \item $y = sup A$ zodat $y^{n}=x$:\\
+        We maken een gevalsonderscheid om de tegenstelling tegen te spreken:
+        \begin{itemize}
+        \item $y^{n}<n$\\
+          Moest dit gelden, dan zou er een $h\in \mathbb{R}_{0}^{+}$ bestaan zodat $(y+h)^{n}<x$ geldt (zie hierna), maar dat zou betekenen dat $y+h$ ook in $A$ zou zitten en dat kan niet omdat $y$ een bovengrens is.
+          \[ (y+h)^{n}-y^{n} = h\left( \sum^{n-1}_{i=0}(y+h)^{n-1-i}y^{i}\right) \]
+          Als $h$ kleiner is dan $1$ is het rechterlid kleiner dan $nh(y+1)^{n-1}$.\waarom
+          Als $h$ kleiner is dan $\min\left\{ 1,\frac{x-y}{h(y+1)^{n-1}}\right\}$ is dit kleiner dan $x-y^{n}$\waarom.
+          Hieruit volgt tenslotte $(y+h)^{n}<x$.
+        \item $y^{n}>k$\\
+          Analoog vinden we een $h\in \mathbb{R}_{0}^{+}$ zodat $y-h>0$ en $(y-h)^{n}>x$ gelden.\question{hoe precies?}
+          Omdat $y-h$ hierdoor geen bovengrens is voor $A$\waarom, bestaat er dan een $a\in A$ groter dan $y-h$.
+          Daaruit volgt dan dat $x<a^{n}$ geldt en dat is opnieuw een tegenspraak.
+        \end{itemize}
+      \end{itemize}
+    \item Uniciteit\\
+      Uit het ongerijmde:
+      Stel dat er twee verschillende getallen $y$ en $y'$ bestonden met $y^{n}=x$ en $y'^{n}=x$, stel met $y<y'$, dan zou $y^{n}$ kleiner zijn dan $y'^{n}$ en dat is in tegenspraak met $y^{n}=x$:\waarom
+      \[ y^{n}-y'^{n} = (y-y')\left( \sum^{n-1}_{i=0}y^{n-1-i}y'^{i}\right) \]
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+
+\subsection{Intervallen in $\mathbb{R}$}
+\label{sec:intervallen-in-R}
+
+\begin{de}
+  Een \term{interval} in een totaal geordende verzameling $F,\le$ is een niet-lege deelverzameling $I$ van $F$ waarvoor elk element van $F$ dat tussen twee elementen in $I$ ligt, tot $I$ behoort.
+  \[ \forall x,y \in I,\ \forall z\in F:\ x \le z \le y \Rightarrow z\in I \]
+\end{de}
+
+\begin{vb}
+  $\{x\in \mathbb{R} \mid i \le x \le 2\}$ is een interval.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\{1,2\}$ is geen interval want $1 \le \nicefrac{3}{2} \le 2$ geldt maar $\nicefrac{3}{2}$ zit niet in $\{1,2\}$.  
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\{x\in \mathbb{R} \mid x > 5\}$ is een interval.
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R}_{0}$ is geen interval.
+\extra{bewijs}
+\end{vb}
+
+
+\subsubsection{Classificatie van intervallen}
+\label{sec:class-van-interv}
+
+\begin{st}
+  De \term{classificatie van intervallen in $\mathbb{R}$}.
+
+  Beschouw een willekeurig interval $I \subseteq \mathbb{R}$, dan zijn er een aantal mogelijkheden:
+  \begin{itemize}
+  \item $I$ is zowel naar boven als naar onder begrensd.\\
+    $I$ heeft dan zowel een supremum $b$ als een infimum $a$.\stref{st:supremumeigenschap-R}.
+    \begin{itemize}
+    \item $a=b$: $I=\{a\} = [a,a]$
+    \item $a<b$: 
+      \begin{itemize}
+      \item $a\in I \wedge b\in I$: $I = \{ x\in \mathbb{R} \mid a\le x \le b\} = [a,b]$ : ``het gesloten interval $a,b$''.
+      \item $a\in I \wedge b\not\in I$: $I = \{ x\in \mathbb{R} \mid a\le x < b\} = [a,b[$ : ``het halfopen interval $a,b$, open in $b$''.
+      \item $a\not\in I \wedge b\in I$: $I = \{ x\in \mathbb{R} \mid a< x \le b\} = ]a,b]$ : ``het halfopen interval $a,b$, open in $a$''.
+      \item $a\not\in I \wedge b\not\in I$: $I = \{ x\in \mathbb{R} \mid a< x < b\} = ]a,b[$ : ``het open interval $a,b$''.
+      \end{itemize}
+    \end{itemize}
+  \item $I$ is naar onder begrensd.
+    $I$ heeft dan een infimum $a$.
+    \begin{itemize}
+    \item $a\in I$: $I = \{ x\in \mathbb{R} \mid x \ge a\} = [a,+\infty[$ : ``het gesloten interval $a, +\infty$''.
+    \item $a\not\in I$: $I = \{ x\in \mathbb{R} \mid x > a\} = ]a,+\infty[$ : ``het open interval $a, +\infty$''.
+    \end{itemize}
+  \item $I$ is naar boven begrensd.
+    $I$ heeft dan een supremum $b$.
+    \begin{itemize}
+    \item $a\in I$: $I = \{ x\in \mathbb{R} \mid x \le b \} = ]-\infty,b]$ : ``het gesloten interval $-\infty, b$''.
+    \item $a\not\in I$: $I = \{ x\in \mathbb{R} \mid x < b \} = ]-\infty,b[$ : ``het open interval $-\infty,b$''. 
+    \end{itemize}
+  \item $I$ is niet begrensd. $I$ is dan gelijk aan $\mathbb{R}$.
+  \end{itemize}
+  \zb
+\end{st}
+
+
+\subsection{Absolute waarde}
+\label{sec:absolute-waarde}
+
+\begin{de}
+  De \term{absolute waarde} van een element $a$ van een totaal geordend veld $F,+,\cdot,\le$ defeni\"eren we als $|a|$:
+  \[ 
+  |a| = 
+  \left\{
+    \begin{array}{cl}
+      a &\text{ als } a\ge 0\\
+      -a &\text{ als } a < 0\\
+    \end{array}
+  \right.
+  \]
+\end{de}
+
+\begin{pr}
+  \label{pr:absolute-waarde-positief}
+  $\forall a\in F: |a| \ge 0$
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $a \ge 0$: $|a| = a \ge 0$
+    \item $a < 0$: $|a| = -a \ge 0$\prref{pr:geordend-veld-tegengestelde-wisselt-teken}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: |a| = 0 \Leftrightarrow a = 0$
+  \question{hoe bewijzen we dit?}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: |a| = |-a|$
+
+  \begin{proof}
+    Ofwel $a$, ofwel $-a$ is negatief\needed, de absolute waarde daarvan is het tegengestelde, dus de andere en die blijft gelijk.
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  $\forall a\in F: -|a| \le a \le |a|$
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a \ge 0$: $a = |a|$ en zeker $a \ge -a = -|a| \le 0$\prref{pr:absolute-waarde-positief}\prref{pr:geordend-veld-tegengestelde-wisselt-teken}
+    \item $a <0$: $a=-|a|$ en zeker $a \le |a| \ge 0$\prref{pr:absolute-waarde-positief}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{pr}
+  $\forall a,b\in F: |a| \le b \Leftrightarrow -b \le a \le b$.
+
+  \begin{proof}
+    Gevalsonderscheid.
+    \begin{itemize}
+    \item $a \ge 0$: $a \le b \Leftrightarrow -b \le -a \le a \le b$
+    \item $a <0$: $-a \le b \Leftrightarrow -b \le a \le -a \le b$
+      \extra{meer uitwerken?}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{de}
+  De \term{afstand} tussen twee elementen van een totaal geordend veld $F,+,\cdot,\le$ defini\"eren we als $|x-y|$.
+\end{de}
+
+\begin{pr}
+  De \term{driehoeksongelijkheid}\\
+  \begin{itemize}
+  \item $\forall a,b\in F:\ |a+b| \le |a| + |b|$
+  \item $\forall x,y,z\in F:\ |x-y| \le |x-z| + |z-y|$
+  \end{itemize}
+  \extra{bewijs}
+\end{pr}
+
+\begin{pr}
+  \label{pr:tweede-driehoeksongelijkheid}
+  De \term{tweede driehoeksongelijkheid}\\
+  $\forall a,b\in F: ||a|-|b|| \le |a-b|$
+  \extra{bewijs}
+\end{pr}
+
+\begin{st}
+  Zij $a,b\in\mathbb{R}$ zodat $\forall \epsilon\in\mathbb{R}_{0}^{+}:\ |b-a| < \epsilon$ geldt, dan zijn $a$ en $b$ gelijk.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde, stel dat $a$ en $b$ verschillend zijn, dan is $|b-a|$ strikt positief.
+    Noem nu $\delta = |b-a| \in \mathbb{R}_{0}^{+}$, dan moet $|b-a|< \delta$ gelden, maar dit is in tegenspraak met $|b-a| = \delta$.
+    Contradictie.
+  \end{proof}
+\end{st}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

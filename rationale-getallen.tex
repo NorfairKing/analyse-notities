@@ -1,0 +1,167 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{De rationale getallen}
+\label{sec:de-rati-getall}
+
+\begin{de}
+  De \term{rationale getallen}, genoteerd als $\mathbb{Q}$.
+  \[ \mathbb{Q} = \{ \nicefrac{n}{m} \mid n\in \mathbb{Z}, m\in \mathbb{Z}, m \neq 0 \} \]
+\end{de}
+
+\begin{opm}
+  Concreet is $\mathbb{Q}$ het breukenveld van $\mathbb{Z}$, maar daarover later meer.
+\end{opm}
+
+\begin{pr}
+  $\mathbb{Q}$ is een totaal geordend veld.
+
+  \begin{proof}
+    We bewijzen elk deel appart.
+    \begin{itemize}
+    \item $\mathbb{Q}$ is een veld.
+      \begin{itemize}
+      \item $+$ is associatief:
+        \[ 
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\
+          &\left(\frac{f_{t}}{f_{n}} + \frac{g_{t}}{g_{n}}\right) + \frac{h_{t}}{h_{n}}
+          &= \frac{f_{t}g_{n} + g_{t}f_{n}}{f_{n}g_{n}} + \frac{h_{t}}{h_{n}}\\
+          &&= \frac{f_{t}g_{n}h_{n} + g_{t}f_{n}h_{n} + h_{t}f_{n}g_{n}}{f_{n}g_{n}h_{n}}\\
+          &&=  \frac{f_{t}}{f_{n}} + \frac{g_{t}h_{n} + h_{t}g_{n}}{g_{n}h_{n}}\\
+          &&= \frac{f_{t}}{f_{n}} + \left(\frac{g_{t}}{g_{n}} + \frac{h_{t}}{h_{n}}\right)\\
+        \end{array}
+        \]
+        We gebruiken hier dat $+$ en $\cdot$ associatief en commutatief zijn in $\mathbb{Z}$
+      \item Er bestaat een (uniek) neutraal element $0$ voor $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}:\
+          &\frac{f_{t}}{f_{n}} + \frac{0}{1}
+          &= \frac{f_{t} + 0}{1}\\
+          &&= \frac{f_{t}}{f_{n}}\\
+          &&= \frac{0 + f_{t}}{1}\\
+          &&= 0 +  \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $0$ het neutraal element is voor $+$ in $\mathbb{Z}$.
+      \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}: \exists (-f) = \frac{-f_{t}}{f_{n}} \in \mathbb{F}: \ 
+          &\frac{f_{t}}{f_{n}} + \frac{-f_{t}}{f_{n}}
+          &= \frac{f_{t}f_{n} + (-f_{t}f_{n})}{f_{n}^{2}}\\
+          &&= \frac{0}{f_{n}^{2}}\\
+          &&= 0 \\
+          &&= \frac{0}{f_{n}^{2}}\\
+          &&= \frac{-f_{t}f_{n} + f_{t}f_{n}}{f_{n}^{2}}\\
+          &&= \frac{-f_{t}}{f_{n}} + \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $-x$ het invers element is van $x$ voor $+$ in $\mathbb{Z}$. 
+      \item $+$ is commutatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}} \in \mathbb{Q}:\
+        \frac{f_{t}}{f_{n}} + \frac{g_{t}}{g_{n}}
+        = \frac{f_{t}g_{n}+g_{t}f_{n}}{f_{n}g_{n}}\\ 
+        = \frac{g_{t}}{g_{n}} + \frac{f_{t}}{f_{n}}\\
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is en $+$ associatief in $\mathbb{Z}$.
+      \item $\cdot$ is associatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\
+        \left(\frac{f_{t}}{f_{n}} \cdot \frac{g_{t}}{g_{n}}\right) \cdot \frac{h_{t}}{h_{n}}
+        =\frac{f_{t}g_{t}}{f_{n}g_{n}} \cdot \frac{h_{t}}{h_{n}}
+        =\frac{f_{t}g_{t}h_{t}}{f_{n}g_{n}h_{n}}
+        =\frac{f_{t}}{f_{n}} \cdot \frac{g_{t}h_{t}}{g_{n}h_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}:\
+          &\frac{f_{t}}{f_{n}} \cdot \frac{1}{1}
+          &= \frac{f_{t}\cdot 1}{1 \cdot 1}\\
+          &&= \frac{f_{t}}{f_{n}}\\
+          &&= \frac{1\cdot f_{t}}{1 \cdot 1}\\
+          &&= 1 \cdot \frac{f_{t}}{f_{n}}\\
+        \end{array}
+        \]
+        We gebruiken hier dat $1$ het neutraal element is voor $\cdot$ in $\mathbb{Z}$.
+      \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$:
+        \[
+        \forall \frac{f_{t}}{f_{n}}\in \mathbb{Q}: \exists \frac{f_{t}}{f_{n}}^{-1} = \frac{f_{n}}{f_{t}} \in \mathbb{F}: \
+        = \frac{f_{t}}{f_{n}}\frac{f_{n}}{f_{t}}
+        = \frac{f_{t}f_{n}}{f_{t}f_{n}}
+        = 1
+        = \frac{f_{n}f_{t}}{f_{t}f_{n}}
+        = \frac{f_{n}}{f_{t}}\frac{f_{t}}{f_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item $\cdot$ is commutatief:
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}} \in \mathbb{Q}:\
+        \frac{f_{t}}{f_{n}} \cdot \frac{g_{t}}{g_{n}}
+        = \frac{f_{t}g_{t}}{f_{n}g_{n}}
+        = \frac{g_{t}}{g_{n}} \cdot \frac{f_{t}}{f_{n}}
+        \]
+        We gebruiken hier dat $\cdot$ commutatief is in $\mathbb{Z}$.
+      \item $\cdot$ is distributief ten opzichte van $+$:
+        \[
+        \begin{array}{rrl}
+          \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\ 
+          &\frac{f_{t}}{f_{n}} \cdot \left(\frac{g_{t}}{g_{n}} + \frac{h_{t}}{h_{n}} \right)
+          &= \frac{f_{t}}{f_{n}} \cdot \frac{g_{t}h_{n}+h_{t}g_{n}}{g_{n}h_{n}}\\
+          &&= \frac{f_{t}\cdot (g_{t}h_{n}+h_{t}g_{n})}{f_{n}g_{n}h_{n}}\\
+          &&= \frac{(f_{t} \cdot g_{t}h_{n}) + (f_{t}\cdot h_{t}g_{n})}{f_{n}g_{n}h_{n}}\\
+          &&= \frac{f_{t}g_{t}}{f_{n}g_{n}} + \frac{f_{t}h_{t}}{f_{n}h_{n}}\\
+        \end{array}
+        \]
+      \end{itemize}
+    \item $\mathbb{Q}$ is totaal geordend veld.
+      \begin{itemize}
+      \item
+        \[
+        \forall \frac{f_{t}}{f_{n}},\frac{g_{t}}{g_{n}},\frac{h_{t}}{h_{n}} \in \mathbb{Q}:\ 
+        \frac{f_{t}}{f_{n}} \le \frac{g_{t}}{g_{n}}
+        \Rightarrow
+        \frac{f_{t}}{f_{n}}+\frac{h_{t}}{h_{n}} \le \frac{g_{t}}{g_{n}}+\frac{h_{t}}{h_{n}}
+        \]
+        \extra{vanuit welke axioma's bewijzen we dit?}
+      \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
+        \extra{vanuit welke axioma's bewijzen we dit?}
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{st}
+  \label{st:wortel-2-niet-in-q}
+  $\sqrt{2}$ is geen element van $\mathbb{Q}$.
+  \extra{bewijs}
+\end{st}
+
+\begin{tvb}
+  $\mathbb{Q}$ heeft de supremumeigenschap niet.
+  T.t.z, er bestaat een niet-lege, naar boven begrensde deelverzameling van $\mathbb{Q}$ die geen supremum heeft in $\mathbb{Q}$.
+
+  \begin{proof}
+    Beschouw de verzameling $\{ x \mid x^{2} \le 2 \}$.
+    Het supremum van deze verzameling is $\sqrt{2}$, maar dat zit niet in $\mathbb{Q}$.\stref{st:wortel-2-niet-in-q}
+  \end{proof}
+\end{tvb}
+
+\begin{st}
+  De stelling van rolle geldt niet in $\mathbb{Q}$.
+  \extra{verwijzen naar een plaats met betere uitleg.}
+\end{st}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
