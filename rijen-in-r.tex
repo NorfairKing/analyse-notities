@@ -414,9 +414,31 @@
 
 
 \begin{st}
-  Zij $(x_{n})_{n}$ een convergente rij in $\mathbb{R}^{+}$ met limiet $x$, dan convergeert ook de rij $\left(\sqrt[k]{x_{n}}\right)_{n}$.
+  Zij $(x_{n})_{n}$ een convergente rij in $\mathbb{R}^{+}$ met limiet $x$, dan convergeert ook de rij $\left(\sqrt{x_{n}}\right)_{n}$ en wel naar $\sqrt{x}$.
 
-\extra{bewijs}
+  \begin{proof}
+    Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, en beschouw de volgende gelijkheid:
+    \[ |\sqrt{x_{n}}-\sqrt{x}| = \frac{|x_{n}-x|}{\sqrt{x_{n}} + \sqrt{x}} \]
+    Omdat $(x_{n})_{n}$ naar $x$ convergeert, bestaat er een $n_{0}\in\mathbb{N}$ als volgt:
+    \[ \forall n\in\mathbb{N}:\ n \ge n_{0} \Rightarrow |x_{n}-x| < \epsilon\left(\sqrt{x_{n}}+\sqrt{x}\right) \]
+    Gaan we nu verder met de originele gelijkheid (voor $n$ groter dan $n_{0}$), dan vinden we de stelling:
+    \[ |\sqrt{x_{n}}-\sqrt{x}| = \frac{|x_{n}-x|}{\sqrt{x_{n}} + \sqrt{x}} < \frac{\epsilon\left(\sqrt{x_{n}}+\sqrt{x}\right)}{\sqrt{x_{n}} + \sqrt{x}} = \epsilon \]
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $x\in\mathbb{R}_{0}^{+}$, dan convergeert $(\sqrt[n]{x})_{n}$ naar $1$.
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $x=1$: triviaal.
+    \item $x < 1$:
+      De reeks $(\sqrt[n]{x})_{n}$ is dan strikt stijgend en het supremum van $\{ \sqrt[n]{x} \mid n\in\mathbb{N} \}$ (bestaat en) is $1$.
+    \item $x > 1$:
+      De reeks $(\sqrt[n]{x})_{n}$ is dan strikt dalend en het infimum van $\{ \sqrt[n]{x} \mid n\in\mathbb{N} \}$ (bestaat en) is $1$.
+    \end{itemize}
+  \end{proof}
 \end{st}
 
 
