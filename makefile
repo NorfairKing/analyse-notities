@@ -5,12 +5,7 @@ MAIN_NAME = main
 
 LATEX = ./makepdf.sh
 
-all:
-	make assets
-	make text
-
-assets: 
-	echo placeholder
+all: text
 
 text: $(OUTPUT_NAME).pdf
 
