@@ -65,7 +65,6 @@
   \end{proof}
 \end{bst}
 
-
 \begin{bpr}
   \label{pr:reeks-uniform-convergent-dan-limietfunctie-continu}
   Zij $\sum_{n}f_{n}$ een reeks van continue functies $f_{n}:\ A \subseteq \mathbb{C} \rightarrow \mathbb{C}$, die uniform convergeert op $A$, dan is de limietfunctie $\sum_{k=0}^{\infty}f_{k}$ ook continu.
@@ -145,6 +144,22 @@
 \begin{de}
   We noemen de $R$ in de stelling hierboven de \term{convergentiestraal} van de machtreeks.
 \end{de}
+
+\begin{vb}
+  \stiekem{Juni 2014}
+  De volgende machtreeks convergeert absoluut en uniform op $W$:
+  \[ f:\ \interval[open]{-1}{1} \rightarrow \mathbb{R}:\ x \mapsto \sum_{k}x^{k}\cos(kx) \]
+  
+  \begin{proof}
+    Omdat voor alle $y\in \mathbb{R}$, $\cos(y)$ tot $\interval{-1}{1}$ behoort, kunnen we de volgende afschatting maken:
+    \[ \cos(kx) \le 1  \text{ en bijgevolg } x^{k}\cos(kx) \le x^{k} \]
+    Nu weten we dus al dat het linkerlid convergeert als het rechterlid convergeert.\stref{st:vergelijkingstest}
+    Beschouw nu de reeks $\sum_{k}x^{k}$.
+    Dit is een machtreeks (rond $0$), met convergentiestraal $1$:
+    \[ \lim_{k\rightarrow \infty}\sqrt[k]{1} = 1 \]
+    In een straal van $1$ rond $0$ zal de reeks $\sum_{k}x^{k}$ dus absoluut convergeren en bijgevolg ook $\sum_{k}x^{k}\cos(kx)$.
+  \end{proof}
+\end{vb}
 
 \extra{voorbeelden onderaan p 17}
 
