@@ -2,11 +2,10 @@
 \usepackage[latin1]{inputenc}
 \usepackage[dutch]{babel}
 
-% Voor commit in titelpagina
-\immediate\write18{git rev-parse --short HEAD > commit.tex}
-
 \input{packages}
 \input{header}
+
+\immediate\write18{git rev-parse --short HEAD > commit.tex}
 
 \begin{document}
 
@@ -28,7 +27,11 @@
 \subfile{de-riemannintegraal}
 
 \part{Metrische Analyse}
-\subfile{metrische-ruimten-en-continuiteit}
+\subfile{metrische-ruimten-definitie}
+\subfile{metrische-ruimten-topologie}
+\subfile{metrische-ruimten-continuiteit}
+\subfile{metrische-ruimten-volledigheid}
+\subfile{metrische-ruimten-voorbeelden}
 
 \appendix
 \subfile{algoritmes}
