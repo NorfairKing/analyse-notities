@@ -1,0 +1,104 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Metrieken op rijruimten}
+\label{sec:metr-op-rijr}
+
+\begin{de}
+  We noteren met $\mathbb{R}^{\mathbb{N}}$ de verzamelingen van alle rijen in $\mathbb{R}$.
+  Merk op dat $\mathbb{R}^{\mathbb{N}}$ een vectorruimte is over $\mathbb{R}$.
+\end{de}
+
+
+\subsection{Een metriek op de hele rijruimte van $\mathbb{R}$}
+\label{sec:een-metriek-op}
+
+\begin{vb}
+  $\mathbb{R}^{\mathbb{N}}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d:\ \mathbb{R}^{\mathbb{N}} \times \mathbb{R}^{\mathbb{N}} \rightarrow \mathbb{R}^{+}:\ ((x_{n})_{n},(y_{n})_{n}) \mapsto \sum_{n=0}^{+\infty}\frac{|x_{n}-y_{n}|}{2^{n}(1+|x_{n}-y_{n}|)} \]
+\extra{bewijs en bewijs waarom dit goed gedefinieerd is}
+\end{vb}
+
+
+\subsection{Een metriek op de begrensde rijen in $\mathbb{R}$}
+\label{sec:een-metriek-op-1}
+
+\begin{vb}
+  Noteer met $l^{\infty}(\mathbb{N})$ het volgende:
+  \[ l^{\infty}(\mathbb{N}) = \{ (x_{n})_{n} \in \mathbb{R}^{\mathbb{N}} \mid (x_{n})_{n} \text{ is begrensd.}\} \]
+  $l^{\infty}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{\infty}:\ \mathbb{R}^{\mathbb{N}} \times \mathbb{R}^{\mathbb{N}} \rightarrow \mathbb{R}^{+}:\ ((x_{n})_{n},(y_{n})_{n}) \mapsto \sup\{|x_{n}-y_{n}| \mid n\in \mathbb{N}\} \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De metrische ruimte $l^{\infty},d_{\infty}$ is niet separabel.
+  
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat er een deel $Q$ van $l^{\infty}(\mathbb{N})$ bestaat dat dicht ligt in $l^{\infty}(\mathbb{N}),Q$.\\
+    Beschouw de verzameling $A$ als volgt:
+    \[ A = \{ (x_{n})_{n} \in l^{\infty}(\mathbb{N}) \mid \forall n\in \mathbb{N}:\ x_{n} \in \{0,1\} \]
+    Merk op dat de $d_{\infty}$ afstand tussen elke twee verschillende rijen in $A$ gelijk is aan $1$ en dat $A$ niet aftelbaar is.\waarom
+    Voor elke $x\in A$ kunnen we dan een $q_{x}\in Q$ vinden zodat $d_{\infty}(x,q_{x})$ kleiner is dan $\frac{1}{2}$.
+    Voor twee verschillende $x,y\in A$ moet $q_{x}$ bovendien verschillend zijn van $q_{y}$:
+    \[ 1 = d_{\infty}(x,y) \le d_{\infty}(x,q_{x}) + d_{\infty}(q_{x},q_{y}) + d_{\infty}(q_{y},y) < \frac{1}{2} + d_{\infty}(q_{x},q_{y}) + \frac{1}{2} \]
+    Het dicht deel $Q$ bevat dus een niet aftelbare deelverzameling, namelijk $\{q_{x} \mid x\in A\}$, en kan dus niet aftelbaar zijn.
+    \extra{meer uitleg over het idee hiervan}
+  \end{proof}
+\end{vb}
+
+
+\subsection{Een metriek op de absoluut convergente reeksen in $\mathbb{R}$}
+\label{sec:een-metriek-op-2}
+
+\begin{vb}
+  Noteer met $l^{1}(\mathbb{N})$ de verzameling van absoluut convergente reeksen in $\mathbb{R}$:
+  \[ l^{1}(\mathbb{N}) = \left\{ (x_{n})_{n} \ \middle|\ \sum_{n}|x_{n}| \right\} \]
+  Deze verzameling, uitgerust met de volgende functie als metriek, vormt een metrische ruimte.
+  \[ d_{1}:\ l^{1}(\mathbb{N}) \times l^{1}(\mathbb{N}) \rightarrow \mathbb{R}^{+}:\ d_{1}((x_{n})_{n},(y_{n})_{n}) = \sum_{n}|x_{n}-y_{n}| \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De metrische ruimte $l^{1}(\mathbb{N}),d_{1}$ is separabel.
+  
+  \begin{proof}
+    Beschouw de verzameling van rijen van rationale getallen die eindigen met een staart van nullen:
+    \[ Q = \{ (q_{n})_{n} \in l^{1}(\mathbb{N}) \mid \forall n\in \mathbb{N}:\ q_{n}\in \mathbb{Q} \wedge \exists n_{0}\in \mathbb{N}, \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow q_{n} = 0 \} \]
+    Merk op dat $Q$ aftelbaar is.
+    $Q$ ligt bovendien dicht in $l^{1}(\mathbb{N})$:
+    Kies immers een willekeurige $(x_{n})_{n}\in l^{1}(\mathbb{N})$ en een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    We tonen aan dat er een $q\in Q$ bestaat zodat $d_{1}((x_{n})_{n},q)$ kleiner is dan $\epsilon$.\stref{st:metrische-ruimte-dicht-in-test}
+    Kies eerst $n_{0}\in \mathbb{N}$ als volgt:
+    \[ \sum_{n=n_{0}+1}^{\infty}|x_{n}| < \frac{\epsilon}{2} \]
+    Kies vervolgens $n_{0}+1$ rationale getallen $r_{n}\in \mathbb{Q}$ als volgt:
+    \[ |x_{n}-r_{n}| < \frac{\epsilon}{2^{n+2}} \]
+    Stel nu $q_{n}$ als volgt:
+    \[
+    q_{n} =
+    \begin{cases}
+      r_{n} &\text{ als } n \le n_{0}\\
+      0 &\text{ als } n > n_{0}
+    \end{cases}
+    \]
+    $q=(q_{n})_{n}$ zit nu in $Q$ en bovendien geldt het volgende:
+    \begin{align*}
+      d_{1}(x,q)
+      &= \sum_{n}|x_{n}-q_{n}|\\
+      &= \sum_{n=0}^{n_{0}}|x_{n}-r_{n}| + \sum_{n=n_{0}+1}^{\infty}|x_{n}|\\
+      &< \sum_{n=0}^{n_{0}}\frac{\epsilon}{2^{n+2}} + \frac{\epsilon}{2}\\
+      &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+    \end{align*}
+  \end{proof}
+\extra{het idee van dit bewijs is niet helemaal duidelijk}
+\end{vb}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
