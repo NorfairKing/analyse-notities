@@ -317,6 +317,91 @@ Let wel op de ongelijheid met het supremum.
  \extra{bewijs}
 \end{vb}
 
+\subsection{Andere metrieken op $C(\interval{0}{1})$}
+\label{sec:andere-metrieken-op}
+
+\begin{vb}
+  Zij $D$ een deelverzameling van $Q \cap \interval{0}{1}$.
+  De functie $d_{D}$ als volgt is een metriek op $C(\interval{0}{1})$.
+  \[ d_{D}:\ C(\interval{0}{1})^{2} \rightarrow \mathbb{R}:\ d_{D}(f,g) = \sum_{k=1}^{\infty}\frac{1}{2^{k}}\left| f(x_{k}) - g(x_{k})\right| \]
+  Hierin zijn de elementen van $D$ (in om het even welke volgorde) genummerd.
+  
+  \begin{proof}
+    Eerst is het belangrijk op te merken dat $d_{D}$ goed gedefinieerd is.
+    De functies in $C(\interval{0}{1})$ zijn immers begrensd.\stref{st:gesloten-en-begrensd-interval-continu-dan-uniform-continu}\prref{pr:uniform-continu-beeld-van-begrensd-deel-begrensd}
+    \begin{itemize}
+    \item De symmetrie van $d_{D}$ is evident vanuit de definitie.
+    \item De tweede eigenschap van een metriek is niet even evident.
+      We zullen goed moeten gebruiken dat $D$ dicht ligt in $\interval{0}{1}$.
+      Stel nu dat er tussen twee functies $f$ en $g$ een $d_{D}$ afstand nul is, maar ze toch niet gelijk zijn.
+      We leiden dan een contradictie af met de continuiteit van $f$ of $g$.
+      Omdat de afstand tussen $f$ en $g$ nul is, zijn $f$ en $g$ al gelijk in alle punten $x_{k}$.
+      Omdat $f$ en $g$ niet gelijk zijn, bestaat er een punt $y\in \interval{0}{1} \setminus D$ waarin $f$ en $g$ verschillen.
+      Omdat $D$ dicht ligt in $\interval{0}{1}$, bestaat er dus een rij $(x_{k_{n}})_{n}$ in $D$ die naar $y$ convergeert.
+      Omdat $(f-g)$ nul is in elk punt $x_{k_{n}}$ zal de rij $((f-g)(x_{k_{n}}))_{n}$ dus niet naar het verschil tussen $f$ en $g$ in $y$ convergeren maar naar $0$.
+      Dit betekent dat $(f-g)$ niet continu\prref{pr:continu-asa-behoudt-convergentie} en dus ofwel $f$ ofwel $g$ niet continu.\prref{pr:optelling-continu}
+    \item De driehoeksongelijkheid:
+      \begin{align*}
+        d(f,g)
+        &= \sum_{k}\frac{1}{2^{k}}\left| f(x_{k}) - g(x_{k})\right|\\
+        &= \sum_{k}\frac{1}{2^{k}}\left| f(x_{k}) - h(x_{k}) + h(x_{k}) - g(x_{k})\right|\\
+        &\le \sum_{k}\frac{1}{2^{k}}\left| f(x_{k}) - h(x_{k})| + |h(x_{k}) - g(x_{k})\right|\\
+        &= d(f,h) + d(h,g)
+      \end{align*}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{tvb}
+  Als $D$ hierboven verzameling zou zijn die niet dicht is in $\interval{0}{1}$, dan is $d_{D}$ geen metriek.
+
+  \begin{proof}
+    We construeren twee functies $f,g \in \interval{0}{1}$ op $d_{D}$ afstand $0$ die niet gelijk zijn.
+    Omdat $D$ niet dicht ligt in $\interval{0}{1}$, bestaat er een punt $x\in \interval{0}{1}$ dat niet in de sluiting van $D$ ligt.\deref{de:dicht-liggen}
+    Laat $f$ en $g$ gelijk zijn in alle punten van $D$ en op een continue manier verschillen in $x$.
+
+    \noindent Nog concreter:\\
+    Kies $D = \{ \left(\frac{1}{n}\right) \mid n\in\mathbb{N} \}$ en $f$ en $g$ als volgt:
+
+    \noindent
+    \begin{minipage}{.45\textwidth}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+            \addplot[smooth,color=blue,thick,domain=0:1/2]{0};
+            \addplot[smooth,color=red,thick,domain=0:1/2]{0};
+            \addplot[smooth,color=blue,thick,domain=1/2:3/4]{x-1/2)};
+            \addplot[smooth,color=red,thick,domain=1/2:3/4]{-x+1/2)};
+            \addplot[smooth,color=blue,thick,domain=3/4:1]{-x+1)};
+            \addplot[smooth,color=red,thick,domain=3/4:1]{(x-1)};
+            \foreach \i in {1,...,100}{
+              \addplot[soldot,color=green,thin] coordinates{(1/\i,0)};
+            }
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+
+      \begin{align*}
+        f(x) = 
+        \begin{cases}
+          0 &\text{ als } x \in \interval{0}{\frac{1}{2}}\\
+          \left(x-\frac{1}{2}\right) &\text{ als } x \in \interval[open]{\frac{1}{2}}{\frac{3}{4}}\\
+          -\left(x-\frac{1}{2}\right) &\text{ als } x \in \interval{\frac{3}{4}}{1}
+        \end{cases}\\
+        g(x) = 
+        \begin{cases}
+          0 &\text{ als } x \in \interval{0}{\frac{1}{2}}\\
+          -\left(x-\frac{1}{2}\right) &\text{ als } x \in \interval[open]{\frac{1}{2}}{\frac{3}{4}}\\
+          \left(x-\frac{1}{2}\right) &\text{ als } x \in \interval{\frac{3}{4}}{1}
+        \end{cases}\\
+      \end{align*}
+    \end{minipage}
+  \end{proof}
+\end{tvb}
+
 
 \end{document}
 

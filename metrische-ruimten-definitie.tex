@@ -24,6 +24,30 @@
   Men noemt $d$ de \term{metriek} of \term{afstandsfunctie} en $d(v,w)$ de \term{afstand} tussen $v$ en $w$.
 \end{de}
 
+\begin{st}
+  Zij $X,d$ een metrische ruimte en $f:\ X \rightarrow Y$ een bijectie, dan definieert $d'$ als volgt een metriek op $Y$:
+  \[ d':\ Y^{2}\rightarrow \mathbb{R}:\ d'(f(x_{1}),f(x_{2})) = d(x_{1},x_{2}) \]
+
+  \extra{bewijs: evident?}
+\end{st}
+
+\begin{st}
+  Zij $X,d$ een metrische ruimte, dan definieert $d'$ als volgt een metriek op $X$:
+  \[ d':\ X^{2}\rightarrow \mathbb{R}:\ d'(x,y) = \min\{1,d(x,y)\} \]
+
+  \begin{proof}
+    De eerste twee eigenschappen zijn evident vanuit de metriek $d$.
+
+    \begin{align*}
+      & d'(x,y)+d'(y,z)\\
+      & = \min\{1,d(x,y)\} + \min\{1,d(y,z)\}\\
+      & = \min\{1+1,1+d(x,y),d(y,z)+1,d(x,y)+d(y,z)\} \\
+      & \ge \min\{1,d(x,y)+d(y,z)\} \\
+      & \ge  \min\{1,d(x,z)\}\\
+      & = d'(x,z)
+    \end{align*}
+  \end{proof}
+\end{st}
 
 \begin{st}
   Zij $f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}$ een stijgende concave functie zodat $f(t)$ nul is als en slechts als $t$ nul is.
@@ -36,10 +60,11 @@
     \item $d_{f}$ is nul als en slechts als de argumenten gelijk: aanname.
     \item $d_{f}$ voldoet aan de driehoeksongelijkheid:
       \[ f(d(x,z)) \le f(d(x,y) + d(y,z)) \]
-\TODO{en nu?}
+      \TODO{en nu?}
     \end{itemize}
   \end{proof}
 \end{st}
+
 
 \section{Begrensde verzamelingen}
 \label{sec:begr-verz}
