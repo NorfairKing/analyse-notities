@@ -176,13 +176,14 @@
 \label{sec:conv-van-rijen}
 
 \begin{de}
+  \label{de:metrische-ruimten-puntsgewijze-convergentie-van-rij-functies}
   Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $X$ met waarden in een metrische ruimte $Y,d_{Y}$, dan zeggen we dat $(f_{n})_{n}$ \term{puntsgewijs convergeert} op $X$ naar een functie $f:\ X \rightarrow Y$ als en slechts als voor elke $x\in X$ de rij $(f_{n}(x))_{n}$ naar $f(x)$ convergeert:
   \[ \forall x\in X, \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0} \in \mathbb{N}, \forall n\in \mathbb{N}:\ n \ge n_{0}:\ \Rightarrow d_{Y}(f_{n}(x),f(x)) < \epsilon \]
 \end{de}
 
 \begin{de}
   Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $X$ met waarden in een metrische ruimte $Y,d_{Y}$, dan zeggen we dat $(f_{n})_{n}$ \term{uniform convergeert} op $X$ naar een functie $f:\ X \rightarrow Y$ als en slechts als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall x\in X, \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d_{y}(f_{n}(x),f_{n}(y)) < \epsilon \]
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall x\in X, \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d_{Y}(f_{n}(x),f(x)) < \epsilon \]
 \end{de}
 
 \begin{bst}
@@ -224,6 +225,70 @@
 \end{bst}
 
 \TODO{tegenvoorbeelden}
+
+\subsection{Rijen van contracties}
+\label{sec:rijen-van-contr}
+
+\begin{st}
+  \label{st:limiet-van-rij-contracties-is-contractie}
+  \stiekem{Juni 2014}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten en $(f_{n})_{n}$ een rij contracties ($\forall n:\ f_{n}:\ V \rightarrow W$) die (puntgewijs) convergeert naar een functie $f:\ V \rightarrow W$, dan is $f$ een contractie.
+  
+  \begin{proof}
+    Kies willekeurig twee elementen $x,y\in V$:
+    \begin{align*}
+      d_{W}(f(x),f(y))
+      &= d_{W}(\lim_{n\rightarrow +\infty}f_{n}(x),\lim_{n\rightarrow +\infty}f_{n}(y))\\
+      &\le \lim_{n\rightarrow +\infty}d_{W}(f_{n}(x),f_{n}(y))\\
+      &\le \lim_{n\rightarrow +\infty}d_{V}(x,y)\\
+      &= d_{V}(x,y)
+    \end{align*}
+    De tweede ongelijkheid geldt omdat elke $f_{n}$ een contractie is.
+    \clarify{Waarom geldt de eerste ongelijkheid?! $\rightarrow$, metrieken zijn continu.}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten en $(f_{n})_{n}$ een rij contracties ($\forall n:\ f_{n}:\ A \subseteq V \rightarrow W$) die (puntgewijs) convergeert naar een functie $f:\ A \subseteq V \rightarrow W$.
+  Als $A$ totaal begrensd is, dan gebeurt de convergentie $f_{n} \rightarrow f$ uniform.
+
+  \begin{proof}
+    \noindent
+    \begin{klad}
+      Even opschrijven wat er allemaal gegeven is (het is een hele boel):
+      \begin{enumerate}
+      \item Elke $f_{n}$ is een contractie: $\forall x,y\in A:\ d_{W}(f_{n}(x),f_{n}(y)) \le d_{V}(x,y)$
+      \item De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$: $\forall x\in V:\ \lim_{n\rightarrow +\infty}(f_{n}(x))_{n} = f(x)$
+      \item $A$ is totaal begrensd: $\forall \epsilon\in\mathbb{R}_{0}^{+}, \exists \{x_{1},...,x_{k}\} \subseteq A:\ A \subseteq \bigcup_{i=1}^{n}B(x_{i},\epsilon)$
+      \end{enumerate}
+      Wat er te bewijzen valt is de volgende formule:
+      \[ \forall \epsilon\in\mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall x\in V, \forall n\in\mathbb{N}:\ n \ge n_{0} \Rightarrow d_{W}(f_{n}(x),f(x)) < \epsilon \]
+      We zullen de afstand $d_{W}(f_{n}(x),f(x))$ proberen afstanden in een $\frac{\epsilon}{3}$ argument.
+    \end{klad}
+    Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$.
+    \begin{itemize}
+    \item Overdek (het totaal begrensde) $A$ met een eindig aantal ($n$) open bollen $B(x_{i},\epsilon)$.
+      Voor elke $x\in A$, bestaat er nu een $x_{i}\in \{x_{1},\dotsc,x_{k}\}$ zodat $d_{V}(x,x_{i}) < \frac{\epsilon}{3}$ geldt.
+    \item Omdat $(f_{n})_{n}$ puntsgewijs convergeert naar $f$, kunnen we Voor elke $i\in \{1,\dotsc,k\}$ een $n_{i}\in\mathbb{N}$ vinden als volgt:
+      \[ \forall n\in \mathbb{N}:\ n\ge n_{i}\Rightarrow d_{W}(f_{n}(x_{i}),f(x_{i})) < \frac{\epsilon}{3} \]
+    \item Omdat elke $f_{n}$ een contractie is, vinden we voor alle $i\in\{1,\dotsc,k\}$ het volgende:
+      \[ \forall n\in\mathbb{N}:\ d_{W}(f_{n}(x),f_{n}(x_{i})) \le d_{V}(x,x_{i}) < \frac{\epsilon}{3} \]
+    \item Omdat een convergente rij contracties convergeert naar een contractie\stref{st:limiet-van-rij-contracties-is-contractie}, vinden we voor alle $i\in\{1,\dotsc,k\}$ het volgende:
+      \[ d_{W}(f(x),f(x_{i})) \le d_{V}(x,x_{i}) < \frac{\epsilon}{3} \]
+    \end{itemize}
+    Kies nu $n^{*} = \max_{i}\{ n_{i}\}$, en kies een $x\in V$ willekeurig.
+    Er bestaat dan een $x_{i}$ binnen een straal van $\frac{\epsilon}{3}$ rond $x$ (zie hierboven).
+    Voor alle $n\in \mathbb{N}$ groter dan $n^{*}$ (en dus groter dan alle $n_{i}$) vinden we nu het volgende:
+    \begin{align*}
+      |f_{n}(x) - f(x)|
+      &= |f_{n}(x) - f_{n}(x_{i}) + f_{n}(x_{i}) - f(x_{i}) + f(x_{i}) - f(x)|\\
+      &\le |f_{n}(x) - f_{n}(x_{i})| + |f_{n}(x_{i}) - f(x_{i})| + |f(x_{i}) - f(x)|\\
+      &< \frac{\epsilon}{3} + \frac{\epsilon}{3} +\frac{\epsilon}{3}\\
+      &= \epsilon
+    \end{align*}
+  \end{proof}
+\end{st}
 
 
 \end{document}
