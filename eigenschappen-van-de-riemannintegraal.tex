@@ -10,6 +10,7 @@
 \label{sec:eigensch-verb-met}
 
 \begin{bpr}
+  \label{pr:integreerbaar-itv-verdelingen}
   Een begrensde functie $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ is Riemannintegreerbaar als en slechts als er voor elke $\epsilon > 0$ een verdeling $P$ van $\interval{a}{b}$ bestaat als volgt:
   \[ \overline{S}(f,P) - \underline{S}(f,P) < \epsilon \]
 
@@ -32,6 +33,8 @@
     \end{itemize}
   \end{proof}
 \end{bpr}
+
+
 
 \begin{bpr}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een continue functie, dan is $f$ Riemannintegreerbaar.
@@ -96,6 +99,7 @@
 \label{sec:lineariteit-van-de}
 
 \begin{bpr}
+  \label{pr:optelling-behoudt-integreerbaarheid}
   Zij $f,g:\ \interval{a}{b} \rightarrow \mathbb{R}$ Riemannintegreerbare functies, dan is $f+g$ is Riemannintegreerbaar en geldt het volgende:
   \[ \int_{a}^{b}(f+g) = \int_{a}^{b}f + \int_{a}^{b}g \]
 
@@ -129,6 +133,35 @@
   \[ \int_{a}^{b}:\ \mathcal{R}(\interval{a}{b}) \rightarrow \mathbb{R}:\ f \mapsto \int_{a}^{b}f \]
 \extra{bewijs}
 \end{bgev}
+
+\begin{st}
+  Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een Riemannintegreerbare functie.
+  Zij $f'$ de functie $f$ met precies \'e\'en punt $y\in\interval{a}{b}$ verschillend:
+  \[ f(y) \neq f'(y) \wedge \forall x\in \interval{a}{b}:\ f(x) = f'(x) \]
+  $f'$ is dan ook Riemannintegreerbaar met dezelfde integraal.
+
+  \begin{proof}
+    Het volstaat om te bewijzen dat de volgende functie $g$ integreerbaar is met integraal $0$:
+    \[
+    g:\ \interval{a}{b} \rightarrow \mathbb{R}:\ x \mapsto
+    \begin{cases}
+      0 &\text{ als } x \neq y\\
+      f'(y)-f(y) &\text{ als } x = y
+    \end{cases}
+    \]
+    Kies een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$.\prref{pr:integreerbaar-itv-verdelingen}
+    Voor elke verdeling zal de ondersom $0$ zijn.
+    We zoeken dus een verdeling zodat de bovensom kleiner is dan $\epsilon$.
+    Noem $M = f'(y) - f(y)$, en kies een verdeling als volgt:
+    \[ P = \left\{ a, y-\frac{\epsilon}{2M}, y+\frac{\epsilon}{2M}, b\right\} \]
+    Dit is een verdeling van het interval in $3$ stukken.
+    Het linker- en het rechterdeel krijgen een bovensom van $0$.
+    We bekijken daarom het middelste deel.
+    Het supremum van het middenste deel is $M$ en de lengte ervan $\frac{\epsilon}{2}$ dus de bovensom is hoogstens $\epsilon$.
+    We kunnen $\overline{S}(f,P) - \underline{S}(f,P)$ arbitrair klein krijgen door de juiste verdeling te kiezen dus $f'$ is Riemannintegreerbaar.\prref{pr:optelling-behoudt-integreerbaarheid}
+    De integraal is bovendien dezelfde als die van $f$.
+  \end{proof}
+\end{st}
 
 
 \subsection{Integraal en orde}

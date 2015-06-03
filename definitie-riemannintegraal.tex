@@ -24,9 +24,9 @@
 \begin{de}
   Zij $f:\ \interval{a}{b} \rightarrow \mathbb{R}$ een begrensde functie gedefinieerdop een gesloten begrensd interval en zij $P = \{x_{0},\dotsc,x_{n}\}$ een verdeling van het interval $\interval{a}{b}$.
   We definieren de \term{ondersom} $\underline{S}(f,P)$ als volgt:
-  \[ \underline{S}(f,P) = \sum_{k=1}^{n} \inf\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}}\} (x_{k}-x_{k-1}) \]
+  \[ \underline{S}(f,P) = \sum_{k=1}^{n} (x_{k}-x_{k-1}) \inf\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}}\} \]
   We definieren de \term{bovensom} $\overline{S}(f,P)$ als volgt:  
-  \[ \overline{S}(f,P) = \sum_{k=1}^{n} \sup\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}}\} (x_{k}-x_{k-1}) \]
+  \[ \overline{S}(f,P) = \sum_{k=1}^{n} (x_{k}-x_{k-1}) \sup\{ f(x) \mid x\in \interval{x_{k-1}}{x_{k}}\} \]
 \end{de}
 
 \begin{opm}
@@ -76,35 +76,28 @@
 \begin{tvb}
   Niet elke functie is Riemannintegreerbaar.
 
-\begin{proof}
-  Kies de functie $f$ als volgt:
+  \begin{proof}
+    Kies de functie $f$ als volgt:
 
-  \noindent
-  \begin{minipage}{.45\textwidth}
-    \begin{figure}[H]
-      \centering
-      \begin{tikzpicture}
-        \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1, no markers]
-          \addplot[samples=5000,thick,domain=0.01:1]{x*sin((1/x)*360)};
-        \end{axis}
-      \end{tikzpicture}
-    \end{figure}
-  \end{minipage}
-  \begin{minipage}{.45\textwidth}
-    \[ x \mapsto \frac{1}{x}\sin\left(\frac{1}{x}\right) \]
-  \end{minipage}
+    \noindent
+    \begin{minipage}{.45\textwidth}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-0.1, xmax=1.1, no markers]
+            \addplot[samples=5000,thick,domain=0.01:1]{x*sin((1/x)*360)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[ x \mapsto \frac{1}{x}\sin\left(\frac{1}{x}\right) \]
+    \end{minipage}
 
-  \noindent(Merk op dat deze functie zelfs fout getekend wordt omdat de numerieke benadering die de computer probeert te maken niet nauwkeurig genoeg is. Naar $0$ toe begint te grafiek oneindig snel te oscileren.)
-\TODO{bewijs dat deze functie inderdaad niet integreerbaar is}
-\end{proof}
+    \noindent(Merk op dat deze functie zelfs fout getekend wordt omdat de numerieke benadering die de computer (die dit tekent) probeert te maken niet nauwkeurig genoeg is. Naar $0$ toe begint te grafiek oneindig snel te oscileren.)
+    \TODO{bewijs dat deze functie inderdaad niet integreerbaar is}
+  \end{proof}
 \end{tvb}
-
-
-
-
-
-
-
 
 
 \end{document}
