@@ -6,19 +6,19 @@
 \section{Axiomatische beschrijving van $\mathbb{R}$}
 \label{sec:axiom-beschr-van}
 
-\begin{st}
+\begin{bst}
   \label{st:supremumeigenschap-R}
   De \term{supremumeigenschap}\\
   In $\mathbb{R}$ heeft elke niet-lege, naar boven begrensde deelverzameling een supremum.
-  \extra{bewijs verder rigoreuzer}
-\end{st}
+  \zb
+\end{bst}
 
-\begin{st}
+\begin{bst}
   Er bestaat, op isomorfisme na, maar \'e\'en totaal geordend veld met de supremumeigenschap.
-  \extra{bewijs later}
-\end{st}
+  \zb
+\end{bst}
 
-\begin{pr}
+\begin{bpr}
   Er bestaat een unieke afbeelding $i:\ \mathbb{Q} \rightarrow \mathbb{R}$ met de volgende eigenschappen.
   \begin{itemize}
   \item $i(0_{\mathbb{Q}}) = 0_{\mathbb{R}}$
@@ -30,6 +30,7 @@
   Bovendien is deze afbeelding injectief.
 
   \begin{proof}
+    \noindent
     \begin{itemize}
     \item Uniciteit\\
       We bewijzen dat er slechts \'e\'en $i$ kan bestaan, eerst over $\mathbb{N}$, dan over $\mathbb{Z}$ en tenslotte over $\mathbb{Q}$.
@@ -62,13 +63,13 @@
       \extra{bewijzen dat $i$ injectief en stijgend is}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{opm}
   Onder dit morfisme beschouwen we $\mathbb{Q}$ als een deelverzameling van $\mathbb{R}$.
 \end{opm}
 
-\begin{lem}
+\begin{blem}
   \label{lem:lemma-van-archimedes}
   Het \term{lemma van Archimedes}\\
   Voor elke $x\in \mathbb{R}$ bestaat er een $n\in \mathbb{N}$ zodat $x < n$ geldt.
@@ -81,9 +82,9 @@
     We kunnen dus een $k\in \mathbb{N}$ vinden zodat $s-1$ kleiner is dan $k$.
     $s$ is dan echter kleiner dan $k+1$ en dus geen bovengrens.
   \end{proof}
-\end{lem}
+\end{blem}
 
-\begin{gev}
+\begin{bgev}
   $\forall a \in \mathbb{R}_{0}^{+},\ \forall b\in \mathbb{R}:\ \exists n\in N:\ na > b$
 
   \begin{proof}
@@ -93,9 +94,9 @@
     Kies dan een $n\in \mathbb{N}$ groter dan $\frac{b}{a}$, dit kan immers altijd.\lemref{lem:lemma-van-archimedes}
     Vermenigvuldig tenslotte $\frac{b}{a} < n$ met $a$ om de stelling te bekomen.\deref{de:geordend-veld}
   \end{proof}
-\end{gev}
+\end{bgev}
 
-\begin{gev}
+\begin{bgev}
   \label{gev:er-bestaat-alijd-iets-rationaal-kleiner}
   $\forall \epsilon \in \mathbb{R}_{0}^{+},\ \exists n\in \mathbb{N}_{0}:\ \frac{1}{n} < \epsilon$
 
@@ -103,9 +104,9 @@
     Gegeven een $\epsilon \in \mathbb{R}_{0}^{+}$, bestaat er een $n \in \mathbb{N}$ groter dan $\frac{1}{\epsilon}$. \lemref{lem:lemma-van-archimedes}
     Voor deze $n$ geldt $\frac{1}{n} < \epsilon$. \prref{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
   \end{proof}
-\end{gev}
+\end{bgev}
 
-\begin{gev}
+\begin{bgev}
   \label{gev:z-omsluit-elk-r}
   $\forall x\in \mathbb{R}:\ \exists m \in \mathbb{Z}:\ m-1 \le x < m$
 
@@ -123,9 +124,9 @@
       Voor $x$ $-m+1$ dan het gezochte getal.\waarom
     \end{itemize}
   \end{proof}
-\end{gev}
+\end{bgev}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:q-dicht-in-r}
   $\forall x,y \in \mathbb{R}: (x<y \Rightarrow \exists q\in \mathbb{Q}:\ x<q<y)$
 
@@ -135,16 +136,22 @@
     Neem nu een $m\in \mathbb{Z}$ zodat $m-1<nx<m$ geldt.\gevref{gev:z-omsluit-elk-r}
     Vermenigvuldig de rechtse ongelijkheid met $n^{-1}$ om $x< \frac{m}{n}$ te bekomen.\prref{pr:geordend-veld-ongelijkheid-vermenigvuldiging}\prref{pr:geordend-veld-inverse-zelfde-teken}
     Tel bovendien bij de linkse ongelijkheid $1$ op om $m \le nx+1$ te bekomen.\deref{de:totaal-geordend-veld}
-    Zet de laatste twee resultaten om $x < \frac{m}{n} < y$ te bekomen.
+    Zet de laatste twee resultaten samen om $x < \frac{m}{n} < y$ te bekomen.
     Deze $\frac{m}{n}$ is dan de gezochte $q$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{opm}
   We zeggen dat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.
 \end{opm}
 
-\begin{st}
+\begin{pr}
+  \label{pr:r-dicht-in-q-lol}
+  $\forall x,y \in \mathbb{Q}: (x<y \Rightarrow \exists r\in \mathbb{R}:\ x<r<y)$
+\zb
+\end{pr}
+
+\begin{bst}
   \[ \forall x\in \mathbb{R}^{+},\ \forall n\in \mathbb{N}:\ (n\ge 2 \Rightarrow \exists!\ y\in \mathbb{R}^{+}:\ y^{n}=x) \]
   
   \begin{proof}
@@ -191,7 +198,7 @@
       \[ y^{n}-y'^{n} = (y-y')\left( \sum^{n-1}_{i=0}y^{n-1-i}y'^{i}\right) \]
     \end{itemize}
   \end{proof}
-\end{st}
+\end{bst}
 
 
 \subsection{Intervallen in $\mathbb{R}$}
@@ -226,7 +233,7 @@
 \subsubsection{Classificatie van intervallen}
 \label{sec:class-van-interv}
 
-\begin{st}
+\begin{bst}
   De \term{classificatie van intervallen in $\mathbb{R}$}.
 
   Beschouw een willekeurig interval $I \subseteq \mathbb{R}$, dan zijn er een aantal mogelijkheden:
@@ -258,7 +265,7 @@
   \item $I$ is niet begrensd. $I$ is dan gelijk aan $\mathbb{R}$.
   \end{itemize}
   \zb
-\end{st}
+\end{bst}
 
 
 \subsection{Absolute waarde}
@@ -277,7 +284,7 @@
   \]
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:absolute-waarde-positief}
   $\forall a\in F: |a| \ge 0$
 
@@ -288,22 +295,22 @@
     \item $a < 0$: $|a| = -a \ge 0$\prref{pr:geordend-veld-tegengestelde-wisselt-teken}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   $\forall a\in F: |a| = 0 \Leftrightarrow a = 0$
   \question{hoe bewijzen we dit?}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   $\forall a\in F: |a| = |-a|$
 
   \begin{proof}
     Ofwel $a$, ofwel $-a$ is negatief\needed, de absolute waarde daarvan is het tegengestelde, dus de andere en die blijft gelijk.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   $\forall a\in F: -|a| \le a \le |a|$
   \begin{proof}
     Gevalsonderscheid.
@@ -312,9 +319,9 @@
     \item $a <0$: $a=-|a|$ en zeker $a \le |a| \ge 0$\prref{pr:absolute-waarde-positief}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   $\forall a,b\in F: |a| \le b \Leftrightarrow -b \le a \le b$.
 
   \begin{proof}
@@ -325,27 +332,27 @@
       \extra{meer uitwerken?}
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{de}
   De \term{afstand} tussen twee elementen van een totaal geordend veld $F,+,\cdot,\le$ defini\"eren we als $|x-y|$.
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   De \term{driehoeksongelijkheid}\\
   \begin{itemize}
   \item $\forall a,b\in F:\ |a+b| \le |a| + |b|$
   \item $\forall x,y,z\in F:\ |x-y| \le |x-z| + |z-y|$
   \end{itemize}
   \extra{bewijs}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:tweede-driehoeksongelijkheid}
   De \term{tweede driehoeksongelijkheid}\\
   $\forall a,b\in F: ||a|-|b|| \le |a-b|$
   \extra{bewijs}
-\end{pr}
+\end{bpr}
 
 \begin{st}
   Zij $a,b\in\mathbb{R}$ zodat $\forall \epsilon\in\mathbb{R}_{0}^{+}:\ |b-a| < \epsilon$ geldt, dan zijn $a$ en $b$ gelijk.

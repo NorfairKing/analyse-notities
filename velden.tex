@@ -39,7 +39,7 @@
   \end{itemize}
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:geordend-veld-optelling-ongelijkheden}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b,c,d \in \mathbb{F}:\ a\le b \wedge c \le d \Rightarrow (a+c) \le (b+d) \]
@@ -51,9 +51,9 @@
     Omdat $+$ commutatief is in $\mathbb{F}$, geldt dan ook het volgende:
     \[ a+c \le b+c \le b+d\]
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:geordend-veld-ongelijkheid-maal-min-een}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b\in \mathbb{F}:\ a \le b \Rightarrow -b \le -a \]
@@ -66,9 +66,9 @@
     Uit $a\le b$ volgt echter dat $2a \le 2b$ geldt (tel immers $a\le b$ bij zichzelf op).
     Contradictie.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:geordend-veld-tegengestelde-wisselt-teken}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall b \in \mathbb{F}:\ 0 \le b \Leftrightarrow -a \le 0 \]
@@ -76,9 +76,9 @@
   \begin{proof}
     Gebruik in propositie \ref{pr:geordend-veld-ongelijkheid-maal-min-een} $a=0$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:geordend-veld-ongelijkheid-vermenigvuldiging}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b \in \mathbb{F}:\ 0 \le a \wedge 0 \le b \Rightarrow 0 \le ab \]
@@ -87,9 +87,9 @@
     Omdat $\mathbb{F}$ een geordend veld is, volgt uit $0\le a$ dat $0b \le ab$ geldt vanwege $0 \le b$.
     Omdat $0$ het nulelement is van $\mathbb{F}$ geldt $0b = 0$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:nul-kleiner-dan-een}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ 0 < 1 \]
@@ -100,9 +100,9 @@
     Tel hierbij $-1$ op, dan bekomen we $0 \le -1$.
     Vanwege de tweede definierende eigenschap van een totaal geordend veld moet dan uit $1 \le 0$ ook $-1 \le 0$ volgen, maar dat is in strijd met $0 \le -1$ omdat $0$ verschilt van $1$.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:geordend-veld-inverse-zelfde-teken}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a \in \mathbb{F}_{0}:\ 0 \le a \Rightarrow 0 \le a^{-1}\]
@@ -113,9 +113,9 @@
     We mogen die tweede ongelijkheid dan vermenigvuldigen met $a$ om $aa^{-1}< 0$ te bekomen.
     Dit zou $1<0$ betekenen en dat is in contradictie met propositie \ref{pr:nul-kleiner-dan-een}.
   \end{proof}
-\end{pr}
+\end{bpr}
 
-\begin{pr}
+\begin{bpr}
   \label{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
   Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
   \[ \forall a,b \in \mathbb{F}_{0}^{+}:\  a \le b \Rightarrow b^{-1} \le a^{-1}\]
@@ -123,7 +123,7 @@
   \begin{proof}
     Omdat zowel $0 \le a$ en $0 \le b$ geld, mogen we $a\le b$ vermenigvuldigen met $a^{-1}$ en $b^{-1}$\prref{pr:geordend-veld-inverse-zelfde-teken} om $b^{-1} \le a^{-1}$ te bekomen.
   \end{proof}
-\end{pr}
+\end{bpr}
 
 
 \end{document}
