@@ -253,7 +253,13 @@
 
 \begin{st}
   Contracties zijn uniform continu.
-\TODO{bewijs}
+
+  \begin{proof}
+    Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, en $f:\ X \rightarrow Y$ een contractie.
+    Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$ en kies $\delta = \epsilon$.
+    Kies willekeurig twee elementen $a,b\in V$:
+    \[ d_{V}(a,b) < \epsilon \Rightarrow d_{W}(f(a),f(b)) \le d_{V}(a,b) < \epsilon \]
+  \end{proof}
 \end{st}
 
 \subsection{Isometrie\"en}
@@ -307,7 +313,7 @@
     \item Het infimum van $\inf\{d(x,a) \mid a\in A\cup B\}$ is ofwel $d(x,a')$ $d(x,b')$ en in het bijzonder het infimum van de twee, dus het minimum ervan.
       \question{wat valt er hier meer over te zeggen?}
     \item Het infimum van $\{d(x,a) \mid a\in A\cap B\}$ is $d(x,c)$ met $c\in A\cap B$ en $c$ \'e\'en van de $a'$ en $b'$ en dan is het inderdaad het maximum van $d_{A}(x)$ en $d_{B}(x)$.
-      \question{dit klinkt niet juist, wat mist er}?
+      \question{dit klinkt niet juist, wat mist er?}
     \end{enumerate}
   \end{proof}
 \end{st}
@@ -325,6 +331,29 @@
     \feed
   \end{proof}
 \end{st}
+
+\section{Metrische Productruimten}
+\label{sec:metrische-productruimten}
+
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimten. en $d_{V,W}$ een metriek op $V\times W$, dan noemen we $V\times W, d_{V,W}$ de productruimte van $V,d_{V}$ en $W,d_{W}$.
+\end{de}
+
+\begin{st}
+  Metrieken zijn continu wanneer we als metriek op het het maximum van de deelmetrieken beschouwen.
+  
+  \begin{proof}
+    Zij $X,d$ een metrische ruimte.
+    Op de productruimte $X^{2}$ beschouwen we de volgende metriek:
+    \[ d_{\max}:\ X\times X \rightarrow \mathbb{R}^{+}:\ ((x_{1},x_{2}),(y_{1},y_{2})) \mapsto \max\{ d(x_{1},y_{1}), d(x_{2},y_{2})\} \]
+  \end{proof}
+\end{st}
+
+\begin{gev}
+  \label{gev:metriek-door-limiet}
+  We mogen metrieken door limieten halen.
+\TODO{bewijs? is dit duidelijk genoeg? misschien nog een algemenere stelling formuleren.}
+\end{gev}
 
 
 \section{Genormeerde vectorruimten}

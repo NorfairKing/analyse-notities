@@ -147,7 +147,7 @@
 
 \begin{vb}
   \stiekem{Juni 2014}
-  De volgende machtreeks convergeert absoluut en uniform op $W$:
+  De volgende machtreeks convergeert absoluut op $W$:
   \[ f:\ \interval[open]{-1}{1} \rightarrow \mathbb{R}:\ x \mapsto \sum_{k}x^{k}\cos(kx) \]
   
   \begin{proof}
@@ -164,6 +164,7 @@
 \extra{voorbeelden onderaan p 17}
 
 \begin{bpr}
+  \label{pr:convergentiestraal-adhv-limiet}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$.
   Stel dat $c_{n}$ vanaf een bepaalde $n_{0}$ nooit $0$ is en dat de limiet $\lim_{n \rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|}$ bestaat, dan is die limiet gelijk aan de convergentiestraal van de machtreeks.
 
@@ -229,6 +230,25 @@
     \[ \limsup_{n\rightarrow +\infty}\sqrt[n]{\frac{1}{n^{n}}} = \limsup_{n\rightarrow +\infty}\frac{1}{n} = 0 \]
   \end{proof}
 \end{vb}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $(c_{n})_{n}$ een dalende rij in $\mathbb{R}^{+}$ met $x_{0} \neq 0$.
+  De convergentiestraal van $\sum_{n}c_{n}x^{n}$ is minstens $1$.
+
+  \begin{proof}
+    Omdat $(c_{n})_{n}$ een dalende rij is, geldt $\forall n\in\mathbb{N}:\ c_{n+1} \le c_{n}$.
+    De limiet van $\frac{c_{n}}{c_{n+1}}$ is dus groter of gelijk aan $1$.\prref{pr:convergentiestraal-adhv-limiet}
+  \end{proof}
+\end{st}
+
+\begin{opm}
+  Analoog geldt bovenstaande stelling voor stijgende rijen in $\mathbb{R}^{-}$.
+\end{opm}
+
+\begin{opm}
+  Bovenstaande stelling geldt ook voor rijen die \textit{uiteindelijk} beginnen te dalen in $\mathbb{R}^{+}$ of stijgen in $\mathbb{R}^{-}$.
+\end{opm}
 
 \begin{bst}
   \label{st:machtreeks-convergeert-uniform-op-open-convergentieschijf}
