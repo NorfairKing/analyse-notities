@@ -53,19 +53,40 @@
 \subsection{Een metriek op de absoluut convergente reeksen in $\mathbb{R}$}
 \label{sec:een-metriek-op-2}
 
+\begin{de}
+  We noteren de verzameling van absoluut convergente reeksen in $\mathbb{R}$ als $l^{1}(\mathbb{N})$:
+  \[ l^{1}(\mathbb{N}) = \left\{ (x_{n})_{n} \ \middle|\ \sum_{n}|x_{n}| \in\mathbb{R} \right\} \]
+\end{de}
+
 \begin{vb}
-  Noteer met $l^{1}(\mathbb{N})$ de verzameling van absoluut convergente reeksen in $\mathbb{R}$:
-  \[ l^{1}(\mathbb{N}) = \left\{ (x_{n})_{n} \ \middle|\ \sum_{n}|x_{n}| \right\} \]
-  Deze verzameling, uitgerust met de volgende functie als metriek, vormt een metrische ruimte.
+  Noteer met $l^{1}(\mathbb{N})$, uitgerust met de volgende functie als metriek, vormt een metrische ruimte.
   \[ d_{1}:\ l^{1}(\mathbb{N}) \times l^{1}(\mathbb{N}) \rightarrow \mathbb{R}^{+}:\ d_{1}((x_{n})_{n},(y_{n})_{n}) = \sum_{n}|x_{n}-y_{n}| \]
-\extra{bewijs}
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item Het is duidelijk dat twee reeksen gelijk zijn als de afstand ertussen nul is.
+      De gelijkheid is zelfde 'gedefinieerd' als zijnde 'afstand nul'.
+    \item Symmetrie volgt uit de symmetrie van de absolute waarde.
+    \item Driehoeksongelijkheid:
+      \begin{align*}
+        d_{1}((x_{n})_{n},(z_{n})_{n})
+        &= \sum_{n}|x_{n}-z_{n}|\\
+        &= \sum_{n}|x_{n}-y_{n}+y_{n}-z_{n}|\\
+        &\le \sum_{n}\left(|x_{n}-y_{n}|+|y_{n}-z_{n}|\right)\\
+        &= \sum_{n}|x_{n}-y_{n}|+\sum_{n}|y_{n}-z_{n}|\\
+        &=d_{1}((x_{n})_{n},(y_{n})_{n})+d_{1}((y_{n})_{n},(z_{n})_{n})
+      \end{align*}
+      Merk op dat de voorlaatste gelijkheid enkel geldt omdat de reeksen absoluut convergent zijn.
+    \end{itemize}
+  \end{proof}
 \end{vb}
 
 \begin{vb}
   De metrische ruimte $l^{1}(\mathbb{N}),d_{1}$ is separabel.
   
   \begin{proof}
-    Beschouw de verzameling van rijen van rationale getallen die eindigen met een staart van nullen:
+    Beschouw de verzameling van rijen van rationale getallen die eindigen met een staart van nullen:\\
     \[ Q = \{ (q_{n})_{n} \in l^{1}(\mathbb{N}) \mid \forall n\in \mathbb{N}:\ q_{n}\in \mathbb{Q} \wedge \exists n_{0}\in \mathbb{N}, \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow q_{n} = 0 \} \]
     Merk op dat $Q$ aftelbaar is.
     $Q$ ligt bovendien dicht in $l^{1}(\mathbb{N})$:
@@ -92,9 +113,11 @@
       &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
     \end{align*}
   \end{proof}
-\extra{het idee van dit bewijs is niet helemaal duidelijk}
 \end{vb}
 
+\begin{vb}
+  $l^{1}(\mathbb{N}),d_{1}$ is volledig.
+\end{vb}
 
 \end{document}
 
