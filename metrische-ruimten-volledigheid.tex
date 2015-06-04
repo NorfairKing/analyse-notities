@@ -289,7 +289,71 @@
 
 \begin{bst}
   Van elke metrische ruimte $X,d$ bestaat er een vervollediging.
-\extra{bewijs p 85}
+
+  \begin{proof}
+    We construeren een verzameling $Y$ met een metriek $d_{Y}$ zodat $X_{v},d_{v}$ volledig is en zodat $X,d$ isometrisch ingebed kan worden als een dicht deel in $X_{v},d_{v}$ via een inbedding $i:\ X \rightarrow X_{v}$.
+
+    \begin{itemize}
+    \item Constructie van $X_{v}$\\
+      Noteer met $\mathcal{C}$ de verzameling van Cauchyrijen in $X$.
+      Definieer op $\mathcal{C}$ de volgende equivalentierelatie:
+      \[ (x_{n})_{n} \sim (y_{n})_{n} \Leftrightarrow \lim_{n\rightarrow +\infty}d(x_{n},y_{n}) = 0 \]
+      \extra{bewijzen dat dit een equivalentierelatie is}
+      Kies nu $X_{v} = \mathcal{C} / \sim$, de partitie van $\mathcal{C}$ onder $\sim$.
+    \item Constructie van $d_{v}$\\
+      Definieer $d_{v}$ als volgt:
+      \[ d_{v}:\ X_{v}\times X_{v} \rightarrow \mathbb{R}^{+}:\ ([r],[s]) \mapsto \lim_{n\rightarrow \infty}d(r_{n},s_{n}) \]
+      \begin{itemize}
+      \item Deze limiet bestaat steeds:\\
+        Kies twee Cauchyrijen $r = (r_{n})_{n}$ en $s = (s_{n})_{n}$, respectievelijk uit $[r]$ en $[s]$.
+        \[ d(r_{n},s_{n}) \le d(r_{n},r_{m}) + d(r_{m},s_{m}) + d(s_{m},s_{n}) \]
+        \[ d(r_{m},s_{m}) \le d(r_{m},r_{n}) + d(r_{n},s_{n}) + d(s_{n},s_{m}) \]
+        Dit zodat het volgende geldt.
+        \[ |d(r_{n},s_{n}) - d(r_{m},s_{m})| \le d(r_{n},r_{m}) + d(s_{n},s_{m}) \]
+        Hieruit volgt dat $(d(r_{n},s_{n}))_{n}$ een Cauchyrij is in $\mathbb{R}$.
+        De limiet bestaat dus.
+      \item De limiet is onafhankelijk van de gekozen representanten:\\
+        Stel dat we andere representanten $r' = (r_{n}')_{n}$ en $s'=(s'_{n})_{n}$ kiezen uit $[r]$ en $[s]$ respectievelijk.
+        Analoog vinden we dat $\lim_{n\rightarrow \infty}(d(r'_{n},s'_{n})) = \lim_{n\rightarrow \infty}(d(r_{n},s_{n}))$ geldt.
+      \item $d_{v}$ is een metriek.
+        \extra{bewijs: evident?}
+      \end{itemize}
+    \item Isometrische inbedding als dicht deel:
+      \begin{itemize}
+      \item Constructie van de inbedding:\\
+        We bedden $X$ in in $X_{v}$ met een inbedding $i$ als volgt:
+        \[ i:\ X \rightarrow X_{v}:\ x \mapsto [\overline{x}] \]
+        Hierbij is $\overline{x}$ de constante (Cauchy-)rij $(x)_{n}$.
+      \item De inbedding is imometrisch:
+        \extra{de inbedding is isometrisch: evident?}
+      \item $i(X)$ is dicht in $X_{v}$:\\
+        Kies willekeurig een $[r] \in X_{v}$ en kies een reperesentant $r=(r_{n})_{n}$ uit $[r]$,.
+        We beweren dat $\lim_{n\rightarrow +\infty}i(r_{n}) = [r]$ geldt, dit is dus een rij in $i(X)$ die naar $[r]$ convergeert.
+        Inderdaad, kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$.
+        Omdat $(r_{n})_{n}$ een Cauchyrij is, kunnen we een $n_{0}\in\mathbb{N}$ vinden als volgt:
+        \[ \forall n,m\in\mathbb{N}:\ n,m \ge n_{0} \Rightarrow d(r_{n},r_{m}) < \epsilon \]
+        Per definitie van $d_{v}$ zal dan het volgende gelden:
+        \[ \forall n\in\mathbb{N}:\ n\ge n_{0} \Rightarrow d_{v}(i(r_{n}),[r]) = \lim_{m\rightarrow +\infty}d(r_{n},r_{m}) \le \epsilon \]
+      \end{itemize}      
+    \item Volledigheid van $X_{v},d_{v}$\\
+      Kies een willekeurige Cauchyrij $(r_{n})_{n}$ in $X_{v}$.
+      Omdat $i(X)$ dicht is in $X_{v}$, kunnen we voor elke $n\in\mathbb{N}_{0}$ een $x_{n}\in X$ vinden zodat $d_{v}(r_{n},i(x_{n}))$ kleiner is dan $\frac{1}{n}$.
+      Dan zal het volgende gelden:
+      \begin{align*}
+        d(x_{n},x_{m})
+        &= d_{v}(i(x_{n}),i(x_{m}))
+        &\le d_{v}(i(x_{n}),r_{n}) + d_{v}(r_{n},r_{m}) + d_{v}(r_{m},i(x_{m}))
+        &< \frac{1}{n} + d_{v}(r_{n},r_{m}) + \frac{1}{m}
+      \end{align*}
+      Omdat $(r_{n})_{n}$ een Cauchyrij is, volgt uit vorige afschatting dat $(x_{n})_{n}$ een Cauchyrij is in $X$.
+      Beschouw nu $r = [(x_{n})_{n}] in X_{v}$.
+      Bij de argumentatie dat $i(X)$ dicht is in $X_{v}$ hebben we aangetoond dat $i(x_{n})$ naar $r$ convergeert.
+      Bovendien geldt het volgende:
+      \[ d_{v}(r_{n},r) \le d_{v}(r_{n},i(x_{n})) + d(i(x_{n}),r) \le \frac{1}{n} + d_{v}(i(x_{n}),r) \]
+      Uit deze afschatting volgt dat $(r_{n})_{n}$ naar $r$ convergeert.
+      Dit bewijst de volledigheid van $X_{v},d_{v}$.
+    \end{itemize}
+  \end{proof}
 \end{bst}
 
 \begin{de}
