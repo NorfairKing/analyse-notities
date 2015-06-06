@@ -97,3 +97,8 @@
 
 % Voor urls (dit moet als laatste)
 \usepackage{hyperref}
+
+% Voor automatisch geschaalde intervallen.
+\usepackage{letltxmacro}
+\LetLtxMacro\oldint\interval
+\renewcommand{\interval}[3][]{\oldint[#1,scaled]{#2}{#3}}
