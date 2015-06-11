@@ -163,14 +163,29 @@ Let wel op de ongelijheid met het supremum.
 \label{sec:de-d_1-metriek}
 
 \begin{vb}
-  Zij $\interval{a}{b}$ een gesloten en begrensd interval, dan is $C(\interval{a}{b})$,, uitgerust met de volgende functie als metriek, een metrische ruimte:
+  Zij $\interval{a}{b}$ een gesloten en begrensd interval, dan is $C(\interval{a}{b})$, uitgerust met de volgende functie als metriek, een metrische ruimte:
   \[ d_{1}:\ C(\interval{a}{b})\times C(\interval{a}{b}) \rightarrow \mathbb{R}^{+}:\ (f,g) \mapsto \int_{a}^{b}|f(x)-g(x)|dx \]
 \extra{bewijs}
 \end{vb}
 
-\begin{opm}
-  In deze metrische ruimte is het moeilijk om open bollen te tekenen, het inwendige van een deel van $C(\interval{a}{b})$ is namelijk steeds leeg.
-\end{opm}
+%\begin{opm}
+%  In deze metrische ruimte is het moeilijk om open bollen te tekenen, het inwendige van een niet-open %deel van $C(\interval{a}{b})$ is namelijk steeds leeg.
+%\end{opm}
+
+\begin{vb}
+  De metrische ruimte $C(\interval{a}{b}),d_{1}$ is een genormeerde vectorruimte $\mathbb{R},C(\interval{a}{b}),+,\Vert\cdot\Vert$:
+  \[ \|\cdot\|:\ V \rightarrow \mathbb{R}^{+}:\ v \mapsto \int_{a}^{b}\left|f(x)\right|\ dx \]
+
+  \begin{proof}
+    \noindent
+
+    \begin{itemize}
+    \item Een functie heeft norm nul als en slechts als het de nulfunctie is.
+    \item $\forall f\in C(\interval{a}{b}), \forall \lambda \in \mathbb{R}:\ \int_{a}^{b}|\lambda f|\ dx = |\lambda|\int_{a}^{b}\|f(x)\|\ dx$
+    \item $\forall f,g\in V:\ \int_{a}^{b}|f(x)+g(x)|\ dx \le \int_{a}^{b}|f(x)|\ dx + \int_{a}^{b}|g(x)|\ dx$
+    \end{itemize}
+  \end{proof}
+\end{vb}
 
 
 \begin{vb}
@@ -282,6 +297,59 @@ Let wel op de ongelijheid met het supremum.
   \end{proof}
 \end{vb}
 
+\begin{vb}
+  De metrische ruimte $C(\interval{a}{b}),d_{1}$ is in het algemeen niet volledig.
+
+  \begin{proof}
+    Beschouw de rij van functies $(f_{n})_{n}$ en de limiet $f$ ervan als volgt:
+
+    \noindent
+    \begin{minipage}{.45\textwidth}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+          \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+            \foreach \i in {1,...,25}
+            {
+              \addplot[smooth,domain=0:(1/\i)]{\i*x};
+              \addplot[smooth,domain=(1/\i):3]{1};
+            }
+            \addplot[smooth,color=red,ultra thick,domain=0:3]{1};
+            \addplot[soldot,color=red] coordinates{(0,0)(1,1)};
+            \addplot[holdot,color=red,fill=white] coordinates{(0,1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+      \[
+      f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          nx & \text{ als } x \in \interval[open      ]{0}{\frac{1}{n}}\\
+          1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+      \[
+      f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+      \left\{
+        \begin{array}{rl}
+          0  & \text{ als } x = 0\\
+          1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
+        \end{array}
+      \right.
+      \]
+    \end{minipage}
+    Dit is een Cauchyrij die convergeert naar een niet-continue functie $f$.
+    \extra{bewijs}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De vervollediging van $C(\interval{a}{b}),d_{1}$ is de ruimte van integreerbare functies over $\interval{a}{b}$.
+\TODO{bewijs}
+\end{vb}
 
 \subsection{De $d_2$-metriek op $C(\interval{0}{1})$}
 \label{sec:de-d_2-metriek}
@@ -353,7 +421,7 @@ Let wel op de ongelijheid met het supremum.
 \end{vb}
 
 \begin{tvb}
-  Als $D$ hierboven verzameling zou zijn die niet dicht is in $\interval{0}{1}$, dan is $d_{D}$ geen metriek.
+  Als $D$ hierboven verzameling zou zijn die niet dicht is in $\interval{0}{1}$, dan hoeft $d_{D}$ geen metriek te zijn.
 
   \begin{proof}
     We construeren twee functies $f,g \in \interval{0}{1}$ op $d_{D}$ afstand $0$ die niet gelijk zijn.
