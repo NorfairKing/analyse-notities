@@ -389,6 +389,94 @@
   \end{proof}
 \end{vb}
 
+\begin{vb}
+  \stiekem{Juni 2014}
+  Zij $(f_{n})_{n}$ een rij functies met $\forall n\in\mathbb{N}: f_{n}:\ \interval[open right]{0}{1}\rightarrow \mathbb{R}$ als volgt gedefinieerd.
+  Deze rij convergeert naar de nulfunctie maar niet uniform.
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-0.1, xmax=1.1,trig format plots=rad]
+          \foreach \n in {1,...,50}{
+            \addplot[smooth,domain=0:1]{x^(\n)*sin((pi/2)*x)};
+          }
+          \addplot[domain=0:1,color=red,ultra thick]{0};
+          \addplot[holdot] coordinates{(1,1)};
+          \addplot[soldot,color=red] coordinates{(0,0)};
+          \addplot[holdot,color=red,fill=white] coordinates{(1,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{n}\sin\left(\frac{\pi}{2}x\right) \]
+    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+  \end{minipage}
+  
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item 
+      Kies willekeurig een $x\in\interval[open right]{0}{1}$ en beschouw de rij $(f_{n}(x))_{n}$.
+      We bewijzen dat deze rij naar $0$ convergeert.
+      Merk eerst het volgende op:
+      \[ \forall n\in \mathbb{N}: x^{n}\sin\left(\frac{\pi}{2}x\right) \ge 0 \quad\wedge\quad x^{n}\sin\left(\frac{\pi}{2}x\right) \le x^{n} \]
+      De rij $(x^{n})_{n}$ is dalend en naar onder begrensd en convergeert dus naar het infimum van $\{x^{n}\mid n\in\mathbb{N}\}$.
+      Dit is precies $0$.
+    \item 
+      Uniform convergeert deze rij niet want we kunnen steeds een punt $y$ dicht genoeg bij $1$ kiezen zodat $f(y)$ willekeurig dicht bij $1 \neq 0$ ligt.
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  \stiekem{Juni 2014}
+  Zij $(f_{n})_{n}$ een rij functies met $\forall n\in\mathbb{N}: f_{n}:\ \interval[open right]{0}{1}\rightarrow \mathbb{R}$ als volgt gedefinieerd.
+  Deze rij convergeert uniform naar de nulfunctie maar niet uniform.
+
+  \noindent
+  \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-0.1, xmax=1.1,trig format plots=rad]
+          \foreach \n in {1,...,50}{
+            \addplot[smooth,domain=0:1]{x^(\n)*cos((pi/2)*x) };
+          }
+          \addplot[domain=0:1,color=red,ultra thick]{0};
+          \addplot[holdot] coordinates{(1,0)};
+          \addplot[soldot,color=red] coordinates{(0,0)};
+          \addplot[holdot,color=red,fill=white] coordinates{(1,0)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{.45\textwidth}
+    \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{n}\cos\left(\frac{\pi}{2}x\right) \]
+    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 0 \]
+  \end{minipage}
+  
+  \begin{proof}
+    Merk eerst het volgende op:
+    \[ \forall n\in\mathbb{N}:\ x^{n}\cos\left(\frac{\pi}{2}x\right) \ge 0 \quad\wedge\quad x^{n}\cos\left(\frac{\pi}{2}x\right) \le x^{n} \]
+    Kies willekeurig een $\epsilon \in\mathbb{R}_{0}^{+}$.
+    Om aan te tonen dat $(f_{n})_{n}$ uniform convergeert naar $f$ tonen we aan dat het maximum van $\{f_{n}(x) \mid x\in\interval[open right]{0}{1}\}$ naar $0$ convergeert.
+    We berekenen eerst voor een willekeurige $n\in\mathbb{N}$ de afgeleide van $f_{n}$ om kritiek punt te vinden:
+    \[ \frac{d}{dx}x^{n}\cos\left(\frac{\pi}{2}x\right) = nx^{n-1}\cos\left(\frac{\pi}{2}x\right) - \frac{\pi}{2}\sin\left(\frac{\pi}{2}x\right)x^{n} \]
+    \[
+    nx^{n-1}\cos\left(\frac{\pi}{2}x\right) - \frac{\pi}{2}\sin\left(\frac{\pi}{2}x\right)x^{n} = 0 
+    \Leftrightarrow
+    \cot\left(\frac{\pi}{2}x\right) = \frac{\pi}{2n}x 
+    \]
+    In het punt $x$, niet $0$, dat aan bovenstaande vergelijking voldoet zal $f_{n}$ haar maximum bereiken.
+    Omdat het rechterlid naar $0$ gaat, gaat ook $\cos\left(\frac{\pi}{2}x\right)$ naar nul.
+    $0 \le f(x) \le \cos\left(\frac{\pi}{2}x\right)$ zal dus ook naar nul convergeren.
+  \end{proof}
+\end{vb}
+
 \begin{st}
   \label{str:uniform-dan-puntsgewijs}
   Een rij functies $(f_{n})_{n}$ die uniform convergeert, convergeert puntsgewijs.
