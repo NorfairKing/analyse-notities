@@ -133,7 +133,6 @@
 \end{bst}
 
 \begin{bst}
-
   Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue injectieve functie.
   Als $X$ compact is, dan is $f^{-1}:\ f(X) \rightarrow X$ continu
 
@@ -149,6 +148,7 @@
 \end{bst}
 
 \begin{bst}
+  \label{st:continue-functie-behoudt-samenhangendheid}
   Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue functie.
   Als $S \subseteq X$ samenhangend is, is $f(S)$ ook samenhangend.
 
@@ -170,6 +170,24 @@
     Contradictie.
   \end{proof}
 \end{bst}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $V$ een niet-leeg open deel van $\mathbb{R}^{p}$ met $p \ge 2$, dan bestaat er geen continue injectieve functie $f:\ V \rightarrow \mathbb{R}$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat er een continue injectieve functie $V \rightarrow \mathbb{R}$ bestaat.\\
+    Omdat $V$ niet leeg is, bestaat er een punt $v\in V$ en omdat $V$ open is, bestaat er een open bol $B(x,\delta)$ rond dat punt (met $\delta\in\mathbb{R}_{0}^{+}$).
+    Omdat $f$ continu is, behoudt $f$. samenhangendheid.\stref{st:continue-functie-behoudt-samenhangendheid}
+    Een convex deel van $\mathbb{R}^{p}$ is samenhangend\prref{pr:convexe-deelverzamelingen-samenhangend}
+    Het beeld van een convex deel moet dus samenhangend en daarom een interval zijn in $\mathbb{R}$.\prref{pr:samenhangend-asa-interval}
+    Beschouw nu de verzameling $B(x,\delta) \setminus \{x\}$.
+    Omdat $p$ groter is dan $1$ is deze deel verzameling van $V$ samenhangend.\vbref{vb:bol-zonder-midden-samenhangend-in-hogere-dimensies}
+    Het beeld ervan onder $f$ moet dus een interval zijn, maar omdat $f$ injectief is, ziet dit beeld er als volgt uit en is het dus geen interval:
+    \[ f(B(x,\delta)) \setminus f(\{x\}) \]
+    Contradictie.
+  \end{proof}
+\end{st}
 
 
 \section{Convergentie van rijen van continue functies}
