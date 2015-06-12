@@ -99,6 +99,46 @@
   \end{proof}
 \end{tvb}
 
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $f:\ \mathbb{R} \rightarrow \mathbb{R}$ een continue functie, dan is $f$ de constante nulfunctie als en slechts als $f$ de volgende eigenschap heeft:
+  \[ \forall \interval{a}{b} \subseteq \mathbb{R}:\ \int_{a}^{b}f(x)\ dx\]
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies willekeurig $\interval{a}{b}\subseteq \mathbb{R}$.
+      Voor elke verdeling van $\interval{a}{b}$ is zowel de bovensom als de ondersom nul en dus ook de integraal.
+    \item $\Leftarrow$\\
+      Bewijs uit het ongerijmde: Stel dat $f$ niet de nulfunctie zou zijn.
+      Er bestaat dan een $c\in\mathbb{R}$ zodat $f(c)$ niet nul is.
+      Veronderstel dat $f(c)$ positief is (het andere geval is immers geheel analoog).
+      Omdat $f$ continu is, bestaat er een omgeving van straal $\delta\in\mathbb{R}_{0}^{+}$ rond $c$ waarin $f$ strikt groter is dan $\frac{f(c)}{2}$:
+      \[ \forall x \in B(c,\delta):\ f(x) > \frac{f(c)}{2} \]
+      Beschouw nu het interval $\interval{x-\frac{\delta}{2}}{x+\frac{\delta}{2}}$.
+      De integraal van $f$ over dit interval is strikt groter dan $\frac{\delta f(c)}{2}$ en dus niet precies nul.
+      Contradictie.
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  \stiekem{Juni 2014}
+  Bovenstaande stelling geldt niet als $f$ niet continu hoeft te zijn.
+
+  \begin{proof}
+    Beschouw de functie $g$ als volgt:
+    \[
+    g:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+    \begin{cases}
+      1 &\text{ als } x = 0\\
+      0 &\text{ als } x \neq 0
+    \end{cases}
+    \]
+    $g$ is Riemann-integreerbaar met overal integraal $0$ maar is niet de nulfunctie.
+  \end{proof}
+\end{tvb}
 
 \end{document}
 
