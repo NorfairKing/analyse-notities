@@ -770,7 +770,6 @@
 \end{figure}
 
 \begin{st}
-  \stiekem{Juni 2014}
   Zij $A$ een compacte deelverzameling van een metrische ruimte $X,d$, dan is $\overline{A}$ compact.
   
   \begin{proof}
@@ -781,7 +780,6 @@
 \end{st}
 
 \begin{tvb}
-  \stiekem{Juni 2014}
   Het omgekeerde van bovenstaande stelling geldt niet.
   Als $\overline{A}$ compact is, \textbf{hoeft} $A$ \textbf{niet} compact te zijn.
 
@@ -791,6 +789,40 @@
     De sluiting $\interval{0}{1}$ is echter wel compact.
   \end{proof}
 \end{tvb}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $A$ een compacte deelverzameling van een metrische ruimte $X,d$.
+  $\overline{A}$ is compact als en slechts elke rij in $A$ een convergente deelrij heeft met limiet in $X$.
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies willekeurig een rij $(x_{n})_{n}$ in $A$ (en dus in $\overline{A}$).
+      Omdat $\overline{A}$ compact is, heeft $(x_{n})_{n}$ een convergente deelrij met limiet in $\overline{A}$ en dus in $X$.
+    \item $\Leftarrow$\\
+      Zij $(x_{n})_{n}$ een willekeurige rij in $\overline{A}$.
+      Per definitie ligt $A$ dicht in $\overline{A}$.
+      Voor elke $n\in\mathbb{N}$ bestaat er dus een $y_{n}\in A$ als volgt:
+      \[ d(x_{n},y_{n}) < \frac{1}{n} \]
+      We construeren zo de rij $(y_{n})_{n}$ in $A$.
+      $(y_{n})_{n}$ heeft dan een convergente deelrij $(y_{n_{k}})_{k}$ met limiet, zeg $y$, in $\overline{A}$.
+      We beweren nu dat $(x_{n_{k}})_{k}$ ook naar $y$ convergeert.
+      Kies willekeurig een $\epsilon\in\mathbb{R}$ en beschouw de volgende afschatting:
+      \[ d(x_{n_{k}},y) \le d(x_{n_{k}}-y_{n_{k}}) + d(y_{n_{k}},y) \]
+      Kies $k_{1}\in\mathbb{N}$ zodat $\frac{1}{n_{k_{1}}}$ kleiner is dan $\frac{\epsilon}{2}$.
+      Kies $k_{2}\in\mathbb{N}$ zodat $d(y_{n_{k}},y)$ kleiner is dan $\frac{\epsilon}{2}$ voor alle volgende $k \in\mathbb{N}$.
+      We vinden dan het volgende voor alle $k\in\mathbb{N}$ groter dan $K = \max\{k_{1},k_{2}\}$.
+      \begin{align*}
+        d(x_{n_{k}},y)
+        &\le d(x_{n_{k}}-y_{n_{k}}) + d(y_{n_{k}},y)\\
+        &= \frac{1}{n_{k}} + d(y_{n_{k}},y)\\
+        &< \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+        &= \epsilon
+      \end{align*}
+    \end{itemize}
+  \end{proof}
+\end{st}
 
 
 \subsection{Samenhangende verzamelingen}
