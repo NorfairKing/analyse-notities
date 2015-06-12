@@ -769,15 +769,28 @@
   \label{fig:compactheid}
 \end{figure}
 
-\begin{gst}
+\begin{st}
   \stiekem{Juni 2014}
+  Zij $A$ een compacte deelverzameling van een metrische ruimte $X,d$, dan is $\overline{A}$ compact.
+  
+  \begin{proof}
+    Omdat $A$ compact is, is $A$ rijcompact.\stref{st:compact-dan-rijcompact}
+    Omdat $A$ rijcompact is, is $A$ gesloten.\stref{st:rijcompact-dan-gesloten}
+    Omdat $A$ gesloten is, is $A$ gelijk aan $\overline{A}$ en is $\overline{A}$ dus compact.
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  \stiekem{Juni 2014}
+  Het omgekeerde van bovenstaande stelling geldt niet.
   Als $\overline{A}$ compact is, \textbf{hoeft} $A$ \textbf{niet} compact te zijn.
 
   \begin{proof}
-    Beschouw $\mathbb{Q}$.
-    De sluiting van $\mathbb{Q}$ is $\mathbb{R}$, wat compact is in $\mathbb{R}$, maar $\mathbb{Q}$ is niet compact. 
+    Beschouw $\interval[open]{0}{1}$.
+    Deze verzameling is niet compact, de rij $\left(\frac{1}{n}\right)_{n}$ heeft immers geen convergente deelrij.
+    De sluiting $\interval{0}{1}$ is echter wel compact.
   \end{proof}
-\end{gst}
+\end{tvb}
 
 
 \subsection{Samenhangende verzamelingen}

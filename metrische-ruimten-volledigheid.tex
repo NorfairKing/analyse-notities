@@ -63,73 +63,6 @@
   \end{proof}
 \end{gev}
 
-\begin{bpr}
-  De metrische ruimte $C\left( \interval{-1}{1} \right),d_{1}$ is niet volledig.
-
-  \begin{proof}
-    Het volstaat om een voorbeeld te geven van een $d_{1}$-Cauchyrij $(f_{n})_{n}$ die voor de $d_{1}$-metriek niet convergeert.
-    Beschouw daartoe de rij $(f_{n})_{n}$ als volgt:
-
-    \noindent
-    \begin{minipage}{.45\textwidth}
-      \begin{figure}[H]
-        \centering
-        \begin{tikzpicture}[scale=.75]
-          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
-            \addplot[smooth,domain=-1:1]{x};
-            \foreach \i in {2,...,10}
-            {
-              \addplot[smooth,domain=-1:(-1/\i)]{-1};
-              \addplot[smooth,domain=(-1/\i):(1/\i)]{\i*x};
-              \addplot[smooth,domain=(1/\i):1]{1};
-            }
-            \addplot[smooth,color=red,ultra thick,domain=-1:0]{-1};
-            \addplot[smooth,color=red,ultra thick,domain=0:1]{1};
-            \addplot[soldot,color=red] coordinates{(-1,-1)(0,0)(1,1)};
-            \addplot[holdot,color=red,fill=white] coordinates{(0,1)(0,-1)};
-          \end{axis}
-        \end{tikzpicture}
-      \end{figure}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-      \[
-      f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
-      \left\{
-        \begin{array}{rl}
-          -1 & \text{ als } x \in \interval[open left ]{-\infty}{-\frac{1}{n}}\\
-          nx & \text{ als } x \in \interval[open      ]{-\frac{1}{n}}{\frac{1}{n}}\\
-          1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
-        \end{array}
-      \right.
-      \]
-      \[
-      f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
-      \left\{
-        \begin{array}{rl}
-          -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
-          0  & \text{ als } x = 0\\
-          1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
-        \end{array}
-      \right.
-      \]
-    \end{minipage}
-    
-    Voor alle $n_{0}\in \mathbb{N}$ en $n,m\in \mathbb{N}$, groter dan $n_{0}$, vinden we het volgende:
-    \[ d_{1}(f_{n},f_{m}) \le \frac{1}{n_{0}} \]
-    De rij $(f_{n})_{n}$ is dus een $d_{1}$-Cauchyrij.
-    De rij $(f_{n})_{n}$ convergeert bovendien puntsgewijs naar $f$, maar $f$ is niet continu en behoort dus niet tot $C\left(\interval{-1}{1}\right)$.
-    Benoem $\delta_{g}$ voor elke $g\in C\left(\interval{-1}{1}\right)$ als volgt:
-    \[ \delta_{g} = \int_{-1}^{1}|f(t)-g(t)|\ dt \]
-    Voor elke $g\in C\left(\interval{-1}{1}\right)$ en $n\in\mathbb{N}_{0}$ vinden we dan het volgende:
-    \begin{align*}
-      d_{1}(f,g)
-      &= \int_{-1}^{1}|f_{n}(t)-g(t)|\ dt\\
-      &\ge \int_{-1}^{1}|f(t)-g(t)|\ dt-\int_{-1}^{1}|f_{n}(t)-f(t)|\ dt
-      &= \delta_{g}-\frac{1}{n}
-    \end{align*}
-    De rij $(f_{n})_{n}$ kan dus niet naar een $g\in C(\interval{-1}{1})$ convergeren voor de $d_{1}$-metriek.
-  \end{proof}
-\end{bpr}
 
 \begin{bpr}
   De metrische ruimte $\mathcal{F},h$, met $\mathcal{F}$ de verzameling van niet-lege compacte delen van $\mathbb{R}^{p}$, is volledig.
@@ -359,6 +292,25 @@
 \begin{de}
   We noemen de $X_{v},d_{v}$ hierboven de \term{vervollediging} van $X,d$.
 \end{de}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte.
+  $C_{u}(X)$ is de verzameling van alle uniform continue functies $f:\ X \rightarrow \mathbb{R}$.
+\end{de}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $X,d$ een metrische ruimte met vervollediging $X_{v},d_{v}$.
+  Noteer de beperking van en functie $f\in C_{u}(X_{v})$ tot $X$ als $r(f)$.
+  \[ f \in C_{u}(X_{v}) \Rightarrow r(f) \in C_{u}(X) \]
+
+\TODO{bewijs}
+\end{st}
+
+\begin{opm}
+    Merk op dat we hier $X$ als deelverzameling beschouwen van $X_{v}$ en niet meer over de isometrische inbedding spreken.
+    $X$ is dus een deelverzameling van $X_{v}$ die er dicht in ligt.
+\end{opm}
 
 \subsection{Contructie van $\mathbb{R}$}
 \label{sec:contr-van-mathbbr}

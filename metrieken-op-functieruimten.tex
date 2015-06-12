@@ -319,28 +319,31 @@ Let wel op de ongelijheid met het supremum.
   \end{proof}
 \end{vb}
 
+
 \begin{vb}
-  De metrische ruimte $C(\interval{a}{b}),d_{1}$ is in het algemeen niet volledig.
+  De metrische ruimte $C\left( \interval{-1}{1} \right),d_{1}$ is niet volledig.
 
   \begin{proof}
-    Beschouw de rij van functies $(f_{n})_{n}$ en de limiet $f$ ervan als volgt:
+    Het volstaat om een voorbeeld te geven van een $d_{1}$-Cauchyrij $(f_{n})_{n}$ die voor de $d_{1}$-metriek niet convergeert.
+    Beschouw daartoe de rij $(f_{n})_{n}$ als volgt:
 
     \noindent
     \begin{minipage}{.45\textwidth}
       \begin{figure}[H]
         \centering
         \begin{tikzpicture}[scale=.75]
-          \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-1.1, xmax=1.1]
-            \foreach \i in {1,...,25}
+          \begin{axis}[ymin=-1.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+            \addplot[smooth,domain=-1:1]{x};
+            \foreach \i in {2,...,10}
             {
-              \addplot[smooth,domain=-1:0]{0};
-              \addplot[smooth,domain=0:(1/\i)]{\i*x};
-              \addplot[smooth,domain=(1/\i):3]{1};
+              \addplot[smooth,domain=-1:(-1/\i)]{-1};
+              \addplot[smooth,domain=(-1/\i):(1/\i)]{\i*x};
+              \addplot[smooth,domain=(1/\i):1]{1};
             }
-            \addplot[smooth,color=red,ultra thick,domain=-1:0]{0};
-            \addplot[smooth,color=red,ultra thick,domain=0:3]{1};
-            \addplot[soldot,color=red] coordinates{(0,0)(1,1)(-1,0)};
-            \addplot[holdot,color=red,fill=white] coordinates{(0,1)};
+            \addplot[smooth,color=red,ultra thick,domain=-1:0]{-1};
+            \addplot[smooth,color=red,ultra thick,domain=0:1]{1};
+            \addplot[soldot,color=red] coordinates{(-1,-1)(0,0)(1,1)};
+            \addplot[holdot,color=red,fill=white] coordinates{(0,1)(0,-1)};
           \end{axis}
         \end{tikzpicture}
       \end{figure}
@@ -350,7 +353,8 @@ Let wel op de ongelijheid met het supremum.
       f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
       \left\{
         \begin{array}{rl}
-          nx & \text{ als } x \in \interval[open      ]{0}{\frac{1}{n}}\\
+          -1 & \text{ als } x \in \interval[open left ]{-\infty}{-\frac{1}{n}}\\
+          nx & \text{ als } x \in \interval[open      ]{-\frac{1}{n}}{\frac{1}{n}}\\
           1  & \text{ als } x \in \interval[open right]{\frac{1}{n}}{+\infty}\\
         \end{array}
       \right.
@@ -359,15 +363,28 @@ Let wel op de ongelijheid met het supremum.
       f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
       \left\{
         \begin{array}{rl}
+          -1 & \text{ als } x \in \interval[open]{-\infty}{0}\\
           0  & \text{ als } x = 0\\
           1  & \text{ als } x \in \interval[open]{0}{+\infty}\\
         \end{array}
       \right.
       \]
     \end{minipage}
-
-    Dit is een Cauchyrij die convergeert naar een niet-continue functie $f$.
-    \extra{bewijs}
+    
+    Voor alle $n_{0}\in \mathbb{N}$ en $n,m\in \mathbb{N}$, groter dan $n_{0}$, vinden we het volgende:
+    \[ d_{1}(f_{n},f_{m}) \le \frac{1}{n_{0}} \]
+    De rij $(f_{n})_{n}$ is dus een $d_{1}$-Cauchyrij.
+    De rij $(f_{n})_{n}$ convergeert bovendien puntsgewijs naar $f$, maar $f$ is niet continu en behoort dus niet tot $C\left(\interval{-1}{1}\right)$.
+    Benoem $\delta_{g}$ voor elke $g\in C\left(\interval{-1}{1}\right)$ als volgt:
+    \[ \delta_{g} = \int_{-1}^{1}|f(t)-g(t)|\ dt \]
+    Voor elke $g\in C\left(\interval{-1}{1}\right)$ en $n\in\mathbb{N}_{0}$ vinden we dan het volgende:
+    \begin{align*}
+      d_{1}(f,g)
+      &= \int_{-1}^{1}|f_{n}(t)-g(t)|\ dt\\
+      &\ge \int_{-1}^{1}|f(t)-g(t)|\ dt-\int_{-1}^{1}|f_{n}(t)-f(t)|\ dt
+      &= \delta_{g}-\frac{1}{n}
+    \end{align*}
+    De rij $(f_{n})_{n}$ kan dus niet naar een $g\in C(\interval{-1}{1})$ convergeren voor de $d_{1}$-metriek.
   \end{proof}
 \end{vb}
 
