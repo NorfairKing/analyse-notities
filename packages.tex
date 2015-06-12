@@ -59,7 +59,8 @@
 \usetikzlibrary{topaths}
 
 %\iffalse
-\tikzexternalize[prefix=figures/,mode=list and make]
+\tikzexternalize[prefix=figures/]
+%\tikzexternalize[mode=list and make]
 \tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 \makeatletter
 \renewcommand{\todo}[2][]{

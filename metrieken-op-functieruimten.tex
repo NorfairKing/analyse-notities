@@ -168,9 +168,10 @@ Let wel op de ongelijheid met het supremum.
 \extra{bewijs}
 \end{vb}
 
-%\begin{opm}
-%  In deze metrische ruimte is het moeilijk om open bollen te tekenen, het inwendige van een niet-open %deel van $C(\interval{a}{b})$ is namelijk steeds leeg.
-%\end{opm}
+\begin{opm}
+  In deze metrische ruimte is het moeilijk om open bollen te tekenen.
+  Ze kunnen niet eenvoudiger omschreven worden dan vanuit de definitie.
+\end{opm}
 
 \begin{vb}
   De metrische ruimte $C(\interval{a}{b}),d_{1}$ is een genormeerde vectorruimte $\mathbb{R},C(\interval{a}{b}),+,\Vert\cdot\Vert$:
@@ -178,7 +179,6 @@ Let wel op de ongelijheid met het supremum.
 
   \begin{proof}
     \noindent
-
     \begin{itemize}
     \item Een functie heeft norm nul als en slechts als het de nulfunctie is.
     \item $\forall f\in C(\interval{a}{b}), \forall \lambda \in \mathbb{R}:\ \int_{a}^{b}|\lambda f|\ dx = |\lambda|\int_{a}^{b}\|f(x)\|\ dx$
@@ -298,6 +298,28 @@ Let wel op de ongelijheid met het supremum.
 \end{vb}
 
 \begin{vb}
+  \stiekem{Juni 2014}
+  Beschouw de deelverzameling $A$ van $C(\interval{0}{1})$ als volgt:
+  \[ A = \left\{ f \in C(\interval{0}{1}) \mid \forall x\in \interval{0}{1}:\ f(x) \ge 0 \right\} \]
+  $\mathring{A}$ is leeg en $\overline{A}$ is $A$ want $A$ is gesloten.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $\mathring{A}$ is leeg.\\
+      Stel immers dat er een $f\in \mathring{A}$ zou bestaan, dan zou er een $\delta \in \mathbb{R}_{0}^{+}$ bestaan zodat de open bol $B(f,\delta)$ een deel zou zijn van $A$.
+      Door $f$ aan te passen met een lange dunne piek van oppervlakte $\delta$ kunnen we echter $f$ veranderen naar een functie met minstens \'e\'en waarde kleiner dan nul.
+      $B(f,\delta)$ zou die aangepaste functie bevatten en dus niet geheel tot $A$ behoren.
+    \item $\overline{A}$ is heel $C(\interval{0}{1})$.\\
+      Kies willekeurig een convergente rij functies $(f_{n})_{n})$ in $C(\interval{0}{1})$ en stel dat de limietfunctie $f$ niet tot $A$ behoort.
+      Dan bestaat er een $x\in\interval{0}{1}$ zodat $f(x)<0$ geldt.
+      Om willekeurig dicht bij $f$ te komen moet $f_{n}$ voor $n$ groot genoeg ook negatief worden in een bepaald punt en dus niet tot $A$ behoren.
+      Contradictie.
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
   De metrische ruimte $C(\interval{a}{b}),d_{1}$ is in het algemeen niet volledig.
 
   \begin{proof}
@@ -308,14 +330,16 @@ Let wel op de ongelijheid met het supremum.
       \begin{figure}[H]
         \centering
         \begin{tikzpicture}[scale=.75]
-          \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-0.1, xmax=1.1]
+          \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-1.1, xmax=1.1]
             \foreach \i in {1,...,25}
             {
+              \addplot[smooth,domain=-1:0]{0};
               \addplot[smooth,domain=0:(1/\i)]{\i*x};
               \addplot[smooth,domain=(1/\i):3]{1};
             }
+            \addplot[smooth,color=red,ultra thick,domain=-1:0]{0};
             \addplot[smooth,color=red,ultra thick,domain=0:3]{1};
-            \addplot[soldot,color=red] coordinates{(0,0)(1,1)};
+            \addplot[soldot,color=red] coordinates{(0,0)(1,1)(-1,0)};
             \addplot[holdot,color=red,fill=white] coordinates{(0,1)};
           \end{axis}
         \end{tikzpicture}
@@ -341,6 +365,7 @@ Let wel op de ongelijheid met het supremum.
       \right.
       \]
     \end{minipage}
+
     Dit is een Cauchyrij die convergeert naar een niet-continue functie $f$.
     \extra{bewijs}
   \end{proof}
