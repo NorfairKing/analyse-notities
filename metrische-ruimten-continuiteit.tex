@@ -319,7 +319,7 @@
 
 \begin{opm}
   \stiekem{Augustus 2014}
-  Bovenstaande definitie is compactiebel met de definitie van ``naar $a$ gaan op oneindig'' in $\mathbb{R}$.
+  Bovenstaande definitie is compactibel met de definitie van ``naar $a$ gaan op oneindig'' in $\mathbb{R}$.
 
   \begin{proof}
     \noindent
@@ -401,12 +401,12 @@
 \begin{st}
   \stiekem{Augustus 2014}
   Zij $X,d$ een metrische ruimte en $a\in X$.
-  De sluiting $C_{a}(X)$ voor de $d_{\infty}$ metriek is de verzameling van alle \textbf{niet noodzakelijk continue} functies die op oneindig naar $a$ gaan.
-
+  De sluiting $C_{a}(X)$ voor de $d_{\infty}$ metriek is $C_{a}(X)$ zelf want $C_{a}(X)$ is gesloten.
   \begin{proof}
+
+\iffalse
     \noindent
-    \begin{itemize}
-    \item $C_{a}(X)$ is zelf niet gesloten:\\
+    $C_{a}(X)$ is zelf niet gesloten:\\
       Kies $a=0$
       We construeren een rij van functies waarvan de limietfunctie niet tot $C_{0}(X)$ behoort:
 
@@ -452,7 +452,9 @@
         \right.
         \]
       \end{minipage}
-    \item Elke rij van functies $(f_{n})_{n}$ in $C_{a}(X)$ convergeert naar een functie die naar $a$ gaat op oneindig:\\
+\fi
+
+      Elke rij van functies $(f_{n})_{n}$ in $C_{a}(X)$ convergeert naar een functie die naar $a$ gaat op oneindig:\\
       Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, dan bestaat er voor elke $n\in\mathbb{N}$ een compact deel $K_{n}$ van $X$ als volgt:
       \[ \forall x\in X \setminus K_{n}: |f_{n}(x)-a| < \frac{\epsilon}{2} \]
       Kies nu $K = \bigcap_{n}K_{n}$, dan is $K$ ook compact.\prref{pr:gesloten-deel-van-compact-is-compact}
@@ -461,7 +463,7 @@
       Kies tenslotte willekeurig een $x\in X\setminus K$, dan ligt $f(x)$ dichter dan $\epsilon$ bij $0$:
       \[ |f(x)| \le |f(x) - f_{n}(x)| + |f_{n}(x)-a| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
       $f$ gaat dus naar $a$ op oneindig.
-    \end{itemize}
+      $f$ is bovendien continu want $(f_{n})_{n}$ convergeert volgens $d_{\infty}$ (dus continu) naar $f$.\stref{st:uniform-convergente-rij-functies-dan-asa-continu}
   \end{proof}
 \end{st}
 
