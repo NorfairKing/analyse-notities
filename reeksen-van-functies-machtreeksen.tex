@@ -183,11 +183,11 @@
 
   \begin{proof}
     Bewijs uit het ongerijmde: Stel dat de convergentiestraal strikt groter is dan $1$.\\
-    Er bestaat dan een $y\in \mathbb{C}$ zodat $|z-y| > 1$ geldt maar ook $\sum_{n}c_{n}(z-a)^{n} \in\mathbb{C}$.
+    Er bestaat dan een $y\in \mathbb{C}$ zodat $|z-y| > 1$ geldt maar ook $\sum_{n}|c_{n}(z-y)^{n}| \in\mathbb{C}$.
     Omdat $(c_{n})_{n}$ onbegrensd is, bestaat er een $n_{0}\in\mathbb{N}$ als volgt:
     \[ \forall n\in\mathbb{N}:\ n\ge n_{0} \Rightarrow |c_{n}| > 1 \]
     We vinden dan het volgende:
-    \[ \sum_{n=n_{0}}^{\infty}c_{n}(z-a)^{n} > \sum_{n=n_{0}}^{\infty} (z-a)^{n} \ge \sum_{n}(z-a)^{n} \]
+    \[ \sum_{n=n_{0}}^{\infty}\left|c_{n}(z-y)^{n}\right| > \sum_{n=n_{0}}^{\infty}\left|(z-y)^{n}\right| \ge \sum_{n}\left|(z-y)^{n}\right| \]
     Van die laatste uitdrukking weten we dat de reeks niet convergeert, dus kan de machtreeks ook niet convergeren.
     Contradictie.
   \end{proof}
