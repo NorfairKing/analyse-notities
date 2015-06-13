@@ -308,6 +308,164 @@
   \end{proof}
 \end{st}
 
+\section{Limieten van functies}
+\label{sec:limi-van-funct}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte
+  Men zegt dat een functie $f:\ X \rightarrow \mathbb{R}$ ``naar $a$ gaat op oneindig'' als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \text{ compact } K \subseteq X, \forall x\in X \setminus K:\ |f(x)-a|< \epsilon \]
+\end{de}
+
+\begin{opm}
+  \stiekem{Augustus 2014}
+  Bovenstaande definitie is compactiebel met de definitie van ``naar $a$ gaan op oneindig'' in $\mathbb{R}$.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies $\epsilon$ willekeurig en zij $K$ een compact in $\mathbb{R}$ zodat erbuiten alle waarden van $f$ dichter dan $\epsilon$ bij $a$ liggen.
+      Omdat $K$ compact is, is $K$ gesloten en begrensd.-
+      Er bestaat dus een $M\in\mathbb{R}^{+}$ zodat voor alle $x\in \mathbb{R}$ met $|x|>M$, $x$ buiten $K$ ligt en dus dichter dan $\epsilon$ bij $a$.
+      Zowel op $+\infty$ als op $-\infty$ is dus de limiet van $f$ $a$.
+    \item $\Leftarrow$\\
+      Kies $\epsilon$ willekeurig en stel dat $f$ zowel op $+\infty$ als op $-\infty$ naar $a$ gaat.
+      Er bestaan dan getallen $N_{-},N_{+}\in\mathbb{R}^{+}$ als volgt:
+      \[ \forall x\in \mathbb{R}:\ x < N_{-} \Rightarrow |f(x)-a|< \epsilon \]
+      \[ \forall x\in \mathbb{R}:\ x < N_{+}  \Rightarrow |f(x)-a|< \epsilon \]
+      Kies nu $N = \max\{|N_{-}|,|N_{+}|\}$, dan liggen alle waarden van $f$ buiten $\interval{-N}{N}$ dichter dan $\epsilon$ bij $a$.
+      Dit interval is gesloten en begrensd in $\mathbb{R}$ en dus compact.
+    \end{itemize}
+  \end{proof}
+\end{opm}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  Definieer $C_{a}(X)$ als de verzameling van continue functies $f:\ X \rightarrow \mathbb{R}$ die naar $a$ gaan op oneindig.
+\end{de}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte.
+  Definieer $C_{b}(X)$ als de verzameling van continue functies $f:\ X \rightarrow \mathbb{R}$.
+\end{de}
+
+\begin{st}
+  \stiekem{Augustus 2014}
+  \label{st:continu-naar-a-op-oneindig-dan-begrensd}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  Een continue functie $f:\ X \rightarrow \mathbb{R}$ die naar $a$ gaat op oneindig is begrensd.
+  \[ C_{0}(X) \subseteq C_{b}(X) \]
+
+  \begin{proof}
+    Zij $f:\ X \rightarrow\mathbb{R}$ een functie die naar $a$ gaat op oneindig.
+    Fixeer een $\epsilon \in\mathbb{R}_{0}^{+}$.
+    Er bestaat dan een compacte deelverzameling $K$ van $X$ waarbuiten alle waarden van $f$ dichter dan $\epsilon$ bij $a$ liggen.
+    Buiten $K$ (dus in $X\setminus K$) is $f$ dus al begrensd.
+    Er rest ons dus nog te bewijzen dat $f(K)$ begrensd.
+    We weten dat het beeld van een compacte verzameling ook compact is, want $f$ is continu.\stref{st:beeld-van-compact-ook-compact}
+    Omdat $f(K)$ compact is, is het ook begrensd\stref{st:compact-dan-rijcompact}\prref{pr:rijcompact-dan-totaal-begrensd}\prref{pr:totaal-begrensd-dan-begrensd} en dus is $f$ begrensd door het maximum van de grens voor $f(K)$ en $\epsilon$.
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+
+  \begin{proof}
+    Beschouw eender welke constante functie verschillend van de $a$.
+    Die is begrensd maar gaat niet naar $a$ op oneindig.
+  \end{proof}
+\end{tvb}
+
+\begin{st}
+  \stiekem{Augustus 2014}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  Het inwendige van $C_{a}(X)$ voor de $d_{\infty}$ metriek op functies $X\rightarrow \mathbb{R}$ is leeg.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat $\mathring{C_{a}(X)}$ niet leeg is.\\
+    Er bestaat dan een $f:\ X \rightarrow \mathbb{R} \in \mathring{C_{a}(X)}$.
+    Omdat $f$ in het inwendige van $C_{a}(X)$ zit, bestaat er een $\delta$ als volgt:
+    \[ B(f,\delta) \subseteq C_{a}(X) \]
+    Beschouw nu de functie $g$ als volgt:
+    \[ g:\ X \rightarrow \mathbb{R}:\ x \mapsto |f(x)| + \frac{\delta}{2} \]
+    Deze functie behoort tot $B(f,\delta)$, maar niet tot $C_{a}(X)$:
+    Stel immers dat $g$ wel tot $C_{a}(X)$ zou behoren, kies dan $\epsilon = \frac{\delta}{4}$ en dan moet er een compacte deelverzameling $K$ van $X$ bestaan als volgt:
+    \[ \forall x\in X\setminus K:\ |g(x)-a| < \epsilon \]
+    Kies echter een $x\in X\setminus K$, dan geldt het volgende:
+    \[ |g(x)-a| = \left||f(x)| + \frac{\delta}{2} - a\right| \ge |f(x)-a| + \frac{\delta}{2} = |f(x)-a| + 2\epsilon \ge \epsilon \]
+    Contradictie.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \stiekem{Augustus 2014}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  De sluiting $C_{a}(X)$ voor de $d_{\infty}$ metriek is de verzameling van alle \textbf{niet noodzakelijk continue} functies die op oneindig naar $a$ gaan.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $C_{a}(X)$ is zelf niet gesloten:\\
+      Kies $a=0$
+      We construeren een rij van functies waarvan de limietfunctie niet tot $C_{0}(X)$ behoort:
+
+      \noindent
+      \begin{minipage}{.45\textwidth}
+        \begin{figure}[H]
+          \centering
+          \begin{tikzpicture}[scale=.75]
+            \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+              \foreach \n in {1,...,10}
+              {
+                \addplot[smooth,domain=-3:(-1/\n)]{0};
+                \addplot[smooth,domain=-(1/\n):0]{1+\n*x};
+                \addplot[smooth,domain=0:(1/\n)]{1-\n*x};
+                \addplot[smooth,domain=(1/\n):3]{0};
+              }
+              \addplot[smooth,color=red,ultra thick,domain=-3:0]{0};
+              \addplot[smooth,color=red,ultra thick,domain=0:3]{0};
+              \addplot[soldot,color=red] coordinates{(0,1)};
+              \addplot[holdot,color=red,fill=white] coordinates{(0,0)};
+            \end{axis}
+          \end{tikzpicture}
+        \end{figure}
+      \end{minipage}
+      \begin{minipage}{.45\textwidth}
+        \[
+        f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+        \left\{
+          \begin{array}{rl}
+            0 &\text{ als } x \not \in \interval{-\frac{1}{n}}{\frac{1}{n}}\\
+            1+nx &\text{ als } x \in \interval{-\frac{1}{n}}{0}\\
+            1-nx &\text{ als } x \in \interval{0}{\frac{1}{n}}\\
+          \end{array}
+        \right.
+        \]
+        \[
+        f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+        \left\{
+          \begin{array}{rl}
+            0 & \text{ als } x \neq 0 \\
+            1  & \text{ als } x = 0\\
+          \end{array}
+        \right.
+        \]
+      \end{minipage}
+    \item Elke rij van functies $(f_{n})_{n}$ in $C_{a}(X)$ convergeert naar een functie die naar $a$ gaat op oneindig:\\
+      Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, dan bestaat er voor elke $n\in\mathbb{N}$ een compact deel $K_{n}$ van $X$ als volgt:
+      \[ \forall x\in X \setminus K_{n}: |f_{n}(x)-a| < \frac{\epsilon}{2} \]
+      Kies nu $K = \bigcap_{n}K_{n}$, dan is $K$ ook compact.\prref{pr:gesloten-deel-van-compact-is-compact}
+      Omdat $(f_{n})_{n}$ naar $f$ convergeert, bestaat er een $N\in\mathbb{N}$ als volgt:
+      \[ \forall n\in\mathbb{N}:\ |f(x)-f_{n}(x)| < \frac{\epsilon}{2} \]
+      Kies tenslotte willekeurig een $x\in X\setminus K$, dan ligt $f(x)$ dichter dan $\epsilon$ bij $0$:
+      \[ |f(x)| \le |f(x) - f_{n}(x)| + |f_{n}(x)-a| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+      $f$ gaat dus naar $a$ op oneindig.
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+
 
 \end{document}
 
