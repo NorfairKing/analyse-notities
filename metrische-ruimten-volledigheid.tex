@@ -304,13 +304,112 @@
   Noteer de beperking van en functie $f\in C_{u}(X_{v})$ tot $X$ als $r(f)$.
   \[ f \in C_{u}(X_{v}) \Rightarrow r(f) \in C_{u}(X) \]
 
-\TODO{bewijs}
+\TODO{dit is compleet triviaal?}
 \end{st}
 
 \begin{opm}
     Merk op dat we hier $X$ als deelverzameling beschouwen van $X_{v}$ en niet meer over de isometrische inbedding spreken.
     $X$ is dus een deelverzameling van $X_{v}$ die er dicht in ligt.
 \end{opm}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $X,d$ een metrische ruimte met vervollediging $X_{v},d_{v}$.
+  De beperkingsfunctie $r$ als volgt is bijectief.
+  \[ r:\ C_{u}(X_{v}) \rightarrow C_{u}(X):\ f \mapsto f|_{X}\]
+  
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $r$ is injectief:\\
+      Zij $r(f)$ en $r(g)$ gelijk, dan moeten $f$ en $g$ gelijk zijn:
+      Kies immers een willekeurig punt $c\in X_{v}$. 
+      Omdat $c$ een punt is in de sluiting van $X$, bestaat er een rij $(x_{n})_{n}$ in $X$ met $c$ als limiet.
+      Omdat $f$ en $g$ beide continu zijn, moeten $(f(x_{n}))_{n}$ en $(g(x_{n}))_{n}$ respectievelijk naar $f(c)$ en $g(c)$ convergeren.
+      Omdat $(f(x_{n}))_{n}$ en $(g(x_{n}))_{n}$ gelijk zijn moeten dus ook $f(c)$ en $g(c)$ gelijk zijn.
+      Omdat $c$ willekeurig gekozen was in $X_{v}$ zijn $f$ en $g$ over heel $X_{v}$ gelijk.
+    \item $r$ is surjectief:\\
+      Zij $f$ een functie is $C_{u}(X)$, dan bestaat er een uniform continue uitbreiding $g$ van $f$.
+      Voor elke $x\in X_{v}$ bestaat er een rij $(x_{n})_{n}$ in $X$ die naar $x$ convergeert.
+      $g(x)$ is dan gedefinieerd als de limiet $g(x) = \lim_{n\rightarrow \infty}f(x_{n})$.
+      \begin{itemize}
+      \item $g$ is goed gedefinieerd, 't is te zeggen onafhankelijk van de gekozen rij in $X$:\\
+        Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee rijen in $X$ die naar \'e\'enzelfde punt $x\in X_{v}$ convergeren.
+        We moeten bewijzen dat $(f(x_{n}))_{n}$ en $(f(y_{n}))_{n}$ naar hetzelfde punt convergeren.
+        \begin{itemize}
+        \item 
+          Kies willekeurig een $n\in\mathbb{N}$, dan bestaat er, omdat $f$ uniform continu is, een $\delta\in\mathbb{R}$ zodat uit $d(x_{n},y_{n})< \delta$ volgt dat $|f(x_{n})-f(y_{n})|<\epsilon$ geldt.
+        \item 
+          Omdat $(x_{n})_{n}$ naar $x$ convergeert, bestaat er een $n_{x}\in\mathbb{N}$ als volgt:
+          \[ \forall n\in\mathbb{N}:\ n \ge n_{x} \Rightarrow d(x,x_{n}) < \frac{\delta}{2} \]
+        \item 
+          Omdat $(y_{n})_{n}$ ook naar $x$ convergeert, bestaat er een $n_{y}\in\mathbb{N}$ als volgt:
+          \[ \forall n\in\mathbb{N}:\ n \ge n_{y} \Rightarrow d(x,y_{n}) < \frac{\delta}{2} \]
+        \end{itemize}
+        Kies nu $N = \max\{ n_{x}, n_{y}\}$ en kies een $n\in\mathbb{N}$, groter dan $N$, dan geldt het volgende:
+        \begin{align*}
+          d(x_{n},y_{n})
+          &\le d(x_{n},x) + d(x,y_{n})\\
+          &< \frac{\delta}{2} + \frac{\delta}{2}\\
+          &= \delta
+        \end{align*}
+        Dit houdt precies in dat $|f(x_{n}),f(y_{n})|$ kleiner zal zijn dan $\epsilon$ en dus dat $\left(|f(x_{n})-f(y_{n})|\right)_{n}$ naar $0$ convergeert.
+        $g$ is dus goed gedefinieerd.
+      \item $g$ is uniform continu:\\
+        Merk eerst de volgende ongelijkheden op voor willekeurige $x,y\in X_{v}$ en $n\in\mathbb{N}$:
+        \begin{align*}
+          d(x_{n},y_{n}) &\le d(x_{n},x) + d(x,y) + d(y,y_{n})\\
+          |g(x)-g(y)| &\le |g(x)-f(x_{n})| + |f(x_{n})-f(y_{n})| + |f(y_{n})-g(y)|
+        \end{align*}
+        Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$.
+        \begin{itemize}
+        \item 
+          Omdat $(f(x_{n}))_{n}$ per definite van $g$ naar $g(x)$ convergeert en $(f(y_{n}))_{n}$ naar $g(y)$, bestaan er twee getallen $n_{x}\in\mathbb{N}$ en $n_{y}\in\mathbb{N}$ als volgt:
+          \begin{align*}
+            \forall n\in\mathbb{N}:\ n\ge n_{x}\Rightarrow |g(x)-f(x_{n})| < \frac{\epsilon}{3}\\
+            \forall n\in\mathbb{N}:\ n\ge n_{y}\Rightarrow |g(y)-f(y_{n})| < \frac{\epsilon}{3}
+          \end{align*}
+        \item Omdat $f$ uniform continu is, bestaat er een $\xi\in\mathbb{R}_{0}^{+}$ als volgt:
+          \[ d(x_{n},y_{n}) < \xi \Rightarrow |f(x_{n}),f(y_{n})| < \frac{\epsilon}{3} \]
+        \item Omdat $(x_{n})_{n}$ naar $x$ convergeert en $(y_{n})_{n}$ naar $y$, bestaan er twee getallen $N_{x}\in\mathbb{N}$ en $N_{y}\in\mathbb{N}$ als volgt:
+          \begin{align*}
+            \forall n\in\mathbb{N}:\ n\ge N_{x}\Rightarrow d(x,x_{n}) < \frac{\xi}{3}\\
+            \forall n\in\mathbb{N}:\ n\ge N_{y}\Rightarrow d(y,y_{n}) < \frac{\xi}{3}
+          \end{align*}
+        \end{itemize}
+        Kies nu $\delta = \frac{\xi}{3}$ en $N = \max\{n_{x},n_{y},N_{x},N_{Y}\}$
+        Uit $d(x,y)<\delta)$ volgt nu:
+        \begin{align*}
+          d(x_{n},y_{n})
+          &\le d(x_{n},x) + d(x,y) + d(y,y_{n})\\
+          &< \frac{\xi}{3} + \frac{\xi}{3} + \frac{\xi}{3}\\
+          &= \xi
+        \end{align*}
+        \begin{align*}
+          |g(x)-g(y)|
+          &\le |g(x)-f(x_{n})| + |f(x_{n})-f(y_{n})| + |f(y_{n})-g(y)|\\
+          &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\
+          &= \epsilon
+        \end{align*}
+        $g$ is dus uniform continu op $X_{v}$.
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als we gewoon continue functies beschouwen.
+  Meer specifiek: Als $f:\ X \rightarrow \mathbb{R}$ een niet-uniform continue, maar wel continue functie is, \textbf{hoeft} er nog \textbf{geen} continue uitbreiding van $f$ naar $X_{v}$ te bestaan.
+
+  \begin{proof}
+    Beschouw de functie $f$ als volgt:
+    \begin{align*}
+      f:\ \mathbb{Q} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x^{2}-2}
+    \end{align*}
+    Deze functie heeft geen continue uitbreiding naar $\mathbb{R}$.
+  \end{proof}
+\end{tvb}
+
 
 \subsection{Contructie van $\mathbb{R}$}
 \label{sec:contr-van-mathbbr}
