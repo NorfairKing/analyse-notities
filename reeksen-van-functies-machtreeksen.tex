@@ -123,6 +123,7 @@
 \end{opm}
 
 \begin{bst}
+  \label{st:worteltest}
   Beschouw een machtreeks $\sum_{n}c_{n}(z-a)^{n}$ rond een $a\in \mathbb{C}$.
   Benoem als volgt:
   \[ \gamma = \limsup_{n \rightarrow \infty}\sqrt[n]{|c_{n}|} \quad\text{ en }\quad R = \frac{1}{\gamma} \]
@@ -162,6 +163,19 @@
 \end{vb}
 
 \extra{voorbeelden onderaan p 17}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks waarbij $(c_{n})_{n}$ een begrensde rij is, dan is de convergentiestraal van de reeks strikt groter dan $1$.
+
+  \begin{proof}
+    Omdat $(c_{n})_{n}$ een begrensde rij is, bestaat er een $M\in\mathbb{R}^{+}$ als volgt
+    \[ \forall n\in\mathbb{N}:\ |c_{n}| < M \]
+    We gebruiken de worteltest.\stref{st:worteltest}
+    \[ \limsup_{n\rightarrow +\infty}\sqrt[n]{|c_{n}|} < \limsup_{n\rightarrow +\infty}\sqrt[n]{M} = 1 \]
+    De convergentiestraal is dus groter dan $1$.
+  \end{proof}
+\end{st}
 
 \begin{bpr}
   \label{pr:convergentiestraal-adhv-limiet}
