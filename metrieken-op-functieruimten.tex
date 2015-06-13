@@ -427,8 +427,112 @@ Let wel op de ongelijheid met het supremum.
  \extra{bewijs}
 \end{vb}
 
-\subsection{Andere metrieken op $C(\interval{0}{1})$}
-\label{sec:andere-metrieken-op}
+\subsection{Een metriek op $C^{1}(\interval{0}{1}$}
+
+\begin{de}
+  Met $C^{1}\left(\interval{0}{1}\right)$ noteren we de verzameling van continue functies $f:\ \interval{0}{1} \rightarrow \mathbb{R}$ die continu en afleidbaar zijn en waarvan de afgeleide continu is.
+\end{de}
+
+\begin{vb}
+  \examenvraag{TTT 2 2015}
+  De volgende functie $d$ is een metriek op $C^{1}\left(\interval{0}{1}\right)$:
+  \[ d':\ C^{1}\left(\interval{0}{1}\right)^{2}:\ |f(0)-g(0)| + \sup\left\{ |f'(x)-g'(x)| \mid x\in\interval{0}{1} \right\} \]
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $d'(f,g)$ is goed gedefinieerd:\\
+      We kunnen zinvol over $f'$ spreken omdat $f$ afleidbaar is op $\interval{0}{1}$.
+      We kunnen over dat supremeum spreken omdat elke $f'$ continu is over $\interval{0}{1}$ en continue functies op gesloten, begrensde intervallen begrensd zijn.
+    \item $d'(f,g)$ is nul als en slechts als $f$ en $g$ gelijk zijn:
+      \begin{itemize}
+      \item $\Rightarrow$: evident.
+      \item $\Leftarrow$:\\
+        Stel dat $d(f,g)$ nul is:
+        \begin{align*}
+          |f(0)-g(0)| + \sup\{ |f'(x)-g'(x)| \mid x\in\interval{0}{1} \} = 0\\
+          |f(0)-g(0)| = -\sup\{ |f'(x)-g'(x)| \mid x\in\interval{0}{1} \}\\
+        \end{align*}
+        Hierboven zijn beide leden positief dus beide nul.
+        Uit $|f(0)-g(0)| = 0$ volgt dat $f(0)$ en $g(0)$ gelijk zijn.
+        Uit $\sup\{ |f'(x)-g'(x)| \mid x\in\interval{0}{1} \}=0$ volgt dat $f'$ en $g'$ overal gelijk zijn.
+        Dit samen betekent dat $f$ en $g$ gelijk moeten zijn.
+        \TODO{meer uitleg. waarom moeten ze gelijk zijn?}
+      \end{itemize}
+    \item $d'$ is symmetrisch: evident.
+    \item $d'$ voldoet aan de driehoeksongelijkheid:\\
+      Kies willekeurig drie functies $f,g,h\in C^{1}\left(\interval{0}{1}\right)$.
+      We merken twee ongelijkheden op:
+      \begin{enumerate}
+      \item 
+        \begin{align*}
+          |f(0)-g(0)| \le |f(0)-h(0)| + |h(0)-g(0)|
+        \end{align*}
+      \item 
+        \begin{align*}
+          \sup\{|f'(x)-g'(x)| \mid x\in\interval{0}{1}\}
+          &\le \sup\{|f'(x) - h'(x)| + |h'(x) - g'(x)| \mid x\in\interval{0}{1}\}\\ 
+          &\le \sup\{|f'(x)-h'(x)| \mid x\in\interval{0}{1}\} \\
+          &+ \sup\{|h'(x)-g'(x)| \mid x\in\interval{0}{1}\}\\
+        \end{align*}
+      \end{enumerate}
+      Tel $1$ bij $2$ op om de driehoeks ongelijkheid te bekomen.
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  \stiekem{Juni 2014}
+  De metrische ruimte $C^{1}\left(\interval{0}{1}\right),d'$ is \textbf{niet volledig}.
+
+  \begin{proof}
+    Beschouw de rij van functies $(f_{n})_{n}$ als volgt:
+
+    \noindent
+    \begin{minipage}{.45\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale=.75]
+        \begin{axis}[xmin=-2, xmax=2,ymin=-0.1, ymax=3.9]
+          \foreach \n in {1,...,20}{
+            \addplot[smooth,domain=-2:2]{sqrt(x^2+(1/\n^2))};
+          }
+          \addplot[smooth,color=blue,thick,domain=-2:0]{-x};
+          \addplot[smooth,color=blue,thick,domain=0:2]{x};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+    \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{\left(x-\frac{1}{2}\right)^{2}+ \frac{1}{n^{2}}} \]
+    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ |x-\frac{1}{2}| \]
+    \end{minipage}
+
+    $(f_{n})_{n}$ is een Cauchyrij maar de limietfunctie is niet afleidbaar in $0$ en zit dus niet in $C^{1}\left(\interval{0}{1}\right)$
+    Kies immers een willekeurige $\epsilon\in\mathbb{R}$.
+    \begin{itemize}
+    \item $|f_{n}(0)| = \sqrt{0+\frac{1}{n^{2}}} = \frac{1}{n}$ convergeert naar nul voor $n$ gaande naar oneindig.
+    \item De afgeleide van $\sqrt{x^{2}+ \frac{1}{n^{2}}}$ is $\frac{x-\frac{1}{2}}{\sqrt{\left(x-\frac{1}{2}\right)^{2}+ \frac{1}{n^{2}}}}$ en dit  convergeert inderdaad naar volgende functie:
+      \begin{align}
+        g:\ \interval{0}{1} \rightarrow \mathbb{R}:\
+        x \mapsto 
+        \begin{cases}
+          1 &\text{ als } x > \frac{1}{2}\\
+          -1 &\text{ als } x < \frac{1}{2}
+        \end{cases}
+      \end{align}
+    \end{itemize}
+    Kies dan $n_{1}$ groot genoeg zodat $f_{n}(0)$ dichter dan $\frac{\epsilon}{2}$ bij $0$ komt en $n_{2}$ groot genoeg zodat $|f_{n}'(x)|$ dichter dan $\frac{\epsilon}{2}$ bij $g$ komt en besluit dat $(f_{n})_{n}$ naar $|x|$ convergeert.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  \stiekem{Juni 2014}
+\TODO{  De vervollediging van $C\left(\interval{0}{1}\right)$ is ...}
+\end{vb}
+
+
+\subsection{Een metriek op $C(\interval{0}{1})$ aan de hand van een reeks}
 
 \begin{vb}
   Zij $D$ een aftelbare verzameling die dicht ligt in van $\interval{0}{1}$.
