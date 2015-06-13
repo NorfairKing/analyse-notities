@@ -87,6 +87,7 @@
 \extra{tegenvoorbeeld}
 
 \begin{pr}
+  \label{pr:doorsnede-van-gesloten-gesloten}
   Een doorsnede van gesloten verzamelingen is gesloten.
 \extra{bewijs}
 \end{pr}
@@ -344,6 +345,7 @@
 \end{de}
 
 \begin{bpr}
+  \label{pr:totaal-begrensd-dan-begrensd}
   Zij $X,d$ een metrische ruimte en $A \subseteq X$.
   Als $A$ totaal begrensd is, is $A$ begrensd.
 
@@ -717,6 +719,16 @@
   \end{proof}
 \extra{bewijs via rijcompactheid}
 \end{bpr}
+
+\begin{st}
+  \label{st:doornsede-van-compacten-compact}
+  De doorsnede van compacte verzamelingen is compact.
+
+  \begin{proof}
+    Zij $D$ de doorsnede van een verzameling compacte verzamelingen, dan is $D$ de doorsnede van gesloten verzamelingen\stref{st:compact-dan-rijcompact}\stref{st:rijcompact-dan-gesloten} en dus gesloten.\prref{pr:doorsnede-van-gesloten-gesloten}
+    Omdat $D$ een gesloten deelverzameling is van een (/elk) compact, is $D$ ook compact.\prref{pr:gesloten-deel-van-compact-is-compact}
+  \end{proof}
+\end{st}
 
 \begin{bei}
   Zij $\mathcal{K}$ een verzameling van compacte delen van een metrische ruimte $X,d$ zodat de doorsnede van eindig veel elementen uit $\mathcal{K}$ nooit leeg is, dan is de doorsnede van alle verzamelingen uit $\mathcal{K}$ niet leeg.
