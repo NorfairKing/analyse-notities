@@ -1,0 +1,34 @@
+digraph compact {
+    
+    compound=true;
+
+    b  [label="bengrensd"];
+    tb [label="Totaal begrensd"];
+    rc [label="Rijcompact"];
+    g  [label="Gesloten"];
+    c  [label="Compact"];
+    cc [label="Cauchycompact"];
+    v  [label="Volledig"];
+    e  [label="Eindig"];
+
+    node[style="invis",shape="point"];
+    edge[arrowhead="none"];
+    v_en_cc;
+    v -> v_en_cc;
+    cc -> v_en_cc;
+
+    edge[color="black:white:black",arrowhead="normal"];
+
+
+    tb -> b;
+    cc -> tb;
+    tb -> cc;
+    rc -> cc;
+    v_en_cc -> rc;
+    rc -> g;
+    rc -> c;
+    c -> rc;
+    e -> c;
+    rc -> v;
+    v -> g;
+}

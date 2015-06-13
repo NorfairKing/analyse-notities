@@ -1,0 +1,426 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\chapter{Volledigheid van metrische ruimten}
+\label{chap:volledigheid}
+
+\begin{de}
+  \label{de:volledige-metrische-ruimte}
+  We noemen een metrische ruimte \term{volledig} als elke Cauchyrij erin convergeert.
+\end{de}
+
+\begin{bpr}
+  \label{pr:begrensde-functies-van-metrische-ruimte-naar-r-volledig}
+  Zij $X,d$ een willekeurige metrische ruimte, dan is $C_{b}(X),d_{\infty}$ als volgt een volledige metrische ruimte.
+  \[ C_{b}(X) = \{ f:\ X \rightarrow \mathbb{R} \mid f \text{ is continu en begrensd.} \} \]
+  \[ d_{\infty} = \sup\{ |f(x)-g(x)| \mid x \in X \} \]
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $C_{b}(X),d_{\infty}$ is een metrisch ruimte.
+      \extra{bewijs}
+    \item $C_{b}(X),d_{\infty}$ is volledig.\\
+      Kies een willekeurige Cauchyrij $(f_{n})_{n}$ in $C_{b}(X)$.
+      Vanuit de definitie van $d_{\infty}$ vinden we het volgende:
+      \[ \forall x\in X, \forall n,m\in \mathbb{N}:\ \left| f_{n}(x) -f_{m}(x) \right| \le d_{\infty} \left(f_{n},f_{m}\right) \]
+      Bijgevolg is $(f_{n}(x))_{n}$ een Cauchyrij in $\mathbb{R}$ voor elke $x\in X$.
+      De rij $(f_{n}(x))_{n}$ is dus telkens convergent want $\mathbb{R}$ is volledig.
+      We kunnen dus een functie $f$ defini\"eren als volgt:
+      \[ f:\ X \rightarrow \mathbb{R}:\ x \mapsto \lim_{m\rightarrow\infty}f_{m}(x) \]
+      We hebben nu al bewezen dat de rij $(f_{n})_{n}$ puntsgewijs convergeert.
+      Er rest ons nog aan te tonen dat de convergentie volgens de $d_{\infty}$ metriek, dus uniform, gebeurt en dat de limietfunctie $f$ tot $C_{b}(X)$ behoort.
+      Kies daartoe een willekeurige $\epsilon\in \mathbb{R}_{0}^{+}$.
+      Omdat $(f_{n})_{n}$ een Cauchyrij is, bestaat er een $n_{0}$ als volgt:
+      \[ \forall n,m\in\mathbb{N}:\ n,m \ge n_{0} \Rightarrow d_{\infty}(f_{n},f_{m}) < \epsilon \]
+      Er geldt dan het volgende:
+      \begin{align*}
+        \forall x\in X, \forall n,m\in\mathbb{N}:\ n,m \ge n_{0} &\Rightarrow \left|f_{n}(x) -f(x) \right|\\
+        &\le \left|f_{n}(x)-f_{m}(x) \right| + \left|f_{m}(x) -f(x)\right|\\
+        &\le d_{\infty}(f_{n},f_{m}) + \left|f_{m}(x) - f(x)\right|\\
+        &<\epsilon + \left|f_{m}(x) -f(x) \right|
+      \end{align*}
+      Wanneer we hiervan de limiet voor $m$ gaande naar $\infty$ beschouwen, vinden we het volgende:
+      \[ \forall x\in X, \forall n\in\mathbb{N}:\ n \ge n_{0} \Rightarrow \left|f_{n}(x) -f(x)\right| \le \epsilon \]
+      Omdat $f_{n_{0}}$ begrensd is, volgt uit het vorige (met $n=n_{0}$) dan $f$ begrensd is.
+      Bovendien hebben we ineens bewezen dat de convergentie $f_{n}\rightarrow f$ uniform gebeurt.
+      Omdat uniforme convergentie continu\"iteit behoudt\needed, weten we ook dat $f$ continu is.
+      We hebben dus een $f\in C_{b}(X)$ gevonden zodat $d_{\infty}(f_{n},f)$ naar nul gaat.
+      Dit bewijst de volledigheid.
+    \end{itemize}
+  \end{proof}
+\TODO{herbekijken}
+\end{bpr}
+
+\begin{gev}
+  Zij $X,d$ een compacte metrische ruimte, dan is $C(X),d_{\infty}$ een volledige metrische ruimte.
+
+  \begin{proof}
+    Omdat $X$ compact is, is elke functie van $X$ naar $\mathbb{R}$ begrensd.\stref{st:beeld-van-compact-ook-compact}\figref{fig:compactheid}
+    $C_{b}(X)$ is dan dus gelijk aan $C(X)$ en dus is $C(X)$ een volledige metrische ruimte.\prref{pr:begrensde-functies-van-metrische-ruimte-naar-r-volledig}
+  \end{proof}
+\end{gev}
+
+
+\begin{bpr}
+  De metrische ruimte $\mathcal{F},h$, met $\mathcal{F}$ de verzameling van niet-lege compacte delen van $\mathbb{R}^{p}$, is volledig.
+
+  \begin{proof}
+    Zij $(F_{n})_{n}$ een Cauchyrij in $\mathcal{F},h$.
+    We argumenteren dat deze rij convergeert.\deref{de:volledige-metrische-ruimte}\\
+    Definieer eerst voor elke $n\in\mathbb{N}_{0}$ $G_{n}$ als volgt:
+    \[ G_{n} = \overline{\bigcup_{k \ge n}F_{k}} \]
+    $G_{n}$ is dan zeker gesloten, want het is een sluiting.
+    Omdat $(F_{n})_{n}$ een Cauchyrij is, bestaat er een $M\in\mathbb{R}^{+}$ als volgt:\stref{st:metrische-ruimte-cauchy-dan-begrensd}
+    \[ \forall k\in \mathbb{N}_{0}:\ h(F_{k},F_{1}) \le M \]
+    $F_{k}$ zal dus steeds een deel zijn van de $M$-omhullende van $F_{1}$ en daarom ook $G_{n}$ een deel van $\overline{[F_{1}]_{M}} = [F_{1}]_{M}$.
+    $G_{n}$ is dus ook een begrensd deel van $\mathbb{R}^{p}$.
+    We vinden dat $(G_{n})_{n}$ een rij is die per constructie dalend is.
+    Noem nu $G = \bigcap_{n} G_{n}$, dan zal $G$ een element zijn van $\mathcal{F}$ en de afstand tussen $G_{n}$ en $G$ naar nul neigen.\TODO{BEWIJS: oefening 14 uit 1.6}
+    We tonen nog aan dat $G$ ook de limiet is van $(F_{n})_{n}$.
+    Het is daartoe voldoende om aan te tonen dat $h(F_{n},G_{n})$ naar nul neigt.
+    Kies dus een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $(F_{n})_{n}$ een Cauchyrij is, bestaat er een $n_{0}\in\mathbb{N}_{0}$ als volgt:
+    \[ \forall n,k \in\mathbb{N}:\ n,k \ge n_{0}\Rightarrow h(F_{n},F_{k}) < \epsilon \]
+    Kies nu willekeurig een $n\ge n_{0}$, dan zal $F_{k}$ een deel zijn van de $\epsilon$-omhullende van $F_{n}$ voor alle grotere $k$.
+    Bijgevolg geldt dit:
+    \[ G_{n} = \overline{\bigcup_{k \ge n}F_{k}} \subseteq \overline{[F_{n}]_{\epsilon}} = [F_{n}]_{\epsilon} \]
+    Anderzijds geldt natuurlijk ook $F_{n} \subseteq [G_{n}]_{\epsilon}$ omdat $F_{n}$ een deel is van $G_{n}$.
+  \end{proof}
+\end{bpr}
+
+\begin{gev}
+  $\mathbb{R}^{p}$ is dus ook volledig.\stref{st:rp-als-deel-van-f}
+\end{gev}
+
+
+\section{De vastepuntsstelling en haar toepassingen}
+\label{sec:vastepuntsstelling}
+
+\begin{bst}
+  De \term{vastepuntsstelling van Banach} of de \term{contractiestelling}.\\
+  Zij $X,d$ een volledige metrische ruimte en $f:\ X \rightarrow X$ een strikte contractie, dan heeft $f$ een uniek vast punt.
+  Dat vast punt wordt bovendien verkregen als limiet van de rij gedefinieerd als volgt:
+  \[ x_{0}\in X,\ x_{n+1} = f(x_{n}) \]
+
+  \begin{proof}
+    Omdat $f$ een strikte contractie is, bestaat er een $c\in\interval[open right]{0}{1}$ als volgt:
+    \[ \forall x,y\in X:\ d\left(f(x),f(y)\right) \le cd(x,y) \]
+    \begin{itemize}
+    \item Uniciteit\\
+      Zij $x^{*}$ en $y^{*}$ twee vaste punten van $f$, dan geldt het volgende:
+      \[ d(x^{*},y^{*}) = d\left(f(x^{*}),f(y^{*})\right) \le cd(x^{*},y^{*}) \]
+      Omdat $c$ kleiner is dan $1$ moet $d(x^{*},y^{*})$ nul zijn en $x^{*}$ dus gelijk aan $y^{*}$\deref{de:metrische-ruimte}
+    \item Bestaan\\
+      We bewijzen dat er een vast punt $x^{*}$ bestaat door aan te tonen dat $(x_{n})$ naar een vast punt van $f$ convergeert.
+      Merk daartoe eerst op dat het volgende geldt voor alle $n\in \mathbb{N}_{0}$:
+      \begin{align*}
+        d(x_{n},x_{n+1})
+        &= d(f(x_{n-1}),f(x_{n}))
+        &\le cd(x_{n-1},x_{n})\\
+        &= cd(f(x_{n-2}),f(x_{n-1}))
+        &\le c^{2}d(x_{n-2},x_{n-1})\\
+        &\quad\vdots\\
+        &= c^{n-1}d(f(x_{01}),f(x_{1})) &\le c^{n}d(x_{0},x_{1})
+      \end{align*}
+      Voor alle $n\in \mathbb{N}$ en $k\in \mathbb{N}_{0}$ vinden we dus het volgende:
+      \begin{align*}
+      d(x_{n},x_{n+k})
+      &\le \sum_{i=n}^{n+k-1}d(x_{i},x_{i+1})\\
+      &\le \sum_{i=n}^{n+k-1}c^{i}d(x_{0},x_{1})\\
+      &\le \frac{c^{n}}{1-c} d(x_{0},x_{1})
+      \end{align*}
+      Omdat $c$ kleiner is dan $1$ en $c^{n}$ dus naar nul gaat\prref{pr:np-in-r-convergeert}, volgt hieruit dat $(x_{n})_{n}$ een Cauchyrij is.
+      Omdat $X,d$ volledig is, zal $(x_{n})_{n}$ convergeren.
+      We noemen de limiet $x^{*}$
+      Wanneer we van de gelijkheid $x_{n+1}=f(x_{n})$ de limiet nemen voor $n$ gaande naar $+\infty$, vinden we wegens de continu\"iteit van $f$\prref{pr:continuiteit-itv-rijen} dat $x^{*}=f(x^{*})$ een vast punt is van $f$.
+    \end{itemize}
+  \end{proof}
+\end{bst}
+
+
+\subsection{Toepassing: ge\"itereerde functiesystemen en fractalen}
+\label{sec:toep-geit-funct}
+
+\begin{de}
+  We noemen een deel $F$ van $\mathbb{R}^{2}$ \term{zelfsimilair} als er een eindig aantal contractieve afbeeldingen $W_{i}:\ \mathbb{R}^{2} \rightarrow \mathbb{R}^{2}$ bestaan zodat $F = \bigcup_{i}W_{i}$ geldt.
+  Als de afbeeldingen bovendien affien zijn spreken we van \term{affiene zelfsimilariteit}.
+\end{de}
+
+\begin{de}
+  We noemen een eindige verzameling $\mathcal{W} = \{ W_{1}, \dotsc, W_{m}\}$ van strikt contractieve afbeeldingen $W_{i}:\ \mathbb{R}^{2}\rightarrow \mathbb{R}^{2}$ een \term{ge\"itereerd functiesysteem} (\term{IFS}).
+\end{de}
+
+\begin{de}
+  De \term{contractiefactor} van een IFS definieren we als het maximum van de contractiefactoren van de elementen ervan.
+\end{de}
+
+\begin{de}
+  Als de afbeeldingen van een IFS affien zijn, spreken we van een \term{affien IFS}.
+\end{de}
+
+\begin{de}
+  Aan een IFS associ\"eren we een afbeelding van $\mathcal{F}$ naar $\mathcal{F}$ die we met het symbool $\mathcal{W}$ noteren:
+  \[ \mathcal{W}:\ \mathcal{F} \rightarrow \mathcal{F}:\ F \mapsto \mathcal{W} = \bigcup_{i}W_{i}(F) \]
+  Deze afbeelding noemen we de \term{Hutchinson-operator}.
+\end{de}
+
+\begin{bpr}
+  Zij $\mathcal{W} = \{ W_{1}, \dotsc, W_{m}$ een IFS in $\mathbb{R}^{2}$ met contractiefactor kleiner dan $1$, dan is de geassocieerde Hutchinson-operator strikt contractief op $\mathcal{F},h$ met contractiefactor $c$:
+  \[ \forall F,G \in \mathcal{F}:\ h\left(\mathcal{W}(F), \mathcal{W}(G)\right) \le c h(F,G) \]
+\TODO{bewijs p 82}
+\end{bpr}
+
+\extra{fractaal en Hausdorffdimensie?}
+
+
+\section{Vervollediging}
+\label{sec:vervollediging}
+
+\begin{de}
+  We noemen een volledige metrische ruimte $X_{v},d_{v}$ een \term{vervollediging} van een metrische ruimte $X,d$ als er een isometrische inbedding $\mathfrak{i}:\ X \rightarrow X_{v}$ bestaat zodat $\mathfrak{i}(X)$ dicht is in $X_{v}$ volgens $d_{v}$.
+\end{de}
+
+\begin{bst}
+  De vervollediging van een metrische ruimte $X,d$ is uniek op isometrie\"en na.
+
+  \begin{proof}
+    Zij $Y,d_{Y}$ en $Z,d_{Z}$ twee vervolledigingen van een metrische ruimte $X,d$.
+    Er bestaan dan twee isometrische inbeddingen $\mathfrak{i}_{Y}:\ X \rightarrow Y$ en $\mathfrak{i}_{Z}:\ X \rightarrow Z$.
+    We tonen nu dat er een isometrische bijectie $\phi:\ Y \rightarrow Z$ bestaat als volgt:
+    \[ \forall x\in X:\ \phi(\mathfrak{i}_{Y}(x)) = \mathfrak{i}_{Z}(x) \]
+    Merk op dat $\phi$ zo al meteen vastgelegd wordt op $\mathfrak{i}_{Y}(X) \subseteq Y$.
+    We beginnen daarom al als volgt:
+    \[ \phi_{0}:\ \mathfrak{i}_{Y}(X) \subseteq Y \rightarrow Z:\ \mathfrak{i}_{Y}(x) \mapsto \mathfrak{i}_{Z}(x) \] 
+    Volgens de injectiviteit van $\mathfrak{i}_{Y}$ is dit goed gedefinieerd.
+    Omdat $\mathfrak{i}_{Y}$ en $\mathfrak{i}_{Z}$ beiden isometrie\"en zijn, is $\phi_{0}$ zeker ook isometrisch.
+    We breiden nu $\phi_{0}$ isometrisch uit tot $Y$.
+    Kies daartoe een $y\in Y$ en neem een rij $(x_{n})_{n}$ in $X$ met zodat $(\mathfrak{i}_{Y}(x_{n}))_{n}$ naar $y$ convergeert.
+    $(\mathfrak{i}_{Y}(x_{n}))_{n}$ is dan een Cauchyrij in $Y$ en omdat $\mathfrak{i}_{Z}(x_{n}) = \phi_{0}(\mathfrak{i}_{Y}(x_{n}))$ steeds geldt en $\phi_{0}$ isometrisch is, zal $\left(\mathfrak{i}_{Z}(x_{n})\right)_{n}$ een Cauchyrij zijn in $Z$ en dus convergeren naar een $z\in Z$.
+    Merk op dat de limiet $z$ niet afhangt van de keuze van de rij $(x_{n})_{n}$ maar enkel van $y$.
+    Inderdaad, als $(x'_{n})_{n}$ een andere rij in $X$ zou zijn zodat $\left(\mathfrak{i}_{Y}(x'_{n})\right)_{n}$ naar $y$ convergeert, dan gaat $d_{Y}(\mathfrak{i}_{Y}(x_{n}),\mathfrak{i}_{Y}(x'_{n}))$ naar nul en dus ook $d_{Z}(\mathfrak{i}_{Z}(x_{n}),\mathfrak{i}_{Z}(x'_{n}))$.
+    We kunnen dus eenduidig $\phi$ op $y$ defini\"eren door $\phi(y) = z$.
+    Op deze manier verkrijgen we een afbeelding $\phi:\ Y \rightarrow Z$, een uitbreiding van $\phi_{0}$.
+    We beweren dat $\phi$ isometrisch (en dus zeker al injectief\stref{st:isometrie-dan-injectie}) is.
+    Kies $y,y'\in Y$ en kies rijen $(x_{n})_{n}$ en $(x'_{n})_{n}$ in $X$ zodat $\mathfrak{i}_{Y}(x_{n})$ naar $y$ gaat en $\mathfrak{i}_{Y}(x'_{n})$ naar $y'$.
+    Er geldt dan het volgende:
+    \begin{align*}
+      d_{Z}(\phi(y),\phi(y'))
+      &= \lim_{n\rightarrow +\infty}d_{Z}(\mathfrak{i}_{Z}(x_{n}),\mathfrak{i}_{Z}(x'_{n}))\\
+      &= \lim_{n\rightarrow +\infty}d_{Y}(\mathfrak{i}_{Y}(x_{n}),\mathfrak{i}_{Y}(x'_{n}))
+      &= d_{Y}(y,y')
+    \end{align*}
+    Tenslotte argumenteren we nog dat $\phi$ surjectief is.
+    Kies een $z\in Z$ en kies een rij $(x_{n})_{n}$ in $X$ zodat $\mathfrak{i}_{Z}(x_{n})$ naar $z$ gaat.
+    Helemaal analoog toon je an dat $(\mathfrak{i}_{Y}(x_{n}))_{n}$ dan een convergente rij is in $Y$.
+    Als we de limiet $y$ noemen geldt per constructie $\phi(y) = z$.
+  \end{proof}
+  \TODO{herbekijken, dit kan simpeler gestruktureerd}
+\end{bst}
+
+\begin{bst}
+  Van elke metrische ruimte $X,d$ bestaat er een vervollediging.
+
+  \begin{proof}
+    We construeren een verzameling $Y$ met een metriek $d_{Y}$ zodat $X_{v},d_{v}$ volledig is en zodat $X,d$ isometrisch ingebed kan worden als een dicht deel in $X_{v},d_{v}$ via een inbedding $i:\ X \rightarrow X_{v}$.
+
+    \begin{itemize}
+    \item Constructie van $X_{v}$\\
+      Noteer met $\mathcal{C}$ de verzameling van Cauchyrijen in $X$.
+      Definieer op $\mathcal{C}$ de volgende equivalentierelatie:
+      \[ (x_{n})_{n} \sim (y_{n})_{n} \Leftrightarrow \lim_{n\rightarrow +\infty}d(x_{n},y_{n}) = 0 \]
+      \extra{bewijzen dat dit een equivalentierelatie is}
+      Kies nu $X_{v} = \mathcal{C} / \sim$, de partitie van $\mathcal{C}$ onder $\sim$.
+    \item Constructie van $d_{v}$\\
+      Definieer $d_{v}$ als volgt:
+      \[ d_{v}:\ X_{v}\times X_{v} \rightarrow \mathbb{R}^{+}:\ ([r],[s]) \mapsto \lim_{n\rightarrow \infty}d(r_{n},s_{n}) \]
+      \begin{itemize}
+      \item Deze limiet bestaat steeds:\\
+        Kies twee Cauchyrijen $r = (r_{n})_{n}$ en $s = (s_{n})_{n}$, respectievelijk uit $[r]$ en $[s]$.
+        \[ d(r_{n},s_{n}) \le d(r_{n},r_{m}) + d(r_{m},s_{m}) + d(s_{m},s_{n}) \]
+        \[ d(r_{m},s_{m}) \le d(r_{m},r_{n}) + d(r_{n},s_{n}) + d(s_{n},s_{m}) \]
+        Dit zodat het volgende geldt.
+        \[ |d(r_{n},s_{n}) - d(r_{m},s_{m})| \le d(r_{n},r_{m}) + d(s_{n},s_{m}) \]
+        Hieruit volgt dat $(d(r_{n},s_{n}))_{n}$ een Cauchyrij is in $\mathbb{R}$.
+        De limiet bestaat dus.
+      \item De limiet is onafhankelijk van de gekozen representanten:\\
+        Stel dat we andere representanten $r' = (r_{n}')_{n}$ en $s'=(s'_{n})_{n}$ kiezen uit $[r]$ en $[s]$ respectievelijk.
+        Analoog vinden we dat $\lim_{n\rightarrow \infty}(d(r'_{n},s'_{n})) = \lim_{n\rightarrow \infty}(d(r_{n},s_{n}))$ geldt.
+      \item $d_{v}$ is een metriek.
+        \extra{bewijs: evident?}
+      \end{itemize}
+    \item Isometrische inbedding als dicht deel:
+      \begin{itemize}
+      \item Constructie van de inbedding:\\
+        We bedden $X$ in in $X_{v}$ met een inbedding $i$ als volgt:
+        \[ i:\ X \rightarrow X_{v}:\ x \mapsto [\overline{x}] \]
+        Hierbij is $\overline{x}$ de constante (Cauchy-)rij $(x)_{n}$.
+      \item De inbedding is imometrisch:
+        \extra{de inbedding is isometrisch: evident?}
+      \item $i(X)$ is dicht in $X_{v}$:\\
+        Kies willekeurig een $[r] \in X_{v}$ en kies een reperesentant $r=(r_{n})_{n}$ uit $[r]$,.
+        We beweren dat $\lim_{n\rightarrow +\infty}i(r_{n}) = [r]$ geldt, dit is dus een rij in $i(X)$ die naar $[r]$ convergeert.
+        Inderdaad, kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$.
+        Omdat $(r_{n})_{n}$ een Cauchyrij is, kunnen we een $n_{0}\in\mathbb{N}$ vinden als volgt:
+        \[ \forall n,m\in\mathbb{N}:\ n,m \ge n_{0} \Rightarrow d(r_{n},r_{m}) < \epsilon \]
+        Per definitie van $d_{v}$ zal dan het volgende gelden:
+        \[ \forall n\in\mathbb{N}:\ n\ge n_{0} \Rightarrow d_{v}(i(r_{n}),[r]) = \lim_{m\rightarrow +\infty}d(r_{n},r_{m}) \le \epsilon \]
+      \end{itemize}      
+    \item Volledigheid van $X_{v},d_{v}$\\
+      Kies een willekeurige Cauchyrij $(r_{n})_{n}$ in $X_{v}$.
+      Omdat $i(X)$ dicht is in $X_{v}$, kunnen we voor elke $n\in\mathbb{N}_{0}$ een $x_{n}\in X$ vinden zodat $d_{v}(r_{n},i(x_{n}))$ kleiner is dan $\frac{1}{n}$.
+      Dan zal het volgende gelden:
+      \begin{align*}
+        d(x_{n},x_{m})
+        &= d_{v}(i(x_{n}),i(x_{m}))
+        &\le d_{v}(i(x_{n}),r_{n}) + d_{v}(r_{n},r_{m}) + d_{v}(r_{m},i(x_{m}))
+        &< \frac{1}{n} + d_{v}(r_{n},r_{m}) + \frac{1}{m}
+      \end{align*}
+      Omdat $(r_{n})_{n}$ een Cauchyrij is, volgt uit vorige afschatting dat $(x_{n})_{n}$ een Cauchyrij is in $X$.
+      Beschouw nu $r = [(x_{n})_{n}] in X_{v}$.
+      Bij de argumentatie dat $i(X)$ dicht is in $X_{v}$ hebben we aangetoond dat $i(x_{n})$ naar $r$ convergeert.
+      Bovendien geldt het volgende:
+      \[ d_{v}(r_{n},r) \le d_{v}(r_{n},i(x_{n})) + d(i(x_{n}),r) \le \frac{1}{n} + d_{v}(i(x_{n}),r) \]
+      Uit deze afschatting volgt dat $(r_{n})_{n}$ naar $r$ convergeert.
+      Dit bewijst de volledigheid van $X_{v},d_{v}$.
+    \end{itemize}
+  \end{proof}
+\end{bst}
+
+\begin{de}
+  We noemen de $X_{v},d_{v}$ hierboven de \term{vervollediging} van $X,d$.
+\end{de}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte.
+  $C_{u}(X)$ is de verzameling van alle uniform continue functies $f:\ X \rightarrow \mathbb{R}$.
+\end{de}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $X,d$ een metrische ruimte met vervollediging $X_{v},d_{v}$.
+  Noteer de beperking van en functie $f\in C_{u}(X_{v})$ tot $X$ als $r(f)$.
+  \[ f \in C_{u}(X_{v}) \Rightarrow r(f) \in C_{u}(X) \]
+
+  \TODO{dit is compleet triviaal?}
+\end{st}
+
+\begin{opm}
+  Merk op dat we hier $X$ als deelverzameling beschouwen van $X_{v}$ en niet meer over de isometrische inbedding spreken.
+  $X$ is dus een deelverzameling van $X_{v}$ die er dicht in ligt.
+\end{opm}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $X,d$ een metrische ruimte met vervollediging $X_{v},d_{v}$.
+  De beperkingsfunctie $r$ als volgt is bijectief.
+  \[ r:\ C_{u}(X_{v}) \rightarrow C_{u}(X):\ f \mapsto f|_{X}\]
+  
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $r$ is injectief:\\
+      Zij $r(f)$ en $r(g)$ gelijk, dan moeten $f$ en $g$ gelijk zijn:
+      Kies immers een willekeurig punt $c\in X_{v}$. 
+      Omdat $c$ een punt is in de sluiting van $X$, bestaat er een rij $(x_{n})_{n}$ in $X$ met $c$ als limiet.
+      Omdat $f$ en $g$ beide continu zijn, moeten $(f(x_{n}))_{n}$ en $(g(x_{n}))_{n}$ respectievelijk naar $f(c)$ en $g(c)$ convergeren.
+      Omdat $(f(x_{n}))_{n}$ en $(g(x_{n}))_{n}$ gelijk zijn moeten dus ook $f(c)$ en $g(c)$ gelijk zijn.
+      Omdat $c$ willekeurig gekozen was in $X_{v}$ zijn $f$ en $g$ over heel $X_{v}$ gelijk.
+    \item $r$ is surjectief:\\
+      Zij $f$ een functie is $C_{u}(X)$, dan bestaat er een uniform continue uitbreiding $g$ van $f$.
+      Voor elke $x\in X_{v}$ bestaat er een rij $(x_{n})_{n}$ in $X$ die naar $x$ convergeert.
+      $g(x)$ is dan gedefinieerd als de limiet $g(x) = \lim_{n\rightarrow \infty}f(x_{n})$.
+      \begin{itemize}
+      \item $g$ is goed gedefinieerd, 't is te zeggen onafhankelijk van de gekozen rij in $X$:\\
+        Zij $(x_{n})_{n}$ en $(y_{n})_{n}$ twee rijen in $X$ die naar \'e\'enzelfde punt $x\in X_{v}$ convergeren.
+        We moeten bewijzen dat $(f(x_{n}))_{n}$ en $(f(y_{n}))_{n}$ naar hetzelfde punt convergeren.
+        \begin{itemize}
+        \item 
+          Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, dan bestaat er, omdat $f$ uniform continu is, een $\delta\in\mathbb{R}_{0}^{+}$ zodat uit $d(x_{n},y_{n})< \delta$ volgt dat $|f(x_{n})-f(y_{n})|<\epsilon$ geldt.
+        \item 
+          Omdat $(x_{n})_{n}$ naar $x$ convergeert, bestaat er een $n_{x}\in\mathbb{N}$ als volgt:
+          \[ \forall n\in\mathbb{N}:\ n \ge n_{x} \Rightarrow d(x,x_{n}) < \frac{\delta}{2} \]
+        \item 
+          Omdat $(y_{n})_{n}$ ook naar $x$ convergeert, bestaat er een $n_{y}\in\mathbb{N}$ als volgt:
+          \[ \forall n\in\mathbb{N}:\ n \ge n_{y} \Rightarrow d(x,y_{n}) < \frac{\delta}{2} \]
+        \end{itemize}
+        Kies nu $N = \max\{ n_{x}, n_{y}\}$ en kies een $n\in\mathbb{N}$, groter dan $N$, dan geldt het volgende:
+        \begin{align*}
+          d(x_{n},y_{n})
+          &\le d(x_{n},x) + d(x,y_{n})\\
+          &< \frac{\delta}{2} + \frac{\delta}{2}\\
+          &= \delta
+        \end{align*}
+        Dit houdt precies in dat $|f(x_{n}),f(y_{n})|$ kleiner zal zijn dan $\epsilon$ en dus dat $\left(|f(x_{n})-f(y_{n})|\right)_{n}$ naar $0$ convergeert.
+        $g$ is dus goed gedefinieerd.
+      \item $g$ is uniform continu:\\
+        Merk eerst de volgende ongelijkheden op voor willekeurige $x,y\in X_{v}$ en $n\in\mathbb{N}$:
+        \begin{align*}
+          d(x_{n},y_{n}) &\le d(x_{n},x) + d(x,y) + d(y,y_{n})\\
+          |g(x)-g(y)| &\le |g(x)-f(x_{n})| + |f(x_{n})-f(y_{n})| + |f(y_{n})-g(y)|
+        \end{align*}
+        Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\xi}{3}$
+        Kies bovendien $x$ en $y$ willekeurig in $X_{v}$ zodat $d(x,y)< \delta$ geldt.
+        \begin{itemize}
+        \item 
+          Omdat $(f(x_{n}))_{n}$ per definite van $g$ naar $g(x)$ convergeert en $(f(y_{n}))_{n}$ naar $g(y)$, bestaan er twee getallen $n_{x}\in\mathbb{N}$ en $n_{y}\in\mathbb{N}$ als volgt:
+          \begin{align*}
+            \forall n\in\mathbb{N}:\ n\ge n_{x}\Rightarrow |g(x)-f(x_{n})| < \frac{\epsilon}{3}\\
+            \forall n\in\mathbb{N}:\ n\ge n_{y}\Rightarrow |g(y)-f(y_{n})| < \frac{\epsilon}{3}
+          \end{align*}
+        \item Omdat $f$ uniform continu is, bestaat er een $\xi\in\mathbb{R}_{0}^{+}$ als volgt:
+          \[ d(x_{n},y_{n}) < \xi \Rightarrow |f(x_{n}),f(y_{n})| < \frac{\epsilon}{3} \]
+        \item Omdat $(x_{n})_{n}$ naar $x$ convergeert en $(y_{n})_{n}$ naar $y$, bestaan er twee getallen $N_{x}\in\mathbb{N}$ en $N_{y}\in\mathbb{N}$ als volgt:
+          \begin{align*}
+            \forall n\in\mathbb{N}:\ n\ge N_{x}\Rightarrow d(x,x_{n}) < \frac{\xi}{3}\\
+            \forall n\in\mathbb{N}:\ n\ge N_{y}\Rightarrow d(y,y_{n}) < \frac{\xi}{3}
+          \end{align*}
+        \end{itemize}
+        Kies nu $N = \max\{n_{x},n_{y},N_{x},N_{Y}\}$
+        Uit $d(x,y)<\delta)$ volgt nu:
+        \begin{align*}
+          d(x_{n},y_{n})
+          &\le d(x_{n},x) + d(x,y) + d(y,y_{n})\\
+          &< \frac{\xi}{3} + \frac{\xi}{3} + \frac{\xi}{3}\\
+          &= \xi
+        \end{align*}
+        \begin{align*}
+          |g(x)-g(y)|
+          &\le |g(x)-f(x_{n})| + |f(x_{n})-f(y_{n})| + |f(y_{n})-g(y)|\\
+          &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}\\
+          &= \epsilon
+        \end{align*}
+        $g$ is dus uniform continu op $X_{v}$.
+      \end{itemize}
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  Bovenstaande stelling geldt niet als we gewoon continue functies beschouwen.
+  Meer specifiek: Als $f:\ X \rightarrow \mathbb{R}$ een niet-uniform continue, maar wel continue functie is, \textbf{hoeft} er nog \textbf{geen} continue uitbreiding van $f$ naar $X_{v}$ te bestaan.
+
+  \begin{proof}
+    Beschouw de functie $f$ als volgt:
+    \begin{align*}
+      f:\ \mathbb{Q} \rightarrow \mathbb{R}:\ x \mapsto \frac{1}{x^{2}-2}
+    \end{align*}
+    Deze functie heeft geen continue uitbreiding naar $\mathbb{R}$.
+  \end{proof}
+\end{tvb}
+
+
+\subsection{Contructie van $\mathbb{R}$}
+\label{sec:contr-van-mathbbr}
+
+\TODO{de constructie}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

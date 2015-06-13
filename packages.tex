@@ -30,11 +30,17 @@
 % Voor mooiere breuken
 \usepackage{nicefrac}
 
+% Voor kleuren, duh
+\usepackage{color}
+
 % Voor intervallen
 \usepackage{interval}
 
 % Voor mooiere enumerates
 \usepackage{enumerate}
+
+% Voor mooie verbatim stukjes
+\usepackage{verbatim}
 
 % Voor tekeningen
 \usepackage{tikz}
@@ -44,8 +50,18 @@
 \pgfplotsset{holdot/.style={fill=white,only marks,mark=*}}
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{external}
+\usetikzlibrary{decorations}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{matrix}
+\usetikzlibrary{fit}
+\usetikzlibrary{shapes}
+\usetikzlibrary{topaths}
+
 %\iffalse
 \tikzexternalize[prefix=figures/]
+\tikzexternalize[mode=list and make]
+\tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 \makeatletter
 \renewcommand{\todo}[2][]{
     \tikzexternaldisable
@@ -83,3 +99,8 @@
 
 % Voor urls (dit moet als laatste)
 \usepackage{hyperref}
+
+% Voor automatisch geschaalde intervallen.
+\usepackage{letltxmacro}
+\LetLtxMacro\oldint\interval
+\renewcommand{\interval}[3][]{\oldint[#1,scaled]{#2}{#3}}

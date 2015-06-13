@@ -2,6 +2,7 @@
 \begin{document}
 
 
+
 \section{Uniforme continuiteit}
 \label{sec:unif-cont}
 
@@ -70,12 +71,11 @@
   \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x,y \in A:\ |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon \]
 \end{de}
 
-
-
 \begin{vb}
   De functie $f$ is uniform continu:
   \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{1+x^{2}} \]
-  \extra{bewijs p 21}
+
+\extra{bewijs p II.20}
 \end{vb}
 
 \begin{vb}
@@ -133,7 +133,15 @@
 \begin{tvb}
   De functie $f$ is \textbf{niet} uniform continu op $\mathbb{R}$:
   \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto x^{2}\]
-  \extra{bewijs p 22}
+
+  \begin{proof}
+    Kies $\epsilon = 1$ en willekeurig een $\delta \in \mathbb{R}_{0}^{+}$.
+    Kies $x$ positief en kies $y= x+\frac{\delta}{2}$.
+    Er geldt dan al $|x-y|<\delta$.
+    Merk bovendien op:
+    \[ |x^{2}-y^{2}| = |x^{2}-\left(x+\frac{\delta}{2}\right)^{2}| = x\delta + \frac{\delta^{2}}{4} \ge \delta x \]
+    Kies nu bijvoorbeeld $x=\frac{2}{\delta}$, dan is dit groter dan $\epsilon$.
+  \end{proof}
 \end{tvb}
 
 \begin{vb}
@@ -298,3 +306,8 @@
 
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

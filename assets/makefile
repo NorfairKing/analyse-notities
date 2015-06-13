@@ -1,9 +1,9 @@
 GRAPHVIZCC  = dot
 DOT_EXT     = dot
-OUT_FORMAT  = png
-OUT_EXT     = png
+OUT_FORMAT  = eps
+OUT_EXT     = eps
 
-ILLUSTRATIONS =
+ILLUSTRATIONS = compact.eps
 
 all: graphviz_illustrations
 

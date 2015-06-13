@@ -1,0 +1,338 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Metrieken op $\mathbb{R}$}
+\label{sec:metrieken-op-mathbbr}
+
+\subsection{De gewone metriek op $\mathbb{R}$}
+\label{sec:de-gewone-metriek}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met een metriek gebaseerd op de absolute-waardefunctie, is een metrische ruimte:
+  \[ d:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d(x,y)=|x-y| \]
+  Men noemt dit de \term{gewone metriek op $\mathbb{R}$}.
+\extra{bewijs}
+\end{vb}
+
+\begin{opm}
+  $\mathbb{R}$ is niet begrensd voor $d$.
+\extra{bewijs}
+\end{opm}
+
+\begin{vb}
+  Een open bol rond $x\in \mathbb{R}$ met straal $\delta\in \mathbb{R}_{0}^{+}$ voor de gewone metriek ziet eruit als volgt:
+  \[ B(x,\delta) = \interval[open]{x-\delta}{x+\delta} \]
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+      \draw[latex-latex] (-1.5,0) -- (1.5,0);
+      \draw[color=black] (0pt,3pt) -- (0pt,-3pt) node[below] {$a$};
+      \draw[(-),thick,color=red] (-1,0) -- (1,0);
+    \end{tikzpicture}
+    \caption{Een open bol in $\mathbb{R},d$}
+  \end{figure}
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{R},d$ is separabel door $\mathbb{Q}$.
+\TODO{een echt bewijs dat $\mathbb{Q}$ dicht ligt in $\mathbb{R}$.}
+\end{vb}
+
+\begin{vb}
+  De verzameling $\interval[open right]{0}{1}$ is niet compact.
+  \begin{proof}
+    Benoem $A = \interval[open right]{0}{1}$ en $\mathcal{F}$ als volgt:
+    \[ \mathcal{F} = \left\{      \interval[open]{-1}{1-\frac{1}{n}} \mid n \in \mathbb{N}_{0} \right\} \]
+    $\mathcal{F}$ is een verzameling van open delen van $\mathbb{R}$ en de unie ervan is $\interval[open]{0}{1}$, een oververzameling van $A$.
+    $\mathcal{F}$ is dus een open overdekking van $A$.
+    eze overdekking heeft geen eindige deeloverdekking.
+    Elke deelverzameling van $\mathcal{F}$ is immers van de vorm $\interval[open]{-1}{1-\frac{1}{n}}$.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De verzameling $A$ als volgt is niet compact in $\mathbb{R},d$
+  \[ A = \left\{ \frac{1}{n} \mid n\in \mathbb{N} \right\} \]
+
+    \begin{proof}
+      \noindent
+      \begin{klad}
+        We construeren een open overdekking $\mathcal{A}$ zodat elk element uit $A$ in hoogstens \'e\'en open deel in $\mathcal{A}$ zit.
+        Beschouw eerst de afstand tussen twee opeenvolgende elementen uit $A$:
+        \[ d\left(\frac{1}{n},\frac{1}{n+1}\right) = \frac{n+1 - n}{n(n+1)} = \frac{1}{n(n+1)} \]
+        Als we rond elk element een open bol nemen met straal $r$ waarbij $r$ de helft is van de minimale afstand tussen twee elementen naast elkaar, dan hebben we een geschikte open overdekking.
+      \end{klad}
+      Beschouw de open overdekking $\mathcal{A}$ als volgt.
+      \[ \left\{ B\left(\frac{1}{n},\frac{1}{2n(n+1)}\right) \mid n\in \mathbb{N} \right\} \]
+      Merk op dat in elke open bol in $\mathcal{A}$ precies \'e\'en element van $A$ zit.
+      Omdat $A$ oneindig veel elementen bevat heeft deze open overdekking dus geen eindige deeloverdekking.
+    \end{proof}
+\end{vb}
+
+\begin{vb}
+  De verzameling $B$ als volgt is compact in $\mathbb{R},d$.
+  \[ B = \{0\} \cup \left\{ \frac{1}{n} \mid n\in \mathbb{N} \right\} \]
+
+  \begin{proof}
+    Kies een willekeurige overdekking $\mathcal{B}$ van $B$.
+    We argumenteren dat $\mathcal{B}$ te reduceren valt tot een eindige deeloverdekking.
+    \begin{klad}
+      Omdat $0$ is $B$ zit, moet $0$ overdekt worden door een open deel.
+      In dat open deel moeten oneindig veel elementen zitten uit $B$.
+      Voor de overige elementen uit $B$ kiezen we dan nog een open deel uit $\mathcal{B}$ om onze eindige deeloverdekking te vervolledigen.
+    \end{klad}
+    Omdat $\mathcal{B}$ open is en $0$ bevat, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat $B(0,\delta)$ een deelverzameling is van het open deel $O$ in $\mathcal{B}$ dat $0$ overdekt.
+    Noem $m=\left\lceil\frac{1}{\delta}\right\rceil$ en merk dan op dat $B(0,\delta)$ alle elementen $\frac{1}{n}$ bevat met $n > m$.
+    Kies nu nog voor elke $\frac{1}{n}$ met $n \le m$ een open deel $O_{n}$ uit $\mathcal{B}$ dat $\frac{1}{n}$ overdekt.
+    Beschouw dan de open deeloverdekking $\{ O \} \cup \{ O_{n} \mid n \le m \}$.
+    Deze deeloverdekking is eindig.
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  Een gesloten interval $\interval{a}{b}$ is compact in $\mathbb{R},d$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel dat er een open overdekking $\mathcal{O}$ van $\interval{0}{1}$ bestaat die geen eindige deeloverdekking heeft.
+    Beschouw de twee helften $\interval{a}{\frac{a+b}{2}}$ en $\interval{\frac{a+b}{2}}{b}$.
+    Minstens \'e\'en van de twee helften valt dan niet te eindig open de overdekken met een deel van $\mathcal{O}$.\waarom
+    Noteer die helft met $\interval{a_{1}}{b_{1}}$
+    We kunnen dit opnieuw blijven doen om een dalende rij intervallen $\left(\interval{a_{n}}{b_{n}}\right)_{n}$ te construeren die elk niet eindig te overdekken vallen met een deel van $\mathcal{O}$ en waarvan de lengte naar nul gaat.
+    De doorsnede van al deze intervallen is een singleton, zeg $\{x\}$.\stref{st:geneste-intervallen}
+    Neem nu een open deel $O$ in $\mathcal{O}$ dat $x$ overdekt.
+    Omdat $O$ open is, bestaat er een $\delta \in \mathbb{R}_{0}^{+}$ zodat $B(x,\delta)$ een deel is van $O$.
+    Voor $n$ voldoende groot \clarify{hoe groot?} zit $\interval{a_{n}}{b_{n}}$ dus volledig in $\mathcal{O}$.
+    Dit is in strijd met de constructie van $\interval{a_{n}}{b_{n}}$.
+    Contradictie.
+  \end{proof}
+\TODO{later makkelijker bewijzen via stelling ipv via definitie}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{Z}$ is niet compact in $\mathbb{R},d$.
+
+  \begin{proof}
+    Neem de open overdekking $\mathcal{F}$ als volgt:
+    \[ \left\{ B\left(n,\frac{1}{2}\right) \mid n \in \mathbb{Z} \right\} \]
+    Elk element van (het oneindige) $\mathbb{Z}$ zit in precies \'e\'en deelverzameling in $\mathcal{F}$.
+    Er bestaat dus geen eindige deeloverdekking van $\mathcal{F}$.
+  \end{proof}
+\end{vb}
+
+\begin{opm}
+  In $\mathbb{R}^{p}$ kan je bovenstaand argument telkens gebruiken om te bewijzen dat een gesloten en begrensde verzameling compact is door de verzameling steeds op gelijkaardige wijze in $2^{p}$ te splitsen.
+\end{opm}
+
+\begin{vb}
+  \label{vb:r_0-niet-samenhangend}
+  $\mathbb{R}_{0}$ is niet samenhangend.
+
+  \begin{proof}
+    Inderdaad, $\mathbb{R}_{0} = \mathbb{R}_{0}^{-} \cup \mathbb{R}_{0}^{+}$, $\overline{\mathbb{R}_{0}^{+}} \cap \mathbb{R}_{0}^{-} = \mathbb{R}^{+} \cap \mathbb{R}_{0}^{-} = \emptyset$ en $\overline{\mathbb{R}_{0}^{-}} \cap \mathbb{R}_{0}^{+} = \mathbb{R}^{-} \cap \mathbb{R}_{0}^{+} = \emptyset$ gelden. 
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{Q}$ is niet samenhangend.
+
+  \begin{proof}
+    Inderdaad:
+    \[ A = \{ q\in \mathbb{Q} \mid q < \sqrt{2} \} \quad\text{ en }\quad B = \{ q \in \mathbb{Q} \mid q > \sqrt{2} \} \]
+    $\mathbb{Q}$ is de unie van $A$ en $B$.
+    Noch $A$, noch $B$ is leeg.
+    $A$ en $B$ zijn bovendien gescheiden:
+    \[ \overline{A} \cap B = \interval[open left]{-\infty}{\sqrt{2}} \cap B = \emptyset \]
+    \[ A \cap \overline{B} = A \cap \interval[open right]{\sqrt{2}}{+\infty} = \emptyset \]
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  $\mathbb{Q}$ is totaal onsamenhangend.
+
+  \begin{proof}
+    Zij $V$ een deelverzameling van $\mathbb{Q}$ met minstens twee elementen.\stref{st:singleton-samenhangend}
+    Kies twee elementen $v$ en $w$ uit $V$.
+    Er bestaat dan een $r\in \mathbb{R} \setminus \mathbb{Q}$ tussen $v$ en $w$.\needed
+    Beschouw $A$ en $B$ als volgt:
+    \[ A = \{ x \in V \mid x < r \} \quad\text{ en }\quad \{ x \in V \mid x > r \} \]
+    Noch $A$, noch $B$ is leeg, want $r$ ligt tussen $v$ en $w$.
+    De unie van $A$ en $B$ is $V$ per constructie.
+    Enkel $r$ zou in de doorsneden $\overline{A} \cap B$ en $A \cap \overline{B}$ kunnen zitten, maar $r$ zit niet in $q$ en dus niet in die doorsneden.
+    \extra{dat laatste is nogal vaag, kan het beter?}
+  \end{proof}
+\end{vb}
+
+\begin{vb}
+  De verzameling $Y$ als volgt is niet samenhangend in $\mathbb{R}^{2},d$.
+  \[ Y = \left\{ \left(x, \sin\frac{1}{x}\right) \mid x \in \mathbb{R}_{0} \right\} \]
+
+  \begin{proof}
+    Beschouw $Y^{+} = \left\{ \left(x, \sin\frac{1}{x}\right) \mid x \in \mathbb{R}_{0}^{+} \right\}$ en $Y^{-} = \left\{ \left(x, \sin\frac{1}{x}\right) \mid x \in \mathbb{R}_{0}^{-} \right\}$.
+    De unie van $Y^{+}$ en $Y^{-}$ is $Y$ en beiiide zijn niet leeg.
+    De sluiting van $Y^{+}$, respectievelijk $Y^{-}$ vinden we door het lijnstuk $(0,1)(0,-1)$ toe te voegen.\waarom
+    $Y^{+}$ en $Y^{-}$ zijn dus onderling gescheiden.
+  \end{proof}
+\end{vb}
+
+\subsection{De $d_1$-metriek op $\mathbb{R}$}
+\label{sec:d_1-metriek-op}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{1}:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d_{1}(x,y)=\frac{|x-y|}{1+|x-y|} \]
+  \begin{proof}
+    We gaan elke eigenschap van een metrische ruimte na.
+    \begin{itemize}
+    \item $d$ is symmestrisch.
+      Dit volgt meteen uit de symmetrie van de gewone metriek op $\mathbb{R}$.
+    \item $d$ is nu als en slechts als de argumentien nul zijn.
+      Dit volgt uit dezelfde eigenschap van de gewone metriek op $\mathbb{R}$
+    \item $d$ voldoet aan de driehoeksongelijkheid:\\
+      Kies $x,y,z \in \mathbb{R}$ en houdt de driehoeksongelijkheid voor de gewone metriek op $\mathbb{R}$ in het achterhoofd.
+      Merk op dat de functie $f$ als volgt stijgend is.
+      \[ f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}:\ t \mapsto \frac{t}{1+t} \]
+      \begin{align*}
+        d_{1}(x,y)
+        &= f(|x-y|)\\
+        &\le f(|x-z|+|z-y|)\\
+        &= \frac{|x-z|+|z-y|}{1+|x-z|+|z-y|}\\
+        &= \frac{|x-z|}{1+|x-z|+|z-y|}+\frac{|z-y|}{1+|x-z|+|z-y|}\\
+        &\le \frac{|x-z|}{1+|x-z|}+\frac{|z-y|}{1+|z-y|}\\
+        &= d_{1}(x,z) + d_{1}(z,y)
+      \end{align*}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+\begin{st}
+  Voor de $d_{1}$ metriek is $\mathbb{R}$ begrensd.
+  \begin{proof}
+    Kies willekeurig $x,y\in\mathbb{R}$ en kies $M=1\in \mathbb{R}^{+}$, dan geldt het volgende:
+    \[ d_{1}(x,y) = \frac{|x-y|}{1+|x-y|} < M \]
+  \end{proof}
+\end{st}
+\extra{vindt de diameter}
+
+\begin{vb}
+  Een open bol rond $x\in \mathbb{R}$ met straal $\delta\in \mathbb{R}_{0}^{+}$ voor de $d_{1}$-metriek ziet eruit als volgt:
+  \[ B(x,\delta) = 
+  \begin{cases}
+    \mathbb{R} &\text{ als } r \ge 1\\
+    \interval[open]{x-\frac{r}{1-r}}{x+\frac{r}{1-r}}
+  \end{cases}
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{st}
+  Een deelverzameling $A$ van $\mathbb{R}$ is $d_{1}$-open als en slechts als ze open is voor de gewone metriek.
+\extra{bewijs}
+\end{st}
+
+\subsection{De $d_2$-metriek op $\mathbb{R}$}
+\label{sec:d_2-metriek-op}
+
+\begin{vb}
+  $\mathbb{R}$, uitgerust met de volgende functie als metriek, is een metrische ruimte:
+  \[ d_{2}:\ \mathbb{R}\times\mathbb{R}\rightarrow (x,y) \mapsto d_{2}(x,y)=\left| \frac{x}{1+|x|} - \frac{y}{1+|y|} \right| \]
+\extra{bewijs}
+\end{vb}
+
+\begin{st}
+  Voor de $d_{2}$ metriek hierboven is $\mathbb{R}$ begrensd.
+\extra{bewijs}
+\end{st}
+\extra{vindt de diameter}
+
+\mst{Een deelverzameling $A$ van $\mathbb{R}$ is $d_{2}$-open als en slechts als ze open is voor de gewone metriek.}
+
+\question{Hoe bewijzen we dat $d_{2}$ en $d$ topologisch equivalent zijn (lijkt evident) en hoe zien de open bollen eruit? (Die moeten toch assymmetrisch zijn...}
+
+\begin{vb}
+  $\mathbb{R},d_{2}$ en $\interval[open]{-1}{1},d$ zijn isometrisch.
+\extra{bewijs} 
+\end{vb}
+
+\begin{tvb}
+  $\mathbb{R},d_{2}$ is niet volledig.
+  
+  \begin{proof}
+    De rijen $(n)_{n}$ en $(-n)_{n}$ zijn Cauchyrijen die niet convergeren.
+    (Merk op dat het wel de enige zijn.)
+  \end{proof}
+\end{tvb}
+
+\begin{vb}
+  We kunnen $\mathbb{R},d_{2}$ vervolledigen tot $\mathbb{R}_{v}$ door twee elementen $+\infty$ en $-\infty$ toe te voegen en de functie $d_{2}$ als volgt uit te breiden:
+  \[ d_{2v}:\ \mathbb{R}\times\mathbb{R}\rightarrow
+  \begin{cases}
+    (x,y) &\mapsto \left| \frac{x}{1+|x|} - \frac{y}{1+|y|}  \right| \\
+    (-\infty,y) &\mapsto \left| \frac{y}{1+|y|} +1\right|\\
+    (x,+\infty) &\mapsto \left| \frac{x}{1+|x|} -1\right|\\
+    (-\infty,+\infty) &\mapsto 2
+  \end{cases}
+  \]
+
+  \begin{proof}
+    Er bestaat een isometrische bijectie $\phi$ tussen $\mathbb{R}_{v},d_{2v}$ en $\interval{-1}{1},d$:
+    \[
+    \phi:\ \mathbb{R}_{v} \rightarrow \interval{-1}{1}:\ 
+    \begin{cases}
+      -\infty &\mapsto -1\\
+      x &\mapsto \frac{x}{x+|x|}\\
+      +\infty &\mapsto +1\\
+    \end{cases}
+    \]
+    We weten al dat $\interval{-1}{1},d$ volledig is en dus is $\mathbb{R}_{v}d_{2v}$ ook volledig.\TODO{zie oefening 8 uit 4.4}
+  \end{proof}
+\end{vb}
+
+
+
+\subsection{De $d_3$-metriek op $\mathbb{R}$}
+\label{sec:d_3-metriek-op}
+
+\begin{vb}
+  De functie $d_{3}$ als volgt is een metriek voor $\mathbb{R}$.
+  \[
+  d_{3}:\ \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto
+  \begin{cases}
+    d_{3}(x,y) = |x-y| &\text{ als } x\neq 0 \neq y\\
+    d_{3}(x,0) = d(0,x) = 1 + |x| &\text{ als } x \neq 0\\
+    d_{3}(0,0) = 0
+  \end{cases}
+  \]
+
+  \begin{proof}
+    We gaan de eigenschappen van een metriek na.
+    \begin{itemize}
+    \item $d_{3}$ is symmetrisch. OK
+    \item $d_{3}(x,y)$ is nul als en slechts als $x$ en $y$ nul zijn. OK
+    \item Kies willekeurig drie getallen $x$, $y$, $z$.
+      \[ d(x,z) \le d(x,y) + d(y,z) \]
+      We moeten $8$ gevallen nagaan:
+      \begin{enumerate}
+      \item $x=0$, $y=0$, $z=0$: $d(0,0) = 0 \le 0 + 0 = d(0,0) + d(0,0)$. OK
+      \item $x=0$, $y=0$, $z\neq0$: $d(0,z) = 1 + |z| \le 0 + 1 + |z| = d(0,0) + d(y,z)$. OK 
+      \item $x=0$, $y=\neq$, $z=0$: $d(0,0) = 0 \le 1+|y| + 1+|y| = d(0,y) + d(y,0)$. OK
+      \item $x=0$, $y\neq0$, $z\neq0$: $d(0,z) = 1+ |z| \le 1+|y| + |y-z| = d(0,y) + d(y,z)$. OK
+      \item $x\neq0$, $y=0$, $z=0$: $d(x,0) = 1+|x| \le 1+|x| + 0 = d(x,0) + d(0,0)$. OK
+      \item $x\neq0$, $y=0$, $z\neq0$: $d(x,z) = |x-z| \le 1+|x| + 1+|z| = d(x,0) + d(0,z)$. OK
+      \item $x\neq0$, $y\neq0$, $z=0$: $d(x,0) = 1+|x| \le |x-y| + 1+|y| = d(x,y) + d(y,0)$. OK
+      \item $x\neq0$, $y\neq0$, $z\neq0$: $d(x,z) = |x-z| \le |x-y| + |y-z| = d(x,y) + d(y,z)$. OK
+      \end{enumerate}
+    \end{itemize}
+  \end{proof}
+\end{vb}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

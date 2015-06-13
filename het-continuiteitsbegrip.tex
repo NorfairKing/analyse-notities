@@ -2,6 +2,7 @@
 \begin{document}
 
 
+
 \section{Het continu\"iteitsbegrip}
 \label{sec:het-cont}
 
@@ -12,7 +13,6 @@
   \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists \delta \in \mathbb{R}_{0}^{+}:\ \forall x\in A:\ |x-a| < \delta \Rightarrow |f(x) -f(a)| < \epsilon \]
   We noemen $f$ \term{continu} op $A$ als $f$ continu is in elke $a\in A$.
 \end{de}
-
 
 \begin{vb}
   De functie $f$ is continu:
@@ -127,10 +127,14 @@
 \feed
 \end{vb}
 
-\extra{vb p 4 onderaan}
+\begin{vb}
+  De functie $f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \frac{x}{1+x^{2}}$ is continu.
+
+  \extra{bewijs p II.4 onderaan.}
+\end{vb}
 
 \begin{tvb}
-  De functie $f$ is niet continu in $0$:
+  De functie $f$, als volgt, is \textbf{niet} continu in $0$:
   \[
   f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x\mapsto 
   \left\{
@@ -149,10 +153,26 @@
   \end{proof}
 \end{tvb}
 
-\extra{tvb p 5 onderaan}
+\begin{tvb}
+  De functie $f$, als volgt, is \textbf{niet} continu in $0$.
+  \[
+  f:\  \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 
+  \begin{cases}
+    \sin\left(\frac{1}{x}\right) &\text{ als } x \neq 0\\
+    0 &\text{ als } x = 0
+  \end{cases}
+  \]
+
+  \begin{proof}
+  Kies $\epsilon = 1$ en kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+  Kies $k$ voldoende groot zodat $\left(2k+\frac{1}{2}\right)\pi > \frac{1}{\delta}$ geldt en stel $x = \frac{1}{\left(2k+\frac{1}{2}\right)\pi}$.
+  Dan geldt:
+  \[ |x-0| < \delta \text{ en } |f(x)-f(0)| = 1 \ge \epsilon \]
+  \end{proof}
+\end{tvb}
 
 \begin{vb}
-  De functie $f$ is continu:
+  De absolute waardefunctie is continu:
   \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto |x| \]
 
   \begin{proof}
@@ -190,6 +210,30 @@
       \extra{bewijs analoog}
     \end{itemize}
   \end{proof}
+\end{vb}
+
+\begin{vb}
+  De volgende functie is negrens continu, maar de absolute waarde ervan is overal continu:
+  \[ 
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \begin{cases}
+    1  &\text{ als } x\in \mathbb{Q}\\
+    -1 &\text{ als } x\in \mathbb{R}\setminus \mathbb{Q}
+  \end{cases}
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{vb}
+  De volgende functie is enkel continu in $0$.
+  \[ 
+  f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+  \begin{cases}
+    x  &\text{ als } x\in \mathbb{Q}\\
+    -x &\text{ als } x\in \mathbb{R}\setminus \mathbb{Q}
+  \end{cases}
+  \]
+\extra{bewijs}
 \end{vb}
 
 \begin{vb}
@@ -333,7 +377,6 @@
   \[ \forall X \subseteq \mathbb{R}:\ \overline{f^{-1}(X)} \subseteq f^{-1}(\overline{X}) \]
 \extra{oefening}
 \end{st}
-
 
 
 \end{document}

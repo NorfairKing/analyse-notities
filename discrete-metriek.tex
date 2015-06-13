@@ -1,0 +1,96 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\subsection{De discrete metriek}
+\label{sec:de-discrete-metriek}
+
+\begin{vb}
+  Zij $X$ een willekeurige, niet-lege verzameling.
+  De \term{discrete metriek} of \term{triviale metriek} op $X$ wordt gegeven als volgt.
+  \[
+  d_{X}:\ X \times X \rightarrow \mathbb{R}^{+}:\ (x,y) \mapsto
+  \begin{cases}
+    0 &\text{ als } x = y\\
+    1 &\text{ als } x \neq y
+  \end{cases}
+  \]
+  $X,d_{X}$ vormt een metrische ruimte.
+\end{vb}
+
+\begin{st}
+  Elke verzameling is begrensd voor de discrete metriek.
+
+  \begin{proof}
+    Inderdaad, de afstand tussen twee elementen is nooit groter dan $1$.
+  \end{proof}
+\end{st}
+
+\begin{vb}
+  Een open bol rond $x\in \mathbb{R}$ met straal $\delta\in \mathbb{R}_{0}^{+}$ voor de gewone metriek ziet eruit als volgt:
+  \[ B(x,\delta) = 
+  \begin{cases}
+    \{x\} &\text{ als } r\le 1\\
+    X &\text{ als } r > 1
+  \end{cases}
+  \]
+\extra{bewijs}
+\end{vb}
+
+\begin{st}
+  Elke deelverzameling $A$ van een verzameling $X$ is zowel open als gesloten voor de triviale metriek.
+\extra{bewijs}
+\end{st}
+
+
+\begin{vb}
+  Voor de triviale metriek $d_{X}$ voor een verzameling $X$, is elke functie $f:\ X \rightarrow Y$ met $Y,d_{Y}$ een metrische ruimte, continu.
+\extra{bewijs}
+\end{vb}
+
+\begin{st}
+  De triviale metriek $d_{X}$ voor een verzameling $X$ is topologisch fijner dan elke andere metriek op $X$.
+
+  \begin{proof}
+    De triviale topologie is de machtsverzameling $\mathcal{P}(X)$ van $X$.
+    Omdat elke topologie een verzameling van deelverzamelingen van $X$ is, moet ze dus een deel zijn van $\mathcal{T}_{d_{X}}$.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Een deelverzameling $A$ van een willekeurige verzameling $X$ is zijn eigen sluiting en inwendige voor de triviale metriek.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  Alle punten van een deelverzameling $A$ van een willekeurige verzameling $X$ zijn ge\"isoleerde punten voor de triviale metriek.
+\extra{bewijs}
+\end{st}
+
+\begin{st}
+  De verzameling $\{ x_{n} \mid n\in \mathbb{N} \}$ van elementen van een convergente rij $(x_{n})_{n}$ voor de discrete metriek is steeds eindig.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een convergente rij in een verzameling $X$ en noem $x$ de limiet..
+    Omdat $(x_{n})_{n}$ convergeert, bestaat er een $n_{0}\in \mathbb{N}$ zodat alle $x_{n}$ vanaf $n_{0}$ dichter dan $1$ bij $x$ liggen en dus gelijk zijn aan $x$.
+    Er zijn dan nog hoogstens $n_{0}-1$ (en dus hoogstens een eindig aantal) andere elementen in de rij te vinden.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Voor de triviale metriek is elke verzameling volledig.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een Cauchyrij in een metrische ruimte $X,d$, dan bestaat er een $n_{0} \in \mathbb{N}$ zodat alle $x_{n}$ met $n\in \mathbb{N}$ groter dan $n_{0}$ hetzelfde element $x$ zijn.
+    De rij $(x_{n})_{n}$ convergeert dus naar $x$.
+  \end{proof}
+\end{st}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

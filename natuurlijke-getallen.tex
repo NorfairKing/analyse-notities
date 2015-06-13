@@ -1,0 +1,52 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Natuurlijke getallen}
+\label{sec:natuurlijke-getallen}
+
+\begin{de}
+  De \term{natuurlijke getallen} zijn inductief gedefinieerd met de volgende axioma's.
+  \begin{itemize}
+  \item $0$ is een natuurlijk getal: $0 \in \mathbb{N}$.
+  \item $\forall a \in \mathbb{N}: S(a) \in \mathbb{N}$.
+  \item $\forall a,b\in \mathbb{N}: S(a) = S(b) \Rightarrow a=b$
+  \item Als een verzameling $V$ $0$ bevat alsook de successor van elk getal in $V$, dan geldt $V=\mathbb{N}$.
+  \end{itemize}
+\end{de}
+
+\begin{de}
+  De \term{optellling} is gedefinieerd als volgt:
+  \[ a + S(b) = s(a+b) \]
+\end{de}
+
+\begin{de}
+  De \term{vermenigvuldiging} is gedefinieerd als volgt:
+  \[ a \cdot S(b) = a+ s(a\cdot b) \]
+\end{de}
+
+\begin{de}
+  De \term{orde} in $\mathbb{N}$ is gedefinieerd als volgt:
+  \[ n \le S(m) \Leftrightarrow n = S(m) \vee n \le m \]
+\end{de}
+
+\begin{de}
+  De \term{natuurlijke getallen} kunnen ook concreet gedefineerd worden:
+  \[
+  \left\{
+  \begin{array}{rl}
+    0 &= \emptyset\\
+    s(n) &= n \cup \{ n \}\\
+  \end{array}
+  \right.
+  \]
+\end{de}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

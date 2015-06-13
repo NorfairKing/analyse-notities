@@ -2,41 +2,56 @@
 \usepackage[latin1]{inputenc}
 \usepackage[dutch]{babel}
 
-% Voor commit in titelpagina
-\immediate\write18{git rev-parse --short HEAD > commit.tex}
-
 \input{packages}
 \input{header}
 
+\immediate\write18{git rev-parse --short HEAD > commit.tex}
 
 \begin{document}
 
 \input{titelpagina}
 
+\subfile{voorwoord}
 
 \tableofcontents
 
-\subfile{voorkennis}
+\part{Voorkennis}
+\subfile{relaties}
+\subfile{functies}
 \subfile{getallen}
-\subfile{rijen}
+
+\part{Re\"ele Analyse}
+\subfile{rijen-in-r}
+\subfile{topologie-in-r}
 \subfile{continuiteit-voor-functies-van-r-naar-r}
 \subfile{afgeleiden-van-functies-van-r-naar-r}
 \subfile{reeksen}
 \subfile{continuiteit-voor-functies-van-rp-naar-rp}
-\subfile{metrische-ruimten-en-continuiteit}
 \subfile{de-riemannintegraal}
 
-\subfile{voorbeelden}
+\part{Metrische Analyse}
+\subfile{metrische-ruimten-definitie}
+\subfile{metrische-ruimten-topologie}
+\subfile{metrische-ruimten-continuiteit}
+\subfile{metrische-ruimten-volledigheid}
+\subfile{metrische-ruimten-voorbeelden}
+
+\appendix
 \subfile{algoritmes}
+\subfile{oproep}
 
-
-
-
+\nocite{aI}
+\nocite{gelbaum2003counterexamples}
 \bibliographystyle{plain}
 \bibliography{main}
 
 \printindex
 
-\subfile{oproep}
+\listoftodos
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

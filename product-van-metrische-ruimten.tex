@@ -1,0 +1,38 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Het product van metrische ruimten}
+\label{sec:het-product-van}
+
+\begin{de}
+  Op een product van twee metrische ruimten $X_{1},d_{X_{1}}$ en $X_{2},d_{X_{2}}$, definieren we de $i$-de \term{selectie-metriek} $d_{i}$ als volgt:
+  \[ d_{i}:\ X_{1}\times X_{2} \rightarrow \mathbb{R}^{+}:\ ((x_{1},x_{2}),(y_{1},y_{2})) \mapsto d_{X_{i}}(x_{i},y_{i}) \]
+  De metriek 'selecteert' met andere woorden het resultaat van \'e\'en van de metrische ruimten.
+\end{de}
+
+\begin{opm}
+  $X_{1}\times X_{2},d_{i}$ is dus volledig als en slechts als $X_{i}$ volledig is.
+\end{opm}
+
+\begin{vb}
+  De volgende functie is een metriek voor een product van twee metrische ruimten $X_{1},d_{X_{1}}$ en $X_{2},d_{X_{2}}$:
+  \[ d_{+}:\ X_{1}\times X_{2} \rightarrow \mathbb{R}^{+}:\ ((x_{1},x_{2}),(y_{1},y_{2})) \mapsto d_{X_{1}}(x_{1},y_{1}) + d_{X_{2}}(x_{2},y_{2}) \]
+  \extra{nagaan dat dit inderdaad een metriek is.}
+\end{vb}
+
+\begin{vb}
+  Het maximum van twee metrieken is, op een productruimte, weer een metriek:
+  \[ d_{\max}:\ X_{1}\times X_{2} \rightarrow \mathbb{R}^{+}:\ ((x_{1},x_{2}),(y_{1},y_{2})) \mapsto \max\{ d(x_{1},y_{1}), d(x_{2},y_{2})\} \]
+  \extra{nagaan dat dit echt een metriek is}
+\end{vb}
+
+\extra{city-block metriek op productruimten}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

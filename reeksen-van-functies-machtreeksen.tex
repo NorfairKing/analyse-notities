@@ -36,7 +36,7 @@
   De \term{M-test van Weierstra\ss}
   Zij $\sum_{n}f_{n}$ een reeks van functies $f_{n}:\ W \rightarrow \mathbb{C}$.
   Stel dat er een rij $(M_{k})_{k}$ in $\mathbb{R}^{+}$ bestaat zodat $\sum_{k}M_{k}$ convergeert als volgt:
-  \[ \forall k\in \mathbb{N}, \forall x \in W:\ |f_{k}(x)| < M_{k} \]
+  \[ \forall k\in \mathbb{N}, \forall x \in W:\ |f_{k}(x)| \le M_{k} \]
   Dan convergeert $\sum_{n}f_{n}$ absoluut en uniform op $W$.
 
   \begin{proof}
@@ -64,7 +64,6 @@
     \[ \forall n \in \mathbb{N}, \forall x\in A:\ n \ge n_{0} \Rightarrow |f(x)-s_{n}(x)| < \epsilon \]
   \end{proof}
 \end{bst}
-
 
 \begin{bpr}
   \label{pr:reeks-uniform-convergent-dan-limietfunctie-continu}
@@ -124,6 +123,7 @@
 \end{opm}
 
 \begin{bst}
+  \label{st:worteltest}
   Beschouw een machtreeks $\sum_{n}c_{n}(z-a)^{n}$ rond een $a\in \mathbb{C}$.
   Benoem als volgt:
   \[ \gamma = \limsup_{n \rightarrow \infty}\sqrt[n]{|c_{n}|} \quad\text{ en }\quad R = \frac{1}{\gamma} \]
@@ -146,9 +146,55 @@
   We noemen de $R$ in de stelling hierboven de \term{convergentiestraal} van de machtreeks.
 \end{de}
 
+\begin{vb}
+  \stiekem{Juni 2014}
+  De volgende machtreeks convergeert absoluut op $W$:
+  \[ f:\ \interval[open]{-1}{1} \rightarrow \mathbb{R}:\ x \mapsto \sum_{k}x^{k}\cos(kx) \]
+  
+  \begin{proof}
+    Omdat voor alle $y\in \mathbb{R}$, $\cos(y)$ tot $\interval{-1}{1}$ behoort, kunnen we de volgende afschatting maken:
+    \[ \cos(kx) \le 1  \text{ en bijgevolg } x^{k}\cos(kx) \le x^{k} \]
+    Nu weten we dus al dat het linkerlid convergeert als het rechterlid convergeert.\stref{st:vergelijkingstest}
+    Beschouw nu de reeks $\sum_{k}x^{k}$.
+    Dit is een machtreeks (rond $0$), met convergentiestraal $1$:
+    \[ \lim_{k\rightarrow \infty}\sqrt[k]{1} = 1 \]
+    In een straal van $1$ rond $0$ zal de reeks $\sum_{k}x^{k}$ dus absoluut convergeren en bijgevolg ook $\sum_{k}x^{k}\cos(kx)$.
+  \end{proof}
+\end{vb}
+
 \extra{voorbeelden onderaan p 17}
 
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks waarbij $(c_{n})_{n}$ een begrensde rij is, dan is de convergentiestraal van de reeks strikt groter dan $1$.
+
+  \begin{proof}
+    Omdat $(c_{n})_{n}$ een begrensde rij is, bestaat er een $M\in\mathbb{R}^{+}$ als volgt
+    \[ \forall n\in\mathbb{N}:\ |c_{n}| < M \]
+    We gebruiken de worteltest.\stref{st:worteltest}
+    \[ \limsup_{n\rightarrow +\infty}\sqrt[n]{|c_{n}|} < \limsup_{n\rightarrow +\infty}\sqrt[n]{M} = 1 \]
+    De convergentiestraal is dus groter dan $1$.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks waarbij $(c_{n})_{n}$ een \textbf{onbegrensde} rij is, dan is de convergentiestraal van de reeks kleiner of gelijk aan $1$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat de convergentiestraal strikt groter is dan $1$.\\
+    Er bestaat dan een $y\in \mathbb{C}$ zodat $|z-y| > 1$ geldt maar ook $\sum_{n}|c_{n}(z-y)^{n}| \in\mathbb{C}$.
+    Omdat $(c_{n})_{n}$ onbegrensd is, bestaat er een $n_{0}\in\mathbb{N}$ als volgt:
+    \[ \forall n\in\mathbb{N}:\ n\ge n_{0} \Rightarrow |c_{n}| > 1 \]
+    We vinden dan het volgende:
+    \[ \sum_{n=n_{0}}^{\infty}\left|c_{n}(z-y)^{n}\right| > \sum_{n=n_{0}}^{\infty}\left|(z-y)^{n}\right| \ge \sum_{n}\left|(z-y)^{n}\right| \]
+    Van die laatste uitdrukking weten we dat de reeks niet convergeert, dus kan de machtreeks ook niet convergeren.
+    Contradictie.
+  \end{proof}
+\end{st}
+
 \begin{bpr}
+  \label{pr:convergentiestraal-adhv-limiet}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$.
   Stel dat $c_{n}$ vanaf een bepaalde $n_{0}$ nooit $0$ is en dat de limiet $\lim_{n \rightarrow +\infty}\frac{|c_{n}|}{|c_{n+1}|}$ bestaat, dan is die limiet gelijk aan de convergentiestraal van de machtreeks.
 
@@ -214,6 +260,25 @@
     \[ \limsup_{n\rightarrow +\infty}\sqrt[n]{\frac{1}{n^{n}}} = \limsup_{n\rightarrow +\infty}\frac{1}{n} = 0 \]
   \end{proof}
 \end{vb}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $(c_{n})_{n}$ een dalende rij in $\mathbb{R}^{+}$ met $x_{0} \neq 0$.
+  De convergentiestraal van $\sum_{n}c_{n}x^{n}$ is minstens $1$.
+
+  \begin{proof}
+    Omdat $(c_{n})_{n}$ een dalende rij is, geldt $\forall n\in\mathbb{N}:\ c_{n+1} \le c_{n}$.
+    De limiet van $\frac{c_{n}}{c_{n+1}}$ is dus groter of gelijk aan $1$.\prref{pr:convergentiestraal-adhv-limiet}
+  \end{proof}
+\end{st}
+
+\begin{opm}
+  Analoog geldt bovenstaande stelling voor stijgende rijen in $\mathbb{R}^{-}$.
+\end{opm}
+
+\begin{opm}
+  Bovenstaande stelling geldt ook voor rijen die \textit{uiteindelijk} beginnen te dalen in $\mathbb{R}^{+}$ of stijgen in $\mathbb{R}^{-}$.
+\end{opm}
 
 \begin{bst}
   \label{st:machtreeks-convergeert-uniform-op-open-convergentieschijf}

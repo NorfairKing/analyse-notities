@@ -1,13 +1,16 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\section{Metrische ruimten}
-\label{sec:metrische-ruimten}
 
-\subsection{Het concept metrische ruimte}
+
+\chapter{Metrische ruimten}
+\label{cha:metrische-ruimten}
+
+\section{Het concept metrische ruimte}
 \label{sec:het-conc-metr}
 
 \begin{de}
+  \label{de:metrische-ruimte}
   Een \term{Metrische ruimte} $V,d$ is een tupel van een verzameling $V$ en een functie $d$ met de volgende eigenschappen:
   \[ d:\ V \times V \rightarrow \mathbb{R}^{+}:\ (v,w) \mapsto d(v,w) \]
   \begin{itemize}
@@ -21,6 +24,30 @@
   Men noemt $d$ de \term{metriek} of \term{afstandsfunctie} en $d(v,w)$ de \term{afstand} tussen $v$ en $w$.
 \end{de}
 
+\begin{st}
+  Zij $X,d$ een metrische ruimte en $f:\ X \rightarrow Y$ een bijectie, dan definieert $d'$ als volgt een metriek op $Y$:
+  \[ d':\ Y^{2}\rightarrow \mathbb{R}:\ d'(f(x_{1}),f(x_{2})) = d(x_{1},x_{2}) \]
+
+  \extra{bewijs: evident?}
+\end{st}
+
+\begin{st}
+  Zij $X,d$ een metrische ruimte, dan definieert $d'$ als volgt een metriek op $X$:
+  \[ d':\ X^{2}\rightarrow \mathbb{R}:\ d'(x,y) = \min\{1,d(x,y)\} \]
+
+  \begin{proof}
+    De eerste twee eigenschappen zijn evident vanuit de metriek $d$.
+
+    \begin{align*}
+      & d'(x,y)+d'(y,z)\\
+      & = \min\{1,d(x,y)\} + \min\{1,d(y,z)\}\\
+      & = \min\{1+1,1+d(x,y),d(y,z)+1,d(x,y)+d(y,z)\} \\
+      & \ge \min\{1,d(x,y)+d(y,z)\} \\
+      & \ge  \min\{1,d(x,z)\}\\
+      & = d'(x,z)
+    \end{align*}
+  \end{proof}
+\end{st}
 
 \begin{st}
   Zij $f:\ \mathbb{R}^{+} \rightarrow \mathbb{R}^{+}$ een stijgende concave functie zodat $f(t)$ nul is als en slechts als $t$ nul is.
@@ -33,12 +60,13 @@
     \item $d_{f}$ is nul als en slechts als de argumenten gelijk: aanname.
     \item $d_{f}$ voldoet aan de driehoeksongelijkheid:
       \[ f(d(x,z)) \le f(d(x,y) + d(y,z)) \]
-\TODO{en nu?}
+      \TODO{en nu?}
     \end{itemize}
   \end{proof}
 \end{st}
 
-\subsection{Begrensde verzamelingen}
+
+\section{Begrensde verzamelingen}
 \label{sec:begr-verz}
 
 \begin{de}
@@ -75,7 +103,7 @@
   \end{proof}
 \end{bpr}
 
-\subsection{Convergente rijen in metrische ruimten}
+\section{Convergente rijen in metrische ruimten}
 \label{sec:rijen-metr-ruimt}
 
 \begin{de}
@@ -109,6 +137,7 @@
 
 
 \begin{bst}
+  \label{st:convergent-dan-cauchy}
   Zij $V,d$ een metrische ruimte, dan is elke onvergente rij hierin een Cauchyrij.
 
   \begin{proof}
@@ -128,11 +157,74 @@
 \end{de}
 
 \begin{st}
-  Een convergente rij is begrensd.
-\extra{zeker?}
+  \label{st:metrische-ruimte-cauchy-dan-begrensd}
+  In een metrische ruimte is elke Cauchyrij begrensd.
+
+  \begin{proof}
+    Zij $(x_{n})_{n}$ een Cauchyrij in een metrische ruimte $X,d$.
+    Omdat $(x_{n})_{n}$ een Cauchyrij is, bestaat er een $m\in \mathbb{N}$ zodat $d(x_{k},k_{l}) < 1$ geldt voor alle $k,l \in \mathbb{N}$, groter dan $m$.
+    In het bijzonder geldt dan ook $d(x_{m},x_{n} < 1$ voor alle $n\in \mathbb{N}$ groter dan $m$.
+    Kies nu $\alpha = \max\{ d(x_{m},x_{n}) \mid n\in \mathbb{N}, n < m \}$.
+    Merk op dat voor alle $n\in \mathbb{N}$ dan $d(x_{n},x_{m}) < \alpha + 1$ geldt.
+    Kies nu twee willekeurige elementen $x_{a},x_{b}$ uit de rij ($a,b\in \mathbb{N}$) en kies $M=2\alpha+2$.
+    \[ d(x_{a},x_{b}) \le d(x_{a},x_{m}) + d(x_{m},x_{b}) < 2(\alpha+1) = M \]
+    De rij $(x_{n})_{n}$ is dus begrensd door $M$.
+  \end{proof}
 \end{st}
 
-\subsection{Continue functies tussen metrische ruimten}
+\begin{gev}
+  In elke metrische ruimte is dus in het bijzonder elke convergente rij begrensd.\stref{st:convergent-dan-begrensd}
+\end{gev}
+
+\section{Deelrijen}
+\label{sec:deelrijen}
+
+\begin{de}
+  Zij $(x_{n})_{n}$ een rij over een verzameling $V\subseteq X$ in een metrische ruimte en $(n_{k})_{k}$ een strikt stijgende rij over $\mathbb{N}$, dan is de rij $(x_{n_{k}})_{k}$ een \term{deelrij} van $(x_{n})_{n}$.
+\end{de}
+
+\begin{st}
+  \label{st:deelrij-zelfde-limiet-als-convergente-moederrij}
+  Zij $(x_{n})_{n}$ een convergente rij in een metrische ruimte $X,d$ en $(x_{n_{k}})_{k}$ een deelrij van $(x_{n})_{n}$, dan convergent $(x_{n_{k}})_{k}$ naar dezelfde limiet.
+\TODO{bewijs}
+\end{st}
+
+\begin{st}
+  \label{st:cauchy-asa-convergente-deelrij}
+  In een metrische ruimte $X,d$ is een Cauchyrij $(x_{n})_{n}$ convergent als en slechts als ze een convergente deelrij heeft. 
+
+  \begin{proof}
+    Bewijs van een equivalentie.
+    \begin{itemize}
+    \item $\Rightarrow$:
+      De rij $(x_{n})_{n}$ is een convergente deelrij van zichzelf.
+    \item $\Leftarrow$\\
+      Zij $(x_{n_{k}})_{k}$ een convergente deelrij van de Cauchyrij $(x_{n})_{n}$ en noem de limiet $x$.
+      Kies $\epsilon \in \mathbb{R}_{0}^{+}$ willekeurig.
+      Er bestaat dan een $k_{0} \in \mathbb{N}$ als volgt:
+      \[ \forall k\in \mathbb{N}:\ k \ge k_{0} \Rightarrow d(x_{n_{k}},x) < \frac{\epsilon}{2} \]
+      Omdat $(x_{n})_{n}$ een Cauchyrij is, bestaat er een $n_{0} \in \mathbb{N}$ als volgt:
+      \[ \forall m,n\in \mathbb{N}:\ m,n \ge n_{0}:\ d(x_{m},x_{n}) < \frac{\epsilon}{2} \]
+      Kies nu $m = \max\{k_{0},n_{0}\}$.
+      \[ \forall n\in \mathbb{N}:\ n \ge m \Rightarrow d(x_{n},x) \le d(x_{n},x_{n_{n}}) + d(x_{n_{n}},x) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \label{st:rij-met-eindig-aantal-waarden-convergente-deelrij}
+  Zij $(x_{n})_{n}$ een rij die een eindig aantal waarden aanneemt, dan bevat die zeker een convergente deelrij.
+
+  \begin{proof}
+    Dat een rij $(x_{n})_{n}$ een eindig aantal waarden aanneemt, houdt in dat de volgende verzameling eindig is.
+    \[ A = \{ x_{n} \mid n \in \mathbb{N} \} \]
+    Opdat $A$ eindig zou kunnen zijn, moet er een waarde $x_{n}$ in zitten die oneindig veel voorkomt in de rij $(x_{n})_{n}$.
+    Nummer die waarden (met $k$) zodat $\{ x_{n_{k}} \mid k \in \mathbb{N} \}$ een constante rij is.
+    Deze is convergent.\needed
+  \end{proof}
+\end{st}
+
+\section{Continue functies tussen metrische ruimten}
 \label{sec:cont-funct-tuss}
 
 \begin{de}
@@ -144,6 +236,9 @@
   Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimtes en $f:\ A \subseteq V \rightarrow W$ een functie, dan noemen we $f$ \term{uniform continu} op $A$ als het volgende geldt:
   \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \delta \in \mathbb{R}_{0}^{+}, \forall a,b \in A:\ d_{V}(a,b)< \delta \Rightarrow d_{W}(f(a),f(b)) < \epsilon \]
 \end{de}
+
+\subsection{Contracties}
+\label{sec:contracties}
 
 \begin{de}
   Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, dan noemen we een funcie $f:\ X \rightarrow Y$ een \term{contractie} als het volgende geldt:
@@ -158,8 +253,17 @@
 
 \begin{st}
   Contracties zijn uniform continu.
-\TODO{bewijs}
+
+  \begin{proof}
+    Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, en $f:\ X \rightarrow Y$ een contractie.
+    Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$ en kies $\delta = \epsilon$.
+    Kies willekeurig twee elementen $a,b\in V$:
+    \[ d_{V}(a,b) < \epsilon \Rightarrow d_{W}(f(a),f(b)) \le d_{V}(a,b) < \epsilon \]
+  \end{proof}
 \end{st}
+
+\subsection{Isometrie\"en}
+\label{sec:isometrieen}
 
 \begin{de}
   Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten, dan noemen we een funcie $f:\ X \rightarrow Y$ een \term{isometrie} als $f$ afstanden bewaart:
@@ -167,6 +271,7 @@
 \end{de}
 
 \begin{st}
+  \label{st:isometrie-dan-injectie}
   Elke isometrie is injectief.
 
   \begin{proof}
@@ -187,7 +292,7 @@
 \extra{voorbeeld p 23}
 
 
-\subsection{Enkele resultaten}
+\section{Enkele resultaten}
 \label{sec:enkele-resultaten}
 \TODO{staan deze op hun plaats?}
 
@@ -208,7 +313,7 @@
     \item Het infimum van $\inf\{d(x,a) \mid a\in A\cup B\}$ is ofwel $d(x,a')$ $d(x,b')$ en in het bijzonder het infimum van de twee, dus het minimum ervan.
       \question{wat valt er hier meer over te zeggen?}
     \item Het infimum van $\{d(x,a) \mid a\in A\cap B\}$ is $d(x,c)$ met $c\in A\cap B$ en $c$ \'e\'en van de $a'$ en $b'$ en dan is het inderdaad het maximum van $d_{A}(x)$ en $d_{B}(x)$.
-      \question{dit klinkt niet juist, wat mist er}?
+      \question{dit klinkt niet juist, wat mist er?}
     \end{enumerate}
   \end{proof}
 \end{st}
@@ -227,8 +332,31 @@
   \end{proof}
 \end{st}
 
+\section{Metrische Productruimten}
+\label{sec:metrische-productruimten}
 
-\subsection{Genormeerde vectorruimten}
+\begin{de}
+  Zij $V,d_{V}$ en $W,d_{W}$ twee metrische ruimten. en $d_{V,W}$ een metriek op $V\times W$, dan noemen we $V\times W, d_{V,W}$ de productruimte van $V,d_{V}$ en $W,d_{W}$.
+\end{de}
+
+\begin{st}
+  Metrieken zijn continu wanneer we als metriek op het het maximum van de deelmetrieken beschouwen.
+  
+  \begin{proof}
+    Zij $X,d$ een metrische ruimte.
+    Op de productruimte $X^{2}$ beschouwen we de volgende metriek:
+    \[ d_{\max}:\ X\times X \rightarrow \mathbb{R}^{+}:\ ((x_{1},x_{2}),(y_{1},y_{2})) \mapsto \max\{ d(x_{1},y_{1}), d(x_{2},y_{2})\} \]
+  \end{proof}
+\end{st}
+
+\begin{gev}
+  \label{gev:metriek-door-limiet}
+  We mogen metrieken door limieten halen.
+\TODO{bewijs? is dit duidelijk genoeg? misschien nog een algemenere stelling formuleren.}
+\end{gev}
+
+
+\section{Genormeerde vectorruimten}
 \label{sec:genorm-vect}
 
 \begin{de}
@@ -280,6 +408,12 @@
       $A$ is dus bij metriek begrensd door $N=2M \in \mathbb{R}^{+}$.
     \end{itemize}
   \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $B(x,\delta)$ een open bol in een genormeerde vectorruimte $\mathbb{R},V,+,\|\cdot\|$, dan is $B(x,\delta)$ een translatie van een open bol rond $0$:
+  \[ B(x,\delta) = \left\{ t+x \mid t \in B(0,\delta) \right\} \]
+\extra{bewijs}
 \end{st}
 
 

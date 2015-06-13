@@ -1,0 +1,47 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Gehele getallen}
+\label{sec:gehele-getallen}
+
+\begin{de}
+  De \term{gehele getallen}, genoteerd als $\mathbb{Z}$, definieren we intu\"itief als volgt:
+  \[ \mathbb{Z} = \mathbb{N} \cup \{ -n \mid n\in \mathbb{N} \}  \]
+\end{de}
+
+\begin{de}
+  We kunnen de \term{gehele getallen} ook concreet definieren als volgt:
+  $\mathbb{Z}$ is partitie van $\mathbb{N}^{2}$ onder de equivalentierelatie $\sim$ als volgt:
+  \[ \sim:\ \mathbb{N}^{2} \times \mathbb{N}^{2}:\ (a,b) \sim (c,d) \Leftrightarrow b+c = d+a \]
+\end{de}
+
+\begin{opm}
+  In deze representatie stelt $(a,b)$ $b+(-a)$ voor in de intu\"itieve notatie.
+\end{opm}
+
+\begin{de}
+  De \term{optelling} definieren we dan als volgt:
+  \[ (a,b) + (c,d) = (a+c,b+d) \]
+\end{de}
+\extra{nagaan dat deze definitie onafhankelijk is van de gekozen representanten uit de equivalentieklassen}
+
+\begin{de}
+  De \term{vermenigvuldiging} definieren we als volgt:
+  \[ (a,b) \cdot (c,d) = (bd+ac,da+bc) \]
+\end{de}
+\extra{nagaan dat deze definitie onafhankelijk is van de gekozen representanten uit de equivalentieklassen}
+
+\begin{de}
+  De \term{orde} definieren we in termen van de orde op $\mathbb{N}$ als volgt:
+  \[ (a,b) \le (c,d) \Leftrightarrow b+c \le d+a \]
+\end{de}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
