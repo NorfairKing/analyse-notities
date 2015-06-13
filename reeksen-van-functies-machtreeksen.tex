@@ -177,6 +177,22 @@
   \end{proof}
 \end{st}
 
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks waarbij $(c_{n})_{n}$ een \textbf{onbegrensde} rij is, dan is de convergentiestraal van de reeks kleiner of gelijk aan $1$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat de convergentiestraal strikt groter is dan $1$.\\
+    Er bestaat dan een $y\in \mathbb{C}$ zodat $|z-y| > 1$ geldt maar ook $\sum_{n}c_{n}(z-a)^{n} \in\mathbb{C}$.
+    Omdat $(c_{n})_{n}$ onbegrensd is, bestaat er een $n_{0}\in\mathbb{N}$ als volgt:
+    \[ \forall n\in\mathbb{N}:\ n\ge n_{0} \Rightarrow |c_{n}| > 1 \]
+    We vinden dan het volgende:
+    \[ \sum_{n=n_{0}}^{\infty}c_{n}(z-a)^{n} > \sum_{n=n_{0}}^{\infty} (z-a)^{n} \ge \sum_{n}(z-a)^{n} \]
+    Van die laatste uitdrukking weten we dat de reeks niet convergeert, dus kan de machtreeks ook niet convergeren.
+    Contradictie.
+  \end{proof}
+\end{st}
+
 \begin{bpr}
   \label{pr:convergentiestraal-adhv-limiet}
   Zij $\sum_{n}c_{n}(z-a)^{n}$ een machtreeks rond een $a\in \mathbb{C}$.
