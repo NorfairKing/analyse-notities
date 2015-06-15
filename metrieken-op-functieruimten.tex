@@ -158,6 +158,25 @@ Let wel op de ongelijheid met het supremum.
   \end{proof}
 \end{vb}
 
+\begin{vb}
+  \label{vb:continue-functies-volledig}
+  $C\left(\interval{0}{1}\right), d_{\infty}$ is volledig.
+
+  \begin{proof}
+    Kies willekeurig een Cauchyrij $(f_{n})_{n}$ in $C\left(\interval{0}{1}\right)$ en kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$.
+    Omdat $(f_{n})_{n}$ een Cauchyrij is, bestaat er een $N\in\mathbb{N}$ als volgt:
+    $$ \forall n,m\in\mathbb{N}:\ n,m\ge N \Rightarrow d_{\infty}(f_{n},f_{m}) < \epsilon $$
+    Er geldt dus ook het volgende:
+    $$ \forall \epsilon \in\mathbb{R}_{0}^{+}, \exists N \in \mathbb{N}, \forall x\in\interval{0}{1}, \forall n,m\in\mathbb{N}:\ n,m\ge N \Rightarrow |f_{n}(x)) - f_{m}(x)| < \epsilon $$
+    Voor elke $x\in\interval{0}{1}$ is dus de rij $(f_{n}(x))_{n}$ dus een Cauchyrij en bijgevolg convergent.
+    We noemen de limiet telkens $f(x)$.
+    Er geldt dus het volgende:
+    \[ \forall \epsilon \in\mathbb{R}_{0}^{+}, \exists n\in\mathbb{N}:\ \forall x\in\interval{0}{1}, \forall n\in\mathbb{N}: n\ge N \Rightarrow |f_{n}(x)-f(x)| < \epsilon \]
+    Dit betekent dat $(f_{n})_{n}$ voor de $d_{\infty}$-metriek convergeert naar $f$.
+    Bovendien is $f$ continu omdat $(f_{n})_{n}$ er uniform naar convergeert.
+  \end{proof}
+\end{vb}
+
 
 \subsection{De $d_1$-metriek op $C(\interval{0}{1})$}
 \label{sec:de-d_1-metriek}
@@ -483,29 +502,57 @@ Let wel op de ongelijheid met het supremum.
 
 \begin{vb}
   \stiekem{Augustus 2014}
-  De metrische ruimte $C^{1}\left(\interval{0}{1}\right),d'$ is \textbf{niet volledig}.
+  De metrische ruimte $C^{1}\left(\interval{0}{1}\right),d'$ is volledig.
 
+  \begin{proof}
+    Kies willekeurig een Cauchyrij $(f_{n})_{n}$ in $C^{1}\left(\interval{0}{1}\right)$ en een $\epsilon\in\mathbb{R}_{0}^{+}$.
+    Er bestaat dan een $N\in\mathbb{N}$ als volgt:
+    \[
+      \forall n,m\in\mathbb{N}:\ n,m\ge N \Rightarrow |f(0)-g(0)| + \sup_{x\in\interval{0}{1}}\{|f'(x)-g'(x)|\} < \epsilon
+    \]
+    Hetzelfde geldt dus voor enkel de rechter term.
+    We weten dus al dat de rij $(f'_{n})_{n}$ uniform convergeert naar een continue $f'$.\vbref{vb:continue-functies-volledig}
+    We weten ook dat de rij $(f_{n}(0))_{n}$ naar een $x_{0}\in\mathbb{R}$ convergeert.
+    We beweren nu dat de rij $(f_{n})_{n}$ convergeert naar $f$ als volgt:
+    \[
+      f:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto 
+      \begin{cases}
+        x_{0} &\text{ als } x = 0\\
+        x_{0} + \int_{0}^{x}f'(x)dx &\text{ als } x \in \interval[open left]{0}{1}
+      \end{cases}
+    \]
+    \TODO{meer uitleg, dit is het idee:}
+    \begin{align*}
+      |f(x)-g(x)|
+      &= \left|f(0)-g(0)\right| + \int_{0}^{x}|f'(y)-g'(y)|\ dy\\
+      &\le |f(0)-g(0)| + \int_{0}^{x}|f'(y)-g'(y)|\ dy\\
+      &\le \epsilon + x\epsilon\\
+      &\le 2\epsilon
+    \end{align*}
+  \end{proof}
+
+  \iffalse
   \begin{proof}
     Beschouw de rij van functies $(f_{n})_{n}$ als volgt:
 
     \noindent
     \begin{minipage}{.45\textwidth}
-    \begin{figure}[H]
-      \centering
-      \begin{tikzpicture}[scale=.75]
-        \begin{axis}[xmin=-2, xmax=2,ymin=-0.1, ymax=3.9]
-          \foreach \n in {1,...,20}{
-            \addplot[smooth,domain=-2:2]{sqrt(x^2+(1/\n^2))};
-          }
-          \addplot[smooth,color=blue,thick,domain=-2:0]{-x};
-          \addplot[smooth,color=blue,thick,domain=0:2]{x};
-        \end{axis}
-      \end{tikzpicture}
-    \end{figure}
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+          \begin{axis}[xmin=-2, xmax=2,ymin=-0.1, ymax=3.9]
+            \foreach \n in {1,...,20}{
+              \addplot[smooth,domain=-2:2]{sqrt(x^2+(1/\n^2))};
+            }
+            \addplot[smooth,color=blue,thick,domain=-2:0]{-x};
+            \addplot[smooth,color=blue,thick,domain=0:2]{x};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
     \end{minipage}
     \begin{minipage}{.45\textwidth}
-    \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{\left(x-\frac{1}{2}\right)^{2}+ \frac{1}{n^{2}}} \]
-    \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ |x-\frac{1}{2}| \]
+      \[ f_{n}:\ \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto \sqrt{\left(x-\frac{1}{2}\right)^{2}+ \frac{1}{n^{2}}} \]
+      \[ f:\ \mathbb{R} \rightarrow \mathbb{R}:\ |x-\frac{1}{2}| \]
     \end{minipage}
 
     $(f_{n})_{n}$ is een Cauchyrij maar de limietfunctie is niet afleidbaar in $0$ en zit dus niet in $C^{1}\left(\interval{0}{1}\right)$
@@ -524,11 +571,7 @@ Let wel op de ongelijheid met het supremum.
     \end{itemize}
     Kies dan $n_{1}$ groot genoeg zodat $f_{n}(0)$ dichter dan $\frac{\epsilon}{2}$ bij $0$ komt en $n_{2}$ groot genoeg zodat $|f_{n}'(x)|$ dichter dan $\frac{\epsilon}{2}$ bij $g$ komt en besluit dat $(f_{n})_{n}$ naar $|x|$ convergeert.
   \end{proof}
-\end{vb}
-
-\begin{vb}
-  \stiekem{Augustus 2014}
-\TODO{  De vervollediging van $C\left(\interval{0}{1}\right)$ is ...}
+\fi
 \end{vb}
 
 
