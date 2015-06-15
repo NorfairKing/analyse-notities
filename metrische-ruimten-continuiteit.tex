@@ -1,0 +1,476 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\chapter{Continu\"iteit van functies over metrische ruimten}
+\label{cha:continuiteit-van-functies-over-metrische-ruimten}
+
+\begin{bpr}
+  \label{pr:continuiteit-itv-rijen}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten.
+  Zij $f:\ A \subseteq X \rightarrow Y$ een functie en een $a\in A$, dan is $f$ continu in $a$ als en slechts als voor elke rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert $(f(x_{n}))_{n}$ naar $f(a)$ convergeert.
+
+  \begin{proof}
+    Bewijs van een equivalentie
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een willekeurige rij $(x_{n})_{n}$ in $A$ die naar $a$ convergeert.
+      Kies een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$.
+      Omdat $f$ continu is in $a$, bestaat er een $\delta\in \mathbb{R}_{0}^{+}$ als volgt:
+      \[ \forall x\in A:\ d_{X}(x,a) < \delta \Rightarrow d_{Y}(f(x),f(a)) \]
+      Omdat $(x_{n})_{n}$ convergeert naar $a$, bestaat er een $n_{0}\in \mathbb{N}$ als volgt:
+      \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow  d_{X}(x_{n},a) < \delta \]
+      Er geldt dan bijgevolg:
+      \[ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d_{Y}(f(x),f(a)) < \epsilon \]
+    \item $\Leftarrow$\\
+      Contrapositie: Als $f$ niet continu is in $a$ zal er een rij in $A$ bestaat die in $a$ convergeert waarvoor $(f(x_{n}))_{n}$ niet naar $f(a)$ convergeert.\\
+      Kies een willekeurige $\epsilon\in\mathbb{R}_{0}^{+}$.
+      Omdat $f$ niet continu is, bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ als volgt:
+      \[ \forall \delta \in \mathbb{R}_{0}^{+}, \exists x\in A:\ d_{X}(x,a) < \delta \wedge d_{Y}(f(x),f(a)) \ge \epsilon \]
+      Kies dan achtereenvolgens voor $n\in \mathbb{N}$ $\delta = \frac{1}{n}$ en vindt de $x$ uit de vorige formule om een rij $(x_{n})_{n}$ op te bouwen.
+      \[ \forall n\in \mathbb{N}:\ d_{X}(x_{n},a) < \frac{1}{n} \wedge d_{Y}(f(x_{n}),f(a)) \ge \epsilon \]
+      Uit de eerste ongelijkheid volgt dat $(x_{n})_{n}$ naar $a$ convergeert terwijl uit de tweede ongelijkheid volgt dat $(f(x_{n}))_{n}$ niet kan convergeren naar $a$.
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:metrische-ruimte-continu-itv-opens}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten.
+  Zij $f:\ A \subseteq X \rightarrow Y$ een functie, dan is $f$ continu op $A$ als en slechts voor elke $V \subseteq Y$, $f^{-1}(V)$ relatief open is in $A$.
+
+  \begin{proof}
+    Bewijs van een equivalentie
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies willekeurig een open deel $V$ van $Y$.
+      Als $f^{-1}(V)$ leeg is, is $f^{-1}(V)$ triviaal open.
+      Stel daarom dat $f^{-1}(V)$ niet leeg is, dan bestaat er een $a\in f^{-1}(V)$.
+      Wat volgt geldt voor alle $a\in f^{-1}(V)$.
+      $f(a)$ zit dan in $V$ en omdat $V$ open is bestaat er een $\epsilon \in \mathbb{R}_{0}^{+}$ zodat $B_{Y}(f(a),\epsilon)$ een deel is van $V$.
+      Omdat $f$ continu is in $a$ kunnen we een $\delta\in\mathbb{R}_{0}^{+}$ vinden als volgt:
+      \[ \forall x\in A:\ d_{X}(x,a) < \delta \Rightarrow d_{Y}(f(x),f(a)) < \epsilon \]
+      Of handiger opgeschreven:
+      \[ f\left(B_{X}(a,\delta) \cap A\right) \subseteq B_{Y}(f(a),\epsilon) \]
+      Dit betekent dat $B_{X}(a,\delta) \cap A$ een deel is van $f^{-1}(V)$ en dat $f^{-1}(V)$ dus relatief open is in $A$.
+    \item $\Leftarrow$\\
+      Stel dat voor elk open deel $V$ van $Y$ geldt dat $f^{-1}(V)$ relatief open is in $A$.
+      Kies nu een willekeurige $a\in A$.
+      We bewijzen dat $f$ continu is in $a$.
+      Kies daartoe een willekeurige $\epsilon \in \mathbb{R}_{0}^{+}$ en beschouw de verzameling $U$ als volgt:
+      \[ U = f^{-1}\left(B_{Y}(f(a),\epsilon)\right)\]
+      $U$ bevat allesinds $a$ en is bovendien relatief open in $A$.
+      Er bestaat dus een $\delta \in \mathbb{R}_{0}^{+}$ zodat het volgende geldt:
+      \[ B_{X}(a,\delta) \cap A \subseteq U \]
+      Kies een willekeurige $x\in B_{X}(a,\delta) \cap A$, dan behoort $x$ tot $U$ en $f(x)$ dus tot $f(U) = B_{Y}\left(f(a),\epsilon\right)$.
+      Er geldt met andere woorden $d_{Y}(f(x),f(a)) < \epsilon$, dus $f$ is continu in $a$.
+    \end{itemize}
+  \end{proof}
+\end{bpr}
+
+
+\section{Eigenschappen van continue functies}
+\label{sec:eigensch-van-cont}
+
+\begin{bpr}
+  Beschouw metrische ruimten $X,d_{X}$, $Y,d_{Y}$ en $Z,d_{Z}$ en functies $f:\ X \rightarrow  Y$ en $g:\ Y \rightarrow Z$.
+  Stel dat $f$ continu is in een punt $a\in X$ en $g$ in $f(a)$, dan is $g\circ f$ continu in $a$.
+
+  \begin{proof}
+    Kies een willekeurige $\epsilon\in \mathbb{R}_{0}^{+}$.
+    Omdat $g$ continu is in $f(a)$ kunnen we een $\eta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
+    \[ \forall y\in Y:\ d_{Y}(f(a),y) < \eta \Rightarrow d_{Z}(g(f(a)),g(y)) < \epsilon \]
+    Omdat $f$ bovendien continu is in $a$ kunnen we een $\delta \in \mathbb{R}_{0}^{+}$ vinden als volgt:
+    \[ \forall x\in X:\ d_{X}(a,x) < \delta \Rightarrow d_{Y}(f(a),f(x)) < \eta \]
+    Voor elke $x\in X$ met $d_{X}(x,a) < \delta$ geldt bijgevolg $d_{Z}\left(g(f(a)),g(f(x))\right) < \epsilon$.
+    $g\circ f$ is dus continu in $a$.
+  \end{proof}
+\end{bpr}
+
+\begin{bst}
+  \label{st:beeld-van-compact-ook-compact}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue functie.
+  Als $K \subseteq X$ compact is, is $f(K)$ ook compact.
+
+  \begin{proof}
+    Kies een wilekeurige open overdekking $\mathcal{F}$ van $f(K)$.
+    We moeten aantonen dat er een eindige deeloverdekking bestaat.
+    Omdat $f$ continu is over heel $X$, is het invers beeld van een open in $Y$ open in $X$.\prref{pr:metrische-ruimte-continu-itv-opens}
+    Beschouw $\mathcal{F}'$ als volgt:
+    \[ \mathcal{F}' = \{ f^{-1}(V) \mid V \in \mathcal{F} \} \]
+    $\mathcal{F}'$ is dus een open overdekking van $K$.
+    Omdat $K$ compact is, valt $\mathcal{F}'$ te reduceren tot een eindige deeloverdekking van $K$.
+    Er bestaan dus $V_{1},V_{2},\dotsc,V_{n} \in \mathcal{F}$ als volgt:
+    \[ K = \bigcup_{i=1}^{n}f^{-1}(V_{i}) \]
+    Beeldt nu beide leden af onder $f$:
+    \[ f(K) = f\left( \bigcup_{i=1}^{n}f^{-1}(V_{i}) \right) = \bigcup_{i=1}^{n}f\left(f^{-1}(V_{i})\right) = \bigcup_{i=1}^{n}V_{i} \]
+    $\mathcal{F}$ valt dus te reduceren tot een eindige deeloverdekking $\{V_{1},\dotsc,V_{n}\}$ van $f(K)$.
+  \end{proof}
+\end{bst}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue functie.
+  Als $K \subseteq X$ compact is, is $f$ uniform continu op $K$.
+
+  \begin{proof}
+    Kies een willekurige $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat $f$ continu is, bestaat er voor elke $x\in K$ een $\delta_{x} \in \mathbb{R}_{0}^{+}$ als volgt: 
+    \[ \forall y\in Y:\ d_{X}(x,y) < \delta_{x} \Rightarrow d_{Y}\left(f(x),f(y)\right) < \frac{\epsilon}{2} \]
+    Met al deze $\delta_{x}$ kunnen we een open overdekking $\mathcal{F}$ van $K$ construeren als volgt:
+    \[ K \subseteq \bigcup_{x\in K}B_{X}\left(x,\frac{\delta_{x}}{2}\right) \]
+    Omdat $K$ compact is, bestaat er van $\mathcal{F}$ een eindige deeloverdekking en dus een $n\in \mathbb{N}_{0}$ en punten $x_{1},x_{2},\dotsc x_{n}\in K$ als volgt:
+    \[ K \subseteq \bigcup_{j=1}^{n}B_{X}\left(x_{j},\frac{\delta_{x}}{2}\right) \]
+    Kies $\delta = \min_{i}\left\{\frac{\delta_{x_{i}}}{2} \right\}$
+    Dit minimum bestaat zeker omdat het een eindig aantal $\delta_{i}$'s zijn.
+    Kies nu willekeurig $x,y\in K$ met $d_{X}(x,y) < \delta$.
+    Neem dan de open bol $B_{X}\left(x_{j},\frac{\delta_{x_{j}}}{2}\right)$ waarin $x$ ligt.
+    Beschouw nu $d_{X}(x_{j},y)$:
+    \[ d_{X}(x_{j},y) \le d_{X}(x_{j},x) + d_{X}(x,y) < \frac{\delta_{x_{j}}}{2} + \delta \le \frac{\delta_{x_{j}}}{2} + \frac{\delta_{x_{j}}}{2} = \delta_{x_{j}} \]
+    We besluiten dat $f$ uniforum continu is op $K$ met de volgende afschatting:
+    \[ d_{Y}(f(x),f(y)) \le d_{Y}(f(x),f(x_{j})) + d_{Y}(f(x_{j}),f(y)) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+  \end{proof}
+\end{bst}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue injectieve functie.
+  Als $X$ compact is, dan is $f^{-1}:\ f(X) \rightarrow X$ continu
+
+  \begin{proof}
+    We zullen aantonen dat $f^{-1}$ continu is door aan te tonen dat het invers beeld onder $f^{-1}$ van ee nopen deel van $X$ open is in $f(X)$.\prref{pr:metrische-ruimte-continu-itv-opens}
+    Equivalent hiermee tonen we aan dat het inves beeld onder $f^{-1}$ van een gesloten deel van $X$ gesloten is in $f(X)$.
+    Kies een willekeurig gesloten deel $G$ van $X$.
+    Als gesloten deel van een compacte verzameling is $G$ ook compact.\prref{pr:gesloten-deel-van-compact-is-compact}
+    Het beeld van $G$ onder $f$ is dus ook compact:\stref{st:beeld-van-compact-ook-compact}
+    \[ f(G) = \left(f^{-1}\right)^{-1}(G) \]
+    Omdat $\left(f^{-1}\right)^{-1}(G)$ compact is, is $\left(f^{-1}\right)^{-1}(G)$ gesloten.\stref{st:rijcompact-dan-gesloten}\stref{st:compact-dan-rijcompact}
+  \end{proof}
+\end{bst}
+
+\begin{bst}
+  \label{st:continue-functie-behoudt-samenhangendheid}
+  Zij $X,d_{X}$ en $Y,d_{Y}$ metrische ruimten. en $f:\ X \rightarrow Y$ een continue functie.
+  Als $S \subseteq X$ samenhangend is, is $f(S)$ ook samenhangend.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: Stel dat $f(S)$ niet samenhangend is.
+    Er bestaan dan niet-lege, onderling gescheiden delen $C$ en $D$ van $Y$ die $f(S)$ opbouwen.
+    Noem $A = S \cap f^{-1}(C)$ en $B= S \cap f^{-1}(D)$.
+    $S$ is dan de unie van $A$ en $B$.
+    $A$ en $B$ zijn bovendien niet leeg.
+    We beweren nu dat $A$ en $B$ onderling gescheiden moeten zijn.
+    Eerst beweren we dat $\overline{A} \cap B$ leeg is, de andere bewering is analoog.
+    Stel immers dat $\overline{A} \cap B$ niet leeg is, dan zit er minstens \'e\'en element $x$ in.
+    Kies nu een willekeurige rij $(x_{n})_{n}$ in $A$ met $x$ als limiet.
+    Vanwege de continu\"iteit van $f$ moet $(f(x_{n}))_{n}$ dan naar $f(x)$ convergeren.\prref{pr:continuiteit-itv-rijen}
+    Omdat $f(x_{n})$ een element is van $f(A)$ en dat op zich een deel van $C$ zal $f(x)$ tot de sluiting van $C$ behoren.\clarify{waarom precies? Het is zo ingebakken nu dat ik niet meer kan wijzen op de stelling die dit beweert}
+    Omdat $x$ ook tot $B$ behoort, zal ook $f(x)$ een element zijn van $f(B)$ en dat op zich een deel van $D$.
+    $f(x)$ zal dus in de doorsnede van $\overline{C} \cap D$ zitten.
+    Dit kan niet omdat de doorsnede leeg is.
+    Contradictie.
+  \end{proof}
+\end{bst}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $V$ een niet-leeg open deel van $\mathbb{R}^{p}$ met $p \ge 2$, dan bestaat er geen continue injectieve functie $f:\ V \rightarrow \mathbb{R}$.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat er een continue injectieve functie $V \rightarrow \mathbb{R}$ bestaat.\\
+    Omdat $V$ niet leeg is, bestaat er een punt $v\in V$ en omdat $V$ open is, bestaat er een open bol $B(x,\delta)$ rond dat punt (met $\delta\in\mathbb{R}_{0}^{+}$).
+    Omdat $f$ continu is, behoudt $f$. samenhangendheid.\stref{st:continue-functie-behoudt-samenhangendheid}
+    Een convex deel van $\mathbb{R}^{p}$ is samenhangend\prref{pr:convexe-deelverzamelingen-samenhangend}
+    Het beeld van een convex deel moet dus samenhangend en daarom een interval zijn in $\mathbb{R}$.\prref{pr:samenhangend-asa-interval}
+    Beschouw nu de verzameling $B(x,\delta) \setminus \{x\}$.
+    Omdat $p$ groter is dan $1$ is deze deel verzameling van $V$ samenhangend.\vbref{vb:bol-zonder-midden-samenhangend-in-hogere-dimensies}
+    Het beeld ervan onder $f$ moet dus een interval zijn, maar omdat $f$ injectief is, ziet dit beeld er als volgt uit en is het dus geen interval:
+    \[ f(B(x,\delta)) \setminus f(\{x\}) \]
+    Contradictie.
+  \end{proof}
+\end{st}
+
+
+\section{Convergentie van rijen van continue functies}
+\label{sec:conv-van-rijen}
+
+\begin{de}
+  \label{de:metrische-ruimten-puntsgewijze-convergentie-van-rij-functies}
+  Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $X$ met waarden in een metrische ruimte $Y,d_{Y}$, dan zeggen we dat $(f_{n})_{n}$ \term{puntsgewijs convergeert} op $X$ naar een functie $f:\ X \rightarrow Y$ als en slechts als voor elke $x\in X$ de rij $(f_{n}(x))_{n}$ naar $f(x)$ convergeert:
+  \[ \forall x\in X, \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0} \in \mathbb{N}, \forall n\in \mathbb{N}:\ n \ge n_{0}:\ \Rightarrow d_{Y}(f_{n}(x),f(x)) < \epsilon \]
+\end{de}
+
+\begin{de}
+  Beschouw een rij $(f_{n})_{n}$ van functies op een verzameling $X$ met waarden in een metrische ruimte $Y,d_{Y}$, dan zeggen we dat $(f_{n})_{n}$ \term{uniform convergeert} op $X$ naar een functie $f:\ X \rightarrow Y$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall x\in X, \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow d_{Y}(f_{n}(x),f(x)) < \epsilon \]
+\end{de}
+
+\begin{bst}
+  Zij $X,d_{X}$ en $Y,d_{y}$ metrische ruimten.
+  Beschouw een rij $(f_{n})_{n}$ van functies $f_{n}:\ X \rightarrow Y$.
+  Veronderstel dat $(f_{n})_{n}$ uniform convergeert op $X$ naar een functie $f:\ X \rightarrow Y$, dan gelden volgende uitspraken:
+  \begin{enumerate}
+  \item Als alle $f_{n}$ continu zijn in eenzelfde $a\in X$, dan is ook $f$ continu in $a$.
+  \item Als alle $f_{n}$ uniform continu zijn op $X$, dan is ook $f$ uniform continu op $X$.
+  \end{enumerate}
+\TODO{bewijs:oefening}
+\end{bst}
+
+\begin{bst}
+  \label{st:stelling-van-dini}
+  De \term{stelling van Dini}\\
+  Zij $X,d$ een compacte metrische ruimte en $(f_{n})_{n}$ een rij van functies van $X$ naar $\mathbb{R}$.
+  Als aan de volgende voorwaarden voldaan is zal $f_{n}$ uniform convergeren naar $f$.
+  \begin{enumerate}
+  \item Alle functies $f_{n}$ zijn continu.
+  \item De rij $(f_{n})_{n}$ convergeert puntsgewijs naar een continue functie $X \rightarrow \mathbb{R}$.
+  \item Voor elke $x\in X$ is de rij $(f_{n}(x))_{n}$ stijgend.
+  \end{enumerate}
+
+  \begin{proof}
+    Kies een $\epsilon \in \mathbb{R}_{0}^{+}$.
+    Omdat de rij $(f_{n})_{n}$ puntsgewijs convergeert op $f$, bestaat er voor elke $x\in X$ een $n_{x}\in \mathbb{N}$ zodat $\left|f(x)-f_{n_{x}}(x)\right) < \epsilon$ geldt.
+    Omdat de functie $f-f_{n_{x}}$ continu is\prref{pr:optelling-continu}, bestaat er dan ook een open bol $B(x,\delta_{x})$ zodat voor $y\in B(x,\delta_{x})$, $\left|f(x)-f_{n_{x}}(y)\right| < \epsilon$ geldt.
+    Al deze bollen samen vormen een open overdekking van de compacte verzameling $X$.
+    Er bestaat dus een eindige deeloverdekking met bollen rond punten $x_{1},x_{2},\dotsc,x_{k}\in X$:
+    \[ X = \cup_{i=1}^{k}B\left(x_{i},\delta_{x_{i}}\right) \]
+    Kies $n_{0} = \max\left\{n_{x_{1}},n_{x_{2}},\dotsc,n_{x_{k}}\right\}$.
+    Kies nu willekeurig een $n\in \mathbb{N}$, groter dan $n_{0}$ en een willekeurige $y\in X$.
+    $y$ zit dan in \'e\'en van de bollen, zeg $B\left(x_{j},\delta_{x_{j}}\right)$.
+    Omdat de rij $\left(f_{n}(y)\right)_{n}$ stijgt en $n \ge n_{0} \ge n_{x_{j}}$ geldt, zal het volgende gelden:
+    \[ \left|f(x)-f_{n}(y)\right| \le \left| f(y) - f_{n_{x_{j}}}(y) \right| < \epsilon \]
+    Dit bewijst de uniforme convergentie.
+  \end{proof}
+\end{bst}
+
+\TODO{tegenvoorbeelden}
+
+\subsection{Rijen van contracties}
+\label{sec:rijen-van-contr}
+
+\begin{st}
+  \label{st:limiet-van-rij-contracties-is-contractie}
+  \stiekem{Juni 2014}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten en $(f_{n})_{n}$ een rij contracties ($\forall n:\ f_{n}:\ V \rightarrow W$) die (puntgewijs) convergeert naar een functie $f:\ V \rightarrow W$, dan is $f$ een contractie.
+  
+  \begin{proof}
+    Kies willekeurig twee elementen $x,y\in V$:
+    \begin{align*}
+      d_{W}(f(x),f(y))
+      &= d_{W}(\lim_{n\rightarrow +\infty}f_{n}(x),\lim_{n\rightarrow +\infty}f_{n}(y))\\
+      &\le \lim_{n\rightarrow +\infty}d_{W}(f_{n}(x),f_{n}(y))\\
+      &\le \lim_{n\rightarrow +\infty}d_{V}(x,y)\\
+      &= d_{V}(x,y)
+    \end{align*}
+    De tweede ongelijkheid geldt omdat elke $f_{n}$ een contractie is.
+    De laatste ongelijkheid geldt omdat metrieken continu zijn.\gevref{gev:metriek-door-limiet}
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \stiekem{Juni 2014}
+  Zij $V,d_{V}$ en $W,d_{W}$ metrische ruimten en $(f_{n})_{n}$ een rij contracties ($\forall n:\ f_{n}:\ A \subseteq V \rightarrow W$) die (puntgewijs) convergeert naar een functie $f:\ A \subseteq V \rightarrow W$.
+  Als $A$ totaal begrensd is, dan gebeurt de convergentie $f_{n} \rightarrow f$ uniform.
+
+  \begin{proof}
+    \noindent
+    \begin{klad}
+      Even opschrijven wat er allemaal gegeven is (het is een hele boel):
+      \begin{enumerate}
+      \item Elke $f_{n}$ is een contractie: $\forall x,y\in A:\ d_{W}(f_{n}(x),f_{n}(y)) \le d_{V}(x,y)$
+      \item De rij $(f_{n})_{n}$ convergeert puntsgewijs naar $f$: $\forall x\in V:\ \lim_{n\rightarrow +\infty}(f_{n}(x))_{n} = f(x)$
+      \item $A$ is totaal begrensd: $\forall \epsilon\in\mathbb{R}_{0}^{+}, \exists \{x_{1},...,x_{k}\} \subseteq A:\ A \subseteq \bigcup_{i=1}^{n}B(x_{i},\epsilon)$
+      \end{enumerate}
+      Wat er te bewijzen valt is de volgende formule:
+      \[ \forall \epsilon\in\mathbb{R}_{0}^{+}, \exists n_{0}\in \mathbb{N}, \forall x\in V, \forall n\in\mathbb{N}:\ n \ge n_{0} \Rightarrow d_{W}(f_{n}(x),f(x)) < \epsilon \]
+      We zullen de afstand $d_{W}(f_{n}(x),f(x))$ proberen afstanden in een $\frac{\epsilon}{3}$ argument.
+    \end{klad}
+    Kies willekeurig een $\epsilon \in \mathbb{R}_{0}^{+}$.
+    \begin{itemize}
+    \item Overdek (het totaal begrensde) $A$ met een eindig aantal ($n$) open bollen $B(x_{i},\epsilon)$.
+      Voor elke $x\in A$, bestaat er nu een $x_{i}\in \{x_{1},\dotsc,x_{k}\}$ zodat $d_{V}(x,x_{i}) < \frac{\epsilon}{3}$ geldt.
+    \item Omdat $(f_{n})_{n}$ puntsgewijs convergeert naar $f$, kunnen we Voor elke $i\in \{1,\dotsc,k\}$ een $n_{i}\in\mathbb{N}$ vinden als volgt:
+      \[ \forall n\in \mathbb{N}:\ n\ge n_{i}\Rightarrow d_{W}(f_{n}(x_{i}),f(x_{i})) < \frac{\epsilon}{3} \]
+    \item Omdat elke $f_{n}$ een contractie is, vinden we voor alle $i\in\{1,\dotsc,k\}$ het volgende:
+      \[ \forall n\in\mathbb{N}:\ d_{W}(f_{n}(x),f_{n}(x_{i})) \le d_{V}(x,x_{i}) < \frac{\epsilon}{3} \]
+    \item Omdat een convergente rij contracties convergeert naar een contractie\stref{st:limiet-van-rij-contracties-is-contractie}, vinden we voor alle $i\in\{1,\dotsc,k\}$ het volgende:
+      \[ d_{W}(f(x),f(x_{i})) \le d_{V}(x,x_{i}) < \frac{\epsilon}{3} \]
+    \end{itemize}
+    Kies nu $n^{*} = \max_{i}\{ n_{i}\}$, en kies een $x\in V$ willekeurig.
+    Er bestaat dan een $x_{i}$ binnen een straal van $\frac{\epsilon}{3}$ rond $x$ (zie hierboven).
+    Voor alle $n\in \mathbb{N}$ groter dan $n^{*}$ (en dus groter dan alle $n_{i}$) vinden we nu het volgende:
+    \begin{align*}
+      |f_{n}(x) - f(x)|
+      &= |f_{n}(x) - f_{n}(x_{i}) + f_{n}(x_{i}) - f(x_{i}) + f(x_{i}) - f(x)|\\
+      &\le |f_{n}(x) - f_{n}(x_{i})| + |f_{n}(x_{i}) - f(x_{i})| + |f(x_{i}) - f(x)|\\
+      &< \frac{\epsilon}{3} + \frac{\epsilon}{3} +\frac{\epsilon}{3}\\
+      &= \epsilon
+    \end{align*}
+  \end{proof}
+\end{st}
+
+\section{Limieten van functies}
+\label{sec:limi-van-funct}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte.
+  Men zegt dat een functie $f:\ X \rightarrow \mathbb{R}$ ``naar $a$ gaat op oneindig'' als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}, \exists \text{ compact } K \subseteq X, \forall x\in X \setminus K:\ |f(x)-a|< \epsilon \]
+\end{de}
+
+\begin{opm}
+  \stiekem{Augustus 2014}
+  Bovenstaande definitie is compactibel met de definitie van ``naar $a$ gaan op oneindig'' in $\mathbb{R}$.
+
+  \begin{proof}
+    \noindent
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies $\epsilon$ willekeurig en zij $K$ een compact in $\mathbb{R}$ zodat erbuiten alle waarden van $f$ dichter dan $\epsilon$ bij $a$ liggen.
+      Omdat $K$ compact is, is $K$ gesloten en begrensd.-
+      Er bestaat dus een $M\in\mathbb{R}^{+}$ zodat voor alle $x\in \mathbb{R}$ met $|x|>M$, $x$ buiten $K$ ligt en dus dichter dan $\epsilon$ bij $a$.
+      Zowel op $+\infty$ als op $-\infty$ is dus de limiet van $f$ $a$.
+    \item $\Leftarrow$\\
+      Kies $\epsilon$ willekeurig en stel dat $f$ zowel op $+\infty$ als op $-\infty$ naar $a$ gaat.
+      Er bestaan dan getallen $N_{-},N_{+}\in\mathbb{R}^{+}$ als volgt:
+      \[ \forall x\in \mathbb{R}:\ x < N_{-} \Rightarrow |f(x)-a|< \epsilon \]
+      \[ \forall x\in \mathbb{R}:\ x < N_{+}  \Rightarrow |f(x)-a|< \epsilon \]
+      Kies nu $N = \max\{|N_{-}|,|N_{+}|\}$, dan liggen alle waarden van $f$ buiten $\interval{-N}{N}$ dichter dan $\epsilon$ bij $a$.
+      Dit interval is gesloten en begrensd in $\mathbb{R}$ en dus compact.
+    \end{itemize}
+  \end{proof}
+\end{opm}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  Definieer $C_{a}(X)$ als de verzameling van continue functies $f:\ X \rightarrow \mathbb{R}$ die naar $a$ gaan op oneindig.
+\end{de}
+
+\begin{de}
+  Zij $X,d$ een metrische ruimte.
+  Definieer $C_{b}(X)$ als de verzameling van continue functies $f:\ X \rightarrow \mathbb{R}$.
+\end{de}
+
+\begin{st}
+  \stiekem{Augustus 2014}
+  \label{st:continu-naar-a-op-oneindig-dan-begrensd}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  Een continue functie $f:\ X \rightarrow \mathbb{R}$ die naar $a$ gaat op oneindig is begrensd.
+  \[ C_{0}(X) \subseteq C_{b}(X) \]
+
+  \begin{proof}
+    Zij $f:\ X \rightarrow\mathbb{R}$ een functie die naar $a$ gaat op oneindig.
+    Fixeer een $\epsilon \in\mathbb{R}_{0}^{+}$.
+    Er bestaat dan een compacte deelverzameling $K$ van $X$ waarbuiten alle waarden van $f$ dichter dan $\epsilon$ bij $a$ liggen.
+    Buiten $K$ (dus in $X\setminus K$) is $f$ dus al begrensd.
+    Er rest ons dus nog te bewijzen dat $f(K)$ begrensd.
+    We weten dat het beeld van een compacte verzameling ook compact is, want $f$ is continu.\stref{st:beeld-van-compact-ook-compact}
+    Omdat $f(K)$ compact is, is het ook begrensd\stref{st:compact-dan-rijcompact}\prref{pr:rijcompact-dan-totaal-begrensd}\prref{pr:totaal-begrensd-dan-begrensd} en dus is $f$ begrensd door het maximum van de grens voor $f(K)$ en $\epsilon$.
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  Het omgekeerde van bovenstaande stelling geldt niet.
+
+  \begin{proof}
+    Beschouw eender welke constante functie verschillend van de $a$.
+    Die is begrensd maar gaat niet naar $a$ op oneindig.
+  \end{proof}
+\end{tvb}
+
+\begin{st}
+  \stiekem{Augustus 2014}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  Het inwendige van $C_{a}(X)$ voor de $d_{\infty}$ metriek op functies $X\rightarrow \mathbb{R}$ is leeg.
+
+  \begin{proof}
+    Bewijs uit het ongerijmde: stel dat $\mathring{C_{a}(X)}$ niet leeg is.\\
+    Er bestaat dan een $f:\ X \rightarrow \mathbb{R} \in \mathring{C_{a}(X)}$.
+    Omdat $f$ in het inwendige van $C_{a}(X)$ zit, bestaat er een $\delta$ als volgt:
+    \[ B(f,\delta) \subseteq C_{a}(X) \]
+    Beschouw nu de functie $g$ als volgt:
+    \[ g:\ X \rightarrow \mathbb{R}:\ x \mapsto |f(x)| + \frac{\delta}{2} \]
+    Deze functie behoort tot $B(f,\delta)$, maar niet tot $C_{a}(X)$:
+    Stel immers dat $g$ wel tot $C_{a}(X)$ zou behoren, kies dan $\epsilon = \frac{\delta}{4}$ en dan moet er een compacte deelverzameling $K$ van $X$ bestaan als volgt:
+    \[ \forall x\in X\setminus K:\ |g(x)-a| < \epsilon \]
+    Kies echter een $x\in X\setminus K$, dan geldt het volgende:
+    \[ |g(x)-a| = \left||f(x)| + \frac{\delta}{2} - a\right| \ge |f(x)-a| + \frac{\delta}{2} = |f(x)-a| + 2\epsilon \ge \epsilon \]
+    Contradictie.
+  \end{proof}
+\end{st}
+
+\begin{st}
+  \stiekem{Augustus 2014}
+  Zij $X,d$ een metrische ruimte en $a\in X$.
+  De sluiting $C_{a}(X)$ voor de $d_{\infty}$ metriek is $C_{a}(X)$ zelf want $C_{a}(X)$ is gesloten.
+  \begin{proof}
+
+\iffalse
+    \noindent
+    $C_{a}(X)$ is zelf niet gesloten:\\
+      Kies $a=0$
+      We construeren een rij van functies waarvan de limietfunctie niet tot $C_{0}(X)$ behoort:
+
+      \noindent
+      \begin{minipage}{.45\textwidth}
+        \begin{figure}[H]
+          \centering
+          \begin{tikzpicture}[scale=.75]
+            \begin{axis}[ymin=-0.1, ymax=1.1, xmin=-1.1, xmax=1.1]
+              \foreach \n in {1,...,10}
+              {
+                \addplot[smooth,domain=-3:(-1/\n)]{0};
+                \addplot[smooth,domain=-(1/\n):0]{1+\n*x};
+                \addplot[smooth,domain=0:(1/\n)]{1-\n*x};
+                \addplot[smooth,domain=(1/\n):3]{0};
+              }
+              \addplot[smooth,color=red,ultra thick,domain=-3:0]{0};
+              \addplot[smooth,color=red,ultra thick,domain=0:3]{0};
+              \addplot[soldot,color=red] coordinates{(0,1)};
+              \addplot[holdot,color=red,fill=white] coordinates{(0,0)};
+            \end{axis}
+          \end{tikzpicture}
+        \end{figure}
+      \end{minipage}
+      \begin{minipage}{.45\textwidth}
+        \[
+        f_{n}: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+        \left\{
+          \begin{array}{rl}
+            0 &\text{ als } x \not \in \interval{-\frac{1}{n}}{\frac{1}{n}}\\
+            1+nx &\text{ als } x \in \interval{-\frac{1}{n}}{0}\\
+            1-nx &\text{ als } x \in \interval{0}{\frac{1}{n}}\\
+          \end{array}
+        \right.
+        \]
+        \[
+        f: \mathbb{R} \rightarrow \mathbb{R}:\ x \mapsto
+        \left\{
+          \begin{array}{rl}
+            0 & \text{ als } x \neq 0 \\
+            1  & \text{ als } x = 0\\
+          \end{array}
+        \right.
+        \]
+      \end{minipage}
+\fi
+
+      Elke rij van functies $(f_{n})_{n}$ in $C_{a}(X)$ convergeert naar een functie die naar $a$ gaat op oneindig:\\
+      Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, dan bestaat er voor elke $n\in\mathbb{N}$ een compact deel $K_{n}$ van $X$ als volgt:
+      \[ \forall x\in X \setminus K_{n}: |f_{n}(x)-a| < \frac{\epsilon}{2} \]
+      Kies nu $K = \bigcap_{n}K_{n}$, dan is $K$ ook compact.\prref{pr:gesloten-deel-van-compact-is-compact}
+      Omdat $(f_{n})_{n}$ naar $f$ convergeert, bestaat er een $N\in\mathbb{N}$ als volgt:
+      \[ \forall n\in\mathbb{N}:\ |f(x)-f_{n}(x)| < \frac{\epsilon}{2} \]
+      Kies tenslotte willekeurig een $x\in X\setminus K$, dan ligt $f(x)$ dichter dan $\epsilon$ bij $0$:
+      \[ |f(x)| \le |f(x) - f_{n}(x)| + |f_{n}(x)-a| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \]
+      $f$ gaat dus naar $a$ op oneindig.
+      $f$ is bovendien continu want $(f_{n})_{n}$ convergeert volgens $d_{\infty}$ (dus continu) naar $f$.\stref{st:uniform-convergente-rij-functies-dan-asa-continu}
+  \end{proof}
+\end{st}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

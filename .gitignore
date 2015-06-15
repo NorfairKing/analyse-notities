@@ -1,7 +1,10 @@
 _region_.tex
 auto/
 .fmt
+*.dep
 *.auxlock
+*.figlist
+*.makefile
 commit.tex
 
 ## Core latex/pdflatex auxiliary files:

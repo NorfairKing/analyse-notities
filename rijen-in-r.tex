@@ -2,8 +2,9 @@
 \begin{document}
 
 
-\section{Rijen in $\mathbb{R}$}
-\label{sec:rijen-mathbbr}
+
+\chapter{Rijen in $\mathbb{R}$}
+\label{cha:rijen-in-r}
 
 \begin{de}
   Een \term{rij} in een verzameling $V$ is een functie als volgt:
@@ -70,8 +71,6 @@
   De rij $\left(\frac{n^{2}}{n+1}\right)_{n}$ divergeert naar $+\infty$.
 \extra{bewijs p 29}
 \end{vb}
-
-
 
 \begin{bpr}
   Zij $p\in \mathbb{Z}$, dan heeft de rij $(n^{p})_{n}$ een limiet:
@@ -186,9 +185,29 @@
   \end{proof}
 \end{st}
 
-\subsection{Limieten en orde}
-\label{sec:limieten-en-orde}
+\begin{st}
+  Zij $(x_{n})_{n}$ een convergente rij, dan is $(|x_{n}|)_{n}$ ook convergent.
 
+  \begin{proof}
+    Noem de limiet van $(x_{n})_{n}$ $x$.
+    Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, dan bestaat er een $n_{0}\in\mathbb{N}$ als volgt:
+    \[ \forall n\in\mathbb{N}:\ n\ge n_{0} \Rightarrow |x_{n}-x| < \epsilon \]
+    De stelling volgt nu uit de volgende ongelijkheid:\prref{pr:tweede-driehoeksongelijkheid}
+    \[ \left| |x_{n}| - |x| \right| \le |x_{n}-x| \]
+  \end{proof}
+\end{st}
+
+\begin{tvb}
+  De omgekeerde implicatie geldt niet.
+  
+  \begin{proof}
+    Beschouw de rij $((-1)^{n})_{n}$.
+  \end{proof}
+\end{tvb}
+
+
+\section{Limieten en orde}
+\label{sec:limieten-en-orde}
 
 \begin{de}
   We noemen een rij $(x_{n})_{n}$ in $\mathbb{R}$ ...
@@ -394,7 +413,37 @@
   \end{proof}
 \end{bst}
 
-\subsection{Limieten en bewerkingen}
+
+\begin{st}
+  Zij $(x_{n})_{n}$ een convergente rij in $\mathbb{R}^{+}$ met limiet $x$, dan convergeert ook de rij $\left(\sqrt{x_{n}}\right)_{n}$ en wel naar $\sqrt{x}$.
+
+  \begin{proof}
+    Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$, en beschouw de volgende gelijkheid:
+    \[ |\sqrt{x_{n}}-\sqrt{x}| = \frac{|x_{n}-x|}{\sqrt{x_{n}} + \sqrt{x}} \]
+    Omdat $(x_{n})_{n}$ naar $x$ convergeert, bestaat er een $n_{0}\in\mathbb{N}$ als volgt:
+    \[ \forall n\in\mathbb{N}:\ n \ge n_{0} \Rightarrow |x_{n}-x| < \epsilon\left(\sqrt{x_{n}}+\sqrt{x}\right) \]
+    Gaan we nu verder met de originele gelijkheid (voor $n$ groter dan $n_{0}$), dan vinden we de stelling:
+    \[ |\sqrt{x_{n}}-\sqrt{x}| = \frac{|x_{n}-x|}{\sqrt{x_{n}} + \sqrt{x}} < \frac{\epsilon\left(\sqrt{x_{n}}+\sqrt{x}\right)}{\sqrt{x_{n}} + \sqrt{x}} = \epsilon \]
+  \end{proof}
+\end{st}
+
+\begin{st}
+  Zij $x\in\mathbb{R}_{0}^{+}$, dan convergeert $(\sqrt[n]{x})_{n}$ naar $1$.
+
+  \begin{proof}
+    Gevalsonderscheid:
+    \begin{itemize}
+    \item $x=1$: triviaal.
+    \item $x < 1$:
+      De reeks $(\sqrt[n]{x})_{n}$ is dan strikt stijgend en het supremum van $\{ \sqrt[n]{x} \mid n\in\mathbb{N} \}$ (bestaat en) is $1$.
+    \item $x > 1$:
+      De reeks $(\sqrt[n]{x})_{n}$ is dan strikt dalend en het infimum van $\{ \sqrt[n]{x} \mid n\in\mathbb{N} \}$ (bestaat en) is $1$.
+    \end{itemize}
+  \end{proof}
+\end{st}
+
+
+\section{Limieten en bewerkingen}
 \label{sec:limi-en-bewerk}
 
 \begin{bst}
@@ -667,7 +716,8 @@
 
 \extra{bewijs dat deze stelling niet geldt in $\mathbb{Q}$.}
 
-\subsection{Deelrijen}
+
+\section{Deelrijen}
 \label{sec:deelrijen}
 
 \begin{de}
@@ -867,7 +917,8 @@
   \end{proof}
 \end{bpr}
 
-\subsection{Cauchyrijen en de volledigheid van $\mathbb{R}$}
+
+\section{Cauchyrijen en de volledigheid van $\mathbb{R}$}
 \label{sec:cauchyrijen-en-de}
 
 \begin{de}
@@ -981,6 +1032,108 @@
 
 \extra{tekstje op blz 60 toch nog eens bekijken}
 
+
+\section{Rijen in $\mathbb{C}$}
+\label{sec:rijen-in-c}
+
+\begin{de}
+  We zeggen dat een rij $(x_{n})_{n}$ in $\mathbb{C}$ \term{convergeert} naar een element $c\in \mathbb{C}$ als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |z_{n}-c| < \epsilon \]
+  We noemen $c$ de \term{limiet} van de rij $(x_{n})_{n}$.
+  \[ \lim_{n\rightarrow +\infty}z_{n} = c \]
+\end{de}
+
+\begin{de}
+  Een rij die convergeert noemen we een \term{convergente} rij.
+\end{de}
+
+\begin{bpr}
+  \label{pr:complexe-limiet-splitsen}
+  Zij $(z_{n})_{n}$ een rij in $\mathbb{C}$.
+  Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
+  Noem bovendien $a=Re(c)$ en $b=Im(c)$.
+  $(z_{n})_{n}$ convergeert naar $c$ als en slechts als $(x_{n})_{n}$ naar $a$ en $(y_{n})_{n}$ naar $b$ convergeert.
+
+  \begin{proof}
+    Merk eerst op dat de volgende ongelijkheid geldt door $x_{n}$, $a$, $y_{n}$ en $b$ te beschouwen als complexe getallen.\prref{pr:tweede-driehoeksongelijkheid-C}
+    \[ |z_{n}-c| \le |x_{n}-a| + |y_{n}-b| \]
+    Er gelden ook de volgende ongelijkheden.\prref{pr:reel-deel-kleine}\prref{pr:imaginair-deel-kleiner}
+    \[ |x_{n}-a| \le |z_{n}-c| \]
+    \[ |y_{n}-b| \le |z_{n}-c| \]
+    \begin{itemize}
+    \item $\Rightarrow$
+      Kies een wilekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+      Vanwege de tweede en derde ongelijkheid worden $|x_{n}-a|$ en $|y_{n}-b|$ kleiner dan $\delta$ vanaf een bepaalde $n\in \mathbb{N}$ omdat $z_{n}$ convergeert naar $c$.
+    \item $\Leftarrow$
+      Kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+      Er bestaan dan een $n_{x},n_{y}\in \mathbb{N}$ zodat $|x_{n}-a|$ en $|y_{n}-b|$ kleiner worden dan $\frac{\delta}{2}$ voor $n$ groter dan $n_{x}$, respectievelijk $n_{y}$.
+      Vanaf $\max\{n_{x},n_{y}\}$ geldt dan het volgende vanwege de eerste ongelijkheid:
+      \[ |z_{n}-c| \le |x_{n}-a| + |y_{n}-b| < \frac{\delta}{2}+\frac{\delta}{2} = \delta \]
+    \end{itemize}
+  \end{proof}
+  \extra{dit kan mooier?}
+\end{bpr}
+
+\begin{bst}
+  \label{st:bolzano-complexe-rijen}
+  De \term{stelling van Bolzano-Weierstra\ss} voor complexe rijen\\
+  Elke begrensde rij in $\mathbb{C}$ heeft een convergente deelrij.
+
+  \begin{proof}
+    Zij $(z_{n})_{n}$ een begrensde rij in $\mathbb{C}$
+    Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
+    De rijen $(x_{n})_{n}$ en $(y_{n})_{n}$ zijn dan begrensde rijen in $\mathbb{R}$\prref{pr:tweede-driehoeksongelijkheid-C}
+    We kunnen van $(x_{n})_{n}$ een convergente deelrij $(x_{n_{k}})_{k}$ met limiet $a$ nemen\stref{st:bolzano-rijen}.
+    We kunnen dan van $(y_{n_{k}})_{k}$ een convergente deelrij $(y_{n_{k_{l}}})_{l}$ nemen met limiet $b$
+    Noem de limieten respectievelijk $a$ en $b$.
+    De deelrij $(z_{n_{k_{l}}})_{l}$ van $(z_{n})_{n}$ convergeert dan naar $a+bi$.\prref{pr:complexe-limiet-splitsen}
+  \end{proof}
+\end{bst}
+
+\begin{de}
+  We noemen een rij $(z_{n})_{n}$ in $\mathbb{C}$ een \term{Cauchyrij} als en slechts als het volgende geldt:
+  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n,m\in \mathbb{N}_{0}: n,m\ge n_{0} \Rightarrow |z_{n}-z_{m}| < \epsilon \]
+\end{de}
+
+\begin{pr}
+  Zij $(z_{n})_{n}$ een rij in $\mathbb{C}$.
+  Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
+  $(z_{n})_{n}$ is een Cauchyrij als en slechts als $(x_{n})_{n}$ en $(y_{n})_{n}$ Cauchyrijen zijn.
+
+  \begin{proof}
+    We beginnen opnieuw met drie ongelijkheden:
+    \[ |z_{n}-z_{m}| \le |x_{n}-x_{m}| + |y_{n}-y_{m}| \]
+    \[ |x_{n}-x_{m}| \le |z_{n}-z_{m}| \]
+    \[ |y_{n}-y_{m}| \le |z_{n}-z_{m}| \]
+    \begin{itemize}
+    \item $\Rightarrow$\\
+      Kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+      Vanwege de tweede en derde ongelijkheid worden $|x_{n}-x_{m}|$ en $|y_{n}-y_{m}|$ kleiner dan $\delta$ vanaf een bepaalde $n\in \mathbb{N}$ omdat $z_{n}$ een Cauchyrij is.
+    \item $\Leftarrow$\\
+      Kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
+      Er bestaan dan een $n_{x},n_{y}\in \mathbb{N}$ zodat $|x_{n}-x_{m}|$ en $|y_{n}-y_{m}|$ kleiner worden dan $\frac{\delta}{2}$ voor $n,m$ groter dan $n_{x}$, respectievelijk $n_{y}$.
+      Vanaf $\max\{n_{x},n_{y}\}$ geldt dan het volgende vanwege de eerste ongelijkheid:
+      \[ |z_{n}-z_{m}| \le |x_{n}-x_{m}| + |y_{n}-y_{m}| < \frac{\delta}{2}+\frac{\delta}{2} = \delta \]
+    \end{itemize}
+  \end{proof}
+\end{pr}
+
+\begin{st}
+  Een rij $(z_{n})_{n}$ in $\mathbb{C}$ is convergent als en slechts als het een Cauchyrij is.
+
+  \begin{proof}
+    Bewijs van een equivalentie\\
+    \begin{itemize}
+    \item $\Rightarrow$\\
+\extra{bewijs}
+    \item $\Leftarrow$\\
+      Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
+      $(x_{n})_{n}$ en $(y_{n})_{n}$ zijn dan Cauchyrijen in $\mathbb{R}$, en convergeren dus.\prref{pr:cauchyrij-in-R-convergeert}
+      Noem $a$ en $b$ de respectievelijke limieten.
+      $(z_{n})_{n}$ convergeert dan naar $a+bi$.\prref{pr:complexe-limiet-splitsen}
+    \end{itemize}
+  \end{proof}
+\end{st}
 
 
 \end{document}

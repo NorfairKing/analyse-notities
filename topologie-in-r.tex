@@ -2,8 +2,9 @@
 \begin{document}
 
 
-\section{Topologie in $\mathbb{R}$}
-\label{sec:topologie-mathbbr}
+
+\chapter{Topologie in $\mathbb{R}$}
+\label{cha:topologie-mathbbr}
 
 \begin{de}
   We noemen een deelzverzameling $A$ van $\mathbb{R}$ \term{open} als het volgende geldt:
@@ -208,7 +209,7 @@
       Contrapositie: stel dat $A$ niet gesloten of niet begrensd is, dan bestaat er een rij in $A$ zonder convergente deelrij met een limiet is $A$.
       \begin{itemize}
       \item $A$ is niet gesloten:
-        Er bestaat dan een convergente rij $(x_{n})_{n}$ met een limiet $a$ buiten $A$. {pr:gesloten-asa-elke-convergente-rij-in-A-limiet-in-A}
+        Er bestaat dan een convergente rij $(x_{n})_{n}$ met een limiet $a$ buiten $A$. \prref{pr:gesloten-asa-elke-convergente-rij-in-A-limiet-in-A}
         Elke deelrij van $(x_{n})_{n}$ convergeert dan ook naar $a\not\in A$.\prref{pr:deelrij-zelfde-limiet-als-limiet-bestaat}
       \item $A$ is niet begrensd:
         We kunnen dan voor elke $n\in \mathbb{N}$ een $x_{n}\in A$ vinden die, in absolute waarde, groter is dan $n$.
@@ -276,12 +277,12 @@
   \end{proof}
 \end{tvb}
 
-\begin{st}
+\begin{bst}
   Elke niet lege open deelverzameling $O \subseteq \mathbb{R}$ valt te schrijven als een aftelbare unie van open intervallen.
 
   \begin{proof}
     Definieer een equivalentierelatie $\sim$ op de elementen van $O$ als volgt:
-    \[ x \sim y \Leftrightarrow \interval{\min\{x,y\}}{\max\{x,y\}} \subseteq U \]
+    \[ x \sim y \Leftrightarrow \interval{\min\{x,y\}}{\max\{x,y\}} \subseteq O \]
     De partitie $O_{\sim}$ van equivalentieklassen van $\sim$ is nu een verzameling open intervallen die samen $O$ vormt.
     Er rest ons dus nog te bewijzen dat de partitie een aftelbaar aantal equivalentieklassen bevat.
     Kies voor elk interval $I\in O$ een $q_{o}\in \mathbb{Q}$ zodat $q\in I$ geldt.
@@ -291,7 +292,7 @@
     $\phi$ is nu injectief omdat de elementen van $O_{\sim}$ disjunct zijn (partitie), dus $O_{\sim}$ is aftelbaar omdat $q$ aftelbaar is.
   \end{proof}
 \feed
-\end{st}
+\end{bst}
 
 
 \begin{de}
@@ -385,7 +386,7 @@
 \end{pr}
 
 
-\subsection{Sluiting en inwendige}
+\section{Sluiting en inwendige}
 \label{sec:sluit-en-inwend}
 
 \begin{de}
@@ -675,7 +676,8 @@
 \extra{geldt dit in $\mathbb{C}$?}
 \end{st}
 
-\subsection{Randpunten, ge\"isoleerde punten en ophopingspunten.}
+
+\section{Randpunten, ge\"isoleerde punten en ophopingspunten.}
 \label{sec:randp-geis-punt}
 
 \begin{de}
@@ -933,7 +935,8 @@
 \caption{Illustratie van sluiting, inwendige, randpunten, ophopingspunten en ge\"isoleerde punten}
 \end{figure}
 
-\subsection{Relatieve topologie}
+
+\section{Relatieve topologie}
 \label{sec:relatieve-topologie}
 
 \begin{de}
@@ -947,11 +950,20 @@
   \extra{bewijs}
 \end{st}
 
+\begin{vb}
+  Beschouw $\interval[open right]{0}{1}$ als deelverzameling van $\interval[open right]{0}{2}$.
+  \begin{itemize}
+  \item $\interval[open right]{0}{1}$ is relatief open in $\interval[open right]{0}{2}$.
+    $\interval[open right]{0}{1}$ is niet open in $\mathbb{R}$ omdat er geen punten links van $0$ in liggen, maar in $\interval[open right]{0}{2}$ liggen ook geen punten links van $0$, dus dat is geen probleem.
+  \item $\interval[open right]{1}{2}$ is dan relatief gesloten.
+  \end{itemize}
+\end{vb}
+
 \begin{de}
   We noemen een deelverzameling $A$ van $X\subseteq \mathbb{R}$ \term{relatief gesloten} in $X$ als het relatief complement $X\setminus B$ van $B$ relatief open is in $X$.
 \end{de}
 
-\begin{pr}
+\begin{bpr}
   Zij $X$ een niet-leeg deel van $\mathbb{R}$ en $A \subseteq X$.
   $A$ is relatief open in $X$ als en slechts als er een open $V\subseteq \mathbb{R}$ bestaat zodat $A=V \cap X$ geldt.
 
@@ -974,7 +986,7 @@
       $V\cap X$ is dus een open deel van $X$.
     \end{itemize}
   \end{proof}
-\end{pr}
+\end{bpr}
 
 \begin{pr}
   Zij $X$ een niet-leeg deel van $\mathbb{R}$ en $A \subseteq X$.
@@ -989,113 +1001,9 @@
 \extra{mogelijke stelling: relatief gesloten asa limiet van elke convergente rij erin}
 \extra{mogelijke stelling: relatief gesloten en begrensd als elke rij erin een convergente deelrij heeft met limiet erin}
 
-\section{Complexe getallen}
-\label{sec:de-complexe-getallen}
-
-\subsection{Rijen in $\mathbb{C}$}
-\label{sec:rijen-mathbbc}
-
-\begin{de}
-  We zeggen dat een rij $(x_{n})_{n}$ in $\mathbb{C}$ \term{convergeert} naar een element $c\in \mathbb{C}$ als en slechts als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n\in \mathbb{N}:\ n \ge n_{0} \Rightarrow |z_{n}-c| < \epsilon \]
-  We noemen $c$ de \term{limiet} van de rij $(x_{n})_{n}$.
-  \[ \lim_{n\rightarrow +\infty}z_{n} = c \]
-\end{de}
-
-\begin{de}
-  Een rij die convergeert noemen we een \term{convergente} rij.
-\end{de}
-
-\begin{pr}
-  \label{pr:complexe-limiet-splitsen}
-  Zij $(z_{n})_{n}$ een rij in $\mathbb{C}$.
-  Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
-  Noem bovendien $a=Re(c)$ en $b=Im(c)$.
-  $(z_{n})_{n}$ convergeert naar $c$ als en slechts als $(x_{n})_{n}$ naar $a$ en $(y_{n})_{n}$ naar $b$ convergeert.
-
-  \begin{proof}
-    Merk eerst op dat de volgende ongelijkheid geldt door $x_{n}$, $a$, $y_{n}$ en $b$ te beschouwen als complexe getallen.\prref{pr:tweede-driehoeksongelijkheid-C}
-    \[ |z_{n}-c| \le |x_{n}-a| + |y_{n}-b| \]
-    Er gelden ook de volgende ongelijkheden.\prref{pr:reel-deel-kleine}\prref{pr:imaginair-deel-kleiner}
-    \[ |x_{n}-a| \le |z_{n}-c| \]
-    \[ |y_{n}-b| \le |z_{n}-c| \]
-    \begin{itemize}
-    \item $\Rightarrow$
-      Kies een wilekeurige $\delta \in \mathbb{R}_{0}^{+}$.
-      Vanwege de tweede en derde ongelijkheid worden $|x_{n}-a|$ en $|y_{n}-b|$ kleiner dan $\delta$ vanaf een bepaalde $n\in \mathbb{N}$ omdat $z_{n}$ convergeert naar $c$.
-    \item $\Leftarrow$
-      Kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
-      Er bestaan dan een $n_{x},n_{y}\in \mathbb{N}$ zodat $|x_{n}-a|$ en $|y_{n}-b|$ kleiner worden dan $\frac{\delta}{2}$ voor $n$ groter dan $n_{x}$, respectievelijk $n_{y}$.
-      Vanaf $\max\{n_{x},n_{y}\}$ geldt dan het volgende vanwege de eerste ongelijkheid:
-      \[ |z_{n}-c| \le |x_{n}-a| + |y_{n}-b| < \frac{\delta}{2}+\frac{\delta}{2} = \delta \]
-    \end{itemize}
-  \end{proof}
-  \extra{dit kan mooier?}
-\end{pr}
-
-\begin{st}
-  \label{st:bolzano-complexe-rijen}
-  De \term{stelling van Bolzano-Weierstra\ss} voor complexe rijen\\
-  Elke begrensde rij in $\mathbb{C}$ heeft een convergente deelrij.
-
-  \begin{proof}
-    Zij $(z_{n})_{n}$ een begrensde rij in $\mathbb{C}$
-    Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
-    De rijen $(x_{n})_{n}$ en $(y_{n})_{n}$ zijn dan begrensde rijen in $\mathbb{R}$\prref{pr:tweede-driehoeksongelijkheid-C}
-    We kunnen van $(x_{n})_{n}$ een convergente deelrij $(x_{n_{k}})_{k}$ met limiet $a$ nemen\stref{st:bolzano-rijen}.
-    We kunnen dan van $(y_{n_{k}})_{k}$ een convergente deelrij $(y_{n_{k_{l}}})_{l}$ nemen met limiet $b$
-    Noem de limieten respectievelijk $a$ en $b$.
-    De deelrij $(z_{n_{k_{l}}})_{l}$ van $(z_{n})_{n}$ convergeert dan naar $a+bi$.\prref{pr:complexe-limiet-splitsen}
-  \end{proof}
-\end{st}
-
-\begin{de}
-  We noemen een rij $(z_{n})_{n}$ in $\mathbb{C}$ een \term{Cauchyrij} als en slechts als het volgende geldt:
-  \[ \forall \epsilon \in \mathbb{R}_{0}^{+}:\ \exists n_{0}\in \mathbb{N}:\ \forall n,m\in \mathbb{N}_{0}: n,m\ge n_{0} \Rightarrow |z_{n}-z_{m}| < \epsilon \]
-\end{de}
-
-\begin{pr}
-  Zij $(z_{n})_{n}$ een rij in $\mathbb{C}$.
-  Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
-  $(z_{n})_{n}$ is een Cauchyrij als en slechts als $(x_{n})_{n}$ en $(y_{n})_{n}$ Cauchyrijen zijn.
-
-  \begin{proof}
-    We beginnen opnieuw met drie ongelijkheden:
-    \[ |z_{n}-z_{m}| \le |x_{n}-x_{m}| + |y_{n}-y_{m}| \]
-    \[ |x_{n}-x_{m}| \le |z_{n}-z_{m}| \]
-    \[ |y_{n}-y_{m}| \le |z_{n}-z_{m}| \]
-    \begin{itemize}
-    \item $\Rightarrow$\\
-      Kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
-      Vanwege de tweede en derde ongelijkheid worden $|x_{n}-x_{m}|$ en $|y_{n}-y_{m}|$ kleiner dan $\delta$ vanaf een bepaalde $n\in \mathbb{N}$ omdat $z_{n}$ een Cauchyrij is.
-    \item $\Leftarrow$\\
-      Kies een willekeurige $\delta \in \mathbb{R}_{0}^{+}$.
-      Er bestaan dan een $n_{x},n_{y}\in \mathbb{N}$ zodat $|x_{n}-x_{m}|$ en $|y_{n}-y_{m}|$ kleiner worden dan $\frac{\delta}{2}$ voor $n,m$ groter dan $n_{x}$, respectievelijk $n_{y}$.
-      Vanaf $\max\{n_{x},n_{y}\}$ geldt dan het volgende vanwege de eerste ongelijkheid:
-      \[ |z_{n}-z_{m}| \le |x_{n}-x_{m}| + |y_{n}-y_{m}| < \frac{\delta}{2}+\frac{\delta}{2} = \delta \]
-    \end{itemize}
-  \end{proof}
-\end{pr}
-
-\begin{st}
-  Een rij $(z_{n})_{n}$ in $\mathbb{C}$ is convergent als en slechts als het een Cauchyrij is.
-
-  \begin{proof}
-    Bewijs van een equivalentie\\
-    \begin{itemize}
-    \item $\Rightarrow$\\
-\extra{bewijs}
-    \item $\Leftarrow$\\
-      Noem $x_{n} = Re(z_{n})$ en $y_{n} = Im(z_{n})$.
-      $(x_{n})_{n}$ en $(y_{n})_{n}$ zijn dan Cauchyrijen in $\mathbb{R}$, en convergeren dus.\prref{pr:cauchyrij-in-R-convergeert}
-      Noem $a$ en $b$ de respectievelijke limieten.
-      $(z_{n})_{n}$ convergeert dan naar $a+bi$.\prref{pr:complexe-limiet-splitsen}
-    \end{itemize}
-  \end{proof}
-\end{st}
-
-\subsection{Topologie in $\mathbb{C}$}
-\label{sec:topologie-mathbbc}
+ 
+\section{Topologie in $\mathbb{C}$}
+\label{sec:topologie-in-c}
 
 \begin{de}
   We noemen een deelverzameling $A$ van $\mathbb{C}$ \term{open} als en slechts als het volgende geldt:
@@ -1140,12 +1048,7 @@
 \extra{bewijs}
 \end{st}
 
-
-
-
 \TODO{welke stellingen over rijen in $\mathbb{R}$ gelden zeker niet in $\mathbb{C}$?}
-
-
 
 
 \end{document}

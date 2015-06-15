@@ -2,6 +2,7 @@
 \newtheorem{thm}{Theorem}[chapter] %Reset counter elk hoofdstuk
 \theoremstyle{definition}
 \newmdtheoremenv{de}[thm]{Definitie} % Definitie met frame
+\newmdtheoremenv{bei}[thm]{Eigenschap}
 \newtheorem{ei}[thm]{Eigenschap}
 \newmdtheoremenv{bst}[thm]{Stelling}
 \newtheorem{st}[thm]{Stelling}
@@ -29,6 +30,7 @@
 \newcommand{\lemref}[1]{\footnote{Zie lemma \ref{#1} op pagina \pageref{#1}.}}
 \newcommand{\alref}[1]{\footnote{Zie algoritme \ref{#1} op pagina \pageref{#1}.}}
 \newcommand{\secref}[1]{\footnote{Zie sectie \ref{#1} op pagina \pageref{#1}.}}
+\newcommand{\figref}[1]{\footnote{Zie figuur \ref{#1} op pagina \pageref{#1}.}}
 
 
 \newcommand{\hint}[1]{Hint: #1}
@@ -37,11 +39,13 @@
 
 
 \newcounter{todocounter}
+\newcounter{importantcounter}
 \newcommand{\todonum}[2][]{\stepcounter{todocounter}\todo[#1]{#2}}
+\newcommand{\todoi}[2][]{\stepcounter{importantcounter}\todonum[#1]{#2}}
 
 
 % Mooiere TODO's
-\newcommand{\TODO}[1]{\todonum[color=red,inline,size=\small]{TODO: #1}}
+\newcommand{\TODO}[1]{\todoi[color=red,inline,size=\small]{TODO: #1}}
 \newcommand{\extra}[1]{\todonum[color=orange,inline,size=\small]{EXTRA: #1}}
 \newcommand{\clarify}[1]{\todonum[color=yellow,inline,size=\small]{CLARIFY: #1}}
 \newcommand{\question}[1]{\todonum[color=green,inline,size=\small]{QUESTION: #1}}
@@ -59,9 +63,15 @@
 \newcommand{\bx}[1]{ \framebox[1.1\width]{#1} }
 \newcommand{\examen}[0]{\bx{{\bf Examenvraag!}}\\}
 \newcommand{\examenvraag}[1]{\bx{{\bf Examenvraag: #1 !}}\\}
+\newcommand{\stiekem}[1]{\textcolor{white}{\bf Examenvraag #1}\\}
 
 % Voor meer plaats tussen wiskunde
 \renewcommand{\arraystretch}{1.25}
 
 \renewcommand{\qedsymbol}{$\square$}
+
+\definecolor{solarback}{HTML}{FDF6E3}
+\definecolor{solarfront}{HTML}{657A81}
+\mdfdefinestyle{klad}{linewidth=0pt,backgroundcolor=solarback,fontcolor=solarfront}
+\newenvironment{klad}{\begin{mdframed}[style=klad]}{\end{mdframed}}
 

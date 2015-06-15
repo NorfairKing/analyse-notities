@@ -1,0 +1,134 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Velden}
+\label{sec:velden}
+
+\begin{de}
+  Een \term{veld} $\mathbb{F},+,\cdot$ is een verzameling $\mathbb{F}$ met twee bewerkingen $+$ en $\cdot$ met de volgende eigenschappen.
+  \begin{itemize}
+  \item $+$ is associatief:
+    \[ \forall f,g,h \in \mathbb{F}:\ (f+g)+h = f+(g+h) \]
+  \item Er bestaat een (uniek) neutraal element $0$ voor $+$:
+    \[ \forall f\in \mathbb{F}:\ f + 0 = f = 0 + f \]
+  \item Elk element $x$ heeft een (uniek) invers element $-x$ voor $+$:
+    \[ \forall f\in \mathbb{F}: \exists (-f) \in \mathbb{F}: \ f + (-f) = 0 = (-f) + f \]
+  \item $+$ is commutatief:
+    \[ \forall f,g \in \mathbb{F}:\ f+g = g+f \]
+  \item $\cdot$ is associatief:
+    \[ \forall f,g,h \in \mathbb{F}:\ (f\cdot g) \cdot h = f\cdot (g\cdot h) \]
+  \item Er bestaat een (uniek) neutraal element $1$ voor $\cdot$:
+    \[ \forall f\in \mathbb{F}:\ f \cdot 1 = f = 1 \cdot f \]
+  \item Elk element $x$ heeft een (uniek) invers element $x^{-1}$ voor $\cdot$:
+    \[ \forall f\in \mathbb{F}: \exists f^{-1} \in \mathbb{F}: \ f \cdot f^{-1} = 0 = f^{-1} \cdot f \]
+  \item $\cdot$ is commutatief:
+    \[ \forall f,g \in \mathbb{F}:\ f\cdot g = g \cdot f \]
+  \item $\cdot$ is distributief ten opzichte van $+$:
+    \[ \forall f,g,h \in \mathbb{F}:\ f \cdot (g+h) = (f \cdot g) + (f \cdot h) \]
+  \end{itemize}
+\end{de}
+
+\begin{de}
+  \label{de:totaal-geordend-veld}
+  Zij $\mathbb{F},+,\cdot$ een veld met een totale orderelatie $\le$, dan noemen we $\mathbb{F},+,\cdot,\le$ een \term{totaal geordend veld} als aan de volgende eigenschappen voldaan is.
+  \begin{itemize}
+  \item $\forall x,y,z \in \mathbb{F}:\ x \le y \Rightarrow (x+z) \le (y+z)$
+  \item $\forall x,y,z \in \mathbb{F}:\ x \le y \wedge 0 \le z \Rightarrow x\cdot z \le y\cdot z$
+  \end{itemize}
+\end{de}
+
+\begin{bpr}
+  \label{pr:geordend-veld-optelling-ongelijkheden}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b,c,d \in \mathbb{F}:\ a\le b \wedge c \le d \Rightarrow (a+c) \le (b+d) \]
+
+  \begin{proof}
+    We gebruiken enkel de eerste eigenschap in de definitie van een totaal geordend veld.
+    Omdat $a\le b$ geldt geldt ook $a + c \le b+c$.
+    Bovendien geldt $c+b \le d+b$ omdat $c\le d$ geldt.
+    Omdat $+$ commutatief is in $\mathbb{F}$, geldt dan ook het volgende:
+    \[ a+c \le b+c \le b+d\]
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:geordend-veld-ongelijkheid-maal-min-een}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b\in \mathbb{F}:\ a \le b \Rightarrow -b \le -a \]
+
+  \begin{proof}
+    Bewijs uit het ongerijmbde\\
+    Stel $a \le b$ en $-b > -a$ (dus $-a \le b$).
+    Omdat $\mathbb{F}$ een totaal geordend veld is, volgt uit $-a \le -b$ zowel $a \le -b+2a$ en $-a+2b \le -b$.
+    Tel deze ongelijkheden op\prref{pr:geordend-veld-optelling-ongelijkheden} om $2b \le 2a$ te bekomen.
+    Uit $a\le b$ volgt echter dat $2a \le 2b$ geldt (tel immers $a\le b$ bij zichzelf op).
+    Contradictie.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:geordend-veld-tegengestelde-wisselt-teken}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall b \in \mathbb{F}:\ 0 \le b \Leftrightarrow -a \le 0 \]
+
+  \begin{proof}
+    Gebruik in propositie \ref{pr:geordend-veld-ongelijkheid-maal-min-een} $a=0$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:geordend-veld-ongelijkheid-vermenigvuldiging}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b \in \mathbb{F}:\ 0 \le a \wedge 0 \le b \Rightarrow 0 \le ab \]
+
+  \begin{proof}
+    Omdat $\mathbb{F}$ een geordend veld is, volgt uit $0\le a$ dat $0b \le ab$ geldt vanwege $0 \le b$.
+    Omdat $0$ het nulelement is van $\mathbb{F}$ geldt $0b = 0$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:nul-kleiner-dan-een}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ 0 < 1 \]
+
+  \begin{proof}
+    Bewijs uit het ongerijmde\\
+    Stel dat $1 \le 0$ geldt, dan moet $1<0$ gelden omdat in een veld $1$ verschilt van $0$.
+    Tel hierbij $-1$ op, dan bekomen we $0 \le -1$.
+    Vanwege de tweede definierende eigenschap van een totaal geordend veld moet dan uit $1 \le 0$ ook $-1 \le 0$ volgen, maar dat is in strijd met $0 \le -1$ omdat $0$ verschilt van $1$.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:geordend-veld-inverse-zelfde-teken}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a \in \mathbb{F}_{0}:\ 0 \le a \Rightarrow 0 \le a^{-1}\]
+
+  \begin{proof}
+    Bewijs uit het ongerijmde:
+    Stel $0 \le a$ maar ook $a^{-1} < 0$ geldt.
+    We mogen die tweede ongelijkheid dan vermenigvuldigen met $a$ om $aa^{-1}< 0$ te bekomen.
+    Dit zou $1<0$ betekenen en dat is in contradictie met propositie \ref{pr:nul-kleiner-dan-een}.
+  \end{proof}
+\end{bpr}
+
+\begin{bpr}
+  \label{pr:geordend-veld-inverse-ongelijkheid-rekenregel}
+  Zij $\mathbb{F},+,\cdot,\le$ een totaal geordend veld.
+  \[ \forall a,b \in \mathbb{F}_{0}^{+}:\  a \le b \Rightarrow b^{-1} \le a^{-1}\]
+
+  \begin{proof}
+    Omdat zowel $0 \le a$ en $0 \le b$ geld, mogen we $a\le b$ vermenigvuldigen met $a^{-1}$ en $b^{-1}$\prref{pr:geordend-veld-inverse-zelfde-teken} om $b^{-1} \le a^{-1}$ te bekomen.
+  \end{proof}
+\end{bpr}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

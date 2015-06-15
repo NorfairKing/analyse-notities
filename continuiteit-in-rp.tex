@@ -1,6 +1,8 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+
+
 \section{Continue functie van $\mathbb{R}^{p}$ naar $\mathbb{R}^{q}$ }
 \label{sec:continue-functie-van}
 
@@ -157,6 +159,30 @@
 \extra{bewijs}
 \end{st}
 
+\begin{st}
+  Een lineaire afbeelding $T:\ \mathbb{R}^{p}\rightarrow \mathbb{R}^{q}$ is uniform continu.
+
+  \begin{proof}
+    Zij $T:\ \mathbb{R}^{p}\rightarrow \mathbb{R}^{q}$ een lineaire afbeelding en $\beta = \{e_{1},e_{2},\dotsc,e_{p}\}$ een orthonormale basis van $\mathbb{R}^{p}$.
+    Noem $M = \sup\{\|T(e)\| \mid e \in \beta \}$.
+    Beschouw nu de volgende afschatting van $\|T(x)\|$ voor elke $x\in \mathbb{R}^{p}$.
+    Merk op dat we $x$ kunnen schrijven in termen van de basis $\beta$, zeg als $x = \sum_{i=1}^{p}\lambda_{i}e_{i}$.
+    \[
+    \|T(x)\|
+    = \left\| \sum_{i=1}^{p}\lambda_{i}T(e_{i}) \right\|
+    \le \sum_{i=1}^{p} |\lambda_{i}|\|T(e_{i})\|
+    \le \sum_{i=1}^{p} M |\lambda_{i}|
+    \le M \sqrt{p} \|x\|
+    \]
+    \clarify{die laatste stap is niet echt rigoreus, enkel intu\"itief.}
+    Kies nu een $\epsilon \in \mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\epsilon}{M\sqrt{p}}$.
+    Kies bovendien twee elementen $x,y\in \mathbb{R}^{p}$ die dichter dan $\delta$ bij elkaar liggen.
+    \[ \|T(x)-T(y)\| = \|T(x-y)\| \le M\sqrt{p}\|x-y\| < \frac{M \sqrt{p}\epsilon}{M\sqrt{p}} = \epsilon \]
+  \end{proof}
+\feed
+\end{st}
+
+
 \subsection{Middelwaardestellingen}
 
 \begin{de}
@@ -179,6 +205,7 @@
     $y$ is dus het beeld van een $c$ ,op het lijnstuk tussen $a$ en $b$, onder $f$.
   \end{proof}
 \end{pr}
+
 
 \subsection{Rijen van continue functies}
 \label{sec:rijen-van-continue}
