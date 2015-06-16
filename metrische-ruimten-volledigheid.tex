@@ -361,7 +361,10 @@
           d(x_{n},y_{n}) &\le d(x_{n},x) + d(x,y) + d(y,y_{n})\\
           |g(x)-g(y)| &\le |g(x)-f(x_{n})| + |f(x_{n})-f(y_{n})| + |f(y_{n})-g(y)|
         \end{align*}
-        Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$ en kies $\delta = \frac{\xi}{3}$
+        Kies willekeurig een $\epsilon\in\mathbb{R}_{0}^{+}$.
+        Omdat $f$ uniform continu is, bestaat er een $\xi\in\mathbb{R}_{0}^{+}$ als volgt:
+          \[ d(x_{n},y_{n}) < \xi \Rightarrow |f(x_{n}),f(y_{n})| < \frac{\epsilon}{3} \]
+        Kies nu $\delta = \frac{\xi}{3}$
         Kies bovendien $x$ en $y$ willekeurig in $X_{v}$ zodat $d(x,y)< \delta$ geldt.
         \begin{itemize}
         \item 
@@ -370,8 +373,6 @@
             \forall n\in\mathbb{N}:\ n\ge n_{x}\Rightarrow |g(x)-f(x_{n})| < \frac{\epsilon}{3}\\
             \forall n\in\mathbb{N}:\ n\ge n_{y}\Rightarrow |g(y)-f(y_{n})| < \frac{\epsilon}{3}
           \end{align*}
-        \item Omdat $f$ uniform continu is, bestaat er een $\xi\in\mathbb{R}_{0}^{+}$ als volgt:
-          \[ d(x_{n},y_{n}) < \xi \Rightarrow |f(x_{n}),f(y_{n})| < \frac{\epsilon}{3} \]
         \item Omdat $(x_{n})_{n}$ naar $x$ convergeert en $(y_{n})_{n}$ naar $y$, bestaan er twee getallen $N_{x}\in\mathbb{N}$ en $N_{y}\in\mathbb{N}$ als volgt:
           \begin{align*}
             \forall n\in\mathbb{N}:\ n\ge N_{x}\Rightarrow d(x,x_{n}) < \frac{\xi}{3}\\
