@@ -1,9 +1,12 @@
-.PHONY: asset
+.PHONY: assets
 
 OUTPUT_NAME = analyse-notities
 MAIN_NAME = main
 
-all: text
+all: assets text
+
+assets:
+	$(MAKE) -C assets
 
 text: $(OUTPUT_NAME).pdf
 
